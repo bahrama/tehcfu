@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui" xmlns:p="http://primefaces.org/ui">
+
+	<!-- Main Content -->
+	<div class="page-wrapper">
+		<div class="container-fluid">
+			<!-- Title -->
+			<div class="row heading-bg">
+				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+					<h5 class="txt-dark" style="font-family: IRANSansBold;">پیام ها</h5>
+				</div>
+			</div>
+			<!-- /Title -->
+
+			<!-- Row -->
+			<div class="row">
+
+				<ui:repeat var="msgs"
+					value="#{messagePageBean.findAllMessageBySeller()}">
+					<h:form>
+					<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+						<div class="panel panel-primary contact-card card-view"
+							style="text-align: justify; direction: rtl;">
+							<div class="panel-heading">
+								<div class="pull-left">
+									<div class="pull-left user-detail-wrap">
+										<span class="block card-user-name"
+											style="color: white !important; font-family: IRANSansBold;">
+											پیام دهنده : #{msgs.messageFrom.sellerName} </span> <span
+											class="block card-user-desn"
+											style="color: white !important; font-family: IRANSansBold;">
+											نوع کاربری : #{msgs.messageFrom.role} </span>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="panel-wrapper collapse in">
+								<div class="panel-body row">
+									<div class="user-others-details pl-15 pr-15">
+										<div class="mb-15">
+											<i class="zmdi zmdi-email-open inline-block mr-10"></i> <span
+												class="inline-block txt-dark"
+												style="font-family: IRANSansNor;">#{msgs.pageMessage}</span>
+										</div>
+									</div>
+									<hr class="light-grey-hr mt-20 mb-20" />
+									<div class="emp-detail pl-15 pr-15">
+										<div class="mb-5">
+											<span class="inline-block capitalize-font mr-5"
+												style="font-family: IRANSansBold;">تاریخ:</span> <span
+												class="txt-dark" style="font-family: IRANSansNor;">#{msgs.date}</span>
+										</div>
+									</div>
+									<hr class="light-grey-hr mt-20 mb-20" />
+									<div class="emp-detail pl-15 pr-15">
+										<div class="mb-5">
+											<span class="inline-block capitalize-font mr-5"
+												style="font-family: IRANSansBold;">ارسال پیام به
+												کاربر:</span>
+										</div>
+									</div>
+									<hr class="light-grey-hr mt-20 mb-20" />
+									<div class="emp-detail pl-15 pr-15">
+										<div class="mb-5">
+											<span class="inline-block capitalize-font mr-5"
+												style="font-family: IRANSansBold; width: 100%;"> <h:inputTextarea
+													style="width: 100%;" value="#{messagePageBean.messagePage}" />
+											</span>
+										</div>
+									</div>
+									<hr class="light-grey-hr mt-20 mb-20" />
+									<div class="emp-detail pl-15 pr-15">
+										<div class="mb-5">
+											<span class="inline-block capitalize-font mr-5"
+												style="font-family: IRANSansBold;"> <h:commandButton
+													action="#{messagePageBean.act(msgs.messageFrom)}" value="ارسال"
+													style="padding: 8px 18px ; color: #0B59AA; border-color: #0B59AA; float: left"
+													styleClass="btn-blue margin-top-5">
+													<f:ajax execute="@form" />
+												</h:commandButton>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</h:form>
+				</ui:repeat>
+
+
+
+
+
+
+			</div>
+			<!-- Row -->
+		</div>
+
+
+
+	</div>
+	<!-- /Main Content -->
+	
+</ui:composition>
+

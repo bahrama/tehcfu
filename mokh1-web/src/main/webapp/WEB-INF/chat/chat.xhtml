@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui" 
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+	<br />
+	<br />
+	<br />
+	<br />
+	<h:form id="form" enctype="multipart/form-data" acceptcharset="UTF-8">
+		<div class="design-styles" style="margin-top: 10px;">
+			<div style="padding-right: 0; padding-left: 0"
+				class="container padding-bottom-100">
+
+				<div class="row " style="direction: rtl; text-align: right;">
+					<div class="col-md-5 wow fadeInRight" data-wow-delay="0.2s">
+
+						<p:dataTable id="tableStateDT" var="blogs"
+							style="border: 1px solid
+#BFBFBF;
+box-shadow: 10px 10px 5px
+#aaaaaa; margin-bottom: 30px;"
+							value="#{chatBean2.findOnlineUsers()}" widgetVar="carsTable"
+							multiViewState="true" rows="10" paginator="true"
+							selectionMode="single"
+							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							selection="#{chatBean2.user}" rowsPerPageTemplate="5,10,15"
+							rowKey="#{blogs.id}"
+							emptyMessage="No cars found with given criteria">
+
+
+
+
+							<p:column headerText="نام کاربر">
+								<h:outputText value="کاربر #{blogs.id}" />
+							</p:column>
+
+							<p:column headerText="نوع کاربری">
+								<h:outputText value="فروشنده"
+									rendered="#{blogs.role eq 'MERCHANT'}" />
+								<h:outputText value="کاربر" rendered="#{blogs.role eq 'USER'}" />
+								<h:outputText value="ادمین" rendered="#{blogs.role eq 'ADMIN'}" />
+							</p:column>
+
+						</p:dataTable>
+
+
+
+
+						<script src="../../resources/chatjs.js"></script>
+						<f:websocket channel="help" onmessage="onMessage"
+							user="#{chatBean2.moblEntity.mobile}" />
+					</div>
+					<div class="col-md-7  wow fadeInRight" data-wow-delay="0.2s">
+						<div id="message"
+							style="border: 1px solid #BFBFBF; box-shadow: 10px 10px 5px #aaaaaa; margin-bottom: 30px; min-height: 300px;">
+							
+						</div>
+						<h:inputTextarea binding="#{input1}"
+							a:placeholder="پیام خود را بنویسید ..."
+							style="width:100%; border: 1px solid #BFBFBF; box-shadow: 10px 10px 5px #aaaaaa; margin-bottom: 30px;" />
+					</div>
+				</div>
+				<div class="row "
+					style="direction: rtl; text-align: right; margin-bottom: 20px;">
+					<h:commandButton styleClass="button button2"
+						action="#{chatBean2.sendMessage(chatBean2.moblEntity.mobile,chatBean2.moblEntity.id,input1.value,chatBean2.user.mobile)}"
+						value="ارسال">
+						<f:ajax execute="@form" render="message" />
+					</h:commandButton>
+				</div>
+			</div>
+		</div>
+	</h:form>
+
+
+</ui:composition>
+

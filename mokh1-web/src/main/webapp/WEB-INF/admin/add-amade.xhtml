@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition
+xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+>
+<h:form enctype="multipart/form-data" acceptcharset="UTF-8"> 
+<rich:messages ajaxRendered="true" />
+	<h:panelGrid columns="3">
+		<rich:validator event="change">
+
+
+			<h:outputText value="نوع گواهینامه" />
+			<rich:select value="#{addAmade.type}" id="id21">
+				<f:selectItem itemValue="PANO" itemLabel="گواهینامه پانو" />
+				<f:selectItem itemValue="UNION" itemLabel="گواهینامه اتحادیه" />
+				<f:selectItem itemValue="MOBASHERAT" itemLabel="مباشرت" />
+
+			</rich:select>
+			<rich:message for="id21" ajaxRendered="true" />
+
+			<h:outputText value="نام مباشر" />
+			<h:inputText value="#{addAmade.mobasher}" styleClass="inp100"
+				id="id24" required="true" />
+			<rich:message for="id24" ajaxRendered="true" />
+
+			<h:outputText value="نام صاحب پروانه" />
+			<h:inputText value="#{addAmade.modir}" styleClass="inp100"
+				id="id22" required="true" />
+			<rich:message for="id22" ajaxRendered="true" />
+
+			<h:outputText value="رسته شغلی" />
+			<h:inputText value="#{addAmade.raste}" styleClass="inp100"
+				id="id23" required="true" />
+			<rich:message for="id23" ajaxRendered="true" />
+			
+			<h:outputText value="اسم فروشگاه" />
+			<h:inputText value="#{addAmade.senfName}" styleClass="inp100"
+				id="id26" required="true" />
+			<rich:message for="id26" ajaxRendered="true" />
+
+			<h:outputText value="نوع پنل" />
+			<h:inputText value="#{addAmade.packag}" styleClass="inp100"
+				id="id25" required="true" />
+			<rich:message for="id25" ajaxRendered="true" />
+
+
+			<h:commandButton value="submit" action="#{addAmade.insertToAmade()}" />
+		</rich:validator>
+	</h:panelGrid>
+	</h:form>
+</ui:composition>

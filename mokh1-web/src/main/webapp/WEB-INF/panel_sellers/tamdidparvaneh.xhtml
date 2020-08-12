@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui">
+	
+	<h:panelGroup rendered="#{tempBean.moblEntity.role eq 'MERCHANT'}">
+	<!-- Main Content -->
+	<div class="page-wrapper">
+		<div class="container-fluid">
+
+			<!-- Title -->
+			<div class="row heading-bg">
+				<div>
+					<h5 class="txt-dark" style="font-family: IRANSansBold;">درخواست تمدید پروانه کسب در اتحادیه صنف
+						درودگران و مبلسازان تهران</h5>
+				</div>
+
+
+			</div>
+			<!-- /Title -->
+
+
+			<!-- Row -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default card-view">
+						<!-- 						<div class="panel-heading">
+							<div class="pull-left">
+								<h6 class="panel-title txt-dark">بخش شکایات اتحادیه</h6>
+							</div>
+							<div class="clearfix"></div>
+						</div> -->
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-12 col-xs-12">
+										<div class="form-wrap">
+											<h:form id="form" enctype="multipart/form-data"
+												acceptcharset="UTF-8">
+
+												<div class="form-body">
+													<h6 class="txt-dark capitalize-font"
+															style="font-family: IRANSansBold;">
+															<i class="zmdi zmdi-account mr-10"></i>فرم تمدید پروانه
+													</h6>
+													<hr class="light-grey-hr" />
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">نوع ملک</label>
+																<h:selectOneMenu value="#{tamdidBean.noeMelk}" id="senfiname" required="true"
+																	styleClass="form-control">
+																	<f:selectItem itemValue="استیجاری" itemLabel="استیجاری" />
+																	<f:selectItem itemValue="ملکی" itemLabel="ملکی" />
+																	<f:selectItem itemValue="دارای سند:عادی"
+																		itemLabel="دارای سند:عادی" />
+																	<f:selectItem itemValue="رسمی(محضری)"
+																		itemLabel="رسمی(محضری)" />
+																	<f:selectItem itemValue="اوقافی" itemLabel="اوقافی" />
+																	<f:selectItem itemValue="اداری/سازمانی"
+																		itemLabel="اداری/سازمانی" />
+																</h:selectOneMenu>
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiname" id="ms1"
+																	errorStyle="color:red;" errorClass="help-block" />
+															</div>
+														</div>
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">مساحت محل کسب
+																	بر حست متر مربع</label>
+																<h:inputText id="motName" styleClass="form-control"
+																	value="#{tamdidBean.masahat}" />
+																<!-- <span class="help-block"> This field has error. </span>  -->
+																<h:message for="motName" errorStyle="color:red;"
+																	errorClass="help-block" id="ms2" />
+															</div>
+														</div>
+														<!--/span-->
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">نام مالک</label>
+																<h:inputText id="senfiPhone" styleClass="form-control"
+																	value="#{tamdidBean.nameMalek}" />
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiPhone" errorStyle="color:red;"
+																	errorClass="help-block" id="ms3" />
+															</div>
+														</div>
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">درخواست شماره
+																	پلاک ثبتی</label>
+																<h:inputText id="motMobile" styleClass="form-control"
+																	value="#{tamdidBean.shomarePelakSabti}" />
+																<!-- <span class="help-block"> This field has error. </span>  -->
+																<h:message for="motMobile" errorStyle="color:red;"
+																	errorClass="help-block" id="ms4" />
+															</div>
+														</div>
+														<!--/span-->
+													</div>
+
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">حوزه کلانتری</label>
+																<h:inputText id="senfiPhonef3" styleClass="form-control"
+																	value="#{tamdidBean.hozeKalantari}" />
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiPhonef3" errorStyle="color:red;"
+																	errorClass="help-block" id="ms3333" />
+															</div>
+														</div>
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">حوزه منطقه شهرداری</label>
+																<h:inputText id="motMobilerrrr2"
+																	styleClass="form-control"
+																	value="#{tamdidBean.hozeShahrdari}" />
+																<!-- <span class="help-block"> This field has error. </span>  -->
+																<h:message for="motMobilerrrr2" errorStyle="color:red;"
+																	errorClass="help-block" id="ms442" />
+															</div>
+														</div>
+														<!--/span-->
+													</div>
+
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">شماره سریال
+																	قبض آب</label>
+																<h:inputText id="senfiPhonef" styleClass="form-control"
+																	value="#{tamdidBean.serialGabzAb}" />
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiPhonef" errorStyle="color:red;"
+																	errorClass="help-block" id="ms33" />
+															</div>
+														</div>
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">شماره سریال
+																	قبض برق</label>
+																<h:inputText id="motMobilerrrr"
+																	styleClass="form-control"
+																	value="#{tamdidBean.serialGabzBarg}" />
+																<!-- <span class="help-block"> This field has error. </span>  -->
+																<h:message for="motMobilerrrr" errorStyle="color:red;"
+																	errorClass="help-block" id="ms44" />
+															</div>
+														</div>
+														<!--/span-->
+													</div>
+
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">شماره سریال
+																	گاز</label>
+																<h:inputText id="senfiPhonerr" styleClass="form-control"
+																	value="#{tamdidBean.serialGabzGaz}" />
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiPhonerr" errorStyle="color:red;"
+																	errorClass="help-block" id="ms333" />
+															</div>
+														</div>
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">محل کسب
+																	پیشنهادی دارای پروانه کسب بوده است ؟</label>
+																<h:selectOneRadio value="#{tamdidBean.hasParvaneh}" id="postcode2" required="true"
+																	styleClass="form-control" layout="lineDirection">
+																	<f:selectItem itemValue="بلی" itemLabel="بلی" />
+																	<f:selectItem itemValue="خیر" itemLabel="خیر" />
+																</h:selectOneRadio>
+																<h:message for="postcode2" errorStyle="color:red;"
+																	errorClass="help-block" id="ms46" />
+															</div>
+														</div>
+														<!--/span-->
+													</div>
+
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">شماره آبی</label>
+																<h:inputText id="senfiShenase2"
+																	styleClass="form-control"
+																	value="#{tamdidBean.shomareAbi}" />
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiShenase2" errorStyle="color:red;"
+																	errorClass="help-block" id="ms552" />
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">شریک و شرکا</label>
+																<h:inputText id="senfiShenase21"
+																	styleClass="form-control"
+																	value="#{tamdidBean.sharikShoraka}" />
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiShenase21" errorStyle="color:red;"
+																	errorClass="help-block" id="ms5521" />
+															</div>
+														</div>
+													</div>
+
+													<div class="row">
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">دسته شغلی</label>
+																<h:selectManyCheckbox value="#{tamdidBean.dasteShoglis}" id="postcode331" required="true"
+																	 layout="pageDirection">
+																	<f:selectItem itemValue="بیکار" itemLabel="بیکار" />
+																	<f:selectItem itemValue="بیکار مشمول قانون بیمه بیکاری"
+																		itemLabel="بیکار مشمول قانون بیمه بیکاری" />
+																	<f:selectItem itemValue="شاغل" itemLabel="شاغل" />
+																	<f:selectItem itemValue="بازنشسته" itemLabel="بازنشسته" />
+
+																</h:selectManyCheckbox>
+																<h:message for="postcode331" errorStyle="color:red;"
+																	errorClass="help-block" id="ms661" />
+															</div>
+														</div>
+														<!--/span-->
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">دارای امکانات
+																	رفاهی</label>
+																<h:selectManyCheckbox value="#{tamdidBean.emkanats}" id="postcode33" required="true"
+																	 layout="pageDirection">
+																	<f:selectItem itemValue="آب" itemLabel="آب" />
+																	<f:selectItem itemValue="برق" itemLabel="برق" />
+																	<f:selectItem itemValue="گاز" itemLabel="گاز" />
+																	<f:selectItem itemValue="تلفن" itemLabel="تلفن" />
+																	<f:selectItem itemValue="فکس" itemLabel="فکس" />
+																</h:selectManyCheckbox>
+																<h:message for="postcode33" errorStyle="color:red;"
+																	errorClass="help-block" id="ms66" />
+															</div>
+														</div>
+														<!--/span-->
+													</div>
+
+
+
+
+												</div>
+												<h:commandButton styleClass="btn btn-success mr-10"
+													action="#{tamdidBean.insertToTamdid()}" value="ثبت" style="font-family: IRANSansNor;font-size: 18px;width: 150px; border-radius: 10px;">
+													<f:ajax execute="@form"
+														render="ms66 ms661 ms5521 ms552 ms46 ms333 ms44 ms33 ms442 ms3333 ms4 ms3 ms2 ms1" />
+												</h:commandButton>
+											</h:form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Row -->
+
+		</div>
+	</div>
+
+</h:panelGroup>
+		<h:panelGroup rendered="#{tempBean.moblEntity.role ne 'MERCHANT'}">
+			<div class="page-wrapper">
+		<div class="container-fluid">
+
+			<!-- Title -->
+			<div class="row heading-bg">
+				<div>
+					<h5 class="txt-dark">این بخش مربوط به پنل فروشنده ها می باشد.</h5>
+				</div>
+
+
+			</div>
+			</div>
+			</div>
+			
+		</h:panelGroup>
+</ui:composition>
+

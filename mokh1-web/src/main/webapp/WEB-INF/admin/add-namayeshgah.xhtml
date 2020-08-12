@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+<h:form enctype="multipart/form-data" acceptcharset="UTF-8"> 
+<h:panelGrid columns="3">
+ <rich:validator event="change">
+ 			<h:outputText value="نوع" />
+			<rich:select value="#{addNamayeshgah.type}" id="id21">
+				<f:selectItem itemValue="A" itemLabel="ایران" />
+				<f:selectItem itemValue="B" itemLabel="جهان" />
+			</rich:select>
+			<rich:message for="id21" ajaxRendered="true" />
+			
+<h:outputText value="نام نمایشگاه" />
+<h:inputText id="id1" value="#{addNamayeshgah.name}" styleClass="inp100" required="true"/>
+ <rich:message for="id1" ajaxRendered="true" />
+ <h:outputText value="شهر نمایشگاه" />
+<h:inputText id="id2" value="#{addNamayeshgah.city}" styleClass="inp100" required="true"/>
+<rich:message for="id2" ajaxRendered="true" />
+<h:outputText value="کشور نمایشگاه" />
+<h:inputText id="id3" value="#{addNamayeshgah.country}" styleClass="inp100" required="true"/>
+<rich:message for="id3" ajaxRendered="true" />
+<h:outputText value="تاریخ برگذاری" />
+<h:inputTextarea id="id4" value="#{addNamayeshgah.tarikh}" styleClass="inp100"/>
+<rich:message for="id4" ajaxRendered="true" />
+<h:outputText value="مکان" />
+<h:inputText id="id5" value="#{addNamayeshgah.makan}" styleClass="inp100"/>
+<rich:message for="id5" ajaxRendered="true" />
+<h:outputText value="نام برگذار کننده" />
+<h:inputText id="id6" value="#{addNamayeshgah.nameBargozarK}" styleClass="inp100"/>
+<rich:message for="id6" ajaxRendered="true" />
+<h:outputText value="تلفن مدیر ناظر" />
+<h:inputText id="id7" value="#{addNamayeshgah.phoneModirNazer}" styleClass="inp100"/>
+<rich:message for="id7" ajaxRendered="true" />
+<h:outputText value="وبسایت" />
+<h:inputText id="id8" value="#{addNamayeshgah.site}" styleClass="inp100"/>
+<rich:message for="id8" ajaxRendered="true" />
+<h:outputText value="ایمیل" />
+<h:inputText id="id9" value="#{addNamayeshgah.email}" styleClass="inp100"/>
+<rich:message for="id9" ajaxRendered="true" />
+<h:outputText value="فکس" />
+<h:inputText id="id10" value="#{addNamayeshgah.fax}" styleClass="inp100"/>
+<rich:message for="id10" ajaxRendered="true" />
+<h:outputText value="تلفن" />
+<h:inputText id="id11" value="#{addNamayeshgah.phone}" styleClass="inp100"/>
+<rich:message for="id11" ajaxRendered="true" />
+
+
+<h:outputText value="عکس اول" />
+<h:inputFile id="id15" value="#{addNamayeshgah.pic}" required="true" requiredMessage="please select shop2Image image"/>
+<rich:message for="id15" ajaxRendered="true" />
+
+
+
+
+<h:commandButton value="submit" action="#{addNamayeshgah.insertToNamayeshgah()}"/>
+ </rich:validator>
+</h:panelGrid>
+   
+    <rich:notifyMessages stayTime="2000" nonblocking="true" />
+    </h:form>
+</ui:composition>

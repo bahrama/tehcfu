@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+	<div>
+		<h:form enctype="multipart/form-data" acceptcharset="UTF-8"
+			style="float: right;
+width: 100%;
+border: 1px solid
+gainsboro;
+padding: 20px; ">
+
+			<h:panelGrid columns="1" style="width: 100%;">
+				<h:messages errorStyle="color:red;" />
+				<h:outputText value="نام و نام خانوادگی" />
+				<h:inputText id="id1" value="#{addSeller.sellerName}"
+					styleClass="inp100" required="true"
+					style="width: 100%;" />
+
+				<h:outputText value="کد ملی" />
+				<h:inputText id="id2" value="#{addSeller.sellerStoreNamePer}"
+					styleClass="inp100" required="true"
+					style="width: 100%;" />
+
+				<h:outputText value="تلفن ثابت" />
+				<h:inputText id="id3" value="#{addSeller.sellerStoreNameEng}"
+					styleClass="inp100" required="true"
+					style="width: 100%;" />
+
+
+				<h:outputText value="تلفن همراه" />
+				<h:inputText id="id21" value="#{addSeller.ssn}" styleClass="inp100"
+					required="true" style="width: 100%;" />
+
+
+				<h:outputText value="ایمیل" />
+				<h:inputText id="id22" value="#{addSeller.mobile}"
+					styleClass="inp100" required="true"
+					style="width: 100%;" />
+
+
+
+
+
+
+				<h:outputText value="کد پستی" />
+				<h:inputTextarea id="id4" value="#{addSeller.aboutUs}"
+					styleClass="inp100" style="width: 100%; " />
+
+				<h:outputText value="آدرس" />
+				<h:inputText id="id5" value="#{addSeller.instagram}"
+					styleClass="inp100" style="width: 100%; " />
+
+				<h:outputText value="نام واحد صنفی" />
+				<h:inputText id="id6" value="#{addSeller.telegram}"
+					styleClass="inp100" style="width: 100%; " />
+
+				<h:outputText value="نام متصدی" />
+				<h:inputText id="id7" value="#{addSeller.phone}" styleClass="inp100"
+					style="width: 100%;" />
+
+				<h:outputText value="تلفن واحد صنفی" />
+				<h:inputText id="id8" value="#{addSeller.website}"
+					styleClass="inp100" style="width: 100%;" />
+
+				<h:outputText value="تلفن همراه" />
+				<h:inputText id="id9" value="#{addSeller.email}" styleClass="inp100"
+					style="width: 100%; " />
+
+				<h:outputText value="شناسه صنفی" />
+				<h:inputText id="id10" value="#{addSeller.fax}" styleClass="inp100"
+					style="width: 100%;" />
+
+				<h:outputText value="کد پستی" />
+				<h:inputText id="id11" value="#{addSeller.modirForoshName}"
+					styleClass="inp100" style="width: 100%;" />
+
+				<h:outputText value="آدرس" />
+				<h:inputText id="id12" value="#{addSeller.modirForoshPhone}"
+					styleClass="inp100" style="width: 100%;" />
+
+				<h:outputText value="عنوان شکایت" />
+				<h:inputTextarea id="id13" value="#{addSeller.addres}"
+					styleClass="inp100" style="width: 100%;" />
+
+				<h:outputText value="شرح شکایت" />
+				<h:inputText id="id14" value="#{addSeller.postCode}"
+					styleClass="inp100" style="width: 100%;" />
+
+				<h:outputText value="تصویر فاکتور" />
+				<h:inputFile id="id15" value="#{addSeller.sellerPic1}"
+					required="true" requiredMessage="please select shop2Image image" />
+
+
+				<h:outputText value="" />
+				<h:commandButton value="submit" action="#{addSeller.insertSeller()}" />
+			</h:panelGrid>
+
+
+		</h:form>
+	</div>
+</ui:composition>
+

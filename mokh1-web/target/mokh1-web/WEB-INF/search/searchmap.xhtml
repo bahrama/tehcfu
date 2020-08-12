@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui" xmlns:p="http://primefaces.org/ui">
+
+
+	<div id="mapdiv" class="col-md-12"></div>
+
+	<div id="srch"
+		style="position: relative; width: 250px; background-color: floralwhite; opacity: 0.9; border-radius: 10px; margin: 5px; z-index: 1000;">
+		<form dir="rtl" id="myForm">
+			<table
+				style="position: absolute; background-color: lightgray; margin: 5px;">
+				<tr>
+					<td>همه رسته ها :</td>
+					<td><input type="radio" name="color" id="myCheckf"
+						value="همه رسته ها" /></td>
+				</tr>
+				<tr>
+					<td>مبلمان خانگی :</td>
+					<td><input type="radio" name="color" id="myCheck"
+						 value="مبلمان خانگی" /></td>
+				</tr>
+				<tr>
+					<td>مبلمان اداری :</td>
+					<td><input type="radio" name="color" id="myCheck2"
+						 value="مبلمان اداری" /></td>
+				</tr>
+				<tr>
+					<td>سیسمونی :</td>
+					<td><input type="radio" name="color" id="myCheck3"
+						 value="سیسمونی" /></td>
+				</tr>
+				<tr>
+					<td>کابینت آشپزخانه :</td>
+					<td><input type="radio" name="color" id="myCheck4"
+						 value="کابینت آشپزخانه" /></td>
+				</tr>
+				<tr>
+					<td>مصنوعات چوبی :</td>
+					<td><input type="radio" name="color" id="myCheck5"
+						 value="مصنوعات چوبی" /></td>
+				</tr>
+				<tr>
+					<td>تعمیرات :</td>
+					<td><input type="radio" name="color" id="myCheck6"
+						 value="تعمیرات" /></td>
+				</tr>
+				<tr>
+					<td>دکوراسیون :</td>
+					<td><input type="radio" name="color" id="myCheck7"
+						 value="دکوراسیون" /></td>
+				</tr>
+
+			</table>
+
+		</form>
+	</div>
+
+
+</ui:composition>

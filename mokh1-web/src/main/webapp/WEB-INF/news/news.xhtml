@@ -1,0 +1,373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<article class="margin-top-100">
+	<div class="container news">
+
+		<div id="div"
+			style="border: 1px solid lightgray; margin-left: 0; margin-right: -33px"
+			class="row padding-10">
+
+			<!-- The carousel -->
+			<div id="transition-timer-carousel"
+				class="col-lg-5 carousel slide transition-timer-carousel"
+				data-ride="carousel">
+
+				<!--اسلاید-->
+				<div id="slide" data-wow-delay="0.2s"
+					style="height: 360px; padding-left: 0; padding-right: 0">
+					<div style="width: 100%" class="property-detail-carousel">
+						<ui:repeat var="nws" value="#{newsPage.blogEntities}"
+							size="#{newsPage.size()}">
+							<div class="item">
+								<picture> <source
+									media="(min-width: 768px) and (max-width: 991)"
+									srcset="resources/pictures/tablet-piano.jpg" /> <o:graphicImage
+									class="imgstyle"
+									rendered="#{newsPage.findBlogPicById(nws.id) ne null}"
+									value="#{newsPage.findBlogPicById(nws.id)}" dataURI="true" />
+								</picture>
+							</div>
+						</ui:repeat>
+					</div>
+					<!-- /property-detail-carousel -->
+				</div>
+				<!--اسلاید-->
+
+
+			</div>
+
+
+			<!-- important news -->
+			<div style="float: right" class="col-lg-3 important">
+				<h6 style="background-color: #0B59AA !important;">
+					<a href="#" title="مهمترین خبرها">مهمترین خبرها</a>
+				</h6>
+				<ul class="important-list" dir="rtl">
+					<ui:repeat var="nws" value="#{newsPage.blogEntities}"
+						size="#{newsPage.size()}" style="color:black!important;">
+						<li><h:link outcome="/pages/news/news-detail.xhtml"
+								value="#{nws.blogName}">
+								<f:param name="blogId" value="#{nws.id}" />
+							</h:link></li>
+					</ui:repeat>
+				</ul>
+				<div class="more margin-top-15">
+					<a dir="rtl" style="color: #0B59AA" href="#adv">خبرهای بیشتر
+						>>></a>
+				</div>
+			</div>
+
+
+			<!-- links -->
+			<div id="one" dir="rtl" class="col-lg-4 col-xs-12">
+				<div id="link" style="display: inline-block" class="row text-center">
+
+					<div class="links">
+						<div class="row">
+							<div style="float: right" class="height">
+								<h:link outcome="/pages/news/amade-union.xhtml">
+								<img
+									style="height: 82px; float: right"
+									src="../../resources/symbols/parvane.jpg"
+									alt="پروانه های کسب آماده تحویل" />
+								</h:link>
+							</div>
+							<div class="bg-light height">
+								<h:link outcome="/pages/news/amade-union.xhtml">
+									<h3>پروانه های کسب آماده تحویل</h3>
+									</h:link>
+							</div>
+						</div>
+					</div>
+					<div class="links">
+						<div class="row">
+							<div style="float: right" class="height">
+								<h:link outcome="/pages/news/amade-mobasherat.xhtml">
+								<img
+									style="height: 82px; float: right"
+									src="../../resources/symbols/cart.jpg"
+									alt="کارت مباشرت آماده تحویل" />
+								</h:link>
+							</div>
+							<div class="bg-light height">
+								<h:link outcome="/pages/news/amade-mobasherat.xhtml">
+									<h3>کارت مباشرت آماده تحویل</h3>
+								</h:link>
+							</div>
+						</div>
+					</div>
+										<div class="links">
+						<div class="row">
+							<div style="float: right" class=" height">
+								<h:link outcome="/pages/news/amade-pano.xhtml">
+								 <img
+									style="height: 82px; float: right"
+									src="../../resources/pic/gavahinam.jpg"
+									alt="گواهینامه های آماده تحویل" />
+								</h:link>
+							</div>
+							<div class=" bg-light height">
+								<h:link outcome="/pages/news/amade-pano.xhtml">
+									<h3>گواهینامه های آماده تحویل</h3>
+								</h:link>
+							</div>
+						</div>
+					</div>
+					<div class="links">
+						<div class="row">
+							<div style="float: right" class=" height">
+								<h:link outcome="/pages/news/unions.xhtml">
+								<img
+									style="height: 82px; float: right"
+									src="../../resources/symbols/asnaf.jpg"
+									alt="دیگر اتحادیه های تهران" />
+								</h:link>
+							</div>
+							<div class=" bg-light height">
+								<h:link outcome="/pages/news/unions.xhtml">
+									<h3>دیگر اتحادیه ها</h3>
+								</h:link>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!--  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!--advertising-->
+		<div id="adv" class="container padding-top-10">
+			<div>
+<img src="../../resources/comm/1401-250gif.gif" alt="" style="width: 100%;min-height: 110px;"/>
+			</div>
+		</div>
+
+
+
+		<div class="tab" style="direction: rtl; display: flex;">
+			<button class="tablinks" onclick="openCity(event, 'London')">آخرین
+				اخبار</button>
+			<button class="tablinks" onclick="openCity(event, 'Paris')">پر
+				بازدید ها</button>
+			<button class="tablinks" onclick="openCity(event, 'Tokyo')">آرشیو
+				مناسبت ها</button>
+		</div>
+
+		<div id="London" class="tabcontent">
+			<ul class="list" dir="rtl">
+				<ui:repeat var="nws" value="#{newsPage.blogEntities}"
+					size="#{newsPage.size2()}" style="color:black!important;">
+					<li><h:link outcome="/pages/news/news-detail.xhtml"
+							value="#{nws.blogName}">
+							<f:param name="blogId" value="#{nws.id}" />
+						</h:link></li>
+				</ui:repeat>
+			</ul>
+		</div>
+
+		<div id="Paris" class="tabcontent">
+			<ul class="list" dir="rtl">
+				<li><a href="#" title="">بزودی</a></li>
+			</ul>
+		</div>
+
+		<div id="Tokyo" class="tabcontent">
+			<ul class="list" dir="rtl" style="column-count: 3;">
+				<ui:repeat var="mon" value="#{newsPage.findCurrentDate()}">
+					<li style="width: 100%;">
+					
+					   <h:link outcome="/pages/news/news-detail.xhtml" value="#{newsPage.findShamsi(mon)}" rendered="#{newsPage.findMonasebatShamsiByDate(mon).id ne null}">
+					   								<f:param value="#{newsPage.findMonasebatShamsiByDate(mon).id}"
+									name="blogId" />
+						</h:link>
+					<h:link outcome="#" value="#{newsPage.findShamsi(mon)}" rendered="#{newsPage.findMonasebatShamsiByDate(mon).id eq null}">
+						</h:link>
+						
+						 /<h:link outcome="/pages/news/news-detail.xhtml" value="#{newsPage.hejriDate2(mon)}" rendered="#{newsPage.findMonasebatGamariByDate(mon).id ne null}">
+					   								<f:param value="#{newsPage.findMonasebatGamariByDate(mon).id}"
+									name="blogId" />
+						</h:link>
+						<h:link outcome="#" value="#{newsPage.hejriDate2(mon)}" rendered="#{newsPage.findMonasebatGamariByDate(mon).id eq null}">
+						</h:link>
+						 /<h:link outcome="/pages/news/news-detail.xhtml" value="#{newsPage.findCurrentMiladi(mon)}" rendered="#{newsPage.findMonasebatMiladiByDate(mon).id ne null}">
+					   								<f:param value="#{newsPage.findMonasebatMiladiByDate(mon).id}"
+									name="blogId" />
+						</h:link>
+						<h:link outcome="#" value="#{newsPage.findCurrentMiladi(mon)}" rendered="#{newsPage.findMonasebatMiladiByDate(mon).id eq null}">
+						</h:link>
+						</li>
+				</ui:repeat>
+
+
+
+			</ul>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<div class="design-styles margin-top-20">
+			<div style="padding-right: 0; padding-left: 0" class="container cal">
+				<h2 class="margin-bottom-20">مناسبت ها</h2>
+				<div class="row ">
+					<div id="closest" class="col-md-4 col-sm-4 wow fadeInLeft"
+						data-wow-delay="0.2s">
+						<div class="design-img overflow">
+							<h:link outcome="/pages/news/news-detail.xhtml"
+								disabled="#{newsPage.findMonasebatMiladi().blogName eq null}">
+								<!-- 										<img class="img-hover min" src="resources/images22/milad.jpg"
+											alt="مناسبت های میلادی" /> -->
+								<!-- 								<h:graphicImage value="../../resources/pic/mld0.jpg"
+									class="img-hover min" alt="مناسبت های میلادی"
+									rendered="#{newsPage.findMonasebatMiladi().blogName ne null}" />
+								<h:graphicImage value="../../resources/pic/mld1.jpg"
+									class="img-hover min" alt="مناسبت های میلادی"
+									rendered="#{newsPage.findMonasebatMiladi().blogName eq null}" /> -->
+								<o:graphicImage styleClass="img-hover min"
+									rendered="#{(homeBean.findHomeCatByName('میلادی') ne null) and (newsPage.findMonasebatMiladi().blogName ne null)}"
+									value="#{homeBean.findHomeCatByName('میلادی')}" dataURI="true"
+									alt="" />
+								<o:graphicImage styleClass="img-hover min" style="filter: grayscale(100%)"
+									rendered="#{(homeBean.findHomeCatByName('میلادی') ne null) and (newsPage.findMonasebatMiladi().blogName eq null)}"
+									value="#{homeBean.findHomeCatByName('میلادی')}" dataURI="true"
+									alt="" />
+
+								<f:param value="#{newsPage.findMonasebatMiladi().id}"
+									name="blogId" />
+							</h:link>
+						</div>
+						<!-- /design-img -->
+						<a href="#"> <!-- 									<h4
+										style="padding-bottom: 15px; padding-top: 15px; background-color: #eeeeee; font-family: IRANSansBold; color: #0097a7; text-align: center; font-size: 15px">
+										( بیست و پنجم ژوئن 2019 (میلادی</h4> -->
+
+						</a>
+						<h:link outcome="/pages/news/news-detail.xhtml"
+							disabled="#{newsPage.findMonasebatMiladi().blogName eq null}">
+							<h4
+								style="padding-bottom: 15px; padding-top: 15px; background-color: #eeeeee; font-family: IRANSansBold; color: #0097a7; text-align: center; font-size: 15px; direction: rtl;">
+								#{newsPage.findDate()}</h4>
+							<f:param value="#{newsPage.findMonasebatMiladi().id}"
+								name="blogId" />
+						</h:link>
+
+					</div>
+					<!-- /column -->
+
+					<div class="col-md-4 col-sm-4">
+						<div class="design-img overflow">
+							<h:link outcome="/pages/news/news-detail.xhtml"
+								disabled="#{newsPage.findMonasebatGamari().blogName eq null}">
+								<!-- 										<img class="img-hover min" src="resources/images22/mohrama.jpg"
+											alt="مناسبت های قمری" /> -->
+								<!-- 								<h:graphicImage value="../../resources/pic/gmr0.jpg"
+									class="img-hover min" alt="مناسبت های قمری"
+									rendered="#{newsPage.findMonasebatGamari().blogName ne null}" />
+								<h:graphicImage value="../../resources/pic/gmr1.jpg"
+									class="img-hover min" alt="مناسبت های قمری"
+									rendered="#{newsPage.findMonasebatGamari().blogName eq null}" /> -->
+								<o:graphicImage styleClass="img-hover min"
+									rendered="#{homeBean.findHomeCatByName('قمری') ne null and newsPage.findMonasebatGamari().blogName ne null}"
+									value="#{homeBean.findHomeCatByName('قمری')}" dataURI="true"
+									alt="" />
+								<o:graphicImage styleClass="img-hover min" style="filter: grayscale(100%)"
+									rendered="#{homeBean.findHomeCatByName('قمری') ne null and newsPage.findMonasebatGamari().blogName eq null}"
+									value="#{homeBean.findHomeCatByName('قمری')}" dataURI="true"
+									alt="" />
+								<f:param value="#{newsPage.findMonasebatGamari().id}"
+									name="blogId" />
+							</h:link>
+						</div>
+						<!-- /design-img -->
+						<h:link outcome="/pages/news/news-detail.xhtml"
+							disabled="#{newsPage.findMonasebatGamari().blogName eq null}">
+							<h4
+								style="padding-bottom: 15px; padding-top: 15px; background-color: #eeeeee; font-family: IRANSansBold; color: #0097a7; text-align: center; font-size: 15px">
+								#{newsPage.hejriDate()}</h4>
+							<f:param value="#{newsPage.findMonasebatGamari().id}"
+								name="blogId" />
+						</h:link>
+
+					</div>
+					<!-- /column -->
+
+					<div class="col-md-4 col-sm-4 wow fadeInRight"
+						data-wow-delay="0.2s">
+						<div class="design-img overflow">
+							<h:link outcome="/pages/news/news-detail.xhtml"
+								disabled="#{newsPage.findMonasebatShamsi().blogName eq null}">
+								<!-- 										<img class="img-hover min" src="resources/images22/shams.jpg"
+											alt="مناسبت های شمسی" /> -->
+								<!-- 								<h:graphicImage value="../../resources/pic/shm0.jpg"
+									alt="مناسبت های شمسی" class="img-hover min"
+									rendered="#{newsPage.findMonasebatShamsi().blogName ne null}" />
+								<h:graphicImage value="../../resources/pic/shm1.jpg"
+									alt="مناسبت های شمسی" class="img-hover min"
+									rendered="#{newsPage.findMonasebatShamsi().blogName eq null}" /> -->
+								<o:graphicImage styleClass="img-hover min"
+									rendered="#{homeBean.findHomeCatByName('شمسی') ne null and newsPage.findMonasebatShamsi().blogName ne null}"
+									value="#{homeBean.findHomeCatByName('شمسی')}" dataURI="true"
+									alt="" />
+								<o:graphicImage styleClass="img-hover min" style="filter: grayscale(100%)"
+									rendered="#{homeBean.findHomeCatByName('شمسی') ne null and newsPage.findMonasebatShamsi().blogName eq null}"
+									value="#{homeBean.findHomeCatByName('شمسی')}" dataURI="true"
+									alt="" />
+								<f:param value="#{newsPage.findMonasebatShamsi().id}"
+									name="blogId" />
+							</h:link>
+						</div>
+						<h:link outcome="/pages/news/news-detail.xhtml"
+							disabled="#{newsPage.findMonasebatShamsi().blogName eq null}">
+							<h4
+								style="padding-bottom: 15px; padding-top: 15px; background-color: #eeeeee; font-family: IRANSansBold; color: #0097a7; text-align: center; font-size: 15px">#{newsPage.convertToJalali()}</h4>
+							<f:param value="#{newsPage.findMonasebatShamsi().id}"
+								name="blogId" />
+						</h:link>
+					</div>
+					<!-- /column -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- calendar -->
+
+
+	</div>
+	</article>
+</ui:composition>
+

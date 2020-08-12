@@ -1,0 +1,63 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+<!-- <script type="text/javascript">
+var sseListener=new EventSource('http://192.168.1.77:8080/hsport/api/sse/inventoryItems/subscribe')
+sseListener.onmessage=function(event){
+	var outputNode=document.getElementById("sseOutput");
+	outputNode.appendChild(document.createElement('p'));
+	outputNode.appendChild(document.createTextNode(event.data));
+	outputNode.appendChild(document.createElement('br'));
+	var xhr;
+	xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+			document.getElementById('bdy').innerHTML = xhr.responseText;
+	}
+	xhr.open("get", "/pages/chat/chat.xhtml",
+			true);
+	xhr.send();
+};
+</script> -->
+</h:head> 
+<h:body id="bdy"> 
+<h:form id="form" enctype="multipart/form-data" acceptcharset="UTF-8">
+		<p:dataTable id="tableStateDT" var="blogs" 
+			value="#{chatBean.moblEntities()}" widgetVar="carsTable"
+			multiViewState="true" rows="10" paginator="true" selectionMode="single"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			selection="#{chatBean2.user}" rowsPerPageTemplate="5,10,15" rowKey="#{blogs.id}"
+			emptyMessage="No cars found with given criteria">
+
+			<f:facet name="header">
+				<p:outputPanel>
+					<h:outputText value="Search all fields:" />
+					<p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()"
+						style="width:150px" placeholder="Enter keyword" />
+				</p:outputPanel>
+			</f:facet>
+
+
+
+			<p:column headerText="type" filterBy="#{blogs.mobile}"
+				sortBy="#{blogs.id}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.mobile}" />
+			</p:column>
+
+					</p:dataTable>
+					
+<h:commandButton action="#{chatBean2.sendMessage('salam',chatBean2.user.mobile)}" value="submit">
+<f:ajax execute="@form" render="message"/>
+</h:commandButton>
+<div id="message"></div>
+</h:form>
+<script src="../../resources/chatjs.js"></script>
+<f:websocket channel="help" onmessage="onMessage" user="#{chatBean2.moblEntity.mobile}"/>
+<div id="sseOutput">
+</div>
+</h:body> 
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui">
+
+
+	<article class="margin-top-75"> <section class="details-card">
+	<div class="container">
+		<div class="text-center margin-top-30 hdr">
+			<h:outputFormat rendered="{Type eq 'A'}">
+				<h2>نمایشگاه های ایران</h2>
+			</h:outputFormat>
+			<h:outputFormat rendered="{Type eq 'B'}">
+				<h2>نمایشگاه های جهان</h2>
+			</h:outputFormat>
+
+		</div>
+		<div class="row margin-top-20">
+			<ui:repeat var="nam"
+				value="#{namayeshgahDetailPage.checkNamayeshgah(Type)}">
+				<div class="col-md-6" style="width: 45%; margin: 10px;">
+					<div class="card-content">
+						<div class="card-img">
+							<o:graphicImage
+								rendered="#{namayeshgahDetailPage.findNamayeshgahPicById(nam.id) ne null}"
+								value="#{namayeshgahDetailPage.findNamayeshgahPicById(nam.id)}"
+								dataURI="true" />
+						</div>
+						<div class="card-desc">
+							<table class="table table-bordered T2">
+								<tr>
+									<td colspan="2">#{nam.name}</td>
+								</tr>
+								<tr>
+									<td>#{nam.country} : کشور</td>
+									<td>#{nam.city} : شهر</td>
+								</tr>
+								<tr style="direction: rtl;">
+									<td colspan="2">#{nam.tarikh}</td>
+								</tr>
+								<tr>
+									<td colspan="2">#{nam.makan}}</td>
+								</tr>
+								<tr>
+									<td colspan="2">#{nam.nameBargozarK} : نام برگزار کننده</td>
+								</tr>
+								<tr>
+									<td>#{nam.nameModirNazer} : مدیر ناظر</td>
+									<td>#{nam.phoneModirNazer} : تلفن مدیر ناظر</td>
+								</tr>
+								<tr>
+									<td style="direction: rtl;">: تلفن #{nam.phone} </td>
+									<td style="direction: rtl;">: فکس #{nam.fax} </td>
+								</tr>
+								<tr>
+									<td>#{nam.site} : سایت</td>
+									<td>#{nam.email} : ایمیل</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</ui:repeat>
+		</div>
+	</div>
+	</section> <!-- details card section starts from here --> </article>
+
+
+
+</ui:composition>
+

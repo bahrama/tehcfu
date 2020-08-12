@@ -1,0 +1,229 @@
+<pretty-config
+	xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+
+	<url-mapping id="view1">
+		<pattern value="/sellers/#{sellerNameEng}" />
+		<view-id value="/pages/merchant/merchant.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view2">
+		<pattern
+			value="/knowledge/کمیسیون-های-اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
+		<view-id value="/pages/danestaniha/comission.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view3">
+		<pattern
+			value="/knowledge/دانستنی-های-اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
+		<view-id value="/pages/danestaniha/danestaniha.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view4">
+		<pattern
+			value="/knowledge/قوانین-حقوقی-اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
+		<view-id value="/pages/danestaniha/law.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view5">
+		<pattern
+			value="/knowledge/نمایشگاه-های-ایران-و-جهان-اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
+		<view-id value="/pages/danestaniha/namayeshgah.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view6">
+		<pattern value="/knowledge/exhibition/#{type}" />
+		<view-id value="/pages/danestaniha/namayeshgah-iran.xhtml" />
+	</url-mapping>
+	<url-mapping id="view7">
+		<pattern
+			value="/knowledge/نمایشگاه-های-جهان-اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
+		<view-id value="/pages/danestaniha/namayeshgah-jahan.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view8">
+		<pattern value="/knowledge/محدوده-ی-جغرافیایی-اتحادیه-ها" />
+		<view-id value="/pages/danestaniha/range.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view9">
+		<pattern value="/knowledge/دیگر-اتحادیه-ها" />
+		<view-id value="/pages/danestaniha/unions.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view10">
+		<pattern
+			value="/about/درباره-اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
+		<view-id value="/pages/main/aboutus.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view11">
+		<pattern
+			value="/about/تماس-با-اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
+		<view-id value="/pages/main/contactus.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view12">
+		<pattern value="/about/اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
+		<view-id value="/pages/main/home.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view13">
+		<pattern value="/mems/abdolhosein-abasi" />
+		<view-id value="/pages/members/abdolhosein-abasi.xhtml" />
+	</url-mapping>
+
+
+
+	<url-mapping id="view14">
+		<pattern value="/mems/aliasghar-damirchi" />
+		<view-id value="/pages/members/aliasghar-damirchi.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view15">
+		<pattern value="/mems/ali-gheytasi" />
+		<view-id value="/pages/members/ali-gheytasi.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view16">
+		<pattern value="/mems/alireza-abasi" />
+		<view-id value="/pages/members/alireza-abasi.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view17">
+		<pattern
+			value="/mems/مشاورین-اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
+		<view-id value="/pages/members/consultant.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view18">
+		<pattern value="/mems/gholami" />
+		<view-id value="/pages/members/gholami.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view19">
+		<pattern value="/mems/gholamreza-bagheri" />
+		<view-id value="/pages/members/gholamreza-bagheri.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view20">
+		<pattern value="/mems/hadi-alavi" />
+		<view-id value="/pages/members/hadi-alavi.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view21">
+		<pattern
+			value="/mems/اعضای-هیئت-مدیره-اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
+		<view-id value="/pages/members/members.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view22">
+		<pattern value="/mems/mohamad-toosi" />
+		<view-id value="/pages/members/mohamad-toosi.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view23">
+		<pattern value="/mems/seyed-agha" />
+		<view-id value="/pages/members/seyed-agha.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view24">
+		<pattern value="/mems/shaban-ebrahimi" />
+		<view-id value="/pages/members/shaban-ebrahimi.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view25">
+		<pattern
+			value="/mems/سخن-ریاست-اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
+		<view-id value="/pages/members/sokhan.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view26">
+		<pattern value="/mems/yashar-sahebgheranie" />
+		<view-id value="/pages/members/yashar-sahebgheranie.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view27">
+		<pattern
+			value="/press/اخبار-اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
+		<view-id value="/pages/news/news.xhtml" />
+	</url-mapping>
+
+
+	<url-mapping id="view28">
+		<pattern value="/commercial-building/#{blogId}" />
+		<view-id value="/pages/passage/passage.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view29">
+		<pattern value="/press/details/#{blogId}" />
+		<view-id value="/pages/news/news-detail.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view30">
+		<pattern
+			value="/job/نیازمندی-های-اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
+		<view-id value="/pages/danestaniha/niazmandiha.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view31">
+		<pattern value="/mems/jalal-ardebili" />
+		<view-id value="/pages/members/jalal-ardebili.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view32">
+		<pattern value="/knowledge/blogs/#{blogType}" />
+		<view-id value="/pages/danestaniha/danestaniha-blogs.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view33">
+		<pattern value="/knowledge/detail/#{blogId}" />
+		<view-id value="/pages/danestaniha/danestaniha-detail.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view34">
+		<pattern value="/knowledge/creative/طرح-های-خلاقانه" />
+		<view-id value="/pages/danestaniha/creative-blogs.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view35">
+		<pattern value="/knowledge/creative/#{creativeId}" />
+		<view-id value="/pages/danestaniha/creative.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view36">
+		<pattern value="/knowledge/map/search" />
+		<view-id value="/pages/search/searchmap.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view37">
+		<pattern value="/press/گواهی-مباشرت" />
+		<view-id value="/pages/news/amade-mobasherat.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view38">
+		<pattern value="/press/پروانه-های-آماده-تحویل" />
+		<view-id value="/pages/news/amade-union.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="view39">
+		<pattern value="/press/گواهینامه-فعالیت-آنلاین" />
+		<view-id value="/pages/news/amade-pano.xhtml" />
+	</url-mapping>
+	
+		<url-mapping id="view39">
+		<pattern value="/press/دیگر-اتحادیه-ها" />
+		<view-id value="/pages/news/unions.xhtml" />
+	</url-mapping>
+	
+			<url-mapping id="view40">
+		<pattern value="/chat-page/گفت-و-گوی-آنلاین" />
+		<view-id value="/pages/chat/chat2.xhtml" />
+	</url-mapping>
+
+
+
+</pretty-config> 

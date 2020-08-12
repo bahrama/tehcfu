@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+  <!-- Page Title -->
+    <title>#{title}</title>
+<style>
+
+        /*about*/
+        .about-eref h1{
+            text-align: right;
+            font-family: IRANSansBold;
+            font-size: 19px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-bottom: 5px solid darkgoldenrod;
+        }
+        .about-eref p{
+            padding-top: 20px;
+            padding-bottom: 20px;
+            font-family: IRANSansNor;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 35px;
+            text-align: justify;
+        }
+        .about-eref img{
+            float: left;
+            width: 300px;
+            height: auto;
+            max-width: 100%;
+            margin-right: 3%;
+            border: 10px double darkgoldenrod;
+            border-radius: 20%;
+            margin-top: 20px;
+        }
+        .text{
+            width: 100%;
+        }
+        @media screen and (max-width: 765px) {
+            #hdr{
+                text-align: center;
+            }
+            .about-eref img{
+                margin-bottom: 10px;
+                float: none;
+            }
+        }
+    </style>
+</ui:composition>

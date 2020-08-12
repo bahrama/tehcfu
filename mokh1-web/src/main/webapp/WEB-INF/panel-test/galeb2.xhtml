@@ -1,0 +1,888 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:p="http://primefaces.org/ui"
+>
+
+<h:head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initail-scale=1" />
+	<meta charset="utf-8" />
+	<title></title>
+	<h:outputScript library="js" name="lib/jquery.min.js" />
+	<script src="../../resources/galeb2/js/jquery.hsmenu.min.js"></script>
+	<link rel="stylesheet"
+		href="../../resources/galeb2/css/hs-menu.min.css" />
+	<script>
+         $(document).ready(function () {
+         $(".hs-menubar").hsMenu(); 
+         }); 
+      </script>
+	<link rel="stylesheet" href="../../resources/css/font-awesome.css" />
+	<link rel="stylesheet" href="../../resources/css/flaticon.css" />
+
+	<!-- footer -->
+	<link rel="stylesheet" type="text/css"
+		href="../../resources/footer/styles/vendor/normalize.css"
+		media="screen" />
+	<link rel="stylesheet" type="text/css"
+		href="../../resources/footer/styles/vendor/foundation.min.css"
+		media="screen" />
+	<link rel="stylesheet" type="text/css"
+		href="../../resources/footer/styles/style.css" media="screen" />
+	<link rel="stylesheet" type="text/css"
+		href="../../resources/footer/styles/stickyFoot.css" media="screen" />
+	<link href='http://fonts.googleapis.com/css?family=Slackey'
+		rel='stylesheet' type='text/css' />
+	<script type="text/javascript"
+		src="../../resources/footer/scripts/vendor/modernizr.js"></script>
+	<!-- footer -->
+	<!-- panel -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700|Roboto:300,400,700"
+		rel="stylesheet" />
+
+	<link href="../../resources/panel/css/style.css" rel="stylesheet" />
+
+	<link href="../../resources/panel/plugins/switchery/switchery.min.css"
+		rel="stylesheet" />
+
+	<link href="../../resources/panel/css/demo/jasmine.css"
+		rel="stylesheet" />
+	<link href="../../resources/panel/fonts.css" rel="stylesheet" />
+	<link href="../../resources/panel/plugins/pace/pace.min.css"
+		rel="stylesheet" />
+	<link href="../../resources/panel/css/bootstrap.min.css"
+		rel="stylesheet" />
+	<link
+		href="../../resources/panel/plugins/bootstrap-select/bootstrap-select.min.css"
+		rel="stylesheet" />
+	<script src="../../resources/panel/plugins/pace/pace.min.js"></script>
+	<style>
+#container.mainnav-fixed #mainnav-container {
+	position: absolute !important;
+	margin-top: 170px;
+}
+</style>
+	<!-- panel -->
+	<!-- content -->
+	<style>
+@media only screen and (min-width: 550px) {
+	#name {
+		font-size: 22px !important;
+	}
+}
+
+@media only screen and (min-width: 889px) {
+	#conSokhan {
+		display: block !important;
+	}
+}
+</style>
+	<!-- content -->
+
+	<!-- menu -->
+
+	<link href="../../resources/menu/css/jquery.drawer.css"
+		rel="stylesheet" />
+
+	<script src="../../resources/menu/js/jquery.drawer.js"></script>
+	<script src="../../resources/menu/demo.js"></script>
+
+	<!-- menu -->
+
+
+
+
+	<ui:insert name="headPage" />
+</h:head>
+<body>
+	<!--begin plugin example structure-->
+	<div class="wrapper">
+		<header class="hs-menubar">
+		<div class="brand-logo">
+			<a href="#home_link"> <img
+				src="../../resources/galeb2/image/logo-new.png"
+				title="Your logo will be here" alt="hs Mega Menu" /></a>
+		</div>
+		<div class="menu-trigger" style="left: 90px !important">
+			<i class="fa fa-paper-plane-o white"></i>
+		</div>
+		<div class="menu-trigger" style="left: 50px !important">
+			<i class="fa fa-instagram white"></i>
+		</div>
+		<div class="search-trigger">
+			<i class="flaticon-magnifying-glass icons white"></i>
+		</div>
+		<div class="search-box">
+			<form action="#">
+				<input type="text" name="search" />
+				<button type="submit" class="search-submit">Search</button>
+			</form>
+		</div>
+		<div class="hs-user toggle" data-reveal=".user-info">
+			<!-- 		<img src="../../resources/galeb2/image/asif-mughal.jpg"
+			alt="Asif Mughal" /> -->
+			<img src="../../resources/pic/user.png" alt="user" /> <i
+				class="fa fa-user white"></i>
+		</div>
+		<div class="grid-trigger toggle" data-reveal=".grid-items">
+			<i class="flaticon-shopping-bag margin-right-15 white"></i>
+		</div>
+		<div class="more-trigger toggle" data-reveal=".user-penal">
+			<i class="fa fa-bars bars"></i>
+		</div>
+		</header>
+		<section class="box-model">
+		<ul class="user-penal">
+			<div>
+				<div class="drawer">
+
+					<!-- First Item -->
+					<div class="drawer-item">
+						<div class="drawer-header" style="direction: rtl; display: flex;">
+							<h1>اتحادیه</h1>
+
+						</div>
+						<div class="drawer-content" style="text-align: center;">
+							<a>اخبار</a>
+							<br />
+							<a>اخبار</a>
+							<br />
+							<a>اخبار</a>
+							<br />
+						</div>
+					</div>
+
+					<!-- Second Item -->
+					<div class="drawer-item">
+						<div class="drawer-header" style="direction: rtl; display: flex;">
+							<h1>پنل</h1>
+
+						</div>
+						<div class="drawer-content" style="text-align: center;">
+							<a>اخبار</a>
+							<br />
+							<a>اخبار</a>
+							<br />
+							<a>اخبار</a>
+							<br />
+						</div>
+					</div>
+
+					<!-- Third Item -->
+					<div class="drawer-item">
+						<div class="drawer-header" style="direction: rtl; display: flex;">
+							<h1>درباره</h1>
+
+						</div>
+						<div class="drawer-content" style="text-align: center;">
+							<a>اخبار</a>
+							<br />
+							<a>اخبار</a>
+							<br />
+							<a>اخبار</a>
+							<br />
+						</div>
+					</div>
+				</div>
+				<!-- /#drawer -->
+			</div>
+			<!-- /.container -->
+		</ul>
+
+		<ul class="user-info" style="z-index: 1000;">
+			<li class="profile-pic"></li>
+			<li class="user-name">میهمان</li>
+			<li class="more-btn"><a href="#1"> ورود</a></li>
+			<li class="more-btn"><a href="#1"> ثبت نام</a></li>
+		</ul>
+
+
+		<ul class="grid-items">
+			<li class="grid">Item one</li>
+			<li class="grid">Item two</li>
+			<li class="grid">Item three</li>
+			<li class="grid">Item four</li>
+			<li class="grid">Item five</li>
+			<li class="grid">Item six</li>
+			<li class="more-btn"><a href="#1"> More</a></li>
+		</ul>
+		</section>
+
+
+
+
+		<!-- 		<div class="container" style="margin-top: 20px; direction: rtl;">
+
+			<div class="row" style="margin-top: 30px;">
+				<div class="col-md-12"
+					style="text-align: center; max-height: 100px; min-height: 100px; flex-wrap: wrap; align-content: center; display: flex; border: dotted;">
+					<img src="../../resources/pic/khom.jpg" style="width: 100px;" />
+					اتحادیه صنف درود گران و مبلسازان تهران
+
+				</div>
+			</div>
+		</div> -->
+
+
+		<!-- panel -->
+
+		<div id="container"
+			class="effect mainnav-lg navbar-fixed mainnav-fixed">
+
+			<div class="boxed">
+				<!--CONTENT CONTAINER-->
+				<!--===================================================-->
+				<div id="content-container" style="padding-right: 0px !important">
+					<div class="pageheader">
+						<h3>
+							 پنل کاربری <i
+								class="fa fa-home"></i>
+
+						</h3>
+					</div>
+					<div id="profilebody" style="display: block !important">
+						<div class="pad-all animated fadeInDown">
+							<div class="row">
+								<div class="col-lg-2 col-sm-6 col-md-6 col-xs-12">
+									<div class="panel panel-default mar-no">
+										<div class="panel-body">
+											<a href="requirements2.html">
+												<div class="pull-right">
+													<p class="profile-title text-bricky">آگهی های مرتبط</p>
+												</div>
+												<div class="pull-left text-bricky">
+													<i style="color: crimson" class="fa fa-bullhorn fa-3x"></i>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2 col-sm-6 col-md-6 col-xs-12">
+									<div class="panel panel-default mar-no">
+										<div class="panel-body">
+											<a href="edit.html">
+												<div class="pull-right">
+													<p class="profile-title text-bricky">ویرایش فروشگاه</p>
+												</div>
+												<div class="pull-left text-bricky">
+													<i style="color: orange" class="fa fa-edit fa-3x"></i>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2 col-sm-6 col-md-6 col-xs-12">
+									<div class="panel panel-default mar-no">
+										<div class="panel-body">
+											<a href="financial4.html">
+												<div class="pull-right">
+													<p class="profile-title text-bricky">حق عضویت سایت</p>
+												</div>
+												<div class="pull-left text-bricky">
+													<i style="color: cornflowerblue"
+														class="fa fa-credit-card fa-3x"></i>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2 col-sm-6 col-md-6 col-xs-12">
+									<div class="panel panel-default mar-no">
+										<div class="panel-body">
+											<a href="messages.html">
+												<div class="pull-right">
+													<p class="profile-title text-bricky">پیام ها</p>
+												</div>
+												<div class="pull-left text-bricky">
+													<i style="color: darkslategray"
+														class="fa fa-envelope fa-3x"></i>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2 col-sm-6 col-md-6 col-xs-12">
+									<div class="panel panel-default mar-no">
+										<div class="panel-body">
+											<a href="financial3.html">
+												<div class="pull-right">
+													<p class="profile-title text-bricky">بدهی سال جاری</p>
+												</div>
+												<div class="pull-left text-bricky">
+													<i style="color: coral" class="fa fa-credit-card fa-3x"></i>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2 col-sm-6 col-md-6 col-xs-12">
+									<div class="panel panel-default mar-no">
+										<div class="panel-body">
+											<a href="reminders.html">
+												<div class="pull-right">
+													<p class="profile-title text-bricky">تمدید پروانه</p>
+												</div>
+												<div class="pull-left text-bricky">
+													<i style="color: forestgreen" class="fa fa-list fa-3x"></i>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div id="page-content">
+						<div class="row">
+							<div class="col-md-9" style="direction: rtl;">
+								<ui:insert name="mainPage" />
+
+							</div>
+							<div class="col-md-3" style="display: grid;">
+								<!-- <div style="background-color: whitesmoke;">
+									<div>
+										<div class="nano-content">
+											<div class="fade in active">
+												<h4
+													style="border-bottom: 1px solid lightgray; padding-bottom: 10px"
+													class="pad-hor text-thin">کاربران آنلاین</h4>
+												<ul class="list-group bg-trans">
+													<li class="list-group-item"><a
+														href="javascript:void(0)" class="conversation-toggle">
+															<div class="pull-left avatar mar-rgt">
+																<img src="../../resources/panel/img/av1.png" alt=""
+																	class="img-sm" /> <i class="on bottom text-light"></i>
+															</div>
+															<div class="inline-block">
+																<div class="text-small">کاربر شماره ۱</div>
+																<small class="text-mute">در دسترس</small>
+															</div>
+													</a></li>
+													<li class="list-group-item"><a
+														href="javascript:void(0)" class="conversation-toggle">
+															<div class="pull-left avatar mar-rgt">
+																<img src="../../resources/panel/img/av2.png" alt=""
+																	class="img-sm" /> <i class="on bottom text-light" />
+															</div>
+															<div class="inline-block pad-ver-5">
+																<div class="text-small">کاربر شماره ۱</div>
+																<small class="text-mute">در دسترس</small>
+															</div>
+													</a></li>
+													<li class="list-group-item"><a
+														href="javascript:void(0)" class="conversation-toggle">
+															<div class="pull-left avatar mar-rgt">
+																<img src="../../resources/panel/img/av3.png" alt=""
+																	class="img-sm" /> <i class="on bottom text-light"></i>
+															</div>
+															<div class="inline-block">
+																<div class="text-small">کاربر شماره ۱</div>
+																<small class="text-mute">در دسترس</small>
+															</div>
+													</a></li>
+													<li class="list-group-item"><a
+														href="javascript:void(0)" class="conversation-toggle">
+															<div class="pull-left avatar mar-rgt">
+																<img src="../../resources/panel/img/av7.png" alt=""
+																	class="img-sm" /> <i class="on bottom text-light"></i>
+															</div>
+															<div class="inline-block">
+																<div class="text-small">کاربر شماره ۱</div>
+																<small class="text-mute">در دسترس</small>
+															</div>
+													</a></li>
+													<li class="list-group-item"><a
+														href="javascript:void(0)" class="conversation-toggle">
+															<div class="pull-left avatar mar-rgt">
+																<img src="../../resources/panel/img/av4.png" alt=""
+																	class="img-sm" /> <i class="on bottom text-light"></i>
+															</div>
+															<div class="inline-block">
+																<div class="text-small">کاربر شماره ۱</div>
+																<small class="text-mute">در دسترس</small>
+															</div>
+													</a></li>
+													<li class="list-group-item"><a
+														href="javascript:void(0)" class="conversation-toggle">
+															<div class="pull-left avatar mar-rgt">
+																<img src="../../resources/panel/img/av5.png" alt=""
+																	class="img-sm" /> <i class="on bottom text-light"></i>
+															</div>
+															<div class="inline-block">
+																<div class="text-small">کاربر شماره ۱</div>
+																<small class="text-mute">در دسترس</small>
+															</div>
+													</a></li>
+													<li class="list-group-item"><a
+														href="javascript:void(0)" class="conversation-toggle">
+															<div class="pull-left avatar mar-rgt">
+																<img src="../../resources/panel/img/av1.png" alt=""
+																	class="img-sm" /> <i class="busy bottom text-light"></i>
+															</div>
+															<div class="inline-block">
+																<div class="text-small">کاربر شماره ۱</div>
+																<small class="text-mute">در دسترس</small>
+															</div>
+													</a></li>
+													<li class="list-group-item"><a
+														href="javascript:void(0)" class="conversation-toggle">
+															<div class="pull-left avatar mar-rgt">
+																<img src="../../resources/panel/img/av2.png" alt=""
+																	class="img-sm" /> <i class="busy bottom text-light"></i>
+															</div>
+															<div class="inline-block">
+																<div class="text-small">کاربر شماره ۱</div>
+																<small class="text-mute">در دسترس</small>
+															</div>
+													</a></li>
+													<li class="list-group-item"><a
+														href="javascript:void(0)" class="conversation-toggle">
+															<div class="pull-left avatar mar-rgt">
+																<img src="../../resources/panel/img/av3.png" alt=""
+																	class="img-sm" /> <i class="busy bottom text-light"></i>
+															</div>
+															<div class="inline-block">
+																<div class="text-small">کاربر شماره ۱</div>
+																<small class="text-mute">در دسترس</small>
+															</div>
+													</a></li>
+													<li class="list-group-item"><a
+														href="javascript:void(0)" class="conversation-toggle">
+															<div class="pull-left avatar mar-rgt">
+																<img src="../../resources/panel/img/av7.png" alt=""
+																	class="img-sm" /> <i class="busy bottom text-light"></i>
+															</div>
+															<div class="inline-block">
+																<div class="text-small">کاربر شماره ۱</div>
+																<small class="text-mute">در دسترس</small>
+															</div>
+													</a></li>
+													<li class="list-group-item"><a
+														href="javascript:void(0)" class="conversation-toggle">
+															<div class="pull-left avatar mar-rgt">
+																<img src="../../resources/panel/img/av1.png" alt=""
+																	class="img-sm" /> <i class="off bottom text-light"></i>
+															</div>
+															<div class="inline-block pad-ver-5">
+																<div class="text-small">کاربر شماره ۱</div>
+																<small class="text-mute">در دسترس</small>
+															</div>
+													</a></li>
+													<li class="list-group-item"><a
+														href="javascript:void(0)" class="conversation-toggle">
+															<div class="pull-left avatar mar-rgt">
+																<img src="../../resources/panel/img/av2.png" alt=""
+																	class="img-sm" /> <i class="off bottom text-light"></i>
+															</div>
+															<div class="inline-block pad-ver-5">
+																<div class="text-small">کاربر شماره ۱</div>
+																<small class="text-mute">در دسترس</small>
+															</div>
+													</a></li>
+													<li class="list-group-item"><a
+														href="javascript:void(0)" class="conversation-toggle">
+															<div class="pull-left avatar mar-rgt">
+																<img src="../../resources/panel/img/av3.png" alt=""
+																	class="img-sm" /> <i class="off bottom text-light"></i>
+															</div>
+															<div class="inline-block pad-ver-5">
+																<div class="text-small">کاربر شماره ۱</div>
+																<small class="text-mute">در دسترس</small>
+															</div>
+													</a></li>
+													<li class="list-group-item"><a
+														href="javascript:void(0)" class="conversation-toggle">
+															<div class="pull-left avatar mar-rgt">
+																<img src="../../resources/panel/img/av7.png" alt=""
+																	class="img-sm" /> <i class="off bottom text-light"></i>
+															</div>
+															<div class="inline-block">
+																<div class="text-small">کاربر شماره ۱</div>
+																<small class="text-mute">در دسترس</small>
+															</div>
+													</a></li>
+												</ul>
+											</div>
+										</div>-->
+	<!-- ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd -->
+<!-- 									</div>
+								</div>  -->
+
+
+
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+
+
+				<aside id="aside-container">
+				<div id="aside">
+					<div class="nano closed">
+						<div class="nano-content">
+							<div class="fade in active">
+								<h4
+									style="border-bottom: 1px solid lightgray; padding-bottom: 10px"
+									class="pad-hor text-thin">کاربران آنلاین</h4>
+								<ul class="list-group bg-trans">
+									<li class="list-group-item"><a href="javascript:void(0)"
+										class="conversation-toggle">
+											<div class="pull-left avatar mar-rgt">
+												<img src="../../resources/panel/img/av1.png" alt=""
+													class="img-sm" /> <i class="on bottom text-light"></i>
+											</div>
+											<div class="inline-block">
+												<div class="text-small">کاربر شماره ۱</div>
+												<small class="text-mute">در دسترس</small>
+											</div>
+									</a></li>
+									<li class="list-group-item"><a href="javascript:void(0)"
+										class="conversation-toggle">
+											<div class="pull-left avatar mar-rgt">
+												<img src="../../resources/panel/img/av2.png" alt=""
+													class="img-sm" /> <i class="on bottom text-light" />
+											</div>
+											<div class="inline-block pad-ver-5">
+												<div class="text-small">کاربر شماره ۱</div>
+												<small class="text-mute">در دسترس</small>
+											</div>
+									</a></li>
+									<li class="list-group-item"><a href="javascript:void(0)"
+										class="conversation-toggle">
+											<div class="pull-left avatar mar-rgt">
+												<img src="../../resources/panel/img/av3.png" alt=""
+													class="img-sm" /> <i class="on bottom text-light"></i>
+											</div>
+											<div class="inline-block">
+												<div class="text-small">کاربر شماره ۱</div>
+												<small class="text-mute">در دسترس</small>
+											</div>
+									</a></li>
+									<li class="list-group-item"><a href="javascript:void(0)"
+										class="conversation-toggle">
+											<div class="pull-left avatar mar-rgt">
+												<img src="../../resources/panel/img/av7.png" alt=""
+													class="img-sm" /> <i class="on bottom text-light"></i>
+											</div>
+											<div class="inline-block">
+												<div class="text-small">کاربر شماره ۱</div>
+												<small class="text-mute">در دسترس</small>
+											</div>
+									</a></li>
+									<li class="list-group-item"><a href="javascript:void(0)"
+										class="conversation-toggle">
+											<div class="pull-left avatar mar-rgt">
+												<img src="../../resources/panel/img/av4.png" alt=""
+													class="img-sm" /> <i class="on bottom text-light"></i>
+											</div>
+											<div class="inline-block">
+												<div class="text-small">کاربر شماره ۱</div>
+												<small class="text-mute">در دسترس</small>
+											</div>
+									</a></li>
+									<li class="list-group-item"><a href="javascript:void(0)"
+										class="conversation-toggle">
+											<div class="pull-left avatar mar-rgt">
+												<img src="../../resources/panel/img/av5.png" alt=""
+													class="img-sm" /> <i class="on bottom text-light"></i>
+											</div>
+											<div class="inline-block">
+												<div class="text-small">کاربر شماره ۱</div>
+												<small class="text-mute">در دسترس</small>
+											</div>
+									</a></li>
+									<li class="list-group-item"><a href="javascript:void(0)"
+										class="conversation-toggle">
+											<div class="pull-left avatar mar-rgt">
+												<img src="../../resources/panel/img/av1.png" alt=""
+													class="img-sm" /> <i class="busy bottom text-light"></i>
+											</div>
+											<div class="inline-block">
+												<div class="text-small">کاربر شماره ۱</div>
+												<small class="text-mute">در دسترس</small>
+											</div>
+									</a></li>
+									<li class="list-group-item"><a href="javascript:void(0)"
+										class="conversation-toggle">
+											<div class="pull-left avatar mar-rgt">
+												<img src="../../resources/panel/img/av2.png" alt=""
+													class="img-sm" /> <i class="busy bottom text-light"></i>
+											</div>
+											<div class="inline-block">
+												<div class="text-small">کاربر شماره ۱</div>
+												<small class="text-mute">در دسترس</small>
+											</div>
+									</a></li>
+									<li class="list-group-item"><a href="javascript:void(0)"
+										class="conversation-toggle">
+											<div class="pull-left avatar mar-rgt">
+												<img src="../../resources/panel/img/av3.png" alt=""
+													class="img-sm" /> <i class="busy bottom text-light"></i>
+											</div>
+											<div class="inline-block">
+												<div class="text-small">کاربر شماره ۱</div>
+												<small class="text-mute">در دسترس</small>
+											</div>
+									</a></li>
+									<li class="list-group-item"><a href="javascript:void(0)"
+										class="conversation-toggle">
+											<div class="pull-left avatar mar-rgt">
+												<img src="../../resources/panel/img/av7.png" alt=""
+													class="img-sm" /> <i class="busy bottom text-light"></i>
+											</div>
+											<div class="inline-block">
+												<div class="text-small">کاربر شماره ۱</div>
+												<small class="text-mute">در دسترس</small>
+											</div>
+									</a></li>
+									<li class="list-group-item"><a href="javascript:void(0)"
+										class="conversation-toggle">
+											<div class="pull-left avatar mar-rgt">
+												<img src="../../resources/panel/img/av1.png" alt=""
+													class="img-sm" /> <i class="off bottom text-light"></i>
+											</div>
+											<div class="inline-block pad-ver-5">
+												<div class="text-small">کاربر شماره ۱</div>
+												<small class="text-mute">در دسترس</small>
+											</div>
+									</a></li>
+									<li class="list-group-item"><a href="javascript:void(0)"
+										class="conversation-toggle">
+											<div class="pull-left avatar mar-rgt">
+												<img src="../../resources/panel/img/av2.png" alt=""
+													class="img-sm" /> <i class="off bottom text-light"></i>
+											</div>
+											<div class="inline-block pad-ver-5">
+												<div class="text-small">کاربر شماره ۱</div>
+												<small class="text-mute">در دسترس</small>
+											</div>
+									</a></li>
+									<li class="list-group-item"><a href="javascript:void(0)"
+										class="conversation-toggle">
+											<div class="pull-left avatar mar-rgt">
+												<img src="../../resources/panel/img/av3.png" alt=""
+													class="img-sm" /> <i class="off bottom text-light"></i>
+											</div>
+											<div class="inline-block pad-ver-5">
+												<div class="text-small">کاربر شماره ۱</div>
+												<small class="text-mute">در دسترس</small>
+											</div>
+									</a></li>
+									<li class="list-group-item"><a href="javascript:void(0)"
+										class="conversation-toggle">
+											<div class="pull-left avatar mar-rgt">
+												<img src="../../resources/panel/img/av7.png" alt=""
+													class="img-sm" /> <i class="off bottom text-light"></i>
+											</div>
+											<div class="inline-block">
+												<div class="text-small">کاربر شماره ۱</div>
+												<small class="text-mute">در دسترس</small>
+											</div>
+									</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				</aside>
+				<!--===================================================-->
+				<!--END ASIDE-->
+				<!--RIGHT CHAT MESSANGER-->
+				<!--===================================================-->
+				<aside class="conversation closed">
+				<div class="nano">
+					<div class="nano-content">
+						<div class="media">
+							<div class="media-left">
+								<a href="javascript:void(0)" class="conversation-toggle"> <i
+									class="fa fa-angle-left"></i></a>
+							</div>
+							<div class="media-body text-center">
+								<h4 class="media-heading">کاربر شماره یک</h4>
+								<p class="text-sm">در دسترس</p>
+							</div>
+						</div>
+						<div class="chat-window">
+							<form class="form">
+								<div class="floating-label">
+									<textarea id="sidebarChatMessage"
+										placeholder="پیغام خود را بگذارید" rows="2"
+										class="form-control autosize text-right"
+										name="sidebarChatMessage"></textarea>
+									<label for="sidebarChatMessage"></label>
+								</div>
+							</form>
+							<div class="msg_container_base">
+								<div class="msg_container base_sent">
+									<div class="col-md-9 col-xs-9">
+										<div class="messages msg_sent">
+											<p>سلام حال شما چطوره ؟</p>
+											<time datetime="2009-11-13T20:00">کاربر شماره دو • ۵
+											دقیقه پیش</time>
+										</div>
+									</div>
+									<div class="col-md-3 col-xs-3 avatar">
+										<img src="../../resources/panel/img/av1.png" alt="" />
+									</div>
+								</div>
+								<div class="msg_container">
+									<div class="col-md-3 col-xs-3 avatar">
+										<img src="../../resources/panel/img/av2.png" alt="" />
+									</div>
+									<div class="col-md-9 col-xs-9">
+										<div class="messages msg_receive">
+											<p>سلام حال من خوب است.سلام حال من خوب است.</p>
+											<time datetime="2009-11-13T20:00">کاربر شماره سه • ۵
+											دقیقه پیش</time>
+										</div>
+									</div>
+								</div>
+								<div class="msg_container">
+									<div class="col-md-3 col-xs-3 avatar">
+										<img src="../../../resources/panel/img/av2.png" alt="" />
+									</div>
+									<div class="col-xs-9 col-md-9">
+										<div class="messages msg_receive">
+											<p>حال شما چطور است ؟</p>
+											<time datetime="2009-11-13T20:00">کاربر شماره سه • ۵
+											دقیقه پیش</time>
+										</div>
+									</div>
+								</div>
+								<div class="msg_container base_sent">
+									<div class="col-xs-9 col-md-9">
+										<div class="messages msg_sent">
+											<p>حال شما چطور است ؟</p>
+											<time datetime="2009-11-13T20:00">کاربر شماره یک • ۵
+											دقیقه پیش</time>
+										</div>
+									</div>
+									<div class="col-md-3 col-xs-3 avatar">
+										<img src="../../resources/panel/img/av1.png" alt="" />
+									</div>
+								</div>
+								<div class="msg_container">
+									<div class="col-md-3 col-xs-3 avatar">
+										<img src="../../resources/panel/img/av2.png" alt="" />
+									</div>
+									<div class="col-xs-9 col-md-9">
+										<div class="messages msg_receive">
+											<p>حال شما چطور است ؟</p>
+											<time datetime="2009-11-13T20:00">کاربر شماره سه • ۵
+											دقیقه پیش</time>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</aside>
+				<!--END RIGHT CHAT MESSANGER-->
+				<!--===================================================-->
+			</div>
+
+		</div>
+
+		<!-- panel -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<footer>
+		<div class="sticky-toe">
+			<div class="row">
+				<div class="large-3 large-offset-9 columns">
+					<p>دسترسی سریع +</p>
+				</div>
+			</div>
+		</div>
+		<div class="sticky-heel">
+			<div class="container" style="margin-top: 20px;">
+
+				<div class="row" style="margin-top: 30px;">
+					<div class="col-md-3"
+						style="text-align: center; max-height: 100px; min-height: 100px; flex-wrap: wrap; align-content: center; display: flex; border: dotted;">
+						سخن رییس اتحادیه</div>
+					<div class="col-md-3"
+						style="text-align: center; max-height: 100px; min-height: 100px; flex-wrap: wrap; align-content: center; display: flex; border: dotted;">
+						اعضای هیت مدیره</div>
+					<div class="col-md-3"
+						style="text-align: center; max-height: 100px; min-height: 100px; flex-wrap: wrap; align-content: center; display: flex; border: dotted;">
+						اخبار</div>
+					<div class="col-md-3"
+						style="text-align: center; max-height: 100px; min-height: 100px; flex-wrap: wrap; align-content: center; display: flex; border: dotted;">
+						اتحادیه صنف درود گران و مبلسازان تهران</div>
+				</div>
+			</div>
+		</div>
+		</footer>
+		<!--end plugin example structure-->
+
+
+	</div>
+	<!--end plugin example structure-->
+
+
+	<!-- footer -->
+
+
+	<script type="text/javascript"
+		src="../../resources/footer/scripts/vendor/foundation.min.js"></script>
+	<script type="text/javascript"
+		src="../../resources/footer/scripts/vendor/fastclick.js"></script>
+	<script type="text/javascript"
+		src="../../resources/footer/scripts/stickyFoot.jquery.js"></script>
+	<script type="text/javascript"
+		src="../../resources/footer/scripts/script.js"></script>
+
+	<script src="../../resources/panel/js/bootstrap.min.js"></script>
+
+	<!-- panel -->
+	<script src="../../resources/panel/plugins/fast-click/fastclick.min.js"></script>
+	<script src="../../../resources/panel/js/scripts.js"></script>
+	<script
+		src="../../resources/panel/plugins/nanoscrollerjs/jquery.nanoscroller.min.js"></script>
+	<script src="../../resources/panel/plugins/metismenu/metismenu.min.js"></script>
+	<script src="../../resources/panel/plugins/switchery/switchery.min.js"></script>
+	<script
+		src="../../resources/panel/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+	<script src="../../resources/panel/plugins/screenfull/screenfull.js"></script>
+	<script src="../../resources/panel/js/demo/form-layout.js"></script>
+	<!-- panel -->
+	<ui:insert name="footPage" />
+</body>
+</html>

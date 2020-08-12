@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+	<!-- Main Content -->
+	
+	<h:panelGroup rendered="#{tempBean.moblEntity.sellerName ne null}">
+	
+	<div class="page-wrapper">
+		<div class="container-fluid">
+
+			<!-- Title -->
+			<div class="row heading-bg">
+				<div>
+					<h5 class="txt-dark" style="font-family: IRANSansBold;">بخش نیازمندی نیروی کار</h5>
+				</div>
+
+
+			</div>
+			<!-- /Title -->
+
+
+			<!-- Row -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default card-view">
+<!-- 						<div class="panel-heading">
+							<div class="pull-left">
+								<h6 class="panel-title txt-dark">بخش شکایات اتحادیه</h6>
+							</div>
+							<div class="clearfix"></div>
+						</div> -->
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-12 col-xs-12">
+										<div class="form-wrap">
+											<h:form id="form" enctype="multipart/form-data" acceptcharset="UTF-8">
+												<div class="form-body">
+													<h6 class="txt-dark capitalize-font"
+															style="font-family: IRANSansBold;">
+															<i class="zmdi zmdi-account mr-10"></i>اطلاعات نیازمندی
+													</h6>
+													<hr class="light-grey-hr" />
+														<div class="row">
+														<div class="col-md-12">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">عنوان شغل</label>
+																<h:inputTextarea id="senfinameee" styleClass="form-control"
+																	value="#{jobKarfarmaBean.karfarmaJobTitle}" />
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfinameee" errorStyle="color:red;" id="ms1ww"
+																	errorClass="help-block" />
+															</div>
+														</div>
+														</div>
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">شرح وظیفه</label>
+																<h:inputTextarea id="senfiname" styleClass="form-control"
+																	value="#{jobKarfarmaBean.karfarmaDescription}" />
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiname" errorStyle="color:red;" id="ms1"
+																	errorClass="help-block" />
+															</div>
+														</div>
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">شرح نیروی مورد نظر</label>
+																<h:inputTextarea id="motName" styleClass="form-control"
+																	value="#{jobKarfarmaBean.karfarmaNiroMorede}" />
+																<!-- <span class="help-block"> This field has error. </span>  -->
+																<h:message for="motName" errorStyle="color:red;" id="ms2"
+																	errorClass="help-block" />
+															</div>
+														</div>
+														<!--/span-->
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">نوع استخدام</label>
+																<h:selectOneRadio value="#{jobKarfarmaBean.karfarmaNoeDarkhast}" id="postcode2x" required="true"
+																	styleClass="form-control" layout="lineDirection">
+																	<f:selectItem itemValue="تمام وقت" itemLabel="تمام وقت" />
+																	<f:selectItem itemValue="پاره وقت" itemLabel="پاره وقت" />
+																</h:selectOneRadio>
+																<h:message for="postcode2x" errorStyle="color:red;" id="ms3"
+																	errorClass="help-block" />
+															</div>
+														</div>
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">میزان حقوق</label>
+																<h:inputText id="motMobile" styleClass="form-control"
+																	value="#{jobKarfarmaBean.mizanHogog}" />
+																<!-- <span class="help-block"> This field has error. </span>  -->
+																<h:message for="motMobile" errorStyle="color:red;" id="ms4"
+																	errorClass="help-block" />
+															</div>
+														</div>
+														<!--/span-->
+													</div>
+
+												</div>
+														<h:commandButton styleClass="btn btn-success mr-10" action="#{jobKarfarmaBean.insertToKarfarma()}" value="ثبت" style="font-family: IRANSansNor;font-size: 18px;width: 150px; border-radius: 10px;">
+														<f:ajax execute="@form" render="ms1 ms2 ms3 ms4 ms1ww"/>
+														</h:commandButton>
+											</h:form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Row -->
+
+		</div>
+	</div>
+	
+</h:panelGroup>
+
+<h:panelGroup rendered="#{tempBean.moblEntity.sellerName eq null}">
+	<div class="page-wrapper">
+		<div class="container-fluid">
+
+			<!-- Title -->
+			<div class="row heading-bg">
+				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+					<h5 class="txt-dark">
+					<a href="/pages/panel_seller/profile.xhtml"><div class="pull-left"><span class="right-nav-text">لطفا پروفایل خود را تکمیل کنید</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+					</h5>
+				</div>
+			</div>
+			<!-- /Title -->
+			</div>
+			</div>
+			
+</h:panelGroup>
+
+	
+</ui:composition>
+

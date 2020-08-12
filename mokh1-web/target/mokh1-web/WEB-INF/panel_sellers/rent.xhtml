@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui" xmlns:p="http://primefaces.org/ui">
+	<!-- Main Content -->
+	
+<h:panelGroup rendered="#{tempBean.moblEntity.sellerName ne null}">
+	
+	<div class="page-wrapper">
+		<div class="container-fluid">
+
+			<!-- Title -->
+			<div class="row heading-bg">
+				<div>
+					<h5 class="txt-dark" style="font-family: IRANSansBold;">بخش املاک اتحادیه صنف
+						درودگران و مبلسازان تهران</h5>
+				</div>
+
+
+			</div>
+			<!-- /Title -->
+
+
+			<!-- Row -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default card-view">
+						<!-- 						<div class="panel-heading">
+							<div class="pull-left">
+								<h6 class="panel-title txt-dark">بخش شکایات اتحادیه</h6>
+							</div>
+							<div class="clearfix"></div>
+						</div> -->
+						<div class="panel-wrapper collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-12 col-xs-12">
+										<div class="form-wrap">
+											<h:form id="form" enctype="multipart/form-data"
+												acceptcharset="UTF-8">
+
+												<div class="form-body">
+													<h6 class="txt-dark capitalize-font"
+															style="font-family: IRANSansBold;">
+															<i class="zmdi zmdi-account mr-10"></i>فرم نیازمندی املاک
+													</h6>
+													<hr class="light-grey-hr" />
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">نوع آگهی</label>
+																<h:selectOneMenu value="#{rentBean.rentType}" id="senfiname"
+																	styleClass="form-control">
+																	<f:selectItem itemValue="فروش" itemLabel="فروش" />
+																	<f:selectItem itemValue="رهن کامل" itemLabel="رهن کامل" />
+																	<f:selectItem itemValue="اجاره"
+																		itemLabel="اجاره" />
+																
+																</h:selectOneMenu>
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiname" id="ms1"
+																	errorStyle="color:red;" errorClass="help-block" />
+															</div>
+														</div>
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">نوع ملک</label>
+																<h:selectOneMenu value="#{rentBean.homeType}" id="senfinameq"
+																	styleClass="form-control">
+																	<f:selectItem itemValue="مسکونی" itemLabel="مسکونی" />
+																	<f:selectItem itemValue="اداری" itemLabel="اداری" />
+																	<f:selectItem itemValue="تجاری" itemLabel="تجاری" />
+																
+																</h:selectOneMenu>
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfinameq" id="ms1q"
+																	errorStyle="color:red;" errorClass="help-block" />
+															</div>
+														</div>
+														<!--/span-->
+													</div>
+													
+														<div class="row">
+														<div class="col-md-12">
+																<div class="form-group">
+																	<label class="control-label mb-10" style="font-family: IRANSansNor;">آدرس ملک</label>
+																	<h:inputTextarea id="motMobilerrrr"
+																		styleClass="form-control"
+																		value="#{rentBean.address}" />
+																	<!-- <span class="help-block"> This field has error. </span>  -->
+																	<h:message for="motMobilerrrr" errorStyle="color:red;"
+																		errorClass="help-block" id="ms44" />
+																</div>
+														</div>
+
+													</div>
+													
+														<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">واقع در</label>
+																<h:selectOneMenu value="#{rentBean.vage}" id="senfinames"
+																	styleClass="form-control">
+																	<f:selectItem itemValue="مجتمع تجاری" itemLabel="مجتمع تجاری" />
+																	<f:selectItem itemValue="خیابان اصلی" itemLabel="خیابان اصلی" />
+																	<f:selectItem itemValue="خیابان فرعی"
+																		itemLabel="خیابان فرعی" />
+																
+																</h:selectOneMenu>
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfinames" id="ms1s"
+																	errorStyle="color:red;" errorClass="help-block" />
+															</div>
+														</div>
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">موقعیت</label>
+																<h:selectOneMenu value="#{rentBean.mogeiat}" id="senfinameqs"
+																	styleClass="form-control">
+																	<f:selectItem itemValue="شمالی" itemLabel="شمالی" />
+																	<f:selectItem itemValue="جنوبی" itemLabel="جنوبی" />
+																	<f:selectItem itemValue="شرقی" itemLabel="شرقی" />
+																    <f:selectItem itemValue="غربی" itemLabel="غربی" />
+																</h:selectOneMenu>
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfinameqs" id="ms1qs"
+																	errorStyle="color:red;" errorClass="help-block" />
+															</div>
+														</div>
+														<!--/span-->
+													</div>
+													
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">تعداد طبقات</label>
+																<h:inputText id="senfiPhone" styleClass="form-control"
+																	value="#{rentBean.tedadTabage}" />
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiPhone" errorStyle="color:red;"
+																	errorClass="help-block" id="ms3" />
+															</div>
+														</div>
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">تعداد واحد در هر طبقه</label>
+																<h:inputText id="motMobile" styleClass="form-control"
+																	value="#{rentBean.tedadVahed}" />
+																<!-- <span class="help-block"> This field has error. </span>  -->
+																<h:message for="motMobile" errorStyle="color:red;"
+																	errorClass="help-block" id="ms4" />
+															</div>
+														</div>
+														<!--/span-->
+													</div>
+
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">مبلغ ودیعه به ریال</label>
+																<h:inputText id="senfiPhonef3" styleClass="form-control"
+																	value="#{rentBean.vadieeMoney}" />
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiPhonef3" errorStyle="color:red;"
+																	errorClass="help-block" id="ms3333" />
+															</div>
+														</div>
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">مبلغ اجاره ماهیانه به ریال</label>
+																<h:inputText id="motMobilerrrr23"
+																	styleClass="form-control"
+																	value="#{rentBean.ejareMony}" />
+																<!-- <span class="help-block"> This field has error. </span>  -->
+																<h:message for="motMobilerrrr23" errorStyle="color:red;"
+																	errorClass="help-block" id="ms4423" />
+															</div>
+														</div>
+														<!--/span-->
+													</div>
+
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">مبلغ فروش به ریال</label>
+																<h:inputText id="senfiPhonef" styleClass="form-control"
+																	value="#{rentBean.mablageForosh}" />
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiPhonef" errorStyle="color:red;"
+																	errorClass="help-block" id="ms33" />
+															</div>
+														</div>
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">سن بنا</label>
+																<h:inputText id="motMobilerrrrxx"
+																	styleClass="form-control"
+																	value="#{rentBean.senBana}" />
+																<!-- <span class="help-block"> This field has error. </span>  -->
+																<h:message for="motMobilerrrrxx" errorStyle="color:red;"
+																	errorClass="help-block" id="ms44xx" />
+															</div>
+														</div>
+														<!--/span-->
+													</div>
+
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">مساحت زمین بر حسب متر مربع</label>
+																<h:inputText id="senfiPhonerr" styleClass="form-control"
+																	value="#{rentBean.masahat}" />
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiPhonerr" errorStyle="color:red;"
+																	errorClass="help-block" id="ms333" />
+															</div>
+														</div>
+														<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">توضیحات</label>
+																<h:inputTextarea id="senfiShenase2"
+																	styleClass="form-control"
+																	value="#{rentBean.description}" />
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiShenase2" errorStyle="color:red;"
+																	errorClass="help-block" id="ms552" />
+															</div>
+														</div>
+													</div>
+
+													<div class="row">
+													
+																											<!--/span-->
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">این ملک دارای پروانه کسب می باشد ؟</label>
+																<h:selectOneRadio value="#{rentBean.parvane}" id="postcode2"
+																	styleClass="form-control" layout="lineDirection">
+																	<f:selectItem itemValue="بلی" itemLabel="بلی" />
+																	<f:selectItem itemValue="خیر" itemLabel="خیر" />
+																</h:selectOneRadio>
+																<h:message for="postcode2" errorStyle="color:red;"
+																	errorClass="help-block" id="ms46" />
+															</div>
+														</div>
+														<!--/span-->
+
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">تلفن تماس بابت هماهنگی</label>
+																<h:inputText id="senfiShenase21"
+																	styleClass="form-control"
+																	value="#{rentBean.phone}" />
+																<!-- <span class="help-block"> This is inline help </span> -->
+																<h:message for="senfiShenase21" errorStyle="color:red;"
+																	errorClass="help-block" id="ms5521" />
+															</div>
+														</div>
+													</div>
+
+													<div class="row">
+													<div class="col-md-6">
+															<div class="form-group">
+																<label class="control-label mb-10" style="font-family: IRANSansNor;">وضعیت سند</label>
+																<h:selectOneRadio value="#{rentBean.vaziatSanad}" id="postcode234"
+																	styleClass="form-control" layout="lineDirection">
+																	<f:selectItem itemValue="سرقفلی" itemLabel="سرقفلی" />
+																	<f:selectItem itemValue="ملکی" itemLabel="ملکی" />
+																</h:selectOneRadio>
+																<h:message for="postcode234" errorStyle="color:red;"
+																	errorClass="help-block" id="ms4634" />
+															</div>
+															</div>
+													</div>
+
+<div class="row">
+													</div>
+
+
+												</div>
+												<h:commandButton styleClass="btn btn-success mr-10"
+													action="#{rentBean.insertToRent()}" value="ثبت" style="font-family: IRANSansNor;font-size: 18px;width: 150px; border-radius: 10px;">
+													<f:ajax execute="@form"
+														render="ms1 ms1q ms4634 ms5521 ms46 ms552 ms333 ms44xx ms33 ms4423 ms3333 ms4 ms3 ms1qs ms1 ms1q ms44 ms1s" />
+												</h:commandButton>
+											</h:form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Row -->
+
+		</div>
+	</div>
+</h:panelGroup>
+
+<h:panelGroup rendered="#{tempBean.moblEntity.sellerName eq null}">
+	<div class="page-wrapper">
+		<div class="container-fluid">
+
+			<!-- Title -->
+			<div class="row heading-bg">
+				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+					<h5 class="txt-dark">
+					<a href="/pages/panel_seller/profile.xhtml"><div class="pull-left"><span class="right-nav-text">لطفا پروفایل خود را تکمیل کنید</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+					</h5>
+				</div>
+			</div>
+			<!-- /Title -->
+			</div>
+			</div>
+			
+</h:panelGroup>
+
+
+</ui:composition>
+

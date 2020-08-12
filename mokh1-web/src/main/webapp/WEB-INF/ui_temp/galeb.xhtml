@@ -1,0 +1,853 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui">
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<meta name="enamad" content="۵۹۹۹۵۰"></meta>
+	<link rel="icon" href="../../resources/pic/logo-new.png" type="image/png" />
+	    	<h:outputStylesheet library="css" name="bootstrap.css" />
+	<link rel="stylesheet" href="../../resources/css/font-awesome.css" />
+	<link rel="stylesheet" href="../../resources/css/flaticon.css" />
+	<h:outputStylesheet library="css" name="normalize.css" />
+	<h:outputStylesheet name="style.css" />
+	<h:outputStylesheet library="css" name="media.css" />
+	<h:outputStylesheet library="css" name="owl.carousel.css" />
+	<h:outputStylesheet library="css" name="owl.theme.css" />
+	<h:outputStylesheet library="css" name="owl.transitions.css" />
+	<h:outputStylesheet library="css" name="flexslider.css" />
+	<h:outputStylesheet library="css" name="animate.css" />
+	<h:outputStylesheet library="css" name="colors/light-blue.css" />
+	<link rel="stylesheet" href="../../resources/fonts.css" />
+	
+	<!-- header -->
+	<h:outputScript library="js" name="lib/jquery.min.js" />
+<script src="../../resources/galeb2/js/jquery.hsmenu.min.js"></script>
+<link rel="stylesheet" href="../../resources/galeb2/css/hs-menu.min.css" />
+<script>
+         $(document).ready(function () {
+         $(".hs-menubar").hsMenu(); 
+         }); 
+      </script>
+	
+	<!-- header -->
+		<!-- menu -->
+
+	<link href="../../resources/menu/css/jquery.drawer.css"
+		rel="stylesheet" />
+
+	<script src="../../resources/menu/js/jquery.drawer.js"></script>
+	<script src="../../resources/menu/demo.js"></script>
+
+	<!-- menu -->
+	
+	<ui:insert name="headPage" />
+
+</h:head>
+<body>
+
+
+<!-- 	<div id="back-top">
+		<a href="MainPage.html#" class="scroll"> <i
+			class="fa fa-angle-double-up"></i>
+		</a>
+	</div>
+
+	<div class="page-loader">
+		<div class="loader">
+			<div class="rect1"></div>
+			<div class="rect2"></div>
+			<div class="rect3"></div>
+		</div>
+	</div> -->
+
+	<div class="wrapper demo">
+
+<header class="hs-menubar">
+		<div class="brand-logo">
+			<a href="#home_link"> <img
+				src="../../resources/galeb2/image/logo-new.png"
+				title="Your logo will be here" alt="hs Mega Menu" /></a>
+		</div>
+		<div class="menu-trigger" style="left: 90px !important">
+			
+			<a href="https://t.me/tehcfu" target="_blank">
+			<i class="fa fa-paper-plane-o white" style="color: white;"/>
+			</a>
+		</div>
+		<div class="menu-trigger" style="left: 50px !important">
+			
+			<a href="https://www.instagram.com/tehcfu"
+								target="_blank" title="تلگرام اتحادیه">
+				<i class="fa fa-instagram white" style="color: white;"/>				
+								</a>
+		</div>
+		<div class="search-trigger">
+			<i class="fa fa-search white" style="color: white;"></i>
+		</div>
+		<div class="search-box">
+			<form action="#">
+				<input type="text" name="search" />
+				<button type="submit" class="search-submit" style="padding: 0px!important;">جستجو</button>
+			</form>
+		</div>
+		<div class="hs-user toggle" data-reveal=".user-info">
+ <i
+				class="fa fa-user white" style="color: white;"></i>
+		</div>
+		<div class="grid-trigger toggle" data-reveal=".grid-items">
+			<i class="fa fa-shopping-basket" style="color: white;"></i>
+		</div>
+		<div class="more-trigger toggle" data-reveal=".user-penal">
+			<i class="fa fa-bars bars" style="color: white;"></i>
+		</div>
+		</header>
+		<section class="box-model">
+		<ul class="user-penal" style="width: 220px;">
+			<div>
+				<div class="drawer">
+
+					<!-- First Item -->
+					<div class="drawer-item" style="text-align: right;">
+						<div class="drawer-header" style="direction: rtl; display: flex;">
+							<h2 style="font-family: IRANSansBold; font-size: 14px;">سایت اتحادیه</h2>
+
+						</div>
+						<div class="drawer-content" style="text-align: right;">
+						<h:link outcome="/pages/main/home.xhtml" value="خانه" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							<br />
+							<h:link outcome="/pages/news/news.xhtml" value="اخبار" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							<br />
+							<h:link outcome="/pages/panel_seller/shekayat.xhtml" value="شکایت" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							<br />
+							<h:link outcome="/pages/danestaniha/namayeshgah.xhtml" value="خبر نامه نمایشگاهی" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							<br />
+							<h:link outcome="/pages/danestaniha/niazmandiha.xhtml" value="نیازمندی ها" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							<br />
+							<h:link outcome="/pages/search/searchmap.xhtml" value="نزدیکترین ها" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							<br />
+							<h:link outcome="/pages/danestaniha/creative-blogs.xhtml" value="طرح های خلاقانه" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							<br />
+						</div>
+					</div>
+					
+										<!-- Second Item -->
+					<div class="drawer-item" style="text-align: right;">
+						<div class="drawer-header" style="direction: rtl; display: flex;">
+							<h2 style="font-family: IRANSansBold; font-size: 14px;">رسته های اتحادیه</h2>
+
+						</div>
+						<div class="drawer-content" style="text-align: right;height: 350px; overflow: scroll;">
+							<h:link outcome="#" value="مبلمان خانگی" style="font-family: IRANSansBold; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="مبلمان راحتی" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+						
+							<h:link outcome="#" value="مبلمان کلاسیک" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="مبلمان استیل" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+						    <h:link outcome="#" value="مبلمان مدرن" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="مبلمان فضای باز" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+						
+							<h:link outcome="#" value="مبلمان مدرن" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="مبل تختخواب شو" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="مصنوعات چوبی" style="font-family: IRANSansBold; width: 100%;display: block!important;"/>
+						
+							<h:link outcome="#" value="نهار خوری" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="سرویس خواب" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="میز تلویزیون" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="آینه و کنسول" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="قاب عکس" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="میز جلو مبلی یا میز عسلی" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="مبلمان اداری" style="font-family: IRANSansBold; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="میز اداری" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="سیسمونی" style="font-family: IRANSansBold; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="کابینت" style="font-family: IRANSansBold; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="دکوراسیون" style="font-family: IRANSansBold; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="دکوراسیون تخصصی" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="دکوراسیون معمولی" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="درب های چوبی" style="font-family: IRANSansBold; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="درب های ضد سرقت" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="درب های چوبی" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="درب و پنجره" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="خدماتی" style="font-family: IRANSansBold; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="رنگ کاری چوب و مصنوعات" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+						
+							<h:link outcome="#" value="منبت کاری" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="کلاف سازی" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="معرق کاری" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="خاتم کاری" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="خراطی" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="رویکوبی" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="نجاری" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="چوب بری" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="اتاق سازی چوبی کامیون" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							
+							<h:link outcome="#" value="پرس کاری چوبی" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+						
+						<h:link outcome="#" value="قالب سازی کفش و غیره" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+						
+						<h:link outcome="#" value="جعبه سازی" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+						
+						<h:link outcome="#" value="تعمیرات" style="font-family: IRANSansBold; width: 100%;display: block!important;"/>
+						
+						<h:link outcome="#" value="جعبه سازی" style="font-family: IRANSansBold; width: 100%;display: block!important;"/>
+						
+						</div>
+					</div>
+
+					<!-- Second Item -->
+					<div class="drawer-item" style="text-align: right;">
+						<div class="drawer-header" style="direction: rtl; display: flex;">
+							<h2 style="font-family: IRANSansBold; font-size: 14px;">درباره اتحادیه</h2>
+
+						</div>
+						<div class="drawer-content" style="text-align: right;">
+							<h:link outcome="/pages/members/sokhan.xhtml" value="سخن ریاست" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							<br />
+							<h:link outcome="/pages/main/aboutus.xhtml" value="درباره اتحادیه" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							<br />
+							<h:link outcome="/pages/members/members.xhtml" value="اعضای هییت مدیره" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							<br />
+							<h:link outcome="/pages/members/consultant.xhtml" value="مشاورین" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							<br />
+						    <h:link outcome="/pages/danestaniha/comission.xhtml" value="کمیسیون ها" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+							<br />
+						</div>
+					</div>
+
+					<!-- Third Item -->
+					<div class="drawer-item" style="text-align: right;">
+						<div class="drawer-header" style="direction: rtl; display: flex;">
+							<h2 style="font-family: IRANSansBold; font-size: 14px;">تماس با اتحادیه</h2>
+
+						</div>
+						<div class="drawer-content" style="text-align: right;">
+							<h:link outcome="/pages/main/contactus.xhtml" value="تماس با اتحادیه" style="font-family: IRANSansNor; width: 100%;display: block!important;"/>
+						</div>
+					</div>
+				</div>
+				<!-- /#drawer -->
+			</div>
+			<!-- /.container -->
+		</ul>
+
+		<ul class="user-info" style="z-index: 1000;height: 190px;">
+			<li>
+			<img src="../../resources/user.png" alt="" style="width: 40px;height: 40px;"/>
+			</li>
+			<li class="user-name" style="padding: 0px!important;font-family: IRANSansNor; font-size: 14px;">
+			<h:outputText value="#{homeBean.findUserByToken()}" rendered="true"/>
+			</li>
+			<li class="more-btn">
+		    <h:link outcome="/pages/login/signin-phone.xhtml" value="ورود" style="font-family: IRANSansBold; font-size: 14px; margin: 5px;" rendered="#{homeBean.findUserByToken() eq 'مهمان'}"/>
+		    <h:link outcome="/pages/login/signin-phone.xhtml" value="پنل مدیریت" style="font-family: IRANSansBold; font-size: 14px; margin: 5px;" rendered="#{homeBean.findUserByToken() ne 'مهمان'}"/>
+		    <h:form rendered="true">
+		    <h:commandLink action="#{homeBean.logout()}" value="خروج" style="font-family: IRANSansBold; font-size: 14px; margin: 5px;" rendered="#{homeBean.findUserByToken() ne 'مهمان'}"/>
+			</h:form>
+			</li>
+		</ul>
+
+
+		<ul class="grid-items">
+		<li class="user-name" style="padding: 0px!important;font-family: IRANSansNor; font-size: 14px;">سبد خرید خالی</li>
+			<li class="more-btn"><a href="#1" style="font-family: IRANSansBold; font-size: 14px;"> تسویه</a></li>
+		</ul>
+		</section>
+<!-- 		<div class="container" dir="rtl"
+			style="display: flex; align-items: center">
+
+			<o:graphicImage style="width: 90px; height: auto"
+				rendered="#{homeBean.findHomeCatByName('اتحادیه صنف درودگران و مبلسازان تهران') ne null}"
+				value="#{homeBean.findHomeCatByName('اتحادیه صنف درودگران و مبلسازان تهران')}" dataURI="true" alt="" />
+
+			<b id="name"
+				style="color: #0B59AA; font-family: IranNastaliq; line-height: 3; padding-right: 10px; font-size: 22px; font-weight: bolder">اتحادیه
+				صنف درودگران و مبلسازان تهران</b>
+		</div> -->
+
+		
+		<!-- <header class="header">
+
+		<div class="container">
+
+			<nav class="main-navbar">
+			<div class="navbar">
+				<div class="navbar-logo animated fadeInRight">
+					<a class="navbar-brand"
+						href="/about/اتحادیه-صنف-درودگران-و-مبلسازان-تهران"> <img
+						src="../../resources/pic/logo-new.png" alt="erefiran" />
+					</a>
+				</div>
+				navbar-logo
+
+				<div class="nav-left">
+					<div class="right-navbar">
+						<ul>
+
+							user info
+							<li id="userParent"
+								style="border: 1px solid #0B59AA; border-radius: 5px; margin-right: 18px"
+								class="dropdown"><a id="user"
+								style="color: firebrick !important;" href="#"
+								class="display dropdown-toggle iranSansBold"
+								data-toggle="dropdown"><b class="caret"></b>&nbsp; نام
+									کاربری &nbsp;<i style="font-size: 17px; color: #0B59AA"
+									class="fa fa-user"></i></a>
+								<ul dir="rtl" class="dropdown-menu text-right">
+									<li><a href="#"><i class="fa fa-user"></i>&nbsp;&nbsp;بخش
+											کاربری </a></li>
+									<li><a href="#"><i class="fa fa-edit"></i>&nbsp;&nbsp;ویرایش
+											مشخصات </a></li>
+									<li><a href="#"><i class="fa fa-lock"></i>&nbsp;&nbsp;تغییر
+											رمز عبور </a></li>
+									<li class="divider"></li>
+									<li><a href="#"><i class="fa fa-power-off"></i>&nbsp;
+											خروج</a></li>
+								</ul></li>
+
+							search
+							<li><a href="#" id="search-trigger" title="جست و جو"><i
+									class="flaticon-magnifying-glass icons white"></i></a>
+								<form action="#" id="search" method="get" class="">
+									<div class="input">
+										<div class="container">
+											<input class="search" placeholder="...جست و جو" type="text" />
+											<button class="submit" type="submit" value="close">
+												<i class="fa fa-search" />
+											</button>
+										</div>
+										/container
+									</div>
+									/input
+									<button class="fa fa-close" id="close" type="reset"></button>
+								</form> /form</li>
+
+
+							instagramIcon
+							<li><a class="icons" href="https://www.instagram.com/tehcfu"
+								target="_blank" title="اینستاگرام اتحادیه"><i
+									class="fa fa-instagram white"></i></a></li>
+
+							telegramIcon
+							<li><a class="icons" href="https://t.me/tehcfu"
+								target="_blank" title="تلگرام اتحادیه"><i
+									class="fa fa-paper-plane-o white"></i></a></li>
+
+							<li class="cart-dropdown dropdown nav-cart cart-down"><a
+								href="#" title="سبد خرید"
+								class="side-cart-toggle toggle dropdown-toggle"
+								data-toggle="dropdown"> <i
+									class="flaticon-shopping-bag margin-right-15 white"></i>
+									<div class="cart-num">1</div>
+							</a>
+
+								<ul class="dropdown-menu">
+									<li>
+										<div class="cart-product">
+											<div class="property-image">
+												<a href="#"><img src="../../resources/pictures/iphone.jpeg"
+													alt="عکس محصول" /> </a>
+											</div>
+											/property-image
+											<div class="cart-product-info">
+												<div class="product-name text-center">
+													<a href="#">نام محصول</a>
+												</div>
+												/product-name
+												<div class="property-specs padding-vertical-10">
+													<ul class="text-center">
+														<li>
+															<p>
+																<span>تعداد :</span>2
+															</p>
+														</li>
+													</ul>
+												</div>
+												/property-specs
+												<div class="property-price">
+													<p>ریال 1,000,000</p>
+												</div>
+												/property-price
+												<a href="homepage01.html#" class="remove-btn"><i
+													class="fa fa-close"></i></a>
+											</div>
+											/cart-product-info
+										</div> /cart-product
+									</li>
+
+									<li>
+										<div class="cart-product">
+											<div class="property-image">
+												<a href="homepage01.html#"><img
+													src="../../resources/pictures/iphone.jpeg" alt="عکس محصول" /> </a>
+											</div>
+											/property-image
+											<div class="cart-product-info">
+												<div class="product-name text-center">
+													<a href="homepage01.html#">نام محصول</a>
+												</div>
+												/product-name
+												<div class="property-specs padding-vertical-10">
+													<ul class="text-center">
+														<li>
+															<p>
+																<span>تعداد :</span>2
+															</p>
+														</li>
+													</ul>
+												</div>
+												/property-specs
+												<div class="property-price">
+													<p>ریال 1,000,000</p>
+												</div>
+												/prperty-price
+												<a href="homepage01.html#" class="remove-btn"><i
+													class="fa fa-close"></i></a>
+											</div>
+											/cart-product-info
+										</div> /cart-product
+									</li>
+
+									<li class="cart-bottom">
+										<div class="sub-total padding-top-15">
+											<p
+												style="float: right; font-family: IRANSansBold; font-size: 17px">:
+												مجموع</p>
+											<span style="float: left">ریال 2,000,000 </span>
+										</div> /sub-total
+										<button href="#" class="book-order-btn margin-top-20">ثبت
+											سفارش</button>
+									</li>
+									/cart-bottome
+								</ul> /dropdown-menu</li>
+
+
+							<li class="right">
+								<button type="button" class="navbar-toggle"
+									data-toggle="collapse" data-target=".collapse">
+									<span class="sr-only"></span> <i class="fa fa-bars bars"></i>
+								</button>
+							</li>
+						</ul>
+					</div>
+					/right-navbar
+				</div>
+				nav-right
+
+				<div class="custom-collapse navbar-collapse collapse pull-right">
+					<ul class="nav navbar-nav">
+
+
+						user info
+						<li
+							style="border: 1px solid #0B59AA; border-radius: 5px; margin-right: 18px"
+							class="dropdown"><a style="color: firebrick !important;"
+							href="#" class="dis dropdown-toggle iranSansBold"
+							data-toggle="dropdown"><b class="caret"></b>&nbsp; نام کاربری
+								&nbsp;<i style="font-size: 17px; color: #0B59AA"
+								class="fa fa-user"></i></a>
+							<ul dir="rtl" class="dropdown-menu text-right" >
+								<li><a href="#"><i class="fa fa-user"></i>&nbsp;&nbsp;بخش
+										کاربری </a></li>
+								<li><a href="#"><i class="fa fa-edit"></i>&nbsp;&nbsp;ویرایش
+										مشخصات </a></li>
+								<li><a href="#"><i class="fa fa-lock"></i>&nbsp;&nbsp;تغییر
+										رمز عبور </a></li>
+								<li class="divider"></li>
+								<li><a href="#"><i class="fa fa-power-off"></i>&nbsp;
+										خروج</a></li>
+							</ul></li>
+
+
+						home
+						<li style="float: right" class="dropdown classic-dropdown home"><a
+							href="/about/اتحادیه-صنف-درودگران-و-مبلسازان-تهران"
+							class="dropdown-toggle sansbold" data-toggle="dropdown">خانه</a></li>
+						/dropdown
+
+
+
+						communication
+						<li style="float: right" class="dropdown classic-dropdown connect"><a
+							href="/about/تماس-با-اتحادیه-صنف-درودگران-و-مبلسازان-تهران"
+							class="dropdown-toggle sansbold" data-toggle="dropdown"><b
+								class="caret"></b>&nbsp;&nbsp;ارتباط با اتحادیه</a>
+							<ul class="dropdown-menu">
+								<li class="text-right"><a class="font"
+									href="/mems/سخن-ریاست-اتحادیه-صنف-درودگران-و-مبلسازان-تهران">سخن
+										رئیس اتحادیه</a></li>
+								<li class="text-right"><a class="font" href="/mems/اعضای-هیئت-مدیره-اتحادیه-صنف-درودگران-و-مبلسازان-تهران">اعضای
+										هیئت مدیره</a></li>
+								<li class="text-right"><a class="font" href="/press/اخبار-اتحادیه-صنف-درودگران-و-مبلسازان-تهران">اخبار</a>
+								</li>
+								<li class="text-right"><a class="font"
+									href="/mems/مشاورین-اتحادیه-صنف-درودگران-و-مبلسازان-تهران">مشاورین</a></li>
+								<li class="text-right"><a class="font"
+									href="/knowledge/کمیسیون-های-اتحادیه-صنف-درودگران-و-مبلسازان-تهران">کمیسیون ها</a></li>
+								<li class="text-right"><a class="font" href="/about/درباره-اتحادیه-صنف-درودگران-و-مبلسازان-تهران">درباره
+										اتحادیه</a></li>
+								<li class="text-right"><a class="font"
+									href="/about/تماس-با-اتحادیه-صنف-درودگران-و-مبلسازان-تهران">تماس با اتحادیه</a></li>
+							</ul> /dropdown-menu license
+							<li style="float: right"
+							class="dropdown classic-dropdown connect"><a href="#"
+								class="dropdown-toggle sansbold" data-toggle="dropdown"><b
+									class="caret"></b>&nbsp;&nbsp;فرم های درخواست</a>
+								<ul class="dropdown-menu">
+									<li class="text-right"><a class="font"
+										href="sodorparvaneh.xhtml">صدور پروانه</a></li>
+									<li class="text-right"><a class="font"
+										href="tamdidparvaneh.xhtml">تمدید پروانه</a></li>
+									<li class="text-right"><a class="font"
+										href="mobasherat.xhtml">کارت مباشرت</a></li>
+									<li class="text-right"><a class="font"
+										href="informatic.html">واحد انفورماتیک</a></li>
+								</ul> /dropdown-menu complaints
+								<li class="dropdown classic-dropdown"><a
+									href="complaint.xhtml" class="dropdown-toggle sansbold"
+									data-toggle="dropdown">شکایات</a></li></li> /dropdown</li>
+
+					</ul>
+					/navbar-nav
+				</div>
+				/collapse
+			</div>
+			/navbar </nav>
+			/nav
+		</div>
+		/container </header> -->
+
+		<!-- Header End -->
+		<ui:insert name="mainPage" />
+		<!-- Footer Begin -->
+		<footer class="footer">
+		<div style="" class="container padding-top-70 padding-bottom-10">
+			<div class="row">
+
+				<div id="ftr" style="float: right"
+					class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+					<div class="footer-logo hidden-md hidden-xs">
+						<a><img style="visibility: hidden" src="../../resources/pictures/lg1.png"
+							alt="" /> 
+							
+							</a>
+					</div>
+					<div id="links" style="margin-top: -75px; margin-right: -30%">
+						<h5
+							style="font-family: IRANSansBold; text-align: right; border-bottom: 1px solid lightgray; padding-bottom: 5.1px">لینک
+							های مرتبط</h5>
+					</div>
+					<!-- /footer-logo -->
+					<div class="footer-lg">
+						<ul>
+							<li class="padding-bottom-20"><a href="https://mimt.gov.ir/"
+								title="وزارت صنعت معدن و تجارت"> <!-- <img style="width: 70%"
+									src="pictures/sanat.png" alt="وزارت صنعت معدن و تجارت" /> --> <h:graphicImage
+										style="width: 70%" library="pictures" name="sanat.png"
+										alt="وزارت صنعت معدن و تجارت" />
+							</a></li>
+							<li class="padding-bottom-20"><a
+								href="https://www.tazirat.gov.ir/" title="سازمان تعزیرات حکومتی">
+									<!-- 									<img style="width: 70%" src="pictures/taz.png"
+									alt="سازمان تعزیرات حکومتی" /> --> <h:graphicImage
+										style="width: 70%" library="pictures" name="taz.png"
+										alt="سازمان تعزیرات حکومتی" />
+							</a></li>
+							<li class="padding-bottom-20"><a
+								href="http://www.ncfdeco.com/" title="شورای ملی مبلمان"> <!-- <img
+									style="width: 70%" src="pic/shora.png" alt="شورای ملی مبلمان" /> -->
+									<h:graphicImage style="width: 70%" library="pic"
+										name="shora.png" alt="شورای ملی مبلمان" />
+							</a></li>
+							<li class="padding-bottom-20"><a
+								href="http://www.tehcfc.com/index.php/fa/"
+								title="شرکت تعاونی درودگران و مبلسازان تهران"> <!-- <img
+									style="width: 70%" src="pic/taavoni.png"
+									alt="شرکت تعاونی درودگران و مبلسازان تهران" /> --> <h:graphicImage
+										style="width: 70%" library="pic" name="taavoni.png"
+										alt="شرکت تعاونی درودگران و مبلسازان تهران" />
+							</a></li>
+						</ul>
+
+						<ul>
+							<li class="padding-bottom-20"><a
+								href="http://otaghasnafeiran.ir/" title="اتاق اصناف ایران">
+									<!-- 									<img style="width: 70%" src="pictures/asnafiran.png"
+									alt="اتاق اصناف ایران" /> --> <h:graphicImage
+										style="width: 70%" library="pictures" name="asnafiran.png"
+										alt="اتاق اصناف ایران" />
+							</a></li>
+							<li class="padding-bottom-20"><a
+								href="http://bazrasiasnafteh.com/" title="اتاق اصناف تهران">
+									<!-- 									<img style="width: 70%" src="pictures/asnafteh.png"
+									alt="اتاق اصناف تهران" /> --> <h:graphicImage
+										style="width: 70%" library="pictures" name="asnafteh.png"
+										alt="اتاق اصناف تهران" />
+							</a></li>
+							<li class="padding-bottom-20"><a
+								href="https://shorath.eadl.ir/" title="شورای حل اختلاف"> <!-- <img
+									style="width: 70%" src="pictures/ekh.png" alt="شورای حل اختلاف" /> -->
+									<h:graphicImage style="width: 70%" library="pictures"
+										name="ekh.png" alt="شورای حل اختلاف" />
+							</a></li>
+							<li class="padding-bottom-20"><a
+								href="http://www.furniran.com/"
+								title="اتحادیه تولیدکنندگان و صادرکنندگان مبل ایران"> <!-- <img
+									style="width: 70%" src="pic/saderkonandegan.png"
+									alt="تحادیه تولیدکنندگان و صادرکنندگان مبل ایران" /> --> <h:graphicImage
+										style="width: 70%" library="pic" name="saderkonandegan.png"
+										alt="شورای حل اختلاف" />
+							</a></li>
+
+						</ul>
+					</div>
+				</div>
+
+				<div style="float: right"
+					class="col-md-4 col-lg-4 footer-about margin-bottom-35">
+					<h5
+						style="font-family: IRANSansBold; text-align: right; border-bottom: 1px solid lightgray; padding-bottom: 5px">درباره
+						اتحادیه</h5>
+					<p style="font-family: IRANSansNor; text-align: justify" dir="rtl">
+						بیش از نیم قرن پیش به منظور انسجام صنف درودگران و مبلسازان تهران
+						هیئت موسس تحت نظارت و مسئولیت مرحومین ( حاج حسن نوین کاشانی،حاج
+						مهدی شفیعی،حاج عزیزاله اسحاق بیگی ، حاج غلامرضا روشن ، حاج آقا دقت
+						، حاج محمدرضا درگری ، حاج عباس زرین قلم ) سنگ بنای تشکیل اتحادیه
+						صنف درودگران و مبلسازان تهران را با توکل به ذات الهی و همدلبی و
+						همفکری و در جهت تجلی و سازماندهی امور مرتبط به این نصف پیشرو و
+						قدیمی که به حق جزو اولین صنوف تشکیل شده در کشور بوده اند در سال
+						۱۳۳۵ بنا نهادند . در این راستا و به منظور ساماندهی این صنف عظیم و
+						قدیمی و با سابقه که پشتوانه اعضای تلاشگر را به همراه دارد اولین
+						رئیس اتحادیه بازوی توانای صنف مرحوم حاج مهدی شفیعی بود که به مدت
+						(۱۰) ده سال سکان هدایت این صنف را به عهده داشتند که در دوره
+						مسئولیت خود پایه های ضابطه مند این صنف و صنعت را هنرمندانه به
+						درستی بنا نهادند . به دنبال آن مرحوم حاج اسدالله ساریخانی تا
+						روزهای پیروزی انقلاب اسلامی ایران تصدی مسئولیت اتحادیه را به عهده
+						داشتند . پس از پیروزی شکوهمند انقلاب اسلامی ایران اولین سرپرست
+						اتحادیه حاج آقا نجفی منش و به دنبال آن بزرگانی همچون حاج محمد
+						اژدری ، حاج مهدی ثقفی ، حاج مرتضی احمدی ، حاج سید حمید سیدآقاخان ،
+						حاج عبدالحسین عباسی در سال های متمادی مسئولیت گرانسنگ ریاست
+						اتحادیه صنف درودگران و مبلسازان تهران را به عهده داشتند . در آخرین
+						مقطع <b
+							style="color: red; font-family: IRANSansBold; font-weight: bold">حاج
+							علیرضا عباسی</b> در حال حاضر ( سال ۱۳۹۸ ) مسئولیت و ریاست اتحادیه صنف
+						درودگران و مبلسازان تهران را به مدت چهار سال عهده دار می باشند .
+					</p>
+					<a style="font-family: IRANSansBold" href="/about/درباره-اتحادیه-صنف-درودگران-و-مبلسازان-تهران"
+						class="readmore-button">بیشتر >></a>
+				</div>
+				<!-- /footer-about -->
+
+				<div style="float: right"
+					class="col-md-4 col-lg-3 latest-news padding-right-30">
+					<h5 class="padding-right-15"
+						style="font-family: IRANSansBold; text-align: right; border-bottom: 1px solid lightgray; padding-bottom: 5.1px">تماس
+						با اتحادیه</h5>
+					<ul class="padding-right-15">
+						<li>
+							<div class="news-details">
+								<h4 style="text-align: right">
+									<a style="font-family: IRANSansBold; text-align: right"
+										href="about.html#">: آدرس </a><i
+										style="color: goldenrod; font-size: 25px"
+										class="fa fa-map-marker"></i>
+								</h4>
+								<p
+									style="font-family: IRANSansNor; text-align: right; line-height: 20px">خیابان
+									شهید برادران قائدی (هدایت) ، نرسیده به چهارراه دروازه شمیران ،
+									پلاک ۴۱</p>
+							</div> <!-- /news-details -->
+						</li>
+						<li>
+							<div class="news-details">
+								<h4 style="text-align: right">
+									<a style="font-family: IRANSansBold; text-align: right"
+										href="about.html#">: تلفن </a><i
+										style="color: goldenrod; font-size: 22px"
+										class="fa fa-phone-square"></i>
+								</h4>
+								<p style="font-family: IRANSansNor; text-align: right">
+									<a style="font-family: IRANSansNor; color: antiquewhite"
+										href="tell:+982177522701"> (۰۲۱) ۷۷۵۲۲۷۰۱-۲ </a>
+								</p>
+							</div> <!-- /news-details -->
+						</li>
+						<li>
+							<div class="news-details">
+								<h4 style="text-align: right">
+									<a style="font-family: IRANSansBold; text-align: right"
+										href="about.html#">: نمابر </a><i
+										style="color: goldenrod; font-size: 20px" class="fa fa-fax"></i>
+								</h4>
+								<p style="font-family: IRANSansNor; text-align: right">
+									<a style="font-family: IRANSansNor; color: antiquewhite"
+										href="tell:+982166675631"> (۰۲۱) ۷۷۵۲۰۳۲۴  </a>
+								</p>
+							</div> <!-- /news-details -->
+						</li>
+						<li class="padding-bottom-10">
+							<div class="news-details">
+								<h4 style="text-align: right">
+									<a style="font-family: IRANSansBold; text-align: right"
+										href="#">: کد پستی </a><i
+										style="color: goldenrod; font-size: 20px"
+										class="fa fa-envelope"></i>
+								</h4>
+								<p style="font-family: IRANSansNor; text-align: right">۱۱ ۴۹
+									۶۴ ۸۱ ۸۱</p>
+							</div> <!-- /news-details -->
+						</li>
+						<li>
+							<div class="news-details">
+								<p
+									style="font-weight: 600; font-family: IRANSansNor; text-align: right; direction: rtl; line-height: 25px">
+									<i style="color: goldenrod; font-size: 25px"
+										class="fa fa-check"></i> روزهای فعالیت اتحادیه از شنبه تا
+									چهارشنبه
+								</p>
+							</div> <!-- /news-details -->
+						</li>
+						<li class="padding-bottom-10 padding-top-10">
+							<div class="news-details">
+								<p
+									style="font-weight: 600; font-family: IRANSansNor; text-align: right; direction: rtl; line-height: 25px">
+									<i style="color: goldenrod; font-size: 26px"
+										class="fa fa-clock-o"></i> ساعت تماس با اتحادیه ۸:۰۰ تا ۱۴:۳۰
+								</p>
+							</div> <!-- /news-details -->
+						</li>
+
+					</ul>
+					<!-- /ul -->
+				</div>
+				<!-- /latest-news -->
+
+
+
+				<div class="col-lg-3 col-md-4 col-sm-3">
+					<div>
+						<h5
+							style="font-family: IRANSansBold; text-align: right; border-bottom: 1px solid lightgray; padding-bottom: 5px">لینک ها</h5>
+					</div>
+					<!--Map-->
+					<div id="map"
+						style="float: left; width: 550px; height: 399px; max-width: 100%; margin-bottom: 20px">
+						<h:link outcome="/pages/main/home.xhtml" value="خانه" style="font-family: IRANSansNor; width: 100%;display: block!important; color:white;text-align:right ;font-size: 18px;"/>
+						<br />
+												<h:link outcome="/pages/news/news.xhtml" value="اخبار" style="font-family: IRANSansNor;width: 100%;display: block!important; color:white;text-align: right;font-size: 18px;"/>
+						<br />
+												<h:link outcome="/pages/panel_seller/shekayat.xhtml" value="شکایات" style="font-family: IRANSansNor; width: 100%;display: block!important; color:white;text-align: right;font-size: 18px;"/>
+						<br />
+												<h:link outcome="/pages/danestaniha/namayeshgah.xhtml" value="خبر نامه نمایشگاهی" style="font-family: IRANSansNor; width: 100%;display: block!important; color:white;text-align: right;font-size: 18px;"/>
+						<br />
+												<h:link outcome="/pages/danestaniha/niazmandiha.xhtml" value="نیازمندی ها"  style="font-family: IRANSansNor; width: 100%;display: block!important; color:white;text-align: right;font-size: 18px;"/>
+						<br />
+												<h:link outcome="/pages/search/searchmap.xhtml" value="نزدیکترین ها" style="font-family: IRANSansNor; width: 100%;display: block!important; color:white;text-align: right;font-size: 18px;"/>
+						<br />
+												<h:link outcome="/pages/main/contactus.xhtml" value="تماس با اتحادیه" style="font-family: IRANSansNor; width: 100%;display: block!important; color:white;text-align: right;font-size: 18px;"/>
+						<br />
+
+					</div>
+
+					<!--icons-->
+					<div class="social-media-icons col-xs-12">
+						<ul class="list-inline col-xs-12">
+							<a href="https://t.me/tehcfu" title="تلگرام اتحادیه"><i
+								class="fa fa-paper-plane-o fa-2x"></i></a>
+							<a href="https://www.instagram.com/tehcfu"
+								title="اینستاگرام اتحادیه"><i class="fa fa-instagram fa-2x"></i></a>
+							<a href="mailto:info@tehcfu.com" title="ایمیل اتحادیه"><i
+								class="fa fa-envelope-o fa-2x"></i></a>
+						</ul>
+					</div>
+				</div>
+				<!-- /quick-links -->
+				<!-- /column -->
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+
+		<div class="footer-copyrights">
+			<div class="container ">
+				<div class="row text-center">
+					<div class="copyrights-links text-center">
+						<a href="#" title="شرکت پارسیان نوآور"> <!-- <img class="imglogo"
+							src="pictures/pano.png" /> --> <h:graphicImage
+								styleClass="imglogo" library="pictures" name="pano.png" />
+						</a>
+					</div>
+					<b>تعداد بازدید سایت : <span id="nm1"> #{homeBean.findBazdid()} </span></b>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+	</footer>
+
+	</div>
+
+	<ui:insert name="footerPage" />
+
+	<h:outputScript library="js" name="lib/jquery.min.js" />
+	<h:outputScript library="js" name="vendors/bootstrap.min.js" />
+	<h:outputScript library="js" name="lib/jquery.waypoints.min.js" />
+	<h:outputScript library="js" name="lib/moderniz.min.js" />
+	<h:outputScript library="js" name="scripts.js" />
+	<h:outputScript library="js" name="vendors/owl.carousel.min.js" />
+	<h:outputScript library="js" name="vendors/jquery.flexslider-min.js" />
+	<h:outputScript library="js" name="vendors/flexslider-init.js" />
+	<h:outputScript library="js" name="vendors/jquery.counterup.min.js" />
+	<h:outputScript library="js" name="vendors/wow.min.js" />
+<!-- 	<script src="../../resources/persianTOeng/latin2Arabic.jquery.js"></script>
+<script>
+$(function() {
+	var adad=document.getElementById("nm1").innerHTML;
+    var numbers = $.latin2Arabic.toArabic(adad);
+    $( "#nm1" ).html(numbers);
+});
+</script> -->
+<script src="../../resources/numtoper/plugins/numbers/persianumber.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.demo').persiaNumber();
+    });
+</script>
+</body>
+</html>

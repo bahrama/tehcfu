@@ -1,0 +1,181 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+	<style type="text/css">
+.ui-datatable .ui-datatable-header {
+	text-align: right !important;
+}
+
+.ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox {
+	display: none;
+}
+</style>
+	<script type="text/javascript">
+    PrimeFaces.locales['es'] = {
+        closeText: 'Cerrar',
+        prevText: 'Anterior',
+        nextText: 'Siguiente',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+        dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+        weekHeader: 'Semana',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        timeOnlyTitle: 'Sólo hora',
+        timeText: 'Tiempo',
+        hourText: 'Hora',
+        minuteText: 'Minuto',
+        secondText: 'Segundo',
+        currentText: 'Fecha actual',
+        ampm: false,
+        month: 'Mes',
+        week: 'Semana',
+        day: 'Día',
+        allDayText: 'Todo el día'
+    };
+    PrimeFaces.locales ['de'] = {
+        closeText: 'Schließen',
+        prevText: 'Zurück',
+        nextText: 'Weiter',
+        monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember' ],
+        monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ],
+        dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+        dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+        dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+        weekHeader: 'Woche',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix:'',
+        timeOnlyTitle: 'Nur Zeit',
+        timeText: 'Zeit',
+        hourText: 'Stunde',
+        minuteText: 'Minute',
+        secondText: 'Sekunde',
+        currentText: 'Aktuelles Datum',
+        ampm: false,
+        month: 'Monat',
+        week: 'Woche',
+        day: 'Tag',
+        allDayText: 'Ganzer Tag'
+    };
+</script>
+
+	<script type="text/javascript">
+    //<![CDATA[
+    function dateTemplateFunc(date) {
+        return '<span style="background-color:' + ((date.day < 21 && date.day > 10) ? '#81C784' : 'inherit') + ';border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">' + date.day + '</span>';
+    }
+    //]]>
+</script>
+
+	<style type="text/css">
+.value {
+	font-weight: bold;
+}
+</style>
+
+	<h:form id="form" enctype="multipart/form-data" acceptcharset="UTF-8">
+		<p:growl id="growl" showDetail="true" sticky="true" />
+		<p:messages id="messages" />
+
+		<p:dataTable id="tableStateDT" var="blogs"
+			value="#{editMachine.findAllMachine()}" widgetVar="carsTable"
+			multiViewState="true" rows="10" paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single"
+			selection="#{editMachine.machineEntity}" rowKey="#{blogs.machineId}"
+			emptyMessage="No cars found with given criteria">
+
+			<f:facet name="header">
+				<p:outputPanel>
+					<h:outputText value="Search all fields:" />
+					<p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()"
+						style="width:150px" placeholder="Enter keyword" />
+				</p:outputPanel>
+			</f:facet>
+
+			<p:ajax event="rowSelect" update=":form:carDetail"
+				oncomplete="PF('carDialog').show()" />
+
+			<p:column headerText="شماره" filterBy="#{blogs.machineId}"
+				sortBy="#{blogs.machineId}" filterMatchMode="exact">
+				<h:outputText value="#{blogs.machineId}" />
+			</p:column>
+
+			<p:column headerText="نام" filterBy="#{blogs.machine.sellerName}"
+				sortBy="#{blogs.machine.sellerName}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.machine.sellerName}" />
+			</p:column>
+
+			<p:column headerText="موبایل" filterBy="#{blogs.machine.mobile}"
+				sortBy="#{blogs.machine.mobile}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.machine.mobile}" />
+			</p:column>
+
+		</p:dataTable>
+		<p:dialog header="Car Info" widgetVar="carDialog" modal="true"
+			showEffect="fade" hideEffect="fade" resizable="false">
+			<p:outputPanel id="carDetail" style="text-align:center;">
+				<p:panelGrid columns="2"
+					rendered="#{not empty editMachine.machineEntity}"
+					columnClasses="label,value">
+
+
+					<h:outputText value="Id:" />
+					<h:outputText value="#{editMachine.machineEntity.machineId}" />
+
+
+					<h:outputText value="برند" />
+					<h:outputText
+						value="#{editMachine.machineEntity.brand}" />
+
+
+					<h:outputText value="کشور" />
+					<h:outputText value="#{editMachine.machineEntity.contry}" />
+					
+										<h:outputText value="مبلغ فروش" />
+					<h:outputText value="#{editMachine.machineEntity.mablag}" />
+					
+										<h:outputText value="نام ماشین" />
+					<h:outputText value="#{editMachine.machineEntity.machineName}" />
+					
+										<h:outputText value="محل فروش" />
+					<h:outputText value="#{editMachine.machineEntity.mahaleForosh}" />
+					
+										<h:outputText value="مشخصات" />
+					<h:outputText value="#{editMachine.machineEntity.moshakhasat}" />
+					
+										<h:outputText value="سال تولید" />
+					<h:outputText value="#{editMachine.machineEntity.saleTolid}" />
+					
+															<h:outputText value="وضعیت" />
+					<h:outputText value="#{editMachine.machineEntity.vaziat}" />
+
+					
+
+					<h:outputText value="تاییدیه" />
+					<h:outputText value="#{editMachine.machineEntity.taeed}" />
+
+					<h:outputText value="تایید شود:" />
+                    <h:selectBooleanCheckbox value="#{editMachine.taeed}" />
+
+					<h:commandButton action="#{editMachine.updateMachine()}" value="update" />
+
+				</p:panelGrid>
+			</p:outputPanel>
+		</p:dialog>
+
+	</h:form>
+</ui:composition>
+
