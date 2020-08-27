@@ -1,6 +1,7 @@
 pipeline{
 agent any
-steps {
+
+stages {
 stage('Checkout') {
 steps {
 git 'https://github.com/bahrama/tehcfu.git'
