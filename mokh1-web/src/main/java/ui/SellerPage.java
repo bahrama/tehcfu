@@ -10,12 +10,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 import javax.validation.constraints.Size;
 
@@ -52,6 +58,8 @@ public class SellerPage implements Serializable{
 	private HttpSession session;
 	@Inject
 	private MessageServiceLocal messageServiceLocal;
+	@Resource(name = "java:jboss/mail/Default")
+    private Session sessionSend;
 	
 	private MoblEntity sellerx=new MoblEntity();
 	
@@ -192,6 +200,34 @@ public class SellerPage implements Serializable{
 		
 
 	}
+	
+	public void actBoss() {
+        try {
+        Message message = new MimeMessage(sessionSend);
+	    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("ali_alikhahasl@yahoo.com"));
+	    message.setSubject("پیام از سایت");
+	    String msgk=new String();
+		msgk+="<html>";
+		msgk+="<title>";
+		msgk+="<meta Content-Type:'text/html' charset='utf-8'/>";
+		msgk+="</title>";
+		msgk+="<body>";
+		msgk+="<p style=\"text-align:right; margin:30px;\"> فرستنده : " +"<b style=\"font-size:18px;\">" + sellerServiceLocal.findSellerByMobile(session.getAttribute("mobile").toString()).getSellerName() + "</b>" +"</p>";
+		msgk+="<p style=\"text-align:right; margin:30px;\"> شماره موبایل :"+"<b style=\"font-size:18px;\">" + session.getAttribute("mobile").toString() +"</b>" +"</p>";
+		msgk+="<p style=\"text-align:right; margin:30px;\"> پیام:"+"<b style=\"font-size:18px;\">" + this.messagePage +"</b>" + "</p>";
+		msgk+="</body>";
+		msgk+="</html>";
+	    message.setContent(msgk,"text/html; charset=UTF-8");
+	    Transport.send(message);
+	    facesContext.getPartialViewContext().getEvalScripts().add("swal({title: 'موفق!',type: 'success', text: 'پیام شما با موفقیت ثبت گردید.', confirmButtonColor: '#469408',})");
+		} catch (Exception e) {
+			//e.printStackTrace();
+			 facesContext.getPartialViewContext().getEvalScripts().add("swal({title: 'ناموفق!',type: 'error', text: 'برای ثبت پیام اول وارد سایت شوید', confirmButtonColor: '#469408',})");
+		}
+	}
+	
+	
+	
 	
 	public String convertTagdir() throws Exception{
         try {
