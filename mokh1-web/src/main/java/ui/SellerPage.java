@@ -204,7 +204,8 @@ public class SellerPage implements Serializable{
 	public void actBoss() {
         try {
         Message message = new MimeMessage(sessionSend);
-	    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("ali_alikhahasl@yahoo.com"));
+	    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("abasi.tehcfu@gmail.com"));
+          //  message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("ali_alikhahasl@yahoo.com"));
 	    message.setSubject("پیام از سایت");
 	    String msgk=new String();
 		msgk+="<html>";
