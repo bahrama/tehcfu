@@ -61,6 +61,7 @@ public class SellerPage implements Serializable{
 	@Resource(name = "java:jboss/mail/Default")
     private Session sessionSend;
 	
+	
 	private MoblEntity sellerx=new MoblEntity();
 	
 	ProductEntity productEntityX=new ProductEntity();
@@ -69,6 +70,8 @@ public class SellerPage implements Serializable{
 	
 	@Size(max=5000)
 	private String messagePage;
+	@Size(max=100)
+	private String messageSender;
 	
 	public MoblEntity getSellerx() {
 		return sellerx;
@@ -102,6 +105,16 @@ public class SellerPage implements Serializable{
 
 	public void setMessagePage(String messagePage) {
 		this.messagePage = messagePage;
+	}
+	
+	
+
+	public String getMessageSender() {
+		return messageSender;
+	}
+
+	public void setMessageSender(String messageSender) {
+		this.messageSender = messageSender;
 	}
 
 	public MoblEntity findSeller(String sellerStoreEng) throws Exception{
@@ -213,8 +226,8 @@ public class SellerPage implements Serializable{
 		msgk+="<meta Content-Type:'text/html' charset='utf-8'/>";
 		msgk+="</title>";
 		msgk+="<body>";
-		msgk+="<p style=\"text-align:right; margin:30px;\"> فرستنده : " +"<b style=\"font-size:18px;\">" + sellerServiceLocal.findSellerByMobile(session.getAttribute("mobile").toString()).getSellerName() + "</b>" +"</p>";
-		msgk+="<p style=\"text-align:right; margin:30px;\"> شماره موبایل :"+"<b style=\"font-size:18px;\">" + session.getAttribute("mobile").toString() +"</b>" +"</p>";
+		msgk+="<p style=\"text-align:right; margin:30px;\"> فرستنده : " +"<b style=\"font-size:18px;\">" + this.messageSender + "</b>" +"</p>";
+		/*msgk+="<p style=\"text-align:right; margin:30px;\"> شماره موبایل :"+"<b style=\"font-size:18px;\">" + session.getAttribute("mobile").toString() +"</b>" +"</p>";*/
 		msgk+="<p style=\"text-align:right; margin:30px;\"> پیام:"+"<b style=\"font-size:18px;\">" + this.messagePage +"</b>" + "</p>";
 		msgk+="</body>";
 		msgk+="</html>";
