@@ -3042,6 +3042,7 @@ public class HomeBean implements Serializable {
 	}
 
 	public List<BlogEntity> findAllPassage() {
+		try{
         blogEntities.clear();
 		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
 			if (blogEntity.getBlogType().equals("مجتمع تجاری")) {
@@ -3049,7 +3050,10 @@ public class HomeBean implements Serializable {
 			}
 		}
 		return blogEntities;
-	}
+		}catch(Exception ee){
+		return null;
+		}
+		}
 
 	public byte[] findPassagePic(BlogEntity blogEntity) {
 		try {
