@@ -91,6 +91,7 @@ public class NewsPage implements Serializable{
 
 	@PostConstruct
 	public void start() {
+		try{
     	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
 		if(blogEntity.getBlogType().equals("خبر"))
 			blogEntities.add(blogEntity);
@@ -114,6 +115,9 @@ public class NewsPage implements Serializable{
 	Collections.reverse(blogEntitiesGM);
 	Collections.reverse(blogEntitiesML);
 	Collections.reverse(blogEntitiesSH);
+		}catch(Exception e){
+		//////
+		}
 	}
 	
 	
