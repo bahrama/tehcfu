@@ -91,29 +91,43 @@ public class NewsPage implements Serializable{
 
 	@PostConstruct
 	public void start() {
+		try{
     	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
 		if(blogEntity.getBlogType().equals("خبر"))
 			blogEntities.add(blogEntity);
 	}
+					}catch(Exception e){
+		//////
+		}
+		try{
     	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
 		if(blogEntity.getBlogType().equals("مناسبت شمسی"))
 			blogEntitiesSH.add(blogEntity);
 	}
-    	
+    						}catch(Exception e){
+		//////
+		}
+	try{	
     	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
 		if(blogEntity.getBlogType().equals("مناسبت قمری"))
 			blogEntitiesGM.add(blogEntity);
 	}
-    	
+	    						}catch(Exception e){
+		//////
+		}	
+    	try{
     	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
 		if(blogEntity.getBlogType().equals("مناسبت میلادی"))
 			blogEntitiesML.add(blogEntity);
 	}
-    
+    	    						}catch(Exception e){
+		//////
+		}
 	Collections.reverse(blogEntities);
 	Collections.reverse(blogEntitiesGM);
 	Collections.reverse(blogEntitiesML);
 	Collections.reverse(blogEntitiesSH);
+
 	}
 	
 	
