@@ -2984,17 +2984,6 @@ public class HomeBean implements Serializable {
 		this.moblEntity=sellerServiceLocal.findSellerByToken(tehcfuCookie);
 		session.setAttribute("mobile" ,moblEntity.getMobile());
 		catchSellerLocal.getOnlineUsers().add(moblEntity);
-		System.err.println(catchSellerLocal.getOnlineUsers().size());
-		System.err.println("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
-		System.err.println(catchSellerLocal.getOnlineUsers().size());
-		System.err.println("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
-		System.err.println(catchSellerLocal.getOnlineUsers().size());
-		System.err.println("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
-		System.err.println(catchSellerLocal.getOnlineUsers().size());
-		System.err.println("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
-		System.err.println(catchSellerLocal.getOnlineUsers().size());
-		System.err.println("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
-		
 		}catch (Exception e) {
 		System.err.println("token not find");
 		}
@@ -3046,7 +3035,7 @@ public class HomeBean implements Serializable {
 		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
 			if (blogEntity.getBlogType().equals("مجتمع تجاری")) {
 				blogEntities.add(blogEntity);
-			}
+				}
 		}
 		return blogEntities;
 	}

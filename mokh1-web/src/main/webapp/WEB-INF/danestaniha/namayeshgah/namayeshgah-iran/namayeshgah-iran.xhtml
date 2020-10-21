@@ -21,7 +21,7 @@
 		<div class="row margin-top-20">
 			<ui:repeat var="nam"
 				value="#{namayeshgahDetailPage.checkNamayeshgah(Type)}">
-				<div class="col-md-6" style="width: 45%; margin: 10px;">
+				<div class="col-md-6 col-xd-6" style="margin: 10px;">
 					<div class="card-content">
 						<div class="card-img">
 							<o:graphicImage
@@ -35,8 +35,8 @@
 									<td colspan="2">#{nam.name}</td>
 								</tr>
 								<tr>
-									<td>#{nam.country} : کشور</td>
-									<td>#{nam.city} : شهر</td>
+									<td>کشور : #{nam.country} </td>
+									<td> شهر : #{nam.city}</td>
 								</tr>
 								<tr style="direction: rtl;">
 									<td colspan="2">#{nam.tarikh}</td>
@@ -52,12 +52,20 @@
 									<td>#{nam.phoneModirNazer} : تلفن مدیر ناظر</td>
 								</tr>
 								<tr>
-									<td style="direction: rtl;">: تلفن #{nam.phone} </td>
-									<td style="direction: rtl;">: فکس #{nam.fax} </td>
+									<td style="direction: rtl;">تلفن : #{nam.phone} </td>
+									<td style="direction: rtl;">فکس : #{nam.fax} </td>
 								</tr>
 								<tr>
-									<td>#{nam.site} : سایت</td>
-									<td>#{nam.email} : ایمیل</td>
+									<td>
+									 : سایت
+									 <br/>
+									#{nam.site}
+									</td>
+									<td>
+									: ایمیل
+									<br/>
+									#{nam.email} 
+									</td>
 								</tr>
 							</table>
 						</div>
