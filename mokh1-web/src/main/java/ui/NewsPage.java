@@ -115,10 +115,10 @@ public class NewsPage implements Serializable{
 			blogEntitiesML.add(blogEntity);
 	}
     	    						
-	Collections.reverse(blogEntities);
-	Collections.reverse(blogEntitiesGM);
-	Collections.reverse(blogEntitiesML);
-	Collections.reverse(blogEntitiesSH);
+//	Collections.reverse(blogEntities);
+//	Collections.reverse(blogEntitiesGM);
+//	Collections.reverse(blogEntitiesML);
+//	Collections.reverse(blogEntitiesSH);
 
 	}
 	
