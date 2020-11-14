@@ -63,8 +63,8 @@ map.on('click', function(e) {
 //			.addTo(map);
 	lt = e.latlng['lat'];
 	lg = e.latlng['lng'];
-	document.getElementById("frm:latxt").value=lt;
-	document.getElementById("frm:lngtxt").value=lg;
+	document.getElementById("latxt").value=lt;
+	document.getElementById("lngtxt").value=lg;
 //	xhr.open("get", "map.xhtml?lat=" + lt + "&lng=" + lg + "&raste=" + slct,
 //			true);
 //	xhr.send();

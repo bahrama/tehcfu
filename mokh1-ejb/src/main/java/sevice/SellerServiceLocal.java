@@ -27,4 +27,6 @@ public interface SellerServiceLocal {
 
 	List<MoblEntity> findSellersByPanel(String panel) throws Exception;
 
+	List<MoblEntity> findSellerByNamePerLike(String nameper) throws Exception;
+
 }

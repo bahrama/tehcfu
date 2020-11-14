@@ -19,4 +19,6 @@ public interface BlogServiceLocal {
 
 	void deleteBlog(BlogEntity blogEntity);
 
+	List<BlogEntity> findBlogByName(String blogText) throws Exception;
+
 }

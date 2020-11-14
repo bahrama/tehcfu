@@ -4,6 +4,29 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	
+	 	<script>
+		kamaDatepicker('id145', { buttonsColor: "red" });
+		kamaDatepicker('id1451', { buttonsColor: "red" });
+		kamaDatepicker('id21121', { buttonsColor: "red" });
+		kamaDatepicker('id211212', { buttonsColor: "red" });
+		var customOptions = {
+			placeholder: "روز / ماه / سال"
+			, twodigit: false
+			, closeAfterSelect: false
+			, nextButtonIcon: "fa fa-arrow-circle-right"
+			, previousButtonIcon: "fa fa-arrow-circle-left"
+			, buttonsColor: "blue"
+			, forceFarsiDigits: true
+			, markToday: true
+			, markHolidays: true
+			, highlightSelectedDay: true
+			, sync: true
+			, gotoToday: true
+		}
+		
+	</script>
+	
 		<script src="../../resources/leaflet/map2.js"></script>
 		<script src="../../resources/persianTOeng/add-seller.js"></script>
 </ui:composition>

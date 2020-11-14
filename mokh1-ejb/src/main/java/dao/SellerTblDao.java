@@ -113,4 +113,13 @@ public class SellerTblDao implements SellerTblDaoLocal {
     	throw new Exception();
     }
     }
+    
+    @Override
+    public List<MoblEntity> findSellerByNamePerLike(String nameper) throws Exception{
+    	try {
+    	return  entityManager.createNamedQuery("MoblEntity.findsellerStorePerLike").setParameter("v_sellerStorePer","%" + nameper+ "%").getResultList();
+    }catch(Exception exception) {
+    	throw new Exception();
+    }
+    }
 }

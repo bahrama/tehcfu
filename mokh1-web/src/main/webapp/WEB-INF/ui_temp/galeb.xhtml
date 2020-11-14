@@ -92,10 +92,12 @@
 			<i class="fa fa-search white" style="color: white;"></i>
 		</div>
 		<div class="search-box">
-			<form action="#">
-				<input type="text" name="search" />
-				<button type="submit" class="search-submit" style="padding: 0px!important;">جستجو</button>
-			</form>
+			<h:form prependId="false">
+				<!-- <input type="text" name="search" /> -->
+				<h:inputText value="#{searchBean.searchText}" dir="rtl"/>
+				<!-- <button type="submit" class="search-submit" style="padding: 0px!important;">جستجو</button> -->
+				<h:commandButton action="#{searchBean.findAllSearch()}" value="جستجو" class="search-submit" style="padding: 0px!important;"/>
+			</h:form>
 		</div>
 		<div class="hs-user toggle" data-reveal=".user-info">
  <i

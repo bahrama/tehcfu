@@ -29,4 +29,6 @@ public interface SellerTblDaoLocal {
 
 	List<MoblEntity> findSellersByLikeName(String sellerName) throws Exception;
 
+	List<MoblEntity> findSellerByNamePerLike(String nameper) throws Exception;
+
 }

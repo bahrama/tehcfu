@@ -51,6 +51,15 @@ public class BlogDao implements BlogDaoLocal {
     }
     }
     
+    @Override
+    public List<BlogEntity> findBlogByName(String blogText) throws Exception{
+    	try {
+    	return entityManager.createNamedQuery("BlogEntity.findByLike").setParameter("v_blogName","%" +  blogText + "%").getResultList();
+    }catch(Exception exception) {
+    	throw new Exception();
+    }
+    }
+    
     
     @Override
     public void updateBlog(BlogEntity blogEntity) throws Exception{

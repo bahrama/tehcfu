@@ -56,7 +56,10 @@ public class BlogService implements BlogServiceLocal {
     }
     
     
-    
+    @Override
+    public List<BlogEntity> findBlogByName(String blogText) throws Exception{
+    	return blogDaoLocal.findBlogByName(blogText);
+    }
     
     
 }

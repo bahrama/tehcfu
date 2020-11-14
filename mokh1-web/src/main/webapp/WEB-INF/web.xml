@@ -33,6 +33,10 @@
      <param-name>javax.faces.WEBSOCKET_ENDPOINT_PORT</param-name>
      <param-value>8080</param-value>
  </context-param>
+ 	<context-param>
+		<javaee:param-name>primefaces.THEME</javaee:param-name>
+		<javaee:param-value>nova-colored</javaee:param-value>
+	</context-param>
     
  <context-param>
     <param-name>javax.faces.WEBAPP_RESOURCES_DIRECTORY</param-name>

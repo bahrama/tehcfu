@@ -32,7 +32,8 @@ import enums.UserRole;
 @NamedQuery(name = "MoblEntity.findByToken", query = "SELECT i FROM MoblEntity i WHERE i.token=:v_token"),
 @NamedQuery(name = "MoblEntity.findByNameEng", query = "SELECT i FROM MoblEntity i WHERE i.sellerStoreEng=:v_sellerStoreEng"),
 @NamedQuery(name = "MoblEntity.findByPanel", query = "SELECT i FROM MoblEntity i WHERE i.panel=:v_panel"),
-@NamedQuery(name = "MoblEntity.findSellerNameLike", query = "SELECT i FROM MoblEntity i WHERE i.sellerName like :v_sellerName")
+@NamedQuery(name = "MoblEntity.findSellerNameLike", query = "SELECT i FROM MoblEntity i WHERE i.sellerName like :v_sellerName"),
+@NamedQuery(name = "MoblEntity.findsellerStorePerLike", query = "SELECT i FROM MoblEntity i WHERE i.sellerStorePer like :v_sellerStorePer")
 })
 public class MoblEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -138,6 +139,57 @@ public class MoblEntity implements Serializable {
 	
 	@Column(name="vage" , length=200,nullable=true)
 	private String vage;
+	//////////////////////////////////////////
+	@Column(name="malekiat" , length=20,nullable=true)
+	private String malekiat;
+	
+	@Column(name="sabte_sefaresh" , length=20,nullable=true)
+	private String sabteSefaresh;
+	@Column(name="mostajer" ,nullable=true)
+	private boolean mostajer;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="mohlate_ejare",nullable=true)
+	@JsonbTransient
+	private Date mohlateEjare;
+	
+	@Column(name="mostajer_name" , length=100,nullable=true)
+	private String mostajerName;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="mostajer_birthday",nullable=true)
+	@JsonbTransient
+	private Date mostajerBirthday;
+	
+	@Column(name="mostajer_ssn" , length=11,nullable=true)
+	private String mostajerSsn;	
+	
+	@Column(name="mostajer_mobile" , length=11,nullable=true)
+	private String mostajerMobile;
+	@Column(name="shomare_javaz" , length=100,nullable=true)
+	private String shomareJavaz;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="tarikh_etebar",nullable=true)
+	@JsonbTransient
+	private Date tarikhEtebar;
+	@Column(name="has_mobasher" ,nullable=true)
+	private boolean hasMobasher;
+	@Column(name="mobasher_name" , length=100,nullable=true)
+	private String mobasherName;
+	@Column(name="rabet_name" , length=100,nullable=true)
+	private String rabetName;
+	@Column(name="semat_rabet" , length=100,nullable=true)
+	private String sematRabet;	
+	@Column(name="rabet_mobile" , length=11,nullable=true)
+	private String rabetMobile;
+	@Column(name="shabake_mazaji_mobile" , length=11,nullable=true)
+	private String shabakeMazajiMobile;
+	
+	@Column(name="mojtame" , length=100,nullable=true)
+	private String mojtame;
+	
+	
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "shaki")
 	@JsonbTransient
@@ -465,6 +517,158 @@ public class MoblEntity implements Serializable {
 		} else if (!mobile.equals(other.mobile))
 			return false;
 		return true;
+	}
+
+	public String getMalekiat() {
+		return malekiat;
+	}
+
+	public void setMalekiat(String malekiat) {
+		this.malekiat = malekiat;
+	}
+
+	public String getSabteSefaresh() {
+		return sabteSefaresh;
+	}
+
+	public void setSabteSefaresh(String sabteSefaresh) {
+		this.sabteSefaresh = sabteSefaresh;
+	}
+
+	public boolean isMostajer() {
+		return mostajer;
+	}
+
+	public void setMostajer(boolean mostajer) {
+		this.mostajer = mostajer;
+	}
+
+	public Date getMohlateEjare() {
+		return mohlateEjare;
+	}
+
+	public void setMohlateEjare(Date mohlateEjare) {
+		this.mohlateEjare = mohlateEjare;
+	}
+
+	public String getMostajerName() {
+		return mostajerName;
+	}
+
+	public void setMostajerName(String mostajerName) {
+		this.mostajerName = mostajerName;
+	}
+
+	public Date getMostajerBirthday() {
+		return mostajerBirthday;
+	}
+
+	public void setMostajerBirthday(Date mostajerBirthday) {
+		this.mostajerBirthday = mostajerBirthday;
+	}
+
+	public String getMostajerSsn() {
+		return mostajerSsn;
+	}
+
+	public void setMostajerSsn(String mostajerSsn) {
+		this.mostajerSsn = mostajerSsn;
+	}
+
+	public String getMostajerMobile() {
+		return mostajerMobile;
+	}
+
+	public void setMostajerMobile(String mostajerMobile) {
+		this.mostajerMobile = mostajerMobile;
+	}
+
+	public String getShomareJavaz() {
+		return shomareJavaz;
+	}
+
+	public void setShomareJavaz(String shomareJavaz) {
+		this.shomareJavaz = shomareJavaz;
+	}
+
+	public Date getTarikhEtebar() {
+		return tarikhEtebar;
+	}
+
+	public void setTarikhEtebar(Date tarikhEtebar) {
+		this.tarikhEtebar = tarikhEtebar;
+	}
+
+	public boolean isHasMobasher() {
+		return hasMobasher;
+	}
+
+	public void setHasMobasher(boolean hasMobasher) {
+		this.hasMobasher = hasMobasher;
+	}
+
+	public String getMobasherName() {
+		return mobasherName;
+	}
+
+	public void setMobasherName(String mobasherName) {
+		this.mobasherName = mobasherName;
+	}
+
+	public String getRabetName() {
+		return rabetName;
+	}
+
+	public void setRabetName(String rabetName) {
+		this.rabetName = rabetName;
+	}
+
+	public String getSematRabet() {
+		return sematRabet;
+	}
+
+	public void setSematRabet(String sematRabet) {
+		this.sematRabet = sematRabet;
+	}
+
+	public String getRabetMobile() {
+		return rabetMobile;
+	}
+
+	public void setRabetMobile(String rabetMobile) {
+		this.rabetMobile = rabetMobile;
+	}
+
+	public String getShabakeMazajiMobile() {
+		return shabakeMazajiMobile;
+	}
+
+	public void setShabakeMazajiMobile(String shabakeMazajiMobile) {
+		this.shabakeMazajiMobile = shabakeMazajiMobile;
+	}
+
+	public String getMojtame() {
+		return mojtame;
+	}
+
+	public void setMojtame(String mojtame) {
+		this.mojtame = mojtame;
+	}
+
+	public Set<MessageEntity> getMoblmessageFrom() {
+		return moblmessageFrom;
+	}
+
+	public void setMoblmessageFrom(Set<MessageEntity> moblmessageFrom) {
+		this.moblmessageFrom = moblmessageFrom;
+	}
+
+	public Set<MessageEntity> getMoblmessageTo() {
+		return moblmessageTo;
+	}
+
+	public void setMoblmessageTo(Set<MessageEntity> moblmessageTo) {
+		this.moblmessageTo = moblmessageTo;
 	}
 
 	public Set<Shekayat1> getMoblShekayat() {

@@ -14,6 +14,14 @@
 .ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox {
 	display: none;
 }
+    .ui-dialog {
+        position: fixed;
+        padding: 0;
+        overflow: hidden;
+        display: none;
+        height: 400px !important;
+        overflow: scroll;
+    }
 </style>
 	<script type="text/javascript">
     PrimeFaces.locales['es'] = {
@@ -157,7 +165,7 @@
 
 
 		</p:dataTable>
-		<p:dialog header="Car Info" widgetVar="carDialog" modal="true"
+		<p:dialog header="Car Info" widgetVar="carDialog" modal="true" style="height:400px!important;overflow: scroll;"
 			showEffect="fade" hideEffect="fade" resizable="false">
 			<p:outputPanel id="carDetail" style="text-align:center;">
 				<p:panelGrid columns="3"

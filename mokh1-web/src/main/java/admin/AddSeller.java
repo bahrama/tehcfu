@@ -9,6 +9,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,7 +21,10 @@ import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.servlet.http.Part;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -98,8 +104,36 @@ public class AddSeller {
 	private String ssn;
 	
 	private String tagdir;
+///////////////////////////////////////////////
+private String malekiat;
+	
+	private String sabteSefaresh;
+	private String mostajer;
+	private String mohlateEjare;
+	private String mostajerName;
+	private String mostajerBirthday;
+	private String mostajerSsn;	
+	private String mostajerMobile;
+	private String shomareJavaz;
+	private String tarikhEtebar;
+	private String hasMobasher;
+	private String mobasherName;
+	private String rabetName;
+	private String sematRabet;	
+	private String rabetMobile;
+	private String shabakeMazajiMobile;
+	private String mojtame;
+	private String birthDay;
 	
 	
+	
+	
+	public String getBirthDay() {
+		return birthDay;
+	}
+	public void setBirthDay(String birthDay) {
+		this.birthDay = birthDay;
+	}
 	public String getSellerName() {
 		return sellerName;
 	}
@@ -176,6 +210,12 @@ public class AddSeller {
 
 	
 	
+	public String getMohlateEjare() {
+		return mohlateEjare;
+	}
+	public void setMohlateEjare(String mohlateEjare) {
+		this.mohlateEjare = mohlateEjare;
+	}
 	public String getLat() {
 		return lat;
 	}
@@ -288,6 +328,208 @@ public class AddSeller {
 	public void setVage(String vage) {
 		this.vage = vage;
 	}
+
+	public SellerServiceLocal getSellerServiceLocal() {
+		return sellerServiceLocal;
+	}
+	public void setSellerServiceLocal(SellerServiceLocal sellerServiceLocal) {
+		this.sellerServiceLocal = sellerServiceLocal;
+	}
+	public String getMalekiat() {
+		return malekiat;
+	}
+	public void setMalekiat(String malekiat) {
+		this.malekiat = malekiat;
+	}
+	public String getSabteSefaresh() {
+		return sabteSefaresh;
+	}
+	public void setSabteSefaresh(String sabteSefaresh) {
+		this.sabteSefaresh = sabteSefaresh;
+	}
+
+	
+	
+	
+	public String getMostajer() {
+		return mostajer;
+	}
+	public void setMostajer(String mostajer) {
+		this.mostajer = mostajer;
+	}
+
+	public String getMostajerName() {
+		return mostajerName;
+	}
+	public void setMostajerName(String mostajerName) {
+		this.mostajerName = mostajerName;
+	}
+	
+	public String getMostajerBirthday() {
+		return mostajerBirthday;
+	}
+	public void setMostajerBirthday(String mostajerBirthday) {
+		this.mostajerBirthday = mostajerBirthday;
+	}
+	public String getMostajerSsn() {
+		return mostajerSsn;
+	}
+	public void setMostajerSsn(String mostajerSsn) {
+		this.mostajerSsn = mostajerSsn;
+	}
+	public String getMostajerMobile() {
+		return mostajerMobile;
+	}
+	public void setMostajerMobile(String mostajerMobile) {
+		this.mostajerMobile = mostajerMobile;
+	}
+	public String getShomareJavaz() {
+		return shomareJavaz;
+	}
+	public void setShomareJavaz(String shomareJavaz) {
+		this.shomareJavaz = shomareJavaz;
+	}
+	
+	public String getTarikhEtebar() {
+		return tarikhEtebar;
+	}
+	public void setTarikhEtebar(String tarikhEtebar) {
+		this.tarikhEtebar = tarikhEtebar;
+	}
+
+	public String getHasMobasher() {
+		return hasMobasher;
+	}
+	public void setHasMobasher(String hasMobasher) {
+		this.hasMobasher = hasMobasher;
+	}
+	public String getMobasherName() {
+		return mobasherName;
+	}
+	public void setMobasherName(String mobasherName) {
+		this.mobasherName = mobasherName;
+	}
+	public String getRabetName() {
+		return rabetName;
+	}
+	public void setRabetName(String rabetName) {
+		this.rabetName = rabetName;
+	}
+	public String getSematRabet() {
+		return sematRabet;
+	}
+	public void setSematRabet(String sematRabet) {
+		this.sematRabet = sematRabet;
+	}
+	public String getRabetMobile() {
+		return rabetMobile;
+	}
+	public void setRabetMobile(String rabetMobile) {
+		this.rabetMobile = rabetMobile;
+	}
+	public String getShabakeMazajiMobile() {
+		return shabakeMazajiMobile;
+	}
+	public void setShabakeMazajiMobile(String shabakeMazajiMobile) {
+		this.shabakeMazajiMobile = shabakeMazajiMobile;
+	}
+	public String getMojtame() {
+		return mojtame;
+	}
+	public void setMojtame(String mojtame) {
+		this.mojtame = mojtame;
+	}
+	
+	public Date jalali_to_gregorian(int jy, int jm, int jd) {
+		int gy;
+		if (jy > 979) {
+			gy = 1600;
+			jy -= 979;
+		} else {
+			gy = 621;
+		}
+		int days = (365 * jy) + (((int) (jy / 33)) * 8) + ((int) (((jy % 33) + 3) / 4)) + 78 + jd
+				+ ((jm < 7) ? (jm - 1) * 31 : ((jm - 7) * 30) + 186);
+		gy += 400 * ((int) (days / 146097));
+		days %= 146097;
+		if (days > 36524) {
+			gy += 100 * ((int) (--days / 36524));
+			days %= 36524;
+			if (days >= 365)
+				days++;
+		}
+		gy += 4 * ((int) (days / 1461));
+		days %= 1461;
+		if (days > 365) {
+			gy += (int) ((days - 1) / 365);
+			days = (days - 1) % 365;
+		}
+		int gd = days + 1;
+		int[] sal_a = { 0, 31, ((gy % 4 == 0 && gy % 100 != 0) || (gy % 400 == 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31,
+				30, 31, 30, 31 };
+		int gm;
+		for (gm = 0; gm < 13; gm++) {
+			int v = sal_a[gm];
+			if (gd <= v)
+				break;
+			gd -= v;
+		}
+		int[] out = { gy, gm, gd };
+		System.err.println("year:" + gy);
+		System.err.println("month:" + gm);
+		System.err.println("day:" + gd);
+		// Date date=new Date(gy,gm,gd);
+		Calendar calendar = new GregorianCalendar(gy, gm - 1, gd);
+		Date date = new Date();
+		date = calendar.getTime();
+		return date;
+	}
+
+	public Date mohlateEjareChangeDate(String inp) {
+		String test = inp;
+		String arr[] = test.split("/");
+		String ans = "";
+
+		for (String t : arr) {
+			ans += t;
+		}
+		System.err.println(ans);
+		char[] daychar = new char[2];
+		char[] monthchar = new char[2];
+		char[] yearchar = new char[4];
+		ans.getChars(0, 4, yearchar, 0);
+		String yearstr = "";
+		String monthstr = "";
+		String daystr = "";
+		for (char c : yearchar) {
+			yearstr += c;
+		}
+		System.err.println(yearstr);
+
+		ans.getChars(4, 6, monthchar, 0);
+		for (char cc : monthchar) {
+			monthstr += cc;
+		}
+		System.err.println(monthstr);
+
+		ans.getChars(6, 8, daychar, 0);
+		for (char ccc : daychar) {
+			daystr += ccc;
+		}
+		System.err.println(daystr);
+
+		return jalali_to_gregorian(Integer.parseInt(yearstr), Integer.parseInt(monthstr), Integer.parseInt(daystr));
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public void insertSeller() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		try {	
@@ -320,6 +562,24 @@ public class AddSeller {
 		moblEntity.setPic3(this.picture3());
 		moblEntity.setPic4(this.picture4());
 		moblEntity.setTagdirName(this.convertTagdir());
+		/////////////////////////////////////////////////////
+		moblEntity.setMalekiat(malekiat);
+		moblEntity.setSabteSefaresh(sabteSefaresh);
+		moblEntity.setMostajer(Boolean.parseBoolean(mostajer));
+		moblEntity.setMohlateEjare(this.mohlateEjareChangeDate(mohlateEjare));
+		moblEntity.setMostajerName(mostajerName);
+		moblEntity.setMostajerBirthday(this.mohlateEjareChangeDate(mostajerBirthday));
+		moblEntity.setMostajerSsn(mostajerSsn);
+		moblEntity.setMostajerMobile(mostajerMobile);
+		moblEntity.setShomareJavaz(shomareJavaz);
+		moblEntity.setTarikhEtebar(this.mohlateEjareChangeDate(tarikhEtebar));
+		moblEntity.setHasMobasher(Boolean.parseBoolean(hasMobasher));
+		moblEntity.setMobasherName(mobasherName);
+		moblEntity.setRabetName(rabetName);
+		moblEntity.setSematRabet(sematRabet);
+		moblEntity.setRabetMobile(rabetMobile);
+		moblEntity.setShabakeMazajiMobile(shabakeMazajiMobile);
+		moblEntity.setBirthDate(this.mohlateEjareChangeDate(birthDay));
 		sellerServiceLocal.insertSeller(moblEntity);
 		context.addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 		this.aboutUs="";
