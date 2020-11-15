@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui">
+
+	 <article dir="rtl">
+
+        <div class="container gallery-container">
+
+            <h1 class="title">#{creativeDetalPage.findCreativeById(creativeID).name}</h1>
+            <div class="tz-gallery">
+
+                <div class="row">
+
+                    <div class="col-sm-12 col-md-4">
+                        <a class="lightbox" href="#">
+                            <o:graphicImage
+									rendered="#{creativeDetalPage.findCreativePic1() ne null}"
+									value="#{creativeDetalPage.findCreativePic1()}" dataURI="true" />
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <a class="lightbox" href="#">
+                                                       <o:graphicImage
+									rendered="#{creativeDetalPage.findCreativePic2() ne null}"
+									value="#{creativeDetalPage.findCreativePic2()}" dataURI="true" />
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <a class="lightbox" href="#">
+                                                       <o:graphicImage
+									rendered="#{creativeDetalPage.findCreativePic3() ne null}"
+									value="#{creativeDetalPage.findCreativePic3()}" dataURI="true" />
+                        </a>
+                    </div>
+                    <div class="col-sm-12 col-md-8">
+                        <a class="lightbox" href="#">
+                                                       <o:graphicImage
+									rendered="#{creativeDetalPage.findCreativePic4() ne null}"
+									value="#{creativeDetalPage.findCreativePic4()}" dataURI="true" />
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <a class="lightbox" href="#">
+                                                       <o:graphicImage
+									rendered="#{creativeDetalPage.findCreativePic5() ne null}"
+									value="#{creativeDetalPage.findCreativePic5()}" dataURI="true" />
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <a class="lightbox" href="#">
+                                                        <o:graphicImage
+									rendered="#{creativeDetalPage.findCreativePic6() ne null}"
+									value="#{creativeDetalPage.findCreativePic6()}" dataURI="true" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </article>
+
+</ui:composition>

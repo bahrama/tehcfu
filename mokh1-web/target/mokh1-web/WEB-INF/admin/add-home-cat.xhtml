@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<h:form enctype="multipart/form-data" acceptcharset="UTF-8">
+	<rich:messages ajaxRendered="true" />
+		<h:panelGrid columns="3">
+			<rich:validator event="change">
+				<h:outputText value="نوع کتگوری" />
+				<rich:select value="#{addHome.name}" required="true" id="id19">
+					<f:selectItem itemValue="A"
+						itemLabel="اتحادیه صنف درودگران و مبلسازان تهران" />
+					<f:selectItem itemValue="B" itemLabel="لوگو" />
+					<f:selectItem itemValue="C" itemLabel="اسلاید" />
+					<f:selectItem itemValue="D" itemLabel="نزدیکترین ها" />
+					<f:selectItem itemValue="F" itemLabel="اعضای صنفی اتحادیه" />
+					<f:selectItem itemValue="G" itemLabel="نیازمندی ها" />
+					<f:selectItem itemValue="H" itemLabel="تبلیغ" />
+					<f:selectItem itemValue="I" itemLabel="طرح های خلاقانه" />
+					<f:selectItem itemValue="E" itemLabel="خبرنامه نمایشگاهی" />
+					<f:selectItem itemValue="J" itemLabel="دانستنی ها" />
+					<f:selectItem itemValue="M" itemLabel="قوانین حقوقی" />
+					<f:selectItem itemValue="N" itemLabel="قوانین مالیاتی" />
+					<f:selectItem itemValue="P" itemLabel="قوانین تامین اجتماعی" />
+					<f:selectItem itemValue="O" itemLabel="درباره دکوراسیون" />
+					<f:selectItem itemValue="U" itemLabel="آموزش" />
+					<f:selectItem itemValue="T" itemLabel="قانون نظام صنفی" />
+					<f:selectItem itemValue="R" itemLabel="شمسی" />
+					<f:selectItem itemValue="Z" itemLabel="قمری" />
+					<f:selectItem itemValue="X" itemLabel="میلادی" />
+				</rich:select>
+				<rich:message for="id19" ajaxRendered="true" />
+
+				<h:outputText value="عکس" />
+				<h:inputFile id="id20" value="#{addHome.pic}" required="true"
+					requiredMessage="please select shop2Image image" />
+				<rich:message for="id20" ajaxRendered="true" />
+				<h:commandButton value="submit" action="#{addHome.insertHomeCat()}" />
+				<rich:notifyMessages stayTime="2000" nonblocking="true" />
+			</rich:validator>
+			<rich:notifyMessages stayTime="2000" nonblocking="true" />
+		</h:panelGrid>
+	</h:form>
+</ui:composition>
+

@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<h:form id="frm" enctype="multipart/form-data" acceptcharset="UTF-8" prependId="false">
+		<h:messages />
+		<h:panelGrid columns="3">
+
+			<h:outputText value="نام ونام خانوادگی صاحب واحد صنفی" />
+			<h:inputText id="id1" value="#{addSeller.sellerName}"
+				styleClass="inp100" required="true" />
+			<rich:message for="id1" ajaxRendered="true" />
+			<h:outputText value="نام فروشگاه فارسی" />
+			<h:inputText id="id2" value="#{addSeller.sellerStoreNamePer}"
+				styleClass="inp100" required="true" />
+			<rich:message for="id2" ajaxRendered="true" />
+			<h:outputText value="نام فروشگاه انگلیسی" />
+			<h:inputText id="id3" value="#{addSeller.sellerStoreNameEng}"
+				styleClass="inp100" required="true" />
+			<rich:message for="id3" ajaxRendered="true" />
+
+			<h:outputText value="کد ملی" />
+			<h:inputText id="id21" value="#{addSeller.ssn}" styleClass="inp100"
+				required="true" />
+			<rich:message for="id21" ajaxRendered="true" />
+
+			<h:outputText value="موبایل" />
+			<h:inputText id="id22" value="#{addSeller.mobile}"
+				styleClass="inp100" required="true" />
+			<rich:message for="id22" ajaxRendered="true" />
+
+			<h:outputText value="نوع پنل" />
+			<rich:select value="#{addSeller.panel}" id="id19">
+				<f:selectItem itemValue="A" itemLabel="فیروزه ای" />
+				<f:selectItem itemValue="B" itemLabel="طلایی" />
+				<f:selectItem itemValue="C" itemLabel="نقره ای" />
+				<f:selectItem itemValue="D" itemLabel="برنزی" />
+				<f:selectItem itemValue="E" itemLabel="عادی" />
+			</rich:select>
+			<rich:message for="id19" ajaxRendered="true" />
+
+			<h:outputText value="نوع فعالیت" />
+			<h:selectManyCheckbox value="#{addSeller.faaliats}" id="id20"
+				required="true" layout="pageDirection">
+				<f:selectItem itemValue="مبلمان راحتی" itemLabel="مبلمان راحتی" />
+				<f:selectItem itemValue="مبلمان کلاسیک" itemLabel="مبلمان کلاسیک" />
+				<f:selectItem itemValue="مبلمان استیل" itemLabel="مبلمان استیل" />
+				<f:selectItem itemValue="مبلمان فضای باز"
+					itemLabel="مبلمان فضای باز" />
+				<f:selectItem itemValue="مبلمان مدرن" itemLabel="مبلمان مدرن" />
+				<f:selectItem itemValue="مبل تختخواب شو" itemLabel="مبل تختخواب شو" />
+				<f:selectItem itemValue="نهار خوری" itemLabel="نهار خوری" />
+				<f:selectItem itemValue="سرویس خواب" itemLabel="سرویس خواب" />
+				<f:selectItem itemValue="میز تلویزیون" itemLabel="میز تلویزیون" />
+				<f:selectItem itemValue="آینه و کنسول" itemLabel="آینه و کنسول" />
+				<f:selectItem itemValue="قاب عکس" itemLabel="قاب عکس" />
+				<f:selectItem itemValue="میز جلو مبلی یا میز عسلی"
+					itemLabel="میز جلو مبلی یا میز عسلی" />
+				<f:selectItem itemValue="میز اداری" itemLabel="میز اداری" />
+				<f:selectItem itemValue="صندلی اداری" itemLabel="صندلی اداری" />
+				<f:selectItem itemValue="پارتیشن" itemLabel="پارتیشن" />
+				<f:selectItem itemValue="سیسمونی" itemLabel="سیسمونی" />
+				<f:selectItem itemValue="کابینت" itemLabel="کابینت" />
+				<f:selectItem itemValue="دکوراسیون تخصصی"
+					itemLabel="دکوراسیون تخصصی" />
+				<f:selectItem itemValue="دکوراسیون معمولی"
+					itemLabel="دکوراسیون معمولی" />
+				<f:selectItem itemValue="درب های ضد سرقت"
+					itemLabel="درب های ضد سرقت" />
+				<f:selectItem itemValue="درب های چوبی" itemLabel="درب های چوبی" />
+				<f:selectItem itemValue="درب و پنجره" itemLabel="درب و پنجره" />
+				<f:selectItem itemValue="رنگکاری چوب و مصنوعات"
+					itemLabel="رنگکاری چوب و مصنوعات" />
+				<f:selectItem itemValue="منبت کاری" itemLabel="منبت کاری" />
+				<f:selectItem itemValue="کلاف سازی" itemLabel="کلاف سازی" />
+				<f:selectItem itemValue="معرق کاری" itemLabel="معرق کاری" />
+				<f:selectItem itemValue="خاتم کاری" itemLabel="خاتم کاری" />
+				<f:selectItem itemValue="خراطی" itemLabel="خراطی" />
+				<f:selectItem itemValue="رویکوبی" itemLabel="رویکوبی" />
+				<f:selectItem itemValue="نجاری" itemLabel="نجاری" />
+				<f:selectItem itemValue="چوب بری" itemLabel="چوب بری" />
+				<f:selectItem itemValue="اتاق سازی چوبی کامیون"
+					itemLabel="اتاق سازی چوبی کامیون" />
+				<f:selectItem itemValue="پرس کاری چوبی" itemLabel="پرس کاری چوبی" />
+				<f:selectItem itemValue="قالب سازی کفش و غیره"
+					itemLabel="قالب سازی کفش و غیره" />
+				<f:selectItem itemValue="جعبه سازی" itemLabel="جعبه سازی" />
+				<f:selectItem itemValue="تعمیرات" itemLabel="تعمیرات" />
+				<f:selectItem itemValue="جعبه سازی" itemLabel="جعبه سازی" />
+				<f:selectItem itemValue="بوفه" itemLabel="بوفه" />
+				<f:selectItem itemValue="ویترین" itemLabel="ویترین" />
+				<f:selectItem itemValue="صندلی چوبی" itemLabel="صندلی چوبی" />
+				<f:selectItem itemValue="کمد" itemLabel="کمد" />
+				<f:selectItem itemValue="کتابخانه" itemLabel="کتابخانه" />
+				<f:selectItem itemValue="مبلمان اداری" itemLabel="مبلمان اداری" />
+				<f:selectItem itemValue="مجسمه سازی" itemLabel="مجسمه سازی" />
+				<f:selectItem itemValue="دراور" itemLabel="دراور" />
+				<f:selectItem itemValue="جاکفشی" itemLabel="جاکفشی" />
+				<f:selectItem itemValue="مبلمان سنتی" itemLabel="مبلمان سنتی" />
+
+			</h:selectManyCheckbox>
+			<rich:message for="id20" ajaxRendered="true" />
+
+			<h:outputText value="درباره ما" />
+			<h:inputTextarea id="id4" value="#{addSeller.aboutUs}"
+				styleClass="inp100" />
+			<rich:message for="id4" ajaxRendered="true" />
+
+			<h:outputText value="تقدیر نامه ها" />
+			<h:inputTextarea id="id44444" value="#{addSeller.tagdir}"
+				styleClass="inp100" />
+			<rich:message for="id44444" ajaxRendered="true" />
+													<h:outputText value="تاریخ تولد فروشنده" />
+			<h:inputText id="id211212" value="#{addSeller.birthDay}" styleClass="inp100"
+				/>
+			<rich:message for="id211212" ajaxRendered="true" />	
+
+			<h:outputText value="اینستاگرام" />
+			<h:inputText id="id5" value="#{addSeller.instagram}"
+				styleClass="inp100" />
+			<rich:message for="id5" ajaxRendered="true" />
+			<h:outputText value="تلگرام" />
+			<h:inputText id="id6" value="#{addSeller.telegram}"
+				styleClass="inp100" />
+			<rich:message for="id6" ajaxRendered="true" />
+			<h:outputText value="شماره تلفن" />
+			<h:inputText id="id7" value="#{addSeller.phone}" styleClass="inp100" />
+			<rich:message for="id7" ajaxRendered="true" />
+			<h:outputText value="وبسایت" />
+			<h:inputText id="id8" value="#{addSeller.website}"
+				styleClass="inp100" />
+			<rich:message for="id8" ajaxRendered="true" />
+			<h:outputText value="ایمیل" />
+			<h:inputText id="id9" value="#{addSeller.email}" styleClass="inp100" />
+			<rich:message for="id9" ajaxRendered="true" />
+			<h:outputText value="فکس" />
+			<h:inputText id="id10" value="#{addSeller.fax}" styleClass="inp100" />
+			<rich:message for="id10" ajaxRendered="true" />
+			<h:outputText value="نام مدیر فروش" />
+			<h:inputText id="id11" value="#{addSeller.modirForoshName}"
+				styleClass="inp100" />
+			<rich:message for="id11" ajaxRendered="true" />
+			<h:outputText value="شماره مدیر فروش" />
+			<h:inputText id="id12" value="#{addSeller.modirForoshPhone}"
+				styleClass="inp100" />
+			<rich:message for="id12" ajaxRendered="true" />
+			<h:outputText value="آدرس" />
+			<h:inputTextarea id="id13" value="#{addSeller.addres}"
+				styleClass="inp100" />
+			<rich:message for="id13ee" ajaxRendered="true" />
+			<h:outputText value="واقع در" />
+			<h:inputTextarea id="id13ee" value="#{addSeller.vage}"
+				styleClass="inp100" />
+			<rich:message for="id13ee" ajaxRendered="true" />
+			<h:outputText value="کد پستی" />
+			<h:inputText id="id14" value="#{addSeller.postCode}"
+				styleClass="inp100" />
+			<rich:message for="id14" ajaxRendered="true" />
+			
+									<h:outputText value="مالکیت مغازه" />
+			<rich:select value="#{addSeller.malekiat}" id="id191">
+				<f:selectItem itemValue="مالکیت" itemLabel="مالکیت" />
+				<f:selectItem itemValue="سرقفلی" itemLabel="سرقفلی" />
+				<f:selectItem itemValue="اوقافی" itemLabel="اوقافی" />
+				<f:selectItem itemValue="استیجاری" itemLabel="استیجاری" />
+			</rich:select>
+			<rich:message for="id191" ajaxRendered="true" />
+			
+						<h:outputText value="ثبت سفارش از سوی" />
+			<rich:select value="#{addSeller.sabteSefaresh}" id="id190">
+				<f:selectItem itemValue="صاحب پروانه" itemLabel="صاحب پروانه" />
+				<f:selectItem itemValue="مستاجر" itemLabel="مستاجر" />
+			</rich:select>
+			<rich:message for="id190" ajaxRendered="true" />
+			
+								<h:outputText value="مستاجر" />
+			<rich:select value="#{addSeller.sabteSefaresh}" id="id199">
+				<f:selectItem itemValue="true" itemLabel="دارد" />
+				<f:selectItem itemValue="false" itemLabel="ندارد" />
+			</rich:select>
+			<rich:message for="id199" ajaxRendered="true" />	
+			
+						<h:outputText value="مهلت اجاره" />
+			<h:inputText id="id145" value="#{addSeller.mohlateEjare}"
+				styleClass="inp100" />
+			<rich:message for="id145" ajaxRendered="true" />
+			
+									<h:outputText value="نام و نام خانوادگی مستاجر" />
+			<h:inputText id="id1450" value="#{addSeller.mostajerName}"
+				styleClass="inp100" />
+			<rich:message for="id1450" ajaxRendered="true" />
+			
+									<h:outputText value="تاریخ تولد مستاجر" />
+			<h:inputText id="id1451" value="#{addSeller.mostajerBirthday}"
+				styleClass="inp100" />
+			<rich:message for="id1451" ajaxRendered="true" />
+			
+						<h:outputText value="کد ملی مستاجر" />
+			<h:inputText id="id211" value="#{addSeller.mostajerSsn}" styleClass="inp100"
+				/>
+			<rich:message for="id211" ajaxRendered="true" />
+			
+								<h:outputText value="موبایل مستاجر" />
+			<h:inputText id="id2111" value="#{addSeller.mostajerMobile}" styleClass="inp100"
+				/>
+			<rich:message for="id2111" ajaxRendered="true" />	
+			
+											<h:outputText value="شماره جواز" />
+			<h:inputText id="id2112" value="#{addSeller.shomareJavaz}" styleClass="inp100"
+				/>
+			<rich:message for="id2112" ajaxRendered="true" />	
+			
+														<h:outputText value="تاریخ اعتبار" />
+			<h:inputText id="id21121" value="#{addSeller.tarikhEtebar}" styleClass="inp100"
+				/>
+			<rich:message for="id21121" ajaxRendered="true" />	
+			
+											<h:outputText value="مباشر" />
+			<rich:select value="#{addSeller.hasMobasher}" id="id1992">
+				<f:selectItem itemValue="true" itemLabel="دارد" />
+				<f:selectItem itemValue="false" itemLabel="ندارد" />
+			</rich:select>
+			<rich:message for="id1992" ajaxRendered="true" />	
+			
+														<h:outputText value="نام مباشر" />
+			<h:inputText id="id21123" value="#{addSeller.mobasherName}" styleClass="inp100"
+				/>
+			<rich:message for="id21123" ajaxRendered="true" />	
+			
+																	<h:outputText value="نام رابط" />
+			<h:inputText id="id21124" value="#{addSeller.rabetName}" styleClass="inp100"
+				/>
+			<rich:message for="id21124" ajaxRendered="true" />	
+			
+																				<h:outputText value="سمت رابط" />
+			<h:inputText id="id21125" value="#{addSeller.sematRabet}" styleClass="inp100"
+				/>
+			<rich:message for="id21125" ajaxRendered="true" />	
+			
+											<h:outputText value="موبایل رابط" />
+			<h:inputText id="id2133" value="#{addSeller.rabetMobile}" styleClass="inp100"
+				/>
+			<rich:message for="id2133" ajaxRendered="true" />	
+			
+														<h:outputText value="موبایل شبکه مجازی" />
+			<h:inputText id="id2137" value="#{addSeller.shabakeMazajiMobile}" styleClass="inp100"
+				/>
+			<rich:message for="id2137" ajaxRendered="true" />
+			
+			<h:outputText value="مجتمع تجاری" />
+			<rich:select value="#{addSeller.mojtame}" id="id19924">
+				<f:selectItem itemValue="مجتمع ۱" itemLabel="مجتمع ۱" />
+				<f:selectItem itemValue="مجتمع ۲" itemLabel="مجتمع ۲" />
+			</rich:select>
+			<rich:message for="id19924" ajaxRendered="true" />		
+			
+			
+			
+			
+
+			<h:outputText value="عکس بالای صفحه" />
+			<h:inputFile id="id15" value="#{addSeller.sellerPic1}"
+				required="true"
+				requiredMessage="لطفا تصویر محصول با فرمت jpg و حداکثر حجم ۶۰ کیلوبایت وارد نمایید">
+				<f:validator validatorId="validationpkj.ImageValidator" />
+			</h:inputFile>
+			<h:message for="id15" ajaxRendered="true" errorStyle="color:red;" />
+			<h:outputText value="عکس لوگو" />
+			<h:inputFile id="id16" value="#{addSeller.sellerPic2}"
+				required="true"
+				requiredMessage="لطفا تصویر محصول با فرمت jpg و حداکثر حجم ۶۰ کیلوبایت وارد نمایید">
+				<f:validator validatorId="validationpkj.ImageValidator" />
+			</h:inputFile>
+			<h:message for="id16" ajaxRendered="true" errorStyle="color:red;" />
+			<h:outputText value="عکس درباره ما و سه بعدی برای پنل فیروزه ای" />
+			<h:inputFile id="id17" value="#{addSeller.sellerPic3}"
+				required="true"
+				requiredMessage="لطفا تصویر محصول با فرمت jpg و حداکثر حجم ۶۰ کیلوبایت وارد نمایید">
+				<f:validator validatorId="validationpkj.ImageValidator" />
+			</h:inputFile>
+			<h:message for="id17" ajaxRendered="true" errorStyle="color:red;" />
+			<h:outputText value="عکس گواهینامه" />
+			<h:inputFile id="id18" value="#{addSeller.sellerPic4}"
+				required="true"
+				requiredMessage="لطفا تصویر محصول با فرمت jpg و حداکثر حجم ۶۰ کیلوبایت وارد نمایید">
+				<f:validator validatorId="validationpkj.ImageValidator" />
+			</h:inputFile>
+			<h:message for="id18" ajaxRendered="true" errorStyle="color:red;" />
+			<h:outputText value="مختصات" />
+			<h:commandButton value="Call the popup">
+				<rich:componentControl target="popup" operation="show" />
+			</h:commandButton>
+			<h:outputText value="" />
+			<h:inputText value="#{addSeller.lat}" id="latxt" required="true" />
+			<h:inputText value="#{addSeller.lng}" id="lngtxt" required="true" />
+			<h:outputText value="" />
+			<h:commandButton value="submit" action="#{addSeller.insertSeller()}" />
+		</h:panelGrid>
+		<rich:popupPanel id="popup" modal="false" autosized="true"
+			resizeable="false">
+			<f:facet name="header">
+				<h:outputText value="Simple popup panel" />
+			</f:facet>
+			<f:facet name="controls">
+				<h:outputLink value="#"
+					onclick="#{rich:component('popup')}.hide(); return false;"
+					style="color: inherit">
+                X
+            </h:outputLink>
+			</f:facet>
+			<p>map</p>
+
+			<div id="map" style="position: absolute;"></div>
+
+
+		</rich:popupPanel>
+
+	</h:form>
+
+</ui:composition>

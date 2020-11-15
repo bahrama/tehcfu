@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	
+  <!-- Page Title -->
+   <title>#{title}</title>
+<style>
+
+        /*requirements*/
+        .panels h1{
+            border-bottom: 2px solid #0B59AA;
+            padding-bottom: 10px;
+        }
+        .a{
+            font-size: 17px;
+            font-family: IRANSansBold;
+            color: #0d0d0d;
+        }
+        .panels img{
+            border: 2px solid lightgray;
+            border-radius: 10px;
+            width: 100%;
+        }
+        .a:hover{
+            text-decoration: none;
+            color: #0B59AA;
+        }
+        .font{
+
+            font-family: IRANSansBold;
+        }
+        .panels i{
+            color: #0B59AA;
+        }
+        .panels p{
+            font-family: IRANSansNor;
+            font-weight: 600;
+            font-size: 16px;
+            padding-top: 15px;
+        }
+        .hvr:hover{
+            color: #0B59AA;
+            transition: 0.5s;
+        }
+        .over{
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .dFlex{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        @media only screen and (max-width: 767px){
+            #silver , #bronze{
+                margin-top: 20px;
+            }
+
+        }
+        @media only screen and (max-width: 1024px){
+            .a {
+                font-size: 14px !important;
+            }
+        }
+        @media only screen and (min-width: 768px) and (max-width: 1024px){
+            .mrg1{
+                margin-right: 70px !important;
+                margin-left: 70px !important;
+            }
+            .mrg2{
+                margin-right: 5px !important;
+                margin-left: 0px !important;
+            }
+        }
+        @media only screen and (min-width: 573px) and (max-width: 586px){
+            .a{
+                font-size: 20px !important;
+            }
+        }
+        @media only screen and (width: 1024px){
+            .mrg1{
+                padding-left: 20px !important;
+            }
+        }
+
+    </style>
+</ui:composition>

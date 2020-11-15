@@ -1,0 +1,102 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui" xmlns:p="http://primefaces.org/ui">
+
+	<article dir="rtl" class="margin-top-75 container">
+
+		<div class="our-blog" dir="rtl">
+			<div class="container text-center">
+				<div class="row margin-top-40">
+
+
+
+					<div class="col-md-12 wow zoomInUp" data-wow-delay="0.1s"
+						align="center">
+						<h2 class="myH2">قوانین و مقررات</h2>
+						<p class="myP">۱- این اتحادیه هیچگونه مسوولیتی نسبت به درج
+							آگهی ها ندارد.</p>
+						<hr />
+						<h:form>
+							<p:dataGrid var="rent" layout="grid"
+								value="#{viewRent.findAllVerifiedRent()}" paginator="true"
+								rows="12" columns="1">
+								<p:outputPanel>
+									<p:panel style="text-align:right">
+										<h3>#{rent.rentType}</h3>
+										<p class="myP">
+											<b>مساحت زمین بر حسب متر مربع :</b>#{rent.masahat}
+										</p>
+										<p class="myP">
+											<b>نوع ملک :</b>#{rent.homeType}
+										</p>
+										<p class="myP">
+											<b>واقع در :</b>#{rent.vage}
+										</p>
+										<p class="myP">
+											<b>موقعیت :</b>#{rent.mogeiat}
+										</p>
+										<p class="myP">
+											<b>تعداد طبقات :</b>#{rent.tedadTabage}
+										</p>
+										<p class="myP">
+											<b>تعداد واحد در هر طبقه :</b>#{rent.tedadVahed}
+										</p>
+										<p class="myP">
+											<b>سن بنا :</b>#{rent.senBana}
+										</p>
+										<p class="myP">
+											<b>پروانه کسب :</b>#{rent.parvane}
+										</p>
+										<p class="myP">
+											<b>وضعیت سند :</b>#{rent.vaziatSanad}
+										</p>
+
+										<p class="myP">
+											<b>مبلغ ودیعه (ریال) :</b>#{rent.vadieeMoney}
+										</p>
+										<p class="myP">
+											<b>مبلغ اجاره (ریال) :</b>#{rent.ejareMony}
+										</p>
+										<p class="myP">
+											<b>مبلغ فروش (ریال) :</b>#{rent.mablageForosh}
+										</p>
+										<p class="myP">
+											<b>تلفن تماس بابت هماهنگی :</b>#{rent.phone}
+										</p>
+										<p class="myP">
+											<b>توضیحات :</b>#{rent.description}
+										</p>
+										<p class="myP">
+											<b>آگهی دهنده :</b>#{rent.renter.sellerName}
+										</p>
+										<p class="myP">
+											<b>تاریخ درخواست :</b>#{viewRent.findPersianDate(rent.date)}
+										</p>
+										<p class="myP">
+											<b>آدرس ملک :</b>#{rent.address}
+										</p>
+									</p:panel>
+								</p:outputPanel>
+							</p:dataGrid>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<h:button outcome="/pages/panel_seller/rent.xhtml" value="ثبت آگهی"
+				style="width: 200px;text-align: center;
+margin-top: 10px;
+margin-right: 20px;
+margin-bottom:10px;
+background:red;
+font-size: 20px;
+height: 50px;font-family: IRANSansBold !important; color:white;"></h:button>
+		</div>
+	</article>
+
+
+</ui:composition>
+

@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui">
+<style>
+        /*Start Form*/
+        .cntr{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .form-group select{
+            -webkit-appearance: menulist;
+            width: 100%;
+            height: 30px;
+            font-family: IRANSansNor;
+        }
+        .form-group textarea{
+            width: 100%;
+        }
+        .form-group .btn{
+            background-color: #0B59AA;
+            float: left;
+            margin-top: 20px;
+        }
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: lightgray !important;
+            opacity: 1; /* Firefox */
+        }
+
+        :-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: lightgray !important;
+        }
+
+        ::-ms-input-placeholder { /* Microsoft Edge */
+            color: lightgray !important;
+        }
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        @media only screen and (max-width: 768px){
+
+            .form-group label{
+                margin-bottom: 10px;
+            }
+        }
+        .text-right{
+            text-align: right;
+        }
+        .address{
+            background-color: #dae5fc;
+            padding: 20px;
+            font-family: IRANSansNor !important;
+            text-align: center;
+            border: #0b59aa solid;
+
+        }
+        .address p{
+            font-family: IRANSansBold;
+            text-align: center;
+            font-size: 11px;
+        }
+        .thead{
+            font-family: IRANSansBold;
+            line-height: 30px !important;
+        }
+        .address{
+            background-color: #dae5fc;
+            padding: 20px;
+
+
+        }
+        .address p{
+            font-family: IRANSansBold;
+        }
+        .bg{
+            background-color: rgba(11, 89, 170, .9);
+            color: white;
+        }
+
+        .title{
+            font-family: IRANSansBold;
+            font-size: 16px;
+            color: darkred;
+            padding: 20px;
+            display: inline-block;
+        }
+        .container td {
+            font-weight: 600;
+            line-height: 26px !important;
+        }
+        .btn-success {
+            color: #fff;
+            background-color: #fc0345;
+            border-color: darkblue;
+            font-weight: 600;
+        }
+        .btn{
+            border-color: darkblue !important;
+        }
+        .bg th{
+            text-align: center;
+            font-size: 13px;
+        }
+        .T1 tr td{
+            text-align: right;
+        }
+        .table tbody td{
+            text-align: right;
+
+        }
+        .button{
+            font-family: IRANSansBold;
+            color: darkred;
+            font-size: 13px;
+            line-height: 25px;
+        }
+        button{
+            background-color: white !important;
+            padding: 10px;
+            border-color: #0B59AA;
+            text-align: center;
+        }
+        .num{
+            text-align: center !important;
+            width: 50px;
+            background-color: #dae5fc;
+        }
+    </style>
+ <article dir="rtl" class="margin-top-75 container">
+
+    <div class="container">
+        <div style="background-color: white ; padding: 10px; border: 1px solid lightgray; border-radius: 5px ; margin-top: 20px">
+            <div class="text-center">
+                <h1 class="title"> تمدید پروانه کسب</h1>
+            </div>
+            <table dir="rtl" class="table table-bordered T1">
+                <tbody><tr class="bg">
+                    <th colspan="2" class="thead">مدارک موردنیاز جهت تمدید پروانه کسب</th>
+                </tr>
+                <tr>
+                    <td class="num">۱</td>
+                    <td>  اصل جواز کسب</td>
+                </tr>
+                <tr>
+                    <td class="num">۲</td>
+                    <td>    کپی شناسنامه </td>
+                </tr>
+                <tr>
+                    <td class="num">۳</td>
+                    <td> کپی کارت ملی</td>
+                </tr>
+
+                <tr>
+                    <td class="num">4</td>
+                    <td> تائیدیه کدپستی از اداره پست</td>
+                </tr>
+                <tr>
+                    <td class="num">5</td>
+                    <td>  آخرین فیش پرداخت مالیات 96 یا اظهارنامه 97</td>
+                </tr>
+                <tr>
+                    <td class="num">6</td>
+                    <td>    یک عدد عکس 4*3 جدید </td>
+                </tr>
+                <tr>
+                    <td class="num">7</td>
+                    <td> سن بالای 70 سال از پرداخت کلاس معاف است </td>
+                </tr>
+                <tr>
+                    <td class="num">8</td>
+                    <td>  ثبت نام در سایت اتحادیه</td>
+                </tr>
+                <tr>
+                    <td class="num">9</td>
+                    <td>  ثبت نام در سایت ایرانیان اصناف</td>
+                </tr>
+                <tr>
+                    <td class="num">10</td>
+                    <td>   ثبت نام در سایت اتاق اصناف تهران بابت کلاس آموزشی</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="address">
+                <h5>همکاران واحد اداری :</h5> <br/>
+                <p>آقای رسولی | خانم مرادیان</p> <br/>
+
+        </div>
+        </div></div>
+</article>
+</ui:composition>
+

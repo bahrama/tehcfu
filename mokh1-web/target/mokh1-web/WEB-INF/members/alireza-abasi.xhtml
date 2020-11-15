@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+
+	<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<script>
+    jsf.ajax.addOnEvent(function(data) {
+        var ajaxstatus = data.status; // Can be "begin", "complete" and "success"
+        var ajaxloader = document.getElementById("ajaxloader");
+
+        switch (ajaxstatus) {
+            case "begin": // This is called right before ajax request is been sent.
+                ajaxloader.style.display = 'block';
+                break;
+
+            case "complete": // This is called right after ajax response is received.
+                ajaxloader.style.display = 'none';
+                break;
+
+            case "success": // This is called when ajax response is successfully processed.
+                // NOOP.
+                break;
+        }
+    });
+</script>
+<img id="ajaxloader" src="../../resources/galeb2/image/loading50.gif" style="display: none; width: 100%;height: 100%;position: fixed; z-index: 1900;" />
+<article dir="rtl" class="margin-top-75 container">
+
+        <div class="container members">
+
+            <!--Header-->
+            <div id="hdr" dir="rtl">
+                <h1 class="header1 hvr-grow">علیرضا عباسی </h1>
+                <h4>ریاست اتحادیه درودگران و مبلسازان تهران </h4>
+            </div>
+
+            <!--Text-->
+            <div class="text">
+                <p dir="rtl">
+                   <!--  <img class="hvr-grow" src="members/abbasi.jpg"/> -->
+                    <h:graphicImage styleClass="hvr-grow" library="members" name="abbasi.jpg"/>
+                    اینجانب علیرضا عباسی ، متولد ۲۸/ ۰۳/ ۱۳۲۸ ، دارای مدرک فوق لیسانس حقوق بین المللی به عنوان رئیس اتحادیه درودگران و مبلسازان تهران در حال فعالیت هستم .
+                    <br/>
+                    امید است با لطف حق تعالی بتوانیم خدمات ارزنده ای را به هم میهنان و اعضای صنف درودگران و مبلسازان تهران عزیز داشته باشیم !
+
+                </p>
+            </div>
+
+            <!--sec1-->
+            <div dir="rtl">
+                <br/>
+                <strong>سوابق آموزشی  :</strong>
+                <br/>
+                <b><i class="fa fa-circle"></i>کاردانی ناپیوسته خدمات مشاور و حقوق صنف .</b><br/>
+                <b><i class="fa fa-circle"></i>کارشناسی ناپیوسته حقوق قضایی .</b><br/>
+                <b><i class="fa fa-circle"></i>کارشناسی ارشد حقوق بین الملل .</b><br/>
+                <b><i class="fa fa-circle"></i>گواهینامه پایان دوره مرکز آموزش بازرگانی .</b><br/>
+            </div>
+
+            <!--sec2-->
+            <div dir="rtl">
+                <br/>
+                <strong>سوابق فعالیت های اجرایی :</strong>
+                <br/>
+                <b><i class="fa fa-circle"></i>تاسیس و مدیریت کلکسیون مبل پایتخت .</b><br/>
+                <b><i class="fa fa-circle"></i>بازرس قانونی شرکت تعاونی درودگران و مبلسازان تهران در سال ۱۳۵۶ .</b><br/>
+                <b><i class="fa fa-circle"></i>عضو هیئت مدیره ، رئیس هیئت مدیره و مدیرعامل شرکت تعاونی درودگران و مبلسازان تهران از سال ۱۳۵۷ لغایت ۱۳۶۵ .</b><br/>
+                <b><i class="fa fa-circle"></i>عضو هیئت مدیره ، رئیس هیئت مدیره و دبیر اتحادیه صنف درودگران و مبلسازان تهران از سال ۱۳۶۵ لغایت ۱۳۹۲ .</b><br/>
+                <b><i class="fa fa-circle"></i>عضو کمیته پنج نفره برگزار کننده نمایشگاه های بین المللی اداره محصولات وزارت بازرگانی در سال ۱۳۶۴ .</b><br/>
+                <b><i class="fa fa-circle"></i>عضو هیئت مدیره ، دبیر و نایب رئیس هیئت مدیره و رئیس کمیسیون حقوقی اتحادیه تولید کنندگان و صادرکنندگان مبلمان ایران از سال ۱۳۹۷ لغایت ۱۳۹۸ .</b><br/>
+                <b><i class="fa fa-circle"></i>نماینده اتاق اصناف تهران در شعبه دهم تعزیرات حکومتی استان تهران سال های ۱۳۹۳ و ۱۳۹۴ .</b><br/>
+                <b><i class="fa fa-circle"></i>مدیر دوم شعبه ۸۳۱ شورای حل اختلاف منطقه ۱۷ تهران .</b><br/>
+                <b><i class="fa fa-circle"></i>مدیر گروه های اتحادیه های صنفی سامانه هم اندیشی تشکل های غیر دولتی ایران ، فراکسیون سازمان های مردم نهاد مجلس شورای اسلامی .</b><br/>
+            </div>
+
+            <!--sec3-->
+            <div dir="rtl">
+                <br/>
+                <strong>درحال حاضر :</strong>
+                <br/>
+                <b><i class="fa fa-circle"></i> رئیس اتحادیه صنف درودگران و مبلسازان تهران . </b><br/>
+                <b><i class="fa fa-circle"></i> نایب رئیس اتحادیه تولید کنندگان و صادرکنندگان مبلمان ایران .</b><br/>
+            </div>
+        </div>
+    </article>
+		<div class="container" id="mess">
+			<div class="contact-form">
+				<div class="margin-top-25" dir="rtl">
+					<h:form id="form" enctype="multipart/form-data"
+						acceptcharset="UTF-8">
+						<h2
+							style="font-family: IRANSansBold; font-size: 18px; color: goldenrod; margin-bottom: 20px">ارسال
+							پیام به ریاست اتحادیه</h2>
+						<div class="row">
+							<div class=" col-xs-11" style="padding-right: 0">
+								<div class="form-group text-right">
+									<label style="color: black; padding-bottom: 10px"
+										for="contact-message">نام</label>
+									<h:inputText value="#{sellerPage.messageSender}"
+										name="message" id="contact-message2" class="form-control"
+										a:placeholder="نام خود را وارد نمایید"></h:inputText>
+									<label style="color: black; padding-bottom: 10px"
+										for="contact-message">متن پیام</label>
+									<h:inputTextarea value="#{sellerPage.messagePage}"
+										name="message" id="contact-message" class="form-control"
+										a:placeholder="متن پیام خود را وارد کنید"></h:inputTextarea>
+								</div>
+								<!-- /form-group -->
+								<h:commandButton action="#{sellerPage.actBoss()}" value="ارسال"
+									style="padding: 8px 18px ; color: #0B59AA; border-color: #0B59AA; float: left"
+									styleClass="btn-blue margin-top-5">
+									<f:ajax execute="@form" />
+								</h:commandButton>
+
+							</div>
+							<!-- /column -->
+						</div>
+						<!-- /row -->
+						<div id="ajax-message" class="margin-top-30"></div>
+						<!-- /ajax-message -->
+					</h:form>
+					<!-- /form -->
+				</div>
+				<!-- /column -->
+			</div>
+			<!-- /contact-form -->
+		</div>
+    		<script src="../../resources/PANEL/vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="../../resources/PANEL/dist/js/sweetalert-data.js"></script>
+</ui:composition>
+

@@ -1,0 +1,13 @@
+
+.sticky-toe {
+	cursor:pointer;
+}
+
+.sticky-toe, .sticky-heel {
+	overflow:hidden;
+}
+
+.fix-foot {
+	position:fixed;
+	bottom:0;
+}
