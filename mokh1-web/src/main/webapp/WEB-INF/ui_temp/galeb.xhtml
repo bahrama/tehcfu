@@ -57,15 +57,20 @@
 		<a href="MainPage.html#" class="scroll"> <i
 			class="fa fa-angle-double-up"></i>
 		</a>
-	</div>
+	</div>-->
 
-	<div class="page-loader">
-		<div class="loader">
-			<div class="rect1"></div>
+	<div class="page-loader" style="background-color: cornflowerblue;">
+		<!-- <div class="loader"> -->
+<!-- 			<div class="rect1"></div>
 			<div class="rect2"></div>
-			<div class="rect3"></div>
+			<div class="rect3"></div> -->
+			<div class="test" style="position: relative;top: 150px;">
+	<img class="animate__animated animate__pulse" src="../../resources/loader/logo-new.png"  alt=""/>
+		<p class="credits">سایت اتحادیه درودگران و مبلسازان تهران</p>
+		<h5 class="credits animate__animated animate__flash">در حال بارگذاری</h5>
+<!-- </div> -->
 		</div>
-	</div> -->
+	</div> 
 
 	<div class="wrapper demo">
 
@@ -846,10 +851,26 @@ $(function() {
 });
 </script> -->
 <script src="../../resources/numtoper/plugins/numbers/persianumber.js"></script>
+<script src="../../resources/loader/animated_bg.js"></script>
 <script>
     $(document).ready(function(){
         $('.demo').persiaNumber();
     });
+</script>
+<script>
+	jQuery(document).ready(function(){
+
+		$('.animated_bg2').animatedBG({
+			colorSet: ['#2A76AA', '#0B59AA', '#90E0FF', '#0414AA'],
+			speed: 2000
+		});
+
+		$('.animated_bg3').animatedBG({
+			colorSet: ['#0414AA', '#67A3EE', '#8b9dc1', '#5b6d92', '#2e5cb8', '#4870c1'],
+			speed: 6000
+		});
+
+	});
 </script>
 </body>
 </html>
