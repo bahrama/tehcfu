@@ -18,8 +18,8 @@ public class ImageValidator implements Validator{
 			 
 		        try {
 		        	 
-		            if (file==null || file.getSize()>=60000 || file.getContentType().isEmpty() )
-		                message=new FacesMessage("حجم فایل باید کمتر از ۶۰ کیلو بایت باشد");
+		            if (file==null || file.getSize()>=100000 || file.getContentType().isEmpty() )
+		                message=new FacesMessage("حجم فایل باید کمتر از ۱۰۰ کیلو بایت باشد");
 		            else if ((!file.getContentType().equals("image/jpeg"))) {
 		            	System.err.println(file.getContentType().toString());
 		            	message= new FacesMessage(FacesMessage.SEVERITY_ERROR, "فرمت مناسب با پسوند jpg وارد نمایید", "jpg");}
