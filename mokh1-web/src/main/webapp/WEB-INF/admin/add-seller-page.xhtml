@@ -254,8 +254,7 @@
 			
 			<h:outputText value="مجتمع تجاری" />
 			<rich:select value="#{addSeller.mojtame}" id="id19924">
-				<f:selectItem itemValue="مجتمع ۱" itemLabel="مجتمع ۱" />
-				<f:selectItem itemValue="مجتمع ۲" itemLabel="مجتمع ۲" />
+				<f:selectItems value="#{addSeller.findAllPassage()}" var="psg" itemValue="#{psg.blogName}" itemLabel="#{psg.blogName}" />
 			</rich:select>
 			<rich:message for="id19924" ajaxRendered="true" />		
 			

@@ -33,6 +33,8 @@ import javax.validation.constraints.Size;
 
 import org.apache.commons.io.IOUtils;
 
+import catch_db.CatchBlogLocal;
+import entity.BlogEntity;
 import entity.MoblEntity;
 import enums.UserRole;
 import sevice.SellerServiceLocal;
@@ -46,7 +48,7 @@ public class AddSeller {
 	}
 	@Inject
 	private SellerServiceLocal sellerServiceLocal;  
-	
+	private List<BlogEntity> blogEntities = new ArrayList<>();
 	
 	@Size(max=100 , message="max size is 100")
 	@NotNull
@@ -106,7 +108,8 @@ public class AddSeller {
 	private String tagdir;
 ///////////////////////////////////////////////
 private String malekiat;
-	
+@Inject
+private CatchBlogLocal catchBlogLocal;
 	private String sabteSefaresh;
 	private String mostajer;
 	private String mohlateEjare;
@@ -128,6 +131,12 @@ private String malekiat;
 	
 	
 	
+	public List<BlogEntity> getBlogEntities() {
+		return blogEntities;
+	}
+	public void setBlogEntities(List<BlogEntity> blogEntities) {
+		this.blogEntities = blogEntities;
+	}
 	public String getBirthDay() {
 		return birthDay;
 	}
@@ -691,6 +700,17 @@ private String malekiat;
 			return null;
 		}
 	}
+	
+	public List<BlogEntity> findAllPassage() {
+
+        blogEntities.clear();
+		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+			if (blogEntity.getBlogType().equals("مجتمع تجاری")) {
+				blogEntities.add(blogEntity);
+				}
+		}
+		return blogEntities;
+		}
 	
 
 }

@@ -7,7 +7,8 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:o="http://omnifaces.org/ui" xmlns:p="http://primefaces.org/ui">
 
-	<h:panelGroup rendered="#{(tempBean.moblEntity.panel eq 'A')or(tempBean.moblEntity.panel eq 'B')or(tempBean.moblEntity.panel eq 'C')}">
+	<h:panelGroup
+		rendered="#{(tempBean.moblEntity.panel eq 'A')or(tempBean.moblEntity.panel eq 'B')or(tempBean.moblEntity.panel eq 'C')}">
 
 		<!-- Main Content -->
 		<div class="page-wrapper">
@@ -16,7 +17,8 @@
 				<!-- Title -->
 				<div class="row heading-bg">
 					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-						<h5 class="txt-dark" style="font-family: IRANSansNor;">افزودن محصولات</h5>
+						<h5 class="txt-dark" style="font-family: IRANSansNor;">افزودن
+							محصولات</h5>
 					</div>
 
 
@@ -51,8 +53,10 @@
 														<div class="row">
 															<div class="col-md-6">
 																<div class="form-group">
-																	<label class="control-label mb-10" style="font-family: IRANSansNor;">نام محصول</label>
-																	<h:inputText id="senfiname" styleClass="form-control" style="font-family: IRANSansNor;"
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">نام محصول</label>
+																	<h:inputText id="senfiname" styleClass="form-control"
+																		style="font-family: IRANSansNor;"
 																		value="#{product.name}" />
 																	<!-- <span class="help-block"> This is inline help </span> -->
 																	<h:message for="senfiname" id="ms1"
@@ -62,8 +66,10 @@
 															<!--/span-->
 															<div class="col-md-6">
 																<div class="form-group">
-																	<label class="control-label mb-10" style="font-family: IRANSansNor;">کشور سازنده</label>
-																	<h:inputText id="motName" styleClass="form-control" style="font-family: IRANSansNor;"
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">کشور سازنده</label>
+																	<h:inputText id="motName" styleClass="form-control"
+																		style="font-family: IRANSansNor;"
 																		value="#{product.contry}" />
 																	<!-- <span class="help-block"> This field has error. </span>  -->
 																	<h:message for="motName" errorStyle="color:red;"
@@ -75,9 +81,11 @@
 														<div class="row">
 															<div class="col-md-6">
 																<div class="form-group">
-																	<label class="control-label mb-10" style="font-family: IRANSansNor;">دسته بندی
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">دسته بندی
 																		محصول</label>
-																	<h:selectOneMenu id="onvan" style="width:200px;font-family: IRANSansNor;" 
+																	<h:selectOneMenu id="onvan"
+																		style="width:200px;font-family: IRANSansNor;"
 																		value="#{product.raste}" styleClass="form-control">
 																		<f:selectItem itemValue="مبلمان راحتی"
 																			itemLabel="مبلمان راحتی" />
@@ -154,11 +162,13 @@
 															</div>
 															<div class="col-md-6">
 																<div class="form-group">
-																	<label class="control-label mb-10" style="font-family: IRANSansNor;">آیا محصول
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">آیا محصول
 																		مورد نظر دست دوم میباشد ؟</label>
-																	<h:selectOneRadio value="#{product.oldNew}" style="font-family: IRANSansNor;"
-																		id="postcode2" required="true"
-																		styleClass="form-control" layout="lineDirection">
+																	<h:selectOneRadio value="#{product.oldNew}"
+																		style="font-family: IRANSansNor;" id="postcode2"
+																		required="true" styleClass="form-control"
+																		layout="lineDirection">
 																		<f:selectItem itemValue="بلی" itemLabel="بلی" />
 																		<f:selectItem itemValue="خیر" itemLabel="خیر" />
 																	</h:selectOneRadio>
@@ -171,9 +181,11 @@
 														<div class="row">
 															<div class="col-md-6">
 																<div class="form-group">
-																	<label class="control-label mb-10" style="font-family: IRANSansNor;">قیمت اصلی به
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">قیمت اصلی به
 																		ریال</label>
-																	<h:inputText id="senfinamez" styleClass="form-control" style="font-family: IRANSansNor;"
+																	<h:inputText id="senfinamez" styleClass="form-control"
+																		style="font-family: IRANSansNor;"
 																		value="#{product.price}" />
 																	<!-- <span class="help-block"> This is inline help </span> -->
 																	<h:message for="senfinamez" id="ms1z"
@@ -183,9 +195,11 @@
 															<!--/span-->
 															<div class="col-md-6">
 																<div class="form-group">
-																	<label class="control-label mb-10" style="font-family: IRANSansNor;">قیمت با
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">قیمت با
 																		تخفیف به ریال</label>
-																	<h:inputText id="motNamezz" styleClass="form-control" style="font-family: IRANSansNor;"
+																	<h:inputText id="motNamezz" styleClass="form-control"
+																		style="font-family: IRANSansNor;"
 																		value="#{product.price2}" />
 																	<!-- <span class="help-block"> This field has error. </span>  -->
 																	<h:message for="motNamezz" errorStyle="color:red;"
@@ -197,9 +211,11 @@
 														<div class="row">
 															<div class="col-md-12">
 																<div class="form-group">
-																	<label class="control-label mb-10" style="font-family: IRANSansNor;">توضیحات از
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">توضیحات از
 																		قبیل جنس و ابعاد و ...</label>
-																	<h:inputTextarea id="senfiAddres" style="font-family: IRANSansNor;"
+																	<h:inputTextarea id="senfiAddres"
+																		style="font-family: IRANSansNor;"
 																		styleClass="form-control"
 																		value="#{product.description}" />
 																	<!-- <span class="help-block"> This is inline help </span> -->
@@ -214,7 +230,8 @@
 																<div class="panel panel-default card-view">
 																	<div class="panel-heading">
 																		<div class="pull-left">
-																			<h6 class="panel-title txt-dark" style="font-family: IRANSansNor;">آپلود تصویر
+																			<h6 class="panel-title txt-dark"
+																				style="font-family: IRANSansNor;">آپلود تصویر
 																				محصول</h6>
 																		</div>
 																		<div class="clearfix"></div>
@@ -279,14 +296,26 @@
 															</div>
 														</div>
 													</div>
-													<h:commandButton styleClass="btn btn-success mr-10" style="font-family: IRANSansNor;font-size: 18px;width: 150px; border-radius: 10px;"
-														action="#{product.insertToProduct()}" value="ثبت" >
+													<h:commandButton styleClass="btn btn-success mr-10"
+														style="font-family: IRANSansNor;font-size: 18px;width: 150px; border-radius: 10px;"
+														action="#{product.insertToProduct()}" value="ثبت">
 														<f:ajax execute="@form"
 															render="ms1 ms2 ms8 ms7 ms11 ms12 ms13 ms14 ms15 ms46 ms1z ms2z tbl" />
 													</h:commandButton>
 													<br />
 													<p:dataTable var="car" style="font-family: IRANSansNor;"
-														value="#{product.findAllProductSeller()}" id="tbl">
+														value="#{product.findAllProductSeller()}" id="tbl"
+														widgetVar="carsTable" multiViewState="true" rows="10"
+														paginator="true"
+														paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+														rowsPerPageTemplate="5,10,15" selectionMode="single"
+														selection="#{product.productEntity}" rowKey="#{car.productId}"
+														emptyMessage="No cars found with given criteria">
+
+
+			<p:ajax event="rowSelect" update=":form:carDetail"
+				oncomplete="PF('carDialog').show()" />
+
 
 														<p:column headerText="نام">
 															<h:outputText value="#{car.name}" />
@@ -302,14 +331,16 @@
 
 
 														<p:column headerText="حذف">
-															<h:commandButton styleClass="btn btn-success mr-10" immediate="true" style="font-family: IRANSansNor;"
-																action="#{product.deleteProduct(car.productId)}" value="حذف">
-																<f:ajax execute="@form"
-																	render="tbl" />
+															<h:commandButton styleClass="btn btn-success mr-10"
+																immediate="true" style="font-family: IRANSansNor;"
+																action="#{product.deleteProduct(car.productId)}"
+																value="حذف">
+																<f:ajax execute="@form" render="tbl" />
 															</h:commandButton>
 														</p:column>
 
 													</p:dataTable>
+													
 												</h:form>
 											</div>
 										</div>
@@ -333,7 +364,8 @@
 				<!-- Title -->
 				<div class="row heading-bg">
 					<div>
-						<h5 class="txt-dark" style="font-family: IRANSansNor;">این بخش مربوط به پنل فروشنده های فیروزه ای و طلایی و نقره ای می باشد.</h5>
+						<h5 class="txt-dark" style="font-family: IRANSansNor;">این
+							بخش مربوط به پنل فروشنده های فیروزه ای و طلایی و نقره ای می باشد.</h5>
 					</div>
 
 

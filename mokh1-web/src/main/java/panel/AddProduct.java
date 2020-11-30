@@ -75,6 +75,10 @@ public class AddProduct implements Serializable{
 	private Part pic3;
 	private Part pic4;
 	private Part pic5;
+	
+	private ProductEntity productEntity;
+	
+	
 	public String getName() {
 		return name;
 	}
@@ -146,6 +150,12 @@ public class AddProduct implements Serializable{
 	
 	
 	
+	public ProductEntity getProductEntity() {
+		return productEntity;
+	}
+	public void setProductEntity(ProductEntity productEntity) {
+		this.productEntity = productEntity;
+	}
 	public String getOldNew() {
 		return oldNew;
 	}
