@@ -358,7 +358,7 @@ public class NewsPage implements Serializable{
         	month="ذیقعده";
         else if (todayHijri.getMonthOfYear()==12)
         	month="ذیحجه";
-        text=" روز " + (todayHijri.getDayOfMonth()) + " ماه " + month + " سال " + todayHijri.getYear() + "قمری";
+        text=" روز " + (todayHijri.getDayOfMonth()+1) + " ماه " + month + " سال " + todayHijri.getYear() + "قمری";
         
         return text;
 	}
