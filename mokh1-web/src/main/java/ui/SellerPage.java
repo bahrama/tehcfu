@@ -200,15 +200,17 @@ public class SellerPage implements Serializable{
 	
 	public void act() {
         MessageEntity messageEntity=new MessageEntity();
-        try {
-        messageEntity.setPageMessage(this.messagePage);
+       // try {
+        if(!this.messageSender.equals("")&&!this.messagePage.equals("")) {
+        messageEntity.setPageMessage("فرستنده : " + this.messageSender + "--" + "متن پیام : " + this.messagePage);
         messageEntity.setDate(new Date());
         messageEntity.setMessageTo(sellerx);
-	    messageEntity.setMessageFrom(sellerServiceLocal.findSellerByMobile(session.getAttribute("mobile").toString()));
+	   // messageEntity.setMessageFrom(sellerServiceLocal.findSellerByMobile(session.getAttribute("mobile").toString()));
 	    messageServiceLocal.insertToMessage(messageEntity);
 	    facesContext.getPartialViewContext().getEvalScripts().add("swal({title: 'موفق!',type: 'success', text: 'پیام شما با موفقیت ثبت گردید.', confirmButtonColor: '#469408',})");
-		} catch (Exception e) {
-			 facesContext.getPartialViewContext().getEvalScripts().add("swal({title: 'ناموفق!',type: 'error', text: 'برای ثبت پیام اول وارد سایت شوید', confirmButtonColor: '#469408',})");
+		}else 
+	    {
+			 facesContext.getPartialViewContext().getEvalScripts().add("swal({title: 'ناموفق!',type: 'error', text: 'فیلد ها را پر کنید', confirmButtonColor: '#469408',})");
 		}
 		
 
