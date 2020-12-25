@@ -11,6 +11,7 @@ $(document).ready(
 			});
 			lyrOSM = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png');
 			mymap.addLayer(lyrOSM);
+			//const utl = "https://www.tehcfu.com/rest/api/sellers/all";
 			const utl = "https://www.tehcfu.com/rest/api/sellers/all";
 			fetch(utl).then(function(res) {
 				return res.json()

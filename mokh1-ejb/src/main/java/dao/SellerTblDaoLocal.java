@@ -31,4 +31,6 @@ public interface SellerTblDaoLocal {
 
 	List<MoblEntity> findSellerByNamePerLike(String nameper) throws Exception;
 
+	List<MoblEntity> findAllMapSeller();
+
 }

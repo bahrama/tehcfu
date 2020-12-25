@@ -94,17 +94,18 @@
 				<i class="fa fa-instagram white" style="color: white;"/>				
 								</a>
 		</div>
-		<div class="search-trigger">
+<!-- 		<div class="search-trigger">
 			<i class="fa fa-search white" style="color: white;"></i>
-		</div>
-		<div class="search-box">
-			<h:form prependId="false">
-				<!-- <input type="text" name="search" /> -->
-				<h:inputText value="#{searchBean.searchText}" dir="rtl"/>
-				<!-- <button type="submit" class="search-submit" style="padding: 0px!important;">جستجو</button> -->
-				<h:commandButton action="#{searchBean.findAllSearch()}" value="جستجو" class="search-submit" style="padding: 0px!important;"/>
-			</h:form>
-		</div>
+		</div> -->
+<!-- 		<div class="search-box">
+	
+			<button  type="submit" class="search-submit" style="padding: 0px!important;">جستجو</button> 
+			<h:button styleClass="search-submit" style="padding: 0px!important;" value="جستجو" outcome="/pages/search/searchtext.xhtml"/>
+		</div> -->
+		<!-- <a class="search-box"></a> -->
+		<h:link styleClass="search-trigger" outcome="/pages/search/searchtext.xhtml">
+		<i class="fa fa-search white" style="color: white;"></i>
+		</h:link>
 		<div class="hs-user toggle" data-reveal=".user-info">
  <i
 				class="fa fa-user white" style="color: white;"></i>

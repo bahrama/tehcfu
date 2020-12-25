@@ -26,6 +26,7 @@ import enums.UserRole;
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
 @NamedQuery(name="MoblEntity.findAll", query="SELECT m FROM MoblEntity m"),
+@NamedQuery(name="MoblEntity.findAllMap", query="SELECT m FROM MoblEntity m WHERE (NOT m.panel=:v_panelMap)"),
 @NamedQuery(name = "MoblEntity.findById", query = "SELECT i FROM MoblEntity i WHERE i.id=:v_id"),
 @NamedQuery(name = "MoblEntity.findByMobile", query = "SELECT i FROM MoblEntity i WHERE i.mobile=:v_mobile"),
 @NamedQuery(name = "MoblEntity.findByAuthCode", query = "SELECT i FROM MoblEntity i WHERE i.authCode=:v_authCode"),
@@ -33,7 +34,7 @@ import enums.UserRole;
 @NamedQuery(name = "MoblEntity.findByNameEng", query = "SELECT i FROM MoblEntity i WHERE i.sellerStoreEng=:v_sellerStoreEng"),
 @NamedQuery(name = "MoblEntity.findByPanel", query = "SELECT i FROM MoblEntity i WHERE i.panel=:v_panel"),
 @NamedQuery(name = "MoblEntity.findSellerNameLike", query = "SELECT i FROM MoblEntity i WHERE i.sellerName like :v_sellerName"),
-@NamedQuery(name = "MoblEntity.findsellerStorePerLike", query = "SELECT i FROM MoblEntity i WHERE i.sellerStorePer like :v_sellerStorePer")
+@NamedQuery(name = "MoblEntity.findsellerStorePerLike", query = "SELECT i FROM MoblEntity i WHERE (NOT i.panel=:v_panel) AND (i.sellerStorePer like :v_sellerStorePer)")
 })
 public class MoblEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

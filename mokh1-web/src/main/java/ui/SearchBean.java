@@ -1,6 +1,7 @@
 package ui;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -29,31 +30,46 @@ public class SearchBean implements Serializable {
 	@Inject
 	private BlogServiceLocal blogServiceLocal;
 	
-	private String searchText;
+	private String searchTxt;
+
+	private List<MoblEntity> moblEntities=new ArrayList<MoblEntity>();
 	
 	
-	
-	public String getSearchText() {
-		return searchText;
+
+
+
+
+	public String getSearchTxt() {
+		return searchTxt;
 	}
 
 
 
-	public void setSearchText(String searchText) {
-		this.searchText = searchText;
+	public void setSearchTxt(String searchTxt) {
+		this.searchTxt = searchTxt;
+	}
+
+
+
+	public List<MoblEntity> getMoblEntities() {
+		return moblEntities;
+	}
+
+
+
+	public void setMoblEntities(List<MoblEntity> moblEntities) {
+		this.moblEntities = moblEntities;
 	}
 
 
 
 	public void findAllSearch(){
+		System.err.println(searchTxt);
+		System.err.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+		this.moblEntities.clear();
 		try {
-			for (MoblEntity moblEntity : sellerServiceLocal.findSellerByNamePerLike(searchText)) {
-				System.err.println(moblEntity.getSellerStorePer());
-			}
-			for (BlogEntity blogEntity : blogServiceLocal.findBlogByName(searchText)) {
-				System.err.println(blogEntity.getBlogName());
-			}
-		  
+			
+			this.moblEntities.addAll(sellerServiceLocal.findSellerByNamePerLike(searchTxt));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
