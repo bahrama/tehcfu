@@ -322,6 +322,7 @@ private CatchBlogLocal catchBlogLocal;
 	public void setTagdir(String tagdir) {
 		this.tagdir = tagdir;
 	}
+	
 	private String faaliatHa() {
 		String item="";
 		for (String string : this.faaliats) {

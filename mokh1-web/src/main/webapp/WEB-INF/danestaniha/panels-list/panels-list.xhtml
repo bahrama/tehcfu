@@ -17,7 +17,7 @@
 						layout="grid" rows="9" paginator="true" id="cars"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
-						<div class="padding-bottom-40 wow zoomIn alik"
+						<div class="padding-bottom-40 wow zoomIn card"
 							style="float: right !important; width: 100% !important;">
 							<o:graphicImage style="max-width:100%; height:300px!important" 
 							rendered="#{panelBean.findPic4(pnl) ne null}"
@@ -26,10 +26,49 @@
 							<div class="blog-short-detail">
 								<h4 style="font-family: IranSANSBold; color: darkred;">
 									 #{pnl.sellerStorePer}</h4>
-										<h:link outcome="/pages/merchant/merchant.xhtml" value="مشاهده" class="btn-blue">
+										<h:link outcome="/pages/merchant/merchant.xhtml" value="مشاهده" class="btn-blue" style="width: 212px;">
 										<f:param name="sellerNameEng" value="#{pnl.sellerStoreEng}"/>
 										</h:link>
 							</div>
+							        <div class="icons" style="text-align: center; margin-top: 15px;">
+							        <h:panelGroup rendered="#{pnl.faaliat.contains('سیسمونی')}">
+							            <img class="icon-mobl-edari icon" src="../../../resources/raste-icon/baby1.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+							        </h:panelGroup> 
+							        <h:panelGroup rendered="#{pnl.faaliat.contains('تختخواب')}">
+							            <img class="icon-mobl-classic icon" src="../../../resources/raste-icon/bed.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+							            </h:panelGroup>
+							            <h:panelGroup rendered="#{pnl.faaliat.contains('کلاسیک')}">
+							            <img class="icon-mobl-rahati icon" src="../../../resources/raste-icon/classic.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+							            </h:panelGroup>
+							            <h:panelGroup rendered="#{pnl.faaliat.contains('اداری')}">
+							            <img class="icon-miz-nahar icon" src="../../../resources/raste-icon/desk1.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+										<h:panelGroup rendered="#{pnl.faaliat.contains('کابینت')}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/dinner-table.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+										<h:panelGroup rendered="#{pnl.faaliat.contains('کابینت')}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/kitchen1.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+										<h:panelGroup rendered="#{pnl.faaliat.contains('اداری')}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/mobl-edari.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+<!-- 										<h:panelGroup rendered="#{pnl.faaliat.contains('راحتی')}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/mobl-rahati.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup> -->
+										<h:panelGroup rendered="#{pnl.faaliat.contains('استیل')}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/mobl-steel.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+<!-- 										<h:panelGroup rendered="#{pnl.faaliat.contains('')}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/mobl-stel.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup> -->
+										<h:panelGroup rendered="#{pnl.faaliat.contains('تعمیرات')}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/settings.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/sofa.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										<h:panelGroup rendered="#{(pnl.faaliat.contains('چوب بری'))||(pnl.faaliat.contains('مجسمه'))||(pnl.faaliat.contains('سنتی'))||(pnl.faaliat.contains('خراطی'))||(pnl.faaliat.contains('خاتم'))}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/tamirat.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+									</div>
 						</div>
 					</p:dataGrid>
 				</h:form>

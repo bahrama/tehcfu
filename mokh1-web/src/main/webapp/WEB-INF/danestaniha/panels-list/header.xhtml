@@ -22,4 +22,203 @@ box-shadow: 10px 10px 5px
     margin-bottom: 20px;
 }
     </style>
+        <style>
+        @font-face{
+            font-family:"IRANSans";
+            src: url();
+            src: url();
+            src: url();
+            src: url();
+        }
+        body{
+            margin:0 !important;
+            padding:0 !important;
+            min-height:100%;
+        }
+        .card {
+            font-family: "IranSans";
+            width: 366px;
+            display: block;
+            padding: 10px;
+            color: darkred;
+            border: 2px solid #26a8e4;
+            text-align: center;
+            display: inline-block;
+            flex-direction: column;
+            margin: 15px;
+            border-radius: 5px;
+            background-color: white;
+            box-shadow: 1px 5px 10px rgb(185, 185, 185);
+            transition: all 0.5s ease-in-out;
+        }
+        .title{
+            background-color:rgba(13, 101, 189, 0.938);
+            width: 1162px;
+            height: 50px;
+            margin: 0 auto;
+            color: whitesmoke;
+            top:0;
+            padding: 20px;
+        }
+        @media only screen and (max-width: 767px){
+            .title{
+                width:100%;
+            }
+            .card{
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+                margin-top: 30px;
+                transition: all 0.5s ease-in;
+            }
+        }
+        .card:hover{
+            box-shadow: 1px 5px 18px rgb(185, 185, 185);
+            -webkit-transition:  box-shadow .6s ease-in-out;
+            border:2px solid #008CBA;
+            opacity: 0.9;
+        }
+        .card span{
+            color: rgb(235, 233, 233);
+        }
+        .card .imgcard {
+            width: 100%;
+            height: auto;
+        }
+        .card .imgcard:hover {
+            width: 100%;
+            height: auto;
+        }
+
+        h1{
+            text-align: center !important;
+            font-family: "IranSans";
+            font-size: 18px;
+        }
+        .icon{
+            transition: all 0.5s ease-in;
+            border-radius:5px;
+            display: inline-block;
+
+        }
+        .icon:hover{
+            background-color: #26a8e4;
+        }
+        .icon-baby{
+            transition: all 0.5s ease-in;
+
+        }
+        .icon-baby:hover{
+            background-color: #26a8e4;
+            content: url(pictures/baby2.svg);
+        }
+        .icon-bed{
+            transition: all 0.5s ease-in;
+
+        }
+        .icon-bed:hover{
+            content: url(pictures/bed2.svg);
+            background-color: #26a8e4;
+        }
+
+        .icon-cabinet1{
+            transition: all 0.5s ease-in;
+
+        }
+        .icon-cabinet1:hover{
+            content: url(pictures/kitchen2.svg);
+            background-color: #26a8e4;
+        }
+
+        .icon-office1{
+            transition: all 0.5s ease-in;
+
+        }
+        .icon-office1:hover{
+            content: url(pictures/desk2.svg);
+            background-color: #26a8e4;
+        }
+
+        .icon-repair{
+            transition: all 0.5s ease-in;
+
+        }
+        .icon-repair:hover{
+            content: url(pictures/tamirat2.svg);
+            background-color: #26a8e4;
+        }
+
+
+        .icon-mobl-steel{
+            transition: all 0.5s ease-in;
+
+        }
+        .icon-mobl-steel:hover{
+            content: url(pictures/mobl-stel2.svg);
+            background-color: #26a8e4;
+        }
+
+        .icon-mobl-edari{
+            transition: all 0.5s ease-in;
+
+        }
+        .icon-mobl-edari:hover{
+            content: url(pictures/mobl-edari-2.svg);
+            background-color: #26a8e4;
+        }
+
+        .icon-mobl-classic{
+            transition: all 0.5s ease-in;
+
+        }
+        .icon-mobl-classic:hover{
+            content: url(pictures/classic2.svg);
+            background-color: #26a8e4;
+        }
+
+        .icon-mobl-rahati{
+            transition: all 0.5s ease-in;
+        }
+        .icon-mobl-rahati:hover{
+            content: url(pictures/mobl-rahati2.svg);
+            background-color: #26a8e4;
+        }
+
+        .icon-miz-nahar{
+            transition: all 0.5s ease-in;
+        }
+        .icon-miz-nahar:hover{
+            content: url(pictures/dinner-table2.svg);
+            background-color: #26a8e4;
+        }
+
+
+        .icon-setting{
+            transition: all 0.5s ease-in;
+        }
+        .icon-setting:hover{
+            content: url(pictures/settings2.svg);
+            background-color: #26a8e4;
+        }
+        .btn-blue {
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-size: 12px;
+            border-style: solid;
+            border-width: 2px;
+            font-weight: 600;
+            margin: 0 auto;
+            width: 150px;
+            letter-spacing: 0.5px;
+            display: block;
+            text-decoration: none;
+            color: #26a8e4;
+            margin-bottom: 20px;
+            transition: background-color 0.5s ease-in;
+        }
+        .btn-blue:hover{
+            background-color: #26a8e4;
+            color: white!important;
+        }
+    </style>
 </ui:composition>
