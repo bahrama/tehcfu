@@ -589,6 +589,34 @@ textarea.input2 + .focus-input2::after {
               0 6px 8px rgba(0,0,0,0.11),
               0 8px 16px rgba(0,0,0,0.11);
 }
+  hr {
+            font-family: IRANSans;
+            height: 1px;
+            font-size: 16px;
+            background: #3170c5;
+            /*background-image: linear-gradient(to bottom, #000000, #ffffff);*/
+            background-image: linear-gradient(to right, #3498db, #aaaaaa, #3498db);
+            border: none;
+            /*width: 79%;*/
+            outline: none;
+            margin: 3em 3em 5em;
+            position: relative;
+        }
+        hr:before {
+            content: attr(data-symbol);
+            position: absolute;
+            top: 0;
+            left: 50%;
+            background: #ffffff;
+            color: #a4312e;
+            padding: 0.5em 1em;
+            transform: translate(-50%, -50%);
+        }
+
+        hr.one {
+            width: 79%;
+            margin: 3em auto;
+        }
     </style>
     				    <link rel="stylesheet" href="../../resources/leaflet/leaflet.css" />
    

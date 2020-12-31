@@ -8,7 +8,7 @@
 
 
 	<article class="margin-top-75"> <section class="details-card">
-	<div class="container">
+	<div class="container" style="direction: rtl;">
 		<div class="text-center margin-top-30 hdr">
 			<h:outputFormat rendered="{Type eq 'A'}">
 				<h2>نمایشگاه های ایران</h2>
@@ -22,9 +22,7 @@
 			<ui:repeat var="nam"
 				value="#{namayeshgahDetailPage.checkNamayeshgah(Type)}">
 
-				<div class="col-md-6 col-xd-6" style="margin: 10px;">
-
-				<div class="col-md-12" style="margin: 10px;">
+				<div class="col-md-6 col-xd-6" style="margin-top: 5px;float: right;">
 
 					<div class="card-content">
 						<div class="card-img">
@@ -50,7 +48,7 @@
 									<td colspan="2">#{nam.tarikh}</td>
 								</tr>
 								<tr>
-									<td colspan="2">#{nam.makan}}</td>
+									<td colspan="2">#{nam.makan}</td>
 								</tr>
 								<tr>
 									<td colspan="2">#{nam.nameBargozarK} : نام برگزار کننده</td>
@@ -82,7 +80,6 @@
 							</table>
 						</div>
 					</div>
-				</div>
 				</div>
 			</ui:repeat>
 		</div>

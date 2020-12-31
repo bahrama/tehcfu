@@ -61,8 +61,8 @@ public class NamayeshgahDetailPage implements Serializable {
 			else
 				this.namayeshgahEntitiesJahan.add(namayeshgahEntity);
 		}
-		Collections.reverse(namayeshgahEntitiesIran);
-		Collections.reverse(namayeshgahEntitiesJahan);
+//		Collections.reverse(namayeshgahEntitiesIran);
+//		Collections.reverse(namayeshgahEntitiesJahan);
 
 	}
 

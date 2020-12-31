@@ -108,6 +108,8 @@
 			<!-- محصولات /-->
 		</h:panelGroup>
 
+
+
 		<!-- گواهینامه فعالیت آنلاین -->
 		<div
 			style="margin-left: 0px; margin-right: 0px; background-color: #e9ecef !important; width: 100%;"
@@ -150,14 +152,14 @@
 		<h:outputText value="#{sellerPage.convertTagdir()}" escape="false"
 			rendered="#{sellerPage.sellerx.tagdirName ne null}" />
 
+
+<hr class="one" data-symbol="تماس با ما" style="font-family: IRANSansNor; font-size: 20px;"/>
+
 		<!-- تماس با ما -->
 		<div class="contact contact-1">
 			<div class="container padding-vertical-100 text-right bd-bottom">
 				<div class="row">
 					<div style="float: right" class="col-lg-6 col-md-12" dir="rtl">
-						<h1
-							style="font-family: IRANSansBold; font-size: 18px; color: goldenrod">تماس
-							با ما</h1>
 						<p class="margin-top-10"></p>
 						<div class="contact-info margin-top-20">
 							<li style="margin-top: 0;list-style: none;"><i class="fa fa-map-marker color"></i>
@@ -341,6 +343,7 @@ border: none;font-family: IRANSansNor;"></h:inputTextarea>
     var
         marker=L.marker([#{sellerPage.sellerx.lat},  #{sellerPage.sellerx.lng}]).addTo(map).bindPopup("<p>#{sellerPage.sellerx.sellerStorePer}</p>");
 
+    document.getElementsByTagName('hr')[0].style.display="none";
     </script>
 
 </ui:composition>
