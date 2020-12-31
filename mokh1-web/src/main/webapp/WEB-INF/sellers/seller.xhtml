@@ -9,31 +9,36 @@
 
 	<div class="text-center">
 		<!-- <img style="width: 60px" alt="logo" src="pic/saderkonandegan.png" /> -->
-		<o:graphicImage style="width: 60px;margin-top: 60px;"
+		<o:graphicImage style="width: 80px;margin-top: 60px;box-shadow: 5px 5px 5px gainsboro;
+border-radius: 10px;
+border: 1px solid gray;"
 			rendered="#{sellerPage.findPic2() ne null}"
 			value="#{sellerPage.findPic2()}" dataURI="true" alt="" />
-		<h1 class="small padding-top-10">#{sellerPage.sellerx.sellerStorePer}</h1>
+		<h1 class="small padding-top-10" style="margin-bottom: 10px;">#{sellerPage.sellerx.sellerStorePer}</h1>
 	</div>
-
-	<o:graphicImage style="width: 100%; margin-top: 50px;"
+<!--             <div class="gradient" style="background-image:linear-gradient(to bottom,
+                 rgba(55, 47, 47, 0.5), rgba(239, 226, 226, 0.2));z-index: 20;width: 100%;height: 373px;
+                 position: absolute"></div> -->
+            <!-- <div class="slider"> -->
+	<o:graphicImage style="width: 100%; box-shadow: 10px 10px 5px gainsboro;border-radius: 10px;border: 1px solid gray;"
 		rendered="#{sellerPage.findPic1() ne null}"
 		value="#{sellerPage.findPic1()}" dataURI="true" alt="" />
-
+<!-- </div> -->
 	<!-- Blog Post Begin -->
 
 	<div class="blog-post padding-vertical-100">
 
 		<div class="container">
-			<div class="post-image margin-top-35">
-				<!-- <img src="pic/sellers-about%20.jpg" alt="" /> -->
+<!-- 			<div class="post-image margin-top-35">
+				<img src="pic/sellers-about%20.jpg" alt="" />
 				<h:panelGroup rendered="#{sellerPage.sellerx.panel ne 'A'}">
 					<o:graphicImage rendered="#{sellerPage.findPic3() ne null}"
 						value="#{sellerPage.findPic3()}" dataURI="true" alt="" />
 				</h:panelGroup>
 				<h:panelGroup rendered="#{sellerPage.sellerx.panel eq 'A'}">
 					<div class="containerbox" style="height: 420px !important;">
-						<!-- 						<img src="../../resources/panorama/1.jpg"
-							alt="Background without Image Map" class="panoramixImg" /> -->
+												<img src="../../resources/panorama/1.jpg"
+							alt="Background without Image Map" class="panoramixImg" />
 						<o:graphicImage rendered="#{sellerPage.findPic3() ne null}"
 							value="#{sellerPage.findPic3()}" dataURI="true" alt=""
 							styleClass="panoramixImg" />
@@ -43,7 +48,7 @@
 						</div>
 					</div>
 				</h:panelGroup>
-			</div>
+			</div> -->
 			<!-- /post-image -->
 
 			<div dir="rtl"
@@ -110,7 +115,7 @@
 			style="margin-left: 0px; margin-right: 0px; background-color: #e9ecef !important; width: 100%;"
 			class="row container padding-top-30 padding-bottom-30 bd-bottom">
 
-			<div class="col-md-5 img-column wow fadeInLeft" style="float: right;">
+			<div class="col-md-5 img-column wow fadeInRight" style="float: right;">
 				<div class="img-column margin-left-10">
 					<!-- 							<img id="license" src="pic/license.jpg"
 								alt="گواهینامه فعالیت آنلاین فروشگاه ساتراپ" /> -->
@@ -157,16 +162,32 @@
 							با ما</h1>
 						<p class="margin-top-10"></p>
 						<div class="contact-info margin-top-20">
-							<li style="margin-top: 0"><i class="fa fa-map-marker color"></i>
+							<li style="margin-top: 0;list-style: none;"><i class="fa fa-map-marker color"></i>
 								<h6 style="color: black">موقعیت مکانی ما :</h6>
 								<p style="color: black; color: #666666 !important;">#{sellerPage.sellerx.sellerAddres}</p></li>
 							<br />
-							<li style="padding-right: 0" class="phone-number"><i
+							<h:panelGroup rendered="#{(sellerPage.sellerx.modirforoshName ne null)and(sellerPage.sellerx.modirforoshName ne '-')}">	
+							<li style="list-style: none;"><i class="fa fa-user color"></i>
+								<h6 style="color: black">نام مدیر فروش :</h6>
+								#{sellerPage.sellerx.modirforoshName}</li> <br />
+								</h:panelGroup>
+						<h:panelGroup rendered="#{(sellerPage.sellerx.modirforoshPhone ne null)and(sellerPage.sellerx.modirforoshPhone ne '-')}">			
+							<li style="list-style: none;" class="num"><i class="fa fa-phone color"></i>
+								<h6 style="color: black">شماره مدیر فروش :</h6>
+
+
+								#{sellerPage.sellerx.modirforoshPhone}</li> <br />
+						</h:panelGroup>
+							
+							
+							<li style="padding-right: 0;list-style: none;" class="phone-number"><i
 								class="fa fa-phone color"></i>
 								<h6 style="color: black">شماره تلفن :</h6>
 								#{sellerPage.sellerx.phone}</li> <br />
 								<h:panelGroup rendered="#{(sellerPage.sellerx.instagram ne null)and(sellerPage.sellerx.instagram ne '-')}">
-							<li class="instagram"><i class="fa fa-instagram color"></i>
+							
+							
+							<li class="instagram" style="list-style: none;"><i class="fa fa-instagram color"></i>
 								<h6 style="color: black">اینستاگرام :</h6> <!-- 								 <h:link target="_blank"
 								outcome="https://www.instagram.com/#{sellerPage.sellerx.instagram}/">
 									#{sellerPage.sellerx.instagram} </h:link> --> <a
@@ -175,7 +196,7 @@
 								<br />
 								</h:panelGroup>
 							<h:panelGroup rendered="#{(sellerPage.sellerx.telegram ne null)and(sellerPage.sellerx.telegram ne '-')}">	 
-							<li class="paper"><i class="fa fa-paper-plane-o color"></i>
+							<li class="paper" style="list-style: none;"><i class="fa fa-paper-plane-o color"></i>
 								<h6 style="color: black">تلگرام :</h6> <!--							<h:link
  								outcome="https://t.me/#{sellerPage.sellerx.telegram}"
 								target="_blank"> #{sellerPage.sellerx.telegram} </h:link> --> <a
@@ -187,34 +208,23 @@
 
 
 									<h:panelGroup rendered="#{(sellerPage.sellerx.website ne null)and(sellerPage.sellerx.website ne '-')}">
-							<li><i class="fa fa-globe color"></i>
+							<li style="list-style: none;"><i class="fa fa-globe color"></i>
 								<h6 style="color: black">وبسایت :</h6> <a
 								href="http://#{sellerPage.sellerx.website}" target="_blank">
 									#{sellerPage.sellerx.website} </a></li> 
 									<br />
 									</h:panelGroup>
 							<h:panelGroup rendered="#{(sellerPage.sellerx.email ne null)and(sellerPage.sellerx.email ne '-')}">		
-							<li><i class="fa fa-envelope color"></i>
+							<li style="list-style: none;"><i class="fa fa-envelope color"></i>
 								<h6 style="color: black">ایمیل :</h6>
 
 								#{sellerPage.sellerx.email}</li> <br />
 								</h:panelGroup>
 							<h:panelGroup rendered="#{(sellerPage.sellerx.fax ne null)and(sellerPage.sellerx.fax ne '-')}">		
-							<li class=" fax"><i class="fa fa-fax color"></i>
+							<li style="list-style: none;" class=" fax"><i class="fa fa-fax color"></i>
 								<h6 style="color: black">فکس :</h6> #{sellerPage.sellerx.fax}</li> <br />
 							</h:panelGroup>
-<h:panelGroup rendered="#{(sellerPage.sellerx.modirforoshName ne null)and(sellerPage.sellerx.modirforoshName ne '-')}">	
-							<li><i class="fa fa-user color"></i>
-								<h6 style="color: black">نام مدیر فروش :</h6>
-								#{sellerPage.sellerx.modirforoshName}</li> <br />
-								</h:panelGroup>
-						<h:panelGroup rendered="#{(sellerPage.sellerx.modirforoshPhone ne null)and(sellerPage.sellerx.modirforoshPhone ne '-')}">			
-							<li class="num"><i class="fa fa-phone color"></i>
-								<h6 style="color: black">شماره مدیر فروش :</h6>
 
-
-								#{sellerPage.sellerx.modirforoshPhone}</li> <br />
-						</h:panelGroup>
 						</div>
 						<!-- /contact-info -->
 					</div>
@@ -223,7 +233,10 @@
 					<div class="col-lg-6 col-md-12 img-column">
 						<div class="contact-map">
 							<div id="map2"
-								style="display: inline-block; float: left; width: 550px; height: 385px; max-width: 100%; margin-bottom: 20px">
+								style="display: inline-block; float: left; width: 550px; height: 385px; max-width: 100%;box-shadow: 10px 10px 5px gainsboro;
+border-radius: 10px;
+border: 1px solid gray;
+margin-bottom: 40px;">
 							</div>
 							<!-- /contact-map -->
 						</div>
@@ -241,26 +254,50 @@
 			<div class="contact-form"
 				style="width: 50%; padding: 10px; margin: auto;">
 				<div class="margin-top-25" dir="rtl">
-					<h:form id="form" enctype="multipart/form-data"
-						acceptcharset="UTF-8">
-						<h2
-							style="font-family: IRANSansBold; font-size: 18px; color: goldenrod; margin-bottom: 20px">ارسال
-							پیام به فروشگاه</h2>
+
+					<!-- /form -->
+				</div>
+				<!-- /column -->
+			</div>
+			<!-- /contact-form -->
+			
+			            <div class="container-fluid" style="padding-left: 0 !important;
+        padding-right: 0 !important;position: relative;">
+                <div class="bg-contact2">
+                    <div class="container-contact2">
+                        <div class="wrap-contact2">
+                        					<h:form id="form" enctype="multipart/form-data"
+						acceptcharset="UTF-8" styleClass="contact2-form validate-form" style="direction: rtl;">
+                          
+					<span class="contact2-form-title" style="font-family: IRANSansNor;
+font-weight: 600;">
+					ارتباط با واحد صنفی
+					</span>
+
 						<div class="row">
 							<div class=" col-xs-11" style="padding-right: 0">
 								<div class="form-group text-right">
-									<label style="color: black; padding-bottom: 10px"
-										for="contact-message">متن پیام</label>
-									<h:inputText value="#{sellerPage.messageSender}" class="form-control"
-										a:placeholder="نام خود را وارد کنید" />
-									<h:inputTextarea value="#{sellerPage.messagePage}"
-										name="message" id="contact-message" class="form-control"
-										a:placeholder="متن پیام خود را وارد کنید"></h:inputTextarea>
-																		<h:commandButton action="#{sellerPage.act()}" value="ارسال"
-									style="padding: 8px 18px ; color: #0B59AA; border-color: #0B59AA; float: left; width:50%; height:60px;font-family: IRANSansNor;font-size: 24px;"
-									styleClass="btn-blue margin-top-5">
+								
+								<div class="wrap-input2 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                                    <h:inputText value="#{sellerPage.messageSender}" class="input2" style="background-image: none !important;
+border: none;font-family: IRANSansNor;"/>
+                                    <span class="focus-input2" style="font-family: IRANSansNor;" data-placeholder="نام خود را وارد کنید"></span>
+                                </div>
+
+                                <div class="wrap-input2 validate-input" style="font-family: IRANSansNor;" data-validate = "لطفا پیام خود را وارد کنید">
+                                    									<h:inputTextarea value="#{sellerPage.messagePage}"
+										name="message" id="contact-message" class="input2" style="background-image: none !important;
+border: none;font-family: IRANSansNor;"></h:inputTextarea>
+                                    <span class="focus-input2" style="font-family: IRANSansNor;" data-placeholder="متن پیام"></span>
+                                </div>
+								 <div class="container-contact2-form-btn">
+                                    <div class="contact2-form-bgbtn"></div>
+								<h:commandLink action="#{sellerPage.act()}" value="ارسال"
+									style="background-image: none;width: 100%;text-align: center;border: 2px solid #008CBA;font-size: 20px;padding: 15px;font-family: IRANSansNor;"
+									styleClass="btn-blue button2">
 									<f:ajax execute="@form" />
-								</h:commandButton>
+								</h:commandLink>
+								</div>
 								</div>
 								<!-- /form-group -->
 
@@ -272,11 +309,11 @@
 						<div id="ajax-message" class="margin-top-30"></div>
 						<!-- /ajax-message -->
 					</h:form>
-					<!-- /form -->
-				</div>
-				<!-- /column -->
-			</div>
-			<!-- /contact-form -->
+                       </div>
+                       
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
 	<!-- Blog Post End -->
