@@ -33,4 +33,6 @@ public interface SellerTblDaoLocal {
 
 	List<MoblEntity> findAllMapSeller();
 
+	List<MoblEntity> findSellerByFilter(String text, String filter) throws Exception;
+
 }

@@ -79,5 +79,9 @@ public class SellerService implements SellerServiceLocal {
     public List<MoblEntity> findSellerByNamePerLike(String nameper) throws Exception{
     	return sellerTblDaoLocal.findSellerByNamePerLike(nameper);
     }
+    @Override
+    public List<MoblEntity> findSellerByFilter(String text,String filter) throws Exception {
+    	return sellerTblDaoLocal.findSellerByFilter(text, filter);
+    }
 
 }

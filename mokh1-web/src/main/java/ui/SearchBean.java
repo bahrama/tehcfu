@@ -34,8 +34,20 @@ public class SearchBean implements Serializable {
 
 	private List<MoblEntity> moblEntities=new ArrayList<MoblEntity>();
 	
-	
+	private String filter;
 
+
+
+
+	public String getFilter() {
+		return filter;
+	}
+
+
+
+	public void setFilter(String filter) {
+		this.filter = filter;
+	}
 
 
 
@@ -70,6 +82,18 @@ public class SearchBean implements Serializable {
 		try {
 			
 			this.moblEntities.addAll(sellerServiceLocal.findSellerByNamePerLike(searchTxt));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void findAllSearchFilter(){
+		System.err.println(filter);
+		System.err.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+		this.moblEntities.clear();
+		try {
+			
+			this.moblEntities.addAll(sellerServiceLocal.findSellerByFilter(searchTxt, filter));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

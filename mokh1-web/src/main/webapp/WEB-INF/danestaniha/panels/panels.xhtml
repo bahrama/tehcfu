@@ -3,8 +3,13 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:o="http://omnifaces.org/ui">
-
+	xmlns:o="http://omnifaces.org/ui" xmlns:p="http://primefaces.org/ui" xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<link rel="stylesheet" href="../../resources/search-text/main-search-panel.css"/>
+<style>
+td{
+padding-left: 20px!important;
+}
+</style>
 	<article dir="rtl" class="margin-top-75 container">
 
 	<div class="container">
@@ -93,7 +98,127 @@
 		</div>
 	</div>
 	</article>
+<article class="margin-top-90">
+
+        <div class="s009">
+            <h:form id="frm" enctype="multipart/form-data" acceptcharset="UTF-8" prependId="false">
+                <div class="inner-form">
+                    <div class="basic-search" style="text-align: center;">
+                        <div class="input-field focus-input2">
 
 
+							<h:inputText value="#{searchBean.searchTxt}" id="txt1" a:placeholder="دنبال چی می گردی؟"/>
+                            <div class="icon-wrap">
+                                <i class="fa fa-search" style="color: whitesmoke;"></i>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="advance-search">
+                        <div class="row">
+                            <div>
+                                <div class="input-select" style="text-align: right !important;width: 100%">
+<!--                                     <select data-trigger="" name="choices-single-defaul">
+                                        <option placeholder="" value="">نام واحد صنفی</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                    </select> -->
+							<h:selectOneRadio  value="#{searchBean.filter}" id="in15" >
+								<f:selectItem itemValue="A" itemLabel="نام فروشگاه" />
+								<f:selectItem itemValue="B" itemLabel="محله" />
+								<f:selectItem itemValue="C" itemLabel="نام مدیر فروش" />
+							</h:selectOneRadio>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row third">
+                            <div class="input-field">
+                                <div class="group-btn">
+                                    <h:commandButton action="#{searchBean.findAllSearchFilter()}" value="جستجو" styleClass="btn-search">
+                                    </h:commandButton>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </h:form>
+        </div>
+        <!--search end-->
+
+
+<div class="our-blog padding-vertical-100 text-center"
+		style="height: auto !important;">
+		<div class="container text-center">
+			<div class="row margin-top-35" style="direction: rtl;">
+				<h:form id="form">
+					<p:dataGrid var="pnl" lazy="true"
+						value="#{searchBean.moblEntities}" columns="3"
+						layout="grid" rows="9" paginator="true" id="cars"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+						<div class="padding-bottom-40 wow zoomIn card"
+							style="float: right !important; width: 100% !important;">
+							<o:graphicImage style="max-width:100%; height:300px!important" 
+							rendered="#{panelBean.findPic4(pnl) ne null}"
+								value="#{panelBean.findPic4(pnl)}" dataURI="true" alt="" />
+
+							<div class="blog-short-detail">
+								<h4 style="font-family: IranSANSBold; color: darkred;">
+									 #{pnl.sellerStorePer}</h4>
+										<h:link outcome="/pages/merchant/merchant.xhtml" value="مشاهده" class="btn-blue" style="width: 212px;">
+										<f:param name="sellerNameEng" value="#{pnl.sellerStoreEng}"/>
+										</h:link>
+							</div>
+							        <div class="icons" style="text-align: center; margin-top: 15px;">
+							        <h:panelGroup rendered="#{pnl.faaliat.contains('سیسمونی')}">
+							            <img class="icon-mobl-edari icon" src="../../../resources/raste-icon/baby1.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+							        </h:panelGroup> 
+							        <h:panelGroup rendered="#{pnl.faaliat.contains('تختخواب')}">
+							            <img class="icon-mobl-classic icon" src="../../../resources/raste-icon/bed.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+							            </h:panelGroup>
+<!-- 							            <h:panelGroup rendered="#{pnl.faaliat.contains('کلاسیک')}">
+							            <img class="icon-mobl-rahati icon" src="../../../resources/raste-icon/classic.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+							            </h:panelGroup> -->
+							            <h:panelGroup rendered="#{pnl.faaliat.contains('اداری')}">
+							            <img class="icon-miz-nahar icon" src="../../../resources/raste-icon/desk1.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+										<h:panelGroup rendered="#{pnl.faaliat.contains('کابینت')}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/dinner-table.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+										<h:panelGroup rendered="#{pnl.faaliat.contains('کابینت')}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/kitchen1.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+										<h:panelGroup rendered="#{pnl.faaliat.contains('اداری')}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/mobl-edari.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+ 										<h:panelGroup rendered="#{pnl.faaliat.contains('راحتی')}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/mobl-rahati.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+										<h:panelGroup rendered="#{pnl.faaliat.contains('استیل')}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/mobl-steel.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+<!-- 										<h:panelGroup rendered="#{pnl.faaliat.contains('')}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/mobl-stel.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup> -->
+										<h:panelGroup rendered="#{pnl.faaliat.contains('تعمیرات')}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/settings.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/sofa.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										<h:panelGroup rendered="#{(pnl.faaliat.contains('چوب بری'))||(pnl.faaliat.contains('مجسمه'))||(pnl.faaliat.contains('سنتی'))||(pnl.faaliat.contains('خراطی'))||(pnl.faaliat.contains('خاتم'))}">
+										<img class="icon-miz-nahar icon" src="../../../resources/raste-icon/tamirat.svg" style=" width:50px;height: 50px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+									</div>
+						</div>
+					</p:dataGrid>
+				</h:form>
+
+			</div>
+
+		</div>
+	</div>
+    </article>
+<script src="../../resources/search-text/main-searchpanel.js"></script>
+<script>
+document.getElementById('in15:0').checked=true;
+</script>
 </ui:composition>
 

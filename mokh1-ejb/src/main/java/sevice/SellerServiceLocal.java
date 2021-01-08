@@ -29,4 +29,6 @@ public interface SellerServiceLocal {
 
 	List<MoblEntity> findSellerByNamePerLike(String nameper) throws Exception;
 
+	List<MoblEntity> findSellerByFilter(String text, String filter) throws Exception;
+
 }
