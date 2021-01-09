@@ -7,7 +7,10 @@
 <link rel="stylesheet" href="../../resources/search-text/main-search-panel.css"/>
 <style>
 td{
-padding-left: 20px!important;
+Padding-left: 63px!important;
+}
+label{
+Padding-right: 5px!important;
 }
 </style>
 	<article dir="rtl" class="margin-top-75 container">
@@ -125,7 +128,7 @@ padding-left: 20px!important;
 							<h:selectOneRadio  value="#{searchBean.filter}" id="in15" >
 								<f:selectItem itemValue="A" itemLabel="نام فروشگاه" />
 								<f:selectItem itemValue="B" itemLabel="محله" />
-								<f:selectItem itemValue="C" itemLabel="نام مدیر فروش" />
+								<f:selectItem itemValue="C" itemLabel="نام صاحب پروانه" />
 							</h:selectOneRadio>
                                 </div>
                             </div>
@@ -133,7 +136,8 @@ padding-left: 20px!important;
                         <div class="row third">
                             <div class="input-field">
                                 <div class="group-btn">
-                                    <h:commandButton action="#{searchBean.findAllSearchFilter()}" value="جستجو" styleClass="btn-search">
+                                    <h:commandButton action="#{searchBean.findAllSearchFilter()}" value="جستجو" styleClass="btn-search" style="Margin-right:10 px;
+Margin-left:10 px;">
                                     </h:commandButton>
                                 </div>
                             </div>

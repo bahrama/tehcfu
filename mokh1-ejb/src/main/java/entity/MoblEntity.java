@@ -36,7 +36,7 @@ import enums.UserRole;
 @NamedQuery(name = "MoblEntity.findSellerNameLike", query = "SELECT i FROM MoblEntity i WHERE i.sellerName like :v_sellerName"),
 @NamedQuery(name = "MoblEntity.findsellerStorePerLike", query = "SELECT i FROM MoblEntity i WHERE (NOT i.panel=:v_panel) AND (i.sellerStorePer like :v_sellerStorePer)"),
 @NamedQuery(name = "MoblEntity.findsellerAddresLike", query = "SELECT i FROM MoblEntity i WHERE (NOT i.panel=:v_panel) AND (i.sellerAddres like :v_sellerAddres)"),
-@NamedQuery(name = "MoblEntity.findsellermodirforoshNameLike", query = "SELECT i FROM MoblEntity i WHERE (NOT i.panel=:v_panel) AND (i.modirforoshName like :v_modirforoshName)")
+@NamedQuery(name = "MoblEntity.findsellermodirforoshNameLike", query = "SELECT i FROM MoblEntity i WHERE (NOT i.panel=:v_panel) AND (i.sellerName like :v_modirforoshName)")
 })
 public class MoblEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
