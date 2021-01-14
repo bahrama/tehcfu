@@ -47,6 +47,16 @@ public class AddBlog {
 	private Part blogPic1;
 	private boolean importantNews;
 	private Date date;
+	private String newsMode;
+	
+	
+	
+	public String getNewsMode() {
+		return newsMode;
+	}
+	public void setNewsMode(String newsMode) {
+		this.newsMode = newsMode;
+	}
 	public String getBlogType() {
 		return blogType;
 	}
@@ -103,6 +113,7 @@ public class AddBlog {
         blogEntity.setBlogType(blogType);
         blogEntity.setImportant(importantNews);
         blogEntity.setPic1(this.picture());
+        blogEntity.setNewsMode(newsMode);
         blogServiceLocal.insertBlog(blogEntity);
         context.addMessage(null, new FacesMessage("با موفقیت وارد گردید."));
 		}catch (Exception e) {

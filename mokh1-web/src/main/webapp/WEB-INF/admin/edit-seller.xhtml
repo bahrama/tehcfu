@@ -268,7 +268,123 @@
 					<p:inplace id="id14" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.website}" label="text" />
 					</p:inplace>
+					<!--  --> <!--  --> <!--  --> 
+					
+					<h:outputText value="ثبت سفارش از سوی" />
+					<h:outputText value="#{editSeller.moblEntity.sabteSefaresh}" />
+					<p:inplace id="id15a" editor="true" label="EDIT">
+						<p:selectOneListbox id="basic2" value="#{editSeller.sabteSefaresh}">
+						<f:selectItem itemValue="صاحب پروانه" itemLabel="صاحب پروانه" />
+						<f:selectItem itemValue="مستاجر" itemLabel="مستاجر" />
+						</p:selectOneListbox>
+					</p:inplace>
+					
+									<h:outputText value="مستاجر" />
+					<h:outputText value="#{editSeller.moblEntity.mostajer}" />
+					<p:inplace id="id15b" editor="true" label="EDIT">
+						<p:selectOneListbox id="basic22" value="#{editSeller.mostajer}">
+						<f:selectItem itemValue="true" itemLabel="دارد" />
+						<f:selectItem itemValue="false" itemLabel="ندارد" />
+						</p:selectOneListbox>
+					</p:inplace>	
+					
+										<h:outputText value="mohlateEjare" />
+					<h:outputText value="#{editSeller.moblEntity.mohlateEjare}" />
+					<p:inplace id="id14c" editor="true" label="EDIT">
+						<p:inputTextarea value="#{editSeller.mohlateEjare}" label="text" />
+					</p:inplace>
+					
+					<h:outputText value="mostajerName" />
+					<h:outputText value="#{editSeller.moblEntity.mostajerName}" />
+					<p:inplace id="id14d" editor="true" label="EDIT">
+						<p:inputTextarea value="#{editSeller.mostajerName}" label="text" />
+					</p:inplace>
+					
+										<h:outputText value="mostajerBirthday" />
+					<h:outputText value="#{editSeller.moblEntity.mostajerBirthday}" />
+					<p:inplace id="id14e" editor="true" label="EDIT">
+						<p:inputTextarea value="#{editSeller.mostajerBirthday}" label="text" />
+					</p:inplace>
+					
+															<h:outputText value="mostajerSsn" />
+					<h:outputText value="#{editSeller.moblEntity.mostajerSsn}" />
+					<p:inplace id="id14f" editor="true" label="EDIT">
+						<p:inputTextarea value="#{editSeller.mostajerSsn}" label="text" />
+					</p:inplace>
+					
+															<h:outputText value="mostajerMobile" />
+					<h:outputText value="#{editSeller.moblEntity.mostajerMobile}" />
+					<p:inplace id="id14g" editor="true" label="EDIT">
+						<p:inputTextarea value="#{editSeller.mostajerMobile}" label="text" />
+					</p:inplace>
+					
+																				<h:outputText value="shomareJavaz" />
+					<h:outputText value="#{editSeller.moblEntity.shomareJavaz}" />
+					<p:inplace id="id14h" editor="true" label="EDIT">
+						<p:inputTextarea value="#{editSeller.shomareJavaz}" label="text" />
+					</p:inplace>
+					
+																				<h:outputText value="shomareJavaz" />
+					<h:outputText value="#{editSeller.moblEntity.shomareJavaz}" />
+					<p:inplace id="id14i" editor="true" label="EDIT">
+						<p:inputTextarea value="#{editSeller.shomareJavaz}" label="text" />
+					</p:inplace>
+					
+														<h:outputText value="hasMobasher" />
+					<h:outputText value="#{editSeller.moblEntity.hasMobasher}" />
+					<p:inplace id="id15n" editor="true" label="EDIT">
+						<p:selectOneListbox id="basic222" value="#{editSeller.hasMobasher}">
+						<f:selectItem itemValue="true" itemLabel="دارد" />
+						<f:selectItem itemValue="false" itemLabel="ندارد" />
+						</p:selectOneListbox>
+					</p:inplace>
+					
+																				<h:outputText value="mobasherName" />
+					<h:outputText value="#{editSeller.moblEntity.mobasherName}" />
+					<p:inplace id="id14m" editor="true" label="EDIT">
+						<p:inputTextarea value="#{editSeller.mobasherName}" label="text" />
+					</p:inplace>
+					
+																<h:outputText value="rabetName" />
+					<h:outputText value="#{editSeller.moblEntity.rabetName}" />
+					<p:inplace id="id14p" editor="true" label="EDIT">
+						<p:inputTextarea value="#{editSeller.rabetName}" label="text" />
+					</p:inplace>
+					
+					<h:outputText value="sematRabet" />
+					<h:outputText value="#{editSeller.moblEntity.sematRabet}" />
+					<p:inplace id="id14o" editor="true" label="EDIT">
+						<p:inputTextarea value="#{editSeller.sematRabet}" label="text" />
+					</p:inplace>
+					
+										<h:outputText value="rabetMobile" />
+					<h:outputText value="#{editSeller.moblEntity.rabetMobile}" />
+					<p:inplace id="id14oo" editor="true" label="EDIT">
+						<p:inputTextarea value="#{editSeller.rabetMobile}" label="text" />
+					</p:inplace>
+					
+					<h:outputText value="shabakeMazajiMobile" />
+					<h:outputText value="#{editSeller.moblEntity.shabakeMazajiMobile}" />
+					<p:inplace id="id14ooo" editor="true" label="EDIT">
+						<p:inputTextarea value="#{editSeller.shabakeMazajiMobile}" label="text" />
+					</p:inplace>
+					
+					<h:outputText value="mojtame" />
+					<h:outputText value="#{editSeller.moblEntity.mojtame}" />
+					<p:inplace id="id15no" editor="true" label="EDIT">
+						<p:selectOneListbox id="basic3333" value="#{editSeller.mojtame}">
+						<f:selectItems value="#{addSeller.findAllPassage()}" var="psg" itemValue="#{psg.blogName}" itemLabel="#{psg.blogName}" />
+						</p:selectOneListbox>
+					</p:inplace>
+					
+					
+					
+					
+					
+					
 
+
+					<!--  --><!--  --><!--  -->
 					<h:outputText value="ssn" />
 					<h:outputText value="#{editSeller.moblEntity.ssn}" />
 					<p:inplace id="id25" editor="true" label="EDIT">

@@ -49,6 +49,17 @@ public class BlogEntity implements Serializable {
 	private Boolean important;
 	@Column(name="pic1" , length=100)
 	private String pic1;
+	@Column(name="news_mode" , length=100)
+	private String newsMode;
+
+	
+	public String getNewsMode() {
+		return newsMode;
+	}
+
+	public void setNewsMode(String newsMode) {
+		this.newsMode = newsMode;
+	}
 
 	public BlogEntity() {
 	}

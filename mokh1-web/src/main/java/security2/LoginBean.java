@@ -183,7 +183,6 @@ public class LoginBean implements Serializable {
 	public String sendAuthCode() {
 		try {
 			updateSellerAuthCode();
-			
 			System.out.println("___________*****************code updated***************________________");
 			return "/pages/login/signin-authcode.xhtml?faces-redirect=true";
 		} catch (Exception e) {

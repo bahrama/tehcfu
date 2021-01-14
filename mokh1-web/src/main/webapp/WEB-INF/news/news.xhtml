@@ -5,7 +5,55 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:o="http://omnifaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
-
+<style>
+.tab {
+	background-color: #156bb7 !important;
+}
+.tab button.active {
+    background-color: #a44640 !important;
+}
+button:hover{
+	background-color: #156bb7 !important;
+}
+.tab button {
+    padding: 19px 16px!important;
+}
+.enteshar-khabar h6 {
+    padding-bottom: 20px;
+    text-align: center;
+    background-color: #a4161a;
+    line-height: 50px;
+    color: white;
+    padding: 5px 10px;
+    box-shadow: 0px 14px 22px -9px #bbcbd8;
+    transition: all 0.5s ease-in;
+    margin-bottom: 20px;
+}
+.list li::before {
+    font-family: FontAwesome;
+    content: "\f00c"!important;
+    content: url("");
+    list-style: disc;
+    color: #2f6690;
+    list-style-position: inside;
+}
+.list li {
+    line-height: 18px;
+    text-indent: 5px;
+    font-size: 13px;
+    list-style: none;
+}
+.list li::before {
+    font-family: FontAwesome;
+    content: "\f00c" !important;
+    content: url("");
+    list-style: disc;
+        list-style-position: outside;
+    color: #2f6690;
+    list-style-position: inside;
+    float: inline-start!important;
+}
+</style>
 	<article class="margin-top-100">
 	<div class="container news">
 
@@ -147,6 +195,115 @@
 
 
 
+ <!--newsss start-->
+            <div class="container enteshar-khabar" style="background-color:ghostwhite;
+            width: 100%;height:auto;padding: 20px">
+            <div class="row">
+            <div class="col-sm-3 col-md-3 important">
+                 <div class="section1">
+                     <h6>اخبار اتحادیه</h6>
+                     <div style="width: 100%;padding: 10px;text-align: center;">
+                          <img style="filter: grayscale(100%);opacity: .6;width: 120px;" src="../../resources/galeb2/image/logo-new.png" alt="اتحادیه" class="img-section"/>
+
+                     </div>
+                     <ul class="important-list" dir="rtl">
+                        					<ui:repeat var="nws" value="#{newsPage.blogEntities}"
+						size="#{newsPage.size()}" style="color:black!important;">
+                            <h:panelGroup rendered="#{nws.newsMode eq 'اخبار اتحلدیه'}">
+                            <li>
+                               <h:link outcome="/pages/news/news-detail.xhtml"
+								value="#{nws.blogName}">
+								<f:param name="blogId" value="#{nws.id}" />
+							</h:link>
+                            </li>
+                            </h:panelGroup>
+   											</ui:repeat>
+                     </ul>
+                     <div class="align-items-center text-right">
+                         <!-- <a href="#" class="btn btn-secondary"><span class="fa fa-chevron-left"></span> &nbsp;بیشتر </a> -->
+
+                     </div>
+                 </div>
+                </div>
+                
+                <div class="col-sm-3 col-md-3 important">
+                    <div class="section1">
+                        <h6>اخبار اتاق اصناف ایران</h6>
+                        <div style="width: 100%;padding: 10px;text-align: center;">
+                         <img src="../../resources/pictures/asnafiran.png" alt="اتاق ایران" class="img-section"/>
+                        </div>
+                        <ul class="important-list" dir="rtl">
+                        					<ui:repeat var="nws" value="#{newsPage.blogEntities}"
+						size="#{newsPage.size()}" style="color:black!important;">
+                            <h:panelGroup rendered="#{nws.newsMode eq 'اخبار اتاق اصناف ایران'}">
+                            <li>
+                               <h:link outcome="/pages/news/news-detail.xhtml"
+								value="#{nws.blogName}">
+								<f:param name="blogId" value="#{nws.id}" />
+							</h:link>
+                            </li>
+                            </h:panelGroup>
+   											</ui:repeat>
+                        </ul>
+                        <div class="d-flex align-items-center text-right">
+                           <!--  <a href="#" class="btn btn-secondary"><span class="fa fa-chevron-left"></span> &nbsp;بیشتر </a> -->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3 important">
+                    <div class="section1">
+                        <h6>اخبار اتاق اصناف تهران</h6>
+                        <div style="width: 100%;padding: 10px;text-align: center;">
+                         <img src="../../resources/pictures/asnafteh.png" alt="اتاق تهران" class="img-section"/>
+                        </div>
+                        <ul class="important-list" dir="rtl">
+                        					<ui:repeat var="nws" value="#{newsPage.blogEntities}"
+						size="#{newsPage.size()}" style="color:black!important;">
+                            <h:panelGroup rendered="#{nws.newsMode eq 'اخبار اتاق اصناف تهران'}">
+                            <li>
+                               <h:link outcome="/pages/news/news-detail.xhtml"
+								value="#{nws.blogName}">
+								<f:param name="blogId" value="#{nws.id}" />
+							</h:link>
+                            </li>
+                            </h:panelGroup>
+   											</ui:repeat>
+                        </ul>
+                        <div class="align-items-center text-right">
+                           <!-- <a href="#" class="btn btn-secondary"> <span class="fa fa-chevron-left"></span> &nbsp;بیشتر </a> -->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3 important">
+                    <div class="section1">
+                        <h6>اخبار متفرقه</h6>
+                        <div style="width: 100%;padding: 10px;text-align: center;">
+                             <img style="filter: grayscale(100%);opacity: .6;width: 120px;" src="../../resources/pictures/motefarege.jpg" alt="اتاق ایران" class="img-section"/>
+                        </div>
+                        <ul class="important-list" dir="rtl">
+                        					<ui:repeat var="nws" value="#{newsPage.blogEntities}"
+						size="#{newsPage.size()}" style="color:black!important;">
+                            <h:panelGroup rendered="#{nws.newsMode eq 'اخبار متفرقه'}">
+                            <li>
+                               <h:link outcome="/pages/news/news-detail.xhtml"
+								value="#{nws.blogName}">
+								<f:param name="blogId" value="#{nws.id}" />
+							</h:link>
+                            </li>
+                            </h:panelGroup>
+   											</ui:repeat>
+                        </ul>
+                        <div class="d-flex align-items-center text-right">
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
 
 
 
@@ -171,11 +328,11 @@
 
 
 		<div class="tab" style="direction: rtl; display: flex;">
-			<button class="tablinks" onclick="openCity(event, 'London')">آخرین
+			<button class="tablinks" style="width: 33.3%;background-image: none !important;color: white;border: 1px solid white;" onclick="openCity(event, 'London')">آخرین
 				اخبار</button>
-			<button class="tablinks" onclick="openCity(event, 'Paris')">پر
+			<button class="tablinks" style="width: 33.3%;background-image: none !important;color: white;border: 1px solid white;" onclick="openCity(event, 'Paris')">پر
 				بازدید ها</button>
-			<button class="tablinks" onclick="openCity(event, 'Tokyo')">آرشیو
+			<button class="tablinks" style="width: 33.3%;background-image: none !important;color: white;border: 1px solid white;" onclick="openCity(event, 'Tokyo')">آرشیو
 				مناسبت ها</button>
 		</div>
 
@@ -183,7 +340,7 @@
 			<ul class="list" dir="rtl">
 				<ui:repeat var="nws" value="#{newsPage.blogEntities}"
 					size="#{newsPage.size2()}" style="color:black!important;">
-					<li><h:link outcome="/pages/news/news-detail.xhtml"
+					<li style="margin-right: 5px;"><h:link outcome="/pages/news/news-detail.xhtml"
 							value="#{nws.blogName}">
 							<f:param name="blogId" value="#{nws.id}" />
 						</h:link></li>
@@ -371,5 +528,9 @@
 
 	</div>
 	</article>
+	<script>
+	document.getElementsByClassName("tablinks")[0].classList.add("active");
+	document.getElementById("London").style.display="block";
+	</script>
 </ui:composition>
 

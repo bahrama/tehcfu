@@ -14,7 +14,7 @@ xmlns="http://www.w3.org/1999/xhtml"
 		<rich:validator event="change">
 
 
-			<h:outputText value="blog type" />
+			<h:outputText value="نوع بلاگ" />
 			<rich:select value="#{addBlog.blogType}" id="id21">
 				<f:selectItem itemValue="A" itemLabel="مجتمع تجاری" />
 				<f:selectItem itemValue="B" itemLabel="خبر" />
@@ -55,8 +55,19 @@ xmlns="http://www.w3.org/1999/xhtml"
 				required="true" requiredMessage="please select shop2Image image" />
 			<rich:message for="id25" ajaxRendered="true" />
 			
+			
+			<h:outputText value="نوع خبر" />
+			<rich:select value="#{addBlog.newsMode}" id="id21222" required="true" requiredMessage="لازم">
+				<f:selectItem itemValue="اخبار اتحلدیه" itemLabel="اخبار اتحلدیه" />
+				<f:selectItem itemValue="اخبار اتاق اصناف تهران" itemLabel="اخبار اتاق اصناف تهران" />
+				<f:selectItem itemValue="اخبار اتاق اصناف ایران" itemLabel="اخبار اتاق اصناف ایران" />
+				<f:selectItem itemValue="اخبار متفرقه" itemLabel="اخبار متفرقه" />
+			</rich:select>
+			<rich:message for="id21222" ajaxRendered="true" />
+			
+			
 			<a4j:outputPanel layout="block">
-				<rich:calendar value="#{addBlog.date}" id="calendar"
+				<rich:calendar value="#{addBlog.date}" id="calendar" required="true" requiredMessage="تاریخ وارد شود"
 					locale="#{calendarBean.locale}" popup="false" style="width:200px">
 				</rich:calendar>
 			</a4j:outputPanel>

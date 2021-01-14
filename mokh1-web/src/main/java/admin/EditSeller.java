@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -67,6 +70,29 @@ public class EditSeller implements Serializable {
 	private String mobile;
 	private String ssn;
 	private List<String> faaliats=new ArrayList<String>();
+	
+	///////////////////////////////////
+	
+	private String sabteSefaresh;
+	private String mostajer;
+	private String mohlateEjare;
+	private String mostajerName;
+	private String mostajerBirthday;
+	private String mostajerSsn;	
+	private String mostajerMobile;
+	private String shomareJavaz;
+	private String tarikhEtebar;
+	private String hasMobasher;
+	private String mobasherName;
+	private String rabetName;
+	private String sematRabet;	
+	private String rabetMobile;
+	private String shabakeMazajiMobile;
+	private String mojtame;
+	private String birthDay;
+	
+	
+	
 	public MoblEntity getMoblEntity() {
 		return moblEntity;
 	}
@@ -238,6 +264,109 @@ public class EditSeller implements Serializable {
 	public void setVage(String vage) {
 		this.vage = vage;
 	}
+	
+	public String getSabteSefaresh() {
+		return sabteSefaresh;
+	}
+	public void setSabteSefaresh(String sabteSefaresh) {
+		this.sabteSefaresh = sabteSefaresh;
+	}
+	public String getMostajer() {
+		return mostajer;
+	}
+	public void setMostajer(String mostajer) {
+		this.mostajer = mostajer;
+	}
+	public String getMohlateEjare() {
+		return mohlateEjare;
+	}
+	public void setMohlateEjare(String mohlateEjare) {
+		this.mohlateEjare = mohlateEjare;
+	}
+	public String getMostajerName() {
+		return mostajerName;
+	}
+	public void setMostajerName(String mostajerName) {
+		this.mostajerName = mostajerName;
+	}
+	public String getMostajerBirthday() {
+		return mostajerBirthday;
+	}
+	public void setMostajerBirthday(String mostajerBirthday) {
+		this.mostajerBirthday = mostajerBirthday;
+	}
+	public String getMostajerSsn() {
+		return mostajerSsn;
+	}
+	public void setMostajerSsn(String mostajerSsn) {
+		this.mostajerSsn = mostajerSsn;
+	}
+	public String getMostajerMobile() {
+		return mostajerMobile;
+	}
+	public void setMostajerMobile(String mostajerMobile) {
+		this.mostajerMobile = mostajerMobile;
+	}
+	public String getShomareJavaz() {
+		return shomareJavaz;
+	}
+	public void setShomareJavaz(String shomareJavaz) {
+		this.shomareJavaz = shomareJavaz;
+	}
+	public String getTarikhEtebar() {
+		return tarikhEtebar;
+	}
+	public void setTarikhEtebar(String tarikhEtebar) {
+		this.tarikhEtebar = tarikhEtebar;
+	}
+	public String getHasMobasher() {
+		return hasMobasher;
+	}
+	public void setHasMobasher(String hasMobasher) {
+		this.hasMobasher = hasMobasher;
+	}
+	public String getMobasherName() {
+		return mobasherName;
+	}
+	public void setMobasherName(String mobasherName) {
+		this.mobasherName = mobasherName;
+	}
+	public String getRabetName() {
+		return rabetName;
+	}
+	public void setRabetName(String rabetName) {
+		this.rabetName = rabetName;
+	}
+	public String getSematRabet() {
+		return sematRabet;
+	}
+	public void setSematRabet(String sematRabet) {
+		this.sematRabet = sematRabet;
+	}
+	public String getRabetMobile() {
+		return rabetMobile;
+	}
+	public void setRabetMobile(String rabetMobile) {
+		this.rabetMobile = rabetMobile;
+	}
+	public String getShabakeMazajiMobile() {
+		return shabakeMazajiMobile;
+	}
+	public void setShabakeMazajiMobile(String shabakeMazajiMobile) {
+		this.shabakeMazajiMobile = shabakeMazajiMobile;
+	}
+	public String getMojtame() {
+		return mojtame;
+	}
+	public void setMojtame(String mojtame) {
+		this.mojtame = mojtame;
+	}
+	public String getBirthDay() {
+		return birthDay;
+	}
+	public void setBirthDay(String birthDay) {
+		this.birthDay = birthDay;
+	}
 	public void deleteSeller(int id) {
 		try {
 			sellerServiceLocal.deleteSeller(sellerServiceLocal.findSellerById(id));
@@ -367,6 +496,87 @@ public class EditSeller implements Serializable {
 		}
 		}
 	
+	public Date jalali_to_gregorian(int jy, int jm, int jd) {
+		int gy;
+		if (jy > 979) {
+			gy = 1600;
+			jy -= 979;
+		} else {
+			gy = 621;
+		}
+		int days = (365 * jy) + (((int) (jy / 33)) * 8) + ((int) (((jy % 33) + 3) / 4)) + 78 + jd
+				+ ((jm < 7) ? (jm - 1) * 31 : ((jm - 7) * 30) + 186);
+		gy += 400 * ((int) (days / 146097));
+		days %= 146097;
+		if (days > 36524) {
+			gy += 100 * ((int) (--days / 36524));
+			days %= 36524;
+			if (days >= 365)
+				days++;
+		}
+		gy += 4 * ((int) (days / 1461));
+		days %= 1461;
+		if (days > 365) {
+			gy += (int) ((days - 1) / 365);
+			days = (days - 1) % 365;
+		}
+		int gd = days + 1;
+		int[] sal_a = { 0, 31, ((gy % 4 == 0 && gy % 100 != 0) || (gy % 400 == 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31,
+				30, 31, 30, 31 };
+		int gm;
+		for (gm = 0; gm < 13; gm++) {
+			int v = sal_a[gm];
+			if (gd <= v)
+				break;
+			gd -= v;
+		}
+		int[] out = { gy, gm, gd };
+		System.err.println("year:" + gy);
+		System.err.println("month:" + gm);
+		System.err.println("day:" + gd);
+		// Date date=new Date(gy,gm,gd);
+		Calendar calendar = new GregorianCalendar(gy, gm - 1, gd);
+		Date date = new Date();
+		date = calendar.getTime();
+		return date;
+	}
+
+	public Date mohlateEjareChangeDate(String inp) {
+		String test = inp;
+		String arr[] = test.split("/");
+		String ans = "";
+
+		for (String t : arr) {
+			ans += t;
+		}
+		System.err.println(ans);
+		char[] daychar = new char[2];
+		char[] monthchar = new char[2];
+		char[] yearchar = new char[4];
+		ans.getChars(0, 4, yearchar, 0);
+		String yearstr = "";
+		String monthstr = "";
+		String daystr = "";
+		for (char c : yearchar) {
+			yearstr += c;
+		}
+		System.err.println(yearstr);
+
+		ans.getChars(4, 6, monthchar, 0);
+		for (char cc : monthchar) {
+			monthstr += cc;
+		}
+		System.err.println(monthstr);
+
+		ans.getChars(6, 8, daychar, 0);
+		for (char ccc : daychar) {
+			daystr += ccc;
+		}
+		System.err.println(daystr);
+
+		return jalali_to_gregorian(Integer.parseInt(yearstr), Integer.parseInt(monthstr), Integer.parseInt(daystr));
+
+	}
 	
 	public void updateSeller() {
 		try {
@@ -437,6 +647,41 @@ public class EditSeller implements Serializable {
 			}catch (Exception e) {
 				System.err.println("pic error");
 			}
+			//////////////////////////
+			if(!sabteSefaresh.equals(""))
+				this.moblEntity.setSabteSefaresh(sabteSefaresh);
+			if(!mostajer.equals(null))
+				this.moblEntity.setMostajer(Boolean.parseBoolean(mostajer));
+			if(!mohlateEjare.equals(""))
+				this.moblEntity.setMohlateEjare(this.mohlateEjareChangeDate(mohlateEjare));
+			if(!mostajerName.equals(""))
+				this.moblEntity.setMostajerName(mostajerName);
+			if(!mostajerBirthday.equals(""))
+				this.moblEntity.setMostajerBirthday(this.mohlateEjareChangeDate(mostajerBirthday));
+			if(!mostajerSsn.equals(""))
+				this.moblEntity.setMostajerSsn(mostajerSsn);
+			if(!mostajerMobile.equals(""))
+				this.moblEntity.setMostajerMobile(mostajerMobile);
+			if(!shomareJavaz.equals(""))
+				this.moblEntity.setShomareJavaz(shomareJavaz);
+			if(!tarikhEtebar.equals(""))
+				this.moblEntity.setTarikhEtebar(this.mohlateEjareChangeDate(tarikhEtebar));
+			if(!hasMobasher.equals(null))
+				this.moblEntity.setHasMobasher(Boolean.parseBoolean(hasMobasher));
+			if(!mobasherName.equals(""))
+				this.moblEntity.setMobasherName(mobasherName);
+			if(!rabetName.equals(""))
+				this.moblEntity.setRabetName(rabetName);
+			if(!sematRabet.equals(""))
+				this.moblEntity.setSematRabet(sematRabet);
+			if(!rabetMobile.equals(""))
+				this.moblEntity.setRabetMobile(rabetMobile);
+			if(!shabakeMazajiMobile.equals(""))
+				this.moblEntity.setShabakeMazajiMobile(shabakeMazajiMobile);
+			if(!mojtame.equals(""))
+				this.moblEntity.setMojtame(mojtame);
+			if(!birthDay.equals(""))
+				this.moblEntity.setBirthDate(this.mohlateEjareChangeDate(birthDay));
 			sellerServiceLocal.updateSeller(this.moblEntity);
 			this.aboutUs="";
 			this.email="";
