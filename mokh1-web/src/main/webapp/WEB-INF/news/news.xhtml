@@ -10,7 +10,7 @@
 	background-color: #156bb7 !important;
 }
 .tab button.active {
-    background-color: #a44640 !important;
+    background-color: #a4161a !important;
 }
 button:hover{
 	background-color: #156bb7 !important;
@@ -42,6 +42,9 @@ button:hover{
     text-indent: 5px;
     font-size: 13px;
     list-style: none;
+    text-overflow: ellipsis!important;
+    white-space: nowrap!important;
+    overflow: hidden!important;
 }
 .list li::before {
     font-family: FontAwesome;
@@ -51,7 +54,7 @@ button:hover{
         list-style-position: outside;
     color: #2f6690;
     list-style-position: inside;
-    float: inline-start!important;
+    float: right!important;
 }
 </style>
 	<article class="margin-top-100">
@@ -93,7 +96,9 @@ button:hover{
 
 			<!-- important news -->
 			<div style="float: right" class="col-lg-3 important">
-				<h6 style="background-color: #0B59AA !important;">
+				<h6 style="background-color: #0B59AA !important;text-align: center;
+    line-height: 35px;
+    border-radius: 3px;">
 					<a href="#" title="آخرین خبرها">آخرین خبرها</a>
 				</h6>
 				<ul class="important-list" dir="rtl">

@@ -44,52 +44,52 @@ public class EditSeller implements Serializable {
 	
 	private MoblEntity moblEntity=new MoblEntity();
 	
-	private String aboutUs;
-	private String email;
-	private String fax;
-	private String instagram;
-	private String modirforoshName;
-	private String modirforoshPhone;
-	private String phone;
-	private String postcode;
-	private String sellerAddres;
-	private String vage;
-	private String sellerName;
-	private String sellerStoreEng;
-	private String sellerStorePer;
-	private String telegram;
-	private String website;
+	private String aboutUs="";
+	private String email="";
+	private String fax="";
+	private String instagram="";
+	private String modirforoshName="";
+	private String modirforoshPhone="";
+	private String phone="";
+	private String postcode="";
+	private String sellerAddres="";
+	private String vage="";
+	private String sellerName="";
+	private String sellerStoreEng="";
+	private String sellerStorePer="";
+	private String telegram="";
+	private String website="";
 	private double lat;
 	private double lng;
-	private String panel;
-	private String noeFaaliat;
+	private String panel="";
+	private String noeFaaliat="";
 	private Part pic1;
 	private Part pic2;
 	private Part pic3;
 	private Part pic4;
-	private String mobile;
-	private String ssn;
+	private String mobile="";
+	private String ssn="";
 	private List<String> faaliats=new ArrayList<String>();
 	
 	///////////////////////////////////
 	
-	private String sabteSefaresh;
-	private String mostajer;
-	private String mohlateEjare;
-	private String mostajerName;
-	private String mostajerBirthday;
-	private String mostajerSsn;	
-	private String mostajerMobile;
-	private String shomareJavaz;
-	private String tarikhEtebar;
-	private String hasMobasher;
-	private String mobasherName;
-	private String rabetName;
-	private String sematRabet;	
-	private String rabetMobile;
-	private String shabakeMazajiMobile;
-	private String mojtame;
-	private String birthDay;
+	private String sabteSefaresh="";
+	private String mostajer="";
+	private String mohlateEjare="";
+	private String mostajerName="";
+	private String mostajerBirthday="";
+	private String mostajerSsn="";	
+	private String mostajerMobile="";
+	private String shomareJavaz="";
+	private String tarikhEtebar="";
+	private String hasMobasher="";
+	private String mobasherName="";
+	private String rabetName="";
+	private String sematRabet="";	
+	private String rabetMobile="";
+	private String shabakeMazajiMobile="";
+	private String mojtame="";
+	private String birthDay="";
 	
 	
 	
@@ -579,6 +579,42 @@ public class EditSeller implements Serializable {
 	}
 	
 	public void updateSeller() {
+		System.err.println("faaliatHa():"+faaliatHa());
+		System.err.println("aboutUs:"+aboutUs);
+		System.err.println("email:"+email);
+		System.err.println("fax:"+fax);
+		System.err.println("instagram:"+instagram);
+		System.err.println("modirforoshName:"+modirforoshName);
+		System.err.println("modirforoshPhone:"+modirforoshPhone);
+		System.err.println("phone:"+phone);
+		System.err.println("postcode:"+postcode);
+		System.err.println("sellerAddres:"+sellerAddres);
+		System.err.println("sellerName:"+sellerName);
+		System.err.println("sellerStoreEng:"+sellerStoreEng);
+		System.err.println("sellerStorePer:"+sellerStorePer);
+		System.err.println("telegram:"+telegram);
+		System.err.println("website:"+website);
+		System.err.println("ssn:"+ssn);
+		System.err.println("mobile:"+mobile);
+		System.err.println("vage:"+vage);
+		System.err.println("panel:"+panel);
+		System.err.println("sabteSefaresh:"+sabteSefaresh);
+		System.err.println("mostajer:"+mostajer);
+		System.err.println("mohlateEjare:"+mohlateEjare);
+		System.err.println("mostajerName:"+mostajerName);
+		System.err.println("mostajerBirthday:"+mostajerBirthday);
+		System.err.println("mostajerSsn:"+mostajerSsn);
+		System.err.println("mostajerMobile:"+mostajerMobile);
+		System.err.println("shomareJavaz:"+shomareJavaz);
+		System.err.println("tarikhEtebar:"+tarikhEtebar);
+		System.err.println("hasMobasher:"+hasMobasher);
+		System.err.println("mobasherName:"+mobasherName);
+		System.err.println("rabetName:"+rabetName);
+		System.err.println("sematRabet:"+sematRabet);
+		System.err.println("rabetMobile:"+rabetMobile);
+		System.err.println("shabakeMazajiMobile:"+shabakeMazajiMobile);
+		System.err.println("mojtame:"+mojtame);
+		System.err.println("birthDay:"+birthDay);
 		try {
 			FacesContext context = FacesContext.getCurrentInstance();
 			if(!faaliatHa().equals(""))
@@ -627,62 +663,130 @@ public class EditSeller implements Serializable {
 			if(!pic1.equals(null))
 			this.convertPicture1();
 			}catch (Exception e) {
-				System.err.println("pic error");
+				System.err.println("pic error1");
 			}
 			try {
 			if(!pic2.equals(null))
 			this.convertPicture2();
 			}catch (Exception e) {
-				System.err.println("pic error");
+				System.err.println("pic error2");
 			}
 			try {
 			if(!pic3.equals(null))
 			this.convertPicture3();
 			}catch (Exception e) {
-				System.err.println("pic error");
+				System.err.println("pic error3");
 			}
 			try {
             if(!pic4.equals(null))
 			this.convertPicture4();
 			}catch (Exception e) {
-				System.err.println("pic error");
+				System.err.println("pic error4");
 			}
 			//////////////////////////
-			if(!sabteSefaresh.equals(""))
+			System.err.println("1e");
+			try {
+			if((!sabteSefaresh.equals(""))|(!sabteSefaresh.equals(null))) {
 				this.moblEntity.setSabteSefaresh(sabteSefaresh);
-			if(!mostajer.equals(null))
+			System.err.println("1");
+			}
+			}catch (NullPointerException e) {
+				System.err.println("sabteSefaresh null point");
+			}
+			System.err.println("2e");
+			try {
+				if((!mostajer.equals(""))|(!mostajer.equals(null))) {
 				this.moblEntity.setMostajer(Boolean.parseBoolean(mostajer));
-			if(!mohlateEjare.equals(""))
+				System.err.println("2");
+				}
+			}catch (NullPointerException e) {
+				System.err.println("mostajer null point");
+			}
+				System.err.println("3e");
+				if(!mohlateEjare.equals("")) {
 				this.moblEntity.setMohlateEjare(this.mohlateEjareChangeDate(mohlateEjare));
-			if(!mostajerName.equals(""))
+				System.err.println("3");
+				}
+				System.err.println("4e");
+				if(!mostajerName.equals("")) {
 				this.moblEntity.setMostajerName(mostajerName);
-			if(!mostajerBirthday.equals(""))
+				System.err.println("4");
+				}
+				System.err.println("5e");
+				if(!mostajerBirthday.equals("")) {
 				this.moblEntity.setMostajerBirthday(this.mohlateEjareChangeDate(mostajerBirthday));
-			if(!mostajerSsn.equals(""))
+				System.err.println("5");
+				}
+				System.err.println("6e");
+				if(!mostajerSsn.equals("")) {
 				this.moblEntity.setMostajerSsn(mostajerSsn);
-			if(!mostajerMobile.equals(""))
+				System.err.println("6");
+				}
+				System.err.println("7e");
+				if(!mostajerMobile.equals("")) {
 				this.moblEntity.setMostajerMobile(mostajerMobile);
-			if(!shomareJavaz.equals(""))
+				System.err.println("7");
+				}
+				System.err.println("8e");
+				if(!shomareJavaz.equals("")) {
 				this.moblEntity.setShomareJavaz(shomareJavaz);
-			if(!tarikhEtebar.equals(""))
+				System.err.println("8");
+				}
+				System.err.println("9e");
+				if(!tarikhEtebar.equals("")) {
 				this.moblEntity.setTarikhEtebar(this.mohlateEjareChangeDate(tarikhEtebar));
-			if(!hasMobasher.equals(null))
+				System.err.println("9");
+				}
+				System.err.println("10e");
+				try {
+				if((!hasMobasher.equals(null))|(!hasMobasher.equals(null))) {
 				this.moblEntity.setHasMobasher(Boolean.parseBoolean(hasMobasher));
-			if(!mobasherName.equals(""))
+				System.err.println("10");
+				}
+				}catch (NullPointerException e) {
+				System.err.println("hasMobasher null point");
+				}
+				System.err.println("11e");
+				if(!mobasherName.equals("")) {
 				this.moblEntity.setMobasherName(mobasherName);
-			if(!rabetName.equals(""))
+				System.err.println("11");
+				}
+				System.err.println("12e");
+				if(!rabetName.equals("")) {
 				this.moblEntity.setRabetName(rabetName);
-			if(!sematRabet.equals(""))
+				System.err.println("12");
+				}
+				System.err.println("13e");
+				if(!sematRabet.equals("")) {
 				this.moblEntity.setSematRabet(sematRabet);
-			if(!rabetMobile.equals(""))
+				System.err.println("13");
+				}
+				System.err.println("14e");
+				if(!rabetMobile.equals("")) {
 				this.moblEntity.setRabetMobile(rabetMobile);
-			if(!shabakeMazajiMobile.equals(""))
+				System.err.println("14");
+				}
+				System.err.println("15e");
+				if(!shabakeMazajiMobile.equals("")) {
 				this.moblEntity.setShabakeMazajiMobile(shabakeMazajiMobile);
-			if(!mojtame.equals(""))
+				System.err.println("15");
+				}
+				System.err.println("16e");
+				try {
+				if((!mojtame.equals(""))|(!mojtame.equals(null))) {
 				this.moblEntity.setMojtame(mojtame);
-			if(!birthDay.equals(""))
+				System.err.println("16");
+				}
+				}catch (NullPointerException e) {
+				System.err.println("mojtame null point");
+				}
+				System.err.println("17e");
+				if(!birthDay.equals("")) {
 				this.moblEntity.setBirthDate(this.mohlateEjareChangeDate(birthDay));
-			sellerServiceLocal.updateSeller(this.moblEntity);
+				System.err.println("17");
+				}
+				System.err.println("18e");
+				sellerServiceLocal.updateSeller(this.moblEntity);
 			this.aboutUs="";
 			this.email="";
 			this.fax="";

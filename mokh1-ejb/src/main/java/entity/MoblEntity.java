@@ -25,7 +25,7 @@ import enums.UserRole;
 @Table(name="mobl_tbl")
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
-@NamedQuery(name="MoblEntity.findAll", query="SELECT m FROM MoblEntity m"),
+@NamedQuery(name="MoblEntity.findAll", query="SELECT m FROM MoblEntity m ORDER BY m.id DESC"),
 @NamedQuery(name="MoblEntity.findAllMap", query="SELECT m FROM MoblEntity m WHERE (NOT m.panel=:v_panelMap)"),
 @NamedQuery(name = "MoblEntity.findById", query = "SELECT i FROM MoblEntity i WHERE i.id=:v_id"),
 @NamedQuery(name = "MoblEntity.findByMobile", query = "SELECT i FROM MoblEntity i WHERE i.mobile=:v_mobile"),

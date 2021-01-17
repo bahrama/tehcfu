@@ -90,6 +90,19 @@
 .value {
 	font-weight: bold;
 }
+.ui-dialog {
+    padding: 0;
+    -webkit-box-shadow: 0 0 .429em 0 rgba(0,0,0,0.16);
+    -moz-box-shadow: 0 0 .429em 0 rgba(0,0,0,0.16);
+    box-shadow: 0 0 .429em 0 rgba(0,0,0,0.16);
+    width: 800px !important;
+    left: 300px !important;
+    height: 600px!important;
+}
+.ui-panelgrid .ui-panelgrid-cell {
+    color: #333;
+    text-align: right !important;
+}
 </style>
 
 	<h:form id="form" enctype="multipart/form-data" acceptcharset="UTF-8">
@@ -115,10 +128,21 @@
 			<p:ajax event="rowSelect" update=":form:carDetail"
 				oncomplete="PF('carDialog').show()" />
 
-
-			<p:column headerText="name" filterBy="#{blogs.sellerName}"
+			<p:column headerText="شناسه دیتابیس" filterBy="#{blogs.id}"
+				sortBy="#{blogs.id}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.id}" />
+			</p:column>
+			
+			<p:column headerText="نام" filterBy="#{blogs.sellerName}"
 				sortBy="#{blogs.sellerName}" filterMatchMode="contains">
 				<h:outputText value="#{blogs.sellerName}" />
+			</p:column>
+			
+			<p:column headerText="نوع کاربری"
+				sortBy="#{blogs.sellerName}">
+				<h:outputText value="ادمین" rendered="#{blogs.role eq 'ADMIN'}"/>
+				<h:outputText value="کاربر" rendered="#{blogs.role eq 'USER'}"/>
+				<h:outputText value="فروشنده" rendered="#{blogs.role eq 'MERCHANT'}"/>
 			</p:column>
 
 			<p:column headerText="موبایل" filterMatchMode="contains"
@@ -132,9 +156,13 @@
 				<h:outputText value="#{blogs.sellerStorePer}" />
 			</p:column>
 
-			<p:column headerText="پنل" filterBy="#{blogs.panel}"
-				sortBy="#{blogs.panel}" filterMatchMode="contains">
-				<h:outputText value="#{blogs.panel}" />
+			<p:column headerText="پنل">
+				<h:outputText value="فیروزه ای" rendered="#{blogs.panel eq 'A'}"/>
+				<h:outputText value="طلایی" rendered="#{blogs.panel eq 'B'}"/>
+				<h:outputText value="نقره ای" rendered="#{blogs.panel eq 'C'}"/>
+				<h:outputText value="برنزی" rendered="#{blogs.panel eq 'D'}"/>
+				<h:outputText value="فروشنده عادی" rendered="#{blogs.panel eq 'E'}"/>
+				<h:outputText value="کاربر عادی" rendered="#{blogs.panel eq null}"/>
 			</p:column>
 
 			<p:column headerText="ویرایش نقشه">
@@ -165,7 +193,7 @@
 
 
 		</p:dataTable>
-		<p:dialog header="Car Info" widgetVar="carDialog" modal="true" style="height:400px!important;overflow: scroll;overscroll-behavior: auto;"
+		<p:dialog header="ویرایش" widgetVar="carDialog" modal="true" style="height:400px!important;width:800px!important;" id="dlg1"
 			showEffect="fade" hideEffect="fade" resizable="false">
 			<p:outputPanel id="carDetail" style="text-align:center;">
 				<p:panelGrid columns="3"
@@ -179,114 +207,80 @@
 
 					<h:outputText value="about us" />
 					<h:outputText value="#{editSeller.moblEntity.aboutUs}" />
-					<p:inplace id="id1" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.aboutUs}" label="text" />
-					</p:inplace>
 
 					<h:outputText value="email" />
 					<h:outputText value="#{editSeller.moblEntity.email}" />
-					<p:inplace id="id2" editor="true" label="EDIT">
-						<p:inputTextarea value="#{editSeller.email}" label="text" />
-					</p:inplace>
+					<p:inputTextarea value="#{editSeller.email}" label="text" />
 
 					<h:outputText value="fax" />
 					<h:outputText value="#{editSeller.moblEntity.fax}" />
-					<p:inplace id="id3" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.fax}" label="text" />
-					</p:inplace>
 
 					<h:outputText value="instagram" />
 					<h:outputText value="#{editSeller.moblEntity.instagram}" />
-					<p:inplace id="id4" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.instagram}" label="text" />
-					</p:inplace>
 
 					<h:outputText value="name of modir forosh" />
 					<h:outputText value="#{editSeller.moblEntity.modirforoshName}" />
-					<p:inplace id="id5" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.modirforoshName}"
 							label="text" />
-					</p:inplace>
 
 					<h:outputText value="phone of modir forosh" />
 					<h:outputText value="#{editSeller.moblEntity.modirforoshPhone}" />
-					<p:inplace id="id6" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.modirforoshPhone}"
 							label="text" />
-					</p:inplace>
 
 					<h:outputText value="phone" />
 					<h:outputText value="#{editSeller.moblEntity.phone}" />
-					<p:inplace id="id7" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.phone}" label="text" />
-					</p:inplace>
 
 					<h:outputText value="postcode" />
 					<h:outputText value="#{editSeller.moblEntity.postcode}" />
-					<p:inplace id="id8" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.postcode}" label="text" />
-					</p:inplace>
 
 					<h:outputText value="addres" />
 					<h:outputText value="#{editSeller.moblEntity.sellerAddres}" />
-					<p:inplace id="id9" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.sellerAddres}" label="text" />
-					</p:inplace>
 					
 										<h:outputText value="واقع در" />
 					<h:outputText value="#{editSeller.moblEntity.vage}" />
-					<p:inplace id="id99999" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.vage}" label="text" />
-					</p:inplace>
 
 					<h:outputText value="name" />
 					<h:outputText value="#{editSeller.moblEntity.sellerName}" />
-					<p:inplace id="id10" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.sellerName}" label="text" />
-					</p:inplace>
 
 					<h:outputText value="english store name" />
 					<h:outputText value="#{editSeller.moblEntity.sellerStoreEng}" />
-					<p:inplace id="id11" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.sellerStoreEng}" label="text" />
-					</p:inplace>
 
 					<h:outputText value="persian store name" />
 					<h:outputText value="#{editSeller.moblEntity.sellerStorePer}" />
-					<p:inplace id="id12" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.sellerStorePer}" label="text" />
-					</p:inplace>
 
 					<h:outputText value="telegram" />
 					<h:outputText value="#{editSeller.moblEntity.telegram}" />
-					<p:inplace id="id13" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.telegram}" label="text" />
-					</p:inplace>
 
 					<h:outputText value="website" />
 					<h:outputText value="#{editSeller.moblEntity.website}" />
-					<p:inplace id="id14" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.website}" label="text" />
-					</p:inplace>
-					<!--  --> <!--  --> <!--  --> 
+				
 					
 					<h:outputText value="ثبت سفارش از سوی" />
 					<h:outputText value="#{editSeller.moblEntity.sabteSefaresh}" />
-					<p:inplace id="id15a" editor="true" label="EDIT">
 						<p:selectOneListbox id="basic2" value="#{editSeller.sabteSefaresh}">
 						<f:selectItem itemValue="صاحب پروانه" itemLabel="صاحب پروانه" />
 						<f:selectItem itemValue="مستاجر" itemLabel="مستاجر" />
 						</p:selectOneListbox>
-					</p:inplace>
 					
 									<h:outputText value="مستاجر" />
 					<h:outputText value="#{editSeller.moblEntity.mostajer}" />
-					<p:inplace id="id15b" editor="true" label="EDIT">
 						<p:selectOneListbox id="basic22" value="#{editSeller.mostajer}">
 						<f:selectItem itemValue="true" itemLabel="دارد" />
 						<f:selectItem itemValue="false" itemLabel="ندارد" />
 						</p:selectOneListbox>
-					</p:inplace>	
 					
 										<h:outputText value="mohlateEjare" />
 					<h:outputText value="#{editSeller.moblEntity.mohlateEjare}" />
@@ -296,110 +290,72 @@
 					
 					<h:outputText value="mostajerName" />
 					<h:outputText value="#{editSeller.moblEntity.mostajerName}" />
-					<p:inplace id="id14d" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.mostajerName}" label="text" />
-					</p:inplace>
 					
 										<h:outputText value="mostajerBirthday" />
 					<h:outputText value="#{editSeller.moblEntity.mostajerBirthday}" />
-					<p:inplace id="id14e" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.mostajerBirthday}" label="text" />
-					</p:inplace>
 					
 															<h:outputText value="mostajerSsn" />
 					<h:outputText value="#{editSeller.moblEntity.mostajerSsn}" />
-					<p:inplace id="id14f" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.mostajerSsn}" label="text" />
-					</p:inplace>
 					
 															<h:outputText value="mostajerMobile" />
 					<h:outputText value="#{editSeller.moblEntity.mostajerMobile}" />
-					<p:inplace id="id14g" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.mostajerMobile}" label="text" />
-					</p:inplace>
 					
 																				<h:outputText value="shomareJavaz" />
 					<h:outputText value="#{editSeller.moblEntity.shomareJavaz}" />
-					<p:inplace id="id14h" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.shomareJavaz}" label="text" />
-					</p:inplace>
 					
 																				<h:outputText value="shomareJavaz" />
 					<h:outputText value="#{editSeller.moblEntity.shomareJavaz}" />
-					<p:inplace id="id14i" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.shomareJavaz}" label="text" />
-					</p:inplace>
 					
 														<h:outputText value="hasMobasher" />
 					<h:outputText value="#{editSeller.moblEntity.hasMobasher}" />
-					<p:inplace id="id15n" editor="true" label="EDIT">
 						<p:selectOneListbox id="basic222" value="#{editSeller.hasMobasher}">
 						<f:selectItem itemValue="true" itemLabel="دارد" />
 						<f:selectItem itemValue="false" itemLabel="ندارد" />
 						</p:selectOneListbox>
-					</p:inplace>
 					
 																				<h:outputText value="mobasherName" />
 					<h:outputText value="#{editSeller.moblEntity.mobasherName}" />
-					<p:inplace id="id14m" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.mobasherName}" label="text" />
-					</p:inplace>
 					
 																<h:outputText value="rabetName" />
 					<h:outputText value="#{editSeller.moblEntity.rabetName}" />
-					<p:inplace id="id14p" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.rabetName}" label="text" />
-					</p:inplace>
 					
 					<h:outputText value="sematRabet" />
 					<h:outputText value="#{editSeller.moblEntity.sematRabet}" />
-					<p:inplace id="id14o" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.sematRabet}" label="text" />
-					</p:inplace>
 					
 										<h:outputText value="rabetMobile" />
 					<h:outputText value="#{editSeller.moblEntity.rabetMobile}" />
-					<p:inplace id="id14oo" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.rabetMobile}" label="text" />
-					</p:inplace>
 					
 					<h:outputText value="shabakeMazajiMobile" />
 					<h:outputText value="#{editSeller.moblEntity.shabakeMazajiMobile}" />
-					<p:inplace id="id14ooo" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.shabakeMazajiMobile}" label="text" />
-					</p:inplace>
 					
 					<h:outputText value="mojtame" />
 					<h:outputText value="#{editSeller.moblEntity.mojtame}" />
-					<p:inplace id="id15no" editor="true" label="EDIT">
 						<p:selectOneListbox id="basic3333" value="#{editSeller.mojtame}">
 						<f:selectItems value="#{addSeller.findAllPassage()}" var="psg" itemValue="#{psg.blogName}" itemLabel="#{psg.blogName}" />
 						</p:selectOneListbox>
-					</p:inplace>
-					
-					
-					
-					
-					
 					
 
-
-					<!--  --><!--  --><!--  -->
 					<h:outputText value="ssn" />
 					<h:outputText value="#{editSeller.moblEntity.ssn}" />
-					<p:inplace id="id25" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.ssn}" label="text" />
-					</p:inplace>
 
 					<h:outputText value="mobile" />
 					<h:outputText value="#{editSeller.moblEntity.mobile}" />
-					<p:inplace id="id26" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.mobile}" label="text" />
-					</p:inplace>
 
 					<h:outputText value="نوع پنل" />
 					<h:outputText value="#{editSeller.moblEntity.panel}" />
-					<p:inplace id="id15" editor="true" label="EDIT">
 						<p:selectOneListbox id="basic" value="#{editSeller.panel}">
 							<f:selectItem itemValue="A" itemLabel="فیروزه ای" />
 							<f:selectItem itemValue="B" itemLabel="طلایی" />
@@ -407,14 +363,12 @@
 							<f:selectItem itemValue="D" itemLabel="برنزی" />
 							<f:selectItem itemValue="E" itemLabel="عادی" />
 						</p:selectOneListbox>
-					</p:inplace>
 
 					<h:outputText value="نوع فعالیت" />
 					<h:outputText value="#{editSeller.moblEntity.faaliat}" />
-					<p:inplace id="id16" editor="true" label="EDIT">
 						<h:selectManyCheckbox value="#{editSeller.faaliats}"
-							layout="lineDirection">
-							<f:selectItem itemValue="مبلمان راحتی" itemLabel="مبلمان راحتی" />
+							layout="pageDirection">
+							<f:selectItem itemValue="مبلمان راحتی" itemLabel="مبلمان راحتی"/>
 							<f:selectItem itemValue="مبلمان کلاسیک" itemLabel="مبلمان کلاسیک" />
 							<f:selectItem itemValue="مبلمان استیل" itemLabel="مبلمان استیل" />
 							<f:selectItem itemValue="مبلمان فضای باز"
@@ -471,45 +425,33 @@
 							<f:selectItem itemValue="جاکفشی" itemLabel="جاکفشی" />
 							<f:selectItem itemValue="مبلمان سنتی" itemLabel="مبلمان سنتی" />
 						</h:selectManyCheckbox>
-					</p:inplace>
 
 
 					<h:outputText value="image1" />
-					<p:inplace id="id17" editor="true" label="EDIT">
 						<o:graphicImage rendered="#{editSeller.findPic1() ne null}"
 							value="#{editSeller.findPic1()}" dataURI="true" alt=""
 							width="150" height="100" />
-					</p:inplace>
 					<h:inputFile id="id18" value="#{editSeller.pic1}" />
 
 
 					<h:outputText value="image2" />
-					<p:inplace id="id19" editor="true" label="EDIT">
 						<o:graphicImage rendered="#{editSeller.findPic2() ne null}"
 							value="#{editSeller.findPic2()}" dataURI="true" alt=""
 							width="150" height="100" />
-
-					</p:inplace>
 					<h:inputFile id="id20" value="#{editSeller.pic2}" />
 
 
 					<h:outputText value="image3" />
-					<p:inplace id="id21" editor="true" label="EDIT">
 						<o:graphicImage rendered="#{editSeller.findPic3() ne null}"
 							value="#{editSeller.findPic3()}" dataURI="true" alt=""
 							width="150" height="100" />
-
-					</p:inplace>
 					<h:inputFile id="id22" value="#{editSeller.pic3}" />
 
 
 					<h:outputText value="image4" />
-					<p:inplace id="id23" editor="true" label="EDIT">
 						<o:graphicImage rendered="#{editSeller.findPic4() ne null}"
 							value="#{editSeller.findPic4()}" dataURI="true" alt=""
 							width="150" height="100" />
-
-					</p:inplace>
 					<h:inputFile id="id24" value="#{editSeller.pic4}" />
 
 
@@ -517,8 +459,11 @@
 
 
 
-					<h:commandButton action="#{editSeller.updateSeller()}"
-						value="update" update="@form" />
+					<h:commandButton action="#{editSeller.updateSeller()}" style="width: 150px;
+height: 50px;
+background-color: forestgreen;
+background-image: none!important; color:white;font-size: 18px;"
+						value="ویرایش" />
 
 				</p:panelGrid>
 			</p:outputPanel>
