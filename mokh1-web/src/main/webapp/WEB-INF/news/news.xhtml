@@ -212,16 +212,14 @@ button:hover{
 
                      </div>
                      <ul class="important-list" dir="rtl">
-                        					<ui:repeat var="nws" value="#{newsPage.blogEntities}"
+                        					<ui:repeat var="nws" value="#{newsPage.blogEntitiesEt}"
 						size="#{newsPage.size()}" style="color:black!important;">
-                            <h:panelGroup rendered="#{nws.newsMode eq 'اخبار اتحلدیه'}">
                             <li>
                                <h:link outcome="/pages/news/news-detail.xhtml"
 								value="#{nws.blogName}">
 								<f:param name="blogId" value="#{nws.id}" />
 							</h:link>
                             </li>
-                            </h:panelGroup>
    											</ui:repeat>
                      </ul>
                      <div class="align-items-center text-right">
@@ -238,16 +236,14 @@ button:hover{
                          <img src="../../resources/pictures/asnafiran.png" alt="اتاق ایران" class="img-section"/>
                         </div>
                         <ul class="important-list" dir="rtl">
-                        					<ui:repeat var="nws" value="#{newsPage.blogEntities}"
+                        					<ui:repeat var="nws" value="#{newsPage.blogEntitiesIrn}"
 						size="#{newsPage.size()}" style="color:black!important;">
-                            <h:panelGroup rendered="#{nws.newsMode eq 'اخبار اتاق اصناف ایران'}">
                             <li>
                                <h:link outcome="/pages/news/news-detail.xhtml"
 								value="#{nws.blogName}">
 								<f:param name="blogId" value="#{nws.id}" />
 							</h:link>
                             </li>
-                            </h:panelGroup>
    											</ui:repeat>
                         </ul>
                         <div class="d-flex align-items-center text-right">
@@ -263,16 +259,14 @@ button:hover{
                          <img src="../../resources/pictures/asnafteh.png" alt="اتاق تهران" class="img-section"/>
                         </div>
                         <ul class="important-list" dir="rtl">
-                        					<ui:repeat var="nws" value="#{newsPage.blogEntities}"
+                        					<ui:repeat var="nws" value="#{newsPage.blogEntitiesTeh}"
 						size="#{newsPage.size()}" style="color:black!important;">
-                            <h:panelGroup rendered="#{nws.newsMode eq 'اخبار اتاق اصناف تهران'}">
                             <li>
                                <h:link outcome="/pages/news/news-detail.xhtml"
 								value="#{nws.blogName}">
 								<f:param name="blogId" value="#{nws.id}" />
 							</h:link>
                             </li>
-                            </h:panelGroup>
    											</ui:repeat>
                         </ul>
                         <div class="align-items-center text-right">
@@ -288,16 +282,14 @@ button:hover{
                              <img style="filter: grayscale(100%);opacity: .6;width: 120px;" src="../../resources/pictures/motefarege.jpg" alt="اتاق ایران" class="img-section"/>
                         </div>
                         <ul class="important-list" dir="rtl">
-                        					<ui:repeat var="nws" value="#{newsPage.blogEntities}"
+                        					<ui:repeat var="nws" value="#{newsPage.blogEntitiesMotf}"
 						size="#{newsPage.size()}" style="color:black!important;">
-                            <h:panelGroup rendered="#{nws.newsMode eq 'اخبار متفرقه'}">
                             <li>
                                <h:link outcome="/pages/news/news-detail.xhtml"
 								value="#{nws.blogName}">
 								<f:param name="blogId" value="#{nws.id}" />
 							</h:link>
                             </li>
-                            </h:panelGroup>
    											</ui:repeat>
                         </ul>
                         <div class="d-flex align-items-center text-right">

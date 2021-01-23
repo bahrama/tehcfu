@@ -45,6 +45,11 @@ public class NewsPage implements Serializable{
 	private List<BlogEntity> blogEntitiesML=new ArrayList<>();
 	private List<BlogEntity> blogEntitiesGM=new ArrayList<>();
 	
+	private List<BlogEntity> blogEntitiesEt=new ArrayList<>();
+	private List<BlogEntity> blogEntitiesMotf=new ArrayList<>();
+	private List<BlogEntity> blogEntitiesTeh=new ArrayList<>();
+	private List<BlogEntity> blogEntitiesIrn=new ArrayList<>();
+	
 	
     public List<BlogEntity> getBlogEntities() {
 		return blogEntities;
@@ -88,6 +93,47 @@ public class NewsPage implements Serializable{
 		this.blogEntitiesGM = blogEntitiesGM;
 	}
 
+	
+
+	public List<BlogEntity> getBlogEntitiesEt() {
+		return blogEntitiesEt;
+	}
+
+
+	public void setBlogEntitiesEt(List<BlogEntity> blogEntitiesEt) {
+		this.blogEntitiesEt = blogEntitiesEt;
+	}
+
+
+	public List<BlogEntity> getBlogEntitiesMotf() {
+		return blogEntitiesMotf;
+	}
+
+
+	public void setBlogEntitiesMotf(List<BlogEntity> blogEntitiesMotf) {
+		this.blogEntitiesMotf = blogEntitiesMotf;
+	}
+
+
+	public List<BlogEntity> getBlogEntitiesTeh() {
+		return blogEntitiesTeh;
+	}
+
+
+	public void setBlogEntitiesTeh(List<BlogEntity> blogEntitiesTeh) {
+		this.blogEntitiesTeh = blogEntitiesTeh;
+	}
+
+
+	public List<BlogEntity> getBlogEntitiesIrn() {
+		return blogEntitiesIrn;
+	}
+
+
+	public void setBlogEntitiesIrn(List<BlogEntity> blogEntitiesIrn) {
+		this.blogEntitiesIrn = blogEntitiesIrn;
+	}
+
 
 	@PostConstruct
 	public void start() {
@@ -114,6 +160,28 @@ public class NewsPage implements Serializable{
 		if(blogEntity.getBlogType().equals("مناسبت میلادی"))
 			blogEntitiesML.add(blogEntity);
 	}
+    	
+    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+		if(blogEntity.getNewsMode().equals("اخبار اتحلدیه"))
+			blogEntitiesEt.add(blogEntity);
+	}
+    	
+    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+		if(blogEntity.getNewsMode().equals("اخبار متفرقه"))
+			blogEntitiesMotf.add(blogEntity);
+	}
+    	
+    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+		if(blogEntity.getNewsMode().equals("اخبار اتاق اصناف تهران"))
+			blogEntitiesTeh.add(blogEntity);
+	}
+    	
+    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+		if(blogEntity.getNewsMode().equals("اخبار اتاق اصناف ایران"))
+			blogEntitiesIrn.add(blogEntity);
+	}
+    	
+    	
     	    						
 //	Collections.reverse(blogEntities);
 //	Collections.reverse(blogEntitiesGM);
