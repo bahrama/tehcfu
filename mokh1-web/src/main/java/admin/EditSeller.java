@@ -4,14 +4,18 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.UUID;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -45,6 +49,7 @@ public class EditSeller implements Serializable {
 	private MoblEntity moblEntity=new MoblEntity();
 	
 	private String aboutUs="";
+	private String tagdirName="";
 	private String email="";
 	private String fax="";
 	private String instagram="";
@@ -67,6 +72,7 @@ public class EditSeller implements Serializable {
 	private Part pic2;
 	private Part pic3;
 	private Part pic4;
+	private Part pic5;
 	private String mobile="";
 	private String ssn="";
 	private List<String> faaliats=new ArrayList<String>();
@@ -367,6 +373,22 @@ public class EditSeller implements Serializable {
 	public void setBirthDay(String birthDay) {
 		this.birthDay = birthDay;
 	}
+	
+	public Part getPic5() {
+		return pic5;
+	}
+	public void setPic5(Part pic5) {
+		this.pic5 = pic5;
+	}
+	
+	
+	
+	public String getTagdirName() {
+		return tagdirName;
+	}
+	public void setTagdirName(String tagdirName) {
+		this.tagdirName = tagdirName;
+	}
 	public void deleteSeller(int id) {
 		try {
 			sellerServiceLocal.deleteSeller(sellerServiceLocal.findSellerById(id));
@@ -416,6 +438,18 @@ public class EditSeller implements Serializable {
 	public byte[] findPic4() throws IOException {
 		try {
 		File imageFile1=new File("/home/wildfly/AX/" + this.moblEntity.getPic4() + ".jpg");
+		BufferedImage image1=ImageIO.read(imageFile1);
+		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
+		ImageIO.write(image1, "jpg", baos1);
+		return baos1.toByteArray();
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public byte[] findPic5() throws IOException {
+		try {
+		File imageFile1=new File("/home/wildfly/AX/" + this.moblEntity.getPic5() + ".jpg");
 		BufferedImage image1=ImageIO.read(imageFile1);
 		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
 		ImageIO.write(image1, "jpg", baos1);
@@ -477,6 +511,22 @@ public class EditSeller implements Serializable {
 		} catch (IOException e) {
 
 			throw new Exception("error image entering 1");
+		}
+		
+	}
+	
+	public String convertPicture5() throws Exception {
+		try {
+			UUID uuid=UUID.randomUUID();
+			byte[] image1Byte = IOUtils.toByteArray(pic5.getInputStream());
+			File out3 = new File("/home/wildfly/AX/" + uuid + ".jpg");
+			InputStream in = new ByteArrayInputStream(image1Byte);
+			BufferedImage img3 = ImageIO.read(in);
+			ImageIO.write(img3, "jpg", out3);
+			return uuid.toString();
+		} catch (IOException e) {
+
+			throw new Exception("error image entering 5");
 		}
 		
 	}
@@ -578,6 +628,23 @@ public class EditSeller implements Serializable {
 
 	}
 	
+	public String convertTagdir(){
+		try {
+		UUID uuid=UUID.randomUUID();
+		byte[] blog = this.tagdirName.getBytes(StandardCharsets.UTF_8);
+		File out1 = new File("/home/wildfly/BLOG/" + uuid+ ".txt");
+		InputStream in1 = new ByteArrayInputStream(blog);
+		OutputStream outputStream = new FileOutputStream(out1);
+		outputStream.write(blog);
+		outputStream.flush();
+		return uuid.toString();
+		}catch (Exception e) {
+			//e.printStackTrace();
+			//throw new Exception("error blog main entering 1");
+			return null;
+		}
+	}
+	
 	public void updateSeller() {
 		System.err.println("faaliatHa():"+faaliatHa());
 		System.err.println("aboutUs:"+aboutUs);
@@ -621,6 +688,8 @@ public class EditSeller implements Serializable {
 			this.moblEntity.setFaaliat(this.faaliatHa());
 			if(!aboutUs.equals(""))
 			this.moblEntity.setAboutUs(aboutUs);
+			if(!tagdirName.equals(""))
+			this.moblEntity.setTagdirName(this.convertTagdir());			
 			if(!email.equals(""))
 			this.moblEntity.setEmail(email);
 			if(!fax.equals(""))
@@ -683,6 +752,12 @@ public class EditSeller implements Serializable {
 			}catch (Exception e) {
 				System.err.println("pic error4");
 			}
+			try {
+	            if(!pic5.equals(null))
+	            this.moblEntity.setPic5(this.convertPicture5());
+				}catch (Exception e) {
+					System.err.println("pic error5");
+				}
 			//////////////////////////
 			System.err.println("1e");
 			try {
@@ -808,6 +883,7 @@ public class EditSeller implements Serializable {
 			this.telegram="";
 			this.website="";
 			this.vage="";
+			this.tagdirName="";
 			context.addMessage(null, new FacesMessage("با موفقیت آپدیت گردید."));
 			} catch (Exception e) {
 				e.printStackTrace();

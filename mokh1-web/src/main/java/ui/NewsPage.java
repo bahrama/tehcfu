@@ -24,6 +24,7 @@ import org.joda.time.chrono.IslamicChronology;
 import catch_db.CatchBlogLocal;
 import entity.BlogEntity;
 import entity.HomeEntity;
+import sevice.BlogServiceLocal;
 
 @Named
 @ViewScoped
@@ -39,11 +40,17 @@ public class NewsPage implements Serializable{
 	}
 	@Inject
 	private CatchBlogLocal catchBlogLocal;
+	@Inject
+	private BlogServiceLocal blogServiceLocal;
 
 	private List<BlogEntity> blogEntities=new ArrayList<>();
 	private List<BlogEntity> blogEntitiesSH=new ArrayList<>();
 	private List<BlogEntity> blogEntitiesML=new ArrayList<>();
 	private List<BlogEntity> blogEntitiesGM=new ArrayList<>();
+	private List<BlogEntity> blogEntitiesMode1=new ArrayList<>();
+	private List<BlogEntity> blogEntitiesMode2=new ArrayList<>();
+	private List<BlogEntity> blogEntitiesMode3=new ArrayList<>();
+	private List<BlogEntity> blogEntitiesMode4=new ArrayList<>();
 	
 	
     public List<BlogEntity> getBlogEntities() {
@@ -89,6 +96,46 @@ public class NewsPage implements Serializable{
 	}
 
 
+	public List<BlogEntity> getBlogEntitiesMode1() {
+		return blogEntitiesMode1;
+	}
+
+
+	public void setBlogEntitiesMode1(List<BlogEntity> blogEntitiesMode1) {
+		this.blogEntitiesMode1 = blogEntitiesMode1;
+	}
+
+
+	public List<BlogEntity> getBlogEntitiesMode2() {
+		return blogEntitiesMode2;
+	}
+
+
+	public void setBlogEntitiesMode2(List<BlogEntity> blogEntitiesMode2) {
+		this.blogEntitiesMode2 = blogEntitiesMode2;
+	}
+
+
+	public List<BlogEntity> getBlogEntitiesMode3() {
+		return blogEntitiesMode3;
+	}
+
+
+	public void setBlogEntitiesMode3(List<BlogEntity> blogEntitiesMode3) {
+		this.blogEntitiesMode3 = blogEntitiesMode3;
+	}
+
+
+	public List<BlogEntity> getBlogEntitiesMode4() {
+		return blogEntitiesMode4;
+	}
+
+
+	public void setBlogEntitiesMode4(List<BlogEntity> blogEntitiesMode4) {
+		this.blogEntitiesMode4 = blogEntitiesMode4;
+	}
+
+
 	@PostConstruct
 	public void start() {
 		
@@ -114,6 +161,39 @@ public class NewsPage implements Serializable{
 		if(blogEntity.getBlogType().equals("مناسبت میلادی"))
 			blogEntitiesML.add(blogEntity);
 	}
+    	try {
+    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+		if(blogEntity.getNewsMode().equals("اخبار اتحلدیه"))
+			blogEntitiesMode1.add(blogEntity);
+    	}
+    	}catch (Exception e) {
+			// TODO: handle exception
+		}
+    	try {
+    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+		if(blogEntity.getNewsMode().equals("اخبار اتاق اصناف ایران"))
+			blogEntitiesMode2.add(blogEntity);
+    	}
+     	}catch (Exception e) {
+			// TODO: handle exception
+		}
+    	try {
+    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+		if(blogEntity.getNewsMode().equals("اخبار اتاق اصناف تهران"))
+			blogEntitiesMode3.add(blogEntity);
+    	}
+     	}catch (Exception e) {
+			// TODO: handle exception
+		}
+    	try {
+    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+		if(blogEntity.getNewsMode().equals("اخبار متفرقه"))
+			blogEntitiesMode4.add(blogEntity);
+	} 	}catch (Exception e) {
+		// TODO: handle exception
+	}
+
+    	
     	    						
 //	Collections.reverse(blogEntities);
 //	Collections.reverse(blogEntitiesGM);
@@ -161,8 +241,63 @@ public class NewsPage implements Serializable{
 		
 	}
 	
+	public List<BlogEntity> findByNewsMode(String mode){
+		return blogServiceLocal.findAllNewsMode(mode);
+	}
 	
+	public int size11() {
+		
+		if(this.blogEntitiesMode1.size()>4)
+			return 4;
+		else 
+		    return blogEntitiesMode1.size();	
+
+	}
 	
+	public int size22() {
+		
+		if(this.blogEntitiesMode2.size()>4)
+			return 4;
+		else 
+		    return blogEntitiesMode2.size();	
+
+	}
+	
+	public int size33() {
+		
+		if(this.blogEntitiesMode3.size()>4)
+			return 4;
+		else 
+		    return blogEntitiesMode3.size();	
+
+	}
+	
+	public int size44() {
+		
+		if(this.blogEntitiesMode4.size()>4)
+			return 4;
+		else 
+		    return blogEntitiesMode4.size();	
+
+	}
+	
+	public List<BlogEntity> findByNewsModex(String mode){
+		try {
+		List<BlogEntity> lst=new ArrayList<>();
+		for (BlogEntity blogEntity : blogEntities) {
+			if(blogEntity.getNewsMode().equals(mode))
+			{
+				System.err.println(blogEntity.getNewsMode());
+				lst.add(blogEntity);
+			}
+		}
+		return lst;
+		}catch (Exception e) {
+			
+		 e.printStackTrace();
+		 return null;
+		}
+		}
 	
 ///////////////////////////////////////////////////////////////////
 	
@@ -475,6 +610,7 @@ public class NewsPage implements Serializable{
 	
 
 	public List<LocalDate> findCurrentDate(){
+		try {
 		LocalDate localDate=new LocalDate();
 		int year=localDate.getYear();
 		int month=localDate.getMonthOfYear();
@@ -535,6 +671,9 @@ public class NewsPage implements Serializable{
 			System.err.println(localDate3);
 		}
 		return dates;
+		}catch (Exception e) {
+		return null;
+		}
 	}
 	
 	public String gregorian_to_jalali2(int gy, int gm, int gd) {

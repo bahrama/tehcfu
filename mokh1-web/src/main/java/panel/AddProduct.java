@@ -76,6 +76,19 @@ public class AddProduct implements Serializable{
 	private Part pic4;
 	private Part pic5;
 	
+	private String noeMobl;
+	private int tedadNafar;
+	private String noeMoblRahati;
+	private String jenseKalaf;
+	private String noePaye;
+	private String jenseLayeMiani;
+	private String jenseParche;
+	private String zemanat;
+	private String rangBandi;
+	private boolean kosan;
+	private boolean miz;
+	private String abad;
+	
 	private ProductEntity productEntity;
 	
 	
@@ -161,6 +174,99 @@ public class AddProduct implements Serializable{
 	}
 	public void setOldNew(String oldNew) {
 		this.oldNew = oldNew;
+	}
+	
+	
+	
+	public TempBean getTempBean() {
+		return tempBean;
+	}
+	public void setTempBean(TempBean tempBean) {
+		this.tempBean = tempBean;
+	}
+	public FacesContext getFacesContext() {
+		return facesContext;
+	}
+	public void setFacesContext(FacesContext facesContext) {
+		this.facesContext = facesContext;
+	}
+	public ProductserviceLocal getProductserviceLocal() {
+		return productserviceLocal;
+	}
+	public void setProductserviceLocal(ProductserviceLocal productserviceLocal) {
+		this.productserviceLocal = productserviceLocal;
+	}
+	public String getNoeMobl() {
+		return noeMobl;
+	}
+	public void setNoeMobl(String noeMobl) {
+		this.noeMobl = noeMobl;
+	}
+	public int getTedadNafar() {
+		return tedadNafar;
+	}
+	public void setTedadNafar(int tedadNafar) {
+		this.tedadNafar = tedadNafar;
+	}
+	public String getNoeMoblRahati() {
+		return noeMoblRahati;
+	}
+	public void setNoeMoblRahati(String noeMoblRahati) {
+		this.noeMoblRahati = noeMoblRahati;
+	}
+	public String getJenseKalaf() {
+		return jenseKalaf;
+	}
+	public void setJenseKalaf(String jenseKalaf) {
+		this.jenseKalaf = jenseKalaf;
+	}
+	public String getNoePaye() {
+		return noePaye;
+	}
+	public void setNoePaye(String noePaye) {
+		this.noePaye = noePaye;
+	}
+	public String getJenseLayeMiani() {
+		return jenseLayeMiani;
+	}
+	public void setJenseLayeMiani(String jenseLayeMiani) {
+		this.jenseLayeMiani = jenseLayeMiani;
+	}
+	public String getJenseParche() {
+		return jenseParche;
+	}
+	public void setJenseParche(String jenseParche) {
+		this.jenseParche = jenseParche;
+	}
+	public String getZemanat() {
+		return zemanat;
+	}
+	public void setZemanat(String zemanat) {
+		this.zemanat = zemanat;
+	}
+	public String getRangBandi() {
+		return rangBandi;
+	}
+	public void setRangBandi(String rangBandi) {
+		this.rangBandi = rangBandi;
+	}
+	public boolean isKosan() {
+		return kosan;
+	}
+	public void setKosan(boolean kosan) {
+		this.kosan = kosan;
+	}
+	public boolean isMiz() {
+		return miz;
+	}
+	public void setMiz(boolean miz) {
+		this.miz = miz;
+	}
+	public String getAbad() {
+		return abad;
+	}
+	public void setAbad(String abad) {
+		this.abad = abad;
 	}
 	public void insertToProduct() {
 		ProductEntity productEntity=new ProductEntity();

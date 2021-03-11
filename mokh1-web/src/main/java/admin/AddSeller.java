@@ -92,6 +92,7 @@ public class AddSeller {
 	private Part sellerPic2;
 	private Part sellerPic3;
 	private Part sellerPic4;
+	private Part sellerPic5;
 	private String panel;
 	private String noeFaaliat;
 	private String faaliat;
@@ -450,6 +451,12 @@ private CatchBlogLocal catchBlogLocal;
 		this.mojtame = mojtame;
 	}
 	
+	public Part getSellerPic5() {
+		return sellerPic5;
+	}
+	public void setSellerPic5(Part sellerPic5) {
+		this.sellerPic5 = sellerPic5;
+	}
 	public Date jalali_to_gregorian(int jy, int jm, int jd) {
 		int gy;
 		if (jy > 979) {
@@ -571,6 +578,7 @@ private CatchBlogLocal catchBlogLocal;
 		moblEntity.setPic2(this.picture2());
 		moblEntity.setPic3(this.picture3());
 		moblEntity.setPic4(this.picture4());
+		moblEntity.setPic5(this.picture5());
 		moblEntity.setTagdirName(this.convertTagdir());
 		/////////////////////////////////////////////////////
 		moblEntity.setMalekiat(malekiat);
@@ -673,6 +681,21 @@ private CatchBlogLocal catchBlogLocal;
 		try {
 			UUID uuid=UUID.randomUUID();
 			byte[] image1Byte = IOUtils.toByteArray(sellerPic4.getInputStream());
+			File out3 = new File("/home/wildfly/AX/" + uuid + ".jpg");
+			InputStream in = new ByteArrayInputStream(image1Byte);
+			BufferedImage img3 = ImageIO.read(in);
+			ImageIO.write(img3, "jpg", out3);
+			return uuid.toString();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			throw new Exception("error image entering 3");
+		}
+	}
+	public String picture5() throws Exception {
+		try {
+			UUID uuid=UUID.randomUUID();
+			byte[] image1Byte = IOUtils.toByteArray(sellerPic5.getInputStream());
 			File out3 = new File("/home/wildfly/AX/" + uuid + ".jpg");
 			InputStream in = new ByteArrayInputStream(image1Byte);
 			BufferedImage img3 = ImageIO.read(in);

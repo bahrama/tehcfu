@@ -21,4 +21,6 @@ public interface BlogDaoLocal {
 
 	List<BlogEntity> findBlogByName(String blogText) throws Exception;
 
+	List<BlogEntity> findAllNewsMode(String mode);
+
 }

@@ -93,8 +93,6 @@
 																			itemLabel="مبلمان کلاسیک" />
 																		<f:selectItem itemValue="مبلمان استیل"
 																			itemLabel="مبلمان استیل" />
-																		<f:selectItem itemValue="مبلمان مدرن"
-																			itemLabel="مبلمان مدرن" />
 																		<f:selectItem itemValue="مبلمان فضای باز"
 																			itemLabel="مبلمان فضای باز" />
 																		<f:selectItem itemValue="مبلمان مدرن"
@@ -154,6 +152,23 @@
 																		<f:selectItem itemValue="تعمیرات" itemLabel="تعمیرات" />
 																		<f:selectItem itemValue="جعبه سازی"
 																			itemLabel="جعبه سازی" />
+																		<f:selectItem itemValue="بوفه" itemLabel="بوفه" />
+																		<f:selectItem itemValue="ویترین" itemLabel="ویترین" />
+																		<f:selectItem itemValue="صندلی چوبی"
+																			itemLabel="صندلی چوبی" />
+																		<f:selectItem itemValue="کمد" itemLabel="کمد" />
+																		<f:selectItem itemValue="کتابخانه"
+																			itemLabel="کتابخانه" />
+																		<f:selectItem itemValue="مبلمان اداری"
+																			itemLabel="مبلمان اداری" />
+																		<f:selectItem itemValue="مجسمه سازی"
+																			itemLabel="مجسمه سازی" />
+																		<f:selectItem itemValue="دراور" itemLabel="دراور" />
+																		<f:selectItem itemValue="جاکفشی" itemLabel="جاکفشی" />
+																		<f:selectItem itemValue="مبلمان سنتی"
+																			itemLabel="مبلمان سنتی" />
+																		<f:selectItem itemValue="پیراهن مبل"
+																			itemLabel="پیراهن مبل" />
 																	</h:selectOneMenu>
 																	<!-- <span class="help-block"> This field has error. </span>  -->
 																	<h:message for="onvan" errorStyle="color:red;"
@@ -178,6 +193,186 @@
 															</div>
 															<!--/span-->
 														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">تعداد</label>
+																	<h:inputText id="senfiname9" styleClass="form-control"
+																		style="font-family: IRANSansNor;"
+																		value="#{product.tedadNafar}" />
+																	<!-- <span class="help-block"> This is inline help </span> -->
+																	<h:message for="senfiname9" id="ms19"
+																		errorStyle="color:red;" errorClass="help-block" />
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">در صورتی که
+																		مبل راحتی باشد</label>
+																	<h:selectOneMenu id="onvan2"
+																		style="width:200px;font-family: IRANSansNor;"
+																		value="#{product.noeMoblRahati}"
+																		styleClass="form-control">
+																		<f:selectItem itemValue="مبل ال" itemLabel="مبل ال" />
+																		<f:selectItem itemValue="مکانیزم" itemLabel="مکانیزم" />
+																		<f:selectItem itemValue="تختخواب شو"
+																			itemLabel="تختخواب شو" />
+																		<f:selectItem itemValue="7 نفره" itemLabel="7 نفره" />
+																		<f:selectItem itemValue="8 نفره" itemLabel="8 نفره" />
+																	</h:selectOneMenu>
+																</div>
+
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">جنس کلاف</label>
+																	<h:selectOneMenu id="onvan3"
+																		style="width:200px;font-family: IRANSansNor;"
+																		value="#{product.jenseKalaf}"
+																		styleClass="form-control">
+																		<f:selectItem itemValue="روس" itemLabel="روس" />
+																		<f:selectItem itemValue="راش" itemLabel="راش" />
+																		<f:selectItem itemValue="سفید" itemLabel="سفید" />
+																	</h:selectOneMenu>
+																</div>
+
+															</div>
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">نوع پایه</label>
+																	<h:selectOneMenu id="onvan4"
+																		style="width:200px;font-family: IRANSansNor;"
+																		value="#{product.noePaye}" styleClass="form-control">
+																		<f:selectItem itemValue="پلاستیکی"
+																			itemLabel="پلاستیکی" />
+																		<f:selectItem itemValue="پالنگ چوب"
+																			itemLabel="پالنگ چوب" />
+																		<f:selectItem itemValue="p.v.c" itemLabel="p.v.c" />
+																		<f:selectItem itemValue="چوبی" itemLabel="چوبی" />
+																		<f:selectItem itemValue="فلزی" itemLabel="فلزی" />
+																	</h:selectOneMenu>
+																</div>
+
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">جنس لایه
+																		میانی</label>
+																	<h:selectOneMenu id="onvan5"
+																		style="width:200px;font-family: IRANSansNor;"
+																		value="#{product.jenseLayeMiani}"
+																		styleClass="form-control">
+																		<f:selectItem itemValue="فوم سرد" itemLabel="فوم سرد" />
+																		<f:selectItem itemValue="فوم گرم" itemLabel="فوم گرم" />
+																		<f:selectItem itemValue="اسفتج پورتان یا 30 کیلویی"
+																			itemLabel="اسفتج پورتان یا 30 کیلویی" />
+																		<f:selectItem itemValue="اسفنج یوردلوکس"
+																			itemLabel="اسفنج یوردلوکس" />
+																		<f:selectItem itemValue="اسفنج 30 کبلویی"
+																			itemLabel="اسفنج 30 کبلویی" />
+																		<f:selectItem itemValue="اسفنج پلی یورتان"
+																			itemLabel="اسفنج پلی یورتان" />
+																	</h:selectOneMenu>
+																</div>
+
+															</div>
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">جنس پارچه</label>
+																	<h:inputText id="senfiname91" styleClass="form-control"
+																		style="font-family: IRANSansNor;"
+																		value="#{product.jenseParche}" />
+																	<!-- <span class="help-block"> This is inline help </span> -->
+																	<h:message for="senfiname91" id="ms191"
+																		errorStyle="color:red;" errorClass="help-block" />
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">ضمانت</label>
+																	<h:inputText id="senfiname9122"
+																		styleClass="form-control"
+																		style="font-family: IRANSansNor;"
+																		value="#{product.zemanat}" />
+																	<!-- <span class="help-block"> This is inline help </span> -->
+																	<h:message for="senfiname9122" id="ms1912"
+																		errorStyle="color:red;" errorClass="help-block" />
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">رنگ</label>
+																	<h:inputText id="senfiname91222"
+																		styleClass="form-control"
+																		style="font-family: IRANSansNor;"
+																		value="#{product.rangBandi}" />
+																	<!-- <span class="help-block"> This is inline help </span> -->
+																	<h:message for="senfiname91222" id="ms19122"
+																		errorStyle="color:red;" errorClass="help-block" />
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">کوسن</label>
+																	<h:selectOneRadio value="#{product.oldNew}"
+																		style="font-family: IRANSansNor;" id="postcode233"
+																		required="true" styleClass="form-control"
+																		layout="lineDirection">
+																		<f:selectItem itemValue="بلی" itemLabel="بلی" />
+																		<f:selectItem itemValue="خیر" itemLabel="خیر" />
+																	</h:selectOneRadio>
+																	<h:message for="postcode233" errorStyle="color:red;"
+																		errorClass="help-block" id="ms4633" />
+																</div>
+															</div>
+																														<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">میز</label>
+																	<h:selectOneRadio value="#{product.oldNew}"
+																		style="font-family: IRANSansNor;" id="postcode2333"
+																		required="true" styleClass="form-control"
+																		layout="lineDirection">
+																		<f:selectItem itemValue="بلی" itemLabel="بلی" />
+																		<f:selectItem itemValue="خیر" itemLabel="خیر" />
+																	</h:selectOneRadio>
+																	<h:message for="postcode2333" errorStyle="color:red;"
+																		errorClass="help-block" id="ms463333" />
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																															<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">ابعاد</label>
+																	<h:inputText id="senfiname912221"
+																		styleClass="form-control"
+																		style="font-family: IRANSansNor;"
+																		value="#{product.abad}" />
+																	<!-- <span class="help-block"> This is inline help </span> -->
+																	<h:message for="senfiname912221" id="ms191221"
+																		errorStyle="color:red;" errorClass="help-block" />
+																</div>
+															</div>
+															</div>
 														<div class="row">
 															<div class="col-md-6">
 																<div class="form-group">
@@ -212,8 +407,7 @@
 															<div class="col-md-12">
 																<div class="form-group">
 																	<label class="control-label mb-10"
-																		style="font-family: IRANSansNor;">توضیحات از
-																		قبیل جنس و ابعاد و ...</label>
+																		style="font-family: IRANSansNor;">توضیحات </label>
 																	<h:inputTextarea id="senfiAddres"
 																		style="font-family: IRANSansNor;"
 																		styleClass="form-control"
@@ -309,12 +503,12 @@
 														paginator="true"
 														paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 														rowsPerPageTemplate="5,10,15" selectionMode="single"
-														selection="#{product.productEntity}" rowKey="#{car.productId}"
+														selection="#{product.productEntity}"
+														rowKey="#{car.productId}"
 														emptyMessage="No cars found with given criteria">
 
 
-			<p:ajax event="rowSelect" update=":form:carDetail"
-				oncomplete="PF('carDialog').show()" />
+
 
 
 														<p:column headerText="نام">
@@ -340,7 +534,7 @@
 														</p:column>
 
 													</p:dataTable>
-													
+
 												</h:form>
 											</div>
 										</div>

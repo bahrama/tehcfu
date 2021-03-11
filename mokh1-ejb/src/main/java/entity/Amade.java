@@ -56,6 +56,8 @@ public class Amade implements Serializable{
 	private AmadeType type;
 	@Column(name="damane" , length=50 , nullable=true)
 	private String damane;
+	@Column(name="mobile" , length=50 , nullable=true)
+	private String mobile;
 	public long getAmadeId() {
 		return amadeId;
 	}
@@ -119,6 +121,14 @@ public class Amade implements Serializable{
 	}
 	public void setDamane(String damane) {
 		this.damane = damane;
+	}
+	
+	
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 	@Override
 	public boolean equals(Object obj) {

@@ -7,7 +7,8 @@
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:a4j="http://richfaces.org/a4j">
 
-	<h:form id="frm" enctype="multipart/form-data" acceptcharset="UTF-8" prependId="false" style="text-align: right;font-size: 20px;">
+	<h:form id="frm" enctype="multipart/form-data" acceptcharset="UTF-8"
+		prependId="false" style="text-align: right;font-size: 20px;">
 		<h:messages />
 		<h:panelGrid columns="3">
 
@@ -102,6 +103,7 @@
 				<f:selectItem itemValue="دراور" itemLabel="دراور" />
 				<f:selectItem itemValue="جاکفشی" itemLabel="جاکفشی" />
 				<f:selectItem itemValue="مبلمان سنتی" itemLabel="مبلمان سنتی" />
+				<f:selectItem itemValue="پیراهن مبل" itemLabel="پیراهن مبل" />
 
 			</h:selectManyCheckbox>
 			<rich:message for="id20" ajaxRendered="true" />
@@ -115,10 +117,10 @@
 			<h:inputTextarea id="id44444" value="#{addSeller.tagdir}"
 				styleClass="inp100" />
 			<rich:message for="id44444" ajaxRendered="true" />
-													<h:outputText value="تاریخ تولد فروشنده" />
-			<h:inputText id="id211212" value="#{addSeller.birthDay}" styleClass="inp100"
-				/>
-			<rich:message for="id211212" ajaxRendered="true" />	
+			<h:outputText value="تاریخ تولد فروشنده" />
+			<h:inputText id="id211212" value="#{addSeller.birthDay}"
+				styleClass="inp100" />
+			<rich:message for="id211212" ajaxRendered="true" />
 
 			<h:outputText value="اینستاگرام" />
 			<h:inputText id="id5" value="#{addSeller.instagram}"
@@ -161,8 +163,8 @@
 			<h:inputText id="id14" value="#{addSeller.postCode}"
 				styleClass="inp100" />
 			<rich:message for="id14" ajaxRendered="true" />
-			
-									<h:outputText value="مالکیت مغازه" />
+
+			<h:outputText value="مالکیت مغازه" />
 			<rich:select value="#{addSeller.malekiat}" id="id191">
 				<f:selectItem itemValue="مالکیت" itemLabel="مالکیت" />
 				<f:selectItem itemValue="سرقفلی" itemLabel="سرقفلی" />
@@ -170,97 +172,98 @@
 				<f:selectItem itemValue="استیجاری" itemLabel="استیجاری" />
 			</rich:select>
 			<rich:message for="id191" ajaxRendered="true" />
-			
-						<h:outputText value="ثبت سفارش از سوی" />
+
+			<h:outputText value="ثبت سفارش از سوی" />
 			<rich:select value="#{addSeller.sabteSefaresh}" id="id190">
 				<f:selectItem itemValue="صاحب پروانه" itemLabel="صاحب پروانه" />
 				<f:selectItem itemValue="مستاجر" itemLabel="مستاجر" />
 			</rich:select>
 			<rich:message for="id190" ajaxRendered="true" />
-			
-								<h:outputText value="مستاجر" />
+
+			<h:outputText value="مستاجر" />
 			<rich:select value="#{addSeller.sabteSefaresh}" id="id199">
 				<f:selectItem itemValue="true" itemLabel="دارد" />
 				<f:selectItem itemValue="false" itemLabel="ندارد" />
 			</rich:select>
-			<rich:message for="id199" ajaxRendered="true" />	
-			
-						<h:outputText value="مهلت اجاره" />
+			<rich:message for="id199" ajaxRendered="true" />
+
+			<h:outputText value="مهلت اجاره" />
 			<h:inputText id="id145" value="#{addSeller.mohlateEjare}"
 				styleClass="inp100" />
 			<rich:message for="id145" ajaxRendered="true" />
-			
-									<h:outputText value="نام و نام خانوادگی مستاجر" />
+
+			<h:outputText value="نام و نام خانوادگی مستاجر" />
 			<h:inputText id="id1450" value="#{addSeller.mostajerName}"
 				styleClass="inp100" />
 			<rich:message for="id1450" ajaxRendered="true" />
-			
-									<h:outputText value="تاریخ تولد مستاجر" />
+
+			<h:outputText value="تاریخ تولد مستاجر" />
 			<h:inputText id="id1451" value="#{addSeller.mostajerBirthday}"
 				styleClass="inp100" />
 			<rich:message for="id1451" ajaxRendered="true" />
-			
-						<h:outputText value="کد ملی مستاجر" />
-			<h:inputText id="id211" value="#{addSeller.mostajerSsn}" styleClass="inp100"
-				/>
+
+			<h:outputText value="کد ملی مستاجر" />
+			<h:inputText id="id211" value="#{addSeller.mostajerSsn}"
+				styleClass="inp100" />
 			<rich:message for="id211" ajaxRendered="true" />
-			
-								<h:outputText value="موبایل مستاجر" />
-			<h:inputText id="id2111" value="#{addSeller.mostajerMobile}" styleClass="inp100"
-				/>
-			<rich:message for="id2111" ajaxRendered="true" />	
-			
-											<h:outputText value="شماره جواز" />
-			<h:inputText id="id2112" value="#{addSeller.shomareJavaz}" styleClass="inp100"
-				/>
-			<rich:message for="id2112" ajaxRendered="true" />	
-			
-														<h:outputText value="تاریخ اعتبار" />
-			<h:inputText id="id21121" value="#{addSeller.tarikhEtebar}" styleClass="inp100"
-				/>
-			<rich:message for="id21121" ajaxRendered="true" />	
-			
-											<h:outputText value="مباشر" />
+
+			<h:outputText value="موبایل مستاجر" />
+			<h:inputText id="id2111" value="#{addSeller.mostajerMobile}"
+				styleClass="inp100" />
+			<rich:message for="id2111" ajaxRendered="true" />
+
+			<h:outputText value="شماره جواز" />
+			<h:inputText id="id2112" value="#{addSeller.shomareJavaz}"
+				styleClass="inp100" />
+			<rich:message for="id2112" ajaxRendered="true" />
+
+			<h:outputText value="تاریخ اعتبار" />
+			<h:inputText id="id21121" value="#{addSeller.tarikhEtebar}"
+				styleClass="inp100" />
+			<rich:message for="id21121" ajaxRendered="true" />
+
+			<h:outputText value="مباشر" />
 			<rich:select value="#{addSeller.hasMobasher}" id="id1992">
 				<f:selectItem itemValue="true" itemLabel="دارد" />
 				<f:selectItem itemValue="false" itemLabel="ندارد" />
 			</rich:select>
-			<rich:message for="id1992" ajaxRendered="true" />	
-			
-														<h:outputText value="نام مباشر" />
-			<h:inputText id="id21123" value="#{addSeller.mobasherName}" styleClass="inp100"
-				/>
-			<rich:message for="id21123" ajaxRendered="true" />	
-			
-																	<h:outputText value="نام رابط" />
-			<h:inputText id="id21124" value="#{addSeller.rabetName}" styleClass="inp100"
-				/>
-			<rich:message for="id21124" ajaxRendered="true" />	
-			
-																				<h:outputText value="سمت رابط" />
-			<h:inputText id="id21125" value="#{addSeller.sematRabet}" styleClass="inp100"
-				/>
-			<rich:message for="id21125" ajaxRendered="true" />	
-			
-											<h:outputText value="موبایل رابط" />
-			<h:inputText id="id2133" value="#{addSeller.rabetMobile}" styleClass="inp100"
-				/>
-			<rich:message for="id2133" ajaxRendered="true" />	
-			
-														<h:outputText value="موبایل شبکه مجازی" />
-			<h:inputText id="id2137" value="#{addSeller.shabakeMazajiMobile}" styleClass="inp100"
-				/>
+			<rich:message for="id1992" ajaxRendered="true" />
+
+			<h:outputText value="نام مباشر" />
+			<h:inputText id="id21123" value="#{addSeller.mobasherName}"
+				styleClass="inp100" />
+			<rich:message for="id21123" ajaxRendered="true" />
+
+			<h:outputText value="نام رابط" />
+			<h:inputText id="id21124" value="#{addSeller.rabetName}"
+				styleClass="inp100" />
+			<rich:message for="id21124" ajaxRendered="true" />
+
+			<h:outputText value="سمت رابط" />
+			<h:inputText id="id21125" value="#{addSeller.sematRabet}"
+				styleClass="inp100" />
+			<rich:message for="id21125" ajaxRendered="true" />
+
+			<h:outputText value="موبایل رابط" />
+			<h:inputText id="id2133" value="#{addSeller.rabetMobile}"
+				styleClass="inp100" />
+			<rich:message for="id2133" ajaxRendered="true" />
+
+			<h:outputText value="موبایل شبکه مجازی" />
+			<h:inputText id="id2137" value="#{addSeller.shabakeMazajiMobile}"
+				styleClass="inp100" />
 			<rich:message for="id2137" ajaxRendered="true" />
-			
+
 			<h:outputText value="مجتمع تجاری" />
 			<rich:select value="#{addSeller.mojtame}" id="id19924">
-				<f:selectItems value="#{addSeller.findAllPassage()}" var="psg" itemValue="#{psg.blogName}" itemLabel="#{psg.blogName}" />
+				<f:selectItems value="#{addSeller.findAllPassage()}" var="psg"
+					itemValue="#{psg.blogName}" itemLabel="#{psg.blogName}" />
 			</rich:select>
-			<rich:message for="id19924" ajaxRendered="true" />		
-			
-			
-			
-			
+			<rich:message for="id19924" ajaxRendered="true" />
+
+
+
+
 
 			<h:outputText value="عکس بالای صفحه" />
 			<h:inputFile id="id15" value="#{addSeller.sellerPic1}"
@@ -269,6 +272,15 @@
 				<f:validator validatorId="validationpkj.ImageValidator" />
 			</h:inputFile>
 			<h:message for="id15" ajaxRendered="true" errorStyle="color:red;" />
+			
+			<h:outputText value="عکس دوم بالای صفحه" />
+			<h:inputFile id="id15000" value="#{addSeller.sellerPic5}"
+				required="true"
+				requiredMessage="لطفا تصویر محصول با فرمت jpg و حداکثر حجم ۶۰ کیلوبایت وارد نمایید">
+				<f:validator validatorId="validationpkj.ImageValidator" />
+			</h:inputFile>
+			<h:message for="id15000" ajaxRendered="true" errorStyle="color:red;" />
+			
 			<h:outputText value="عکس لوگو" />
 			<h:inputFile id="id16" value="#{addSeller.sellerPic2}"
 				required="true"

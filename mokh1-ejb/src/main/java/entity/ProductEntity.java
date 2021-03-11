@@ -66,6 +66,31 @@ public class ProductEntity implements Serializable {
 	
 	@Column(name = "checkO", nullable = true)
 	private boolean checkO;
+	@Column(name = "noeMobl", nullable = true , length=50)
+	private String noeMobl;
+	@Column(name = "tedadNafar", nullable =true)
+	private int tedadNafar;
+	@Column(name = "noeMoblRahati", nullable = true , length=50)
+	private String noeMoblRahati;
+	@Column(name = "jenseKalaf", nullable = true , length=50)
+	private String jenseKalaf;
+	@Column(name = "noePaye", nullable = true , length=50)
+	private String noePaye;
+	@Column(name = "jenseLayeMiani", nullable = true , length=50)
+	private String jenseLayeMiani;
+	@Column(name = "jenseParche", nullable = true , length=50)
+	private String jenseParche;
+	@Column(name = "zemanat", nullable = true , length=50)
+	private String zemanat;
+	@Column(name = "rangBandi", nullable = true , length=50)
+	private String rangBandi;
+	@Column(name = "kosan", nullable = true)
+	private boolean kosan;
+	@Column(name = "miz", nullable = true)
+	private boolean miz;
+	@Column(name = "abad", nullable = true , length=100)
+	private String abad;
+	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_product")
@@ -193,6 +218,104 @@ public class ProductEntity implements Serializable {
 		this.product = product;
 	}
 	
+	
+	
+	public String getNoeMobl() {
+		return noeMobl;
+	}
+
+	public void setNoeMobl(String noeMobl) {
+		this.noeMobl = noeMobl;
+	}
+
+	public int getTedadNafar() {
+		return tedadNafar;
+	}
+
+	public void setTedadNafar(int tedadNafar) {
+		this.tedadNafar = tedadNafar;
+	}
+
+	public String getNoeMoblRahati() {
+		return noeMoblRahati;
+	}
+
+	public void setNoeMoblRahati(String noeMoblRahati) {
+		this.noeMoblRahati = noeMoblRahati;
+	}
+
+	public String getJenseKalaf() {
+		return jenseKalaf;
+	}
+
+	public void setJenseKalaf(String jenseKalaf) {
+		this.jenseKalaf = jenseKalaf;
+	}
+
+	public String getNoePaye() {
+		return noePaye;
+	}
+
+	public void setNoePaye(String noePaye) {
+		this.noePaye = noePaye;
+	}
+
+	public String getJenseLayeMiani() {
+		return jenseLayeMiani;
+	}
+
+	public void setJenseLayeMiani(String jenseLayeMiani) {
+		this.jenseLayeMiani = jenseLayeMiani;
+	}
+
+	public String getJenseParche() {
+		return jenseParche;
+	}
+
+	public void setJenseParche(String jenseParche) {
+		this.jenseParche = jenseParche;
+	}
+
+	public String getZemanat() {
+		return zemanat;
+	}
+
+	public void setZemanat(String zemanat) {
+		this.zemanat = zemanat;
+	}
+
+	public String getRangBandi() {
+		return rangBandi;
+	}
+
+	public void setRangBandi(String rangBandi) {
+		this.rangBandi = rangBandi;
+	}
+
+	public boolean isKosan() {
+		return kosan;
+	}
+
+	public void setKosan(boolean kosan) {
+		this.kosan = kosan;
+	}
+
+	public boolean isMiz() {
+		return miz;
+	}
+
+	public void setMiz(boolean miz) {
+		this.miz = miz;
+	}
+
+	public String getAbad() {
+		return abad;
+	}
+
+	public void setAbad(String abad) {
+		this.abad = abad;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof ProductEntity))

@@ -61,6 +61,7 @@ public class NamayeshgahEntity implements Serializable{
 	private String pic;
 	@Column(name="type" , length=2)
 	private String type;
+	
 	public Integer getId() {
 		return id;
 	}

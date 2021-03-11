@@ -80,6 +80,9 @@ public class MoblEntity implements Serializable {
 	@Column(name="pic4" , length=100,nullable=true)
 	@JsonbTransient
 	private String pic4;
+	@Column(name="pic5" , length=100,nullable=true)
+	@JsonbTransient
+	private String pic5;
 	@Column(name="postcode" , length=30,nullable=true)
 	@JsonbTransient
 	private String postcode;
@@ -136,7 +139,7 @@ public class MoblEntity implements Serializable {
 	@Column(name="faaliat" , length=400,nullable=true)
 	private String faaliat;
 	
-	@Column(name="tagdir" , length=100,nullable=true)
+	@Column(name="tagdir" ,nullable=true)
 	@JsonbTransient
 	private String tagdirName;
 	
@@ -752,6 +755,14 @@ public class MoblEntity implements Serializable {
 
 	public void setVage(String vage) {
 		this.vage = vage;
+	}
+
+	public String getPic5() {
+		return pic5;
+	}
+
+	public void setPic5(String pic5) {
+		this.pic5 = pic5;
 	}
 
 	@Override

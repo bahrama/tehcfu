@@ -171,6 +171,18 @@ public class SellerPage implements Serializable{
 			return null;
 		}
 	}
+	public byte[] findPic5() throws IOException {
+		try {
+		File imageFile1=new File("/home/wildfly/AX/" + this.sellerx.getPic5().toString() + ".jpg");
+		BufferedImage image1=ImageIO.read(imageFile1);
+		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
+		ImageIO.write(image1, "jpg", baos1);
+		return baos1.toByteArray();
+		}catch (Exception e) {
+		e.printStackTrace();
+			return null;
+		}
+	}
 	
 	public byte[] findPic1Product(long productId) throws IOException {
 		

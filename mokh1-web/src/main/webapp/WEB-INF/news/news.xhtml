@@ -5,56 +5,63 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:o="http://omnifaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
-<style>
+	<style>
 .tab {
 	background-color: #156bb7 !important;
 }
+
 .tab button.active {
-    background-color: #a4161a !important;
+	background-color: #a4161a !important;
 }
-button:hover{
+
+button:hover {
 	background-color: #156bb7 !important;
 }
+
 .tab button {
-    padding: 19px 16px!important;
+	padding: 19px 16px !important;
 }
+
 .enteshar-khabar h6 {
-    padding-bottom: 20px;
-    text-align: center;
-    background-color: #a4161a;
-    line-height: 50px;
-    color: white;
-    padding: 5px 10px;
-    box-shadow: 0px 14px 22px -9px #bbcbd8;
-    transition: all 0.5s ease-in;
-    margin-bottom: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+	background-color: #a4161a;
+	line-height: 50px;
+	color: white;
+	padding: 5px 10px;
+	box-shadow: 0px 14px 22px -9px #bbcbd8;
+	transition: all 0.5s ease-in;
+	margin-bottom: 20px;
 }
+
 .list li::before {
-    font-family: FontAwesome;
-    content: "\f00c"!important;
-    content: url("");
-    list-style: disc;
-    color: #2f6690;
-    list-style-position: inside;
+	font-family: FontAwesome;
+	content: "\f00c" !important;
+	content: url("");
+	list-style: disc;
+	color: #2f6690;
+	list-style-position: inside;
 }
+
 .list li {
-    line-height: 18px;
-    text-indent: 5px;
-    font-size: 13px;
-    list-style: none;
-    text-overflow: ellipsis!important;
-    white-space: nowrap!important;
-    overflow: hidden!important;
+	line-height: 18px;
+	text-indent: 5px;
+	font-size: 13px;
+	list-style: none;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+	overflow: hidden !important;
 }
+
 .list li::before {
-    font-family: FontAwesome;
-    content: "\f00c" !important;
-    content: url("");
-    list-style: disc;
-        list-style-position: outside;
-    color: #2f6690;
-    list-style-position: inside;
-    float: right!important;
+	font-family: FontAwesome;
+	content: "\f00c" !important;
+	content: url("");
+	list-style: disc;
+	list-style-position: outside;
+	color: #2f6690;
+	list-style-position: inside;
+	float: right !important;
 }
 </style>
 	<article class="margin-top-100">
@@ -78,10 +85,14 @@ button:hover{
 							<div class="item">
 								<picture> <source
 									media="(min-width: 768px) and (max-width: 991)"
-									srcset="resources/pictures/tablet-piano.jpg" /> <o:graphicImage
+									srcset="resources/pictures/tablet-piano.jpg" /> 
+									<h:link outcome="/pages/news/news-detail.xhtml">
+									<o:graphicImage
 									class="imgstyle"
 									rendered="#{newsPage.findBlogPicById(nws.id) ne null}"
 									value="#{newsPage.findBlogPicById(nws.id)}" dataURI="true" />
+									<f:param name="blogId" value="#{nws.id}" />
+								</h:link>
 								</picture>
 							</div>
 						</ui:repeat>
@@ -96,9 +107,8 @@ button:hover{
 
 			<!-- important news -->
 			<div style="float: right" class="col-lg-3 important">
-				<h6 style="background-color: #0B59AA !important;text-align: center;
-    line-height: 35px;
-    border-radius: 3px;">
+				<h6
+					style="background-color: #0B59AA !important; text-align: center; line-height: 35px; border-radius: 3px;">
 					<a href="#" title="آخرین خبرها">آخرین خبرها</a>
 				</h6>
 				<ul class="important-list" dir="rtl">
@@ -125,16 +135,15 @@ button:hover{
 						<div class="row">
 							<div style="float: right" class="height">
 								<h:link outcome="/pages/news/amade-union.xhtml">
-								<img
-									style="height: 82px; float: right"
-									src="../../resources/symbols/parvane.jpg"
-									alt="پروانه های کسب آماده تحویل" />
+									<img style="height: 82px; float: right"
+										src="../../resources/symbols/parvane.jpg"
+										alt="پروانه های کسب آماده تحویل" />
 								</h:link>
 							</div>
 							<div class="bg-light height">
 								<h:link outcome="/pages/news/amade-union.xhtml">
 									<h3>پروانه های کسب آماده تحویل</h3>
-									</h:link>
+								</h:link>
 							</div>
 						</div>
 					</div>
@@ -142,10 +151,9 @@ button:hover{
 						<div class="row">
 							<div style="float: right" class="height">
 								<h:link outcome="/pages/news/amade-mobasherat.xhtml">
-								<img
-									style="height: 82px; float: right"
-									src="../../resources/symbols/cart.jpg"
-									alt="کارت مباشرت آماده تحویل" />
+									<img style="height: 82px; float: right"
+										src="../../resources/symbols/cart.jpg"
+										alt="کارت مباشرت آماده تحویل" />
 								</h:link>
 							</div>
 							<div class="bg-light height">
@@ -155,14 +163,13 @@ button:hover{
 							</div>
 						</div>
 					</div>
-										<div class="links">
+					<div class="links">
 						<div class="row">
 							<div style="float: right" class=" height">
 								<h:link outcome="/pages/news/amade-pano.xhtml">
-								 <img
-									style="height: 82px; float: right"
-									src="../../resources/pic/gavahinam.jpg"
-									alt="گواهینامه های آماده تحویل" />
+									<img style="height: 82px; float: right"
+										src="../../resources/pic/gavahinam.jpg"
+										alt="گواهینامه های آماده تحویل" />
 								</h:link>
 							</div>
 							<div class=" bg-light height">
@@ -176,10 +183,9 @@ button:hover{
 						<div class="row">
 							<div style="float: right" class=" height">
 								<h:link outcome="/pages/news/unions.xhtml">
-								<img
-									style="height: 82px; float: right"
-									src="../../resources/symbols/asnaf.jpg"
-									alt="دیگر اتحادیه های تهران" />
+									<img style="height: 82px; float: right"
+										src="../../resources/symbols/asnaf.jpg"
+										alt="دیگر اتحادیه های تهران" />
 								</h:link>
 							</div>
 							<div class=" bg-light height">
@@ -200,114 +206,119 @@ button:hover{
 
 
 
- <!--newsss start-->
-            <div class="container enteshar-khabar" style="background-color:ghostwhite;
-            width: 100%;height:auto;padding: 20px">
-            <div class="row">
-            <div class="col-sm-3 col-md-3 important">
-                 <div class="section1">
-                     <h6>اخبار اتحادیه</h6>
-                     <div style="width: 100%;padding: 10px;text-align: center;">
-                          <img style="filter: grayscale(100%);opacity: .6;width: 120px;" src="../../resources/galeb2/image/logo-new.png" alt="اتحادیه" class="img-section"/>
+		<!--newsss start-->
+		<div class="container enteshar-khabar"
+			style="background-color: ghostwhite; width: 100%; height: auto; padding: 20px">
+			<div class="row">
+				<div class="col-sm-3 col-md-3 important">
+					<div class="section1">
+						<h6>اخبار اتحادیه</h6>
+						<div style="width: 100%; padding: 10px; text-align: center;">
+							<img style="filter: grayscale(100%); opacity: .6; width: 120px;"
+								src="../../resources/galeb2/image/logo-new.png" alt="اتحادیه"
+								class="img-section" />
 
-                     </div>
-                     <ul class="important-list" dir="rtl">
-                        					<ui:repeat var="nws" value="#{newsPage.blogEntities}"
-						size="#{newsPage.size()}" style="color:black!important;">
-                            <h:panelGroup rendered="#{nws.newsMode eq 'اخبار اتحلدیه'}">
-                            <li>
-                               <h:link outcome="/pages/news/news-detail.xhtml"
-								value="#{nws.blogName}">
-								<f:param name="blogId" value="#{nws.id}" />
-							</h:link>
-                            </li>
-                            </h:panelGroup>
-   											</ui:repeat>
-                     </ul>
-                     <div class="align-items-center text-right">
-                         <!-- <a href="#" class="btn btn-secondary"><span class="fa fa-chevron-left"></span> &nbsp;بیشتر </a> -->
+						</div>
+						<ul class="important-list" dir="rtl">
+							<ui:repeat var="nws"
+								value="#{newsPage.blogEntitiesMode1}"
+								size="#{newsPage.size11()}"
+								style="color:black!important;">
 
-                     </div>
-                 </div>
-                </div>
-                
-                <div class="col-sm-3 col-md-3 important">
-                    <div class="section1">
-                        <h6>اخبار اتاق اصناف ایران</h6>
-                        <div style="width: 100%;padding: 10px;text-align: center;">
-                         <img src="../../resources/pictures/asnafiran.png" alt="اتاق ایران" class="img-section"/>
-                        </div>
-                        <ul class="important-list" dir="rtl">
-                        					<ui:repeat var="nws" value="#{newsPage.blogEntities}"
-						size="#{newsPage.size()}" style="color:black!important;">
-                            <h:panelGroup rendered="#{nws.newsMode eq 'اخبار اتاق اصناف ایران'}">
-                            <li>
-                               <h:link outcome="/pages/news/news-detail.xhtml"
-								value="#{nws.blogName}">
-								<f:param name="blogId" value="#{nws.id}" />
-							</h:link>
-                            </li>
-                            </h:panelGroup>
-   											</ui:repeat>
-                        </ul>
-                        <div class="d-flex align-items-center text-right">
-                           <!--  <a href="#" class="btn btn-secondary"><span class="fa fa-chevron-left"></span> &nbsp;بیشتر </a> -->
+								<li
+									style="white-space: nowrap !important; overflow: hidden !important;"><h:link
+										outcome="/pages/news/news-detail.xhtml"
+										value="#{nws.blogName}">
+										<f:param name="blogId" value="#{nws.id}" />
+									</h:link></li>
+							</ui:repeat>
+						</ul>
+						<div class="align-items-center text-right">
+							<!-- <a href="#" class="btn btn-secondary"><span class="fa fa-chevron-left"></span> &nbsp;بیشتر </a> -->
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-md-3 important">
-                    <div class="section1">
-                        <h6>اخبار اتاق اصناف تهران</h6>
-                        <div style="width: 100%;padding: 10px;text-align: center;">
-                         <img src="../../resources/pictures/asnafteh.png" alt="اتاق تهران" class="img-section"/>
-                        </div>
-                        <ul class="important-list" dir="rtl">
-                        					<ui:repeat var="nws" value="#{newsPage.blogEntities}"
-						size="#{newsPage.size()}" style="color:black!important;">
-                            <h:panelGroup rendered="#{nws.newsMode eq 'اخبار اتاق اصناف تهران'}">
-                            <li>
-                               <h:link outcome="/pages/news/news-detail.xhtml"
-								value="#{nws.blogName}">
-								<f:param name="blogId" value="#{nws.id}" />
-							</h:link>
-                            </li>
-                            </h:panelGroup>
-   											</ui:repeat>
-                        </ul>
-                        <div class="align-items-center text-right">
-                           <!-- <a href="#" class="btn btn-secondary"> <span class="fa fa-chevron-left"></span> &nbsp;بیشتر </a> -->
+						</div>
+					</div>
+				</div>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-md-3 important">
-                    <div class="section1">
-                        <h6>اخبار متفرقه</h6>
-                        <div style="width: 100%;padding: 10px;text-align: center;">
-                             <img style="filter: grayscale(100%);opacity: .6;width: 120px;" src="../../resources/pictures/motefarege.jpg" alt="اتاق ایران" class="img-section"/>
-                        </div>
-                        <ul class="important-list" dir="rtl">
-                        					<ui:repeat var="nws" value="#{newsPage.blogEntities}"
-						size="#{newsPage.size()}" style="color:black!important;">
-                            <h:panelGroup rendered="#{nws.newsMode eq 'اخبار متفرقه'}">
-                            <li>
-                               <h:link outcome="/pages/news/news-detail.xhtml"
-								value="#{nws.blogName}">
-								<f:param name="blogId" value="#{nws.id}" />
-							</h:link>
-                            </li>
-                            </h:panelGroup>
-   											</ui:repeat>
-                        </ul>
-                        <div class="d-flex align-items-center text-right">
-                            
+				<div class="col-sm-3 col-md-3 important">
+					<div class="section1">
+						<h6>اخبار اتاق اصناف ایران</h6>
+						<div style="width: 100%; padding: 10px; text-align: center;">
+							<img src="../../resources/pictures/asnafiran.png"
+								alt="اتاق ایران" class="img-section" />
+						</div>
+						<ul class="important-list" dir="rtl">
+							<ui:repeat var="nws"
+								value="#{newsPage.blogEntitiesMode2}"
+								size="#{newsPage.size22()}"
+								style="color:black!important;">
+								<li
+									style="white-space: nowrap !important; overflow: hidden !important;"><h:link
+										outcome="/pages/news/news-detail.xhtml"
+										value="#{nws.blogName}">
+										<f:param name="blogId" value="#{nws.id}" />
+									</h:link></li>
+							</ui:repeat>
+						</ul>
+						<div class="d-flex align-items-center text-right">
+							<!--  <a href="#" class="btn btn-secondary"><span class="fa fa-chevron-left"></span> &nbsp;بیشتر </a> -->
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3 col-md-3 important">
+					<div class="section1">
+						<h6>اخبار اتاق اصناف تهران</h6>
+						<div style="width: 100%; padding: 10px; text-align: center;">
+							<img src="../../resources/pictures/asnafteh.png" alt="اتاق تهران"
+								class="img-section" />
+						</div>
+						<ul class="important-list" dir="rtl">
+							<ui:repeat var="nws"
+								value="#{newsPage.blogEntitiesMode3}"
+								size="#{newsPage.size33()}"
+								style="color:black!important;">
+								<li
+									style="white-space: nowrap !important; overflow: hidden !important;"><h:link
+										outcome="/pages/news/news-detail.xhtml"
+										value="#{nws.blogName}">
+										<f:param name="blogId" value="#{nws.id}" />
+									</h:link></li>
+							</ui:repeat>
+						</ul>
+						<div class="align-items-center text-right">
+							<!-- <a href="#" class="btn btn-secondary"> <span class="fa fa-chevron-left"></span> &nbsp;بیشتر </a> -->
+
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3 col-md-3 important">
+					<div class="section1">
+						<h6>اخبار متفرقه</h6>
+						<div style="width: 100%; padding: 10px; text-align: center;">
+							<img style="filter: grayscale(100%); opacity: .6; width: 120px;"
+								src="../../resources/pictures/motefarege.jpg" alt="اتاق ایران"
+								class="img-section" />
+						</div>
+						<ul class="important-list" dir="rtl">
+							<ui:repeat var="nws"
+								value="#{newsPage.blogEntitiesMode4}"
+								size="#{newsPage.size44()}"
+								style="color:black!important;">
+								<li
+									style="white-space: nowrap !important; overflow: hidden !important;">
+									<h:link outcome="/pages/news/news-detail.xhtml"
+										value="#{nws.blogName}">
+										<f:param name="blogId" value="#{nws.id}" />
+									</h:link>
+								</li>
+							</ui:repeat>
+						</ul>
+						<div class="d-flex align-items-center text-right"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
 
@@ -324,29 +335,33 @@ button:hover{
 		<!--advertising-->
 		<div id="adv" class="container padding-top-10">
 			<div>
-			<a href="https://www.mobliranasl.com/products/sofa" target="_blank"> 
-<img src="../../resources/comm/1401-250gif.gif" alt="" style="width: 100%;min-height: 110px;"/>
-</a>
+				<a href="https://www.mobliranasl.com/products/sofa" target="_blank">
+					<img src="../../resources/comm/1401-250-edited.gif" alt=""
+					style="width: 100%; min-height: 110px;" />
+				</a>
 			</div>
 		</div>
 
 
 
 		<div class="tab" style="direction: rtl; display: flex;">
-			<button class="tablinks" style="width: 33.3%;background-image: none !important;color: white;border: 1px solid white;" onclick="openCity(event, 'London')">آخرین
-				اخبار</button>
-			<button class="tablinks" style="width: 33.3%;background-image: none !important;color: white;border: 1px solid white;" onclick="openCity(event, 'Paris')">پر
-				بازدید ها</button>
-			<button class="tablinks" style="width: 33.3%;background-image: none !important;color: white;border: 1px solid white;" onclick="openCity(event, 'Tokyo')">آرشیو
-				مناسبت ها</button>
+			<button class="tablinks"
+				style="width: 33.3%; background-image: none !important; color: white; border: 1px solid white;"
+				onclick="openCity(event, 'London')">آخرین اخبار</button>
+			<button class="tablinks"
+				style="width: 33.3%; background-image: none !important; color: white; border: 1px solid white;"
+				onclick="openCity(event, 'Paris')">پر بازدید ها</button>
+			<button class="tablinks"
+				style="width: 33.3%; background-image: none !important; color: white; border: 1px solid white;"
+				onclick="openCity(event, 'Tokyo')">آرشیو مناسبت ها</button>
 		</div>
 
 		<div id="London" class="tabcontent">
 			<ul class="list" dir="rtl">
 				<ui:repeat var="nws" value="#{newsPage.blogEntities}"
 					size="#{newsPage.size2()}" style="color:black!important;">
-					<li style="margin-right: 5px;"><h:link outcome="/pages/news/news-detail.xhtml"
-							value="#{nws.blogName}">
+					<li style="margin-right: 5px;"><h:link
+							outcome="/pages/news/news-detail.xhtml" value="#{nws.blogName}">
 							<f:param name="blogId" value="#{nws.id}" />
 						</h:link></li>
 				</ui:repeat>
@@ -362,28 +377,29 @@ button:hover{
 		<div id="Tokyo" class="tabcontent">
 			<ul class="list" dir="rtl" style="column-count: 3;">
 				<ui:repeat var="mon" value="#{newsPage.findCurrentDate()}">
-					<li style="width: 100%;">
-					
-					   <h:link outcome="/pages/news/news-detail.xhtml" value="#{newsPage.findShamsi(mon)}" rendered="#{newsPage.findMonasebatShamsiByDate(mon).id ne null}">
-					   								<f:param value="#{newsPage.findMonasebatShamsiByDate(mon).id}"
-									name="blogId" />
-						</h:link>
-					<h:link outcome="#" value="#{newsPage.findShamsi(mon)}" rendered="#{newsPage.findMonasebatShamsiByDate(mon).id eq null}">
-						</h:link>
-						
-						 /<h:link outcome="/pages/news/news-detail.xhtml" value="#{newsPage.hejriDate2(mon)}" rendered="#{newsPage.findMonasebatGamariByDate(mon).id ne null}">
-					   								<f:param value="#{newsPage.findMonasebatGamariByDate(mon).id}"
-									name="blogId" />
-						</h:link>
-						<h:link outcome="#" value="#{newsPage.hejriDate2(mon)}" rendered="#{newsPage.findMonasebatGamariByDate(mon).id eq null}">
-						</h:link>
-						 /<h:link outcome="/pages/news/news-detail.xhtml" value="#{newsPage.findCurrentMiladi(mon)}" rendered="#{newsPage.findMonasebatMiladiByDate(mon).id ne null}">
-					   								<f:param value="#{newsPage.findMonasebatMiladiByDate(mon).id}"
-									name="blogId" />
-						</h:link>
-						<h:link outcome="#" value="#{newsPage.findCurrentMiladi(mon)}" rendered="#{newsPage.findMonasebatMiladiByDate(mon).id eq null}">
-						</h:link>
-						</li>
+					<li style="width: 100%;"><h:link
+							outcome="/pages/news/news-detail.xhtml"
+							value="#{newsPage.findShamsi(mon)}"
+							rendered="#{newsPage.findMonasebatShamsiByDate(mon).id ne null}">
+							<f:param value="#{newsPage.findMonasebatShamsiByDate(mon).id}"
+								name="blogId" />
+						</h:link> <h:link outcome="#" value="#{newsPage.findShamsi(mon)}"
+							rendered="#{newsPage.findMonasebatShamsiByDate(mon).id eq null}">
+						</h:link> /<h:link outcome="/pages/news/news-detail.xhtml"
+							value="#{newsPage.hejriDate2(mon)}"
+							rendered="#{newsPage.findMonasebatGamariByDate(mon).id ne null}">
+							<f:param value="#{newsPage.findMonasebatGamariByDate(mon).id}"
+								name="blogId" />
+						</h:link> <h:link outcome="#" value="#{newsPage.hejriDate2(mon)}"
+							rendered="#{newsPage.findMonasebatGamariByDate(mon).id eq null}">
+						</h:link> /<h:link outcome="/pages/news/news-detail.xhtml"
+							value="#{newsPage.findCurrentMiladi(mon)}"
+							rendered="#{newsPage.findMonasebatMiladiByDate(mon).id ne null}">
+							<f:param value="#{newsPage.findMonasebatMiladiByDate(mon).id}"
+								name="blogId" />
+						</h:link> <h:link outcome="#" value="#{newsPage.findCurrentMiladi(mon)}"
+							rendered="#{newsPage.findMonasebatMiladiByDate(mon).id eq null}">
+						</h:link></li>
 				</ui:repeat>
 
 
@@ -425,7 +441,8 @@ button:hover{
 									rendered="#{(homeBean.findHomeCatByName('میلادی') ne null) and (newsPage.findMonasebatMiladi().blogName ne null)}"
 									value="#{homeBean.findHomeCatByName('میلادی')}" dataURI="true"
 									alt="" />
-								<o:graphicImage styleClass="img-hover min" style="filter: grayscale(100%)"
+								<o:graphicImage styleClass="img-hover min"
+									style="filter: grayscale(100%)"
 									rendered="#{(homeBean.findHomeCatByName('میلادی') ne null) and (newsPage.findMonasebatMiladi().blogName eq null)}"
 									value="#{homeBean.findHomeCatByName('میلادی')}" dataURI="true"
 									alt="" />
@@ -468,7 +485,8 @@ button:hover{
 									rendered="#{homeBean.findHomeCatByName('قمری') ne null and newsPage.findMonasebatGamari().blogName ne null}"
 									value="#{homeBean.findHomeCatByName('قمری')}" dataURI="true"
 									alt="" />
-								<o:graphicImage styleClass="img-hover min" style="filter: grayscale(100%)"
+								<o:graphicImage styleClass="img-hover min"
+									style="filter: grayscale(100%)"
 									rendered="#{homeBean.findHomeCatByName('قمری') ne null and newsPage.findMonasebatGamari().blogName eq null}"
 									value="#{homeBean.findHomeCatByName('قمری')}" dataURI="true"
 									alt="" />
@@ -506,7 +524,8 @@ button:hover{
 									rendered="#{homeBean.findHomeCatByName('شمسی') ne null and newsPage.findMonasebatShamsi().blogName ne null}"
 									value="#{homeBean.findHomeCatByName('شمسی')}" dataURI="true"
 									alt="" />
-								<o:graphicImage styleClass="img-hover min" style="filter: grayscale(100%)"
+								<o:graphicImage styleClass="img-hover min"
+									style="filter: grayscale(100%)"
 									rendered="#{homeBean.findHomeCatByName('شمسی') ne null and newsPage.findMonasebatShamsi().blogName eq null}"
 									value="#{homeBean.findHomeCatByName('شمسی')}" dataURI="true"
 									alt="" />

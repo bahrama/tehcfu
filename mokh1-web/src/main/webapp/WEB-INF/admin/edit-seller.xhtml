@@ -14,14 +14,15 @@
 .ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox {
 	display: none;
 }
-    .ui-dialog {
-        position: fixed;
-        padding: 0;
-        overflow: hidden;
-        display: none;
-        height: 400px !important;
-        overflow: scroll;
-    }
+
+.ui-dialog {
+	position: fixed;
+	padding: 0;
+	overflow: hidden;
+	display: none;
+	height: 400px !important;
+	overflow: scroll;
+}
 </style>
 	<script type="text/javascript">
     PrimeFaces.locales['es'] = {
@@ -90,18 +91,20 @@
 .value {
 	font-weight: bold;
 }
+
 .ui-dialog {
-    padding: 0;
-    -webkit-box-shadow: 0 0 .429em 0 rgba(0,0,0,0.16);
-    -moz-box-shadow: 0 0 .429em 0 rgba(0,0,0,0.16);
-    box-shadow: 0 0 .429em 0 rgba(0,0,0,0.16);
-    width: 800px !important;
-    left: 300px !important;
-    height: 600px!important;
+	padding: 0;
+	-webkit-box-shadow: 0 0 .429em 0 rgba(0, 0, 0, 0.16);
+	-moz-box-shadow: 0 0 .429em 0 rgba(0, 0, 0, 0.16);
+	box-shadow: 0 0 .429em 0 rgba(0, 0, 0, 0.16);
+	width: 800px !important;
+	left: 300px !important;
+	height: 600px !important;
 }
+
 .ui-panelgrid .ui-panelgrid-cell {
-    color: #333;
-    text-align: right !important;
+	color: #333;
+	text-align: right !important;
 }
 </style>
 
@@ -132,17 +135,16 @@
 				sortBy="#{blogs.id}" filterMatchMode="contains">
 				<h:outputText value="#{blogs.id}" />
 			</p:column>
-			
+
 			<p:column headerText="نام" filterBy="#{blogs.sellerName}"
 				sortBy="#{blogs.sellerName}" filterMatchMode="contains">
 				<h:outputText value="#{blogs.sellerName}" />
 			</p:column>
-			
-			<p:column headerText="نوع کاربری"
-				sortBy="#{blogs.sellerName}">
-				<h:outputText value="ادمین" rendered="#{blogs.role eq 'ADMIN'}"/>
-				<h:outputText value="کاربر" rendered="#{blogs.role eq 'USER'}"/>
-				<h:outputText value="فروشنده" rendered="#{blogs.role eq 'MERCHANT'}"/>
+
+			<p:column headerText="نوع کاربری" sortBy="#{blogs.sellerName}">
+				<h:outputText value="ادمین" rendered="#{blogs.role eq 'ADMIN'}" />
+				<h:outputText value="کاربر" rendered="#{blogs.role eq 'USER'}" />
+				<h:outputText value="فروشنده" rendered="#{blogs.role eq 'MERCHANT'}" />
 			</p:column>
 
 			<p:column headerText="موبایل" filterMatchMode="contains"
@@ -157,12 +159,12 @@
 			</p:column>
 
 			<p:column headerText="پنل">
-				<h:outputText value="فیروزه ای" rendered="#{blogs.panel eq 'A'}"/>
-				<h:outputText value="طلایی" rendered="#{blogs.panel eq 'B'}"/>
-				<h:outputText value="نقره ای" rendered="#{blogs.panel eq 'C'}"/>
-				<h:outputText value="برنزی" rendered="#{blogs.panel eq 'D'}"/>
-				<h:outputText value="فروشنده عادی" rendered="#{blogs.panel eq 'E'}"/>
-				<h:outputText value="کاربر عادی" rendered="#{blogs.panel eq null}"/>
+				<h:outputText value="فیروزه ای" rendered="#{blogs.panel eq 'A'}" />
+				<h:outputText value="طلایی" rendered="#{blogs.panel eq 'B'}" />
+				<h:outputText value="نقره ای" rendered="#{blogs.panel eq 'C'}" />
+				<h:outputText value="برنزی" rendered="#{blogs.panel eq 'D'}" />
+				<h:outputText value="فروشنده عادی" rendered="#{blogs.panel eq 'E'}" />
+				<h:outputText value="کاربر عادی" rendered="#{blogs.panel eq null}" />
 			</p:column>
 
 			<p:column headerText="ویرایش نقشه">
@@ -193,7 +195,8 @@
 
 
 		</p:dataTable>
-		<p:dialog header="ویرایش" widgetVar="carDialog" modal="true" style="height:400px!important;width:800px!important;" id="dlg1"
+		<p:dialog header="ویرایش" widgetVar="carDialog" modal="true"
+			style="height:400px!important;width:800px!important;" id="dlg1"
 			showEffect="fade" hideEffect="fade" resizable="false">
 			<p:outputPanel id="carDetail" style="text-align:center;">
 				<p:panelGrid columns="3"
@@ -207,7 +210,11 @@
 
 					<h:outputText value="about us" />
 					<h:outputText value="#{editSeller.moblEntity.aboutUs}" />
-						<p:inputTextarea value="#{editSeller.aboutUs}" label="text" />
+					<p:inputTextarea value="#{editSeller.aboutUs}" label="text" />
+
+					<h:outputText value="ویرایش تقدیر نامه" />
+					<h:outputText value="#{editSeller.moblEntity.tagdirName}" />
+					<p:inputTextarea value="#{editSeller.tagdirName}" label="text" />
 
 					<h:outputText value="email" />
 					<h:outputText value="#{editSeller.moblEntity.email}" />
@@ -215,243 +222,251 @@
 
 					<h:outputText value="fax" />
 					<h:outputText value="#{editSeller.moblEntity.fax}" />
-						<p:inputTextarea value="#{editSeller.fax}" label="text" />
+					<p:inputTextarea value="#{editSeller.fax}" label="text" />
 
 					<h:outputText value="instagram" />
 					<h:outputText value="#{editSeller.moblEntity.instagram}" />
-						<p:inputTextarea value="#{editSeller.instagram}" label="text" />
+					<p:inputTextarea value="#{editSeller.instagram}" label="text" />
 
 					<h:outputText value="name of modir forosh" />
 					<h:outputText value="#{editSeller.moblEntity.modirforoshName}" />
-						<p:inputTextarea value="#{editSeller.modirforoshName}"
-							label="text" />
+					<p:inputTextarea value="#{editSeller.modirforoshName}" label="text" />
 
 					<h:outputText value="phone of modir forosh" />
 					<h:outputText value="#{editSeller.moblEntity.modirforoshPhone}" />
-						<p:inputTextarea value="#{editSeller.modirforoshPhone}"
-							label="text" />
+					<p:inputTextarea value="#{editSeller.modirforoshPhone}"
+						label="text" />
 
 					<h:outputText value="phone" />
 					<h:outputText value="#{editSeller.moblEntity.phone}" />
-						<p:inputTextarea value="#{editSeller.phone}" label="text" />
+					<p:inputTextarea value="#{editSeller.phone}" label="text" />
 
 					<h:outputText value="postcode" />
 					<h:outputText value="#{editSeller.moblEntity.postcode}" />
-						<p:inputTextarea value="#{editSeller.postcode}" label="text" />
+					<p:inputTextarea value="#{editSeller.postcode}" label="text" />
 
 					<h:outputText value="addres" />
 					<h:outputText value="#{editSeller.moblEntity.sellerAddres}" />
-						<p:inputTextarea value="#{editSeller.sellerAddres}" label="text" />
-					
-										<h:outputText value="واقع در" />
+					<p:inputTextarea value="#{editSeller.sellerAddres}" label="text" />
+
+					<h:outputText value="واقع در" />
 					<h:outputText value="#{editSeller.moblEntity.vage}" />
-						<p:inputTextarea value="#{editSeller.vage}" label="text" />
+					<p:inputTextarea value="#{editSeller.vage}" label="text" />
 
 					<h:outputText value="name" />
 					<h:outputText value="#{editSeller.moblEntity.sellerName}" />
-						<p:inputTextarea value="#{editSeller.sellerName}" label="text" />
+					<p:inputTextarea value="#{editSeller.sellerName}" label="text" />
 
 					<h:outputText value="english store name" />
 					<h:outputText value="#{editSeller.moblEntity.sellerStoreEng}" />
-						<p:inputTextarea value="#{editSeller.sellerStoreEng}" label="text" />
+					<p:inputTextarea value="#{editSeller.sellerStoreEng}" label="text" />
 
 					<h:outputText value="persian store name" />
 					<h:outputText value="#{editSeller.moblEntity.sellerStorePer}" />
-						<p:inputTextarea value="#{editSeller.sellerStorePer}" label="text" />
+					<p:inputTextarea value="#{editSeller.sellerStorePer}" label="text" />
 
 					<h:outputText value="telegram" />
 					<h:outputText value="#{editSeller.moblEntity.telegram}" />
-						<p:inputTextarea value="#{editSeller.telegram}" label="text" />
+					<p:inputTextarea value="#{editSeller.telegram}" label="text" />
 
 					<h:outputText value="website" />
 					<h:outputText value="#{editSeller.moblEntity.website}" />
-						<p:inputTextarea value="#{editSeller.website}" label="text" />
-				
-					
+					<p:inputTextarea value="#{editSeller.website}" label="text" />
+
+
 					<h:outputText value="ثبت سفارش از سوی" />
 					<h:outputText value="#{editSeller.moblEntity.sabteSefaresh}" />
-						<p:selectOneListbox id="basic2" value="#{editSeller.sabteSefaresh}">
+					<p:selectOneListbox id="basic2" value="#{editSeller.sabteSefaresh}">
 						<f:selectItem itemValue="صاحب پروانه" itemLabel="صاحب پروانه" />
 						<f:selectItem itemValue="مستاجر" itemLabel="مستاجر" />
-						</p:selectOneListbox>
-					
-									<h:outputText value="مستاجر" />
+					</p:selectOneListbox>
+
+					<h:outputText value="مستاجر" />
 					<h:outputText value="#{editSeller.moblEntity.mostajer}" />
-						<p:selectOneListbox id="basic22" value="#{editSeller.mostajer}">
+					<p:selectOneListbox id="basic22" value="#{editSeller.mostajer}">
 						<f:selectItem itemValue="true" itemLabel="دارد" />
 						<f:selectItem itemValue="false" itemLabel="ندارد" />
-						</p:selectOneListbox>
-					
-										<h:outputText value="mohlateEjare" />
+					</p:selectOneListbox>
+
+					<h:outputText value="mohlateEjare" />
 					<h:outputText value="#{editSeller.moblEntity.mohlateEjare}" />
 					<p:inplace id="id14c" editor="true" label="EDIT">
 						<p:inputTextarea value="#{editSeller.mohlateEjare}" label="text" />
 					</p:inplace>
-					
+
 					<h:outputText value="mostajerName" />
 					<h:outputText value="#{editSeller.moblEntity.mostajerName}" />
-						<p:inputTextarea value="#{editSeller.mostajerName}" label="text" />
-					
-										<h:outputText value="mostajerBirthday" />
+					<p:inputTextarea value="#{editSeller.mostajerName}" label="text" />
+
+					<h:outputText value="mostajerBirthday" />
 					<h:outputText value="#{editSeller.moblEntity.mostajerBirthday}" />
-						<p:inputTextarea value="#{editSeller.mostajerBirthday}" label="text" />
-					
-															<h:outputText value="mostajerSsn" />
+					<p:inputTextarea value="#{editSeller.mostajerBirthday}"
+						label="text" />
+
+					<h:outputText value="mostajerSsn" />
 					<h:outputText value="#{editSeller.moblEntity.mostajerSsn}" />
-						<p:inputTextarea value="#{editSeller.mostajerSsn}" label="text" />
-					
-															<h:outputText value="mostajerMobile" />
+					<p:inputTextarea value="#{editSeller.mostajerSsn}" label="text" />
+
+					<h:outputText value="mostajerMobile" />
 					<h:outputText value="#{editSeller.moblEntity.mostajerMobile}" />
-						<p:inputTextarea value="#{editSeller.mostajerMobile}" label="text" />
-					
-																				<h:outputText value="shomareJavaz" />
+					<p:inputTextarea value="#{editSeller.mostajerMobile}" label="text" />
+
+					<h:outputText value="shomareJavaz" />
 					<h:outputText value="#{editSeller.moblEntity.shomareJavaz}" />
-						<p:inputTextarea value="#{editSeller.shomareJavaz}" label="text" />
-					
-																				<h:outputText value="shomareJavaz" />
+					<p:inputTextarea value="#{editSeller.shomareJavaz}" label="text" />
+
+					<h:outputText value="shomareJavaz" />
 					<h:outputText value="#{editSeller.moblEntity.shomareJavaz}" />
-						<p:inputTextarea value="#{editSeller.shomareJavaz}" label="text" />
-					
-														<h:outputText value="hasMobasher" />
+					<p:inputTextarea value="#{editSeller.shomareJavaz}" label="text" />
+
+					<h:outputText value="hasMobasher" />
 					<h:outputText value="#{editSeller.moblEntity.hasMobasher}" />
-						<p:selectOneListbox id="basic222" value="#{editSeller.hasMobasher}">
+					<p:selectOneListbox id="basic222" value="#{editSeller.hasMobasher}">
 						<f:selectItem itemValue="true" itemLabel="دارد" />
 						<f:selectItem itemValue="false" itemLabel="ندارد" />
-						</p:selectOneListbox>
-					
-																				<h:outputText value="mobasherName" />
+					</p:selectOneListbox>
+
+					<h:outputText value="mobasherName" />
 					<h:outputText value="#{editSeller.moblEntity.mobasherName}" />
-						<p:inputTextarea value="#{editSeller.mobasherName}" label="text" />
-					
-																<h:outputText value="rabetName" />
+					<p:inputTextarea value="#{editSeller.mobasherName}" label="text" />
+
+					<h:outputText value="rabetName" />
 					<h:outputText value="#{editSeller.moblEntity.rabetName}" />
-						<p:inputTextarea value="#{editSeller.rabetName}" label="text" />
-					
+					<p:inputTextarea value="#{editSeller.rabetName}" label="text" />
+
 					<h:outputText value="sematRabet" />
 					<h:outputText value="#{editSeller.moblEntity.sematRabet}" />
-						<p:inputTextarea value="#{editSeller.sematRabet}" label="text" />
-					
-										<h:outputText value="rabetMobile" />
+					<p:inputTextarea value="#{editSeller.sematRabet}" label="text" />
+
+					<h:outputText value="rabetMobile" />
 					<h:outputText value="#{editSeller.moblEntity.rabetMobile}" />
-						<p:inputTextarea value="#{editSeller.rabetMobile}" label="text" />
-					
+					<p:inputTextarea value="#{editSeller.rabetMobile}" label="text" />
+
 					<h:outputText value="shabakeMazajiMobile" />
 					<h:outputText value="#{editSeller.moblEntity.shabakeMazajiMobile}" />
-						<p:inputTextarea value="#{editSeller.shabakeMazajiMobile}" label="text" />
-					
+					<p:inputTextarea value="#{editSeller.shabakeMazajiMobile}"
+						label="text" />
+
 					<h:outputText value="mojtame" />
 					<h:outputText value="#{editSeller.moblEntity.mojtame}" />
-						<p:selectOneListbox id="basic3333" value="#{editSeller.mojtame}">
-						<f:selectItems value="#{addSeller.findAllPassage()}" var="psg" itemValue="#{psg.blogName}" itemLabel="#{psg.blogName}" />
-						</p:selectOneListbox>
-					
+					<p:selectOneListbox id="basic3333" value="#{editSeller.mojtame}">
+						<f:selectItems value="#{addSeller.findAllPassage()}" var="psg"
+							itemValue="#{psg.blogName}" itemLabel="#{psg.blogName}" />
+					</p:selectOneListbox>
+
 
 					<h:outputText value="ssn" />
 					<h:outputText value="#{editSeller.moblEntity.ssn}" />
-						<p:inputTextarea value="#{editSeller.ssn}" label="text" />
+					<p:inputTextarea value="#{editSeller.ssn}" label="text" />
 
 					<h:outputText value="mobile" />
 					<h:outputText value="#{editSeller.moblEntity.mobile}" />
-						<p:inputTextarea value="#{editSeller.mobile}" label="text" />
+					<p:inputTextarea value="#{editSeller.mobile}" label="text" />
 
 					<h:outputText value="نوع پنل" />
 					<h:outputText value="#{editSeller.moblEntity.panel}" />
-						<p:selectOneListbox id="basic" value="#{editSeller.panel}">
-							<f:selectItem itemValue="A" itemLabel="فیروزه ای" />
-							<f:selectItem itemValue="B" itemLabel="طلایی" />
-							<f:selectItem itemValue="C" itemLabel="نقره ای" />
-							<f:selectItem itemValue="D" itemLabel="برنزی" />
-							<f:selectItem itemValue="E" itemLabel="عادی" />
-						</p:selectOneListbox>
+					<p:selectOneListbox id="basic" value="#{editSeller.panel}">
+						<f:selectItem itemValue="A" itemLabel="فیروزه ای" />
+						<f:selectItem itemValue="B" itemLabel="طلایی" />
+						<f:selectItem itemValue="C" itemLabel="نقره ای" />
+						<f:selectItem itemValue="D" itemLabel="برنزی" />
+						<f:selectItem itemValue="E" itemLabel="عادی" />
+					</p:selectOneListbox>
 
 					<h:outputText value="نوع فعالیت" />
 					<h:outputText value="#{editSeller.moblEntity.faaliat}" />
-						<h:selectManyCheckbox value="#{editSeller.faaliats}"
-							layout="pageDirection">
-							<f:selectItem itemValue="مبلمان راحتی" itemLabel="مبلمان راحتی"/>
-							<f:selectItem itemValue="مبلمان کلاسیک" itemLabel="مبلمان کلاسیک" />
-							<f:selectItem itemValue="مبلمان استیل" itemLabel="مبلمان استیل" />
-							<f:selectItem itemValue="مبلمان فضای باز"
-								itemLabel="مبلمان فضای باز" />
-							<f:selectItem itemValue="مبلمان مدرن" itemLabel="مبلمان مدرن" />
-							<f:selectItem itemValue="مبل تختخواب شو"
-								itemLabel="مبل تختخواب شو" />
-							<f:selectItem itemValue="نهار خوری" itemLabel="نهار خوری" />
-							<f:selectItem itemValue="سرویس خواب" itemLabel="سرویس خواب" />
-							<f:selectItem itemValue="میز تلویزیون" itemLabel="میز تلویزیون" />
-							<f:selectItem itemValue="آینه و کنسول" itemLabel="آینه و کنسول" />
-							<f:selectItem itemValue="قاب عکس" itemLabel="قاب عکس" />
-							<f:selectItem itemValue="میز جلو مبلی یا میز عسلی"
-								itemLabel="میز جلو مبلی یا میز عسلی" />
-							<f:selectItem itemValue="میز اداریی" itemLabel="میز اداریی" />
-							<f:selectItem itemValue="صندلی اداری" itemLabel="صندلی اداری" />
-							<f:selectItem itemValue="پارتیشن" itemLabel="پارتیشن" />
-							<f:selectItem itemValue="سیسمونی" itemLabel="سیسمونی" />
-							<f:selectItem itemValue="کابینت" itemLabel="کابینت" />
-							<f:selectItem itemValue="دکوراسیون تخصصی"
-								itemLabel="دکوراسیون تخصصی" />
-							<f:selectItem itemValue="دکوراسیون معمولی"
-								itemLabel="دکوراسیون معمولی" />
-							<f:selectItem itemValue="درب های ضد سرقت"
-								itemLabel="درب های ضد سرقت" />
-							<f:selectItem itemValue="درب های چوبی" itemLabel="درب های چوبی" />
-							<f:selectItem itemValue="درب و پنجره" itemLabel="درب و پنجره" />
-							<f:selectItem itemValue="رنگکاری چوب و مصنوعات"
-								itemLabel="رنگکاری چوب و مصنوعات" />
-							<f:selectItem itemValue="منبت کاری" itemLabel="منبت کاری" />
-							<f:selectItem itemValue="کلاف سازی" itemLabel="کلاف سازی" />
-							<f:selectItem itemValue="معرق کاری" itemLabel="معرق کاری" />
-							<f:selectItem itemValue="خاتم کاری" itemLabel="خاتم کاری" />
-							<f:selectItem itemValue="خراطی" itemLabel="خراطی" />
-							<f:selectItem itemValue="رویکوبی" itemLabel="رویکوبی" />
-							<f:selectItem itemValue="نجاری" itemLabel="نجاری" />
-							<f:selectItem itemValue="چوب بری" itemLabel="چوب بری" />
-							<f:selectItem itemValue="اتاق سازی چوبی کامیون"
-								itemLabel="اتاق سازی چوبی کامیون" />
-							<f:selectItem itemValue="پرس کاری چوبی" itemLabel="پرس کاری چوبی" />
-							<f:selectItem itemValue="قالب سازی کفش و غیره"
-								itemLabel="قالب سازی کفش و غیره" />
-							<f:selectItem itemValue="جعبه سازی" itemLabel="جعبه سازی" />
-							<f:selectItem itemValue="تعمیرات" itemLabel="تعمیرات" />
-							<f:selectItem itemValue="جعبه سازی" itemLabel="جعبه سازی" />
-							<f:selectItem itemValue="بوفه" itemLabel="بوفه" />
-							<f:selectItem itemValue="ویترین" itemLabel="ویترین" />
-							<f:selectItem itemValue="صندلی چوبی" itemLabel="صندلی چوبی" />
-							<f:selectItem itemValue="کمد" itemLabel="کمد" />
-							<f:selectItem itemValue="کتابخانه" itemLabel="کتابخانه" />
-							<f:selectItem itemValue="مبلمان اداری" itemLabel="مبلمان اداری" />
-							<f:selectItem itemValue="مجسمه سازی" itemLabel="مجسمه سازی" />
-							<f:selectItem itemValue="دراور" itemLabel="دراور" />
-							<f:selectItem itemValue="جاکفشی" itemLabel="جاکفشی" />
-							<f:selectItem itemValue="مبلمان سنتی" itemLabel="مبلمان سنتی" />
-						</h:selectManyCheckbox>
+					<h:selectManyCheckbox value="#{editSeller.faaliats}"
+						layout="pageDirection">
+						<f:selectItem itemValue="مبلمان راحتی" itemLabel="مبلمان راحتی" />
+						<f:selectItem itemValue="مبلمان کلاسیک" itemLabel="مبلمان کلاسیک" />
+						<f:selectItem itemValue="مبلمان استیل" itemLabel="مبلمان استیل" />
+						<f:selectItem itemValue="مبلمان فضای باز"
+							itemLabel="مبلمان فضای باز" />
+						<f:selectItem itemValue="مبلمان مدرن" itemLabel="مبلمان مدرن" />
+						<f:selectItem itemValue="مبل تختخواب شو"
+							itemLabel="مبل تختخواب شو" />
+						<f:selectItem itemValue="نهار خوری" itemLabel="نهار خوری" />
+						<f:selectItem itemValue="سرویس خواب" itemLabel="سرویس خواب" />
+						<f:selectItem itemValue="میز تلویزیون" itemLabel="میز تلویزیون" />
+						<f:selectItem itemValue="آینه و کنسول" itemLabel="آینه و کنسول" />
+						<f:selectItem itemValue="قاب عکس" itemLabel="قاب عکس" />
+						<f:selectItem itemValue="میز جلو مبلی یا میز عسلی"
+							itemLabel="میز جلو مبلی یا میز عسلی" />
+						<f:selectItem itemValue="میز اداریی" itemLabel="میز اداریی" />
+						<f:selectItem itemValue="صندلی اداری" itemLabel="صندلی اداری" />
+						<f:selectItem itemValue="پارتیشن" itemLabel="پارتیشن" />
+						<f:selectItem itemValue="سیسمونی" itemLabel="سیسمونی" />
+						<f:selectItem itemValue="کابینت" itemLabel="کابینت" />
+						<f:selectItem itemValue="دکوراسیون تخصصی"
+							itemLabel="دکوراسیون تخصصی" />
+						<f:selectItem itemValue="دکوراسیون معمولی"
+							itemLabel="دکوراسیون معمولی" />
+						<f:selectItem itemValue="درب های ضد سرقت"
+							itemLabel="درب های ضد سرقت" />
+						<f:selectItem itemValue="درب های چوبی" itemLabel="درب های چوبی" />
+						<f:selectItem itemValue="درب و پنجره" itemLabel="درب و پنجره" />
+						<f:selectItem itemValue="رنگکاری چوب و مصنوعات"
+							itemLabel="رنگکاری چوب و مصنوعات" />
+						<f:selectItem itemValue="منبت کاری" itemLabel="منبت کاری" />
+						<f:selectItem itemValue="کلاف سازی" itemLabel="کلاف سازی" />
+						<f:selectItem itemValue="معرق کاری" itemLabel="معرق کاری" />
+						<f:selectItem itemValue="خاتم کاری" itemLabel="خاتم کاری" />
+						<f:selectItem itemValue="خراطی" itemLabel="خراطی" />
+						<f:selectItem itemValue="رویکوبی" itemLabel="رویکوبی" />
+						<f:selectItem itemValue="نجاری" itemLabel="نجاری" />
+						<f:selectItem itemValue="چوب بری" itemLabel="چوب بری" />
+						<f:selectItem itemValue="اتاق سازی چوبی کامیون"
+							itemLabel="اتاق سازی چوبی کامیون" />
+						<f:selectItem itemValue="پرس کاری چوبی" itemLabel="پرس کاری چوبی" />
+						<f:selectItem itemValue="قالب سازی کفش و غیره"
+							itemLabel="قالب سازی کفش و غیره" />
+						<f:selectItem itemValue="جعبه سازی" itemLabel="جعبه سازی" />
+						<f:selectItem itemValue="تعمیرات" itemLabel="تعمیرات" />
+						<f:selectItem itemValue="جعبه سازی" itemLabel="جعبه سازی" />
+						<f:selectItem itemValue="بوفه" itemLabel="بوفه" />
+						<f:selectItem itemValue="ویترین" itemLabel="ویترین" />
+						<f:selectItem itemValue="صندلی چوبی" itemLabel="صندلی چوبی" />
+						<f:selectItem itemValue="کمد" itemLabel="کمد" />
+						<f:selectItem itemValue="کتابخانه" itemLabel="کتابخانه" />
+						<f:selectItem itemValue="مبلمان اداری" itemLabel="مبلمان اداری" />
+						<f:selectItem itemValue="مجسمه سازی" itemLabel="مجسمه سازی" />
+						<f:selectItem itemValue="دراور" itemLabel="دراور" />
+						<f:selectItem itemValue="جاکفشی" itemLabel="جاکفشی" />
+						<f:selectItem itemValue="مبلمان سنتی" itemLabel="مبلمان سنتی" />
+					</h:selectManyCheckbox>
 
 
 					<h:outputText value="image1" />
-						<o:graphicImage rendered="#{editSeller.findPic1() ne null}"
-							value="#{editSeller.findPic1()}" dataURI="true" alt=""
-							width="150" height="100" />
+					<o:graphicImage rendered="#{editSeller.findPic1() ne null}"
+						value="#{editSeller.findPic1()}" dataURI="true" alt="" width="150"
+						height="100" />
 					<h:inputFile id="id18" value="#{editSeller.pic1}" />
+
+					<h:outputText value="image5" />
+					<o:graphicImage rendered="#{editSeller.findPic5() ne null}"
+						value="#{editSeller.findPic5()}" dataURI="true" alt="" width="150"
+						height="100" />
+					<h:inputFile id="id18000" value="#{editSeller.pic5}" />
 
 
 					<h:outputText value="image2" />
-						<o:graphicImage rendered="#{editSeller.findPic2() ne null}"
-							value="#{editSeller.findPic2()}" dataURI="true" alt=""
-							width="150" height="100" />
+					<o:graphicImage rendered="#{editSeller.findPic2() ne null}"
+						value="#{editSeller.findPic2()}" dataURI="true" alt="" width="150"
+						height="100" />
 					<h:inputFile id="id20" value="#{editSeller.pic2}" />
 
 
 					<h:outputText value="image3" />
-						<o:graphicImage rendered="#{editSeller.findPic3() ne null}"
-							value="#{editSeller.findPic3()}" dataURI="true" alt=""
-							width="150" height="100" />
+					<o:graphicImage rendered="#{editSeller.findPic3() ne null}"
+						value="#{editSeller.findPic3()}" dataURI="true" alt="" width="150"
+						height="100" />
 					<h:inputFile id="id22" value="#{editSeller.pic3}" />
 
 
 					<h:outputText value="image4" />
-						<o:graphicImage rendered="#{editSeller.findPic4() ne null}"
-							value="#{editSeller.findPic4()}" dataURI="true" alt=""
-							width="150" height="100" />
+					<o:graphicImage rendered="#{editSeller.findPic4() ne null}"
+						value="#{editSeller.findPic4()}" dataURI="true" alt="" width="150"
+						height="100" />
 					<h:inputFile id="id24" value="#{editSeller.pic4}" />
 
 
@@ -459,7 +474,8 @@
 
 
 
-					<h:commandButton action="#{editSeller.updateSeller()}" style="width: 150px;
+					<h:commandButton action="#{editSeller.updateSeller()}"
+						style="width: 150px;
 height: 50px;
 background-color: forestgreen;
 background-image: none!important; color:white;font-size: 18px;"

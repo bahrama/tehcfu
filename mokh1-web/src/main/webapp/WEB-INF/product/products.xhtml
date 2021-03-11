@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+	<article class="margin-top-90">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col filtering">
+				<div class="dastebandi">
+					<img src="pictures/m1.png" alt="" /> <span>جاکفشی</span>
+				</div>
+
+				<div class="dastebandi">
+					<img src="pictures/m2.png" alt="" /> <span>مبل راحتی</span>
+				</div>
+
+				<div class="dastebandi">
+					<img src="../../resources/pictures/m1.jpg" alt="" /> <span>
+						میز جلو مبلی</span>
+				</div>
+				<div class="dastebandi">
+					<img src="../../resources/pictures/m2.png" alt="" /> <span>
+						میز جلو مبلی</span>
+				</div>
+				<div class="dastebandi">
+					<img src="../../resources/pictures/m1.png" alt="" /> <span>
+						میز جلو مبلی</span>
+				</div>
+				<div class="dastebandi">
+					<img src="../../resources/pictures/m2.png" alt="" /> <span>
+						میز جلو مبلی</span>
+				</div>
+				<div class="dastebandi">
+					<img src="../../resources/pictures/m1.png" alt="" /> <span>
+						میز جلو مبلی</span>
+				</div>
+
+				<div class="dastebandi">
+					<img src="../../resources/pictures/m2.png" alt="" /> <span>
+						میز جلو مبلی</span>
+				</div>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col cards" style="direction: rtl;">
+				<ui:repeat var="prdc" value="#{sellerPage.products}">
+					<div class="card animated zoomIn" style="">
+						<span class="forosh-vij">فروش ویژه</span> <!-- <img class="imgcard"
+							src="../../resources/pictures/mobl.jpg" /> -->
+															<o:graphicImage styleClass="imgcard"
+									rendered="#{sellerPage.findPic1Product(prdc.productId) ne null}"
+									value="#{sellerPage.findPic1Product(prdc.productId)}"
+									dataURI="true" />
+						<h1 class="title-forosh">#{prdc.name}</h1>
+						<br /> <span class="price-span">#{prdc.price} تومان</span> <a
+							href="/sellers/Shaaker-wood" class="btn-blue-m">نمایش</a>
+				
+
+			</div>
+</ui:repeat>
+
+		</div>
+		<!--                <div class="col-3 filter-1">-->
+		<!--                 <div class="filter">-->
+		<!--                     <h2 class="filter-more">دسته‌بندی نتایج</h2>-->
+		<!--                    <ul class="">-->
+		<!--                        <li>-->
+		<!--                          مبلمان-->
+		<!--                        </li>-->
+		<!--                        <li> مبلمان راحتی</li>-->
+
+		<!--                    </ul>-->
+		<!--                 </div>-->
+		<!--                </div>-->
+	</div>
+	</div>
+	</article>
+
+</ui:composition>
+

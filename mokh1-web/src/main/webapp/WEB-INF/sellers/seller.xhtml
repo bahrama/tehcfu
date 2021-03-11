@@ -20,12 +20,43 @@ margin-bottom: 15px;" styleClass="shadow-shorter"
                  rgba(55, 47, 47, 0.5), rgba(239, 226, 226, 0.2));z-index: 20;width: 100%;height: 373px;
                  position: absolute"></div> -->
             <!-- <div class="slider"> -->
-	<o:graphicImage style="width: 100%;" styleClass="shadow-shorter"
+            <h:panelGroup rendered="#{sellerPage.sellerx.panel eq 'D'}">
+ 	<o:graphicImage style="width: 100%;" styleClass="shadow-shorter"
 		rendered="#{sellerPage.findPic1() ne null}"
 		value="#{sellerPage.findPic1()}" dataURI="true" alt="" />
+		</h:panelGroup> 
 <!-- </div> -->
 	<!-- Blog Post Begin -->
+<h:panelGroup rendered="#{sellerPage.sellerx.panel ne 'D'}">
+			<div id="slide"
+				class="col-md-12 col-sm-12 col-xs-12 margin-top-35 animated fadeInLeft"
+				data-wow-delay="0.2s"
+				style="height: 410px; padding-left: 0; padding-right: 0;margin-bottom: 30px;">
+				<div style="width: 100%" class="property-detail-carousel">
+					
+						<div class="item">
+							<picture> <source
+								media="(min-width: 768px) and (max-width: 991)" srcset="" /> <o:graphicImage
+								styleClass="imgstyle" style="width: 100%"
+								rendered="#{sellerPage.findPic1() ne null}"
+								value="#{sellerPage.findPic1()}" dataURI="true"
+								alt="" /> </picture>
 
+						</div>
+						<div class="item">
+							<picture> <source
+								media="(min-width: 768px) and (max-width: 991)" srcset="" /> <o:graphicImage
+								styleClass="imgstyle" style="width: 100%"
+								rendered="#{sellerPage.findPic5() ne null}"
+								value="#{sellerPage.findPic5()}" dataURI="true"
+								alt="" /> </picture>
+
+						</div>
+					
+				</div>
+				<!-- /property-detail-carousel -->
+			</div>
+</h:panelGroup>
 	<div class="blog-post padding-vertical-100">
 
 		<div class="container">
@@ -98,12 +129,15 @@ margin-bottom: 15px;" styleClass="shadow-shorter"
 									<a
 										style="font-family: IRANSansNor; color: #0B59AA; border-color: #0B59AA"
 										class="btn-blue" href="#">بیشتر</a>
+
 								</div>
 
 							</div>
 						</ui:repeat>
 					</div>
-
+      										<h:link outcome="/pages/product/products.xhtml" value="مشاهده تمامی محضولات" class="btn-blue" style="width: 212px;">
+										<f:param name="sellerNameEng" value="#{sellerPage.sellerx.sellerStoreEng}"/>
+										</h:link>
 				</div>
 
 			</div>
@@ -168,12 +202,12 @@ margin-bottom: 15px;" styleClass="shadow-shorter"
 								<h6 style="color: black">موقعیت مکانی ما :</h6>
 								<p style="color: black; color: #666666 !important;">#{sellerPage.sellerx.sellerAddres}</p></li>
 							<br />
-							<h:panelGroup rendered="#{(sellerPage.sellerx.modirforoshName ne null)and(sellerPage.sellerx.modirforoshName ne '-')}">	
+							<h:panelGroup rendered="#{(sellerPage.sellerx.modirforoshName ne null)and(sellerPage.sellerx.modirforoshName ne '-')and(sellerPage.sellerx.modirforoshName ne '')}">	
 							<li style="list-style: none;"><i class="fa fa-user color"></i>
 								<h6 style="color: black">نام مدیر فروش :</h6>
 								#{sellerPage.sellerx.modirforoshName}</li> <br />
 								</h:panelGroup>
-						<h:panelGroup rendered="#{(sellerPage.sellerx.modirforoshPhone ne null)and(sellerPage.sellerx.modirforoshPhone ne '-')}">			
+						<h:panelGroup rendered="#{(sellerPage.sellerx.modirforoshPhone ne null)and(sellerPage.sellerx.modirforoshPhone ne '-')and(sellerPage.sellerx.modirforoshPhone ne '')}">			
 							<li style="list-style: none;" class="num"><i class="fa fa-mobile-phone color"></i>
 								<h6 style="color: black">شماره مدیر فروش :</h6>
 
@@ -187,26 +221,26 @@ margin-bottom: 15px;" styleClass="shadow-shorter"
 								<h6 style="color: black">شماره تلفن :</h6>
 								#{sellerPage.sellerx.phone}</li> <br />
 								
-															<h:panelGroup rendered="#{(sellerPage.sellerx.fax ne null)and(sellerPage.sellerx.fax ne '-')}">		
+															<h:panelGroup rendered="#{(sellerPage.sellerx.fax ne null)and(sellerPage.sellerx.fax ne '-')and(sellerPage.sellerx.fax ne '')}">		
 							<li style="list-style: none;" class=" fax"><i class="fa fa-fax color"></i>
 								<h6 style="color: black">فکس :</h6> #{sellerPage.sellerx.fax}</li> <br />
 							</h:panelGroup>
 								
-									<h:panelGroup rendered="#{(sellerPage.sellerx.website ne null)and(sellerPage.sellerx.website ne '-')}">
+									<h:panelGroup rendered="#{(sellerPage.sellerx.website ne null)and(sellerPage.sellerx.website ne '-')and(sellerPage.sellerx.website ne '')}">
 							<li style="list-style: none;"><i class="fa fa-globe color"></i>
 								<h6 style="color: black">وبسایت :</h6> <a
 								href="http://#{sellerPage.sellerx.website}" target="_blank">
 									#{sellerPage.sellerx.website} </a></li> 
 									<br />
 									</h:panelGroup>
-							<h:panelGroup rendered="#{(sellerPage.sellerx.email ne null)and(sellerPage.sellerx.email ne '-')}">		
+							<h:panelGroup rendered="#{(sellerPage.sellerx.email ne null)and(sellerPage.sellerx.email ne '-')and(sellerPage.sellerx.email ne '')}">		
 							<li style="list-style: none;"><i class="fa fa-envelope color"></i>
 								<h6 style="color: black">ایمیل :</h6>
 
 								#{sellerPage.sellerx.email}</li> <br />
 								</h:panelGroup>
 								
-															<h:panelGroup rendered="#{(sellerPage.sellerx.telegram ne null)and(sellerPage.sellerx.telegram ne '-')}">	 
+															<h:panelGroup rendered="#{(sellerPage.sellerx.telegram ne null)and(sellerPage.sellerx.telegram ne '-')and(sellerPage.sellerx.telegram ne '')}">	 
 							<li class="paper" style="list-style: none;"><i class="fa fa-paper-plane-o color"></i>
 								<h6 style="color: black">تلگرام :</h6> <!--							<h:link
  								outcome="https://t.me/#{sellerPage.sellerx.telegram}"

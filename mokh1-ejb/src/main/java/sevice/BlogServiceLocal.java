@@ -21,4 +21,6 @@ public interface BlogServiceLocal {
 
 	List<BlogEntity> findBlogByName(String blogText) throws Exception;
 
+	List<BlogEntity> findAllNewsMode(String mode);
+
 }

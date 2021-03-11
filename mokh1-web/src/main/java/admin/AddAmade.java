@@ -29,6 +29,7 @@ public class AddAmade {
 	private String packag;
 	private AmadeType type;
 	private String damane;
+	private String mobile;
 	
 	@Inject
 	private AmadeServiceLocal amadeServiceLocal;
@@ -108,6 +109,16 @@ public class AddAmade {
 	public void setDamane(String damane) {
 		this.damane = damane;
 	}
+	
+	
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 
 	public void insertToAmade() {
 		Amade amade = new Amade();
@@ -120,6 +131,7 @@ public class AddAmade {
 		amade.setShomarePano(shomarePano);
 		amade.setType(type);
 		amade.setDamane(damane);
+		amade.setMobile(mobile);
 		amadeServiceLocal.insertToAmade(amade);
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage(null, new FacesMessage("Successful"));

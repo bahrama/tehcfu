@@ -21,7 +21,8 @@ import java.util.UUID;
 @NamedQueries({
 @NamedQuery(name = "BlogEntity.findAll", query="SELECT b FROM BlogEntity b ORDER BY b.id DESC"),
 @NamedQuery(name = "BlogEntity.findById", query = "SELECT i FROM BlogEntity i WHERE i.id=:v_id"),
-@NamedQuery(name = "BlogEntity.findByLike", query = "SELECT i FROM BlogEntity i WHERE i.blogName like :v_blogName")
+@NamedQuery(name = "BlogEntity.findByLike", query = "SELECT i FROM BlogEntity i WHERE i.blogName like :v_blogName"),
+@NamedQuery(name = "BlogEntity.findByNewsMode", query = "SELECT i FROM BlogEntity i WHERE i.newsMode=:v_newsMode ORDER BY i.id DESC")
 })
 public class BlogEntity implements Serializable {
 	private static final long serialVersionUID = 1L;

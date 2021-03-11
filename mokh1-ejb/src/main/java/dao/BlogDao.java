@@ -60,6 +60,12 @@ public class BlogDao implements BlogDaoLocal {
     }
     }
     
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<BlogEntity> findAllNewsMode(String mode) {
+		return entityManager.createNamedQuery("BlogEntity.findByNewsMode").setParameter("v_newsMode", mode).getResultList();
+	}
+    
     
     @Override
     public void updateBlog(BlogEntity blogEntity) throws Exception{

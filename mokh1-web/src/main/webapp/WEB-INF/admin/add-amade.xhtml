@@ -47,7 +47,10 @@ xmlns="http://www.w3.org/1999/xhtml"
 			<h:inputText value="#{addAmade.packag}" styleClass="inp100"
 				id="id25" required="true" />
 			<rich:message for="id25" ajaxRendered="true" />
-
+			<h:outputText value="شماره موبایل" />
+			<h:inputText value="#{addAmade.mobile}" styleClass="inp100"
+				id="id25" required="true" />
+			<rich:message for="id25" ajaxRendered="true" />
 
 			<h:commandButton value="submit" action="#{addAmade.insertToAmade()}" />
 		</rich:validator>

@@ -16,7 +16,7 @@ import org.eclipse.persistence.annotations.CacheType;
 @Table(name="home_tbl")
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
-	@NamedQuery(name="HomeTbl.findAll", query="SELECT h FROM HomeEntity h"),
+	@NamedQuery(name="HomeTbl.findAll", query="SELECT h FROM HomeEntity h ORDER BY h.id DESC"),
 	@NamedQuery(name = "HomeTbl.findById", query = "SELECT i FROM HomeEntity i WHERE i.id=:v_id"),
 })
 public class HomeEntity implements Serializable {
