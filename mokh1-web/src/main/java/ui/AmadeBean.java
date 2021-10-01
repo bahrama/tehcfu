@@ -14,6 +14,7 @@ import javax.inject.Named;
 
 import catch_db.CatchAmadeLocal;
 import entity.Amade;
+import enums.AmadeType;
 import sevice.AmadeServiceLocal;
 
 
@@ -42,8 +43,8 @@ public class AmadeBean implements Serializable{
 	
 	@Inject
 	private AmadeServiceLocal amadeServiceLocal;
-	@Inject
-	private CatchAmadeLocal catchAmadeLocal;
+//	@Inject
+//	private CatchAmadeLocal catchAmadeLocal;
 
 	public String getSenfName() {
 		return senfName;
@@ -152,15 +153,18 @@ public class AmadeBean implements Serializable{
 	
 	
 	public List<Amade> findAllAmadePano(){
-		return catchAmadeLocal.getAmadePano();
+		//return catchAmadeLocal.getAmadePano();
+		return amadeServiceLocal.findAmadeByType(AmadeType.PANO);
 	}
 	
 	public List<Amade> findAllAmadeUnion(){
-		return catchAmadeLocal.getAmadeUnion();
+		//return catchAmadeLocal.getAmadeUnion();
+		return amadeServiceLocal.findAmadeByType(AmadeType.UNION);
 	}
 	
 	public List<Amade> findAllAmadeMobasherat(){
-		return catchAmadeLocal.getAmadeMobasherat();
+		//return catchAmadeLocal.getAmadeMobasherat();
+		return amadeServiceLocal.findAmadeByType(AmadeType.MOBASHERAT);
 	}
 	
 

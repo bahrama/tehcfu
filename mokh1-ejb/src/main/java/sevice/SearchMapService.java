@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import catch_db.CatchSellerLocal;
+import dao.SellerTblDaoLocal;
 import entity.MoblEntity;
 
 /**
@@ -22,15 +23,17 @@ public class SearchMapService implements SearchMapServiceLocal {
     public SearchMapService() {
         // TODO Auto-generated constructor stub
     }
+//    @Inject
+//    private CatchSellerLocal catchSellerLocal;
     @Inject
-    private CatchSellerLocal catchSellerLocal;
+    private SellerTblDaoLocal sellerTblDaoLocal;
     
     
     @Override
 	public List<MoblEntity> operation(double lat, double lng) {
 		List<MoblEntity> moblEntities = new ArrayList<>();
 		//double x = Math.sqrt(Math.hypot(lng, lat));
-		for (MoblEntity moblEntity : catchSellerLocal.getSellerList()) {
+		for (MoblEntity moblEntity : sellerTblDaoLocal.findAllSeller()) {
 			//double y =Math.hypot(merchantAddresEntity.getMerchandWidth(), merchantAddresEntity.getMerchantHeight());
 			double m=(moblEntity.getLat()-lat);
 			double n=(moblEntity.getLng()-lng);
@@ -51,7 +54,7 @@ public class SearchMapService implements SearchMapServiceLocal {
 	public List<MoblEntity> operation2(double lat, double lng, String raste) {
 		List<MoblEntity> moblEntities = new ArrayList<>();
 		//double x = Math.sqrt(Math.hypot(lng, lat));
-		for (MoblEntity moblEntity : catchSellerLocal.getSellerList()) {
+		for (MoblEntity moblEntity : sellerTblDaoLocal.findAllSeller()) {
 			//double y =Math.hypot(merchantAddresEntity.getMerchandWidth(), merchantAddresEntity.getMerchantHeight());
 			double m=(moblEntity.getLat()-lat);
 			double n=(moblEntity.getLng()-lng);

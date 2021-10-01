@@ -10,6 +10,7 @@ import javax.inject.Named;
 
 import catch_db.CatchKarfarmaLocal;
 import entity.JobKarfarmaEntity;
+import sevice.JobKarfarmaServiceLocal;
 
 @Named
 @ViewScoped
@@ -23,11 +24,13 @@ public class ViewKarfarma implements Serializable {
 	public ViewKarfarma() {
 		// TODO Auto-generated constructor stub
 	}
+//	@Inject
+//	private CatchKarfarmaLocal catchKarfarmaLocal;
 	@Inject
-	private CatchKarfarmaLocal catchKarfarmaLocal;
+	private JobKarfarmaServiceLocal jobKarfarmaServiceLocal;
 	
 	public List<JobKarfarmaEntity> findAllVerifiedKarfarma(){
-		return catchKarfarmaLocal.getKarfarmas();
+		return jobKarfarmaServiceLocal.findAllKarfarma();
 	}
 	private String gregorian_to_jalali(int gy, int gm, int gd) {
 		String text2="";

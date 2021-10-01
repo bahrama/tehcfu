@@ -21,39 +21,39 @@ import sevice.HomeServiceLocal;
 @Startup
 public class CatchHome implements CatchHomeLocal {
 
-    /**
-     * Default constructor. 
-     */
-    public CatchHome() {
-        // TODO Auto-generated constructor stub
-    }
-    @Inject
-    private HomeServiceLocal homeServiceLocal;
-    
-    private List<HomeEntity> homeEntities=new ArrayList<>();
-
-
-    @Override
-    public List<HomeEntity> getHomeEntities() {
-		return homeEntities;
-	}
-
-
-
-	@PostConstruct
-    public void init() {
-    	this.homeEntities.addAll(homeServiceLocal.findAllHomeEntity());
-    }
-    
-    
-	@Schedule(hour = "*", minute = "*/1", persistent = false)
-	@AccessTimeout(value = 4, unit = TimeUnit.SECONDS)
-	public void ejra() throws Exception {
-		this.homeEntities.clear();
-		this.homeEntities.addAll(homeServiceLocal.findAllHomeEntity());
-	}
-    
-    
+//    /**
+//     * Default constructor. 
+//     */
+//    public CatchHome() {
+//        // TODO Auto-generated constructor stub
+//    }
+//    @Inject
+//    private HomeServiceLocal homeServiceLocal;
+//    
+//    private List<HomeEntity> homeEntities=new ArrayList<>();
+//
+//
+//    @Override
+//    public List<HomeEntity> getHomeEntities() {
+//		return homeEntities;
+//	}
+//
+//
+//
+//	@PostConstruct
+//    public void init() {
+//    	this.homeEntities.addAll(homeServiceLocal.findAllHomeEntity());
+//    }
+//    
+//    
+//	@Schedule(hour = "*", minute = "*/1", persistent = false)
+//	@AccessTimeout(value = 4, unit = TimeUnit.SECONDS)
+//	public void ejra() throws Exception {
+//		this.homeEntities.clear();
+//		this.homeEntities.addAll(homeServiceLocal.findAllHomeEntity());
+//	}
+//    
+//    
     
 
 }

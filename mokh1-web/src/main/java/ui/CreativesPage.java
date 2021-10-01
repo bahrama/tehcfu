@@ -15,6 +15,7 @@ import javax.inject.Named;
 import catch_db.CatchCreativeLocal;
 import entity.BlogEntity;
 import entity.CreativeEntity;
+import sevice.CreativeServiceLocal;
 
 @Named
 @ViewScoped
@@ -28,21 +29,30 @@ public class CreativesPage implements Serializable {
 	public CreativesPage() {
 		// TODO Auto-generated constructor stub
 	}
+//	@Inject
+//	private CatchCreativeLocal catchCreativeLocal;
 	@Inject
-	private CatchCreativeLocal catchCreativeLocal;
-	
+	private CreativeServiceLocal creativeServiceLocal;
 	
 	public List<CreativeEntity> findAllCreative(){
-		return catchCreativeLocal.getCreativeEntities();
+		//return catchCreativeLocal.getCreativeEntities();
+		return creativeServiceLocal.findAllCreativeEntity();
 	}
 
 	public byte[] findCreativePic1ById(int id) {
-		CreativeEntity creativeEntity = new CreativeEntity();
-		for (CreativeEntity creativeEntity2 : catchCreativeLocal.getCreativeEntities()) {
-			if (creativeEntity2.getId() == id)
-				creativeEntity = creativeEntity2;
+//		CreativeEntity creativeEntity = new CreativeEntity();
+//		for (CreativeEntity creativeEntity2 : catchCreativeLocal.getCreativeEntities()) {
+//			if (creativeEntity2.getId() == id)
+//				creativeEntity = creativeEntity2;
+//		}
+		
+		try {
+			return this.findPic1(creativeServiceLocal.findCreativeEntityById(id));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
-		return this.findPic1(creativeEntity);
 
 	}
 

@@ -9,6 +9,6 @@ import entity.RentEntity;
 @Local
 public interface CatchRentLocal {
 
-	List<RentEntity> getRents();
+	//List<RentEntity> getRents();
 
 }

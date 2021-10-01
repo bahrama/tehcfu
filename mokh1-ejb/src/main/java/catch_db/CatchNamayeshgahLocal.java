@@ -9,6 +9,6 @@ import entity.NamayeshgahEntity;
 @Local
 public interface CatchNamayeshgahLocal {
 
-	List<NamayeshgahEntity> getNamayeshgahEntities();
+	//List<NamayeshgahEntity> getNamayeshgahEntities();
 
 }

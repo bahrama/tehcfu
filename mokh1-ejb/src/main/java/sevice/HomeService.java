@@ -54,5 +54,8 @@ public class HomeService implements HomeServiceLocal {
     	homeDaoLocal.deleteSeller(homeEntity);
     }
     
-
+    @Override
+    public HomeEntity findHomeEntityByName(String name) throws Exception{
+    	return homeDaoLocal.findHomeEntityByName(name);
+    }
 }

@@ -30,6 +30,8 @@ import entity.BlogEntity;
 import entity.HomeEntity;
 import entity.MoblEntity;
 import sevice.BazdidServiceLocal;
+import sevice.BlogServiceLocal;
+import sevice.HomeServiceLocal;
 import sevice.SellerServiceLocal;
 
 @Named("homeBean")
@@ -47,13 +49,18 @@ public class HomeBean implements Serializable {
 
 	@Inject
 	private BazdidServiceLocal bazdidService;
+//	@Inject
+//	private CatchHomeLocal catchHomeLocal;
 	@Inject
-	private CatchHomeLocal catchHomeLocal;
+	private HomeServiceLocal homeServiceLocal;
+	@Inject
+	private BlogServiceLocal blogServiceLocal;
 	private List<HomeEntity> homeEntities = new ArrayList<>();
-	@Inject
-	private CatchBlogLocal catchBlogLocal;
-	@Inject
-	private CatchSellerLocal catchSellerLocal;
+	private List<HomeEntity> homeEntities2 = new ArrayList<>();
+//	@Inject
+//	private CatchBlogLocal catchBlogLocal;
+//	@Inject
+//	private CatchSellerLocal catchSellerLocal;
 	@Inject
 	private FacesContext facesContext;
 	@Inject
@@ -71,6 +78,7 @@ public class HomeBean implements Serializable {
 
 	@PostConstruct
 	public void init() {	
+		this.homeEntities2.addAll(homeServiceLocal.findAllHomeEntity());
 		try {
 			bazdidService.findBazdidEntityById(1);
 		} catch (Exception e1) {
@@ -2983,7 +2991,7 @@ public class HomeBean implements Serializable {
 		System.err.println(tehcfuCookie);
 		this.moblEntity=sellerServiceLocal.findSellerByToken(tehcfuCookie);
 		session.setAttribute("mobile" ,moblEntity.getMobile());
-		catchSellerLocal.getOnlineUsers().add(moblEntity);
+		//catchSellerLocal.getOnlineUsers().add(moblEntity);
 		}catch (Exception e) {
 		System.err.println("token not find");
 		}
@@ -2991,7 +2999,7 @@ public class HomeBean implements Serializable {
 
 	public byte[] findHomeCatByName(String name) {
 		HomeEntity homeEntity2 = new HomeEntity();
-		for (HomeEntity homeEntity : catchHomeLocal.getHomeEntities()) {
+		for (HomeEntity homeEntity : homeEntities2) {
 			if (homeEntity.getName().equals(name))
 				homeEntity2 = homeEntity;
 		}
@@ -3012,7 +3020,7 @@ public class HomeBean implements Serializable {
 	}
 
 	public List<HomeEntity> findAllSlide() {
-		for (HomeEntity homeEntity : catchHomeLocal.getHomeEntities()) {
+		for (HomeEntity homeEntity : this.homeEntities2) {
 			if (homeEntity.getName().equals("اسلاید")) {
 				this.homeEntities.add(homeEntity);
 			}
@@ -3022,7 +3030,7 @@ public class HomeBean implements Serializable {
 
 	public byte[] findHomeCatById(int id) {
 		HomeEntity homeEntity2 = new HomeEntity();
-		for (HomeEntity homeEntity : catchHomeLocal.getHomeEntities()) {
+		for (HomeEntity homeEntity : this.homeEntities2) {
 			if (homeEntity.getId() == id)
 				homeEntity2 = homeEntity;
 		}
@@ -3032,13 +3040,14 @@ public class HomeBean implements Serializable {
 
 	public List<BlogEntity> findAllPassage() {
 
-        blogEntities.clear();
-		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
-			if (blogEntity.getBlogType().equals("مجتمع تجاری")) {
-				blogEntities.add(blogEntity);
-				}
-		}
-		return blogEntities;
+//        blogEntities.clear();
+//		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+//			if (blogEntity.getBlogType().equals("مجتمع تجاری")) {
+//				blogEntities.add(blogEntity);
+//				}
+//		}
+//		return blogEntities;
+		return blogServiceLocal.findAllNewsType("A");
 		}
 
 	public byte[] findPassagePic(BlogEntity blogEntity) {
@@ -3054,12 +3063,18 @@ public class HomeBean implements Serializable {
 	}
 
 	public byte[] findPassageById(int id) {
-		BlogEntity blogEntity2 = new BlogEntity();
-		for (BlogEntity blogEntity : blogEntities) {
-			if (blogEntity.getId() == id)
-				blogEntity2 = blogEntity;
+//		BlogEntity blogEntity2 = new BlogEntity();
+//		for (BlogEntity blogEntity : blogEntities) {
+//			if (blogEntity.getId() == id)
+//				blogEntity2 = blogEntity;
+//		}
+		try {
+			return this.findPassagePic(blogServiceLocal.findBlogById(id));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
-		return this.findPassagePic(blogEntity2);
 	}
 
 	public String findUserByToken() {
@@ -3075,7 +3090,7 @@ public class HomeBean implements Serializable {
 	}
 	@PreDestroy
 	public void destroying() {
-		catchSellerLocal.getOnlineUsers().remove(moblEntity);
+		//catchSellerLocal.getOnlineUsers().remove(moblEntity);
 	}
 
 	public String logout() {
@@ -3084,7 +3099,7 @@ public class HomeBean implements Serializable {
 		Cookie cookie2 = new Cookie("tehcfu", "");
 		cookie2.setPath("/");
 		response.addCookie(cookie2);
-		catchSellerLocal.getOnlineUsers().remove(moblEntity);
+		//catchSellerLocal.getOnlineUsers().remove(moblEntity);
 		return "/pages/main/home.xhtml?faces-redirect=true";
 	}
 

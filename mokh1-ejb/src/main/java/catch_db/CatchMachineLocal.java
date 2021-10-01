@@ -9,6 +9,6 @@ import entity.MachineEntity;
 @Local
 public interface CatchMachineLocal {
 
-	List<MachineEntity> getMachineEntities();
+	//List<MachineEntity> getMachineEntities();
 
 }

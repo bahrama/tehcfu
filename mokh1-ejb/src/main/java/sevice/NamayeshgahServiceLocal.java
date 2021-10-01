@@ -19,4 +19,6 @@ public interface NamayeshgahServiceLocal {
 
 	void deleteNamayeshgahEntity(NamayeshgahEntity namayeshgahEntity);
 
+	List<NamayeshgahEntity> findNamayeshgahEntityByType(String type) throws Exception;
+
 }

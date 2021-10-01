@@ -17,6 +17,7 @@ import javax.inject.Named;
 import catch_db.CatchNamayeshgahLocal;
 import entity.BlogEntity;
 import entity.NamayeshgahEntity;
+import sevice.NamayeshgahServiceLocal;
 
 @Named
 @ViewScoped
@@ -31,8 +32,10 @@ public class NamayeshgahDetailPage implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+//	@Inject
+//	private CatchNamayeshgahLocal catchNamayeshgahLocal;
 	@Inject
-	private CatchNamayeshgahLocal catchNamayeshgahLocal;
+	private NamayeshgahServiceLocal namayeshgahServiceLocal;
 
 	private List<NamayeshgahEntity> namayeshgahEntitiesIran = new ArrayList<>();
 	private List<NamayeshgahEntity> namayeshgahEntitiesJahan = new ArrayList<>();
@@ -55,24 +58,36 @@ public class NamayeshgahDetailPage implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		for (NamayeshgahEntity namayeshgahEntity : catchNamayeshgahLocal.getNamayeshgahEntities()) {
-			if (namayeshgahEntity.getType().equals("A"))
-				this.namayeshgahEntitiesIran.add(namayeshgahEntity);
-			else
-				this.namayeshgahEntitiesJahan.add(namayeshgahEntity);
-		}
+		//for (NamayeshgahEntity namayeshgahEntity : catchNamayeshgahLocal.getNamayeshgahEntities()) {
+		//	if (namayeshgahEntity.getType().equals("A"))
+				try {
+					this.namayeshgahEntitiesIran.addAll(namayeshgahServiceLocal.findNamayeshgahEntityByType("A"));
+					this.namayeshgahEntitiesJahan.addAll(namayeshgahServiceLocal.findNamayeshgahEntityByType("B"));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		//	else
+				
+	//	}
 //		Collections.reverse(namayeshgahEntitiesIran);
 //		Collections.reverse(namayeshgahEntitiesJahan);
 
 	}
 
 	public byte[] findNamayeshgahPicById(int id) {
-		NamayeshgahEntity namayeshgahEntity2 = new NamayeshgahEntity();
-		for (NamayeshgahEntity namayeshgahEntity : catchNamayeshgahLocal.getNamayeshgahEntities()) {
-			if (namayeshgahEntity.getId() == id)
-				namayeshgahEntity2 = namayeshgahEntity;
+//		NamayeshgahEntity namayeshgahEntity2 = new NamayeshgahEntity();
+//		for (NamayeshgahEntity namayeshgahEntity : catchNamayeshgahLocal.getNamayeshgahEntities()) {
+//			if (namayeshgahEntity.getId() == id)
+//				namayeshgahEntity2 = namayeshgahEntity;
+//		}
+		try {
+			return this.findPic1(namayeshgahServiceLocal.findNamayeshgahEntityById(id));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
-		return this.findPic1(namayeshgahEntity2);
 	}
 
 	public byte[] findPic1(NamayeshgahEntity namayeshgahEntity) {

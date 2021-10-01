@@ -65,4 +65,9 @@ public class BlogService implements BlogServiceLocal {
 	public List<BlogEntity> findAllNewsMode(String mode) {
 		return blogDaoLocal.findAllNewsMode(mode);
 	}
+	
+	@Override
+	public List<BlogEntity> findAllNewsType(String blogType) {
+		return blogDaoLocal.findAllNewsType(blogType);
+	}
 }

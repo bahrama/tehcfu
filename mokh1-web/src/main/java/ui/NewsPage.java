@@ -38,12 +38,13 @@ public class NewsPage implements Serializable{
 	public NewsPage() {
 		// TODO Auto-generated constructor stub
 	}
-	@Inject
-	private CatchBlogLocal catchBlogLocal;
+//	@Inject
+//	private CatchBlogLocal catchBlogLocal;
 	@Inject
 	private BlogServiceLocal blogServiceLocal;
 
 	private List<BlogEntity> blogEntities=new ArrayList<>();
+	private List<BlogEntity> blogEntities2=new ArrayList<>();
 	private List<BlogEntity> blogEntitiesSH=new ArrayList<>();
 	private List<BlogEntity> blogEntitiesML=new ArrayList<>();
 	private List<BlogEntity> blogEntitiesGM=new ArrayList<>();
@@ -138,31 +139,31 @@ public class NewsPage implements Serializable{
 
 	@PostConstruct
 	public void start() {
-		
-    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
-		if(blogEntity.getBlogType().equals("خبر"))
+		this.blogEntities2.addAll(blogServiceLocal.findAllBlog());
+    	for (BlogEntity blogEntity : blogEntities2) {
+		if(blogEntity.getBlogType().equals("B"))
 			blogEntities.add(blogEntity);
 	}
 				
 		
-    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
-		if(blogEntity.getBlogType().equals("مناسبت شمسی"))
+    	for (BlogEntity blogEntity : blogEntities2) {
+		if(blogEntity.getBlogType().equals("C"))
 			blogEntitiesSH.add(blogEntity);
 	}
     						
 	
-    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
-		if(blogEntity.getBlogType().equals("مناسبت قمری"))
+    	for (BlogEntity blogEntity : blogEntities2) {
+		if(blogEntity.getBlogType().equals("D"))
 			blogEntitiesGM.add(blogEntity);
 	}
 	    						
     	
-    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
-		if(blogEntity.getBlogType().equals("مناسبت میلادی"))
+    	for (BlogEntity blogEntity : blogEntities2) {
+		if(blogEntity.getBlogType().equals("E"))
 			blogEntitiesML.add(blogEntity);
 	}
     	try {
-    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+    	for (BlogEntity blogEntity : blogEntities2) {
 		if(blogEntity.getNewsMode().equals("اخبار اتحلدیه"))
 			blogEntitiesMode1.add(blogEntity);
     	}
@@ -170,7 +171,7 @@ public class NewsPage implements Serializable{
 			// TODO: handle exception
 		}
     	try {
-    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+    	for (BlogEntity blogEntity : blogEntities2) {
 		if(blogEntity.getNewsMode().equals("اخبار اتاق اصناف ایران"))
 			blogEntitiesMode2.add(blogEntity);
     	}
@@ -178,7 +179,7 @@ public class NewsPage implements Serializable{
 			// TODO: handle exception
 		}
     	try {
-    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+    	for (BlogEntity blogEntity : blogEntities2) {
 		if(blogEntity.getNewsMode().equals("اخبار اتاق اصناف تهران"))
 			blogEntitiesMode3.add(blogEntity);
     	}
@@ -186,7 +187,7 @@ public class NewsPage implements Serializable{
 			// TODO: handle exception
 		}
     	try {
-    	for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+    	for (BlogEntity blogEntity : blogEntities2) {
 		if(blogEntity.getNewsMode().equals("اخبار متفرقه"))
 			blogEntitiesMode4.add(blogEntity);
 	} 	}catch (Exception e) {
@@ -492,8 +493,8 @@ public class NewsPage implements Serializable{
         else if (todayHijri.getMonthOfYear()==11)
         	month="ذیقعده";
         else if (todayHijri.getMonthOfYear()==12)
-        	month="ذیحجه";
-        text=" روز " + (todayHijri.getDayOfMonth()+1) + " ماه " + month + " سال " + todayHijri.getYear() + "قمری";
+        	month="ذی الحجه";
+        text=" روز " + (todayHijri.getDayOfMonth()) + " ماه " + month + " سال " + todayHijri.getYear() + "قمری";
         
         return text;
 	}

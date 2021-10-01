@@ -16,6 +16,7 @@ import javax.inject.Named;
 
 import catch_db.CatchBlogLocal;
 import entity.BlogEntity;
+import sevice.BlogServiceLocal;
 
 @Named
 @ViewScoped
@@ -30,14 +31,17 @@ public class DanestanihaBlogsPage implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+//	@Inject
+//	private CatchBlogLocal catchBlogLocal;
 	@Inject
-	private CatchBlogLocal catchBlogLocal;
+	private BlogServiceLocal blogServiceLocal;
 
 	private List<BlogEntity> blogHogogi = new ArrayList<>();
 	private List<BlogEntity> blogMaliati = new ArrayList<>();
 	private List<BlogEntity> blogTaminEjtema = new ArrayList<>();
 	private List<BlogEntity> blogDarbareDecor = new ArrayList<>();
 	private List<BlogEntity> blogAmozesh = new ArrayList<>();
+	private List<BlogEntity> blogYafte = new ArrayList<>();
 
 	public List<BlogEntity> getBlogHogogi() {
 		return blogHogogi;
@@ -78,43 +82,67 @@ public class DanestanihaBlogsPage implements Serializable {
 	public void setBlogAmozesh(List<BlogEntity> blogAmozesh) {
 		this.blogAmozesh = blogAmozesh;
 	}
+	
+	
+
+	public List<BlogEntity> getBlogYafte() {
+		return blogYafte;
+	}
+
+	public void setBlogYafte(List<BlogEntity> blogYafte) {
+		this.blogYafte = blogYafte;
+	}
 
 	@PostConstruct
 	public void init() {
-		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
-			if (blogEntity.getBlogType().equals("قوانین حقوقی"))
-				this.blogHogogi.add(blogEntity);
-		}
-		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
-			if (blogEntity.getBlogType().equals("قوانین مالیاتی"))
-				this.blogMaliati.add(blogEntity);
-		}
-		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
-			if (blogEntity.getBlogType().equals("آموزش"))
-				this.blogAmozesh.add(blogEntity);
-		}
-		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
-			if (blogEntity.getBlogType().equals("قوانین تامین اجتماعی"))
-				this.blogTaminEjtema.add(blogEntity);
-		}
-		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
-			if (blogEntity.getBlogType().equals("درباره دکوراسیون"))
-				this.blogDarbareDecor.add(blogEntity);
-		}
-		Collections.reverse(blogAmozesh);
-		Collections.reverse(blogDarbareDecor);
-		Collections.reverse(blogHogogi);
-		Collections.reverse(blogMaliati);
-		Collections.reverse(blogTaminEjtema);
+//		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+//			if (blogEntity.getBlogType().equals("قوانین حقوقی"))
+//				this.blogHogogi.add(blogEntity);
+//		}
+//		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+//			if (blogEntity.getBlogType().equals("قوانین مالیاتی"))
+//				this.blogMaliati.add(blogEntity);
+//		}
+//		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+//			if (blogEntity.getBlogType().equals("آموزش"))
+//				this.blogAmozesh.add(blogEntity);
+//		}
+//		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+//			if (blogEntity.getBlogType().equals("قوانین تامین اجتماعی"))
+//				this.blogTaminEjtema.add(blogEntity);
+//		}
+//		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
+//			if (blogEntity.getBlogType().equals("درباره دکوراسیون"))
+//				this.blogDarbareDecor.add(blogEntity);
+//		}
+//		Collections.reverse(blogAmozesh);
+//		Collections.reverse(blogDarbareDecor);
+//		Collections.reverse(blogHogogi);
+//		Collections.reverse(blogMaliati);
+//		Collections.reverse(blogTaminEjtema);
+		this.blogHogogi.addAll(blogServiceLocal.findAllNewsType("F"));
+		this.blogAmozesh.addAll(blogServiceLocal.findAllNewsType("J"));
+		this.blogDarbareDecor.addAll(blogServiceLocal.findAllNewsType("I"));
+		this.blogMaliati.addAll(blogServiceLocal.findAllNewsType("G"));
+		this.blogTaminEjtema.addAll(blogServiceLocal.findAllNewsType("H"));
+		this.blogYafte.addAll(blogServiceLocal.findAllNewsType("Q"));
 	}
 
 	public byte[] findBlogPicById(int id) {
 		BlogEntity blogEntity = new BlogEntity();
-		for (BlogEntity blogEntity2 : catchBlogLocal.getBlogEntities()) {
-			if (blogEntity2.getId() == id)
-				blogEntity = blogEntity2;
+		try {
+			blogEntity=blogServiceLocal.findBlogById(id);
+			return this.findPic1(blogEntity);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
-		return this.findPic1(blogEntity);
+//		for (BlogEntity blogEntity2 : catchBlogLocal.getBlogEntities()) {
+//			if (blogEntity2.getId() == id)
+//				blogEntity = blogEntity2;
+//		}
+		
 
 	}
 
@@ -142,6 +170,8 @@ public class DanestanihaBlogsPage implements Serializable {
 			return this.blogDarbareDecor;
 		case "آموزش":
 			return this.blogAmozesh;
+		case "یافته های جهانی":
+			return this.blogYafte;
 		default:
 			return null;
 		}

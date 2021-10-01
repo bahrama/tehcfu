@@ -9,10 +9,10 @@ import entity.Amade;
 @Local
 public interface CatchAmadeLocal {
 
-	List<Amade> getAmadePano();
-
-	List<Amade> getAmadeUnion();
-
-	List<Amade> getAmadeMobasherat();
+//	List<Amade> getAmadePano();
+//
+//	List<Amade> getAmadeUnion();
+//
+//	List<Amade> getAmadeMobasherat();
 
 }

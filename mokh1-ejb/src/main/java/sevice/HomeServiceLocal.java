@@ -19,4 +19,6 @@ public interface HomeServiceLocal {
 
 	void deleteSeller(HomeEntity homeEntity);
 
+	HomeEntity findHomeEntityByName(String name) throws Exception;
+
 }

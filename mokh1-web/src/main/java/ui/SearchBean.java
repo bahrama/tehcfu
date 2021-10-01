@@ -27,8 +27,8 @@ public class SearchBean implements Serializable {
 	}
 	@Inject
 	private SellerServiceLocal sellerServiceLocal;
-	@Inject
-	private BlogServiceLocal blogServiceLocal;
+//	@Inject
+//	private BlogServiceLocal blogServiceLocal;
 	
 	private String searchTxt;
 

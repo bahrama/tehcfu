@@ -10,46 +10,84 @@
 	<article class="margin-top-90">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col filtering">
+			<div class="col filtering" style="direction: rtl;">
+			<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('سیسمونی')}">
 				<div class="dastebandi">
-					<img src="pictures/m1.png" alt="" /> <span>جاکفشی</span>
+					<img src="../../../resources/raste-icon/baby1.svg" alt="" /> <span>
+						سیسمونی</span>
+				</div>
+			</h:panelGroup>
+			<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('تختخواب')}">
+				<div class="dastebandi">
+					<img src="../../../resources/raste-icon/bed.svg" alt="" /> <span>
+						تختخواب</span>
+				</div>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('کلاسیک')}">
+				<div class="dastebandi">
+					<img src="../../../resources/raste-icon/classic.svg" alt="" /> <span>
+						مبل کلاسیک</span>
+				</div>
+				</h:panelGroup>
+				<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('اداری')}">
+				<div class="dastebandi">
+					<img src="../../../resources/raste-icon/desk1.svg" alt="" /> <span>
+						مبلمان اداری</span>
+				</div>
+				</h:panelGroup>
+				<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('نهار')}">
+				<div class="dastebandi">
+					<img src="../../../resources/raste-icon/dinner-table.svg" alt="" /> <span>
+						نهار خوری</span>
+				</div>
+				</h:panelGroup>
+				<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('کابینت')}">
+				<div class="dastebandi">
+					<img src="../../../resources/raste-icon/kitchen1.svg" alt="" /> <span>
+						کابینت</span>
+				</div>
+				</h:panelGroup>
+				<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('اداری')}">
+				<div class="dastebandi">
+					<img src="../../../resources/raste-icon/mobl-edari.svg" alt="" /> <span>
+						صندلی اداری</span>
+				</div>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('راحتی')}">
+				<div class="dastebandi">
+					<img src="../../../resources/raste-icon/mobl-rahati.svg" alt="" /> <span>
+						مبل راحتی</span>
+				</div>
+				</h:panelGroup>
+				<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('استیل')}">
+								<div class="dastebandi">
+					<img src="../../../resources/raste-icon/mobl-stel.svg" alt="" /> <span>
+						مبل استیل</span>
+				</div>
+				</h:panelGroup>
+								<div class="dastebandi">
+					<img src="../../../resources/raste-icon/mobl-steel.svg" alt="" /> <span>
+						مبلمان</span>
 				</div>
 
-				<div class="dastebandi">
-					<img src="pictures/m2.png" alt="" /> <span>مبل راحتی</span>
+				<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('تعمیرات')}">
+								<div class="dastebandi">
+					<img src="../../../resources/raste-icon/settings.svg" alt="" /> <span>
+						تعمییرات</span>
 				</div>
-
-				<div class="dastebandi">
-					<img src="../../resources/pictures/m1.jpg" alt="" /> <span>
-						میز جلو مبلی</span>
+				</h:panelGroup>
+				<h:panelGroup rendered="#{(sellerPage.sellerx.faaliat.contains('چوب بری'))||(sellerPage.sellerx.faaliat.contains('مجسمه'))||(sellerPage.sellerx.faaliat.contains('سنتی'))||(sellerPage.sellerx.faaliat.contains('خراطی'))||(sellerPage.sellerx.faaliat.contains('خاتم'))}">
+												<div class="dastebandi">
+					<img src="../../../resources/raste-icon/tamirat.svg" alt="" /> <span>
+						چوب بری</span>
 				</div>
-				<div class="dastebandi">
-					<img src="../../resources/pictures/m2.png" alt="" /> <span>
-						میز جلو مبلی</span>
-				</div>
-				<div class="dastebandi">
-					<img src="../../resources/pictures/m1.png" alt="" /> <span>
-						میز جلو مبلی</span>
-				</div>
-				<div class="dastebandi">
-					<img src="../../resources/pictures/m2.png" alt="" /> <span>
-						میز جلو مبلی</span>
-				</div>
-				<div class="dastebandi">
-					<img src="../../resources/pictures/m1.png" alt="" /> <span>
-						میز جلو مبلی</span>
-				</div>
-
-				<div class="dastebandi">
-					<img src="../../resources/pictures/m2.png" alt="" /> <span>
-						میز جلو مبلی</span>
-				</div>
-
+</h:panelGroup>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col cards" style="direction: rtl;">
 				<ui:repeat var="prdc" value="#{sellerPage.products}">
+				<h:panelGroup rendered="#{prdc.status}">
 					<div class="card animated zoomIn" style="">
 						<span class="forosh-vij">فروش ویژه</span> <!-- <img class="imgcard"
 							src="../../resources/pictures/mobl.jpg" /> -->
@@ -58,11 +96,15 @@
 									value="#{sellerPage.findPic1Product(prdc.productId)}"
 									dataURI="true" />
 						<h1 class="title-forosh">#{prdc.name}</h1>
-						<br /> <span class="price-span">#{prdc.price} تومان</span> <a
-							href="/sellers/Shaaker-wood" class="btn-blue-m">نمایش</a>
+						<br /> <span class="price-span">#{prdc.price} تومان</span> <!-- <a
+							href="/sellers/Shaaker-wood" class="btn-blue-m">نمایش</a> -->
+		<h:link outcome="/pages/product/product-detail.xhtml" value="نمایش" class="btn-blue-m" style="font-family: IRANSansNor; color: #0B59AA; border-color: #0B59AA">
+										<f:param name="ProductId" value="#{prdc.productId}"/>
+										</h:link>
 				
 
 			</div>
+			</h:panelGroup>
 </ui:repeat>
 
 		</div>

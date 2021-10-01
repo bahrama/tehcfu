@@ -9,6 +9,6 @@ import entity.BlogEntity;
 @Local
 public interface CatchBlogLocal {
 
-	List<BlogEntity> getBlogEntities();
+	//List<BlogEntity> getBlogEntities();
 
 }

@@ -25,32 +25,32 @@ public class CatchCreative implements CatchCreativeLocal {
     /**
      * Default constructor. 
      */
-    public CatchCreative() {
-        // TODO Auto-generated constructor stub
-    }
-    @Inject
-    private CreativeServiceLocal creativeServiceLocal;
-    
-    private List<CreativeEntity> creativeEntities=new ArrayList<>();
-
-    @Override
-	public List<CreativeEntity> getCreativeEntities() {
-		return creativeEntities;
-	}
-    @PostConstruct
-    public void init() {
-    	this.creativeEntities.addAll(creativeServiceLocal.findAllCreativeEntity());
-    	Collections.reverse(this.creativeEntities);
-    }
-    
-    
-	@Schedule(hour = "*", minute = "*/1", persistent = false)
-	@AccessTimeout(value = 4, unit = TimeUnit.SECONDS)
-	public void ejra() throws Exception {
-	    this.creativeEntities.clear();
-		this.creativeEntities.addAll(creativeServiceLocal.findAllCreativeEntity());
-		Collections.reverse(this.creativeEntities);
-	}
+//    public CatchCreative() {
+//        // TODO Auto-generated constructor stub
+//    }
+//    @Inject
+//    private CreativeServiceLocal creativeServiceLocal;
+//    
+//    private List<CreativeEntity> creativeEntities=new ArrayList<>();
+//
+//    @Override
+//	public List<CreativeEntity> getCreativeEntities() {
+//		return creativeEntities;
+//	}
+//    @PostConstruct
+//    public void init() {
+//    	this.creativeEntities.addAll(creativeServiceLocal.findAllCreativeEntity());
+//    	Collections.reverse(this.creativeEntities);
+//    }
+//    
+//    
+//	@Schedule(hour = "*", minute = "*/1", persistent = false)
+//	@AccessTimeout(value = 4, unit = TimeUnit.SECONDS)
+//	public void ejra() throws Exception {
+//	    this.creativeEntities.clear();
+//		this.creativeEntities.addAll(creativeServiceLocal.findAllCreativeEntity());
+//		Collections.reverse(this.creativeEntities);
+//	}
 	
     
     

@@ -11,6 +11,6 @@ import sevice.HomeServiceLocal;
 public interface CatchHomeLocal {
 
 
-	List<HomeEntity> getHomeEntities();
+	//List<HomeEntity> getHomeEntities();
 
 }

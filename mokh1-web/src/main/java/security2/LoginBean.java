@@ -52,7 +52,7 @@ public class LoginBean implements Serializable {
 	}
     @Pattern(regexp="09\\d{9}" , message="شماره وارده اشتباه می باشد")
 	private String mobile="";
-    @Pattern(regexp="\\d{4}" , message="شماره وارده اشتباه می باشد")
+    @Pattern(regexp="\\d{6}" , message="شماره وارده اشتباه می باشد")
     private String authCode="";
 	private MoblEntity moblEntity;
 	private String userType;
@@ -69,8 +69,8 @@ public class LoginBean implements Serializable {
 	private HttpSession session;
 	@Inject
 	private SellerServiceLocal sellerServiceLocal;
-    @Inject
-	private CatchSellerLocal catchSellerLocal;
+//    @Inject
+//	private CatchSellerLocal catchSellerLocal;
 
 	public String getMobile() {
 		return mobile;
@@ -143,13 +143,13 @@ public class LoginBean implements Serializable {
 		MoblEntity moblEntity = new MoblEntity();
 		moblEntity.setMobile(mobile);
 		Random random = new Random();
-		int code = random.nextInt(9999);
-		if (code < 1000)
-			code = code + 1000;
+		int code = random.nextInt(999999);
+		if (code < 100000)
+			code = code + 100000;
 		moblEntity.setAuthCode(code);
 		moblEntity.setRole(UserRole.USER);
 		sellerServiceLocal.insertSeller(moblEntity);
-		catchSellerLocal.getOnlineUsers().add(moblEntity);
+		//catchSellerLocal.getOnlineUsers().add(moblEntity);
 		try {
 			URL url2 = new URL(
 					"https://www.saharsms.com/api/gONhkiXUT8sBU1yUJUAQPAqOYlcIOho4/json/SendVerify?receptor=" + mobile +"&template=tehcfusms-16147&token=" + code);
@@ -166,12 +166,12 @@ public class LoginBean implements Serializable {
 	public void updateSellerAuthCode() throws Exception {
 		moblEntity = findSellerByMobile();
 		Random random = new Random();
-		int code = random.nextInt(9999);
-		if (code < 1000)
-			code = code + 1000;
+		int code = random.nextInt(999999);
+		if (code < 100000)
+			code = code + 100000;
 		moblEntity.setAuthCode(code);
 		sellerServiceLocal.updateSeller(moblEntity);
-		catchSellerLocal.getOnlineUsers().add(moblEntity);
+		//catchSellerLocal.getOnlineUsers().add(moblEntity);
 		URL url2 = new URL(
 				"https://www.saharsms.com/api/gONhkiXUT8sBU1yUJUAQPAqOYlcIOho4/json/SendVerify?receptor=" + moblEntity.getMobile() +"&template=tehcfusms-16147&token=" + code);
 		HttpURLConnection httpURLConnection2 = (HttpURLConnection) url2.openConnection();
@@ -219,7 +219,7 @@ public class LoginBean implements Serializable {
 			System.err.println(tehcfuCookie);
 			moblEntity = sellerServiceLocal.findSellerByToken(tehcfuCookie);
 			session.setAttribute("mobile", moblEntity.getMobile());
-			catchSellerLocal.getOnlineUsers().add(moblEntity);
+			//catchSellerLocal.getOnlineUsers().add(moblEntity);
 			switch (continueAuthenticationAfterCookie(moblEntity.getMobile(),
 					String.valueOf(moblEntity.getAuthCode()))) {
 			case SEND_CONTINUE:
@@ -249,7 +249,7 @@ public class LoginBean implements Serializable {
 	@PreDestroy
 	public void destroySession() {
 		System.err.println("destroy user");
-		catchSellerLocal.getOnlineUsers().remove(moblEntity);
+		//catchSellerLocal.getOnlineUsers().remove(moblEntity);
 		//onlineUsersLocal.getMobls().remove(moblEntity);
 	}
 
@@ -285,7 +285,7 @@ public class LoginBean implements Serializable {
 		Cookie cookie2 = new Cookie("tehcfu", "");
 		cookie2.setPath("/");
 		response.addCookie(cookie2);
-		catchSellerLocal.getOnlineUsers().remove(moblEntity);
+		//catchSellerLocal.getOnlineUsers().remove(moblEntity);
 		return "/pages/main/home.xhtml?faces-redirect=true";
 	}
 

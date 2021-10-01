@@ -1,16 +1,76 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:o="http://omnifaces.org/ui">
+	xmlns:o="http://omnifaces.org/ui" xmlns:p="http://primefaces.org/ui">
 
- 
-    							<h:outputText value="#{passagePage.findBlogMain()}"
-								escape="false" />
-								
-<!-- <script src="jscenter/pasargadjs.js"></script> -->
-    
+
+	<h:outputText value="#{passagePage.findBlogMain()}" escape="false" />
+
+	<!-- <script src="jscenter/pasargadjs.js"></script> -->
+
+	<article class="margin-top-75 container"> <h:form id="form"
+		enctype="multipart/form-data" acceptcharset="UTF-8">
+		<p:dataTable id="tableStateDT" var="blogs" reflow="true"
+			value="#{passagePage.findSellerByMojtame()}" widgetVar="carsTable"
+			multiViewState="true" rows="10" paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" rowKey="#{blogs.id}"
+			emptyMessage="No cars found with given criteria"
+			style="text-align:center">
+
+			<f:facet name="header">
+				<p:outputPanel>
+					<h:outputText value="فروشگاه های مربوط به این پاساژ"
+						style="text-align:center" />
+				</p:outputPanel>
+			</f:facet>
+
+
+			<p:column headerText="شماره تلفن :" sortBy="#{blogs.id}">
+				<h:outputText value="#{blogs.phone}" style="text-align:center" />
+			</p:column>
+
+			<p:column headerText="رسته شغلی :" sortBy="#{blogs.id}">
+				<h:outputText value="#{blogs.faaliat}" style="text-align:center" />
+			</p:column>
+
+			<p:column headerText="نوع پنل :" sortBy="#{blogs.id}">
+				<h:outputText value="فیروزه ای" style="text-align:center"
+					rendered="#{blogs.panel eq 'A'}" />
+				<h:outputText value="طلایی ای" style="text-align:center"
+					rendered="#{blogs.panel eq 'B'}" />
+				<h:outputText value="نقره ای" style="text-align:center"
+					rendered="#{blogs.panel eq 'C'}" />
+				<h:outputText value="برنزی" style="text-align:center"
+					rendered="#{blogs.panel eq 'D'}" />
+				<h:outputText value="عادی" style="text-align:center"
+					rendered="#{blogs.panel eq 'E'}" />
+				<h:outputText value="عادی" style="text-align:center"
+					rendered="#{blogs.panel eq null}" />
+			</p:column>
+
+			<p:column headerText="اسم صاحب پروانه :" sortBy="#{blogs.id}">
+				<h:outputText value="#{blogs.sellerName}" style="text-align:center" />
+			</p:column>
+
+			<p:column headerText="نام فروشگاه :" sortBy="#{blogs.id}">
+			<h:panelGroup rendered="#{blogs.sellerStorePer ne null}">
+				<h:link outcome="/pages/merchant/merchant.xhtml" value="#{blogs.sellerStorePer}">
+					<f:param name="sellerNameEng" value="#{blogs.sellerStoreEng}" />
+				</h:link>
+				</h:panelGroup>
+			<h:outputText value="#{blogs.sellerStorePer}" rendered="#{blogs.sellerStorePer eq null}"/>
+			</p:column>
+			
+		</p:dataTable>
+
+
+	</h:form> </article>
+	<script>
+    document.getElementsByClassName('table-bordered')[0].style.display="none";
+    </script>
 </ui:composition>
 

@@ -10,6 +10,7 @@ import javax.inject.Named;
 
 import catch_db.CatchMachineLocal;
 import entity.MachineEntity;
+import sevice.MachineServiceLocal;
 
 @Named
 @ViewScoped
@@ -24,11 +25,13 @@ public class ViewMachine implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
+//	@Inject
+//	private CatchMachineLocal catchMachineLocal;
 	@Inject
-	private CatchMachineLocal catchMachineLocal;
-
+	private MachineServiceLocal machineServiceLocal;
+	
 	public List<MachineEntity> findAllMachineTaeed(){
-		return catchMachineLocal.getMachineEntities();
+		return machineServiceLocal.findAllMachineEntity();
 	}
 	
 	private String gregorian_to_jalali(int gy, int gm, int gd) {

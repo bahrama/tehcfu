@@ -9,6 +9,6 @@ import entity.CreativeEntity;
 @Local
 public interface CatchCreativeLocal {
 
-	List<CreativeEntity> getCreativeEntities();
+	//List<CreativeEntity> getCreativeEntities();
 
 }

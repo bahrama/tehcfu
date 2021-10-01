@@ -9,6 +9,6 @@ import entity.JobKarfarmaEntity;
 @Local
 public interface CatchKarfarmaLocal {
 
-	List<JobKarfarmaEntity> getKarfarmas();
+	//List<JobKarfarmaEntity> getKarfarmas();
 
 }

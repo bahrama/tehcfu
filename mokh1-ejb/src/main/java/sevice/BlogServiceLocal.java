@@ -23,4 +23,6 @@ public interface BlogServiceLocal {
 
 	List<BlogEntity> findAllNewsMode(String mode);
 
+	List<BlogEntity> findAllNewsType(String blogType);
+
 }

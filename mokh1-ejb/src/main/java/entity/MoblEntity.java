@@ -26,9 +26,10 @@ import enums.UserRole;
 @Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
 @NamedQuery(name="MoblEntity.findAll", query="SELECT m FROM MoblEntity m ORDER BY m.id ASC"),
-@NamedQuery(name="MoblEntity.findAllMap", query="SELECT m FROM MoblEntity m WHERE (NOT m.panel=:v_panelMap)"),
+@NamedQuery(name="MoblEntity.findAllMap", query="SELECT m FROM MoblEntity m WHERE (m.panel='A' OR m.panel='B' OR m.panel='C' OR m.panel='D')"),
 @NamedQuery(name = "MoblEntity.findById", query = "SELECT i FROM MoblEntity i WHERE i.id=:v_id"),
 @NamedQuery(name = "MoblEntity.findByMobile", query = "SELECT i FROM MoblEntity i WHERE i.mobile=:v_mobile"),
+@NamedQuery(name = "MoblEntity.findByMojtame", query = "SELECT i FROM MoblEntity i WHERE i.mojtame=:v_mojtame"),
 @NamedQuery(name = "MoblEntity.findByAuthCode", query = "SELECT i FROM MoblEntity i WHERE i.authCode=:v_authCode"),
 @NamedQuery(name = "MoblEntity.findByToken", query = "SELECT i FROM MoblEntity i WHERE i.token=:v_token"),
 @NamedQuery(name = "MoblEntity.findByNameEng", query = "SELECT i FROM MoblEntity i WHERE i.sellerStoreEng=:v_sellerStoreEng"),

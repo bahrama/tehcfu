@@ -298,6 +298,36 @@
 																</div>
 															</div>
 														</div>
+																												<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">آیا ضمانت دارد ؟</label>
+																	<h:selectOneRadio value="#{product.guarantiStatus}"
+																		style="font-family: IRANSansNor;" id="postcode23334444"
+																		required="true" styleClass="form-control"
+																		layout="lineDirection">
+																		<f:selectItem itemValue="بلی" itemLabel="بلی" />
+																		<f:selectItem itemValue="خیر" itemLabel="خیر" />
+																	</h:selectOneRadio>
+																	<h:message for="postcode23334444" id="ms19125533322"
+																		errorStyle="color:red;" errorClass="help-block" />
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">مدت ضمانت</label>
+																	<h:inputText id="senfiname9122244"
+																		styleClass="form-control"
+																		style="font-family: IRANSansNor;"
+																		value="#{product.guaranyTime}" />
+																	<!-- <span class="help-block"> This is inline help </span> -->
+																	<h:message for="senfiname9122244" id="ms1912244"
+																		errorStyle="color:red;" errorClass="help-block" />
+																</div>
+															</div>
+														</div>
 														<div class="row">
 															<div class="col-md-6">
 																<div class="form-group">
@@ -326,6 +356,7 @@
 																</div>
 															</div>
 														</div>
+														
 														<div class="row">
 															<div class="col-md-6">
 																<div class="form-group">
@@ -437,9 +468,8 @@
 																				<h:inputFile styleClass="dropify" id="inFile"
 																					value="#{product.pic1}"
 																					style="background-color: #dddddd;" required="true"
-																					requiredMessage="لطفا تصویر محصول با فرمت jpg و حداکثر حجم ۶۰ کیلوبایت وارد نمایید">
-																					<f:validator
-																						validatorId="validationpkj.ImageValidator" />
+																					requiredMessage="لطفا تصویر محصول با فرمت jpg">
+																					
 																				</h:inputFile>
 																				<h:message for="inFile" errorStyle="color:red;"
 																					errorClass="help-block" id="ms11" />
@@ -447,9 +477,8 @@
 																				<h:inputFile styleClass="dropify" id="inFile2"
 																					value="#{product.pic2}"
 																					style="background-color: #dddddd;" required="true"
-																					requiredMessage="لطفا تصویر محصول با فرمت jpg و حداکثر حجم ۶۰ کیلوبایت وارد نمایید">
-																					<f:validator
-																						validatorId="validationpkj.ImageValidator" />
+																					requiredMessage="لطفا تصویر محصول با فرمت jpg">
+																
 																				</h:inputFile>
 																				<h:message for="inFile2" errorStyle="color:red;"
 																					errorClass="help-block" id="ms12" />
@@ -457,9 +486,7 @@
 																				<h:inputFile styleClass="dropify" id="inFile3"
 																					value="#{product.pic3}"
 																					style="background-color: #dddddd;" required="true"
-																					requiredMessage="لطفا تصویر محصول با فرمت jpg و حداکثر حجم ۶۰ کیلوبایت وارد نمایید">
-																					<f:validator
-																						validatorId="validationpkj.ImageValidator" />
+																					requiredMessage="لطفا تصویر محصول با فرمت jpg">
 																				</h:inputFile>
 																				<h:message for="inFile3" errorStyle="color:red;"
 																					errorClass="help-block" id="ms13" />
@@ -467,9 +494,8 @@
 																				<h:inputFile styleClass="dropify" id="inFile4"
 																					value="#{product.pic4}"
 																					style="background-color: #dddddd;" required="true"
-																					requiredMessage="لطفا تصویر محصول با فرمت jpg و حداکثر حجم ۶۰ کیلوبایت وارد نمایید">
-																					<f:validator
-																						validatorId="validationpkj.ImageValidator" />
+																					requiredMessage="لطفا تصویر محصول با فرمت jpg">
+										
 																				</h:inputFile>
 																				<h:message for="inFile4" errorStyle="color:red;"
 																					errorClass="help-block" id="ms14" />
@@ -477,9 +503,7 @@
 																				<h:inputFile styleClass="dropify" id="inFile5"
 																					value="#{product.pic5}"
 																					style="background-color: #dddddd;" required="true"
-																					requiredMessage="لطفا تصویر محصول با فرمت jpg و حداکثر حجم ۶۰ کیلوبایت وارد نمایید">
-																					<f:validator
-																						validatorId="validationpkj.ImageValidator" />
+																					requiredMessage="لطفا تصویر محصول با فرمت jpg">
 																				</h:inputFile>
 																				<h:message for="inFile5" errorStyle="color:red;"
 																					errorClass="help-block" id="ms15" />

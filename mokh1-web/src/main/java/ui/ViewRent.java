@@ -11,6 +11,7 @@ import javax.inject.Named;
 
 import catch_db.CatchRentLocal;
 import entity.RentEntity;
+import sevice.RentServiceLocal;
 
 
 @Named
@@ -26,11 +27,13 @@ public class ViewRent implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
-@Inject
-private CatchRentLocal catchRentLocal;
+//@Inject
+//private CatchRentLocal catchRentLocal;
+	@Inject
+	private RentServiceLocal rentServiceLocal;
 
 public List<RentEntity> findAllVerifiedRent(){
-	return catchRentLocal.getRents(); 
+	return rentServiceLocal.findAllRent();
 }
 
 private String gregorian_to_jalali(int gy, int gm, int gd) {

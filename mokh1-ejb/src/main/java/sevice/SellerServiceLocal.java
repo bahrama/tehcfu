@@ -31,4 +31,6 @@ public interface SellerServiceLocal {
 
 	List<MoblEntity> findSellerByFilter(String text, String filter) throws Exception;
 
+	List<MoblEntity> findSellersByMojtame(String mojtame) throws Exception;
+
 }

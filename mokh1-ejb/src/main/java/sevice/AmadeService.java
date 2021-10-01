@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import dao.AmadeDaoLocal;
 import entity.Amade;
+import enums.AmadeType;
 
 
 
@@ -47,5 +48,8 @@ public class AmadeService implements AmadeServiceLocal {
          amadeDaoLocal.deleteAmade(amade);
     }
 
-
+	@Override
+    public List<Amade> findAmadeByType(AmadeType type) {
+		return amadeDaoLocal.findAmadeByType(type);
+	}
 }

@@ -1,11 +1,13 @@
 package panel;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,6 +17,7 @@ import javax.faces.view.ViewScoped;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.Column;
 import javax.servlet.http.Part;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
@@ -22,6 +25,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.apache.commons.io.IOUtils;
+import org.imgscalr.Scalr;
 
 import entity.ProductEntity;
 import sevice.ProductserviceLocal;
@@ -69,7 +73,11 @@ public class AddProduct implements Serializable{
 	@NotEmpty(message="فیلد نباید خالی باشد")
 	@Size(max=3000,message="حداکثر ۱۰ کاراکتر")
 	private String oldNew;
-	
+	private String guarantiStatus;
+	@NotNull(message="فیلد نباید خالی باشد")
+	@NotEmpty(message="فیلد نباید خالی باشد")
+	@Size(max=3000,message="حداکثر 200 کاراکتر")
+	private String guaranyTime;
 	private Part pic1;
 	private Part pic2;
 	private Part pic3;
@@ -268,6 +276,20 @@ public class AddProduct implements Serializable{
 	public void setAbad(String abad) {
 		this.abad = abad;
 	}
+	
+
+	public String getGuarantiStatus() {
+		return guarantiStatus;
+	}
+	public void setGuarantiStatus(String guarantiStatus) {
+		this.guarantiStatus = guarantiStatus;
+	}
+	public String getGuaranyTime() {
+		return guaranyTime;
+	}
+	public void setGuaranyTime(String guaranyTime) {
+		this.guaranyTime = guaranyTime;
+	}
 	public void insertToProduct() {
 		ProductEntity productEntity=new ProductEntity();
 		productEntity.setContry(contry);
@@ -278,6 +300,21 @@ public class AddProduct implements Serializable{
 		productEntity.setPrice2(Long.parseLong(price2));
 		productEntity.setRaste(raste);
 		productEntity.setProduct(tempBean.getMoblEntity());
+		productEntity.setAbad(abad);
+		productEntity.setJenseKalaf(jenseKalaf);
+		productEntity.setJenseLayeMiani(jenseLayeMiani);
+		productEntity.setKosan(kosan);
+		productEntity.setMiz(miz);
+		productEntity.setNoeMobl(noeMobl);
+		productEntity.setNoeMoblRahati(noeMoblRahati);
+		productEntity.setNoePaye(noePaye);
+		productEntity.setRangBandi(rangBandi);
+		productEntity.setTedadNafar(tedadNafar);
+		productEntity.setZemanat(zemanat);
+		productEntity.setpDate(new Date());
+		productEntity.setGuarantiStatus(guarantiStatus);
+		productEntity.setGuaranyTime(guaranyTime);
+		productEntity.setStatus(false);
 		try {
 		productEntity.setPic1(this.picture());
 		productEntity.setPic2(this.picture2());
@@ -310,7 +347,8 @@ public class AddProduct implements Serializable{
 			File out3 = new File("/home/wildfly/AX/" + uuid + ".jpg");
 			InputStream in = new ByteArrayInputStream(image1Byte);
 			BufferedImage img3 = ImageIO.read(in);
-			ImageIO.write(img3, "jpg", out3);
+			BufferedImage scaledImg = Scalr.resize(img3, 800, 1000);
+			ImageIO.write(scaledImg, "jpg", out3);
 			return uuid.toString();
 		} catch (IOException e) {
 
@@ -326,7 +364,8 @@ public class AddProduct implements Serializable{
 			File out3 = new File("/home/wildfly/AX/" + uuid + ".jpg");
 			InputStream in = new ByteArrayInputStream(image1Byte);
 			BufferedImage img3 = ImageIO.read(in);
-			ImageIO.write(img3, "jpg", out3);
+			BufferedImage scaledImg = Scalr.resize(img3, 800, 1000);
+			ImageIO.write(scaledImg, "jpg", out3);
 			return uuid.toString();
 		} catch (IOException e) {
 
@@ -342,7 +381,8 @@ public class AddProduct implements Serializable{
 			File out3 = new File("/home/wildfly/AX/" + uuid + ".jpg");
 			InputStream in = new ByteArrayInputStream(image1Byte);
 			BufferedImage img3 = ImageIO.read(in);
-			ImageIO.write(img3, "jpg", out3);
+			BufferedImage scaledImg = Scalr.resize(img3, 800, 1000);
+			ImageIO.write(scaledImg, "jpg", out3);
 			return uuid.toString();
 		} catch (IOException e) {
 
@@ -358,7 +398,8 @@ public class AddProduct implements Serializable{
 			File out3 = new File("/home/wildfly/AX/" + uuid + ".jpg");
 			InputStream in = new ByteArrayInputStream(image1Byte);
 			BufferedImage img3 = ImageIO.read(in);
-			ImageIO.write(img3, "jpg", out3);
+			BufferedImage scaledImg = Scalr.resize(img3, 800, 1000);
+			ImageIO.write(scaledImg, "jpg", out3);
 			return uuid.toString();
 		} catch (IOException e) {
 
@@ -374,7 +415,8 @@ public class AddProduct implements Serializable{
 			File out3 = new File("/home/wildfly/AX/" + uuid + ".jpg");
 			InputStream in = new ByteArrayInputStream(image1Byte);
 			BufferedImage img3 = ImageIO.read(in);
-			ImageIO.write(img3, "jpg", out3);
+			BufferedImage scaledImg = Scalr.resize(img3, 800, 1000);
+			ImageIO.write(scaledImg, "jpg", out3);
 			return uuid.toString();
 		} catch (IOException e) {
 

@@ -1,7 +1,9 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 import org.eclipse.persistence.annotations.Cache;
@@ -90,6 +94,16 @@ public class ProductEntity implements Serializable {
 	private boolean miz;
 	@Column(name = "abad", nullable = true , length=100)
 	private String abad;
+	@Column(name = "status", nullable = true)
+	private boolean status;
+	@Temporal(TemporalType.DATE)
+	@Column(name="pDate",nullable=true)
+	private Date pDate;
+	@Column(name = "guarantiStatus", nullable = true,length=50)
+	private String guarantiStatus;
+	@Column(name = "guaranyTime", nullable = true , length=200)
+	private String guaranyTime;
+	
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -314,6 +328,44 @@ public class ProductEntity implements Serializable {
 
 	public void setAbad(String abad) {
 		this.abad = abad;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public Date getpDate() {
+		return pDate;
+	}
+
+	public void setpDate(Date pDate) {
+		this.pDate = pDate;
+	}
+
+
+
+	public String getGuarantiStatus() {
+		return guarantiStatus;
+	}
+
+	public void setGuarantiStatus(String guarantiStatus) {
+		this.guarantiStatus = guarantiStatus;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public String getGuaranyTime() {
+		return guaranyTime;
+	}
+
+	public void setGuaranyTime(String guaranyTime) {
+		this.guaranyTime = guaranyTime;
 	}
 
 	@Override

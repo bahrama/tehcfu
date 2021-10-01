@@ -434,6 +434,18 @@
 						<f:selectItem itemValue="جاکفشی" itemLabel="جاکفشی" />
 						<f:selectItem itemValue="مبلمان سنتی" itemLabel="مبلمان سنتی" />
 					</h:selectManyCheckbox>
+					
+					<h:outputText value="تاریخ تولد صاحب واحد ضنفی" />
+					<h:outputText value="#{editSeller.findPersianDate(editSeller.moblEntity.birthDate)}" />
+					<p:inputMask id="brthday" value="#{editSeller.birthDay}" mask="9999/99/99"/>
+					
+					<h:outputText value="تاریخ اعتبار جواز" />
+					<h:outputText value="#{editSeller.findPersianDate(editSeller.moblEntity.tarikhEtebar)}" />
+					<p:inputMask id="etetarday" value="#{editSeller.tarikhEtebar}" mask="9999/99/99"/>
+					
+					<h:outputText value="تاریخ تولد مستاجر" />
+					<h:outputText value="#{editSeller.findPersianDate(editSeller.moblEntity.mostajerBirthday)}" />
+					<p:inputMask id="mostday" value="#{editSeller.mostajerBirthday}" mask="9999/99/99"/>
 
 
 					<h:outputText value="image1" />

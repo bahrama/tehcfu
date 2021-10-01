@@ -49,6 +49,15 @@ public class HomeDao implements HomeDaoLocal {
     }
     }
     
+    @Override
+    public HomeEntity findHomeEntityByName(String name) throws Exception{
+    	try {
+    	return (HomeEntity) entityManager.createNamedQuery("HomeTbl.findByName").setParameter("v_name", name).getSingleResult();
+    }catch(Exception exception) {
+    	throw new Exception();
+    }
+    }
+    
     
     @Override
     public void updateHomeEntity(HomeEntity homeEntity) throws Exception{

@@ -48,8 +48,8 @@ public class SellerPage implements Serializable{
 	}
 	@Inject
 	private FacesContext facesContext;
-	@Inject
-	private CatchSellerLocal catchSellerLocal;
+//	@Inject
+//	private CatchSellerLocal catchSellerLocal;
 	@Inject
 	private SellerServiceLocal sellerServiceLocal;
 	@Inject

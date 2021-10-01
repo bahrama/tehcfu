@@ -18,6 +18,7 @@ import org.eclipse.persistence.annotations.CacheType;
 @NamedQueries({
 	@NamedQuery(name="HomeTbl.findAll", query="SELECT h FROM HomeEntity h ORDER BY h.id DESC"),
 	@NamedQuery(name = "HomeTbl.findById", query = "SELECT i FROM HomeEntity i WHERE i.id=:v_id"),
+	@NamedQuery(name = "HomeTbl.findByName", query = "SELECT i FROM HomeEntity i WHERE i.name=:v_name ORDER BY i.id DESC")
 })
 public class HomeEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -82,7 +83,8 @@ public class HomeEntity implements Serializable {
 	         return "قمری";
 		case "X":
 	         return "میلادی";
-			
+		case "Q":
+		     return "یافته های جهانی";
 
 		default:
 			return null;

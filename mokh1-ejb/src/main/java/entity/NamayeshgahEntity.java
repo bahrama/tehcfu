@@ -21,6 +21,7 @@ import org.eclipse.persistence.annotations.CacheType;
 @NamedQueries({
 @NamedQuery(name="NamayeshgahEntity.findAll", query="SELECT b FROM NamayeshgahEntity b ORDER BY b.id DESC"),
 @NamedQuery(name = "NamayeshgahEntity.findById", query = "SELECT i FROM NamayeshgahEntity i WHERE i.id=:v_id"),
+@NamedQuery(name = "NamayeshgahEntity.findByType", query = "SELECT i FROM NamayeshgahEntity i WHERE i.type=:v_type ORDER BY i.id DESC")
 })
 public class NamayeshgahEntity implements Serializable{
 	

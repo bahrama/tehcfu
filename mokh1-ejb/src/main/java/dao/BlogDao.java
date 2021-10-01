@@ -65,6 +65,12 @@ public class BlogDao implements BlogDaoLocal {
 	public List<BlogEntity> findAllNewsMode(String mode) {
 		return entityManager.createNamedQuery("BlogEntity.findByNewsMode").setParameter("v_newsMode", mode).getResultList();
 	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<BlogEntity> findAllNewsType(String blogType) {
+		return entityManager.createNamedQuery("BlogEntity.findByType").setParameter("v_blogType", blogType).getResultList();
+	}
     
     
     @Override

@@ -37,6 +37,7 @@ import catch_db.CatchBlogLocal;
 import entity.BlogEntity;
 import entity.MoblEntity;
 import enums.UserRole;
+import sevice.BlogServiceLocal;
 import sevice.SellerServiceLocal;
 
 @Named
@@ -47,7 +48,10 @@ public class AddSeller {
 		// TODO Auto-generated constructor stub
 	}
 	@Inject
-	private SellerServiceLocal sellerServiceLocal;  
+	private SellerServiceLocal sellerServiceLocal; 
+	@Inject
+	private BlogServiceLocal blogServiceLocal;
+	
 	private List<BlogEntity> blogEntities = new ArrayList<>();
 	
 	@Size(max=100 , message="max size is 100")
@@ -109,8 +113,8 @@ public class AddSeller {
 	private String tagdir;
 ///////////////////////////////////////////////
 private String malekiat;
-@Inject
-private CatchBlogLocal catchBlogLocal;
+//@Inject
+//private CatchBlogLocal catchBlogLocal;
 	private String sabteSefaresh;
 	private String mostajer;
 	private String mohlateEjare;
@@ -728,8 +732,8 @@ private CatchBlogLocal catchBlogLocal;
 	public List<BlogEntity> findAllPassage() {
 
         blogEntities.clear();
-		for (BlogEntity blogEntity : catchBlogLocal.getBlogEntities()) {
-			if (blogEntity.getBlogType().equals("مجتمع تجاری")) {
+		for (BlogEntity blogEntity : blogServiceLocal.findAllBlog()) {
+			if (blogEntity.getBlogType().equals("A")) {
 				blogEntities.add(blogEntity);
 				}
 		}

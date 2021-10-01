@@ -25,6 +25,7 @@ import enums.AmadeType;
 @NamedQueries({
 	@NamedQuery(name="findAllAmade" , query="SELECT a FROM Amade a"),
 	@NamedQuery(name="findByAmadeId" , query="SELECT u FROM Amade u WHERE u.amadeId=:v_amadeId"),
+	@NamedQuery(name="findByAmadeType" , query="SELECT u FROM Amade u WHERE u.type=:v_type")
 })
 public class Amade implements Serializable{
 
@@ -58,6 +59,8 @@ public class Amade implements Serializable{
 	private String damane;
 	@Column(name="mobile" , length=50 , nullable=true)
 	private String mobile;
+	@Column(name="father" , length=100 , nullable=true)
+	private String father;
 	public long getAmadeId() {
 		return amadeId;
 	}
@@ -124,6 +127,12 @@ public class Amade implements Serializable{
 	}
 	
 	
+	public String getFather() {
+		return father;
+	}
+	public void setFather(String father) {
+		this.father = father;
+	}
 	public String getMobile() {
 		return mobile;
 	}

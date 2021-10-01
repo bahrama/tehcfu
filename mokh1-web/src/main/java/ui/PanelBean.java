@@ -40,8 +40,6 @@ public class PanelBean implements Serializable {
 	}
 	
 	public byte[] findPic4(MoblEntity moblEntity) throws IOException {
-		System.err.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-		System.err.println(moblEntity.getPic4().toString());
 		try {
 		File imageFile1=new File("/home/wildfly/AX/" + moblEntity.getPic4().toString() + ".jpg");
 		BufferedImage image1=ImageIO.read(imageFile1);

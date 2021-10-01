@@ -26,38 +26,38 @@ public class CatchKarjo implements CatchKarjoLocal {
     /**
      * Default constructor. 
      */
-    public CatchKarjo() {
-        // TODO Auto-generated constructor stub
-    }
-    @Inject
-    private JobKarjoServiceLocal jobKarjoServiceLocal;
-    
-    private List<JobKarjoEntity> karjos=new ArrayList<JobKarjoEntity>();
-
-    @Override
-	public List<JobKarjoEntity> getKarjos() {
-		return karjos;
-	}
-
-	@PostConstruct
-    public void init() {
-    	for (JobKarjoEntity jobKarjoEntity:jobKarjoServiceLocal.findAllKarjo()) {
-			if(jobKarjoEntity.isShow()==true)
-                this.karjos.add(jobKarjoEntity);
-    	}
-    	
-    }
-    
-    
-	@Schedule(hour = "*", minute = "*/1", persistent = false)
-	@AccessTimeout(value = 4, unit = TimeUnit.SECONDS)
-	public void ejra(){
-		this.karjos.clear();
-    	for (JobKarjoEntity jobKarjoEntity:jobKarjoServiceLocal.findAllKarjo()) {
-			if(jobKarjoEntity.isShow()==true)
-                this.karjos.add(jobKarjoEntity);
-    	}
-	}
+//    public CatchKarjo() {
+//        // TODO Auto-generated constructor stub
+//    }
+//    @Inject
+//    private JobKarjoServiceLocal jobKarjoServiceLocal;
+//    
+//    private List<JobKarjoEntity> karjos=new ArrayList<JobKarjoEntity>();
+//
+//    @Override
+//	public List<JobKarjoEntity> getKarjos() {
+//		return karjos;
+//	}
+//
+//	@PostConstruct
+//    public void init() {
+//    	for (JobKarjoEntity jobKarjoEntity:jobKarjoServiceLocal.findAllKarjo()) {
+//			if(jobKarjoEntity.isShow()==true)
+//                this.karjos.add(jobKarjoEntity);
+//    	}
+//    	
+//    }
+//    
+//    
+//	@Schedule(hour = "*", minute = "*/1", persistent = false)
+//	@AccessTimeout(value = 4, unit = TimeUnit.SECONDS)
+//	public void ejra(){
+//		this.karjos.clear();
+//    	for (JobKarjoEntity jobKarjoEntity:jobKarjoServiceLocal.findAllKarjo()) {
+//			if(jobKarjoEntity.isShow()==true)
+//                this.karjos.add(jobKarjoEntity);
+//    	}
+//	}
     
 
 }

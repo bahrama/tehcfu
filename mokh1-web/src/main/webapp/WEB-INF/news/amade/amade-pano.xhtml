@@ -30,28 +30,12 @@
 				</p:outputPanel>
 			</f:facet>
 
-
-			<p:column headerText="نام مباشر :" filterBy="#{blogs.mobasher}" sortBy="#{blogs.mobasher}"
-				filterMatchMode="contains">
-				<h:outputText value="#{blogs.mobasher}" />
-			</p:column>
-
-
-
-			<p:column headerText="رسته شغلی :" filterBy="#{blogs.raste}"
-				sortBy="#{blogs.raste}" filterMatchMode="contains">
-				<h:outputText value="#{blogs.raste}" />
-			</p:column>
 			
-						<p:column headerText="اسم فروشگاه :" filterBy="#{blogs.senfName}"
+						<p:column headerText="نام فروشگاه :" filterBy="#{blogs.senfName}"
 				sortBy="#{blogs.senfName}" filterMatchMode="contains">
 				<h:outputText value="#{blogs.senfName}" />
 			</p:column>
 			
-						<p:column headerText="نوع پنل :" filterBy="#{blogs.packag}"
-				sortBy="#{blogs.packag}" filterMatchMode="contains">
-				<h:outputText value="#{blogs.packag}" />
-			</p:column>
 												<p:column headerText="شماره موبایل :" filterBy="#{blogs.packag}"
 				sortBy="#{blogs.mobile}" filterMatchMode="contains">
 				<h:outputText value="#{blogs.mobile}" />
@@ -60,6 +44,11 @@
 			<p:column headerText="نام صاحب پروانه :" filterBy="#{blogs.modir}"
 				sortBy="#{blogs.modir}" filterMatchMode="contains">
 				<h:outputText value="#{blogs.modir}" />
+			</p:column>
+			
+									<p:column headerText="نام پدر :" filterBy="#{blogs.father}"
+				sortBy="#{blogs.modir}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.father}" />
 			</p:column>
 		</p:dataTable>
 		

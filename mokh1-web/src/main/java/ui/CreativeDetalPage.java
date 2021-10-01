@@ -13,6 +13,7 @@ import javax.inject.Named;
 import catch_db.CatchCreativeLocal;
 import entity.BlogEntity;
 import entity.CreativeEntity;
+import sevice.CreativeServiceLocal;
 
 @Named
 @ViewScoped
@@ -26,18 +27,27 @@ public class CreativeDetalPage implements Serializable {
 	public CreativeDetalPage() {
 		// TODO Auto-generated constructor stub
 	}
+//	@Inject
+//	private CatchCreativeLocal catchCreativeLocal;
 	@Inject
-	private CatchCreativeLocal catchCreativeLocal;
-
+	private CreativeServiceLocal creativeServiceLocal;
 	
 	private CreativeEntity creativeEntity=new CreativeEntity();
 	
 	public CreativeEntity findCreativeById(int id) {
-		for (CreativeEntity creativeEntity : catchCreativeLocal.getCreativeEntities()) {
-			if(creativeEntity.getId()==id)
-				this.creativeEntity=creativeEntity;
+//		for (CreativeEntity creativeEntity : catchCreativeLocal.getCreativeEntities()) {
+//			if(creativeEntity.getId()==id)
+//				this.creativeEntity=creativeEntity;
+//		}
+//		return this.creativeEntity;
+		try {
+			this.creativeEntity=creativeServiceLocal.findCreativeEntityById(id);
+			return creativeEntity;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
-		return this.creativeEntity;
 	}
 	
 

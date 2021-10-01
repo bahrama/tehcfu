@@ -30,6 +30,7 @@ public class AddAmade {
 	private AmadeType type;
 	private String damane;
 	private String mobile;
+	private String father;
 	
 	@Inject
 	private AmadeServiceLocal amadeServiceLocal;
@@ -94,6 +95,14 @@ public class AddAmade {
 
 	
 
+	public String getFather() {
+		return father;
+	}
+
+	public void setFather(String father) {
+		this.father = father;
+	}
+
 	public AmadeType getType() {
 		return type;
 	}
@@ -132,6 +141,7 @@ public class AddAmade {
 		amade.setType(type);
 		amade.setDamane(damane);
 		amade.setMobile(mobile);
+		amade.setFather(father);
 		amadeServiceLocal.insertToAmade(amade);
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage(null, new FacesMessage("Successful"));

@@ -22,6 +22,7 @@ import java.util.UUID;
 @NamedQuery(name = "BlogEntity.findAll", query="SELECT b FROM BlogEntity b ORDER BY b.id DESC"),
 @NamedQuery(name = "BlogEntity.findById", query = "SELECT i FROM BlogEntity i WHERE i.id=:v_id"),
 @NamedQuery(name = "BlogEntity.findByLike", query = "SELECT i FROM BlogEntity i WHERE i.blogName like :v_blogName"),
+@NamedQuery(name = "BlogEntity.findByType", query = "SELECT i FROM BlogEntity i WHERE i.blogType=:v_blogType ORDER BY i.id DESC"),
 @NamedQuery(name = "BlogEntity.findByNewsMode", query = "SELECT i FROM BlogEntity i WHERE i.newsMode=:v_newsMode ORDER BY i.id DESC")
 })
 public class BlogEntity implements Serializable {
@@ -106,31 +107,31 @@ public class BlogEntity implements Serializable {
 	}
 
 	public String getBlogType() {
-		//return this.blogType;
-		switch (this.blogType) {
-		case "A":
-			return "مجتمع تجاری";
-        case "B":
-        	return "خبر";
-        case "C":
-        	return "مناسبت شمسی";
-        case "D":
-        	return "مناسبت قمری";
-        case "F":
-        	return "قوانین حقوقی";
-        case "G":
-        	return "قوانین مالیاتی";
-        case "H":
-        	return "قوانین تامین اجتماعی";
-        case "I":
-        	return "درباره دکوراسیون";
-        case "J":
-        	return "آموزش";
-        case "E":
-        	return "مناسبت میلادی";
-		default:
-			return null;
-		}
+		return this.blogType;
+//		switch (this.blogType) {
+//		case "A":
+//			return "مجتمع تجاری";
+//        case "B":
+//        	return "خبر";
+//        case "C":
+//        	return "مناسبت شمسی";
+//        case "D":
+//        	return "مناسبت قمری";
+//        case "F":
+//        	return "قوانین حقوقی";
+//        case "G":
+//        	return "قوانین مالیاتی";
+//        case "H":
+//        	return "قوانین تامین اجتماعی";
+//        case "I":
+//        	return "درباره دکوراسیون";
+//        case "J":
+//        	return "آموزش";
+//        case "E":
+//        	return "مناسبت میلادی";
+//		default:
+//			return null;
+//		}
 	}
 
 	public void setBlogType(String blogType) {

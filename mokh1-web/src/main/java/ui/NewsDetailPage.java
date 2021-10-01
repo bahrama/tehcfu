@@ -10,6 +10,7 @@ import javax.inject.Named;
 
 import catch_db.CatchBlogLocal;
 import entity.BlogEntity;
+import sevice.BlogServiceLocal;
 
 @Named
 @ViewScoped
@@ -25,9 +26,10 @@ public class NewsDetailPage implements Serializable {
 	}
 	
 
+//	@Inject
+//	private CatchBlogLocal catchBlogLocal;
 	@Inject
-	private CatchBlogLocal catchBlogLocal;
-
+	private BlogServiceLocal blogServiceLocal;
 	
 	private BlogEntity blogEntity=new BlogEntity();
 
@@ -42,10 +44,10 @@ public class NewsDetailPage implements Serializable {
 	
 	public String findBlogHeadById(int id) {
 		try {
-		for (BlogEntity blogEntity2 : catchBlogLocal.getBlogEntities()) {
-			if(blogEntity2.getId()==id)
-			this.blogEntity=blogEntity2;
-		}
+		//for (BlogEntity blogEntity2 : catchBlogLocal.getBlogEntities()) {
+		//	if(blogEntity2.getId()==id)
+			this.blogEntity=blogServiceLocal.findBlogById(id);
+		//}
 		return this.convertBlogHead(blogEntity);
 		}catch (Exception e) {
 			e.printStackTrace();

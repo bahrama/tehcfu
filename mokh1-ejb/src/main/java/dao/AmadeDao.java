@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import entity.Amade;
+import enums.AmadeType;
 
 
 
@@ -34,6 +35,12 @@ public class AmadeDao implements AmadeDaoLocal {
     @Override
     public Amade findAmadeById(long amadeId) {
     	return (Amade) entityManager.createNamedQuery("findByAmadeId").setParameter("v_amadeId", amadeId).getSingleResult();
+    }
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<Amade> findAmadeByType(AmadeType type) {
+    	return entityManager.createNamedQuery("findByAmadeType").setParameter("v_type", type).getResultList();
     }
     
     @Override

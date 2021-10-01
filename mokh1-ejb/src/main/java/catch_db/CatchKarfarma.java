@@ -25,38 +25,38 @@ public class CatchKarfarma implements CatchKarfarmaLocal {
     /**
      * Default constructor. 
      */
-    public CatchKarfarma() {
-        // TODO Auto-generated constructor stub
-    }
-    @Inject
-    private JobKarfarmaServiceLocal jobKarfarmaServiceLocal;
-    
-    private List<JobKarfarmaEntity> karfarmas=new ArrayList<JobKarfarmaEntity>();
-    @Override
-	public List<JobKarfarmaEntity> getKarfarmas() {
-		return karfarmas;
-	}
-
-    
-	@PostConstruct
-    public void init() {
-    	for (JobKarfarmaEntity jobKarfarmaEntity:jobKarfarmaServiceLocal.findAllKarfarma()) {
-			if(jobKarfarmaEntity.isTaeed()==true)
-                this.karfarmas.add(jobKarfarmaEntity);
-    	}
-    	
-    }
-    
-    
-	@Schedule(hour = "*", minute = "*/1", persistent = false)
-	@AccessTimeout(value = 4, unit = TimeUnit.SECONDS)
-	public void ejra(){
-		this.karfarmas.clear();
-    	for (JobKarfarmaEntity jobKarfarmaEntity:jobKarfarmaServiceLocal.findAllKarfarma()) {
-			if(jobKarfarmaEntity.isTaeed()==true)
-                this.karfarmas.add(jobKarfarmaEntity);
-    	}
-	}
-    
+//    public CatchKarfarma() {
+//        // TODO Auto-generated constructor stub
+//    }
+//    @Inject
+//    private JobKarfarmaServiceLocal jobKarfarmaServiceLocal;
+//    
+//    private List<JobKarfarmaEntity> karfarmas=new ArrayList<JobKarfarmaEntity>();
+//    @Override
+//	public List<JobKarfarmaEntity> getKarfarmas() {
+//		return karfarmas;
+//	}
+//
+//    
+//	@PostConstruct
+//    public void init() {
+//    	for (JobKarfarmaEntity jobKarfarmaEntity:jobKarfarmaServiceLocal.findAllKarfarma()) {
+//			if(jobKarfarmaEntity.isTaeed()==true)
+//                this.karfarmas.add(jobKarfarmaEntity);
+//    	}
+//    	
+//    }
+//    
+//    
+//	@Schedule(hour = "*", minute = "*/1", persistent = false)
+//	@AccessTimeout(value = 4, unit = TimeUnit.SECONDS)
+//	public void ejra(){
+//		this.karfarmas.clear();
+//    	for (JobKarfarmaEntity jobKarfarmaEntity:jobKarfarmaServiceLocal.findAllKarfarma()) {
+//			if(jobKarfarmaEntity.isTaeed()==true)
+//                this.karfarmas.add(jobKarfarmaEntity);
+//    	}
+//	}
+//    
 
 }

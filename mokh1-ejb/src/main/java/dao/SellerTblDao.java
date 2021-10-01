@@ -38,7 +38,7 @@ public class SellerTblDao implements SellerTblDaoLocal {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<MoblEntity> findAllMapSeller() {
-		return entityManager.createNamedQuery("MoblEntity.findAllMap").setParameter("v_panelMap", "E").getResultList();
+		return entityManager.createNamedQuery("MoblEntity.findAllMap").getResultList();
 	}
 
 	@Override
@@ -148,6 +148,17 @@ public class SellerTblDao implements SellerTblDaoLocal {
 				return null;
 			}
 			} catch (Exception exception) {
+			throw new Exception();
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MoblEntity> findSellersByMojtame(String mojtame) throws Exception {
+		try {
+			return entityManager.createNamedQuery("MoblEntity.findByMojtame").setParameter("v_mojtame", mojtame)
+					.getResultList();
+		} catch (Exception exception) {
 			throw new Exception();
 		}
 	}

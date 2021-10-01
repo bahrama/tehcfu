@@ -63,7 +63,10 @@ public class NamayeshgahService implements NamayeshgahServiceLocal {
     }
     
     
-    
+	@Override
+    public List<NamayeshgahEntity> findNamayeshgahEntityByType(String type) throws Exception{
+		return namayeshgahDaoLocal.findNamayeshgahEntityByType(type);
+	}
     
     
 }

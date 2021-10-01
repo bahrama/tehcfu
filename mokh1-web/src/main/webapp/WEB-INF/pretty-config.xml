@@ -103,6 +103,11 @@
 		<pattern value="/mems/gholami" />
 		<view-id value="/pages/members/gholami.xhtml" />
 	</url-mapping>
+	
+		<url-mapping id="view188">
+		<pattern value="/mems/tabrizi" />
+		<view-id value="/pages/members/tabrizi.xhtml" />
+	</url-mapping>
 
 	<url-mapping id="view19">
 		<pattern value="/mems/gholamreza-bagheri" />

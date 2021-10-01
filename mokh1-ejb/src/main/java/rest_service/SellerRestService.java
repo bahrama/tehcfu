@@ -83,7 +83,7 @@ public class SellerRestService{
 			String json=jsonb.toJson(allSeller);
 			
 			if(moblEntity!=null)
-			return Response.ok(sellerTblDaoLocal.findAllSeller()).build();
+			return Response.ok(allSeller).build();
 			else
 			return Response.status(Status.NOT_FOUND).build();
 			

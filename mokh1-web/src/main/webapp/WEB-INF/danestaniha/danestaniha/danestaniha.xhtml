@@ -21,6 +21,11 @@
 a:visited {
     color: white!important;
 }
+@media only screen and (min-width: 600px) {
+  #rw1 {
+    width: 30%;
+  }
+}
 </style>
   <article class="margin-top-85">
         <div class="container">
@@ -125,6 +130,26 @@ a:visited {
                         </p>
                     </figcaption>
                 </figure>
+            </div>
+                        <div class="row1" id="rw1">
+
+                <figure dir="rtl" class="snip1312">
+                    <div class="image">			 <o:graphicImage
+								
+								rendered="#{homeBean.findHomeCatByName('یافته های جهانی') ne null}"
+								value="#{homeBean.findHomeCatByName('یافته های جهانی')}" dataURI="true" alt="" />
+                   </div>
+                    <figcaption>
+                        <h3>یافته های جهانی</h3>
+                        <p>
+                            <!-- <a class="btn1" href="#">بیشتر</a> -->
+                            <h:link value="بیشتر" styleClass="btn1" outcome="/pages/danestaniha/danestaniha-blogs.xhtml">
+                            <f:param name="blogType" value="یافته های جهانی"/>
+                            </h:link>
+                        </p>
+                    </figcaption>
+                </figure>
+
             </div>
         </div>
     </article>

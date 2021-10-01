@@ -50,6 +50,16 @@ public class NamayeshgahDao implements NamayeshgahDaoLocal {
     }
     }
     
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<NamayeshgahEntity> findNamayeshgahEntityByType(String type) throws Exception{
+    	try {
+    	return entityManager.createNamedQuery("NamayeshgahEntity.findByType").setParameter("v_type", type).getResultList();
+    }catch(Exception exception) {
+    	throw new Exception();
+    }
+    }
+    
     
     @Override
     public void updateNamayeshgahEntity(NamayeshgahEntity namayeshgahEntity) throws Exception{

@@ -24,32 +24,32 @@ public class CatchNamayeshgah implements CatchNamayeshgahLocal {
     /**
      * Default constructor. 
      */
-    public CatchNamayeshgah() {
-        // TODO Auto-generated constructor stub
-    }
-    @Inject
-    private NamayeshgahServiceLocal namayeshgahServiceLocal;
-
-    private List<NamayeshgahEntity> namayeshgahEntities=new ArrayList<>();
-    @Override
-	public List<NamayeshgahEntity> getNamayeshgahEntities() {
-		return namayeshgahEntities;
-	}
-
-    @PostConstruct
-    public void init() {
-    	this.namayeshgahEntities.addAll(namayeshgahServiceLocal.findAllNamayeshgahEntity());
-    }
-    
-    
-	@Schedule(hour = "*", minute = "*/1", persistent = false)
-	@AccessTimeout(value = 4, unit = TimeUnit.SECONDS)
-	public void ejra() throws Exception {
-	    this.namayeshgahEntities.clear();
-		this.namayeshgahEntities.addAll(namayeshgahServiceLocal.findAllNamayeshgahEntity());
-	}
-	
-    
+//    public CatchNamayeshgah() {
+//        // TODO Auto-generated constructor stub
+//    }
+//    @Inject
+//    private NamayeshgahServiceLocal namayeshgahServiceLocal;
+//
+//    private List<NamayeshgahEntity> namayeshgahEntities=new ArrayList<>();
+//    @Override
+//	public List<NamayeshgahEntity> getNamayeshgahEntities() {
+//		return namayeshgahEntities;
+//	}
+//
+//    @PostConstruct
+//    public void init() {
+//    	this.namayeshgahEntities.addAll(namayeshgahServiceLocal.findAllNamayeshgahEntity());
+//    }
+//    
+//    
+//	@Schedule(hour = "*", minute = "*/1", persistent = false)
+//	@AccessTimeout(value = 4, unit = TimeUnit.SECONDS)
+//	public void ejra() throws Exception {
+//	    this.namayeshgahEntities.clear();
+//		this.namayeshgahEntities.addAll(namayeshgahServiceLocal.findAllNamayeshgahEntity());
+//	}
+//	
+//    
     
     
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 import entity.Amade;
+import enums.AmadeType;
 
 
 
@@ -20,5 +21,7 @@ public interface AmadeDaoLocal {
 	List<Amade> findAllAmade();
 
 	void deleteAmade(Amade amade);
+
+	List<Amade> findAmadeByType(AmadeType type);
 
 }
