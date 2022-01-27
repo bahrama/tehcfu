@@ -154,6 +154,27 @@ public class SellerTblDao implements SellerTblDaoLocal {
 	
 	@SuppressWarnings("unchecked")
 	@Override
+	public List<MoblEntity> findSellerByFilterE(String text,String filter) throws Exception {
+		try {
+			if(filter.equals("A")) {
+			return entityManager.createNamedQuery("MoblEntity.findsellerStorePerLikeE")
+					.setParameter("v_sellerStorePer", "%" + text + "%").setParameter("v_panel", "E").getResultList();
+			}else if (filter.equals("B")) {
+				return entityManager.createNamedQuery("MoblEntity.findsellerAddresLikeE")
+						.setParameter("v_sellerAddres", "%" + text + "%").setParameter("v_panel", "E").getResultList();
+			}else if (filter.equals("C")) {
+				return entityManager.createNamedQuery("MoblEntity.findsellermodirforoshNameLikeE")
+						.setParameter("v_modirforoshName", "%" + text + "%").setParameter("v_panel", "E").getResultList();
+			}else {
+				return null;
+			}
+			} catch (Exception exception) {
+			throw new Exception();
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
 	public List<MoblEntity> findSellersByMojtame(String mojtame) throws Exception {
 		try {
 			return entityManager.createNamedQuery("MoblEntity.findByMojtame").setParameter("v_mojtame", mojtame)

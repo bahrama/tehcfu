@@ -120,7 +120,7 @@ public class AddCreative implements Serializable {
 		try {
 			UUID uuid=UUID.randomUUID();
 			byte[] image1Byte = IOUtils.toByteArray(pic1.getInputStream());
-			File out3 = new File("/home/wildfly/AX/" + uuid + ".jpg");
+			File out3 = new File("/home/wildfly/wildfly-18.0.1.Final/fimg/" + uuid + ".jpg");
 			InputStream in = new ByteArrayInputStream(image1Byte);
 			BufferedImage img3 = ImageIO.read(in);
 			ImageIO.write(img3, "jpg", out3);
@@ -136,7 +136,7 @@ public class AddCreative implements Serializable {
 		try {
 			UUID uuid=UUID.randomUUID();
 			byte[] image1Byte = IOUtils.toByteArray(pic2.getInputStream());
-			File out3 = new File("/home/wildfly/AX/" + uuid + ".jpg");
+			File out3 = new File("/home/wildfly/wildfly-18.0.1.Final/fimg/" + uuid + ".jpg");
 			InputStream in = new ByteArrayInputStream(image1Byte);
 			BufferedImage img3 = ImageIO.read(in);
 			ImageIO.write(img3, "jpg", out3);
@@ -152,7 +152,7 @@ public class AddCreative implements Serializable {
 		try {
 			UUID uuid=UUID.randomUUID();
 			byte[] image1Byte = IOUtils.toByteArray(pic3.getInputStream());
-			File out3 = new File("/home/wildfly/AX/" + uuid + ".jpg");
+			File out3 = new File("/home/wildfly/wildfly-18.0.1.Final/fimg/" + uuid + ".jpg");
 			InputStream in = new ByteArrayInputStream(image1Byte);
 			BufferedImage img3 = ImageIO.read(in);
 			ImageIO.write(img3, "jpg", out3);
@@ -168,7 +168,7 @@ public class AddCreative implements Serializable {
 		try {
 			UUID uuid=UUID.randomUUID();
 			byte[] image1Byte = IOUtils.toByteArray(pic4.getInputStream());
-			File out3 = new File("/home/wildfly/AX/" + uuid + ".jpg");
+			File out3 = new File("/home/wildfly/wildfly-18.0.1.Final/fimg/" + uuid + ".jpg");
 			InputStream in = new ByteArrayInputStream(image1Byte);
 			BufferedImage img3 = ImageIO.read(in);
 			ImageIO.write(img3, "jpg", out3);
@@ -184,7 +184,7 @@ public class AddCreative implements Serializable {
 		try {
 			UUID uuid=UUID.randomUUID();
 			byte[] image1Byte = IOUtils.toByteArray(pic5.getInputStream());
-			File out3 = new File("/home/wildfly/AX/" + uuid + ".jpg");
+			File out3 = new File("/home/wildfly/wildfly-18.0.1.Final/fimg/" + uuid + ".jpg");
 			InputStream in = new ByteArrayInputStream(image1Byte);
 			BufferedImage img3 = ImageIO.read(in);
 			ImageIO.write(img3, "jpg", out3);
@@ -200,7 +200,7 @@ public class AddCreative implements Serializable {
 		try {
 			UUID uuid=UUID.randomUUID();
 			byte[] image1Byte = IOUtils.toByteArray(pic6.getInputStream());
-			File out3 = new File("/home/wildfly/AX/" + uuid + ".jpg");
+			File out3 = new File("/home/wildfly/wildfly-18.0.1.Final/fimg/" + uuid + ".jpg");
 			InputStream in = new ByteArrayInputStream(image1Byte);
 			BufferedImage img3 = ImageIO.read(in);
 			ImageIO.write(img3, "jpg", out3);

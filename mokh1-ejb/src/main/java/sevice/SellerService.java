@@ -85,6 +85,11 @@ public class SellerService implements SellerServiceLocal {
     }
     
 	@Override
+	public List<MoblEntity> findSellerByFilterE(String text,String filter) throws Exception {
+		return sellerTblDaoLocal.findSellerByFilterE(text, filter);
+	}
+    
+	@Override
 	public List<MoblEntity> findSellersByMojtame(String mojtame) throws Exception {
 	    return sellerTblDaoLocal.findSellersByMojtame(mojtame);
 	}

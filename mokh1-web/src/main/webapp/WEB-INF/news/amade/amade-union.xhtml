@@ -39,10 +39,15 @@
 				<h:outputText value="#{blogs.senfName}" />
 			</p:column>
 			
-			
-									<p:column headerText="شماره موبایل :" filterBy="#{blogs.packag}"
+										<p:column headerText="شماره موبایل :" filterBy="#{blogs.packag}"
 				sortBy="#{blogs.mobile}" filterMatchMode="contains">
-				<h:outputText value="#{blogs.mobile}" />
+				<h:outputText value="#{blogs.mobile.substring(7,11).concat('***').concat(blogs.mobile.substring(0,4))}"/>
+			</p:column>
+			
+			
+									<p:column headerText="نام پدر :" filterBy="#{blogs.father}"
+				sortBy="#{blogs.modir}" filterMatchMode="contains">
+				<h:outputText value="#{blogs.father}" />
 			</p:column>
 
 			<p:column headerText="نام صاحب پروانه :" filterBy="#{blogs.modir}"
@@ -50,10 +55,7 @@
 				<h:outputText value="#{blogs.modir}" />
 			</p:column>
 
-						<p:column headerText="نام پدر :" filterBy="#{blogs.father}"
-				sortBy="#{blogs.modir}" filterMatchMode="contains">
-				<h:outputText value="#{blogs.father}" />
-			</p:column>
+
 		</p:dataTable>
 		
 

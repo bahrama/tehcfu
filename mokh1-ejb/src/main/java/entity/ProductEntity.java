@@ -43,13 +43,17 @@ public class ProductEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id")
 	private long productId;
-	@Column(name = "name", length = 100, nullable = true)
-	private String name;
+	@Column(name = "nameCode", length = 100, nullable = true)
+	private String nameCode;
+	@Column(name = "brand", length = 100, nullable = true)
+	private String brand;
 	@Column(name = "contry", length = 100, nullable = true)
 	private String contry;
 	@Column(name = "raste", length = 100, nullable = true)
 	private String raste;
-	@Column(name = "vahedeSenfiName", length = 3000, nullable = true)
+	@Column(name = "abad", nullable = true , length=100)
+	private String abad;
+	@Column(name = "description", length = 3000, nullable = true)
 	private String description;
 	@Column(name = "pic1", length = 100 , nullable = true)
 	private String pic1;
@@ -61,15 +65,32 @@ public class ProductEntity implements Serializable {
 	private String pic4;
 	@Column(name = "pic5", length = 100 , nullable = true)
 	private String pic5;
+	@Column(name = "mojod", nullable = true)
+	private boolean status;
+	@Column(name = "TahvilDay", nullable = true)
+	private int TahvilDay;
+	@Column(name = "EasyNezafat", nullable = true)
+	private boolean EasyNezafat;
+	
 	
 	private long price;
-	
 	private long price2;
+	
 	@Column(name = "old_new", length = 10)
 	private String oldNew;
 	
+	@Column(name = "zemanat", nullable = true , length=200)
+	private String zemanat;
+	@Column(name = "guarantiStatus", nullable = true,length=50)
+	private String guarantiStatus;
+	@Column(name = "guaranyTimeMounth", nullable = true , length=200)
+	private int guaranyTimeMounth;
+	@Column(name = "rangBandi", nullable = true , length=200)
+	private String rangBandi;
+	
 	@Column(name = "checkO", nullable = true)
 	private boolean checkO;
+	
 	@Column(name = "noeMobl", nullable = true , length=50)
 	private String noeMobl;
 	@Column(name = "tedadNafar", nullable =true)
@@ -84,25 +105,18 @@ public class ProductEntity implements Serializable {
 	private String jenseLayeMiani;
 	@Column(name = "jenseParche", nullable = true , length=50)
 	private String jenseParche;
-	@Column(name = "zemanat", nullable = true , length=50)
-	private String zemanat;
-	@Column(name = "rangBandi", nullable = true , length=50)
-	private String rangBandi;
+
+
 	@Column(name = "kosan", nullable = true)
 	private boolean kosan;
 	@Column(name = "miz", nullable = true)
 	private boolean miz;
-	@Column(name = "abad", nullable = true , length=100)
-	private String abad;
-	@Column(name = "status", nullable = true)
-	private boolean status;
+
+
 	@Temporal(TemporalType.DATE)
 	@Column(name="pDate",nullable=true)
 	private Date pDate;
-	@Column(name = "guarantiStatus", nullable = true,length=50)
-	private String guarantiStatus;
-	@Column(name = "guaranyTime", nullable = true , length=200)
-	private String guaranyTime;
+
 	
 	
 	
@@ -118,12 +132,29 @@ public class ProductEntity implements Serializable {
 		this.productId = productId;
 	}
 
-	public String getName() {
-		return name;
+
+	public String getNameCode() {
+		return nameCode;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNameCode(String nameCode) {
+		this.nameCode = nameCode;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public int getTahvilDay() {
+		return TahvilDay;
+	}
+
+	public void setTahvilDay(int tahvilDay) {
+		TahvilDay = tahvilDay;
 	}
 
 	public String getContry() {
@@ -360,12 +391,22 @@ public class ProductEntity implements Serializable {
 		return serialVersionUID;
 	}
 
-	public String getGuaranyTime() {
-		return guaranyTime;
+
+
+	public boolean isEasyNezafat() {
+		return EasyNezafat;
 	}
 
-	public void setGuaranyTime(String guaranyTime) {
-		this.guaranyTime = guaranyTime;
+	public void setEasyNezafat(boolean easyNezafat) {
+		EasyNezafat = easyNezafat;
+	}
+
+	public int getGuaranyTimeMounth() {
+		return guaranyTimeMounth;
+	}
+
+	public void setGuaranyTimeMounth(int guaranyTimeMounth) {
+		this.guaranyTimeMounth = guaranyTimeMounth;
 	}
 
 	@Override

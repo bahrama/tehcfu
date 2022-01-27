@@ -91,10 +91,8 @@
 					<div class="card animated zoomIn" style="">
 						<span class="forosh-vij">فروش ویژه</span> <!-- <img class="imgcard"
 							src="../../resources/pictures/mobl.jpg" /> -->
-															<o:graphicImage styleClass="imgcard"
-									rendered="#{sellerPage.findPic1Product(prdc.productId) ne null}"
-									value="#{sellerPage.findPic1Product(prdc.productId)}"
-									dataURI="true" />
+								<h:graphicImage styleClass="imgcard"
+										value="/Images/#{prdc.pic1}.jpg"/>
 						<h1 class="title-forosh">#{prdc.name}</h1>
 						<br /> <span class="price-span">#{prdc.price} تومان</span> <!-- <a
 							href="/sellers/Shaaker-wood" class="btn-blue-m">نمایش</a> -->

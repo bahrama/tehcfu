@@ -37,4 +37,6 @@ public interface SellerTblDaoLocal {
 
 	List<MoblEntity> findSellersByMojtame(String mojtame) throws Exception;
 
+	List<MoblEntity> findSellerByFilterE(String text, String filter) throws Exception;
+
 }

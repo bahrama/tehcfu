@@ -103,32 +103,27 @@ margin-bottom: 15px;" styleClass="shadow-shorter"
 				</h:panelGroup>
 				<div class="container text-center">
 					<div class="related-posts-carousel padding-top-40">
+
 						<ui:repeat var="prdc" value="#{sellerPage.products}"
 							size="#{sellerPage.listSize()}">
+
 			              <h:panelGroup rendered="#{prdc.status}">
 							<div class="item"
 								style="width: 284px; padding: 10px 10px 20px 10px; border: 1px solid #BFBFBF; background-color: white; box-shadow: 10px 10px 5px #aaaaaa;">
-								<!-- <img src="../../resources/pic/f16.jpg" alt="" /> -->
-								<o:graphicImage
-									rendered="#{sellerPage.findPic1Product(prdc.productId) ne null}"
-									style="width: 250px; height: 300px; margin:5px;"
-									value="#{sellerPage.findPic1Product(prdc.productId)}"
-									dataURI="true" alt="" />
-								<!-- 								<span
-									style="font-family: IRANSansBold; background-color: red; color: #0d0d0d; height: 50px; width: 50px; top: 15px"
-									class="post-date">10%</span> -->
+									<h:graphicImage style="width: 250px; height: 300px; margin:5px;"
+										value="/Images/#{prdc.pic1}.jpg"/>
 								<div class="blog-short-detail">
 									<h4>
 										<a style="font-family: IRANSansBold; color: #0B59AA" href="#">#{sellerPage.productEntityX.name}</a>
 									</h4>
 									<span style="font-family: IRANSansNor; line-height: 20px;"
-										class="author-desc"><del class="d-block">#{sellerPage.productEntityX.price}</del></span>
+										class="author-desc"><del class="d-block">#{prdc.price}</del></span>
 									<span
 										style="font-family: IRANSansNor; font-size: 18px; color: green !important;"
-										class="author-desc">#{sellerPage.productEntityX.price2}</span>
+										class="author-desc">#{prdc.price2}</span>
 									<p></p>
       										<h:link outcome="/pages/product/product-detail.xhtml" value="بیشتر" class="btn-blue" style="font-family: IRANSansNor; color: #0B59AA; border-color: #0B59AA">
-										<f:param name="ProductId" value="#{sellerPage.productEntityX.productId}"/>
+										<f:param name="ProductId" value="#{prdc.productId}"/>
 										</h:link>
 								</div>
 
@@ -280,7 +275,18 @@ margin-bottom: 40px;" class="shadow-shorter">
 							<!-- /contact-map -->
 						</div>
 						<!-- /img-column -->
-
+						<a href="http://maps.google.com/maps?daddr=#{sellerPage.sellerx.lat},#{sellerPage.sellerx.lng}">
+                        <img src="../../../resources/pic/Dtafalonso-Android-Lollipop-Maps.ico" alt="" style="width: 100px;
+height: 100px;
+float: left;
+margin-top: -25px;"/>
+</a>
+<a href="https://waze.com/ul?ll=#{sellerPage.sellerx.lat},#{sellerPage.sellerx.lng}">
+                        <img src="../../../resources/pic/Waze-GPS-Maps-Traffic.png" alt="" style="width: 100px;
+height: 100px;
+float: left;
+margin-top: -25px;"/>
+</a>
 					</div>
 					<!-- /row -->
 				</div>

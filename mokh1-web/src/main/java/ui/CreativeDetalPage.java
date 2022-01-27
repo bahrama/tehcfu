@@ -52,73 +52,49 @@ public class CreativeDetalPage implements Serializable {
 	
 
 	
-	public byte[] findCreativePic1() {
+	public String findCreativePic1() {
 		try {
-		File imageFile1=new File("/home/wildfly/AX/" + this.creativeEntity.getPic1().toString() + ".jpg");
-		BufferedImage image1=ImageIO.read(imageFile1);
-		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
-		ImageIO.write(image1, "jpg", baos1);
-		return baos1.toByteArray();
+		return this.creativeEntity.getPic1().toString();
 		}catch (Exception e) {
 			return null;
 		}
 	}
 	
-	public byte[] findCreativePic2() {
+	public String findCreativePic2() {
+				try {
+				return this.creativeEntity.getPic2().toString();
+				}catch (Exception e) {
+					return null;
+				}
+	}
+	
+	public String findCreativePic3() {
 		try {
-		File imageFile1=new File("/home/wildfly/AX/" + this.creativeEntity.getPic2().toString() + ".jpg");
-		BufferedImage image1=ImageIO.read(imageFile1);
-		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
-		ImageIO.write(image1, "jpg", baos1);
-		return baos1.toByteArray();
+		return this.creativeEntity.getPic3().toString();
 		}catch (Exception e) {
 			return null;
 		}
 	}
 	
-	public byte[] findCreativePic3() {
+	public String findCreativePic4() {
+			try {
+			return this.creativeEntity.getPic4().toString();
+			}catch (Exception e) {
+				return null;
+			}
+	}
+	
+	public String findCreativePic5() {
 		try {
-		File imageFile1=new File("/home/wildfly/AX/" + this.creativeEntity.getPic3().toString() + ".jpg");
-		BufferedImage image1=ImageIO.read(imageFile1);
-		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
-		ImageIO.write(image1, "jpg", baos1);
-		return baos1.toByteArray();
+		return this.creativeEntity.getPic5().toString();
 		}catch (Exception e) {
 			return null;
 		}
 	}
 	
-	public byte[] findCreativePic4() {
+	public String findCreativePic6() {
 		try {
-		File imageFile1=new File("/home/wildfly/AX/" + this.creativeEntity.getPic4().toString() + ".jpg");
-		BufferedImage image1=ImageIO.read(imageFile1);
-		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
-		ImageIO.write(image1, "jpg", baos1);
-		return baos1.toByteArray();
-		}catch (Exception e) {
-			return null;
-		}
-	}
-	
-	public byte[] findCreativePic5() {
-		try {
-		File imageFile1=new File("/home/wildfly/AX/" + this.creativeEntity.getPic5().toString() + ".jpg");
-		BufferedImage image1=ImageIO.read(imageFile1);
-		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
-		ImageIO.write(image1, "jpg", baos1);
-		return baos1.toByteArray();
-		}catch (Exception e) {
-			return null;
-		}
-	}
-	
-	public byte[] findCreativePic6() {
-		try {
-		File imageFile1=new File("/home/wildfly/AX/" + this.creativeEntity.getPic6().toString() + ".jpg");
-		BufferedImage image1=ImageIO.read(imageFile1);
-		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
-		ImageIO.write(image1, "jpg", baos1);
-		return baos1.toByteArray();
+		return this.creativeEntity.getPic6().toString();
 		}catch (Exception e) {
 			return null;
 		}

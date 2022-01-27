@@ -39,7 +39,7 @@ public class CreativesPage implements Serializable {
 		return creativeServiceLocal.findAllCreativeEntity();
 	}
 
-	public byte[] findCreativePic1ById(int id) {
+	public String findCreativePic1ById(int id) {
 //		CreativeEntity creativeEntity = new CreativeEntity();
 //		for (CreativeEntity creativeEntity2 : catchCreativeLocal.getCreativeEntities()) {
 //			if (creativeEntity2.getId() == id)
@@ -56,13 +56,9 @@ public class CreativesPage implements Serializable {
 
 	}
 
-	private byte[] findPic1(CreativeEntity creativeEntity) {
+	private String findPic1(CreativeEntity creativeEntity) {
 		try {
-			File imageFile1 = new File("/home/wildfly/AX/" + creativeEntity.getPic1().toString() + ".jpg");
-			BufferedImage image1 = ImageIO.read(imageFile1);
-			ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
-			ImageIO.write(image1, "jpg", baos1);
-			return baos1.toByteArray();
+			return creativeEntity.getPic1().toString();
 		} catch (Exception e) {
 			return null;
 		}
