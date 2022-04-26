@@ -22,7 +22,7 @@
 							<p:dataGrid var="rent" layout="grid"
 								value="#{viewKarjo.findAllVerifiedKarjo()}" paginator="true"
 								rows="12" columns="1">
-								<p:outputPanel>
+								<p:outputPanel rendered="#{rent.show}">
 									<p:panel style="text-align:right">
 										<h3>#{rent.karjoTitle}</h3>
 										<p class="myP">

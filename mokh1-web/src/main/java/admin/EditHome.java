@@ -22,7 +22,7 @@ import sevice.HomeServiceLocal;
 public class EditHome implements Serializable {
 
 	/**
-	 * 
+	 *  
 	 */
 	private static final long serialVersionUID = 1L;
 

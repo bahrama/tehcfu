@@ -20,7 +20,7 @@ import sevice.CreativeServiceLocal;
 public class CreativeDetalPage implements Serializable {
 
 	/**
-	 * 
+	 *  
 	 */
 	private static final long serialVersionUID = 1L;
 

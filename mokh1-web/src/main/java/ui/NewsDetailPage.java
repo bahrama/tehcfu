@@ -17,7 +17,7 @@ import sevice.BlogServiceLocal;
 public class NewsDetailPage implements Serializable {
 
 	/**
-	 * 
+	 *  
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -57,7 +57,7 @@ public class NewsDetailPage implements Serializable {
 	
 	public String convertBlogHead(BlogEntity blogEntity) throws Exception{
             try {
-			File file = new File("/home/wildfly/BLOG/" + blogEntity.getBlogHead() + ".txt");
+			File file = new File("/home/wildfly/wildfly-18.0.1.Final/fimg/" + blogEntity.getBlogHead() + ".txt");
 			byte[] bytesArray = new byte[(int) file.length()];
 			FileInputStream fis = new FileInputStream(file);
 			fis.read(bytesArray);
@@ -82,7 +82,7 @@ public class NewsDetailPage implements Serializable {
 	
 	public String convertBlogMain() throws Exception{
         try {
-		File file = new File("/home/wildfly/BLOG/" + blogEntity.getBlogMain() + ".txt");
+		File file = new File("/home/wildfly/wildfly-18.0.1.Final/fimg/" + blogEntity.getBlogMain() + ".txt");
 		byte[] bytesArray = new byte[(int) file.length()];
 		FileInputStream fis = new FileInputStream(file);
 		fis.read(bytesArray);

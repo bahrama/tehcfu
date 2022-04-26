@@ -21,7 +21,7 @@ import sevice.CreativeServiceLocal;
 @ViewScoped
 public class CreativesPage implements Serializable {
 
-	/**
+	/** 
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;

@@ -22,7 +22,7 @@
 							<p:dataGrid var="rent" layout="grid"
 								value="#{viewKarfarma.findAllVerifiedKarfarma()}"
 								paginator="true" rows="12" columns="1">
-								<p:outputPanel>
+								<p:outputPanel rendered="#{rent.taeed}">
 									<p:panel style="text-align:right">
 										<h3>#{rent.karfarmaJobTitle}</h3>
 										<p class="myP">

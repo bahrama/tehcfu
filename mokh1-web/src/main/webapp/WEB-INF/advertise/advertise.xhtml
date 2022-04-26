@@ -1,0 +1,189 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:o="http://omnifaces.org/ui" xmlns:p="http://primefaces.org/ui">
+
+	<article dir="rtl" class="margin-top-75 container">
+
+		<div class="our-blog" dir="rtl">
+			<div class="container text-center">
+				<div class="row margin-top-40">
+
+
+
+					<div class="col-md-12 wow zoomInUp" data-wow-delay="0.1s"
+						align="center">
+						<h2 class="myH2">قوانین و مقررات</h2>
+						<p class="myP"> این اتحادیه هیچگونه مسوولیتی نسبت به درج
+							آگهی ها ندارد.</p>
+						<hr />
+						<h:form>
+							<p:dataGrid var="advt" layout="grid"
+								value="#{advertiseUiBean.findAllAdvertiseByTypeMap(advertiseType).entrySet().toArray()}" paginator="true"
+								rows="12" columns="1">
+								<h:panelGroup rendered="#{(advertiseType eq 'karjo') and (advt.key.show)}">
+								<p:outputPanel>
+									<p:panel style="text-align:right">
+										<h3>#{advt.key.title}</h3>
+										<p class="myP">
+											<b>رشته تحصیلی :</b>#{advt.value.karjoField}
+										</p>
+										<p class="myP">
+											<b>مدرک تحصیلی :</b>#{advt.value.karjoMadrak}
+										</p>
+										<p class="myP">
+											<b>مهارت ها :</b>#{advt.value.karjoMaharat}
+										</p>
+										<p class="myP">
+											<b>نوع همکاری :</b>#{advt.value.karjoMaharat}
+										</p>
+										<p class="myP">
+											<b>تلفن تماس :</b>#{rent.karjo.phone}
+										</p>
+										
+										<p class="myP">
+											<b>شماره تماس :</b>#{advt.key.phone}
+										</p>
+										<p class="myP">
+											<b>آدرس :</b>#{advt.key.addres}
+										</p>
+										<p class="myP">
+											<b>توضیحات :</b>#{advt.key.description}
+										</p>
+									</p:panel>
+								</p:outputPanel>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{(advertiseType eq 'karfarma') and (advt.key.show)}">
+								<p:outputPanel>
+									<p:panel style="text-align:right">
+										<h3>#{advt.key.title}</h3>
+										<p class="myP">
+											<b>شرح نیروی مورد نظر :</b>#{advt.value.karfarmaNiroMorede}
+										</p>
+										<p class="myP">
+											<b>نوع استخدام :</b>#{advt.value.karfarmaNoeDarkhast}
+										</p>
+										<p class="myP">
+											<b>میزان حقوق (ریال) :</b>#{advt.value.mizanHogog}
+										</p>
+										<p class="myP">
+											<b>شماره تماس :</b>#{advt.key.phone}
+										</p>
+										<p class="myP">
+											<b>آدرس :</b>#{advt.key.addres}
+										</p>
+										<p class="myP">
+											<b>توضیحات :</b>#{advt.key.description}
+										</p>
+									</p:panel>
+								</p:outputPanel>
+							
+							
+								</h:panelGroup>
+								<h:panelGroup rendered="#{(advertiseType eq 'machin') and (advt.key.show)}">
+									<p:outputPanel>
+									<p:panel style="text-align:right">
+										<h3>#{advt.key.title}</h3>
+										<p class="myP">
+											<b>برند :</b>#{advt.value.brand}
+										</p>
+										<p class="myP">
+											<b>کشور ساخت :</b>#{advt.value.contry}
+										</p>
+										<p class="myP">
+											<b>مبلغ فروش :</b>#{advt.value.mablag}
+										</p>
+										<p class="myP">
+											<b>محل فروش :</b>#{advt.value.mahaleForosh}
+										</p>
+										<p class="myP">
+											<b>مشخصات :</b>#{advt.value.moshakhasat}
+										</p>
+										<p class="myP">
+											<b>سال تولید :</b>#{advt.value.saleTolid}
+										</p>
+										<p class="myP">
+											<b>نو/کارکرده :</b>#{advt.value.vaziat}
+										</p>
+										<p class="myP">
+											<b>شماره تماس :</b>#{advt.key.phone}
+										</p>
+										<p class="myP">
+											<b>آدرس :</b>#{advt.key.addres}
+										</p>
+										<p class="myP">
+											<b>توضیحات :</b>#{advt.key.description}
+										</p>
+
+									</p:panel>
+								</p:outputPanel>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{(advertiseType eq 'rent') and (advt.key.show)}">
+									<p:outputPanel>
+									<p:panel style="text-align:right">
+										<h3>#{advt.key.title}</h3>
+										<p class="myP">
+											<b>مساحت زمین بر حسب متر مربع :</b>#{advt.value.masahat}
+										</p>
+										<p class="myP">
+											<b>نوع ملک :</b>#{advt.value.homeType}
+										</p>
+										<p class="myP">
+											<b>واقع در :</b>#{advt.value.vage}
+										</p>
+										<p class="myP">
+											<b>موقعیت :</b>#{advt.value.mogeiat}
+										</p>
+										<p class="myP">
+											<b>تعداد طبقات :</b>#{advt.value.tedadTabage}
+										</p>
+										<p class="myP">
+											<b>تعداد واحد در هر طبقه :</b>#{advt.value.tedadVahed}
+										</p>
+										<p class="myP">
+											<b>سن بنا :</b>#{advt.value.senBana}
+										</p>
+										<p class="myP">
+											<b>پروانه کسب :</b>#{advt.value.parvane}
+										</p>
+										<p class="myP">
+											<b>وضعیت سند :</b>#{advt.value.vaziatSanad}
+										</p>
+
+										<p class="myP">
+											<b>مبلغ ودیعه (ریال) :</b>#{advt.value.vadieeMoney}
+										</p>
+										<p class="myP">
+											<b>مبلغ اجاره (ریال) :</b>#{advt.value.ejareMony}
+										</p>
+										<p class="myP">
+											<b>مبلغ فروش (ریال) :</b>#{advt.value.mablageForosh}
+										</p>
+										<p class="myP">
+											<b>شماره تماس :</b>#{advt.key.phone}
+										</p>
+										<p class="myP">
+											<b>آدرس :</b>#{advt.key.addres}
+										</p>
+										<p class="myP">
+											<b>توضیحات :</b>#{advt.key.description}
+										</p>
+									</p:panel>
+								</p:outputPanel>
+								</h:panelGroup>
+							
+							</p:dataGrid>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+		</div>
+
+	</article>
+
+
+</ui:composition>
+

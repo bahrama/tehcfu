@@ -15,7 +15,7 @@ import sevice.CreativeServiceLocal;
 public class EditCreative implements Serializable {
 
 	/**
-	 * 
+	 *   
 	 */
 	private static final long serialVersionUID = 1L;
 

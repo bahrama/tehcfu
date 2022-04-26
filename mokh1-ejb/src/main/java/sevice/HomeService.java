@@ -58,4 +58,9 @@ public class HomeService implements HomeServiceLocal {
     public HomeEntity findHomeEntityByName(String name) throws Exception{
     	return homeDaoLocal.findHomeEntityByName(name);
     }
+    
+	@Override
+    public List<HomeEntity> findHomeEntityByNameList(String name) throws Exception{
+		return homeDaoLocal.findHomeEntityByNameList(name);
+	}
 }

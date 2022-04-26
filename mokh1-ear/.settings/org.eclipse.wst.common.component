@@ -1,80 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                        
+                            
+    
     
     
     
     
     <wb-module deploy-name="mokh1">
-                                                
+                                                        
+        
         
         
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
-                                                
+                                                        
+        
         
         
         
         
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
-        <dependent-module archiveName="mokh1-ejb-1.0.0.jar" deploy-path="/" handle="module:/resource/mokh1-ejb/mokh1-ejb">
+        <dependent-module archiveName="mokh1-ejb.jar" deploy-path="/" handle="module:/resource/mokh1-ejb/mokh1-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jipijapa-eclipselink-10.1.0.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/wildfly/jipijapa-eclipselink/10.1.0.Final/jipijapa-eclipselink-10.1.0.Final.jar">
+        <dependent-module archiveName="jipijapa-eclipselink.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/wildfly/jipijapa-eclipselink/10.1.0.Final/jipijapa-eclipselink-10.1.0.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jipijapa-spi-10.1.0.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/wildfly/jipijapa-spi/10.1.0.Final/jipijapa-spi-10.1.0.Final.jar">
+        <dependent-module archiveName="jipijapa-spi.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/wildfly/jipijapa-spi/10.1.0.Final/jipijapa-spi-10.1.0.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jandex-2.0.5.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/jandex/2.0.5.Final/jandex-2.0.5.Final.jar">
+        <dependent-module archiveName="jandex.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/jandex/2.0.5.Final/jandex-2.0.5.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="hibernate-jpa-2.1-api-1.0.0.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar">
+        <dependent-module archiveName="hibernate-jpa-2.1-api.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jboss-logging-3.4.1.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/logging/jboss-logging/3.4.1.Final/jboss-logging-3.4.1.Final.jar">
+        <dependent-module archiveName="jboss-logging.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/logging/jboss-logging/3.4.1.Final/jboss-logging-3.4.1.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jboss-annotations-api_1.2_spec-1.0.0.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/annotation/jboss-annotations-api_1.2_spec/1.0.0.Final/jboss-annotations-api_1.2_spec-1.0.0.Final.jar">
+        <dependent-module archiveName="jboss-annotations-api_1.2_spec.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/annotation/jboss-annotations-api_1.2_spec/1.0.0.Final/jboss-annotations-api_1.2_spec-1.0.0.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jboss-transaction-api_1.2_spec-1.0.0.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar">
+        <dependent-module archiveName="jboss-transaction-api_1.2_spec.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jboss-vfs-3.2.14.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/jboss-vfs/3.2.14.Final/jboss-vfs-3.2.14.Final.jar">
+        <dependent-module archiveName="jboss-vfs.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/jboss/jboss-vfs/3.2.14.Final/jboss-vfs-3.2.14.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="wildfly-checkstyle-config-1.0.4.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/wildfly/checkstyle/wildfly-checkstyle-config/1.0.4.Final/wildfly-checkstyle-config-1.0.4.Final.jar">
+        <dependent-module archiveName="wildfly-checkstyle-config.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/wildfly/checkstyle/wildfly-checkstyle-config/1.0.4.Final/wildfly-checkstyle-config-1.0.4.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="eclipselink-2.7.4.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/eclipse/persistence/eclipselink/2.7.4/eclipselink-2.7.4.jar">
+        <dependent-module archiveName="eclipselink.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/eclipse/persistence/eclipselink/2.7.4/eclipselink-2.7.4.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jakarta.persistence-2.2.2.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/eclipse/persistence/jakarta.persistence/2.2.2/jakarta.persistence-2.2.2.jar">
+        <dependent-module archiveName="jakarta.persistence.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/eclipse/persistence/jakarta.persistence/2.2.2/jakarta.persistence-2.2.2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="commonj.sdo-2.1.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/eclipse/persistence/commonj.sdo/2.1.1/commonj.sdo-2.1.1.jar">
+        <dependent-module archiveName="commonj.sdo.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/eclipse/persistence/commonj.sdo/2.1.1/commonj.sdo-2.1.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="javax.json.bind-api-1.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/json/bind/javax.json.bind-api/1.0/javax.json.bind-api-1.0.jar">
+        <dependent-module archiveName="javax.json.bind-api.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/json/bind/javax.json.bind-api/1.0/javax.json.bind-api-1.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="okhttp-2.7.5.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/squareup/okhttp/okhttp/2.7.5/okhttp-2.7.5.jar">
+        <dependent-module archiveName="okhttp.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/squareup/okhttp/okhttp/2.7.5/okhttp-2.7.5.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="okio-1.6.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/squareup/okio/okio/1.6.0/okio-1.6.0.jar">
+        <dependent-module archiveName="okio.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/squareup/okio/okio/1.6.0/okio-1.6.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="mokh1-web-1.0.0.war" deploy-path="/" handle="module:/resource/mokh1-web/mokh1-web">
+        <dependent-module archiveName="mokh1-web.war" deploy-path="/" handle="module:/resource/mokh1-web/mokh1-web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-                                            
+                                                    
+    
     
     
     
     
     </wb-module>
-                    
+                        
+
 
 
 

@@ -28,7 +28,7 @@ public class AddHome {
 
 	public AddHome() {
 		// TODO Auto-generated constructor stub
-	}
+	} 
 	@Inject
 	private HomeServiceLocal homeServiceLocal;
 

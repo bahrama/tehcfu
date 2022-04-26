@@ -33,7 +33,7 @@ public class EditProduct implements Serializable {
 	@Inject
 	private ProductserviceLocal productserviceLocal;
 	
-	private ProductEntity productEntity=new ProductEntity();
+	//private ProductEntity productEntity=new ProductEntity();
 	private String status;
 	
 	
@@ -49,14 +49,14 @@ public class EditProduct implements Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	public ProductEntity getProductEntity() {
-		return productEntity;
-	}
-
-	public void setProductEntity(ProductEntity productEntity) {
-		this.productEntity = productEntity;
-	}
+//
+//	public ProductEntity getProductEntity() {
+//		return productEntity;
+//	}
+//
+//	public void setProductEntity(ProductEntity productEntity) {
+//		this.productEntity = productEntity;
+//	}
 
 	public List<ProductEntity> findAllProduct(){
 		return productserviceLocal.findAllProductEntity();
@@ -72,77 +72,77 @@ public class EditProduct implements Serializable {
 		}
 	}
 	
-	public byte[] findPic1() throws IOException {
-		try {
-		File imageFile1=new File("/home/wildfly/AX/" + this.productEntity.getPic1() + ".jpg");
-		BufferedImage image1=ImageIO.read(imageFile1);
-		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
-		ImageIO.write(image1, "jpg", baos1);
-		return baos1.toByteArray();
-		}catch (Exception e) {
-			return null;
-		}
-	}
-	
-	public byte[] findPic2() throws IOException {
-		try {
-		File imageFile1=new File("/home/wildfly/AX/" + this.productEntity.getPic2() + ".jpg");
-		BufferedImage image1=ImageIO.read(imageFile1);
-		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
-		ImageIO.write(image1, "jpg", baos1);
-		return baos1.toByteArray();
-		}catch (Exception e) {
-			return null;
-		}
-	}
-	
-	public byte[] findPic3() throws IOException {
-		try {
-		File imageFile1=new File("/home/wildfly/AX/" + this.productEntity.getPic3() + ".jpg");
-		BufferedImage image1=ImageIO.read(imageFile1);
-		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
-		ImageIO.write(image1, "jpg", baos1);
-		return baos1.toByteArray();
-		}catch (Exception e) {
-			return null;
-		}
-	}
-	
-	public byte[] findPic4() throws IOException {
-		try {
-		File imageFile1=new File("/home/wildfly/AX/" + this.productEntity.getPic4() + ".jpg");
-		BufferedImage image1=ImageIO.read(imageFile1);
-		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
-		ImageIO.write(image1, "jpg", baos1);
-		return baos1.toByteArray();
-		}catch (Exception e) {
-			return null;
-		}
-	}
-	
-	public byte[] findPic5() throws IOException {
-		try {
-		File imageFile1=new File("/home/wildfly/AX/" + this.productEntity.getPic5() + ".jpg");
-		BufferedImage image1=ImageIO.read(imageFile1);
-		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
-		ImageIO.write(image1, "jpg", baos1);
-		return baos1.toByteArray();
-		}catch (Exception e) {
-			return null;
-		}
-	}
-	
-public void updateProduct() {
-	FacesContext context = FacesContext.getCurrentInstance();
-	try {
-		System.err.println("--------------" + status + "---------------");
-	this.productEntity.setStatus(Boolean.parseBoolean(status));
-	productserviceLocal.updateProductEntity(this.productEntity);
-	context.addMessage(null, new FacesMessage("با موفقیت آپدیت گردید."));
-	}catch (Exception e) {
-		e.printStackTrace();
-	}
-}
+//	public byte[] findPic1() throws IOException {
+//		try {
+//		File imageFile1=new File("/home/wildfly/AX/" + this.productEntity.getPic1() + ".jpg");
+//		BufferedImage image1=ImageIO.read(imageFile1);
+//		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
+//		ImageIO.write(image1, "jpg", baos1);
+//		return baos1.toByteArray();
+//		}catch (Exception e) {
+//			return null;
+//		}
+//	}
+//	
+//	public byte[] findPic2() throws IOException {
+//		try {
+//		File imageFile1=new File("/home/wildfly/AX/" + this.productEntity.getPic2() + ".jpg");
+//		BufferedImage image1=ImageIO.read(imageFile1);
+//		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
+//		ImageIO.write(image1, "jpg", baos1);
+//		return baos1.toByteArray();
+//		}catch (Exception e) {
+//			return null;
+//		}
+//	}
+//	
+//	public byte[] findPic3() throws IOException {
+//		try {
+//		File imageFile1=new File("/home/wildfly/AX/" + this.productEntity.getPic3() + ".jpg");
+//		BufferedImage image1=ImageIO.read(imageFile1);
+//		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
+//		ImageIO.write(image1, "jpg", baos1);
+//		return baos1.toByteArray();
+//		}catch (Exception e) {
+//			return null;
+//		}
+//	}
+//	
+//	public byte[] findPic4() throws IOException {
+//		try {
+//		File imageFile1=new File("/home/wildfly/AX/" + this.productEntity.getPic4() + ".jpg");
+//		BufferedImage image1=ImageIO.read(imageFile1);
+//		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
+//		ImageIO.write(image1, "jpg", baos1);
+//		return baos1.toByteArray();
+//		}catch (Exception e) {
+//			return null;
+//		}
+//	}
+//	
+//	public byte[] findPic5() throws IOException {
+//		try {
+//		File imageFile1=new File("/home/wildfly/AX/" + this.productEntity.getPic5() + ".jpg");
+//		BufferedImage image1=ImageIO.read(imageFile1);
+//		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
+//		ImageIO.write(image1, "jpg", baos1);
+//		return baos1.toByteArray();
+//		}catch (Exception e) {
+//			return null;
+//		}
+//	}
+//	
+//public void updateProduct() {
+//	FacesContext context = FacesContext.getCurrentInstance();
+//	try {
+//		System.err.println("--------------" + status + "---------------");
+//	this.productEntity.setStatus(Boolean.parseBoolean(status));
+//	productserviceLocal.updateProductEntity(this.productEntity);
+//	context.addMessage(null, new FacesMessage("با موفقیت آپدیت گردید."));
+//	}catch (Exception e) {
+//		e.printStackTrace();
+//	}
+//}
 
 private String gregorian_to_jalali(int gy, int gm, int gd) {
 	String text2 = "";

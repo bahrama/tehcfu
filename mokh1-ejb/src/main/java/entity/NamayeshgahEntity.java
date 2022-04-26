@@ -2,6 +2,7 @@ package entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,12 +18,12 @@ import org.eclipse.persistence.annotations.CacheType;
 
 @Entity
 @Table(name="namayeshgah_tbl")
-@Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
 @NamedQuery(name="NamayeshgahEntity.findAll", query="SELECT b FROM NamayeshgahEntity b ORDER BY b.id DESC"),
 @NamedQuery(name = "NamayeshgahEntity.findById", query = "SELECT i FROM NamayeshgahEntity i WHERE i.id=:v_id"),
 @NamedQuery(name = "NamayeshgahEntity.findByType", query = "SELECT i FROM NamayeshgahEntity i WHERE i.type=:v_type ORDER BY i.id DESC")
 })
+@Cacheable(value = false)
 public class NamayeshgahEntity implements Serializable{
 	
 	/**

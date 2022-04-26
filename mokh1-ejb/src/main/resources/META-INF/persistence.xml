@@ -23,10 +23,9 @@
 	<persistence-unit name="aliUnit">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>java:jboss/datasources/aliDBDS</jta-data-source>
-		<class>entity.MoblEntity</class>
-		<class>entity.BlogEntity</class>
-		<class>entity.HomeEntity</class>
-
+		<class>entity.ProductEntity</class>
+		<class>entity.AyeneVConsole</class>
+		<class>entity.AdvertiseEntity</class>
 		<properties>
 			<!-- <property name="wildfly.jpa.twophasebootstrap" value="false" /> -->
 			<!-- <property name="eclipselink.weaving.fetchgroups" value="false" /> -->

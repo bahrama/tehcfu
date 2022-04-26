@@ -13,8 +13,66 @@ label{
 Padding-right: 5px!important;
 }
 </style>
-	<article dir="rtl" class="margin-top-75 container">
+<style>
+.path ul {
+	display: flex;
+	flex-wrap: wrap;
+	direction: rtl;
+}
 
+.path ul li {
+	padding-top: 7px;
+}
+
+.path ul a {
+	color: #6a6a6a;
+}
+
+.path ul li:before {
+	content: "/";
+	color: #cfcfcf;
+	letter-spacing: .4px;
+	font-size: 13px;
+	vertical-align: top;
+	margin-left: 5px;
+	padding-right: 5px;
+	font-weight: 400 !important;
+}
+
+.path li:first-child:before {
+	content: "";
+	padding: 0;
+	display: none;
+}
+.path ul a:hover {
+	color: #0097a7;
+	font-weight: 600;
+	transition: all .2ms;
+}
+@media only screen and (max-width: 359px) and (min-width: 320px) {
+	.path ul a span {
+		font-size: 12px;
+	}
+}
+.wdt{
+width: 100%;
+}
+</style>
+	<article dir="rtl" class="margin-top-75 container wdt">
+			<div class="path margin-top-20 col">
+			<ul>
+				<li>
+				<h:link outcome="/pages/main/home.xhtml">
+				<span>خانه</span>
+				</h:link>
+				</li>
+				<li>
+	                <h:link outcome="/pages/danestaniha/panels.xhtml">
+			     	<span>فروشگاه ها</span>
+					</h:link>
+				</li>
+			</ul>
+		</div>
 	<div class="container">
 
 		<div dir="rtl" class="wrapper1">

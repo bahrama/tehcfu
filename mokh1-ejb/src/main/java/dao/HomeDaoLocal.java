@@ -21,4 +21,6 @@ public interface HomeDaoLocal {
 
 	HomeEntity findHomeEntityByName(String name) throws Exception;
 
+	List<HomeEntity> findHomeEntityByNameList(String name) throws Exception;
+
 }

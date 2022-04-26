@@ -14,12 +14,12 @@ import org.eclipse.persistence.annotations.CacheType;
  */
 @Entity
 @Table(name="home_tbl")
-@Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
 	@NamedQuery(name="HomeTbl.findAll", query="SELECT h FROM HomeEntity h ORDER BY h.id DESC"),
 	@NamedQuery(name = "HomeTbl.findById", query = "SELECT i FROM HomeEntity i WHERE i.id=:v_id"),
 	@NamedQuery(name = "HomeTbl.findByName", query = "SELECT i FROM HomeEntity i WHERE i.name=:v_name ORDER BY i.id DESC")
 })
+@Cacheable(value = false)
 public class HomeEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 

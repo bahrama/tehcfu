@@ -2,6 +2,7 @@ package entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -21,12 +22,12 @@ import enums.AmadeType;
 
 @Entity
 @Table(name="amade_tbl")
-@Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
 	@NamedQuery(name="findAllAmade" , query="SELECT a FROM Amade a"),
 	@NamedQuery(name="findByAmadeId" , query="SELECT u FROM Amade u WHERE u.amadeId=:v_amadeId"),
 	@NamedQuery(name="findByAmadeType" , query="SELECT u FROM Amade u WHERE u.type=:v_type")
 })
+@Cacheable(value = false)
 public class Amade implements Serializable{
 
 	/**

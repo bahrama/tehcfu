@@ -27,6 +27,7 @@ import javax.validation.constraints.Size;
 import org.apache.commons.io.IOUtils;
 import org.imgscalr.Scalr;
 
+import entity.MizAsali;
 import entity.ProductEntity;
 import sevice.ProductserviceLocal;
 
@@ -290,55 +291,55 @@ public class AddProduct implements Serializable{
 	public void setGuaranyTime(String guaranyTime) {
 		this.guaranyTime = guaranyTime;
 	}
-	public void insertToProduct() {
-		ProductEntity productEntity=new ProductEntity();
-		productEntity.setContry(contry);
-		productEntity.setDescription(description);
-
-		productEntity.setOldNew(oldNew);
-		productEntity.setPrice(Long.parseLong(price));
-		productEntity.setPrice2(Long.parseLong(price2));
-		productEntity.setRaste(raste);
-		productEntity.setProduct(tempBean.getMoblEntity());
-		productEntity.setAbad(abad);
-		productEntity.setJenseKalaf(jenseKalaf);
-		productEntity.setJenseLayeMiani(jenseLayeMiani);
-		productEntity.setKosan(kosan);
-		productEntity.setMiz(miz);
-		productEntity.setNoeMobl(noeMobl);
-		productEntity.setNoeMoblRahati(noeMoblRahati);
-		productEntity.setNoePaye(noePaye);
-		productEntity.setRangBandi(rangBandi);
-		productEntity.setTedadNafar(tedadNafar);
-		productEntity.setZemanat(zemanat);
-		productEntity.setpDate(new Date());
-		productEntity.setGuarantiStatus(guarantiStatus);
-
-		productEntity.setStatus(false);
-		try {
-		productEntity.setPic1(this.picture());
-		productEntity.setPic2(this.picture2());
-		productEntity.setPic3(this.picture3());
-		productEntity.setPic4(this.picture4());
-		productEntity.setPic5(this.picture5());
-		}
-		catch(Exception ee) {
-			productEntity.setPic1(null);
-			productEntity.setPic2(null);
-			productEntity.setPic3(null);
-			productEntity.setPic4(null);
-			productEntity.setPic5(null);
-		}
-		try {
-			productserviceLocal.insertToProduct(productEntity);
-			facesContext.getPartialViewContext().getEvalScripts().add("swal({title: 'موفق!',type: 'success', text: 'محصول با موفقیت وارد گردید', confirmButtonColor: '#469408',})");
-		} catch (Exception e) {
-			System.err.println("product repetetly error");
-			facesContext.getPartialViewContext().getEvalScripts().add("swal({title: 'ناموفق!',type: 'error', text: 'این محصول را قبلا وارد کرده اید', confirmButtonColor: '#469408',})");
-		}
-		
-
-	}
+//	public void insertToProduct() {
+//		MizAsali productEntity=(MizAsali) new ProductEntity();
+//		productEntity.setContry(contry);
+//		productEntity.setDescription(description);
+//		productEntity.setTedadMizJeJeloAsali(tedadNafar);
+//		//productEntity.setOldNew(oldNew);
+//		productEntity.setPrice(Long.parseLong(price));
+//		productEntity.setPrice2(Long.parseLong(price2));
+//		productEntity.setRaste(raste);
+//		productEntity.setProduct(tempBean.getMoblEntity());
+//		productEntity.setAbad(abad);
+//		//productEntity.setJenseKalaf(jenseKalaf);
+//		//productEntity.setJenseLayeMiani(jenseLayeMiani);
+//		//productEntity.setKosan(kosan);
+//		//productEntity.setMiz(miz);
+//		//productEntity.setNoeMobl(noeMobl);
+//		//productEntity.setNoeMoblRahati(noeMoblRahati);
+//		//productEntity.setNoePaye(noePaye);
+//		productEntity.setRangBandi(rangBandi);
+//		//productEntity.setTedadNafar(tedadNafar);
+//		productEntity.setZemanat(zemanat);
+//		productEntity.setpDate(new Date());
+//		productEntity.setGuarantiStatus(guarantiStatus);
+//
+//		productEntity.setStatus(false);
+//		try {
+//		productEntity.setPic1(this.picture());
+//		productEntity.setPic2(this.picture2());
+//		productEntity.setPic3(this.picture3());
+//		productEntity.setPic4(this.picture4());
+//		productEntity.setPic5(this.picture5());
+//		}
+//		catch(Exception ee) {
+//			productEntity.setPic1(null);
+//			productEntity.setPic2(null);
+//			productEntity.setPic3(null);
+//			productEntity.setPic4(null);
+//			productEntity.setPic5(null);
+//		}
+//		try {
+//			productserviceLocal.insertToProduct(productEntity);
+//			facesContext.getPartialViewContext().getEvalScripts().add("swal({title: 'موفق!',type: 'success', text: 'محصول با موفقیت وارد گردید', confirmButtonColor: '#469408',})");
+//		} catch (Exception e) {
+//			System.err.println("product repetetly error");
+//			facesContext.getPartialViewContext().getEvalScripts().add("swal({title: 'ناموفق!',type: 'error', text: 'این محصول را قبلا وارد کرده اید', confirmButtonColor: '#469408',})");
+//		}
+//		
+//
+//	}
 	
 	public String picture() throws Exception {
 		try {

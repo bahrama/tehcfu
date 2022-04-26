@@ -1,0 +1,293 @@
+
+<ui:composition template="../WEB-INF/pages/admin-temp.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pp="http://xmlns.jcp.org/jsf/passthrough"
+	
+>
+
+	<ui:define name="headPage">
+		<style>
+body .ui-dialog {
+	padding: 0;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+	border: 1px solid #c8c8c8;
+	border-radius: 3px;
+	height: 600px !important;
+	overflow: scroll;
+}
+
+body .ui-growl {
+	top: 85px;
+	z-index: 9999 !important;
+}
+
+.bd-table-days button {
+	background-color: #f8f8f8;
+	border: 0;
+	width:;
+	margin: 0px !important;
+	font-size: 12px !important;
+}
+td{
+max-width: 300px!important;
+}
+</style>
+
+</ui:define>
+	<ui:define name="mainPage">
+	<h:panelGroup rendered="#{adminProfile.moblEntity.role eq 'ADMIN'}">
+		<div class="wrapper">
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<div class="container-fluid">
+						<div class="row mb-2">
+							<div class="col-sm-6">
+								<h1>ویجت‌ها</h1>
+							</div>
+							<div class="col-sm-6">
+								<ol class="breadcrumb float-sm-left">
+									<li class="breadcrumb-item"><a href="#">خانه</a></li>
+									<li class="breadcrumb-item active">ویجت‌ها</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+					<!-- /.container-fluid -->
+				</section>
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="container-fluid">
+
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card card-widget">
+									<h:form id="form" enctype="multipart/form-data"
+										acceptcharset="UTF-8" prependId="false">
+									<p:growl id="grl" life="2000"/>
+										<p:toolbar>
+											<p:toolbarGroup>
+												<p:commandButton value="جدید" icon="pi pi-plus"
+													update=":form:ali-add-content"
+													oncomplete="PF('testDialog').show()"
+													styleClass="ui-button-success" style="margin-right: .5rem">
+													<p:resetInput target=":form:ali-add-content" />
+												</p:commandButton>
+											</p:toolbarGroup>
+										</p:toolbar>
+											<p:dataTable id="basicDT" var="mbl"
+												value="#{creativeBean.findAllCreative()}" widgetVar="carsTable"
+												multiViewState="true" rows="10" paginator="true"
+												paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+												rowsPerPageTemplate="5,10,15" rowKey="#{mbl.id}" 
+												emptyMessage="No cars found with given criteria" >
+
+												<p:column style="width:3rem;text-align: center" sortBy="#{mbl.id}">
+													<p:commandButton update=":form:aliDetail" process="@form" immediate="true"
+														oncomplete="PF('aliDialog').show()" icon="pi pi-search"
+														title="View">
+														<f:setPropertyActionListener value="#{mbl}"
+															target="#{creativeBean.creativeEntity}"/>
+															<p:resetInput target=":form:aliDetail"/>
+													</p:commandButton>
+												</p:column>
+												<p:column  style="width:3rem;text-align: center" sortBy="#{mbl.id}">
+													<p:commandButton class="ui-button-warning rounded-button" immediate="true"
+														icon="pi pi-trash" process="@form"
+														oncomplete="PF('deleteProductDialog').show()">
+														 <f:setPropertyActionListener value="#{mbl}" target="#{creativeBean.creativeEntity}"/>
+													</p:commandButton>
+		
+												</p:column>
+												<p:column headerText="شناسه" sortBy="#{mbl.id}">
+													<h:outputText value="#{mbl.id}" />
+												</p:column>
+
+												<p:column headerText="نام" sortBy="#{mbl.id}" filterMatchMode="contains" filterBy="#{mbl.name}">
+													<h:outputText value="#{mbl.name}" />
+												</p:column>
+												
+
+											</p:dataTable>
+
+										<p:dialog id="dlg1" header="ali Info" widgetVar="aliDialog" modal="true"
+											showEffect="fade" hideEffect="fade" resizable="false">
+											<p:outputPanel id="aliDetail" style="text-align:center;">
+
+											<h:panelGrid columns="2">
+											
+											        <h:outputText value="شناسه" />
+											        <h:outputText value="#{creativeBean.creativeEntity.id}" />
+
+											        
+											        <h:outputText value="نام " />
+													<h:outputText id="oue1" value="#{creativeBean.creativeEntity.name}" />
+
+													
+													<h:outputText value="توضیح" />
+													<h:outputText id="oue2" value="#{creativeBean.creativeEntity.description}" />
+
+
+																<h:outputText value="تصویر ۱" />
+																<h:graphicImage id="oue43" style="max-width:100%; height:300px!important"
+																rendered="#{creativeBean.creativeEntity.pic1 ne null}"
+																value="/Images/#{creativeBean.creativeEntity.pic1}.jpg"/>
+
+															    
+															    <h:outputText value="تصویر ۲" />
+																<h:graphicImage id="oue44" style="max-width:100%; height:300px!important"
+																rendered="#{creativeBean.creativeEntity.pic2 ne null}"
+																value="/Images/#{creativeBean.creativeEntity.pic2}.jpg"/>
+
+															    
+															    <h:outputText value="تصویر ۳" />
+																<h:graphicImage id="oue45" style="max-width:100%; height:300px!important"
+																rendered="#{creativeBean.creativeEntity.pic3 ne null}"
+																value="/Images/#{creativeBean.creativeEntity.pic3}.jpg"/>
+
+															    
+															    <h:outputText value="تصویر ۴" />
+																<h:graphicImage id="oue46" style="max-width:100%; height:300px!important"
+																rendered="#{creativeBean.creativeEntity.pic4 ne null}"
+																value="/Images/#{creativeBean.creativeEntity.pic4}.jpg"/>
+
+															    
+															   <h:outputText value="تصویر ۵" />
+																<h:graphicImage id="oue47" style="max-width:100%; height:300px!important"
+																rendered="#{creativeBean.creativeEntity.pic5 ne null}"
+																value="/Images/#{creativeBean.creativeEntity.pic5}.jpg"/>
+
+															   <h:outputText value="تصویر ۶" />
+																<h:graphicImage id="oue48" style="max-width:100%; height:300px!important"
+																rendered="#{creativeBean.creativeEntity.pic6 ne null}"
+																value="/Images/#{creativeBean.creativeEntity.pic6}.jpg"/>
+													</h:panelGrid>			
+																
+											</p:outputPanel>
+
+										</p:dialog>
+										<p:dialog id="dlg2" header="test" showEffect="fade"
+											modal="true" widgetVar="testDialog" responsive="true">
+											<p:outputPanel id="ali-add-content" class="ui-fluid">
+
+													<h:panelGrid columns="3">
+											
+														<h:outputText value="نام " />
+														<p:inputTextarea id="in1" value="#{creativeBean.name}"
+															  />
+														<p:message for="in1" id="msg1" />
+														
+														<h:outputText value="توضیح" />
+														<p:inputTextarea id="in2" value="#{creativeBean.description}"
+														  />
+														<p:message for="in2"  id="msg2"/>
+
+														
+														<h:outputText value="عکس 1" />
+														<p:fileUpload id="in39" value="#{creativeBean.pic1}" mode="simple"
+														skinSimple="true" binding="#{creativeBean.pic1Component}"
+														validateContentType="true" accept=".jpg,.jpeg"
+														/>
+										            	<p:message for="in39" id="msg39"/> 
+										            	
+										            	<h:outputText value="عکس 2" />
+														<p:fileUpload id="in40" value="#{creativeBean.pic2}" mode="simple"
+														skinSimple="true" binding="#{creativeBean.pic2Component}"
+														validateContentType="true" accept=".jpg,.jpeg"
+														/>
+										            	<p:message for="in40" id="msg40"/> 
+										            	
+										            	<h:outputText value="عکس 3" />
+														<p:fileUpload id="in41" value="#{creativeBean.pic3}" mode="simple"
+														skinSimple="true" binding="#{creativeBean.pic3Component}"
+														validateContentType="true" accept=".jpg,.jpeg"
+														/>
+										            	<p:message for="in41" id="msg41"/> 
+										            	
+										            	<h:outputText value="عکس 4" />
+														<p:fileUpload id="in42" value="#{creativeBean.pic4}" mode="simple"
+														skinSimple="true" binding="#{creativeBean.pic4Component}"
+														validateContentType="true" accept=".jpg,.jpeg"
+														/>
+										            	<p:message for="in42" id="msg42"/> 
+										            	
+										            	<h:outputText value="عکس 5" />
+														<p:fileUpload id="in43" value="#{creativeBean.pic5}" mode="simple"
+														skinSimple="true" binding="#{creativeBean.pic5Component}"
+														validateContentType="true" accept=".jpg,.jpeg"
+														/>
+										            	<p:message for="in43" id="msg43"/> 
+										            	
+										                <h:outputText value="عکس 6" />
+														<p:fileUpload id="in44" value="#{creativeBean.pic6}" mode="simple"
+														skinSimple="true" binding="#{creativeBean.pic6Component}"
+														validateContentType="true" accept=".jpg,.jpeg"
+														/>
+										            	<p:message for="in44" id="msg44"/> 
+										            	</h:panelGrid>
+										            	<br/>
+										            	
+														<p:commandButton value="ذخیره" ajax="true" 
+														actionListener="#{creativeBean.insertToCreative()}"
+														styleClass="p-mt-3 ui-button-outlined p-d-block"
+														update="basicDT grl in1 in2 in39 in40 in41 in42 in43 in44 msg1 
+														msg2 msg39 msg40 msg41 msg42 msg43 msg44"  
+														process="dlg2" />
+
+											</p:outputPanel>
+										</p:dialog>
+										<p:confirmDialog widgetVar="deleteProductDialog"
+														showEffect="fade" width="300"
+														message="Delete the product?" header="Confirm"
+														severity="warn">
+
+															
+														<p:commandButton value="Yes" icon="pi pi-check" actionListener="#{creativeBean.deleteCreative()}"
+														                             process="@this" oncomplete="PF('deleteProductDialog').hide()" update="basicDT grl"/>
+														<p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
+														                             onclick="PF('deleteProductDialog').hide()"/>
+										</p:confirmDialog>
+									</h:form>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</section>
+			</div>
+
+			<footer class="main-footer">
+				<div class="float-right d-none d-sm-block">
+					<b>Version</b> 3.0.0-alpha
+				</div>
+
+				<strong>CopyLeft 2018 <a
+					href="http://github.com/hesammousavi/">حسام موسوی</a>.
+				</strong>
+			</footer>
+
+			<!-- Control Sidebar -->
+			<aside class="control-sidebar control-sidebar-dark">
+				<!-- Control sidebar content goes here -->
+			</aside>
+			<!-- /.control-sidebar -->
+		</div>
+		<!-- ./wrapper -->
+		</h:panelGroup>
+	</ui:define>
+
+	<ui:define name="footPage">
+	
+   <!--  <h:outputScript library="leaflet" name="map2.js" />  -->
+	</ui:define>
+
+
+</ui:composition>

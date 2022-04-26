@@ -9,7 +9,79 @@
 		<pattern value="/sellers/#{sellerNameEng}" />
 		<view-id value="/pages/merchant/merchant.xhtml" />
 	</url-mapping>
-
+	
+	
+	<url-mapping id="view41">
+		<pattern value="/sellers/#{sellerNameEng}/products" />
+		<view-id value="/pages/product/products.xhtml" />
+	</url-mapping>
+	
+	
+	<url-mapping id="view43">
+		<pattern value="/sellers/products/#{productId}" />
+		<view-id value="/pages/product/product-detail.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="view44">
+		<pattern value="/sellers/vitrin/#{vitrinType}" />
+		<view-id value="/pages/vitrin/vitrin.xhtml" />
+	</url-mapping>
+		
+<!-- 	<url-mapping id="view45">
+		<pattern value="/sellers/find/panels" />
+		<view-id value="/pages/danestaniha/panels.xhtml" />
+	</url-mapping> -->
+			
+	<url-mapping id="view46">
+		<pattern value="/advertising/نیازمندی-کارجویان-صنف-مبلمان" />
+		<view-id value="/pages/advertise/advertise.xhtml?advertiseType=karjo" />
+	</url-mapping>
+				
+	<url-mapping id="view47">
+		<pattern value="/advertising/نیازمندی-کارفرمایان-صنف-مبلمان" />
+		<view-id value="/pages/advertise/advertise.xhtml?advertiseType=karfarma" />
+	</url-mapping>
+					
+	<url-mapping id="view48">
+		<pattern value="/advertising/نیازمندی-املاک-صنف-مبلمان" />
+		<view-id value="/pages/advertise/advertise.xhtml?advertiseType=rent" />
+	</url-mapping>
+					
+	<url-mapping id="view49">
+		<pattern value="/advertising/نیازمندی-ابزارآلات-صنف-مبلمان" />
+		<view-id value="/pages/advertise/advertise.xhtml?advertiseType=machin" />
+	</url-mapping>
+	
+    <url-mapping id="view50">
+		<pattern value="/advertising" />
+		<view-id value="/pages/danestaniha/niazmandiha.xhtml" />
+	</url-mapping>
+		
+    <url-mapping id="view51">
+		<pattern value="/sellers/panel/فیروزه-ای" />
+		<view-id value="/pages/danestaniha/panels-list.xhtml?panelType=A" />
+	</url-mapping>
+			
+    <url-mapping id="view52">
+		<pattern value="/sellers/panel/طلایی" />
+		<view-id value="/pages/danestaniha/panels-list.xhtml?panelType=B" />
+	</url-mapping>
+			
+    <url-mapping id="view53">
+		<pattern value="/sellers/panel/نقره-ای" />
+		<view-id value="/pages/danestaniha/panels-list.xhtml?panelType=C" />
+	</url-mapping>
+			
+    <url-mapping id="view54">
+		<pattern value="/sellers/panel/برنزی" />
+		<view-id value="/pages/danestaniha/panels-list.xhtml?panelType=D" />
+	</url-mapping>
+			
+    <url-mapping id="view55">
+		<pattern value="/sellers/panel/اعضای-عادی" />
+		<view-id value="/pages/vitrin/ordinary.xhtml" />
+	</url-mapping>
+	
 	<url-mapping id="view2">
 		<pattern
 			value="/knowledge/کمیسیون-های-اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
@@ -168,11 +240,6 @@
 		<view-id value="/pages/news/news-detail.xhtml" />
 	</url-mapping>
 
-	<url-mapping id="view30">
-		<pattern
-			value="/job/نیازمندی-های-اتحادیه-صنف-درودگران-و-مبلسازان-تهران" />
-		<view-id value="/pages/danestaniha/niazmandiha.xhtml" />
-	</url-mapping>
 
 	<url-mapping id="view31">
 		<pattern value="/mems/jalal-ardebili" />
@@ -219,15 +286,11 @@
 		<view-id value="/pages/news/amade-pano.xhtml" />
 	</url-mapping>
 	
-		<url-mapping id="view39">
+		<url-mapping id="view44">
 		<pattern value="/press/دیگر-اتحادیه-ها" />
 		<view-id value="/pages/news/unions.xhtml" />
 	</url-mapping>
-	
-			<url-mapping id="view40">
-		<pattern value="/chat-page/گفت-و-گوی-آنلاین" />
-		<view-id value="/pages/chat/chat2.xhtml" />
-	</url-mapping>
+
 
 
 

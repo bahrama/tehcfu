@@ -82,16 +82,15 @@
 				class="col-md-8 col-sm-12 col-xs-12 margin-top-35 animated fadeInLeft"
 				data-wow-delay="0.2s"
 				style="height: 410px; padding-left: 0; padding-right: 0">
-				<div style="width: 100%" class="property-detail-carousel">
+				<div id="slideDivCon" style="width: 100%" class="property-detail-carousel">
 					<ui:repeat var="homeCat" value="#{homeBean.findAllSlide()}">
 						<div class="item">
 							<picture> <source
-								media="(min-width: 768px) and (max-width: 991)" srcset="" /> <!-- <img
-								class="imgstyle" src="pic/slide2.jpg" alt="" /> --> <o:graphicImage
-								styleClass="imgstyle" style="width: 100%"
-								rendered="#{homeBean.findHomeCatById(homeCat.id) ne null}"
-								value="#{homeBean.findHomeCatById(homeCat.id)}" dataURI="true"
-								alt="" /> </picture>
+								media="(min-width: 768px) and (max-width: 991)" srcset="" />
+								<h:graphicImage class="imgstyle" style="width: 100%"
+									rendered="#{homeCat.picId ne null}"
+									value="/Images/#{homeCat.picId}.jpg"/>	
+							</picture>
 
 						</div>
 					</ui:repeat>
@@ -213,19 +212,13 @@
 			<div class="row ">
 				<div class="col-md-4 col-sm-4 wow fadeInRight" data-wow-delay="0.2s">
 					<div class="design-img overflow">
-						<a href="/job/نیازمندی-های-اتحادیه-صنف-درودگران-و-مبلسازان-تهران">
-							<!-- <img class="img-hover min"
-							src="pic/نیازمندی.jpg" alt="" /> --> <o:graphicImage
-								styleClass="img-hover min"
-								rendered="#{homeBean.findHomeCatByName('نیازمندی ها') ne null}"
-								value="#{homeBean.findHomeCatByName('نیازمندی ها')}"
-								dataURI="true" alt="" />
+						<a href="/advertising">
+							<img data-src="/Images/#{homeBean.findHomeCatImageByName('G').picId}.jpg" src="../../resources/image-loader/loading.svg" />
 						</a>
 					</div>
 					<!-- /design-img -->
-					<a href="/job/نیازمندی-های-اتحادیه-صنف-درودگران-و-مبلسازان-تهران">
-						<h4
-							style="padding-bottom: 15px; padding-top: 15px; background-color: #eeeeee; font-family: IRANSansBold; color: #0B59AA; text-align: center; font-size: 15px">نیازمندی
+					<a href="/advertising">
+						<h4 style="padding-bottom: 15px; padding-top: 15px; background-color: #eeeeee; font-family: IRANSansBold; color: #0B59AA; text-align: center; font-size: 15px">نیازمندی
 							ها</h4>
 					</a>
 				</div>
@@ -235,12 +228,7 @@
 					<div class="design-img overflow">
 						<!-- <a href="panels.xhtml">  -->
 						<h:link outcome="/pages/danestaniha/panels.xhtml">
-							<!-- <img class="img-hover min"
-							src="pic/اعضا.jpg" alt="" /> -->
-							<o:graphicImage styleClass="img-hover min"
-								rendered="#{homeBean.findHomeCatByName('اعضای صنفی اتحادیه') ne null}"
-								value="#{homeBean.findHomeCatByName('اعضای صنفی اتحادیه')}"
-								dataURI="true" alt="" />
+									<img data-src="/Images/#{homeBean.findHomeCatImageByName('F').picId}.jpg" src="../../resources/image-loader/loading.svg" />
 						</h:link>
 						<!-- </a> -->
 
@@ -260,11 +248,7 @@
 					data-wow-delay="0.2s">
 					<div class="design-img overflow">
 						<h:link outcome="/pages/search/searchmap.xhtml">
-
-							<o:graphicImage styleClass="img-hover min"
-								rendered="#{homeBean.findHomeCatByName('نزدیکترین ها') ne null}"
-								value="#{homeBean.findHomeCatByName('نزدیکترین ها')}"
-								dataURI="true" alt="" />
+									<img data-src="/Images/#{homeBean.findHomeCatImageByName('D').picId}.jpg" src="../../resources/image-loader/loading.svg" />
 						</h:link>
 					</div>
 					<!-- /design-img -->
@@ -300,11 +284,6 @@
 							<picture> <source
 								media="(min-width: 768px) and (max-width: 991)" srcset="" /> <!-- <img
 								class="imgstyle" src="pic/slide2.jpg" alt="" /> --> 
-<!-- 								<o:graphicImage
-								styleClass="imgstyle" style="width: 100%"
-								rendered="#{homeBean.findHomeCatById(homeCat.id) ne null}"
-								value="#{homeBean.findHomeCatById(homeCat.id)}" dataURI="true"
-								alt="" />  -->
 							<img src="../../resources/pic/banner.jpg" alt=""
 						style="width: 100%; min-height: 110px;" />
 								</picture>
@@ -315,11 +294,6 @@
 							<picture> <source
 								media="(min-width: 768px) and (max-width: 991)" srcset="" /> <!-- <img
 								class="imgstyle" src="pic/slide2.jpg" alt="" /> --> 
-<!-- 								<o:graphicImage
-								styleClass="imgstyle" style="width: 100%"
-								rendered="#{homeBean.findHomeCatById(homeCat.id) ne null}"
-								value="#{homeBean.findHomeCatById(homeCat.id)}" dataURI="true"
-								alt="" /> --> 
 													<img src="../../resources/pic/site2.jpg" alt=""
 						style="width: 100%; min-height: 110px;" />
 								</picture>
@@ -332,33 +306,6 @@
 				</div>
 				</div>
 				</div>
-
-	<!--تبلیغات-->
-<!-- 	<div style="margin: -80px 48px 0 48px" id="page-header">
-		<a href="#">
-			<div style="height: auto" class="container">
-				<div>
-										<div style="display: none" class="header-description">
-						<div class="header-content">
-					<a href="#" target="_blank"> 
-					<img src="../../resources/pic/last.gif" alt=""
-						style="width: 100%; min-height: 110px;" />
-					</a>
-											
-</div>
-						
-					</div>
-					/header-description
-				</div>
-				/container
-			</div> /header-bg-parallax
-		</a>
-		
-
-	</div>  -->
-	<!--تبلیغات-->
-
-
 
 	<!-- پیشنهاد های ویژه -->
 	<div id="suggestion"
@@ -510,11 +457,7 @@
 				<div class="col-md-4 col-sm-4 wow fadeInLeft" data-wow-delay="0.2s">
 					<div class="design-img overflow">
 						<h:link outcome="/pages/danestaniha/danestaniha.xhtml">
-
-							<o:graphicImage styleClass="img-hover min"
-								rendered="#{homeBean.findHomeCatByName('دانستنی ها') ne null}"
-								value="#{homeBean.findHomeCatByName('دانستنی ها')}"
-								dataURI="true" alt="" />
+						<img data-src="/Images/#{homeBean.findHomeCatImageByName('J').picId}.jpg" src="../../resources/image-loader/loading.svg" />
 						</h:link>
 					</div>
 					<!-- /design-img -->
@@ -529,12 +472,9 @@
 				<div class="col-md-4 col-sm-4">
 					<div class="design-img overflow">
 						<h:link outcome="/pages/danestaniha/namayeshgah.xhtml">
-							<!-- <img class="img-hover min"
-							src="pic/تقویم.jpg" alt="" /> -->
-							<o:graphicImage styleClass="img-hover min"
-								rendered="#{homeBean.findHomeCatByName('خبرنامه نمایشگاهی') ne null}"
-								value="#{homeBean.findHomeCatByName('خبرنامه نمایشگاهی')}"
-								dataURI="true" alt="" />
+					<img data-src="/Images/#{homeBean.findHomeCatImageByName('E').picId}.jpg" src="../../resources/image-loader/loading.svg" />
+								
+									
 						</h:link>
 					</div>
 					<!-- /design-img -->
@@ -550,12 +490,8 @@
 					<div class="design-img overflow">
 
 						<h:link outcome="/pages/danestaniha/creative-blogs.xhtml">
-							<!-- <img class="img-hover min"
-							src="pic/innovation.jpg" alt="" /> -->
-							<o:graphicImage styleClass="img-hover min"
-								rendered="#{homeBean.findHomeCatByName('طرح های خلاقانه') ne null}"
-								value="#{homeBean.findHomeCatByName('طرح های خلاقانه')}"
-								dataURI="true" alt="" />
+					<img data-src="/Images/#{homeBean.findHomeCatImageByName('I').picId}.jpg" src="../../resources/image-loader/loading.svg" />
+
 						</h:link>
 
 					</div>
@@ -586,17 +522,12 @@
 
 				<div class="item">
 					<div class="work-item">
-						<!-- <img src="pic/borna.jpg" alt="complex" /> -->
-						<o:graphicImage
-							rendered="#{homeBean.findPassageById(passg.id) ne null}"
-							value="#{homeBean.findPassageById(passg.id)}" dataURI="true"
-							alt="" />
+						<h:graphicImage
+									rendered="#{passg.pic1 ne null}"
+									value="/Images/#{passg.pic1}.jpg"/>
 						<div class="work_overlay">
 							<div class="overlay_content">
 								<div class="content">
-									<!-- 									<a href="borna.xhtml"
-										style="font-size: 19px; color: white; font-family: IRANSansBold"><img
-										src="" alt="" />#{passg.blogName} </a> -->
 									<h:link
 										style="font-size: 19px; color: white; font-family: IRANSansBold"
 										value="#{passg.blogName}"

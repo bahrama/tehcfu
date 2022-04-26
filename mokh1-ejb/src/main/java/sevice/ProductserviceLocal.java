@@ -1,6 +1,7 @@
 package sevice;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Local;
 
@@ -21,5 +22,7 @@ public interface ProductserviceLocal {
 	void updateProductEntity(ProductEntity productEntity);
 
 	List<ProductEntity> findAllProductEntityBySeller(MoblEntity moblEntity);
+
+	Map<ProductEntity, Object> findAllProductBySeller2(MoblEntity moblEntity);
 
 }

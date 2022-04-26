@@ -1,0 +1,296 @@
+
+<ui:composition template="../WEB-INF/pages/admin-temp.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pp="http://xmlns.jcp.org/jsf/passthrough"
+	
+>
+
+	<ui:define name="headPage">
+		<style>
+body .ui-dialog {
+	padding: 0;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+	border: 1px solid #c8c8c8;
+	border-radius: 3px;
+	height: 600px !important;
+	overflow: scroll;
+}
+
+body .ui-growl {
+	top: 85px;
+	z-index: 9999 !important;
+}
+
+.bd-table-days button {
+	background-color: #f8f8f8;
+	border: 0;
+	width:;
+	margin: 0px !important;
+	font-size: 12px !important;
+}
+td{
+max-width: 300px!important;
+}
+.ui-fluid .ui-inputtext {
+    width: 100%;
+}
+</style>
+  <style>
+  .elemansJsf{
+    margin-bottom: 30px;
+	margin-top: 10px;
+	font-size: 20px;
+	font-family: IRANSansNor;
+	border-radius: 25px!important;
+  }
+  .headerJsf{
+  font-family: IRANSansBold;
+  }
+  .selItem{
+  text-align: right!important;
+  font-size: 18px!important;
+  font-family: IRANSansNor!important;
+  }
+  .ui-fluid .ui-inputtextarea {
+    width: 100%;
+    font-size: 18px!important;
+    font-family: IRANSansNor !important;
+}
+.ui-fluid .ui-inputfield {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-size: 18px !important;
+    font-family: IRANSansNor !important;
+}
+.ui-fluid .ui-selectonemenu {
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin-top: 10px!important;
+    margin-bottom: 30px!important;
+}
+  body .ui-selectonemenu-panel .ui-selectonemenu-items .ui-selectonemenu-item {
+    margin: 0;
+    padding: 0.429rem 0.857rem;
+    background: transparent;
+    color: #333333;
+    outline: 0 none;
+    border-radius: 0;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    text-align: right !important;
+    font-size: 18px !important;
+    font-family: IRANSansNor !important;
+}
+.ui-selectonemenu label.ui-selectonemenu-label {
+    cursor: pointer;
+    text-align: center;
+    font-family: IRANSansBold !important;
+}
+body .ui-tabs .ui-tabs-nav li.ui-tabs-header a {
+    color: #ffffff;
+    padding: 0;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    font-size: 18px;
+    font-family: IRANSansBold;
+}
+body .ui-tabs .ui-tabs-nav li.ui-tabs-header {
+    list-style: none;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: top;
+    float: none;
+    padding: 0.857rem 1rem;
+    background: #007ad9;
+    color: #ffffff;
+    margin: 0;
+    cursor: pointer;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border-radius: 15px;
+}
+body .ui-tabs .ui-tabs-nav li.ui-tabs-header.ui-state-active {
+    background: crimson;
+}
+  </style>
+ 		<h:outputStylesheet library="calendar" name="kamadatepicker.min.css" />
+		<h:outputScript library="calendar" name="kamadatepicker.min.js" />
+		<h:outputScript library="calendar" name="kamadatepicker.holidays.js" /> 
+</ui:define>
+	<ui:define name="mainPage">
+	<h:panelGroup rendered="#{(adminProfile.moblEntity.role ne 'ADMIN')}">
+<h:form id="form" enctype="multipart/form-data"
+	acceptcharset="UTF-8" prependId="false">
+<p:growl id="grl" life="2000"/>
+ <div class="content-wrapper">
+    <section class="content">
+    <div class="container-fluid">
+
+			<!-- Title -->
+			<div class="row heading-bg">
+				<div>
+					<h5 class="txt-dark" style="font-family: IRANSansBold;">درخواست تمدید پروانه کسب در اتحادیه صنف
+						درودگران و مبلسازان تهران</h5>
+				</div>
+
+
+			</div>
+
+
+													<h6 class="txt-dark capitalize-font"
+															style="font-family: IRANSansBold;">
+															<i class="zmdi zmdi-account mr-10"></i>فرم تمدید پروانه
+													</h6>
+													
+													
+			<p:outputPanel id="pnl1" class="ui-fluid">
+
+                <h:panelGrid columns="6" width="100%">
+																<h:outputText class="headerJsf" value="نوع ملک" />
+																<h:selectOneMenu value="#{tamdidBean.noeMelk}" id="senfiname" required="true"
+																	styleClass="form-control">
+																	<f:selectItem itemValue="استیجاری" itemLabel="استیجاری" />
+																	<f:selectItem itemValue="ملکی" itemLabel="ملکی" />
+																	<f:selectItem itemValue="دارای سند:عادی"
+																		itemLabel="دارای سند:عادی" />
+																	<f:selectItem itemValue="رسمی(محضری)"
+																		itemLabel="رسمی(محضری)" />
+																	<f:selectItem itemValue="اوقافی" itemLabel="اوقافی" />
+																	<f:selectItem itemValue="اداری/سازمانی"
+																		itemLabel="اداری/سازمانی" />
+																</h:selectOneMenu>
+																<p:message for="senfiname" id="ms1"/>
+																
+																
+															    <h:outputText class="headerJsf" value="مساحت محل کسب بر حست متر مربع" />
+																<p:inputText id="motName" class="elemansJsf"
+																	value="#{tamdidBean.masahat}" />
+																<p:message for="motName" id="ms2" />
+																	
+																	
+																
+																<h:outputText class="headerJsf" value="نام مالک" />
+																<p:inputText id="senfiPhone" class="elemansJsf"
+																	value="#{tamdidBean.nameMalek}" />
+																<p:message for="senfiPhone" id="ms3" />
+																
+											
+																<h:outputText class="headerJsf" value="درخواست شماره پلاک ثبتی" />
+																<p:inputText id="motMobile" class="elemansJsf"
+																	value="#{tamdidBean.shomarePelakSabti}" />
+																<p:message for="motMobile" id="ms4" />
+
+																<h:outputText class="headerJsf" value="حوزه کلانتری" />
+																<p:inputText id="senfiPhonef3"
+																	value="#{tamdidBean.hozeKalantari}" class="elemansJsf"/>
+																<p:message for="senfiPhonef3" id="ms3333" />
+
+																<h:outputText class="headerJsf" value="حوزه منطقه شهرداری" />
+																<p:inputText id="motMobilerrrr2"
+																	class="elemansJsf"
+																	value="#{tamdidBean.hozeShahrdari}" />
+																<p:message for="motMobilerrrr2" id="ms442" />
+
+
+
+															 <h:outputText class="headerJsf" value="شماره سریال قبض آب" />
+																<p:inputText id="senfiPhonef" class="elemansJsf"
+																	value="#{tamdidBean.serialGabzAb}" />
+																<p:message for="senfiPhonef" id="ms33" />
+
+
+																 <h:outputText class="headerJsf" value="شماره سریال قبض برق" />
+																<p:inputText id="motMobilerrrr"
+																	class="elemansJsf"
+																	value="#{tamdidBean.serialGabzBarg}" />
+																<p:message for="motMobilerrrr" id="ms44" />
+
+
+																<h:outputText class="headerJsf" value="شماره سریال گاز" />
+																<p:inputText id="senfiPhonerr" class="elemansJsf"
+																	value="#{tamdidBean.serialGabzGaz}" />
+																<p:message for="senfiPhonerr" id="ms333" />
+
+																	<h:outputText class="headerJsf" value="محل کسب
+																	پیشنهادی دارای پروانه کسب بوده است ؟" />
+																<h:selectOneRadio value="#{tamdidBean.hasParvaneh}" id="postcode2" required="true"
+																	styleClass="form-control" layout="lineDirection">
+																	<f:selectItem itemValue="بلی" itemLabel="بلی" />
+																	<f:selectItem itemValue="خیر" itemLabel="خیر" />
+																</h:selectOneRadio>
+																<p:message for="postcode2" id="ms46" />
+	
+
+
+																<h:outputText class="headerJsf" value="شماره آبی" />
+																<p:inputText id="senfiShenase2"
+																	class="elemansJsf"
+																	value="#{tamdidBean.shomareAbi}" />
+																<p:message for="senfiShenase2" id="ms552" />
+
+																<h:outputText class="headerJsf" value="شریک و شرکا" />
+																<p:inputText id="senfiShenase21"
+																	class="elemansJsf"
+																	value="#{tamdidBean.sharikShoraka}" />
+																<p:message for="senfiShenase21" id="ms5521" />
+
+
+
+																<h:outputText class="headerJsf" value="دسته شغلی" />
+																<h:selectManyCheckbox value="#{tamdidBean.dasteShoglis}" id="postcode331" required="true"
+																	 layout="pageDirection">
+																	<f:selectItem itemValue="بیکار" itemLabel="بیکار" />
+																	<f:selectItem itemValue="بیکار مشمول قانون بیمه بیکاری"
+																		itemLabel="بیکار مشمول قانون بیمه بیکاری" />
+																	<f:selectItem itemValue="شاغل" itemLabel="شاغل" />
+																	<f:selectItem itemValue="بازنشسته" itemLabel="بازنشسته" />
+																</h:selectManyCheckbox>
+																<p:message for="postcode331" id="ms661" />
+
+
+																	<h:outputText class="headerJsf" value="دارای امکانات رفاهی" />
+																<h:selectManyCheckbox value="#{tamdidBean.emkanats}" id="postcode33" required="true"
+																	 layout="pageDirection">
+																	<f:selectItem itemValue="آب" itemLabel="آب" />
+																	<f:selectItem itemValue="برق" itemLabel="برق" />
+																	<f:selectItem itemValue="گاز" itemLabel="گاز" />
+																	<f:selectItem itemValue="تلفن" itemLabel="تلفن" />
+																	<f:selectItem itemValue="فکس" itemLabel="فکس" />
+																</h:selectManyCheckbox>
+																<p:message for="postcode33" id="ms66" />
+
+
+
+</h:panelGrid><br/>
+
+												<p:commandButton styleClass="btn btn-success mr-10"
+													action="#{tamdidBean.insertToTamdid()}" value="ثبت" process="@form"
+													update="ms66 ms661 ms5521 ms552 ms46 ms333 ms44 ms33 ms442 ms3333 ms4 ms3 ms2 ms1"/>
+
+												
+
+</p:outputPanel>
+		</div>
+      
+    </section>
+  </div>
+</h:form>
+</h:panelGroup>
+	</ui:define>
+
+	<ui:define name="footPage">
+		</ui:define>
+
+
+</ui:composition>

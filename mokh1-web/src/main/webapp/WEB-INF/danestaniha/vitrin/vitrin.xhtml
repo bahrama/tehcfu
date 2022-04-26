@@ -19,10 +19,9 @@
 
 						<div class="padding-bottom-40 wow zoomIn card"
 							style="float: right !important; width: 100% !important;">
-							<o:graphicImage style="max-width:100%; height:300px!important" 
-							rendered="#{vitrinBean.findPic4(pnl) ne null}"
-								value="#{vitrinBean.findPic4(pnl)}" dataURI="true" alt="" />
-
+                    <h:graphicImage style="max-width:100%; height:300px!important" 
+					rendered="#{pnl.pic4 ne null}"
+					value="/Images/#{pnl.pic4}.jpg"/>
 							<div class="blog-short-detail">
 								<h4 style="font-family: IranSANSBold; color: darkred;">
 									 #{pnl.sellerStorePer}</h4>

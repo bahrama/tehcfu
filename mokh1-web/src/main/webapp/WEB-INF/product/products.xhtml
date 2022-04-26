@@ -5,120 +5,204 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:o="http://omnifaces.org/ui"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	 xmlns:p="http://primefaces.org/ui">
+<style>
+.path ul {
+	display: flex;
+	flex-wrap: wrap;
+	direction: rtl;
+}
 
+.path ul li {
+	padding-top: 7px;
+}
+
+.path ul a {
+	color: #6a6a6a;
+}
+
+.path ul li:before {
+	content: "/";
+	color: #cfcfcf;
+	letter-spacing: .4px;
+	font-size: 13px;
+	vertical-align: top;
+	margin-left: 5px;
+	padding-right: 5px;
+	font-weight: 400 !important;
+}
+
+.path li:first-child:before {
+	content: "";
+	padding: 0;
+	display: none;
+}
+.path ul a:hover {
+	color: #0097a7;
+	font-weight: 600;
+	transition: all .2ms;
+}
+@media only screen and (max-width: 359px) and (min-width: 320px) {
+	.path ul a span {
+		font-size: 12px;
+	}
+}
+</style>
 	<article class="margin-top-90">
-	<div class="container-fluid">
+			<div class="path margin-top-20 col">
+			<ul>
+				<li>
+				<h:link outcome="/pages/merchant/merchant.xhtml">
+				<span>فروشگاه #{sellerPage.sellerx.sellerStorePer}</span>
+				<f:param name="sellerNameEng" value="#{sellerPage.sellerx.sellerStoreEng}"/>
+				</h:link>
+				</li>
+				<li>
+	                <h:link outcome="/pages/product/products.xhtml">
+			     	<span>محصولات</span>
+					<f:param name="sellerNameEng" value="#{sellerPage.sellerx.sellerStoreEng}" />
+					</h:link>
+				</li>
+			</ul>
+		</div>
+		<div>
+		<h2 style="text-align: center;font-family: IRANSansBold;">محصولات فروشگاه #{sellerPage.sellerx.sellerStorePer}</h2>
+		</div>
+	<div class="container-fluid" style="text-align: center;">
 		<div class="row">
 			<div class="col filtering" style="direction: rtl;">
-			<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('سیسمونی')}">
-				<div class="dastebandi">
-					<img src="../../../resources/raste-icon/baby1.svg" alt="" /> <span>
-						سیسمونی</span>
-				</div>
-			</h:panelGroup>
-			<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('تختخواب')}">
-				<div class="dastebandi">
-					<img src="../../../resources/raste-icon/bed.svg" alt="" /> <span>
-						تختخواب</span>
-				</div>
-</h:panelGroup>
-<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('کلاسیک')}">
+					<div class="dastebandi">
+						<img src="../../../resources/raste-icon/baby1.svg" alt="" /> <span>
+							سیسمونی</span>
+					</div>
+					<div class="dastebandi">
+						<img src="../../../resources/raste-icon/bed.svg" alt="" /> <span>
+							تختخواب</span>
+					</div>
 				<div class="dastebandi">
 					<img src="../../../resources/raste-icon/classic.svg" alt="" /> <span>
 						مبل کلاسیک</span>
 				</div>
-				</h:panelGroup>
-				<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('اداری')}">
 				<div class="dastebandi">
 					<img src="../../../resources/raste-icon/desk1.svg" alt="" /> <span>
 						مبلمان اداری</span>
 				</div>
-				</h:panelGroup>
-				<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('نهار')}">
 				<div class="dastebandi">
 					<img src="../../../resources/raste-icon/dinner-table.svg" alt="" /> <span>
 						نهار خوری</span>
 				</div>
-				</h:panelGroup>
-				<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('کابینت')}">
 				<div class="dastebandi">
 					<img src="../../../resources/raste-icon/kitchen1.svg" alt="" /> <span>
 						کابینت</span>
 				</div>
-				</h:panelGroup>
-				<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('اداری')}">
 				<div class="dastebandi">
 					<img src="../../../resources/raste-icon/mobl-edari.svg" alt="" /> <span>
 						صندلی اداری</span>
 				</div>
-</h:panelGroup>
-<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('راحتی')}">
 				<div class="dastebandi">
 					<img src="../../../resources/raste-icon/mobl-rahati.svg" alt="" /> <span>
 						مبل راحتی</span>
 				</div>
-				</h:panelGroup>
-				<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('استیل')}">
 								<div class="dastebandi">
 					<img src="../../../resources/raste-icon/mobl-stel.svg" alt="" /> <span>
 						مبل استیل</span>
 				</div>
-				</h:panelGroup>
-								<div class="dastebandi">
+				<div class="dastebandi">
 					<img src="../../../resources/raste-icon/mobl-steel.svg" alt="" /> <span>
 						مبلمان</span>
 				</div>
 
-				<h:panelGroup rendered="#{sellerPage.sellerx.faaliat.contains('تعمیرات')}">
 								<div class="dastebandi">
 					<img src="../../../resources/raste-icon/settings.svg" alt="" /> <span>
-						تعمییرات</span>
+						تعمیرات</span>
 				</div>
-				</h:panelGroup>
-				<h:panelGroup rendered="#{(sellerPage.sellerx.faaliat.contains('چوب بری'))||(sellerPage.sellerx.faaliat.contains('مجسمه'))||(sellerPage.sellerx.faaliat.contains('سنتی'))||(sellerPage.sellerx.faaliat.contains('خراطی'))||(sellerPage.sellerx.faaliat.contains('خاتم'))}">
-												<div class="dastebandi">
+				<div class="dastebandi">
 					<img src="../../../resources/raste-icon/tamirat.svg" alt="" /> <span>
 						چوب بری</span>
 				</div>
-</h:panelGroup>
+			</div>
+			<div>
+			<p style="text-align: justify;
+direction: rtl;
+margin: 50px;
+font-size: 22px;
+line-height: 50px;
+font-family: IRANSansNor;">
+			فروشگاه #{sellerPage.sellerx.sellerStorePer} دارای تاییده از اتحادیه مبلمان تهران می باشد که به منزله خرید مطمئن 
+			و دارای تضمین اتحایه می باشد.
+			در صورت داشتن هر گونه شکایت از محصولات فوق لطفا به بخش شکایات پنل مدیریتی خود رجوع فرمایید.
+			</p>
 			</div>
 		</div>
+		<h:form id="form" enctype="multipart/form-data"
+				acceptcharset="UTF-8" prependId="false">
 		<div class="row">
-			<div class="col cards" style="direction: rtl;">
-				<ui:repeat var="prdc" value="#{sellerPage.products}">
-				<h:panelGroup rendered="#{prdc.status}">
-					<div class="card animated zoomIn" style="">
-						<span class="forosh-vij">فروش ویژه</span> <!-- <img class="imgcard"
-							src="../../resources/pictures/mobl.jpg" /> -->
-								<h:graphicImage styleClass="imgcard"
-										value="/Images/#{prdc.pic1}.jpg"/>
-						<h1 class="title-forosh">#{prdc.name}</h1>
-						<br /> <span class="price-span">#{prdc.price} تومان</span> <!-- <a
-							href="/sellers/Shaaker-wood" class="btn-blue-m">نمایش</a> -->
-		<h:link outcome="/pages/product/product-detail.xhtml" value="نمایش" class="btn-blue-m" style="font-family: IRANSansNor; color: #0B59AA; border-color: #0B59AA">
-										<f:param name="ProductId" value="#{prdc.productId}"/>
-										</h:link>
-				
-
-			</div>
-			</h:panelGroup>
-</ui:repeat>
-
-		</div>
-		<!--                <div class="col-3 filter-1">-->
-		<!--                 <div class="filter">-->
-		<!--                     <h2 class="filter-more">دسته‌بندی نتایج</h2>-->
-		<!--                    <ul class="">-->
-		<!--                        <li>-->
-		<!--                          مبلمان-->
-		<!--                        </li>-->
-		<!--                        <li> مبلمان راحتی</li>-->
-
-		<!--                    </ul>-->
-		<!--                 </div>-->
-		<!--                </div>-->
+			<div class="col cards">
+			<p:dataGrid columns="3" var="prdc" value="#{sellerPage.sellerxProducts.entrySet().toArray()}"
+						layout="grid" rows="9" paginator="true" id="cars" style="width: 100%;"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+					<h:panelGroup rendered="#{prdc.key.checkO}">
+					<h:link outcome="/pages/product/product-detail.xhtml">
+								<div class="item"
+									style="padding: 60px;
+								    border: 1px solid #BFBFBF;
+								    background-color: white;
+								    box-shadow: 10px 10px 5px #aaaaaa;
+								    margin: auto;
+								    width: 90%;
+								    background-color: gainsboro;
+								    border-radius: 10px;">
+		<img data-src="/Images/#{prdc.key.pic1}.jpg" src="../../resources/image-loader/loading.svg" style="width: 100%; height: 300px; margin:5px;"/>
+									<div class="blog-short-detail">
+										<p title="#{prdc.key.brand}" style="font-family: IRANSansNor;
+									    color: #0B59AA;
+									    white-space: nowrap;
+									    width: 100%;
+									    overflow: hidden;
+									    direction: rtl;
+									    text-overflow: ellipsis;
+									    font-size: 18px;
+									    margin: 0px;">
+											#{prdc.key.brand}
+										</p>
+										<h4 title="#{prdc.key.nameCode}" style="font-family: IRANSansBold;
+									    color: #0B59AA;
+									    white-space: nowrap;
+									    width: 200px;
+									    overflow: hidden;
+									    direction: rtl;
+									    text-overflow: ellipsis;
+									    text-align: center;
+										margin: auto;
+										margin-top: 20px;">
+											#{prdc.key.nameCode}
+										</h4>
+										<p style="font-family: IRANSansBold;
+										    font-size: 19px;
+										    background-color: blanchedalmond;
+										    border-radius: 10px;" >
+										<del class="d-block">#{prdc.key.price}</del>
+										</p>
+										<p style="font-family: IRANSansBold;
+										    font-size: 24px;
+										    color: green !important;
+										    background-color: darkturquoise;
+										    color: white!important;
+										    border-radius: 10px;direction: rtl;"
+											>#{prdc.key.price2}
+											<span> تومان</span>
+											</p>
+									</div>
+								</div>
+								<f:param name="productId" value="#{prdc.key.productId}" />
+								</h:link>
+							</h:panelGroup>
+				</p:dataGrid>
 	</div>
+	</div>
+	</h:form>
+	
 	</div>
 	</article>
 

@@ -1,0 +1,195 @@
+
+<ui:composition template="../WEB-INF/pages/admin-temp.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pp="http://xmlns.jcp.org/jsf/passthrough"
+	
+>
+
+	<ui:define name="headPage">
+		<style>
+body .ui-dialog {
+	padding: 0;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+	border: 1px solid #c8c8c8;
+	border-radius: 3px;
+	height: 600px !important;
+	overflow: scroll;
+}
+
+body .ui-growl {
+	top: 85px;
+	z-index: 9999 !important;
+}
+
+.bd-table-days button {
+	background-color: #f8f8f8;
+	border: 0;
+	width:;
+	margin: 0px !important;
+	font-size: 12px !important;
+}
+td{
+max-width: 300px!important;
+}
+.phed{
+margin: 5px;
+font-size: 15px;
+font-family: IRANSansBold;
+}
+</style>
+<script>
+var url = #{request}
+</script>
+</ui:define>
+	<ui:define name="mainPage">
+		  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 style="font-family: IRANSansBold;">پروفایل</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row" style="height: 400px;">
+          <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="card card-primary card-outline" style="height: 100%">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle"
+                       src="../../resources/hamkar/profile.jpg"
+                       alt="User profile picture"/>
+                </div>
+
+                <h3 class="profile-username text-center">
+                <h:outputText value="#{adminProfile.moblEntity.sellerName}" style="font-family: IRANSansBold;" rendered="#{(adminProfile.moblEntity.sellerName ne null) or (adminProfile.moblEntity.sellerName ne '')}"/>
+                 <h:outputText value="#{adminProfile.moblEntity.mobile}" style="font-family: IRANSansBold;" rendered="#{(adminProfile.moblEntity.sellerName eq null) or (adminProfile.moblEntity.sellerName eq '')}"/>
+                </h3>
+
+                <p class="text-muted text-center" style="font-family: IRANSansBold;">نوع کاربری : 
+                <h:outputText value="فروشنده" rendered="#{adminProfile.moblEntity.role eq 'MERCHANT'}" style="font-family: IRANSansNor;"/>
+                <h:outputText value="ادمین" rendered="#{adminProfile.moblEntity.role eq 'ADMIN'}" style="font-family: IRANSansNor;"/>
+                <h:outputText value="کاربر" rendered="#{(adminProfile.moblEntity.role eq 'USER') or (adminProfile.moblEntity.role eq null)}" style="font-family: IRANSansNor;"/>
+                </p>
+                 <h:panelGroup rendered="#{adminProfile.moblEntity.role eq 'MERCHANT'}">
+                <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item">
+                    <p class="phed"> تعداد بازدیدکنندگان : <b>#{adminProfile.findViewedUser()}</b></p>
+                  </li>
+                </ul>
+                 </h:panelGroup>
+
+                
+              </div>
+            </div>
+          </div>
+          <!-- /.col -->
+          
+          <div class="col-md-9">
+          
+            <div class="card" style="height: 100%;">
+              <div class="card-header p-2" style="height: 100%;">
+              <div class="card-body">
+
+                  <div class="tab-pane" id="settings">
+                   	<h:form id="form" enctype="multipart/form-data"
+										acceptcharset="UTF-8" prependId="false">
+									<p:growl id="grl" life="2000"/>
+                      <p:outputPanel id="productMain" class="ui-fluid">
+                   <h:panelGrid columns="3" style="width:100%">
+									<h:outputText value="نام و نام خانوادگی" style="margin-bottom: 30px; font-family: IRANSansBold;"/>
+									<p:inputText id="in1" value="#{adminProfile.sellerName}" placeholder="#{adminProfile.moblEntity.sellerName}" 
+									style="margin-bottom: 30px;  font-family: IRANSansNor;background: white;
+									border-radius: 15px;font-size: 20px;"/>
+									<p:message for="in1" id="msg1" />
+												
+																										
+									<h:outputText value="کد پستی" style="margin-bottom: 30px;  font-family: IRANSansBold;"/>
+									<p:inputText id="in2" value="#{adminProfile.postCode}" placeholder="#{adminProfile.moblEntity.postcode}" style="margin-bottom: 30px;  font-family: IRANSansNor;font-family: IRANSansNor;background: white;
+									border-radius: 15px;font-size: 20px;"/>
+									<p:message for="in2" id="msg2"/>
+														
+																												
+									<h:outputText value="آدرس" style="margin-bottom: 30px;  font-family: IRANSansBold;"/>
+									<p:inputTextarea id="in3" value="#{adminProfile.addres}" placeholder="#{adminProfile.moblEntity.sellerAddres}" style="margin-bottom: 30px;  font-family: IRANSansNor;font-family: IRANSansNor;background: white;
+									border-radius: 15px;font-size: 20px;"/>
+									<p:message for="in3" id="msg3"/>
+									</h:panelGrid>
+									<br/>
+												
+								<p:commandButton value="ذخیره" ajax="true" style="width:200px; font-family: IRANSansBold;border-radius: 15px;font-size: 20px;"
+														actionListener="#{adminProfile.updateUser()}"
+														styleClass="p-mt-3 ui-button-outlined p-d-block"
+														update="grl in1 in2 in3 msg1 msg2 msg3"  
+														process="@form" />
+    					</p:outputPanel>
+                    </h:form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h:form style="margin-top:60px;" rendered="#{adminProfile.moblEntity.role eq 'MERCHANT'}">
+        <div class="row">
+       <div class="col-md-12">
+            <div class="card" style="height: 100%;">
+              <div class="card-header p-2" style="height: 100%;">
+              <div class="card-body">
+              <h4 style="font-family: IRANSansBold;">بازدید کنندگان صفحات</h4>
+              								<p:dataTable id="basicDT" var="mbl"
+												value="#{adminProfile.findAllOfferByMerchant()}" widgetVar="carsTable"
+												multiViewState="true" rows="10" paginator="true"
+												paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+												rowsPerPageTemplate="5,10,15" rowKey="#{mbl.id}" 
+												emptyMessage="No cars found with given criteria" >
+
+
+												<p:column style="font-family: IRANSansBold;text-align: center;" headerText="نام صفحه" sortBy="#{mbl.id}">
+													<h:outputText style="font-family: IRANSansNor;" value="#{mbl.offerProduct.nameCode}" rendered="#{mbl.offerProduct ne null}"/>
+													<h:outputText style="font-family: IRANSansNor;" value="صفحه اصلی فروشگاه" rendered="#{mbl.offerProduct eq null}"/>
+												</p:column>
+													
+												<p:column style="font-family: IRANSansBold;text-align: center;" headerText="شماره بازدید کننده" sortBy="#{mbl.id}">
+													<h:outputText style="font-family: IRANSansNor;" value="#{mbl.offerUser.mobile}" />
+												</p:column>
+												
+												<p:column style="font-family: IRANSansBold;text-align: center;" headerText="شناسه بازدید کننده سایت" sortBy="#{mbl.id}">
+													<h:outputText style="font-family: IRANSansNor;" value="#{mbl.userTokeLoguot}" />
+												</p:column>
+																								
+												<p:column style="font-family: IRANSansBold;text-align: center;" headerText="تاریخ بازدید" sortBy="#{mbl.id}">
+													<h:outputText style="font-family: IRANSansNor;" value="#{adminProfile.convertToPersianDate(mbl.viewDate)}" />
+												</p:column>
+												
+											</p:dataTable>
+              </div>
+              </div>
+              </div>
+        </div>
+       
+      </div>
+          </h:form> 
+          </div>
+    </section>
+  </div>
+	</ui:define>
+
+	<ui:define name="footPage">
+		</ui:define>
+
+
+</ui:composition>

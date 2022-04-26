@@ -1,0 +1,2746 @@
+
+<ui:composition template="../WEB-INF/pages/admin-temp.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pp="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="headPage">
+		<style>
+body .ui-dialog {
+	padding: 0;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+	border: 1px solid #c8c8c8;
+	border-radius: 3px;
+	height: 600px !important;
+	overflow: scroll;
+}
+
+body .ui-growl {
+	top: 85px;
+	z-index: 9999 !important;
+}
+
+.bd-table-days button {
+	background-color: #f8f8f8;
+	border: 0;
+	width:;
+	margin: 0px !important;
+	font-size: 12px !important;
+}
+
+td {
+	max-width: 300px !important;
+}
+</style>
+  <style>
+  .elemansJsf{
+    margin-bottom: 30px;
+	margin-top: 10px;
+	font-size: 20px;
+	font-family: IRANSansNor;
+	border-radius: 25px!important;
+  }
+  .headerJsf{
+  font-family: IRANSansBold;
+  }
+  .selItem{
+  text-align: right!important;
+  font-size: 18px!important;
+  font-family: IRANSansNor!important;
+  }
+  .ui-fluid .ui-inputtextarea {
+    width: 100%;
+    font-size: 18px!important;
+    font-family: IRANSansNor !important;
+}
+.ui-fluid .ui-inputfield {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-size: 18px !important;
+    font-family: IRANSansNor !important;
+}
+.ui-fluid .ui-selectonemenu {
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin-top: 10px!important;
+    margin-bottom: 30px!important;
+}
+  body .ui-selectonemenu-panel .ui-selectonemenu-items .ui-selectonemenu-item {
+    margin: 0;
+    padding: 0.429rem 0.857rem;
+    background: transparent;
+    color: #333333;
+    outline: 0 none;
+    border-radius: 0;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    text-align: right !important;
+    font-size: 18px !important;
+    font-family: IRANSansNor !important;
+}
+.ui-selectonemenu label.ui-selectonemenu-label {
+    cursor: pointer;
+    text-align: center;
+    font-family: IRANSansBold !important;
+}
+  </style>
+	</ui:define>
+	<ui:define name="mainPage">
+	<h:panelGroup rendered="#{(adminProfile.moblEntity.panel eq 'A') or (adminProfile.moblEntity.panel eq 'B') or (adminProfile.moblEntity.panel eq 'C')}"> 
+		<div class="wrapper">
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<div class="container-fluid">
+						<div class="row mb-2">
+							<div class="col-sm-6">
+								<h1>ویجت‌ها</h1>
+							</div>
+							<div class="col-sm-6">
+								<ol class="breadcrumb float-sm-left">
+									<li class="breadcrumb-item"><a href="#">خانه</a></li>
+									<li class="breadcrumb-item active">ویجت‌ها</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+					<!-- /.container-fluid -->
+				</section>
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="container-fluid">
+
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card card-widget">
+									<h:form id="form" enctype="multipart/form-data"
+										acceptcharset="UTF-8" prependId="false">
+										<p:growl id="grl" life="2000" />
+
+
+										<p:outputPanel id="productMain" class="ui-fluid">
+											<h:panelGrid columns="6" style="width: 100%;">
+												<h:outputText class="headerJsf" value="انتخاب نوع کالا" />
+												<p:selectOneMenu id="in17"
+													value="#{adminProductBean.panelShow}" style="width:100%"
+													class="elemansJsf">
+													<p:ajax listener="#{adminProductBean.onPanelChange}"
+														update="productTypes" />
+													<f:selectItem class="selItem" itemLabel="آینه و کنسول"
+														itemValue="ayeneVconsole" />
+													<f:selectItem class="selItem" itemLabel="درب چوبی" itemValue="DarbChobi" />
+													<f:selectItem class="selItem" itemLabel="درب ضد سرقت"
+														itemValue="DarbZedSergat" />
+													<f:selectItem class="selItem" itemLabel="قاب عکس" itemValue="GhabAx" />
+													<f:selectItem class="selItem" itemLabel="کابینت" itemValue="Kabinet" />
+													<f:selectItem class="selItem" itemLabel="کمد بوفه کتابخانه جاکفشی"
+														itemValue="KomodBoofeKetabkhaneJakafshi" />
+													<f:selectItem class="selItem" itemLabel="Mdf" itemValue="Mdf" />
+													<f:selectItem class="selItem" itemLabel="میز عسلی" itemValue="MizAsali" />
+													<f:selectItem class="selItem" itemLabel="میز اداری" itemValue="MizEdari" />
+													<f:selectItem class="selItem" itemLabel="میز جلو مبلی"
+														itemValue="MizJeloMobli" />
+													<f:selectItem class="selItem" itemLabel="میز نهار خوری"
+														itemValue="MizNaharKhori" />
+													<f:selectItem class="selItem" itemLabel="میز تلویزیون" itemValue="MizTv" />
+													<f:selectItem class="selItem" itemLabel="مبلمان" itemValue="Moblman" />
+													<f:selectItem class="selItem" itemLabel="مجسمه" itemValue="Mojasame" />
+													<f:selectItem class="selItem" itemLabel="منبت" itemValue="Monabat" />
+													<f:selectItem class="selItem" itemLabel="پنجره" itemValue="Panjare" />
+													<f:selectItem class="selItem" itemLabel="پارتیشن" itemValue="Partition" />
+													<f:selectItem class="selItem" itemLabel="صندلی اداری"
+														itemValue="SandaliEdari" />
+													<f:selectItem class="selItem" itemLabel="سرویس خواب تک نفره"
+														itemValue="ServiceKhab1" />
+													<f:selectItem class="selItem" itemLabel="سرویس خواب دو نفره"
+														itemValue="ServiceKhab2" />
+													<f:selectItem class="selItem" itemLabel="سرویس خواب کودک"
+														itemValue="ServiceKhabKodak" />
+												</p:selectOneMenu>
+												<p:message for="in17" id="msg17" />
+												<h:outputText class="headerJsf" value="نام محصول" />
+												<p:inputTextarea class="elemansJsf" id="in1"
+													value="#{adminProductBean.nameCode}" />
+												<p:message for="in1" id="msg1" />
+												
+												<h:outputText class="headerJsf" value="رسته ها" />
+												        <p:selectCheckboxMenu id="in2000" value="#{adminProductBean.faaliats}" label="Countries" style="width:100%"
+													         class="elemansJsf"
+                               								 multiple="true" filter="true" filterMatchMode="startsWith" panelStyle="width: 15rem" scrollHeight="250">
+         													 <f:selectItem itemValue="مبلمان راحتی" itemLabel="مبلمان راحتی" />
+															<f:selectItem itemValue="مبلمان کلاسیک" itemLabel="مبلمان کلاسیک" />
+															<f:selectItem itemValue="مبلمان استیل" itemLabel="مبلمان استیل" />
+															<f:selectItem itemValue="مبلمان فضای باز"
+																itemLabel="مبلمان فضای باز" />
+															<f:selectItem itemValue="مبلمان مدرن" itemLabel="مبلمان مدرن" />
+															<f:selectItem itemValue="مبل تختخواب شو" itemLabel="مبل تختخواب شو" />
+															<f:selectItem itemValue="نهار خوری" itemLabel="نهار خوری" />
+															<f:selectItem itemValue="سرویس خواب" itemLabel="سرویس خواب" />
+															<f:selectItem itemValue="میز تلویزیون" itemLabel="میز تلویزیون" />
+															<f:selectItem itemValue="آینه و کنسول" itemLabel="آینه و کنسول" />
+															<f:selectItem itemValue="قاب عکس" itemLabel="قاب عکس" />
+															<f:selectItem itemValue="میز جلو مبلی یا میز عسلی"
+																itemLabel="میز جلو مبلی یا میز عسلی" />
+															<f:selectItem itemValue="میز اداری" itemLabel="میز اداری" />
+															<f:selectItem itemValue="صندلی اداری" itemLabel="صندلی اداری" />
+															<f:selectItem itemValue="پارتیشن" itemLabel="پارتیشن" />
+															<f:selectItem itemValue="سیسمونی" itemLabel="سیسمونی" />
+															<f:selectItem itemValue="کابینت" itemLabel="کابینت" />
+															<f:selectItem itemValue="دکوراسیون تخصصی"
+																itemLabel="دکوراسیون تخصصی" />
+															<f:selectItem itemValue="دکوراسیون معمولی"
+																itemLabel="دکوراسیون معمولی" />
+															<f:selectItem itemValue="درب های ضد سرقت"
+																itemLabel="درب های ضد سرقت" />
+															<f:selectItem itemValue="درب های چوبی" itemLabel="درب های چوبی" />
+															<f:selectItem itemValue="درب و پنجره" itemLabel="درب و پنجره" />
+															<f:selectItem itemValue="رنگکاری چوب و مصنوعات"
+																itemLabel="رنگکاری چوب و مصنوعات" />
+															<f:selectItem itemValue="منبت کاری" itemLabel="منبت کاری" />
+															<f:selectItem itemValue="کلاف سازی" itemLabel="کلاف سازی" />
+															<f:selectItem itemValue="معرق کاری" itemLabel="معرق کاری" />
+															<f:selectItem itemValue="خاتم کاری" itemLabel="خاتم کاری" />
+															<f:selectItem itemValue="خراطی" itemLabel="خراطی" />
+															<f:selectItem itemValue="رویکوبی" itemLabel="رویکوبی" />
+															<f:selectItem itemValue="نجاری" itemLabel="نجاری" />
+															<f:selectItem itemValue="چوب بری" itemLabel="چوب بری" />
+															<f:selectItem itemValue="اتاق سازی چوبی کامیون"
+																itemLabel="اتاق سازی چوبی کامیون" />
+															<f:selectItem itemValue="پرس کاری چوبی" itemLabel="پرس کاری چوبی" />
+															<f:selectItem itemValue="قالب سازی کفش و غیره"
+																itemLabel="قالب سازی کفش و غیره" />
+															<f:selectItem itemValue="جعبه سازی" itemLabel="جعبه سازی" />
+															<f:selectItem itemValue="تعمیرات" itemLabel="تعمیرات" />
+															<f:selectItem itemValue="mdf" itemLabel="mdf" />
+															<f:selectItem itemValue="بوفه" itemLabel="بوفه" />
+															<f:selectItem itemValue="ویترین" itemLabel="ویترین" />
+															<f:selectItem itemValue="صندلی چوبی" itemLabel="صندلی چوبی" />
+															<f:selectItem itemValue="کمد" itemLabel="کمد" />
+															<f:selectItem itemValue="کتابخانه" itemLabel="کتابخانه" />
+															<f:selectItem itemValue="مبلمان اداری" itemLabel="مبلمان اداری" />
+															<f:selectItem itemValue="مجسمه سازی" itemLabel="مجسمه سازی" />
+															<f:selectItem itemValue="دراور" itemLabel="دراور" />
+															<f:selectItem itemValue="جاکفشی" itemLabel="جاکفشی" />
+															<f:selectItem itemValue="مبلمان سنتی" itemLabel="مبلمان سنتی" />
+															<f:selectItem itemValue="پیراهن مبل" itemLabel="پیراهن مبل" />
+															<f:selectItem itemValue="متفرقه" itemLabel="متفرقه" />
+       													 </p:selectCheckboxMenu>
+       											<p:message for="in2000" id="msg2000" />
+
+												<h:outputText class="headerJsf" value="برند" />
+												<p:inputText class="elemansJsf" id="in2"
+													value="#{adminProductBean.brand}" />
+												<p:message for="in2" id="msg2" />
+
+												<h:outputText class="headerJsf" value="کشور" />
+												<p:inputText class="elemansJsf" id="in3"
+													value="#{adminProductBean.contry}" />
+												<p:message for="in3" id="msg3" />
+
+												<h:outputText class="headerJsf" value="ابعاد" />
+												<p:inputText class="elemansJsf" id="in4"
+													value="#{adminProductBean.abad}" />
+												<p:message for="in4" id="msg4" />
+												
+												<h:outputText class="headerJsf" value="آپارات" />
+												<p:inputTextarea class="elemansJsf" id="in4l"
+													value="#{adminProductBean.aparat}" />
+												<p:message for="in4l" id="msg4l" />
+												
+												<h:outputText class="headerJsf" value="اینستاگرام" />
+												<p:inputTextarea class="elemansJsf" id="in4ll"
+													value="#{adminProductBean.instagram}" />
+												<p:message for="in4ll" id="msg4ll" />
+												
+												
+												<h:outputText class="headerJsf" value="رنگ بندی" />
+												<p:inputText class="elemansJsf" id="in16"
+													value="#{adminProductBean.rangBandi}" />
+												<p:message for="in16" id="msg16" />
+												
+												<h:outputText class="headerJsf" value="نو یا دست دوم" />
+												<p:selectOneMenu id="in12"
+													value="#{adminProductBean.oldNew}">
+													<f:selectItem class="selItem" itemLabel="نو" itemValue="y" />
+													<f:selectItem class="selItem" itemLabel="دست دوم" itemValue="n" />
+												</p:selectOneMenu>
+												<p:message for="in12" id="msg12" />
+
+												<h:outputText class="headerJsf" value="مدت زمان تحویل" />
+												<p:spinner id="in5" value="#{adminProductBean.tahvilDay}"
+													min="1" max="100" />
+												<p:message for="in5" id="msg5" />
+
+
+												<h:outputText class="headerJsf" value="نظافت آسان" />
+												<p:selectOneMenu id="in7"
+													value="#{adminProductBean.easyNezafat}">
+													<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+													<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+												</p:selectOneMenu>
+												<p:message for="in7" id="msg7" />
+
+												<h:outputText class="headerJsf" value="موجود در انبار" />
+												<p:selectOneMenu id="in9" value="#{adminProductBean.status}">
+													<f:selectItem class="selItem" itemLabel="هست" itemValue="y" />
+													<f:selectItem class="selItem" itemLabel="نیست" itemValue="n" />
+												</p:selectOneMenu>
+												<p:message for="in9" id="msg9" />
+												
+												
+												<h:outputText class="headerJsf" value="ضمانت" />
+												<p:inputTextarea class="elemansJsf" id="in13"
+													value="#{adminProductBean.zemanat}" />
+												<p:message for="in13" id="msg13" />
+
+												<h:outputText class="headerJsf" value="وضعیت ضمانت" />
+												<p:inputTextarea class="elemansJsf" id="in14"
+													value="#{adminProductBean.guarantiStatus}" />
+												<p:message for="in14" id="msg14" />
+
+												<h:outputText class="headerJsf" value="مدت گارانتی" />
+												<p:spinner class="elemansJsf" id="in15"
+													value="#{adminProductBean.guaranyTimeMounth}" min="1"
+													max="1000" />
+												<p:message for="in15" id="msg15" />
+												
+												
+
+												<h:outputText class="headerJsf" value="قیمت اصلی" />
+												<p:inputNumber class="elemansJsf" id="in10"
+													value="#{adminProductBean.price}" thousandSeparator="," />
+												<p:message for="in10" id="msg10" />
+
+												<h:outputText class="headerJsf" value="قیمت با تخفیف" />
+												<p:inputNumber class="elemansJsf" id="in11"
+													value="#{adminProductBean.price2}" thousandSeparator="," />
+												<p:message for="in11" id="msg11" />
+												
+												<h:outputText class="headerJsf" value="توضیح" />
+												<p:inputTextarea class="elemansJsf" id="in8"
+													value="#{adminProductBean.description}" />
+												<p:message for="in8" id="msg8" />
+
+												<h:outputText class="headerJsf" value="عکس 1" />
+												<p:fileUpload id="in39p" value="#{adminProductBean.pic1}"
+													mode="simple" skinSimple="true" required="true"
+													binding="#{adminProductBean.pic1Component}"
+													validateContentType="true" accept=".jpg,.jpeg" />
+												<p:message for="in39p" id="msg39p" />
+
+												<h:outputText class="headerJsf" value="عکس 2" />
+												<p:fileUpload id="in40p" value="#{adminProductBean.pic2}"
+													mode="simple" skinSimple="true" required="true"
+													binding="#{adminProductBean.pic2Component}"
+													validateContentType="true" accept=".jpg,.jpeg" />
+												<p:message for="in40p" id="msg40p" />
+
+												<h:outputText class="headerJsf" value="عکس 3" />
+												<p:fileUpload id="in41p" value="#{adminProductBean.pic3}"
+													mode="simple" skinSimple="true" required="true"
+													binding="#{adminProductBean.pic3Component}"
+													validateContentType="true" accept=".jpg,.jpeg" />
+												<p:message for="in41p" id="msg41p" />
+
+												<h:outputText class="headerJsf" value="عکس 4" />
+												<p:fileUpload id="in42p" value="#{adminProductBean.pic4}"
+													mode="simple" skinSimple="true" required="true"
+													binding="#{adminProductBean.pic4Component}"
+													validateContentType="true" accept=".jpg,.jpeg" />
+												<p:message for="in42p" id="msg42p" />
+
+												<h:outputText class="headerJsf" value="عکس 5" />
+												<p:fileUpload id="in43p" value="#{adminProductBean.pic5}"
+													mode="simple" skinSimple="true" required="true"
+													binding="#{adminProductBean.pic5Component}"
+													validateContentType="true" accept=".jpg,.jpeg" />
+												<p:message for="in43p" id="msg43p" />
+											</h:panelGrid>
+
+											<h:panelGroup id="productTypes">
+												<p:outputPanel id="ayeneVconsole"
+													rendered="#{adminProductBean.panelShow eq 'ayeneVconsole'}">
+
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="جنس اسکلت کنسول" />
+														<p:inputTextarea class="elemansJsf" id="in18"
+															value="#{adminProductBean.jenseEskeletConsole}" />
+														<p:message for="in18" id="msg18" />
+
+														<h:outputText class="headerJsf" value="جنس پایه کنسول" />
+														<p:inputTextarea class="elemansJsf" id="in19"
+															value="#{adminProductBean.jensePayeConsole}" />
+														<p:message for="in19" id="msg19" />
+
+														<h:outputText class="headerJsf" value="قیمت کنسول" />
+														<p:inputNumber class="elemansJsf" id="in20"
+															value="#{adminProductBean.priceConsole}"
+															thousandSeparator="," />
+														<p:message for="in20" id="msg20" />
+
+														<h:outputText class="headerJsf" value="کشو کنسول" />
+														<p:selectOneMenu id="in21"
+															value="#{adminProductBean.keshoConsole}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />	
+														</p:selectOneMenu>
+														<p:message for="in21" id="msg21" />
+
+
+														<h:outputText class="headerJsf" value="تعداد کمد" />
+														<p:spinner id="in22"
+															value="#{adminProductBean.tedadKomod}" min="0" max="1000" />
+														<p:message for="in22" id="msg22" />
+
+														<h:outputText class="headerJsf" value="آینه کنسول" />
+														<p:selectOneMenu id="in23"
+															value="#{adminProductBean.ayeneConsole}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in23" id="msg23" />
+
+														<h:outputText class="headerJsf" value="تعداد آینه" />
+														<p:spinner id="in24"
+															value="#{adminProductBean.tedadAyene}" min="0" max="1000" />
+														<p:message for="in24" id="msg24" />
+
+														<h:outputText class="headerJsf" value="شکل هندسی" />
+														<p:inputTextarea class="elemansJsf" id="in25"
+															value="#{adminProductBean.shekleHendesi}" />
+														<p:message for="in25" id="msg25" />
+
+														<h:outputText class="headerJsf" value="ضخامت آینه" />
+														<p:inputText class="elemansJsf" id="in26"
+															value="#{adminProductBean.zekhamatAyene}" />
+														<p:message for="in26" id="msg26" />
+
+
+														<h:outputText class="headerJsf" value="آینه قاب" />
+														<p:selectOneMenu id="in27"
+															value="#{adminProductBean.ayeneGhab}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in27" id="msg27" />
+
+														<h:outputText class="headerJsf" value="جنس قاب" />
+														<p:inputText class="elemansJsf" id="in28"
+															value="#{adminProductBean.jenseGhab}" />
+														<p:message for="in28" id="msg28" />
+
+														<h:outputText class="headerJsf" value="ابعاد قاب آینه" />
+														<p:inputText class="elemansJsf" id="in29"
+															value="#{adminProductBean.abadGhabAyene}" />
+														<p:message for="in29" id="msg29" />
+
+														<h:outputText class="headerJsf" value="رنگ قاب آینه" />
+														<p:inputText class="elemansJsf" id="in30"
+															value="#{adminProductBean.rangGhabAyene}" />
+														<p:message for="in30" id="msg30" />
+
+														<h:outputText class="headerJsf" value="قیمت قاب آینه" />
+														<p:inputNumber class="elemansJsf" id="in31"
+															value="#{adminProductBean.priceGhabAyene}"
+															thousandSeparator="," />
+														<p:message for="in31" id="msg31" />
+
+														<h:outputText class="headerJsf" value="کمد کنسول" />
+														<p:selectOneMenu id="in32"
+															value="#{adminProductBean.komodConsole}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in32" id="msg32" />
+
+														<h:outputText class="headerJsf" value="تعداد کشو" />
+														<p:spinner id="in33"
+															value="#{adminProductBean.tedadKesho}" min="0" max="1000" />
+														<p:message for="in33" id="msg33" />
+
+														<h:outputText class="headerJsf" value="تعداد کمد" />
+														<p:spinner id="in34"
+															value="#{adminProductBean.tedadKomod}" min="0" max="1000" />
+														<p:message for="in34" id="msg34" />
+
+
+													</h:panelGrid>
+															<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToAyeneVConsol()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+											   </p:outputPanel>
+
+												<p:outputPanel id="DarbChobi"
+													rendered="#{adminProductBean.panelShow eq 'DarbChobi'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="روکش درب چوبی" />
+														<p:inputText class="elemansJsf" id="in35"
+															value="#{adminProductBean.rokeshDarbChobi}" />
+														<p:message for="in35" id="msg35" />
+
+														<h:outputText class="headerJsf" value="جنس کلاف درب چوبی" />
+														<p:inputText class="elemansJsf" id="in36"
+															value="#{adminProductBean.jenseKalafDarbChobi}" />
+														<p:message for="in36" id="msg36" />
+
+														<h:outputText class="headerJsf" value="مکان درب چوبی" />
+														<p:inputText class="elemansJsf" id="in37"
+															value="#{adminProductBean.makanDarbChobi}" />
+														<p:message for="in37" id="msg37" />
+
+														<h:outputText class="headerJsf" value="نوع رنگ درب چوبی" />
+														<p:inputText class="elemansJsf" id="in38"
+															value="#{adminProductBean.noeRangDarbChobi}" />
+														<p:message for="in38" id="msg38" />
+
+														<h:outputText class="headerJsf" value="شستشوی درب چوبی" />
+														<p:selectOneMenu id="in39"
+															value="#{adminProductBean.shostoshoDarbChobi}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in39" id="msg39" />
+
+														<h:outputText class="headerJsf" value="ضد آب درب چوبی" />
+														<p:selectOneMenu id="in40"
+															value="#{adminProductBean.zedeAbDarbChobi}">
+															<f:selectItem class="selItem" itemLabel="هست" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="نیست" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in40" id="msg40" />
+
+														<h:outputText class="headerJsf" value="cnc درب چوبی" />
+														<p:selectOneMenu id="in41"
+															value="#{adminProductBean.cncDarbChobi}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in41" id="msg41" />
+
+														<h:outputText class="headerJsf" value="ضخامت درب چوبی" />
+														<p:inputText class="elemansJsf" id="in42"
+															value="#{adminProductBean.zekhamatDarbChobi}" />
+														<p:message for="in42" id="msg42" />
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToDarbChobi()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="DarbZedSergat"
+													rendered="#{adminProductBean.panelShow eq 'DarbZedSergat'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="نام ام دی اف درب ضد سرقت" />
+														<p:inputTextarea class="elemansJsf" id="in43"
+															value="#{adminProductBean.nameMdfDarbZedSergat}" />
+														<p:message for="in43" id="msg43" />
+
+														<h:outputText class="headerJsf" value="ضخامت (میلیمتر) mdf درب ضد سرقت" />
+														<p:inputText class="elemansJsf" id="in44"
+															value="#{adminProductBean.zekhamatMdfDarbZedSergat}" />
+														<p:message for="in44" id="msg44" />
+
+														<h:outputText class="headerJsf" value="mdf از کشور" />
+														<p:inputText class="elemansJsf" id="in45"
+															value="#{adminProductBean.keshvarMdfDarbZedSergat}" />
+														<p:message for="in45" id="msg45" />
+
+														<h:outputText class="headerJsf" value="ورق فلزی داخل درب ضد سرقت (میلیمتر)" />
+														<p:inputText class="elemansJsf" id="in46"
+															value="#{adminProductBean.varagFeleziDarbZedSergat}" />
+														<p:message for="in46" id="msg46" />
+
+														<h:outputText class="headerJsf" value="قوطی بندی فلزی" />
+														<p:selectOneMenu id="in47"
+															value="#{adminProductBean.gotiBandiFeleziDarbZedSergat}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in47" id="msg47" />
+
+														<h:outputText class="headerJsf" value="ضخامت ورق فلزی چهارچوب" />
+														<p:inputText class="elemansJsf" id="in48"
+															value="#{adminProductBean.zekhamatVaragFeleziDarbZedSergat}" />
+														<p:message for="in48" id="msg48" />
+
+														<h:outputText class="headerJsf" value="CNC" />
+														<p:selectOneMenu id="in49"
+															value="#{adminProductBean.cncDarbZedSergat}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in49" id="msg49" />
+
+
+														<h:outputText class="headerJsf" value="متریال جلوگیری از صدا" />
+														<p:selectOneMenu id="in50"
+															value="#{adminProductBean.metrilJelogiriDarbZedSergat}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in50" id="msg50" />
+
+														<h:outputText class="headerJsf" value="صداگیری" />
+														<p:selectOneMenu id="in51"
+															value="#{adminProductBean.sedagiriDarbZedSergat}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in51" id="msg51" />
+
+														<h:outputText class="headerJsf" value="قفل پستچی" />
+														<p:selectOneMenu id="in52"
+															value="#{adminProductBean.goflPostchiDarbZedSergat}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in52" id="msg52" />
+
+														<h:outputText class="headerJsf" value="قابلیت نصب پستچی" />
+														<p:selectOneMenu id="in53"
+															value="#{adminProductBean.nasbPostchiDarbZedSergat}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in53" id="msg53" />
+
+														<h:outputText class="headerJsf" value="قابلیت ضد آب" />
+														<p:selectOneMenu id="in54"
+															value="#{adminProductBean.zedeAbDarbZedSergat}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in54" id="msg54" />
+
+														<h:outputText class="headerJsf" value="ضد دیلم" />
+														<p:selectOneMenu id="in55"
+															value="#{adminProductBean.zedeDeylamDarbZedSergat}">
+															<f:selectItem class="selItem" itemLabel="هست" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="نیست" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in55" id="msg55" />
+
+														<h:outputText class="headerJsf" value="روکش درب ضد سرقت" />
+														<p:inputText class="elemansJsf" id="in56"
+															value="#{adminProductBean.rokeshDarbZedSergat}" />
+														<p:message for="in56" id="msg56" />
+
+														<h:outputText class="headerJsf" value="رنگ درب ضد سرقت" />
+														<p:inputText class="elemansJsf" id="in57"
+															value="#{adminProductBean.rangDarbZedSergat}" />
+														<p:message for="in57" id="msg57" />
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToDarbZedSergat()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="GhabAx"
+													rendered="#{adminProductBean.panelShow eq 'GhabAx'}">
+
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="جنس قاب" />
+														<p:inputText class="elemansJsf" id="in58"
+															value="#{adminProductBean.jenseGabeAx}" />
+														<p:message for="in58" id="msg58" />
+
+														<h:outputText class="headerJsf" value="ابعاد قاب عکس (سانتی متر)" />
+														<p:inputText class="elemansJsf" id="in59"
+															value="#{adminProductBean.abadGabeAx}" />
+														<p:message for="in59" id="msg59" />
+
+														<h:outputText class="headerJsf" value="ابعاد مفید قاب عکس (سانتی متر)" />
+														<p:inputText class="elemansJsf" id="in60"
+															value="#{adminProductBean.abadMofidGabeAx}" />
+														<p:message for="in60" id="msg60" />
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToGhabAx()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="Kabinet"
+													rendered="#{adminProductBean.panelShow eq 'Kabinet'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="جنس کابینت" />
+														<p:inputText class="elemansJsf" id="in61"
+															value="#{adminProductBean.jenseKabinet}" />
+														<p:message for="in61" id="msg61" />
+
+														<h:outputText class="headerJsf" value="جنس صفحه کابینت" />
+														<p:inputText class="elemansJsf" id="in62"
+															value="#{adminProductBean.jenseSafeKabinet}" />
+														<p:message for="in62" id="msg62" />
+
+														<h:outputText class="headerJsf" value="کابینت mdf نوع" />
+														<p:inputText class="elemansJsf" id="in63"
+															value="#{adminProductBean.noeMdfKabinet}" />
+														<p:message for="in63" id="msg63" />
+
+														<h:outputText class="headerJsf" value="کابینت mdf ضخامت" />
+														<p:inputText class="elemansJsf" id="in64"
+															value="#{adminProductBean.zekhamateMdfKabinet}" />
+														<p:message for="in64" id="msg64" />
+
+														<h:outputText class="headerJsf" value="کابینت mdf ابعاد" />
+														<p:inputText class="elemansJsf" id="in65"
+															value="#{adminProductBean.abadMdfKabinet}" />
+														<p:message for="in65" id="msg65" />
+
+														<h:outputText class="headerJsf" value="دستگیره درب کابینت" />
+														<p:selectOneMenu id="in66"
+															value="#{adminProductBean.dastgireDarbKabinet}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in66" id="msg66" />
+
+														<h:outputText class="headerJsf" value="ریل" />
+														<p:selectOneMenu id="in67"
+															value="#{adminProductBean.reylKabinet}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in67" id="msg67" />
+
+														<h:outputText class="headerJsf" value="پایه کابینت" />
+														<p:selectOneMenu id="in68"
+															value="#{adminProductBean.payeKabinet}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in68" id="msg68" />
+
+														<h:outputText class="headerJsf" value="مگنت کابینت" />
+														<p:selectOneMenu id="in69"
+															value="#{adminProductBean.magnetKabinet}">
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+														</p:selectOneMenu>
+														<p:message for="in69" id="msg69" />
+
+														<h:outputText class="headerJsf" value="چرخ" />
+														<p:selectOneMenu id="in70"
+															value="#{adminProductBean.charkhKabinet}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in70" id="msg70" />
+
+														<h:outputText class="headerJsf" value="قیمت کابینت هر متری (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in71"
+															value="#{adminProductBean.priceMetrKabinet}"
+															thousandSeparator="," />
+														<p:message for="in71" id="msg71" />
+
+														<h:outputText class="headerJsf" value="قیمت کابینت هر متری با تخفیف (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in72"
+															value="#{adminProductBean.priceMetrTakhfifKabinet}"
+															thousandSeparator="," />
+														<p:message for="in72" id="msg72" />
+
+														<h:outputText class="headerJsf" value="جک" />
+														<p:selectOneMenu id="in73"
+															value="#{adminProductBean.jakKabinet}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in73" id="msg73" />
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToKabinet()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="KomodBoofeKetabkhaneJakafshi"
+													rendered="#{adminProductBean.panelShow eq 'KomodBoofeKetabkhaneJakafshi'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="شکل هندسی کمد" />
+														<p:inputText class="elemansJsf" id="in74"
+															value="#{adminProductBean.shekleHendesikomod}" />
+														<p:message for="in74" id="msg74" />
+
+														<h:outputText class="headerJsf" value="شکل هندسی بوفه" />
+														<p:inputText class="elemansJsf" id="in75"
+															value="#{adminProductBean.shekleHendesiBoofe}" />
+														<p:message for="in75" id="msg75" />
+
+														<h:outputText class="headerJsf" value="شکل هندسی کمد کتابخانه" />
+														<p:inputText class="elemansJsf" id="in76"
+															value="#{adminProductBean.shekleHendesiKetabkhane}" />
+														<p:message for="in76" id="msg76" />
+
+														<h:outputText class="headerJsf" value="شکل هندسی کمد جاکفشی" />
+														<p:inputText class="elemansJsf" id="in77"
+															value="#{adminProductBean.shekleHendesiJakafshi}" />
+														<p:message for="in77" id="msg77" />
+
+														<h:outputText class="headerJsf" value="جنس کمد" />
+														<p:inputText class="elemansJsf" id="in78"
+															value="#{adminProductBean.jensekomod}" />
+														<p:message for="in78" id="msg78" />
+
+														<h:outputText class="headerJsf" value="جنس بوفه" />
+														<p:inputText class="elemansJsf" id="in79"
+															value="#{adminProductBean.jenseBoofe}" />
+														<p:message for="in79" id="msg79" />
+
+														<h:outputText class="headerJsf" value="جنس کتابخانه" />
+														<p:inputText class="elemansJsf" id="in80"
+															value="#{adminProductBean.jenseKetabkhane}" />
+														<p:message for="in80" id="msg80" />
+
+														<h:outputText class="headerJsf" value="جنس جاکفشی" />
+														<p:inputText class="elemansJsf" id="in81"
+															value="#{adminProductBean.jenseJakafshi}" />
+														<p:message for="in81" id="msg81" />
+
+														<h:outputText class="headerJsf" value="ابعاد کمد" />
+														<p:inputText class="elemansJsf" id="in82"
+															value="#{adminProductBean.abadkomod}" />
+														<p:message for="in82" id="msg82" />
+
+														<h:outputText class="headerJsf" value="ابعاد بوفه" />
+														<p:inputText class="elemansJsf" id="in83"
+															value="#{adminProductBean.abadBoofe}" />
+														<p:message for="in83" id="msg83" />
+
+														<h:outputText class="headerJsf" value="ابعاد کتابخانه" />
+														<p:inputText class="elemansJsf" id="in84"
+															value="#{adminProductBean.abadKetabkhane}" />
+														<p:message for="in84" id="msg84" />
+
+														<h:outputText class="headerJsf" value="ابعاد جاکفشی" />
+														<p:inputText class="elemansJsf" id="in85"
+															value="#{adminProductBean.abadJakafshi}" />
+														<p:message for="in85" id="msg85" />
+
+														<h:outputText class="headerJsf" value="قیمت کمد (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in86"
+															value="#{adminProductBean.pricekomod}"
+															thousandSeparator="," />
+														<p:message for="in86" id="msg86" />
+
+														<h:outputText class="headerJsf" value="قیمت بوفه (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in87"
+															value="#{adminProductBean.priceBoofe}"
+															thousandSeparator="," />
+														<p:message for="in87" id="msg87" />
+
+														<h:outputText class="headerJsf" value="قیمت کتابخانه" />
+														<p:inputNumber class="elemansJsf" id="in88"
+															value="#{adminProductBean.priceKetabkhane}"
+															thousandSeparator="," />
+														<p:message for="in88" id="msg88" />
+
+														<h:outputText class="headerJsf" value="قیمت جاکفشی" />
+														<p:inputNumber class="elemansJsf" id="in89"
+															value="#{adminProductBean.priceJakafshi}"
+															thousandSeparator="," />
+														<p:message for="in89" id="msg89" />
+
+														<h:outputText class="headerJsf" value="تعداد کمد" />
+														<p:spinner id="in90"
+															value="#{adminProductBean.tedadkomod}" min="0" max="1000" />
+														<p:message for="in90" id="msg90" />
+
+														<h:outputText class="headerJsf" value="تعداد بوفه" />
+														<p:spinner id="in91"
+															value="#{adminProductBean.tedadBoofe}" min="0" max="1000" />
+														<p:message for="in91" id="msg91" />
+
+														<h:outputText class="headerJsf" value="تعداد کتابخانه" />
+														<p:spinner id="in92"
+															value="#{adminProductBean.tedadKetabkhane}" min="0"
+															max="1000" />
+														<p:message for="in92" id="msg92" />
+
+														<h:outputText class="headerJsf" value="تعداد جاکفشی" />
+														<p:spinner id="in93"
+															value="#{adminProductBean.tedadJakafshi}" min="0"
+															max="1000" />
+														<p:message for="in93" id="msg93" />
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertKomodBoofeKetabkhaneJakafshi()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="Mdf"
+													rendered="#{adminProductBean.panelShow eq 'Mdf'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="ضخامت Mdf" />
+														<p:inputText class="elemansJsf" id="in94"
+															value="#{adminProductBean.zekhametMdf}" />
+														<p:message for="in94" id="msg94" />
+
+														<h:outputText class="headerJsf" value="ابعاد Mdf" />
+														<p:inputText class="elemansJsf" id="in95" value="#{adminProductBean.abadMdf}" />
+														<p:message for="in95" id="msg95" />
+
+														<h:outputText class="headerJsf" value="قیمت هر متر Mdf" />
+														<p:inputNumber class="elemansJsf" id="in96"
+															value="#{adminProductBean.priceMetrMdf}"
+															thousandSeparator="," />
+														<p:message for="in96" id="msg96" />
+
+														<h:outputText class="headerJsf" value="قیمت هر متر Mdf با تخفیف" />
+														<p:inputNumber class="elemansJsf" id="in97"
+															value="#{adminProductBean.priceTakhfifMetrMdf}"
+															thousandSeparator="," />
+														<p:message for="in97" id="msg97" />
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertMdf()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="MizAsali"
+													rendered="#{adminProductBean.panelShow eq 'MizAsali'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="شکل هندسی میز جلو عسلی" />
+														<p:inputText class="elemansJsf" id="in98"
+															value="#{adminProductBean.sheklehendesiMizJeJeloAsali}" />
+														<p:message for="in98" id="msg98" />
+
+														<h:outputText class="headerJsf" value="تعداد (چند تکه)" />
+														<p:spinner id="in99"
+															value="#{adminProductBean.tedadMizJeJeloAsali}" min="0"
+															max="1000" />
+														<p:message for="in99" id="msg99" />
+
+														<h:outputText class="headerJsf" value="جنس اسکلت میز عسلی" />
+														<p:inputText class="elemansJsf" id="in100"
+															value="#{adminProductBean.jenseEskeletMizJeJeloAsali}" />
+														<p:message for="in100" id="msg100" />
+
+														<h:outputText class="headerJsf" value="جنس پایه میز عسلی" />
+														<p:inputText class="elemansJsf" id="in101"
+															value="#{adminProductBean.jensePayeMizJeJeloAsali}" />
+														<p:message for="in101" id="msg101" />
+
+														<h:outputText class="headerJsf" value="شیشه" />
+														<p:selectOneMenu id="in102"
+															value="#{adminProductBean.shisheMizJeJeloAsali}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+															
+														</p:selectOneMenu>
+														<p:message for="in102" id="msg102" />
+
+														<h:outputText class="headerJsf" value="نوع شیشه" />
+														<p:inputText class="elemansJsf" id="in103"
+															value="#{adminProductBean.noeShisheMizJeJeloAsali}" />
+														<p:message for="in103" id="msg103" />
+
+														<h:outputText class="headerJsf" value="قیمت شیشه (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in104"
+															value="#{adminProductBean.priceShisheMizJeJeloAsali}"
+															thousandSeparator="," />
+														<p:message for="in104" id="msg104" />
+
+														<h:outputText class="headerJsf" value="توضیحات میز عسلی" />
+														<p:inputTextarea class="elemansJsf" id="in105"
+															value="#{adminProductBean.descriptionMizJeJeloAsali}" />
+														<p:message for="in105" id="msg105" />
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToMizAsali()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="MizEdari"
+													rendered="#{adminProductBean.panelShow eq 'MizEdari'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="شکل هندسی میز اداری" />
+														<p:inputText class="elemansJsf" id="in106"
+															value="#{adminProductBean.sheklehendesiMizٍEdari}" />
+														<p:message for="in106" id="msg106" />
+
+														<h:outputText class="headerJsf" value="تعداد چند تکه میز اداری" />
+														<p:spinner id="in107"
+															value="#{adminProductBean.tedadChantekeMizٍEdari}"
+															min="0" max="1000" />
+														<p:message for="in107" id="msg107" />
+
+														<h:outputText class="headerJsf" value="جنس اسکلت میز اداری" />
+														<p:inputText class="elemansJsf" id="in108"
+															value="#{adminProductBean.jenseEskeletMizٍEdari}" />
+														<p:message for="in108" id="msg108" />
+
+
+														<h:outputText class="headerJsf" value="جنس پایه میز اداری" />
+														<p:inputText class="elemansJsf" id="in109"
+															value="#{adminProductBean.jensePayeMizٍEdari}" />
+														<p:message for="in109" id="msg109" />
+
+														<h:outputText class="headerJsf" value="شیشه" />
+														<p:selectOneMenu id="in110"
+															value="#{adminProductBean.shisheMizٍEdari}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in110" id="msg110" />
+
+														<h:outputText class="headerJsf" value="نوع شیشه میز اداری" />
+														<p:inputText class="elemansJsf" id="in111"
+															value="#{adminProductBean.noeShisheMizٍEdari}" />
+														<p:message for="in111" id="msg111" />
+
+														<h:outputText class="headerJsf" value="قیمت شیشه میز اداری (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in112"
+															value="#{adminProductBean.priceShisheMizٍEdari}"
+															thousandSeparator="," />
+														<p:message for="in112" id="msg112" />
+
+														<h:outputText class="headerJsf" value="شیشه ابزار خورده است ؟" />
+														<p:selectOneMenu id="in113"
+															value="#{adminProductBean.shisheAbzarMizٍEdari}">
+															<f:selectItem class="selItem" itemLabel="هست" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="نیست" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in113" id="msg113" />
+
+														<h:outputText class="headerJsf" value="کشو" />
+														<p:selectOneMenu id="in114"
+															value="#{adminProductBean.keshoMizٍEdari}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in114" id="msg114" />
+
+														<h:outputText class="headerJsf" value="تعداد کشو" />
+														<p:spinner id="in115"
+															value="#{adminProductBean.tedadkeshoMizٍEdari}" min="0"
+															max="1000" />
+														<p:message for="in115" id="msg115" />
+
+														<h:outputText class="headerJsf" value="کمد" />
+														<p:selectOneMenu id="in116"
+															value="#{adminProductBean.komodMizٍEdari}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in116" id="msg116" />
+
+														<h:outputText class="headerJsf" value="تعداد کمد" />
+														<p:spinner id="in117"
+															value="#{adminProductBean.tedadkomodMizٍEdari}" min="0"
+															max="1000" />
+														<p:message for="in117" id="msg117" />
+
+														<h:outputText class="headerJsf" value="فضای لوازم جانبی" />
+														<p:selectOneMenu id="in118"
+															value="#{adminProductBean.fazayeLavazemJanebiMizٍEdari}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in118" id="msg118" />
+
+														<h:outputText class="headerJsf"
+															value="توضیحات لوازم جانبی" />
+														<p:inputTextarea class="elemansJsf" id="in119"
+															value="#{adminProductBean.descriptionfazayeLavazemJanebiMizٍEdari}" />
+														<p:message for="in119" id="msg119" />
+
+													</h:panelGrid>
+
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToMizEdari()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="MizJeloMobli"
+													rendered="#{adminProductBean.panelShow eq 'MizJeloMobli'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="شکل هندسی میز جلو مبلی‬" />
+														<p:inputText class="elemansJsf" id="in120"
+															value="#{adminProductBean.sheklehendesiMizJeloMobli}" />
+														<p:message for="in120" id="msg120" />
+
+														<h:outputText class="headerJsf" value="تعداد (چند تکه)" />
+														<p:spinner id="in121"
+															value="#{adminProductBean.tedadMizJeloMobli}" min="0"
+															max="1000" />
+														<p:message for="in121" id="msg121" />
+
+														<h:outputText class="headerJsf" value="جنس اسکلت میز جلو مبلی" />
+														<p:inputText class="elemansJsf" id="in122"
+															value="#{adminProductBean.jenseEskeletMizJeloMobli}" />
+														<p:message for="in122" id="msg122" />
+
+														<h:outputText class="headerJsf" value="جنس پایه میز جلو مبلی" />
+														<p:inputText class="elemansJsf" id="in123"
+															value="#{adminProductBean.jensePayeMizJeloMobli}" />
+														<p:message for="in123" id="msg123" />
+
+														<h:outputText class="headerJsf" value="ابعاد میز جلو مبلی" />
+														<p:inputText class="elemansJsf" id="in124"
+															value="#{adminProductBean.abadMizJeloMobli}" />
+														<p:message for="in124" id="msg124" />
+
+														<h:outputText class="headerJsf" value="رنگ میز جلو مبلی" />
+														<p:inputText class="elemansJsf" id="in125"
+															value="#{adminProductBean.rangMizJeloMobli}" />
+														<p:message for="in125" id="msg125" />
+
+														<h:outputText class="headerJsf" value="قیمت میز جلو مبلی (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in126"
+															value="#{adminProductBean.priceMizJeloMobli}"
+															thousandSeparator="," />
+														<p:message for="in126" id="msg126" />
+
+														<h:outputText class="headerJsf" value="شیشه" />
+														<p:selectOneMenu id="in127"
+															value="#{adminProductBean.shisheMizJeloMobli}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in127" id="msg127" />
+
+														<h:outputText class="headerJsf" value="نوع شیشه" />
+														<p:inputText class="elemansJsf" id="in128"
+															value="#{adminProductBean.noeShisheMizJeloMobli}" />
+														<p:message for="in128" id="msg128" />
+
+														<h:outputText class="headerJsf" value="قیمت شیشه (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in129"
+															value="#{adminProductBean.priceShisheMizJeloMobli}"
+															thousandSeparator="," />
+														<p:message for="in129" id="msg129" />
+
+														<h:outputText class="headerJsf" value="شیشه ابزار خورده است ؟" />
+														<p:selectOneMenu id="in130"
+															value="#{adminProductBean.shisheAbzarMizJeloMobli}">
+															<f:selectItem class="selItem" itemLabel="هست" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="نیست" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in130" id="msg130" />
+
+													</h:panelGrid>
+
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToMizJeloMobli()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="MizNaharKhori"
+													rendered="#{adminProductBean.panelShow eq 'MizNaharKhori'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="ظرفیت نهار خوری (تعداد)" />
+														<p:spinner id="in131"
+															value="#{adminProductBean.tedadMizNaharKhori}" min="0"
+															max="1000" />
+														<p:message for="in131" id="msg131" />
+
+														<h:outputText class="headerJsf" value="ساختار نهار خوری" />
+														<p:inputText class="elemansJsf" id="in132"
+															value="#{adminProductBean.sakhtarMizNaharKhori}" />
+														<p:message for="in132" id="msg132" />
+
+														<h:outputText class="headerJsf" value="توضیحات ساختار نهار خوری" />
+														<p:inputText class="elemansJsf" id="in133"
+															value="#{adminProductBean.descriptionMizNaharKhori}" />
+														<p:message for="in133" id="msg133" />
+
+														<h:outputText class="headerJsf" value="شکل هندسی میز نهار خوری" />
+														<p:inputText class="elemansJsf" id="in134"
+															value="#{adminProductBean.sheklehendesiMizNaharKhori}" />
+														<p:message for="in134" id="msg134" />
+
+
+														<h:outputText class="headerJsf" value="جنس صفحه میز نهار خوری" />
+														<p:inputText class="elemansJsf" id="in135"
+															value="#{adminProductBean.jenseSafeMizNaharKhori}" />
+														<p:message for="in135" id="msg135" />
+
+
+														<h:outputText class="headerJsf" value="جنس اسکلت میز نهار خوری" />
+														<p:inputText class="elemansJsf" id="in136"
+															value="#{adminProductBean.jenseEskeletMizNaharKhori}" />
+														<p:message for="in136" id="msg136" />
+
+														<h:outputText class="headerJsf" value="جنس پایِه نهار خوری" />
+														<p:inputText class="elemansJsf" id="in137"
+															value="#{adminProductBean.jensePayeMizNaharKhori}" />
+														<p:message for="in137" id="msg137" />
+
+														<h:outputText class="headerJsf" value="شیشه" />
+														<p:selectOneMenu id="in138"
+															value="#{adminProductBean.shisheMizNaharKhori}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in138" id="msg138" />
+
+														<h:outputText class="headerJsf" value="رنگ شیشه" />
+														<p:inputText class="elemansJsf" id="in139"
+															value="#{adminProductBean.rangeShisheMizNaharKhori}" />
+														<p:message for="in139" id="msg139" />
+
+														<h:outputText class="headerJsf" value="میلی متر) ضخامت شیشه" />
+														<p:inputText id="in140"
+															value="#{adminProductBean.zekhamatShisheMizNaharKhori}" />
+														<p:message for="in140" id="msg140" />
+
+														<h:outputText class="headerJsf" value="قیمت شیشه (تومان)" />
+														<p:inputNumber id="in141"
+															value="#{adminProductBean.priceShisheMizNaharKhori}"
+															thousandSeparator="," />
+														<p:message for="in141" id="msg141" />
+
+														<h:outputText class="headerJsf" value="شیشه ابزار خور است ؟" />
+														<p:selectOneMenu id="in142"
+															value="#{adminProductBean.shisheAbzarMizNaharKhori}">
+															<f:selectItem class="selItem" itemLabel="هست" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="نیست" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in142" id="msg142" />
+
+														<h:outputText class="headerJsf" value="تعداد صندلی میز نهارخوری" />
+														<p:spinner id="in143"
+															value="#{adminProductBean.tedadSandaliMizNaharKhori}"
+															min="0" max="1000" />
+														<p:message for="in143" id="msg143" />
+
+														<h:outputText class="headerJsf" value="جنس فوم صندلی" />
+														<p:inputText class="elemansJsf" id="in144"
+															value="#{adminProductBean.jenseFomSandaliMizNaharKhori}" />
+														<p:message for="in144" id="msg144" />
+
+														<h:outputText class="headerJsf" value="جنس اسفنج صندلی" />
+														<p:inputText class="elemansJsf" id="in145"
+															value="#{adminProductBean.jenseEsfangSandaliMizNaharKhori}" />
+														<p:message for="in145" id="msg145" />
+
+														<h:outputText class="headerJsf" value="جنس اسکلت صندلی" />
+														<p:inputText class="elemansJsf" id="in146"
+															value="#{adminProductBean.jenseEskeletSandaliMizNaharKhori}" />
+														<p:message for="in146" id="msg146" />
+
+														<h:outputText class="headerJsf" value="جنس  پایِه صندلی" />
+														<p:inputText class="elemansJsf" id="in147"
+															value="#{adminProductBean.jensePayeSandaliMizNaharKhori}" />
+														<p:message for="in147" id="msg147" />
+
+														<h:outputText class="headerJsf" value="آیاپایِه صندلی قابلیت انتخاب رنگ دارد ؟" />
+														<p:selectOneMenu id="in148"
+															value="#{adminProductBean.payeSandaliRangMizNaharKhori}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in148" id="msg148" />
+
+														<h:outputText class="headerJsf" value="رنگ  پایِه صندلی" />
+														<p:inputText class="elemansJsf" id="in149"
+															value="#{adminProductBean.rangPayeSandaliMizNaharKhori}" />
+														<p:message for="in149" id="msg149" />
+
+														<h:outputText class="headerJsf" value="جنس  پارچه صندلی" />
+														<p:inputText class="elemansJsf" id="in150"
+															value="#{adminProductBean.jenseParcheSandaliMizNaharKhori}" />
+														<p:message for="in150" id="msg150" />
+
+														<h:outputText class="headerJsf" value="نام پارچه صندلی" />
+														<p:inputText class="elemansJsf" id="in151"
+															value="#{adminProductBean.nameParcheSandaliMizNaharKhori}" />
+														<p:message for="in151" id="msg151" />
+
+														<h:outputText class="headerJsf" value="آیا پارچه صندلی قابلیت انتخاب رنگ دارد ؟" />
+														<p:selectOneMenu id="in152"
+															value="#{adminProductBean.rangSelParcheSandaliMizNaharKhori}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in152" id="msg152" />
+
+														<h:outputText class="headerJsf" value="رنگ پارچه" />
+														<p:inputText class="elemansJsf" id="in153"
+															value="#{adminProductBean.rangParcheSandaliMizNaharKhori}" />
+														<p:message for="in153" id="msg153" />
+
+
+													</h:panelGrid>
+
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToMizNaharKhori()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="MizTv"
+													rendered="#{adminProductBean.panelShow eq 'MizTv'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="جنس اسکلت میز تلویزیون" />
+														<p:inputText class="elemansJsf" id="in154"
+															value="#{adminProductBean.jenseEskeletMizTv}" />
+														<p:message for="in154" id="msg154" />
+
+														<h:outputText class="headerJsf" value="ابعاد میز تلویزیون" />
+														<p:inputText class="elemansJsf" id="in155"
+															value="#{adminProductBean.abadMizTv}" />
+														<p:message for="in155" id="msg155" />
+
+														<h:outputText class="headerJsf" value="میز تلویزیون مربوط به تلویزیون (اینچ)" />
+														<p:spinner id="in156"
+															value="#{adminProductBean.mizMarbotTvInch}" min="0"
+															max="1000" />
+														<p:message for="in156" id="msg156" />
+
+														<h:outputText class="headerJsf" value="رنگ میز تلویزیون" />
+														<p:inputText class="elemansJsf" id="in155x"
+															value="#{adminProductBean.rangMizTv}" />
+														<p:message for="in155x" id="msg155x" />
+
+														<h:outputText class="headerJsf" value="قابلیت تغییر رنگ میز تلویزیون" />
+														<p:selectOneMenu id="in156x"
+															value="#{adminProductBean.gabeliatRangMizTv}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in156x" id="msg156x" />
+
+														<h:outputText class="headerJsf" value="رنگ اول میز تلویزیون" />
+														<p:inputText class="elemansJsf" id="in157"
+															value="#{adminProductBean.rangAvalMizTv}" />
+														<p:message for="in157" id="msg157" />
+
+														<h:outputText class="headerJsf" value="رنگ دوم میز تلویزیون" />
+														<p:inputText class="elemansJsf" id="in158"
+															value="#{adminProductBean.rangDovomMizTv}" />
+														<p:message for="in158" id="msg158" />
+
+														<h:outputText class="headerJsf" value="کشو" />
+														<p:selectOneMenu id="in159"
+															value="#{adminProductBean.kesho}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in159" id="msg159" />
+
+														<h:outputText class="headerJsf" value="تعداد کشو" />
+														<p:spinner id="in160"
+															value="#{adminProductBean.tedadkesho}" min="0" max="1000" />
+														<p:message for="in160" id="msg160" />
+
+														<h:outputText class="headerJsf" value="جنس پایه" />
+														<p:inputText class="elemansJsf" id="in161"
+															value="#{adminProductBean.jensePayeMizTv}" />
+														<p:message for="in161" id="msg161" />
+
+														<h:outputText class="headerJsf" value="رنگ پایه" />
+														<p:inputText id="in162"
+															value="#{adminProductBean.rangPayeMizTv}" />
+														<p:message for="in162" id="msg162" />
+
+														<h:outputText class="headerJsf" value="فضای لوازم جانبی" />
+														<p:selectOneMenu id="in163"
+															value="#{adminProductBean.fazayeLavazemJanebi}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in163" id="msg163" />
+
+														<h:outputText class="headerJsf" value="توضیحات لوازم جانبی" />
+														<p:inputTextarea class="elemansJsf" id="in164"
+															value="#{adminProductBean.descriptionLavazemJanebi}" />
+														<p:message for="in164" id="msg164" />
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToMizTv()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+
+												<p:outputPanel id="Moblman"
+													rendered="#{adminProductBean.panelShow eq 'Moblman'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="نوع مبلمان" />
+														<p:inputText class="elemansJsf" id="in165"
+															value="#{adminProductBean.noeMobl}" />
+														<p:message for="in165" id="msg165" />
+
+														<h:outputText class="headerJsf" value="تعداد مبل" />
+														<p:spinner id="in166"
+															value="#{adminProductBean.tedadMobl}" min="0" max="1000" />
+														<p:message for="in166" id="msg166" />
+
+														<h:outputText class="headerJsf" value="ساختار مبل" />
+														<p:inputText class="elemansJsf" id="in167"
+															value="#{adminProductBean.sakhtarMobl}" />
+														<p:message for="in167" id="msg167" />
+
+														<h:outputText class="headerJsf" value="جنس فوم" />
+														<p:inputText class="elemansJsf" id="in168"
+															value="#{adminProductBean.jenseFome}" />
+														<p:message for="in168" id="msg168" />
+
+														<h:outputText class="headerJsf" value="جنس اسفنج" />
+														<p:inputText class="elemansJsf" id="in169"
+															value="#{adminProductBean.jenseEsfanj}" />
+														<p:message for="in169" id="msg169" />
+
+														<h:outputText class="headerJsf" value="جنس اسکلت" />
+														<p:inputText id="in170"
+															value="#{adminProductBean.jenseEskelet}" />
+														<p:message for="in170" id="msg170" />
+
+														<h:outputText class="headerJsf" value="جنس پایه" />
+														<p:inputText class="elemansJsf" id="in171"
+															value="#{adminProductBean.jensePaye}" />
+														<p:message for="in171" id="msg171" />
+
+														<h:outputText class="headerJsf" value="قابلیت انتخاب رنگ" />
+														<p:selectOneMenu id="in172"
+															value="#{adminProductBean.enetekhabRangPaye}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in172" id="msg172" />
+
+														<h:outputText class="headerJsf" value="رنگ پایه" />
+														<p:inputText class="elemansJsf" id="in173"
+															value="#{adminProductBean.rangPaye}" />
+														<p:message for="in173" id="msg173" />
+
+														<h:outputText class="headerJsf" value="جنس پارچه" />
+														<p:inputText class="elemansJsf" id="in174"
+															value="#{adminProductBean.jenseParche}" />
+														<p:message for="in174" id="msg174" />
+
+
+														<h:outputText class="headerJsf" value="نام پارچه" />
+														<p:inputText class="elemansJsf" id="in175"
+															value="#{adminProductBean.nameParche}" />
+														<p:message for="in175" id="msg175" />
+
+														<h:outputText class="headerJsf" value="انتخاب رنگ پارچه" />
+														<p:selectOneMenu id="in176"
+															value="#{adminProductBean.enetekhabRangParche}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in176" id="msg176" />
+
+														<h:outputText class="headerJsf" value="رنگ پارچه" />
+														<p:inputText class="elemansJsf" id="in177"
+															value="#{adminProductBean.rangParche}" />
+														<p:message for="in177" id="msg177" />
+
+														<h:outputText class="headerJsf" value="مکانیزم تخت شو" />
+														<p:selectOneMenu id="in178"
+															value="#{adminProductBean.mekanizmTakhtsho}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in178" id="msg178" />
+
+														<h:outputText class="headerJsf" value="توضیح مکانیزم تخت شو" />
+														<p:inputTextarea class="elemansJsf" id="in180"
+															value="#{adminProductBean.descriptionMekanizmTakhtsho}" />
+														<p:message for="in180" id="msg180" />
+
+														<h:outputText class="headerJsf" value="کوسن" />
+														<p:selectOneMenu id="in181"
+															value="#{adminProductBean.kosan}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in181" id="msg181" />
+
+														<h:outputText class="headerJsf" value="تعداد کوسن" />
+														<p:spinner id="in182"
+															value="#{adminProductBean.tedadKosan}" min="0" max="1000" />
+														<p:message for="in182" id="msg182" />
+
+														<h:outputText class="headerJsf" value="ابعاد کوسن بزرگ" />
+														<p:inputText class="elemansJsf" id="in183"
+															value="#{adminProductBean.abadKosanBozorg}" />
+														<p:message for="in183" id="msg183" />
+
+														<h:outputText class="headerJsf" value="ابعاد کوسن کوچک" />
+														<p:inputText class="elemansJsf" id="in184"
+															value="#{adminProductBean.abadKosanKochak}" />
+														<p:message for="in184" id="msg184" />
+
+														<h:outputText class="headerJsf" value="مدل کوسن" />
+														<p:inputText class="elemansJsf" id="in185"
+															value="#{adminProductBean.modelKosan}" />
+														<p:message for="in185" id="msg185" />
+
+														<h:outputText class="headerJsf" value="جنس پارچه کوسن" />
+														<p:inputText class="elemansJsf" id="in186"
+															value="#{adminProductBean.jenseParcheKosan}" />
+														<p:message for="in186" id="msg186" />
+
+														<h:outputText class="headerJsf" value="رنگ پارچه کوسن" />
+														<p:inputText class="elemansJsf" id="in187"
+															value="#{adminProductBean.rangeParcheKosan}" />
+														<p:message for="in187" id="msg187" />
+
+														<h:outputText class="headerJsf" value="دارای میز" />
+														<p:selectOneMenu id="in188"
+															value="#{adminProductBean.miz}">
+															<f:selectItem class="selItem" itemLabel="هست" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="نیست" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in188" id="msg188" />
+
+
+														<h:outputText class="headerJsf" value="تعداد میز" />
+														<p:spinner id="in189" value="#{adminProductBean.tedadMiz}"
+															min="0" max="1000" />
+														<p:message for="in189" id="msg189" />
+
+														<h:outputText class="headerJsf" value="ابعاد میز" />
+														<p:inputText class="elemansJsf" id="in190"
+															value="#{adminProductBean.abadMiz}" />
+														<p:message for="in190" id="msg190" />
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToMoblman()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="Mojasame"
+													rendered="#{adminProductBean.panelShow eq 'Mojasame'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText  class="headerJsf" value="جنس مجسمه" />
+														<p:inputText class="elemansJsf" id="in191"
+															value="#{adminProductBean.jenseMojasame}" />
+														<p:message for="in191" id="msg191" />
+
+														<h:outputText class="headerJsf" value="ابعاد مجسمه (سانتی متر)" />
+														<p:inputText class="elemansJsf" id="in192"
+															value="#{adminProductBean.abadMojasame}" />
+														<p:message for="in192" id="msg192" />
+
+														<h:outputText class="headerJsf" value="مجسمه قابلیت شستشو دارد ؟" />
+														<p:selectOneMenu id="in193"
+															value="#{adminProductBean.shostoshoMojasame}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in193" id="msg193" />
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToMojasame()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="Monabat"
+													rendered="#{adminProductBean.panelShow eq 'Monabat'}">
+
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="منبت mdf نام" />
+														<p:inputText class="elemansJsf" id="in194"
+															value="#{adminProductBean.nameMdfMonabat}" />
+														<p:message for="in194" id="msg194" />
+
+														<h:outputText class="headerJsf" value="منبت mdf ضخامت" />
+														<p:inputText class="elemansJsf" id="in195"
+															value="#{adminProductBean.zekhamatMdfMonabat}" />
+														<p:message for="in195" id="msg195" />
+
+														<h:outputText class="headerJsf" value="از کشور mdf" />
+														<p:inputText class="elemansJsf" id="in196"
+															value="#{adminProductBean.keshvarMdfMonabat}" />
+														<p:message for="in196" id="msg196" />
+
+														<h:outputText class="headerJsf" value="نوع منبت" />
+														<p:inputText class="elemansJsf" id="in197"
+															value="#{adminProductBean.noeMonabat}" />
+														<p:message for="in197" id="msg197" />
+
+														<h:outputText class="headerJsf" value="ابعاد منبت" />
+														<p:inputText class="elemansJsf" id="in198"
+															value="#{adminProductBean.abadMonabat}" />
+														<p:message for="in198" id="msg198" />
+
+														<h:outputText class="headerJsf" value="جنس منبت" />
+														<p:inputText class="elemansJsf" id="in199"
+															value="#{adminProductBean.jenseMonabat}" />
+														<p:message for="in199" id="msg199" />
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToMonabat()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="Panjare"
+													rendered="#{adminProductBean.panelShow eq 'Panjare'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="متریال پنجره" />
+														<p:inputText class="elemansJsf" id="in200"
+															value="#{adminProductBean.metrialPanjare}" />
+														<p:message for="in200" id="msg200" />
+
+														<h:outputText class="headerJsf" value="نوع رنگ پنجره" />
+														<p:inputText class="elemansJsf" id="in201"
+															value="#{adminProductBean.noeRangPanjare}" />
+														<p:message for="in201" id="msg201" />
+
+														<h:outputText class="headerJsf" value="جنس کلاف پنجره" />
+														<p:inputText class="elemansJsf" id="in202"
+															value="#{adminProductBean.jenseKalafPanjare}" />
+														<p:message for="in202" id="msg202" />
+
+														<h:outputText class="headerJsf" value="پنجره مورد استفاده در مکان هایی مثل" />
+														<p:inputText class="elemansJsf" id="in203"
+															value="#{adminProductBean.makanPanjare}" />
+														<p:message for="in203" id="msg203" />
+
+														<h:outputText class="headerJsf" value="CNC" />
+														<p:selectOneMenu id="in204"
+															value="#{adminProductBean.cncPanjare}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in204" id="msg204" />
+
+														<h:outputText class="headerJsf" value="قابلیت ضد آب" />
+														<p:selectOneMenu id="in205"
+															value="#{adminProductBean.zedeAbPanjare}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in205" id="msg205" />
+
+														<h:outputText class="headerJsf" value="قابلیت شستشو" />
+														<p:selectOneMenu id="in206"
+															value="#{adminProductBean.shostoshoPanjare}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in206" id="msg206" />
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToPanjare()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+
+												<p:outputPanel id="Partition"
+													rendered="#{adminProductBean.panelShow eq 'Partition'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="جنس ستون پارتیشن" />
+														<p:inputText class="elemansJsf" id="in207"
+															value="#{adminProductBean.jenseSotonPartishen}" />
+														<p:message for="in207" id="msg207" />
+
+														<h:outputText class="headerJsf" value="جنس پنل های پارتیشن" />
+														<p:inputText class="elemansJsf" id="in208"
+															value="#{adminProductBean.jensePanelPartishen}" />
+														<p:message for="in208" id="msg208" />
+
+														<h:outputText class="headerJsf" value="جنس نوار لبه های کار پارتیشن" />
+														<p:inputText class="elemansJsf" id="in209"
+															value="#{adminProductBean.jenseLabePartishen}" />
+														<p:message for="in209" id="msg209" />
+
+														<h:outputText class="headerJsf" value="رنگ پارتیشن" />
+														<p:inputText class="elemansJsf" id="in210"
+															value="#{adminProductBean.rangPartishen}" />
+														<p:message for="in210" id="msg210" />
+
+														<h:outputText class="headerJsf" value="نوع ترکیب پارتیشن" />
+														<p:inputText class="elemansJsf" id="in211"
+															value="#{adminProductBean.noeTarkibPartishen}" />
+														<p:message for="in211" id="msg211" />
+
+														<h:outputText class="headerJsf" value="رنگ پرده" />
+														<p:inputText class="elemansJsf" id="in212"
+															value="#{adminProductBean.rangPardePartishen}" />
+														<p:message for="in212" id="msg212" />
+
+														<h:outputText class="headerJsf" value="آیا این پارتیشن به صورت ترکیبی است " />
+														<p:selectOneMenu id="in213"
+															value="#{adminProductBean.tarkibiPartishen}">
+															<f:selectItem class="selItem" itemLabel="هست" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="نیست" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in213" id="msg213" />
+
+														<h:outputText class="headerJsf" value="آیا در این پارتیشن قابلیت اجرای پرده است ؟" />
+														<p:selectOneMenu id="in214"
+															value="#{adminProductBean.ejrayePardePartishen}">
+															<f:selectItem class="selItem" itemLabel="هست" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="نیست" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in214" id="msg214" />
+
+														<h:outputText class="headerJsf" value="(تومان) قیمت پارتیشن هر متری" />
+														<p:inputNumber class="elemansJsf" id="in215"
+															value="#{adminProductBean.priceMetrPartishen}"
+															thousandSeparator="," />
+														<p:message for="in215" id="msg215" />
+
+														<h:outputText class="headerJsf" value="(تومان) با تخفیف قیمت پارتیشن هر متری" />
+														<p:inputNumber class="elemansJsf" id="in216"
+															value="#{adminProductBean.priceTakhfifMetrPartishen}"
+															thousandSeparator="," />
+														<p:message for="in216" id="msg216" />
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToPartition()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="SandaliEdari"
+													rendered="#{adminProductBean.panelShow eq 'SandaliEdari'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="نوع جنس صندلی اداری" />
+														<p:inputText class="elemansJsf" id="in217"
+															value="#{adminProductBean.noeJenseSandaliEdari}" />
+														<p:message for="in217" id="msg217" />
+
+														<h:outputText class="headerJsf" value="ابعاد صندلی اداری" />
+														<p:inputText class="elemansJsf" id="in218"
+															value="#{adminProductBean.abadSandaliEdari}" />
+														<p:message for="in218" id="msg218" />
+
+														<h:outputText class="headerJsf" value="رنگ صندلی اداری" />
+														<p:inputText class="elemansJsf" id="in219"
+															value="#{adminProductBean.rangSandaliEdari}" />
+														<p:message for="in219" id="msg219" />
+
+														<h:outputText class="headerJsf" value="جنس پایه صندلی اداری" />
+														<p:inputText class="elemansJsf" id="in220"
+															value="#{adminProductBean.jensePayeSandaliEdari}" />
+														<p:message for="in220" id="msg220" />
+
+														<h:outputText class="headerJsf" value="نوع صندلی" />
+														<p:inputText class="elemansJsf" id="in221"
+															value="#{adminProductBean.noeSandaliEdari}" />
+														<p:message for="in221" id="msg221" />
+
+														<h:outputText class="headerJsf" value="دسته" />
+														<p:selectOneMenu id="in222"
+															value="#{adminProductBean.dasteSandaliEdari}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in222" id="msg222" />
+
+														<h:outputText class="headerJsf" value="طبی" />
+														<p:selectOneMenu id="in223"
+															value="#{adminProductBean.tebiSandaliEdari}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in223" id="msg223" />
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToSandaliEdari()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="ServiceKhab1"
+													rendered="#{adminProductBean.panelShow eq 'ServiceKhab1'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="مدل سرویس خواب" />
+														<p:inputText class="elemansJsf" id="in224"
+															value="#{adminProductBean.modelServiceKhab}" />
+														<p:message for="in224" id="msg224" />
+
+														<h:outputText class="headerJsf" value="جنس تختخواب" />
+														<p:inputText class="elemansJsf" id="in225"
+															value="#{adminProductBean.jenseTakhtKhab}" />
+														<p:message for="in225" id="msg225" />
+
+														<h:outputText class="headerJsf" value="رنگ تختخواب" />
+														<p:inputText class="elemansJsf" id="in226"
+															value="#{adminProductBean.rangTakhtKhab}" />
+														<p:message for="in226" id="msg226" />
+														
+														<h:outputText class="headerJsf" value="قیمت تختخواب (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in246"
+															value="#{adminProductBean.priceTakhtKhab}"
+															thousandSeparator="," />
+														<p:message for="in246" id="msg246" />
+														
+														
+														<h:outputText class="headerJsf" value="کلاف تخت چک دار" />
+														<p:selectOneMenu id="in255"
+															value="#{adminProductBean.kalafTakhtJakDar}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in255" id="msg255" />
+														
+														
+
+														<h:outputText class="headerJsf" value="کشو و باکس" />
+														<p:selectOneMenu id="in256"
+															value="#{adminProductBean.keshovbox}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in256" id="msg256" />
+
+														<h:outputText class="headerJsf" value="پاتختی" />
+														<p:selectOneMenu id="in257"
+															value="#{adminProductBean.patakhti}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in257" id="msg257" />
+
+														<h:outputText class="headerJsf" value="جنس پاتختی" />
+														<p:inputText class="elemansJsf" id="in227"
+															value="#{adminProductBean.jensePaTakhti}" />
+														<p:message for="in227" id="msg227" />
+
+														<h:outputText class="headerJsf" value="ابعاد پاتختی" />
+														<p:inputText class="elemansJsf" id="in228"
+															value="#{adminProductBean.abadPaTakhti}" />
+														<p:message for="in228" id="msg228" />
+
+														<h:outputText class="headerJsf" value="رنگ پاتختی" />
+														<p:inputText class="elemansJsf" id="in229"
+															value="#{adminProductBean.rangPaTakhti}" />
+														<p:message for="in229" id="msg229" />
+														
+														
+														<h:outputText class="headerJsf" value="تعداد پاتختی" />
+														<p:spinner id="in253"
+															value="#{adminProductBean.tedadPaTakhti}" min="0"
+															max="1000" />
+														<p:message for="in253" id="msg253" />
+														
+
+														<h:outputText class="headerJsf" value="قیمت پاتختی (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in247"
+															value="#{adminProductBean.pricePaTakhti}"
+															thousandSeparator="," />
+														<p:message for="in247" id="msg247" />
+														
+														
+
+														<h:outputText class="headerJsf" value="کمد" />
+														<p:selectOneMenu id="in258"
+															value="#{adminProductBean.komodServiceKhab}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in258" id="msg258" />
+
+														<h:outputText class="headerJsf" value="جنس کمد" />
+														<p:inputText class="elemansJsf" id="in230"
+															value="#{adminProductBean.jenseKomodServiceKhab}" />
+														<p:message for="in230" id="msg230" />
+
+														<h:outputText class="headerJsf" value="ابعاد کمد" />
+														<p:inputText class="elemansJsf" id="in231"
+															value="#{adminProductBean.abadKomodServiceKhab}" />
+														<p:message for="in231" id="msg231" />
+
+														<h:outputText class="headerJsf" value="رنگ کمد" />
+														<p:inputText class="elemansJsf" id="in232"
+															value="#{adminProductBean.rangKomodServiceKhab}" />
+														<p:message for="in232" id="msg232" />
+														
+														
+
+														<h:outputText class="headerJsf" value="(تومان) قیمت کمد" />
+														<p:inputNumber class="elemansJsf" id="in248"
+															value="#{adminProductBean.priceKomodServiceKhab}"
+															thousandSeparator="," />
+														<p:message for="in248" id="msg248" />
+														
+														
+
+														<h:outputText class="headerJsf" value="میز آرایش" />
+														<p:selectOneMenu id="in259"
+															value="#{adminProductBean.mizArayesh}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in259" id="msg259" />
+														
+														
+
+														<h:outputText class="headerJsf" value="جنس میز آرایش" />
+														<p:inputText class="elemansJsf" id="in233"
+															value="#{adminProductBean.jenseMizArayesh}" />
+														<p:message for="in233" id="msg233" />
+
+														<h:outputText class="headerJsf" value="ابعاد میز آرایش" />
+														<p:inputText class="elemansJsf" id="in234"
+															value="#{adminProductBean.abadMizArayesh}" />
+														<p:message for="in234" id="msg234" />
+
+														<h:outputText class="headerJsf" value="رنگ میز آرایش" />
+														<p:inputText class="elemansJsf" id="in235"
+															value="#{adminProductBean.rangMizArayesh}" />
+														<p:message for="in235" id="msg235" />
+														
+														
+
+														<h:outputText class="headerJsf" value="(تومان) قیمت میز آرایش" />
+														<p:inputNumber class="elemansJsf" id="in249"
+															value="#{adminProductBean.priceMizArayesh}"
+															thousandSeparator="," />
+														<p:message for="in249" id="msg249" />
+														
+														
+														<h:outputText class="headerJsf" value="میز تحریر" />
+														<p:selectOneMenu id="in261"
+															value="#{adminProductBean.mizTahrir}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in261" id="msg261" />
+
+														<h:outputText class="headerJsf" value="قیمت میز تحریر (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in250"
+															value="#{adminProductBean.priceMizTahrir}"
+															thousandSeparator="," />
+														<p:message for="in250" id="msg250" />
+
+														<h:outputText class="headerJsf" value="جنس میز تحریر" />
+														<p:inputText class="elemansJsf" id="in236"
+															value="#{adminProductBean.jenseMizTahrir}" />
+														<p:message for="in236" id="msg236" />
+
+														<h:outputText class="headerJsf" value="ابعاد میز تحریر" />
+														<p:inputText class="elemansJsf" id="in237"
+															value="#{adminProductBean.abadMizTahrir}" />
+														<p:message for="in237" id="msg237" />
+
+														<h:outputText class="headerJsf" value="رنگ میز تحریر" />
+														<p:inputText class="elemansJsf" id="in238"
+															value="#{adminProductBean.rangMizTahrir}" />
+														<p:message for="in238" id="msg238" />
+														
+														
+														<h:outputText class="headerJsf" value="قاب و آینه قدی" />
+														<p:selectOneMenu id="in262"
+															value="#{adminProductBean.gabVayeneGadi}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in262" id="msg262" />
+
+														<h:outputText class="headerJsf" value="جنس قاب و آینه قدی" />
+														<p:inputText class="elemansJsf" id="in239"
+															value="#{adminProductBean.jenseGabVayeneGadi}" />
+														<p:message for="in239" id="msg239" />
+
+														<h:outputText class="headerJsf" value="ابعاد قاب و آینه قدی" />
+														<p:inputText class="elemansJsf" id="in240"
+															value="#{adminProductBean.abadGabVayeneGadi}" />
+														<p:message for="in240" id="msg240" />
+
+														<h:outputText class="headerJsf" value="رنگ قاب و آینه قدی" />
+														<p:inputText class="elemansJsf" id="in241"
+															value="#{adminProductBean.rangGabVayeneGadi}" />
+														<p:message for="in241" id="msg241" />
+
+														<h:outputText class="headerJsf" value="قیمت قاب و آینه قدی (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in251"
+															value="#{adminProductBean.priceGabVayeneGadi}"
+															thousandSeparator="," />
+														<p:message for="in251" id="msg251" />
+														
+														
+														<h:outputText class="headerJsf" value="تشک" />
+														<p:selectOneMenu id="in263"
+															value="#{adminProductBean.toshak}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in263" id="msg263" />
+
+														<h:outputText class="headerJsf" value="برند تشک" />
+														<p:inputText class="elemansJsf" id="in242"
+															value="#{adminProductBean.brandToshak}" />
+														<p:message for="in242" id="msg242" />
+
+														<h:outputText class="headerJsf" value="مدل تشک" />
+														<p:inputText class="elemansJsf" id="in243"
+															value="#{adminProductBean.modelToshak}" />
+														<p:message for="in243" id="msg243" />
+
+														<h:outputText class="headerJsf" value="ابعاد تشک" />
+														<p:inputText class="elemansJsf" id="in244"
+															value="#{adminProductBean.abadToshak}" />
+														<p:message for="in244" id="msg244" />
+
+														<h:outputText class="headerJsf" value="توضیحات تشک" />
+														<p:inputTextarea class="elemansJsf" id="in245"
+															value="#{adminProductBean.tozihatToshak}" />
+														<p:message for="in245" id="msg245" />
+
+
+
+														<h:outputText class="headerJsf" value="مدت گارانتی تشک (ماه)" />
+														<p:spinner id="in254"
+															value="#{adminProductBean.modatGharantiToshak}" min="0"
+															max="1000" />
+														<p:message for="in254" id="msg254" />
+
+
+														<h:outputText class="headerJsf" value="قیمت تشک (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in252"
+															value="#{adminProductBean.priceToshak}"
+															thousandSeparator="," />
+														<p:message for="in252" id="msg252" />
+
+
+
+														<h:outputText class="headerJsf" value="عرض تخت خواب" />
+														<p:spinner id="in254x"
+															value="#{adminProductBean.arzeTakhteKhab}" min="0"
+															max="1000" />
+														<p:message for="in254x" id="msg254x" />
+
+
+
+														<h:outputText class="headerJsf" value="صندلی" />
+														<p:selectOneMenu id="in260"
+															value="#{adminProductBean.sandaliServiceKhab}">
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+														</p:selectOneMenu>
+														<p:message for="in260" id="msg260" />
+
+
+
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToServiceKhab1()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+												<p:outputPanel id="ServiceKhab2"
+													rendered="#{adminProductBean.panelShow eq 'ServiceKhab2'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="مدل سرویس خواب" />
+														<p:inputText class="elemansJsf" id="in2242"
+															value="#{adminProductBean.modelServiceKhab2}" />
+														<p:message for="in2242" id="msg2242" />
+
+														<h:outputText class="headerJsf" value="جنس تختخواب" />
+														<p:inputText class="elemansJsf" id="in2252"
+															value="#{adminProductBean.jenseTakhteKhab2}" />
+														<p:message for="in2252" id="msg2252" />
+
+														<h:outputText class="headerJsf" value="رنگ تختخواب" />
+														<p:inputText class="elemansJsf" id="in2262"
+															value="#{adminProductBean.rangeTakhteKhab2}" />
+														<p:message for="in2262" id="msg2262" />
+														
+														
+														<h:outputText class="headerJsf" value="پاتختی" />
+														<p:selectOneMenu id="in2572"
+															value="#{adminProductBean.paTahti2}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in2572" id="msg2572" />
+
+														<h:outputText class="headerJsf" value="جنس پاتختی" />
+														<p:inputText class="elemansJsf" id="in2272"
+															value="#{adminProductBean.jensePaTakhti2}" />
+														<p:message for="in2272" id="msg2272" />
+
+														<h:outputText class="headerJsf" value="ابعاد پاتختی" />
+														<p:inputText class="elemansJsf" id="in2282"
+															value="#{adminProductBean.abadPaTakhti2}" />
+														<p:message for="in2282" id="msg2282" />
+
+														<h:outputText class="headerJsf" value="رنگ پاتختی" />
+														<p:inputText class="elemansJsf" id="in2292"
+															value="#{adminProductBean.rangPaTakhti2}" />
+														<p:message for="in2292" id="msg2292" />
+														
+														
+														<h:outputText class="headerJsf" value="تعداد پاتختی" />
+														<p:spinner id="in2532"
+															value="#{adminProductBean.tedadPaTakhti2}" min="0"
+															max="1000" />
+														<p:message for="in2532" id="msg2532" />
+														
+														
+														<h:outputText class="headerJsf" value="قیمت پاتختی (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in2472"
+															value="#{adminProductBean.pricePaTakhti2}"
+															thousandSeparator="," />
+														<p:message for="in2472" id="msg2472" />
+														
+														
+														<h:outputText class="headerJsf" value="کلاف تخت چک دار" />
+														<p:selectOneMenu id="in2552"
+															value="#{adminProductBean.kalafTakhtJackDar}">
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+														</p:selectOneMenu>
+														<p:message for="in2552" id="msg2552" />
+
+														<h:outputText class="headerJsf" value="کشو و باکس" />
+														<p:selectOneMenu id="in2562"
+															value="#{adminProductBean.keshoVbox}">
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+														</p:selectOneMenu>
+														<p:message for="in2562" id="msg2562" />
+														
+														<h:outputText class="headerJsf" value="کمد" />
+														<p:selectOneMenu id="in2582"
+															value="#{adminProductBean.komodServiceKhab2}">
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+														</p:selectOneMenu>
+														<p:message for="in2582" id="msg2582" />
+
+														<h:outputText class="headerJsf" value="جنس کمد" />
+														<p:inputText class="elemansJsf" id="in2302"
+															value="#{adminProductBean.jensekomodServiceKhab2}" />
+														<p:message for="in2302" id="msg2302" />
+
+														<h:outputText class="headerJsf" value="ابعاد کمد" />
+														<p:inputText class="elemansJsf" id="in2312"
+															value="#{adminProductBean.abadkomodServiceKhab2}" />
+														<p:message for="in2312" id="msg2312" />
+
+														<h:outputText class="headerJsf" value="رنگ کمد" />
+														<p:inputText class="elemansJsf" id="in2322"
+															value="#{adminProductBean.rangkomodServiceKhab2}" />
+														<p:message for="in2322" id="msg2322" />
+														
+														
+														<h:outputText class="headerJsf" value="(تومان) قیمت کمد" />
+														<p:inputNumber class="elemansJsf" id="in2482"
+															value="#{adminProductBean.priceKomodServiceKhab2}"
+															thousandSeparator="," />
+														<p:message for="in2482" id="msg2482" />
+														
+														
+
+														<h:outputText class="headerJsf" value="میز آرایش" />
+														<p:selectOneMenu id="in2592"
+															value="#{adminProductBean.mizArayesh2}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in2592" id="msg2592" />
+
+														<h:outputText class="headerJsf" value="جنس میز آرایش" />
+														<p:inputText class="elemansJsf" id="in2332"
+															value="#{adminProductBean.jenseMizArayesh2}" />
+														<p:message for="in2332" id="msg2332" />
+
+														<h:outputText class="headerJsf" value="ابعاد میز آرایش" />
+														<p:inputText class="elemansJsf" id="in2342"
+															value="#{adminProductBean.abadMizArayesh2}" />
+														<p:message for="in2342" id="msg2342" />
+
+														<h:outputText class="headerJsf" value="رنگ میز آرایش" />
+														<p:inputText class="elemansJsf" id="in2352"
+															value="#{adminProductBean.rangMizArayesh2}" />
+														<p:message for="in2352" id="msg2352" />
+														
+														
+
+														<h:outputText class="headerJsf" value="(تومان) قیمت میز آرایش" />
+														<p:inputNumber class="elemansJsf" id="in2492"
+															value="#{adminProductBean.priceMizArayesh2}"
+															thousandSeparator="," />
+														<p:message for="in2492" id="msg2492" />
+														
+														
+														<h:outputText class="headerJsf" value="میز تحریر" />
+														<p:selectOneMenu id="in2612"
+															value="#{adminProductBean.mizTahrir2}">
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+														</p:selectOneMenu>
+														<p:message for="in2612" id="msg2612" />
+
+														<h:outputText class="headerJsf" value="جنس میز تحریر" />
+														<p:inputText class="elemansJsf" id="in2362"
+															value="#{adminProductBean.jensemizTahrir2}" />
+														<p:message for="in2362" id="msg2362" />
+
+														<h:outputText class="headerJsf" value="ابعاد میز تحریر" />
+														<p:inputText class="elemansJsf" id="in2372"
+															value="#{adminProductBean.abadmizTahrir2}" />
+														<p:message for="in2372" id="msg2372" />
+
+														<h:outputText class="headerJsf" value="رنگ میز تحریر" />
+														<p:inputText class="elemansJsf" id="in2382"
+															value="#{adminProductBean.rangmizTahrir2}" />
+														<p:message for="in2382" id="msg2382" />
+														
+														
+														<h:outputText class="headerJsf" value="قیمت میز تحریر (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in2502"
+															value="#{adminProductBean.priceMizTahrir2}"
+															thousandSeparator="," />
+														<p:message for="in2502" id="msg2502" />
+														
+														
+														<h:outputText class="headerJsf" value="قاب و آینه قدی" />
+														<p:selectOneMenu id="in2622"
+															value="#{adminProductBean.gabVAyeneGadi2}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in2622" id="msg2622" />
+
+														<h:outputText class="headerJsf" value="جنس قاب و آینه قدی" />
+														<p:inputText class="elemansJsf" id="in2392"
+															value="#{adminProductBean.jenseGabVAyeneGadi2}" />
+														<p:message for="in2392" id="msg2392" />
+
+														<h:outputText class="headerJsf" value="ابعاد قاب و آینه قدی" />
+														<p:inputText class="elemansJsf" id="in2402"
+															value="#{adminProductBean.abadGabVAyeneGadi2}" />
+														<p:message for="in2402" id="msg2402" />
+
+														<h:outputText class="headerJsf" value="رنگ قاب و آینه قدی" />
+														<p:inputText class="elemansJsf" id="in2412"
+															value="#{adminProductBean.rangGabVAyeneGadi2}" />
+														<p:message for="in2412" id="msg2412" />
+														
+														
+														<h:outputText class="headerJsf" value="مدت گارانتی قاب و آینه (ماه)" />
+														<p:spinner id="in2542"
+															value="#{adminProductBean.modatGarantiGabVAyeneGadi2}"
+															min="0" max="1000" />
+														<p:message for="in2542" id="msg2542" />
+														
+														<h:outputText class="headerJsf" value="قیمت قاب و آینه قدی (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in2512"
+															value="#{adminProductBean.priceGabVAyeneGadi2}"
+															thousandSeparator="," />
+														<p:message for="in2512" id="msg2512" />
+														
+														
+
+														<h:outputText class="headerJsf" value="تشک" />
+														<p:selectOneMenu id="in2632"
+															value="#{adminProductBean.toshak2}">
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+														</p:selectOneMenu>
+														<p:message for="in2632" id="msg2632" />
+
+														<h:outputText class="headerJsf" value="برند تشک" />
+														<p:inputText class="elemansJsf" id="in2422"
+															value="#{adminProductBean.brandToshak2}" />
+														<p:message for="in2422" id="msg2422" />
+
+														<h:outputText class="headerJsf" value="مدل تشک" />
+														<p:inputText class="elemansJsf" id="in2432"
+															value="#{adminProductBean.modelToshak2}" />
+														<p:message for="in2432" id="msg2432" />
+
+														<h:outputText class="headerJsf" value="ابعاد تشک" />
+														<p:inputText class="elemansJsf" id="in2442"
+															value="#{adminProductBean.abadToshak2}" />
+														<p:message for="in2442" id="msg2442" />
+														
+
+														<h:outputText class="headerJsf" value="قیمت تشک (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in2522"
+															value="#{adminProductBean.priceToshak2}"
+															thousandSeparator="," />
+														<p:message for="in2522" id="msg2522" />
+
+														<h:outputText class="headerJsf" value="توضیحات تشک" />
+														<p:inputTextarea class="elemansJsf" id="in2452"
+															value="#{adminProductBean.descriptionToshak2}" />
+														<p:message for="in2452" id="msg2452" />
+
+
+														<h:outputText class="headerJsf" value="قیمت تختخواب (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in2462"
+															value="#{adminProductBean.priceTakhteKhab2}"
+															thousandSeparator="," />
+														<p:message for="in2462" id="msg2462" />
+
+														<h:outputText class="headerJsf" value="عرض تخت خواب" />
+														<p:spinner id="in254x2"
+															value="#{adminProductBean.arzeTakhteKhab2}" min="0"
+															max="1000" />
+														<p:message for="in254x2" id="msg254x2" />
+
+
+
+
+
+														<h:outputText class="headerJsf" value="صندلی" />
+														<p:selectOneMenu id="in2602"
+															value="#{adminProductBean.sandaliMizArayesh2}">
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+														</p:selectOneMenu>
+														<p:message for="in2602" id="msg2602" />
+
+
+
+													</h:panelGrid>
+													
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToServiceKhab2()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+												</p:outputPanel>
+
+
+												<p:outputPanel id="ServiceKhabKodak"
+													rendered="#{adminProductBean.panelShow eq 'ServiceKhabKodak'}">
+													<h:panelGrid columns="6" style="width: 100%;">
+														<h:outputText class="headerJsf" value="مدل سرویس خواب" />
+														<p:inputText class="elemansJsf" id="in264"
+															value="#{adminProductBean.modelServiceKhabNozad}" />
+														<p:message for="in264" id="msg264" />
+
+														<h:outputText class="headerJsf" value="جنس سرویس خواب نوزاد" />
+														<p:inputText class="elemansJsf" id="in265"
+															value="#{adminProductBean.jenseServiceKhabNozad}" />
+														<p:message for="in265" id="msg265" />
+
+														<h:outputText class="headerJsf" value="رنگ سرویس خواب نوزاد" />
+														<p:inputText class="elemansJsf" id="in266"
+															value="#{adminProductBean.rangServiceKhabNozad}" />
+														<p:message for="in266" id="msg266" />
+														
+														
+														<h:outputText class="headerJsf" value="قیمت سرویس خواب نوزاد (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in289"
+															value="#{adminProductBean.priceServiceKhabNozad}"
+															thousandSeparator="," />
+														<p:message for="in289" id="msg289" />
+														
+														
+														<h:outputText class="headerJsf" value="کشو و باکس" />
+														<p:selectOneMenu id="in299"
+															value="#{adminProductBean.keshoVBox}">
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+														</p:selectOneMenu>
+														<p:message for="in299" id="msg299" />
+
+
+														<h:outputText class="headerJsf" value="کنار مادری" />
+														<p:selectOneMenu id="in300"
+															value="#{adminProductBean.kenarMadari}">
+															
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+														</p:selectOneMenu>
+														<p:message for="in300" id="msg300" />
+														
+														<h:outputText class="headerJsf" value="جنس کمد کنار مادری" />
+														<p:inputText class="elemansJsf" id="in267"
+															value="#{adminProductBean.jenseKomodkenarMadari}" />
+														<p:message for="in267" id="msg267" />
+
+														<h:outputText class="headerJsf" value="ابعاد کمد کنار مادری" />
+														<p:inputText class="elemansJsf" id="in268"
+															value="#{adminProductBean.abadKomodkenarMadari}" />
+														<p:message for="in268" id="msg2468" />
+
+														<h:outputText class="headerJsf" value="رنگ کمد کنار مادری" />
+														<p:inputText class="elemansJsf" id="in269"
+															value="#{adminProductBean.rangKomodkenarMadari}" />
+														<p:message for="in269" id="msg269" />
+														
+														<h:outputText class="headerJsf" value="قیمت کنار مادری (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in290"
+															value="#{adminProductBean.priceKomodkenarMadari}"
+															thousandSeparator="," />
+														<p:message for="in290" id="msg290" />
+
+														<h:outputText class="headerJsf" value="جنس میز و صندلی کودک" />
+														<p:inputText class="elemansJsf" id="in270"
+															value="#{adminProductBean.jenseMizSandaliKodak}" />
+														<p:message for="in270" id="msg270" />
+														
+														
+														<h:outputText class="headerJsf" value="قیمت میز و صندلی کودک (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in291"
+															value="#{adminProductBean.priceMizSandaliKodak}"
+															thousandSeparator="," />
+														<p:message for="in291" id="msg291" />
+
+														<h:outputText class="headerJsf" value="ابعاد میز کودک" />
+														<p:inputText class="elemansJsf" id="in271"
+															value="#{adminProductBean.abadMizKodak}" />
+														<p:message for="in271" id="msg271" />
+
+														<h:outputText class="headerJsf" value="ابعاد صندلی کودک" />
+														<p:inputText class="elemansJsf" id="in272"
+															value="#{adminProductBean.abadSandaliKodak}" />
+														<p:message for="in272" id="msg272" />
+														
+
+														<h:outputText class="headerJsf" value="تعداد میز و صندلی کودک" />
+														<p:spinner id="in297"
+															value="#{adminProductBean.tedadMizSandaliKodak}" min="0"
+															max="1000" />
+														<p:message for="in297" id="msg297" />
+														
+														
+														<h:outputText class="headerJsf" value="میز و صندلی کودک" />
+														<p:selectOneMenu id="in301"
+															value="#{adminProductBean.mizSandaliKodak}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in301" id="msg301" />
+
+														<h:outputText class="headerJsf" value="کمد" />
+														<p:selectOneMenu id="in302"
+															value="#{adminProductBean.komodMizSandaliKodak}">
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+														</p:selectOneMenu>
+														<p:message for="in302" id="msg302" />
+
+														<h:outputText class="headerJsf" value="جنس کمد" />
+														<p:inputText class="elemansJsf" id="in273"
+															value="#{adminProductBean.jenseKomodMizSandaliKodak}" />
+														<p:message for="in273" id="msg273" />
+
+														<h:outputText class="headerJsf" value="ابعاد کمد" />
+														<p:inputText class="elemansJsf" id="in274"
+															value="#{adminProductBean.abadKomodMizSandaliKodak}" />
+														<p:message for="in274" id="msg274" />
+
+														<h:outputText class="headerJsf" value="رنگ کمد" />
+														<p:inputText class="elemansJsf" id="in275"
+															value="#{adminProductBean.rangKomodMizSandaliKodak}" />
+														<p:message for="in275" id="msg275" />
+														
+														<h:outputText class="headerJsf" value="قیمت کمد (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in292"
+															value="#{adminProductBean.priceKomodMizSandaliKodak}"
+															thousandSeparator="," />
+														<p:message for="in292" id="msg292" />
+														
+														
+
+														<h:outputText class="headerJsf" value="میز آرایش" />
+														<p:selectOneMenu id="in303"
+															value="#{adminProductBean.mizArayeshMizSandaliKodak}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in303" id="msg303" />
+
+														<h:outputText class="headerJsf" value="جنس میز آرایش" />
+														<p:inputText class="elemansJsf" id="in276"
+															value="#{adminProductBean.jenseMizArayeshMizSandaliKodak}" />
+														<p:message for="in276" id="msg276" />
+
+														<h:outputText class="headerJsf" value="ابعاد میز آرایش" />
+														<p:inputText class="elemansJsf" id="in277"
+															value="#{adminProductBean.abadMizArayeshMizSandaliKodak}" />
+														<p:message for="in277" id="msg277" />
+
+														<h:outputText class="headerJsf" value="رنگ میز آرایش" />
+														<p:inputText class="elemansJsf" id="in278"
+															value="#{adminProductBean.rangMizArayeshMizSandaliKodak}" />
+														<p:message for="in278" id="msg278" />
+																												
+														<h:outputText class="headerJsf" value="قیمت میز آرایش (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in293"
+															value="#{adminProductBean.priceMizArayeshMizSandaliKodak}"
+															thousandSeparator="," />
+														<p:message for="in293" id="msg293" />
+														
+														
+
+														<h:outputText class="headerJsf" value="صندلی" />
+														<p:selectOneMenu id="in304"
+															value="#{adminProductBean.sandaliMizArayeshMizSandaliKodak}">
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+														</p:selectOneMenu>
+														<p:message for="in304" id="msg304" />
+
+														<h:outputText class="headerJsf" value="ویترین / کتابخانه" />
+														<p:selectOneMenu id="in305"
+															value="#{adminProductBean.vitrinKetabkhane}">
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+														</p:selectOneMenu>
+														<p:message for="in305" id="msg305" />
+
+														<h:outputText class="headerJsf" value="جنس ویترین یا کتابخانه" />
+														<p:inputText class="elemansJsf" id="in279"
+															value="#{adminProductBean.jenseVitrinKetabkhane}" />
+														<p:message for="in279" id="msg279" />
+
+														<h:outputText class="headerJsf" value="ابعاد ویترین یا کتابخانه" />
+														<p:inputText class="elemansJsf" id="in280"
+															value="#{adminProductBean.abadVitrinKetabkhane}" />
+														<p:message for="in280" id="msg280" />
+
+														<h:outputText class="headerJsf" value="رنگ ویترین یا کتابخانه" />
+														<p:inputText class="elemansJsf" id="in281"
+															value="#{adminProductBean.rangVitrinKetabkhane}" />
+														<p:message for="in281" id="msg281" />
+														
+														<h:outputText class="headerJsf" value="قیمت ویترین یا کتابخانه" />
+														<p:inputNumber class="elemansJsf" id="in294"
+															value="#{adminProductBean.priceVitrinKetabkhane}"
+															thousandSeparator="," />
+														<p:message for="in294" id="msg294" />
+														
+														
+
+														<h:outputText class="headerJsf" value="شلف دیواری" />
+														<p:selectOneMenu id="in306"
+															value="#{adminProductBean.shelfDivari}">
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+														</p:selectOneMenu>
+														<p:message for="in306" id="msg306" />
+
+														<h:outputText class="headerJsf" value="جنس شلف دیواری" />
+														<p:inputText class="elemansJsf" id="in282"
+															value="#{adminProductBean.jenseShelfDivari}" />
+														<p:message for="in282" id="msg282" />
+
+														<h:outputText class="headerJsf" value="ابعاد شلف دیواری" />
+														<p:inputText class="elemansJsf" id="in283"
+															value="#{adminProductBean.abadShelfDivari}" />
+														<p:message for="in283" id="msg283" />
+
+														<h:outputText class="headerJsf" value="رنگ شلف دیواری" />
+														<p:inputText class="elemansJsf" id="in284"
+															value="#{adminProductBean.rangShelfDivari}" />
+														<p:message for="in284" id="msg284" />
+														
+														<h:outputText class="headerJsf" value="قیمت شلف دیواری (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in295"
+															value="#{adminProductBean.priceShelfDivari}"
+															thousandSeparator="," />
+														<p:message for="in295" id="msg295" />
+														
+														
+														<h:outputText class="headerJsf" value="تشک" />
+														<p:selectOneMenu id="in307"
+															value="#{adminProductBean.toshak3}">
+															<f:selectItem class="selItem" itemLabel="دارد" itemValue="y" />
+															<f:selectItem class="selItem" itemLabel="ندارد" itemValue="n" />
+															
+														</p:selectOneMenu>
+														<p:message for="in307" id="msg307" />
+
+														<h:outputText class="headerJsf" value="برند تشک" />
+														<p:inputText class="elemansJsf" id="in285"
+															value="#{adminProductBean.brandToshak3}" />
+														<p:message for="in285" id="msg285" />
+
+														<h:outputText class="headerJsf" value="مدل تشک" />
+														<p:inputText class="elemansJsf" id="in286"
+															value="#{adminProductBean.modelToshak3}" />
+														<p:message for="in286" id="msg286" />
+
+														<h:outputText class="headerJsf" value="ابعاد تشک" />
+														<p:inputText class="elemansJsf" id="in287"
+															value="#{adminProductBean.abadToshak3}" />
+														<p:message for="in287" id="msg287" />
+
+														<h:outputText class="headerJsf" value="توضیحات تشک" />
+														<p:inputText class="elemansJsf" id="in288"
+															value="#{adminProductBean.descriptionToshak3}" />
+														<p:message for="in288" id="msg288" />
+
+														<h:outputText class="headerJsf" value="قیمت تشک (تومان)" />
+														<p:inputNumber class="elemansJsf" id="in296"
+															value="#{adminProductBean.priceToshak3}"
+															thousandSeparator="," />
+														<p:message for="in296" id="msg296" />
+
+
+														<h:outputText class="headerJsf" value="مدت گارانتی تشک (ماه)" />
+														<p:spinner id="in298"
+															value="#{adminProductBean.modatGarantiToshak3}" min="0"
+															max="1000" />
+														<p:message for="in298" id="msg298" />
+
+													</h:panelGrid>
+
+														<p:commandButton value="ذخیره" ajax="true"
+															actionListener="#{adminProductBean.insertToServiceKhabKodak()}"
+															styleClass="p-mt-3 ui-button-outlined p-d-block"
+															process="@form" update="@form"
+															onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
+
+												</p:outputPanel>
+
+											</h:panelGroup>
+										</p:outputPanel>
+
+									</h:form>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</section>
+			</div>
+
+
+			<!-- Control Sidebar -->
+			<aside class="control-sidebar control-sidebar-dark">
+				<!-- Control sidebar content goes here -->
+			</aside>
+			<!-- /.control-sidebar -->
+		</div>
+		<!-- ./wrapper -->
+		</h:panelGroup>
+	</ui:define>
+
+	<ui:define name="footPage">
+
+		<!--  <h:outputScript library="leaflet" name="map2.js" />  -->
+	</ui:define>
+
+
+</ui:composition>

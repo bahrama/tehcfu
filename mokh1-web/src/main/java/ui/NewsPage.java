@@ -30,7 +30,7 @@ import sevice.BlogServiceLocal;
 @ViewScoped
 public class NewsPage implements Serializable{
 
-	/**
+	/** 
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
@@ -494,7 +494,7 @@ public class NewsPage implements Serializable{
         	month="ذیقعده";
         else if (todayHijri.getMonthOfYear()==12)
         	month="ذی الحجه";
-        text=" روز " + (todayHijri.getDayOfMonth()) + " ماه " + month + " سال " + todayHijri.getYear() + "قمری";
+        text=" روز " + (todayHijri.getDayOfMonth()+1) + " ماه " + month + " سال " + todayHijri.getYear() + "قمری";
         
         return text;
 	}

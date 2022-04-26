@@ -1,0 +1,225 @@
+
+<ui:composition template="../WEB-INF/pages/admin-temp.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pp="http://xmlns.jcp.org/jsf/passthrough"
+	
+>
+
+	<ui:define name="headPage">
+		<style>
+body .ui-dialog {
+	padding: 0;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+	border: 1px solid #c8c8c8;
+	border-radius: 3px;
+	height: 600px !important;
+	overflow: scroll;
+}
+
+body .ui-growl {
+	top: 85px;
+	z-index: 9999 !important;
+}
+
+.bd-table-days button {
+	background-color: #f8f8f8;
+	border: 0;
+	width:;
+	margin: 0px !important;
+	font-size: 12px !important;
+}
+td{
+max-width: 300px!important;
+}
+</style>
+
+</ui:define>
+	<ui:define name="mainPage">
+		<div class="wrapper">
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<div class="container-fluid">
+						<div class="row mb-2">
+							<div class="col-sm-6">
+								<h1>ویجت‌ها</h1>
+							</div>
+							<div class="col-sm-6">
+								<ol class="breadcrumb float-sm-left">
+									<li class="breadcrumb-item"><a href="#">خانه</a></li>
+									<li class="breadcrumb-item active">ویجت‌ها</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+					<!-- /.container-fluid -->
+				</section>
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="container-fluid">
+
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card card-widget">
+									<h:form id="form" enctype="multipart/form-data"
+										acceptcharset="UTF-8" prependId="false">
+									<p:growl id="grl" life="2000"/>
+										<p:toolbar>
+											<p:toolbarGroup>
+												<p:commandButton value="جدید" icon="pi pi-plus"
+													update=":form:ali-add-content"
+													oncomplete="PF('testDialog').show()"
+													styleClass="ui-button-success" style="margin-right: .5rem">
+													<p:resetInput target=":form:ali-add-content" />
+												</p:commandButton>
+											</p:toolbarGroup>
+										</p:toolbar>
+											<p:dataTable id="basicDT" var="mbl"
+												value="#{amadeBean.findAllAmade()}" widgetVar="carsTable"
+												multiViewState="true" rows="10" paginator="true"
+												paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+												rowsPerPageTemplate="5,10,15" rowKey="#{mbl.amadeId}" 
+												emptyMessage="No cars found with given criteria" >
+													
+												<p:column  style="width:3rem;text-align: center" sortBy="#{mbl.amadeId}">
+													<p:commandButton class="ui-button-warning rounded-button" immediate="true"
+														icon="pi pi-trash" process="@form"
+														oncomplete="PF('deleteProductDialog').show()">
+														 <f:setPropertyActionListener value="#{mbl}" target="#{amadeBean.amadeEntity}"/>
+													</p:commandButton>
+		
+												</p:column>
+												<p:column headerText="شناسه" sortBy="#{mbl.amadeId}">
+													<h:outputText value="#{mbl.amadeId}" />
+												</p:column>
+
+												<p:column headerText="نام بلاگ" sortBy="#{mbl.amadeId}" filterMatchMode="contains" filterBy="#{mbl.type}">
+													<h:outputText value="#{mbl.type}" />
+												</p:column>
+													
+												<p:column headerText="نوع بلاگ" filterMatchMode="contains"
+													filterBy="#{mbl.mobile}" sortBy="#{mbl.amadeId}">
+													<h:outputText value="#{mbl.mobile}" />
+												</p:column>
+												
+												<p:column headerText="نوع خبر" filterMatchMode="contains"
+													filterBy="#{mbl.modir}" sortBy="#{mbl.amadeId}">
+													<h:outputText value="#{mbl.modir}" />
+												</p:column>
+												
+											</p:dataTable>
+
+										<p:dialog id="dlg2" header="test" showEffect="fade"
+											modal="true" widgetVar="testDialog" responsive="true">
+											<p:outputPanel id="ali-add-content" class="ui-fluid">
+													<h:panelGrid columns="3">
+											
+			<h:outputText value="نوع گواهینامه" />
+			<p:selectOneListbox value="#{amadeBean.type}" id="in1">
+				<f:selectItem itemValue="PANO" itemLabel="گواهینامه پانو" />
+				<f:selectItem itemValue="UNION" itemLabel="گواهینامه اتحادیه" />
+				<f:selectItem itemValue="MOBASHERAT" itemLabel="مباشرت" />
+
+			</p:selectOneListbox>
+			<p:message for="in1" id="msg1" />
+
+			<h:outputText value="نام مباشر" />
+			<p:inputTextarea value="#{amadeBean.mobasher}" 
+				id="in2"  />
+			<p:message for="in2" id="msg2" />
+
+			<h:outputText value="نام صاحب پروانه" />
+			<p:inputTextarea value="#{amadeBean.modir}" 
+				id="in3" />
+			<p:message for="in3" id="msg3" />
+
+			<h:outputText value="رسته شغلی" />
+			<p:inputTextarea value="#{amadeBean.raste}" 
+				id="in4"  />
+			<p:message for="in4" id="msg4" />
+			
+			<h:outputText value="اسم فروشگاه" />
+			<p:inputTextarea value="#{amadeBean.senfName}" 
+				id="in5" />
+			<p:message for="in5" id="msg5" />
+
+			<h:outputText value="نوع پنل" />
+			<p:inputTextarea value="#{amadeBean.packag}" 
+				id="in6"  />
+			<p:message for="in6" id="msg6" />
+			
+			<h:outputText value="موبایل" />
+			<p:inputTextarea value="#{amadeBean.mobile}" 
+				id="in7" />
+			<p:message for="in7" id="msg7" />
+			
+						<h:outputText value="نام پدر" />
+			<p:inputTextarea value="#{amadeBean.father}" 
+				id="in8"  />
+			<p:message for="in8" id="msg8" />
+														</h:panelGrid>
+										            	
+										            	<br/>
+										            	
+			<p:commandButton value="ذخیره" ajax="true" 
+			actionListener="#{amadeBean.insertToAmade()}"
+			styleClass="p-mt-3 ui-button-outlined p-d-block"
+			update="basicDT grl in1 in2 in3 in4 in5 in6 in7 in8 msg1 msg2 msg3 msg4 msg5 msg6 msg7 msg8" 
+			process="dlg2" />
+
+											</p:outputPanel>
+										</p:dialog>
+										<p:confirmDialog widgetVar="deleteProductDialog"
+														showEffect="fade" width="300"
+														message="Delete the product?" header="Confirm"
+														severity="warn">
+
+															
+														<p:commandButton value="Yes" icon="pi pi-check" actionListener="#{amadeBean.deleteAmade()}"
+														                             process="@this" oncomplete="PF('deleteProductDialog').hide()" update="basicDT grl"/>
+														<p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
+														                             onclick="PF('deleteProductDialog').hide()"/>
+										</p:confirmDialog>
+									</h:form>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</section>
+			</div>
+
+			<footer class="main-footer">
+				<div class="float-right d-none d-sm-block">
+					<b>Version</b> 3.0.0-alpha
+				</div>
+
+				<strong>CopyLeft 2018 <a
+					href="http://github.com/hesammousavi/">حسام موسوی</a>.
+				</strong>
+			</footer>
+
+			<!-- Control Sidebar -->
+			<aside class="control-sidebar control-sidebar-dark">
+				<!-- Control sidebar content goes here -->
+			</aside>
+			<!-- /.control-sidebar -->
+		</div>
+		<!-- ./wrapper -->
+	</ui:define>
+
+	<ui:define name="footPage">
+	
+   <!--  <h:outputScript library="leaflet" name="map2.js" />  -->
+	</ui:define>
+
+
+</ui:composition>

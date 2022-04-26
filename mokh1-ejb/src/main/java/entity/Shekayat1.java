@@ -4,6 +4,7 @@ package entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,13 +26,13 @@ import org.eclipse.persistence.annotations.CacheCoordinationType;
 import org.eclipse.persistence.annotations.CacheType;
 @Entity
 @Table(name="shekayat_tbl")
-@Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
 	@NamedQuery(name="findAllShekayat" , query="SELECT a FROM Shekayat1 a ORDER BY a.shekayatId DESC"),
 	@NamedQuery(name="findById" , query="SELECT u FROM Shekayat1 u WHERE u.shekayatId=:v_shekayatId"),
 	@NamedQuery(name="findAllById2" , query="SELECT pp FROM Shekayat1 pp ORDER BY pp.shekayatId DESC"),
 
 })
+@Cacheable(value = false)
 public class Shekayat1 implements Serializable {
 
 	/**

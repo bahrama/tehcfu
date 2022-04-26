@@ -3,6 +3,7 @@ package entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,12 +23,13 @@ import org.eclipse.persistence.annotations.CacheCoordinationType;
 import org.eclipse.persistence.annotations.CacheType;
 @Entity
 @Table(name = "message_tbl")
-@Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({ 
 @NamedQuery(name = "findAllMessageEntity", query = "SELECT a FROM MessageEntity a ORDER BY a.messageId DESC"),
 @NamedQuery(name = "findMessageEntityById", query = "SELECT i FROM MessageEntity i WHERE i.messageId=:v_machineId"),
-@NamedQuery(name = "findMessageEntityBySeller", query = "SELECT i FROM MessageEntity i WHERE i.messageTo=:v_messageTo ORDER BY i.messageId DESC")
+@NamedQuery(name = "findMessageEntityBySeller", query = "SELECT i FROM MessageEntity i WHERE i.messageTo=:v_messageTo ORDER BY i.messageId DESC"),
+@NamedQuery(name = "findAllunreadedMessageEntityBySeller", query = "SELECT i FROM MessageEntity i WHERE (i.messageTo=:v_messageTo) and (i.readed=:v_readed) ORDER BY i.messageId DESC")
 })
+@Cacheable(value = false)
 public class MessageEntity implements Serializable {
 
 	/**
@@ -44,6 +46,8 @@ public class MessageEntity implements Serializable {
 	private String pageMessage;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
+	@Column(name = "raded")
+	private boolean readed;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_message_from")
@@ -99,6 +103,14 @@ public class MessageEntity implements Serializable {
 
 	public void setMessageTo(MoblEntity messageTo) {
 		this.messageTo = messageTo;
+	}
+
+	public boolean isReaded() {
+		return readed;
+	}
+
+	public void setReaded(boolean readed) {
+		this.readed = readed;
 	}
 
 	

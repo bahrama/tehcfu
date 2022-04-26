@@ -17,7 +17,6 @@ import java.util.UUID;
  */
 @Entity
 @Table(name="blog_tbl")
-@Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
 @NamedQuery(name = "BlogEntity.findAll", query="SELECT b FROM BlogEntity b ORDER BY b.id DESC"),
 @NamedQuery(name = "BlogEntity.findById", query = "SELECT i FROM BlogEntity i WHERE i.id=:v_id"),
@@ -25,6 +24,7 @@ import java.util.UUID;
 @NamedQuery(name = "BlogEntity.findByType", query = "SELECT i FROM BlogEntity i WHERE i.blogType=:v_blogType ORDER BY i.id DESC"),
 @NamedQuery(name = "BlogEntity.findByNewsMode", query = "SELECT i FROM BlogEntity i WHERE i.newsMode=:v_newsMode ORDER BY i.id DESC")
 })
+@Cacheable(value = false)
 public class BlogEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 

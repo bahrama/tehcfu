@@ -23,7 +23,7 @@ import sevice.BlogServiceLocal;
 public class DanestanihaBlogsPage implements Serializable {
 
 	/**
-	 * 
+	 *  
 	 */
 	private static final long serialVersionUID = 1L;
 

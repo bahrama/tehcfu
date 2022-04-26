@@ -5,7 +5,9 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html">
   <!-- Page Title -->
-    <title>#{title}</title>
+    <title>محصولات فروشگاه #{title}</title>
+    <meta name="description" content="#{metaDesTag}"/>
+    <meta name="keywords" content="#{metaKeyTag}"/>
  <style>
 /*css-bootstrap*/
 
@@ -176,5 +178,8 @@
     }
 }
     </style>
-
+    <link rel="stylesheet" href="../../resources/leaflet/leaflet.css" />
+    <script src="../../resources/leaflet/leaflet.js"></script>
+ <link href="../../resources/panorama/panoramix.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/PANEL/vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css"/>
 </ui:composition>

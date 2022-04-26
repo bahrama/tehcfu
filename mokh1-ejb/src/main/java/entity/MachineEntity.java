@@ -3,12 +3,16 @@ package entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -22,21 +26,21 @@ import org.eclipse.persistence.annotations.CacheCoordinationType;
 import org.eclipse.persistence.annotations.CacheType;
 @Entity
 @Table(name = "machine_tbl")
-@Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({ 
-@NamedQuery(name = "findAllMachine", query = "SELECT a FROM MachineEntity a ORDER BY a.machineId DESC"),
-@NamedQuery(name = "findMachineById", query = "SELECT i FROM MachineEntity i WHERE i.machineId=:v_machineId"),
+@NamedQuery(name = "findAllMachine", query = "SELECT a FROM MachineEntity a ORDER BY a.adveriseId DESC"),
+@NamedQuery(name = "findMachineById", query = "SELECT i FROM MachineEntity i WHERE i.adveriseId=:v_adveriseId"),
 })
-public class MachineEntity implements Serializable {
+@Cacheable(value = false)
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorValue(value = "machin")
+public class MachineEntity extends AdvertiseEntity{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "machine_id")
-	private long machineId;
+	@Column(name = "adveriseId")
+	private long adveriseId;
 	@Column(name = "machine_name", nullable = true, length = 200)
 	private String machineName;
 	@Column(name = "contry", nullable = true, length = 100)
@@ -49,21 +53,11 @@ public class MachineEntity implements Serializable {
 	private String vaziat;
 	@Column(name = "moshakhasat", nullable = true, length = 1000)
 	private String moshakhasat;
-	@Column(name = "mablag", nullable = true, length = 20)
-	private String mablag;
+	@Column(name = "mablag", nullable = true)
+	private long mablag;
 	@Column(name = "mahale_forosh", nullable = true, length = 100)
 	private String mahaleForosh;
 
-	private boolean taeed;
-	
-	@Temporal(TemporalType.DATE)
-	private Date date;
-	
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_machine")
-	private MoblEntity machine;
-	
 	
 	public String getMachineName() {
 		return machineName;
@@ -113,11 +107,11 @@ public class MachineEntity implements Serializable {
 		this.moshakhasat = moshakhasat;
 	}
 
-	public String getMablag() {
+	public long getMablag() {
 		return mablag;
 	}
 
-	public void setMablag(String mablag) {
+	public void setMablag(long mablag) {
 		this.mablag = mablag;
 	}
 
@@ -129,37 +123,15 @@ public class MachineEntity implements Serializable {
 		this.mahaleForosh = mahaleForosh;
 	}
 
-	public MoblEntity getMachine() {
-		return machine;
+	public long getAdveriseId() {
+		return adveriseId;
 	}
 
-	public void setMachine(MoblEntity machine) {
-		this.machine = machine;
+	public void setAdveriseId(long adveriseId) {
+		this.adveriseId = adveriseId;
 	}
 
-	public boolean isTaeed() {
-		return taeed;
-	}
-
-	public void setTaeed(boolean taeed) {
-		this.taeed = taeed;
-	}
-
-	public long getMachineId() {
-		return machineId;
-	}
-
-	public void setMachineId(long machineId) {
-		this.machineId = machineId;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
+	
 	
 	
 

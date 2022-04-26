@@ -22,7 +22,7 @@ public class AddAmade {
 	
 	private String senfName;
 	private String shomarePano;
-	private String raste;
+	private String raste; 
 	private String modir;
 	private String addres;
 	private String mobasher;

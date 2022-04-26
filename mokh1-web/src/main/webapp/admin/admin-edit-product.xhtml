@@ -1,0 +1,928 @@
+
+<ui:composition template="../WEB-INF/pages/admin-temp.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pp="http://xmlns.jcp.org/jsf/passthrough"
+	
+>
+
+	<ui:define name="headPage">
+		<style>
+body .ui-dialog {
+	padding: 0;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+	border: 1px solid #c8c8c8;
+	border-radius: 3px;
+	height: 600px !important;
+	overflow: scroll;
+}
+
+body .ui-growl {
+	top: 85px;
+	z-index: 9999 !important;
+}
+
+.bd-table-days button {
+	background-color: #f8f8f8;
+	border: 0;
+	width:;
+	margin: 0px !important;
+	font-size: 12px !important;
+}
+td{
+max-width: 300px!important;
+}
+</style>
+<style type="text/css">
+    .cheap {
+        background-color: #54a90a !important;
+        background-image: none !important;
+        color: #ffffff !important;
+    }
+</style>
+
+ 		<h:outputStylesheet library="calendar" name="kamadatepicker.min.css" />
+		<h:outputScript library="calendar" name="kamadatepicker.min.js" />
+		<h:outputScript library="calendar" name="kamadatepicker.holidays.js" /> 
+
+		<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdlY6WfwXkSemxbd5xE4j3ZetynH5wMzk" type="text/javascript"></script>
+</ui:define>
+	<ui:define name="mainPage">
+	<h:panelGroup rendered="#{adminProfile.moblEntity.role eq 'ADMIN'}">
+		<div class="wrapper">
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<div class="container-fluid">
+						<div class="row mb-2">
+							<div class="col-sm-6">
+								<h1>ویجت‌ها</h1>
+							</div>
+							<div class="col-sm-6">
+								<ol class="breadcrumb float-sm-left">
+									<li class="breadcrumb-item"><a href="#">خانه</a></li>
+									<li class="breadcrumb-item active">ویجت‌ها</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+					<!-- /.container-fluid -->
+				</section>
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="container-fluid">
+
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card card-widget">
+									<h:form id="form" enctype="multipart/form-data"
+										acceptcharset="UTF-8" prependId="false">
+									<p:growl id="grl" life="2000"/>
+										<p:toolbar>
+                                  <h:outputText value="تایید محصولات" />
+										</p:toolbar>
+											<p:dataTable id="basicDT" var="mbl"
+												value="#{adminProductBean.findAllProduct()}" widgetVar="carsTable"
+												multiViewState="true" rows="10" paginator="true"
+												paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+												rowsPerPageTemplate="5,10,15" rowKey="#{mbl.productId}" 
+												emptyMessage="No cars found with given criteria" 
+												rowStyleClass="#{mbl.checkO eq true ? 'cheap' : null}">
+												
+												
+												<p:column style="width:3rem;text-align: center" sortBy="#{mbl.productId}">
+													<p:commandButton update=":form:aliDetail" process="@form" immediate="true"
+														oncomplete="PF('aliDialog').show()" icon="pi pi-search"
+														title="View">
+														<f:setPropertyActionListener value="#{mbl}"
+															target="#{adminProductBean.productEntity}"/>
+															<p:resetInput target=":form:aliDetail"/>
+													</p:commandButton>
+												</p:column>
+			
+												<p:column headerText="شناسه" sortBy="#{mbl.productId}">
+													<h:outputText value="#{mbl.productId}" />
+												</p:column>
+
+												<p:column headerText="نام محصول" sortBy="#{mbl.productId}" filterMatchMode="contains" filterBy="#{mbl.nameCode}">
+													<h:outputText value="#{mbl.nameCode}" />
+												</p:column>
+													
+												<p:column headerText="نوع محصول" filterMatchMode="contains"
+													filterBy="#{mbl.productType}" sortBy="#{mbl.productId}">
+													<h:outputText value="#{mbl.productType}" />
+												</p:column>
+												
+												<p:column headerText="فروشنده" filterMatchMode="contains"
+													filterBy="#{mbl.product.sellerStorePer}" sortBy="#{mbl.productId}">
+													<h:outputText value="#{mbl.product.sellerStorePer}" />
+												</p:column>
+												
+																								
+												<p:column headerText="تاریخ" filterMatchMode="contains"
+													 sortBy="#{mbl.productId}">
+													<h:outputText value="#{adminProductBean.convertToPersianDate(mbl.pDate)}" />
+												</p:column>
+												
+											</p:dataTable>
+
+										<p:dialog id="dlg1" header="ali Info" widgetVar="aliDialog" modal="true"
+											showEffect="fade" hideEffect="fade" resizable="false">
+											<p:outputPanel id="aliDetail" style="text-align:center;">
+																								<script>
+														kamaDatepicker('ine23', { buttonsColor: "red" });
+														var customOptions = {
+															placeholder: "روز / ماه / سال"
+															, twodigit: false
+															, closeAfterSelect: false
+															, nextButtonIcon: "fa fa-arrow-circle-right"
+															, previousButtonIcon: "fa fa-arrow-circle-left"
+															, buttonsColor: "blue"
+															, forceFarsiDigits: true
+															, markToday: true
+															, markHolidays: true
+															, highlightSelectedDay: true
+															, sync: true
+															, gotoToday: true
+														}
+
+													</script>
+											<h:panelGrid columns="1">
+											
+											        <h:outputText value="#{adminProductBean.productEntity.productId}" />
+
+													<h:outputText  value="#{adminProductBean.productEntity.abad}" />
+
+													<h:outputText  value="#{adminProductBean.productEntity.brand}" />
+
+													<h:outputText  value="#{adminProductBean.productEntity.contry}" />
+
+													<h:outputText  value="#{adminProductBean.productEntity.description}" />
+
+													<h:outputText  value="#{adminProductBean.productEntity.guarantiStatus}" />
+
+													<h:outputText  value="#{adminProductBean.productEntity.nameCode}" />
+
+													<h:outputText  value="#{adminProductBean.productEntity.rangBandi}" />
+
+													<h:outputText  value="#{adminProductBean.productEntity.zemanat}" />
+
+													<h:graphicImage  style="max-width:100%; height:300px!important"
+													rendered="#{adminProductBean.productEntity.pic1 ne null}"
+													value="/Images/#{adminProductBean.productEntity.pic1}.jpg"/>
+
+													<h:graphicImage  style="max-width:100%; height:300px!important"
+													rendered="#{adminProductBean.productEntity.pic2 ne null}"
+													value="/Images/#{adminProductBean.productEntity.pic2}.jpg"/>
+													
+													<h:graphicImage  style="max-width:100%; height:300px!important"
+													rendered="#{adminProductBean.productEntity.pic3 ne null}"
+													value="/Images/#{adminProductBean.productEntity.pic3}.jpg"/>
+													
+													<h:graphicImage  style="max-width:100%; height:300px!important"
+													rendered="#{adminProductBean.productEntity.pic4 ne null}"
+													value="/Images/#{adminProductBean.productEntity.pic4}.jpg"/>
+													
+													<h:graphicImage  style="max-width:100%; height:300px!important"
+													rendered="#{adminProductBean.productEntity.pic5 ne null}"
+													value="/Images/#{adminProductBean.productEntity.pic5}.jpg"/>
+													</h:panelGrid>
+													
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'AyeneVConsole'}">
+													<h:panelGrid columns="1">
+													
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).jenseEskeletConsole}" />
+																										
+													<h:outputText  value="#{adminProductBean.productDetail.jensePayeConsole}" />
+																										
+													<h:outputText  value="#{adminProductBean.productDetail.shekleHendesi}" />
+																										
+													<h:outputText  value="#{adminProductBean.productDetail.zekhamatAyene}" />
+																										
+													<h:outputText  value="#{adminProductBean.productDetail.jenseGhab}" />
+																										
+													<h:outputText  value="#{adminProductBean.productDetail.abadGhabAyene}" />
+																										
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangGhabAyene}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'DarbChobi'}">
+													<h:panelGrid columns="1">
+																																							
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).rokeshDarbChobi}" />
+																																							
+													<h:outputText  value="#{adminProductBean.productDetail.noeRangDarbChobi}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.zekhamatDarbChobi}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseKalafDarbChobi}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.makanDarbChobi}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'DarbZedSergat'}">
+													
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).nameMdfDarbZedSergat}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.zekhamatMdfDarbZedSergat}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.keshvarMdfDarbZedSergat}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.varagFeleziDarbZedSergat}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.zekhamatVaragFeleziDarbZedSergat}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rokeshDarbZedSergat}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangDarbZedSergat}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'GhabAx'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).jenseGabeAx}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadGabeAx}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadMofidGabeAx}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'Kabinet'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).jenseKabinet}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseSafeKabinet}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.noeMdfKabinet}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.zekhamateMdfKabinet}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadMdfKabinet}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'KomodBoofeKetabkhaneJakafshi'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).shekleHendesikomod}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.shekleHendesiBoofe}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.shekleHendesiKetabkhane}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.shekleHendesiJakafshi}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jensekomod}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseBoofe}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseKetabkhane}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseJakafshi}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadkomod}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadBoofe}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadKetabkhane}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadJakafshi}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'Mdf'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).zekhametMdf}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadMdf}" />
+																																							
+													
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'MizAsali'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).sheklehendesiMizJeJeloAsali}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseEskeletMizJeJeloAsali}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jensePayeMizJeJeloAsali}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.noeShisheMizJeJeloAsali}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.descriptionMizJeJeloAsali}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'MizEdari'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).sheklehendesiMizٍEdari}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseEskeletMizٍEdari}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jensePayeMizٍEdari}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.noeShisheMizٍEdari}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.descriptionfazayeLavazemJanebiMizٍEdari}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'MizJeloMobli'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).sheklehendesiMizJeloMobli}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseEskeletMizJeloMobli}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jensePayeMizJeloMobli}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadMizJeloMobli}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangMizJeloMobli}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.noeShisheMizJeloMobli}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'MizNaharKhori'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).sakhtarMizNaharKhori}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.descriptionMizNaharKhori}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.sheklehendesiMizNaharKhori}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseSafeMizNaharKhori}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseEskeletMizNaharKhori}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jensePayeMizNaharKhori}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangeShisheMizNaharKhori}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.zekhamatShisheMizNaharKhori}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseFomSandaliMizNaharKhori}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseEsfangSandaliMizNaharKhori}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseEskeletSandaliMizNaharKhori}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jensePayeSandaliMizNaharKhori}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseParcheSandaliMizNaharKhori}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.nameParcheSandaliMizNaharKhori}" />
+																																																																														
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangParcheSandaliMizNaharKhori}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'MizTv'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).jenseEskeletMizTv}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadMizTv}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangMizTv}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangAvalMizTv}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangDovomMizTv}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jensePayeMizTv}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangPayeMizTv}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.descriptionLavazemJanebi}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'Moblman'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).noeMobl}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.sakhtarMobl}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseFome}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseEsfanj}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseEskelet}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jensePaye}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangPaye}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseParche}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.nameParche}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangParche}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.descriptionMekanizmTakhtsho}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadKosanBozorg}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadKosanKochak}" />
+																																																																														
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.modelKosan}" />
+																																																																														
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseParcheKosan}" />
+																																																																														
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangeParcheKosan}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'Mojasame'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).jenseMojasame}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadMojasame}" />
+												
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'Monabat'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).nameMdfMonabat}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.zekhamatMdfMonabat}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.keshvarMdfMonabat}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.noeMonabat}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadMonabat}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseMonabat}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'Panjare'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).metrialPanjare}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.noeRangPanjare}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseKalafPanjare}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.makanPanjare}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																										
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'Partition'}">
+																									
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).jenseSotonPartishen}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jensePanelPartishen}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseLabePartishen}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangPartishen}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.noeTarkibPartishen}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangPardePartishen}" />
+
+													</h:panelGrid>
+													</h:panelGroup>
+																																							
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'SandaliEdari'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).noeJenseSandaliEdari}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadSandaliEdari}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangSandaliEdari}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jensePayeSandaliEdari}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.noeSandaliEdari}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																																							
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'ServiceKhab1'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).modelServiceKhab}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseTakhtKhab}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangTakhtKhab}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jensePaTakhti}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadPaTakhti}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangPaTakhti}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseKomodServiceKhab}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadKomodServiceKhab}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangKomodServiceKhab}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseMizArayesh}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadMizArayesh}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangMizArayesh}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseMizTahrir}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadMizTahrir}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangMizTahrir}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseGabVayeneGadi}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadGabVayeneGadi}" />
+																																																																														
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangGabVayeneGadi}" />
+																																																																														
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.brandToshak}" />
+																																																																														
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.modelToshak}" />
+																																																																														
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadToshak}" />
+																																																																																											
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.tozihatToshak}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																																							
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'ServiceKhab2'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).modelServiceKhab2}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseTakhteKhab2}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangeTakhteKhab2}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jensePaTakhti2}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadPaTakhti2}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangPaTakhti2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jensekomodServiceKhab2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadkomodServiceKhab2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangkomodServiceKhab2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseMizArayesh2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadMizArayesh2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangMizArayesh2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jensemizTahrir2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadmizTahrir2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangmizTahrir2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseGabVAyeneGadi2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadGabVAyeneGadi2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangGabVAyeneGadi2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.brandToshak2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.modelToshak2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadToshak2}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.descriptionToshak2}" />
+													</h:panelGrid>
+													</h:panelGroup>
+																																							
+													<h:panelGroup rendered="#{adminProductBean.productEntity.productType eq 'ServiceKhabKodak'}">
+																										
+													<h:panelGrid columns="1">
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.findProductEntityDetail(productEntity.productId).modelServiceKhabNozad}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseServiceKhabNozad}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangServiceKhabNozad}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseKomodkenarMadari}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadKomodkenarMadari}" />
+																																							
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangKomodkenarMadari}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseMizSandaliKodak}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadMizKodak}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadSandaliKodak}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseKomodMizSandaliKodak}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadKomodMizSandaliKodak}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangKomodMizSandaliKodak}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseMizArayeshMizSandaliKodak}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadMizArayeshMizSandaliKodak}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangMizArayeshMizSandaliKodak}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseVitrinKetabkhane}" />
+																																																				
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadVitrinKetabkhane}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangVitrinKetabkhane}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.priceVitrinKetabkhane}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.jenseShelfDivari}" />
+																																																																	
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadShelfDivari}" />
+																																																																														
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.rangShelfDivari}" />
+																																																																														
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.brandToshak3}" />
+																																																																														
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.modelToshak3}" />
+																																																																														
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.abadToshak3}" />
+																																																																																											
+													 
+													<h:outputText  value="#{adminProductBean.productDetail.descriptionToshak3}" />
+													</h:panelGrid>
+													</h:panelGroup>
+													
+								  					        <p:selectBooleanButton value="#{adminProductBean.enableProduct}" onLabel="فعال" offLabel="غیر فعال"
+                                                                     onIcon="pi pi-check" offIcon="pi pi-times" style="width:6rem" >
+                                                             <p:ajax update="basicDT" listener="#{adminProductBean.updateProduct}"/>         
+                                                            </p:selectBooleanButton>
+											</p:outputPanel>
+
+										</p:dialog>
+									</h:form>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</section>
+			</div>
+
+			<footer class="main-footer">
+				<div class="float-right d-none d-sm-block">
+					<b>Version</b> 3.0.0-alpha
+				</div>
+
+				<strong>CopyLeft 2018 <a
+					href="http://github.com/hesammousavi/">حسام موسوی</a>.
+				</strong>
+			</footer>
+
+			<!-- Control Sidebar -->
+			<aside class="control-sidebar control-sidebar-dark">
+				<!-- Control sidebar content goes here -->
+			</aside>
+			<!-- /.control-sidebar -->
+		</div>
+		<!-- ./wrapper -->
+		</h:panelGroup>
+	</ui:define>
+
+	<ui:define name="footPage">
+	
+   <!--  <h:outputScript library="leaflet" name="map2.js" />  -->
+	</ui:define>
+
+
+</ui:composition>

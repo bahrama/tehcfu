@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Local;
 
@@ -21,5 +22,12 @@ public interface ProductDaoLocal {
 	void updateProductEntity(ProductEntity productEntity);
 
 	List<ProductEntity> findAllProductEntityBySeller(MoblEntity moblEntity);
+
+	Map<ProductEntity, Object> findAllProductBySeller2(MoblEntity moblEntity);
+
+	Object getProductDetail();
+
+	ProductEntity findProductOnlyById(long productId);
+
 
 }

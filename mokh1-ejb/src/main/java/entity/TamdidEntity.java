@@ -3,6 +3,7 @@ package entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,11 +24,11 @@ import org.eclipse.persistence.annotations.CacheType;
 
 @Entity
 @Table(name="tamdid_tbl")
-@Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
 	@NamedQuery(name="findAllTamdid" , query="SELECT a FROM TamdidEntity a ORDER BY a.id DESC"),
 	@NamedQuery(name="findTamdidById" , query="SELECT i FROM TamdidEntity i WHERE i.id=:v_tamdidId"),
 })
+@Cacheable(value = false)
 public class TamdidEntity implements Serializable{
 	/**
 	 * 

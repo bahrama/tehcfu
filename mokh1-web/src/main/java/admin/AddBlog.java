@@ -29,7 +29,7 @@ import sevice.BlogServiceLocal;
 @Named
 @RequestScoped
 public class AddBlog {
-
+ 
 	public AddBlog() {
 		// TODO Auto-generated constructor stub
 	}

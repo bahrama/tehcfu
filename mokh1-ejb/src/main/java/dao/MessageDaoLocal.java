@@ -14,5 +14,9 @@ public interface MessageDaoLocal {
 
 	List<MessageEntity> findAllMessageBySeller(MoblEntity moblEntity);
 
+	void updateMessage(MessageEntity messageEntity);
+
+	int findAllUnreadedMessageBySeller(MoblEntity moblEntity);
+
 
 }

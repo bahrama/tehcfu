@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>پنل مدیریت | ویجت‌ها</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+	<link rel="stylesheet"
+		href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+	<link
+		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+		rel="stylesheet" />
+	<h:outputStylesheet name="css/adminlte.min.css" library="dist" />
+	<h:outputStylesheet name="css/bootstrap-rtl.min.css" library="dist" />
+	<h:outputStylesheet name="css/custom-style.css" library="dist" />
+</h:head>
+<body class="hold-transition login-page">
+	<f:view encoding="UTF-8">
+
+		<f:metadata>
+			<f:event listener="#{adminLogin.loginDirectCheck}" type="preRenderView"></f:event>
+		</f:metadata>
+
+		<h:form id="frm" prependId="false">
+		<p:messages id="msgs"/>
+		<p:growl id="grl" life="2000"/>
+			<p:outputPanel id="pnl1" rendered="#{adminLogin.checkInMobile eq 'first'}" >
+				<div class="login-box">
+					<div class="card">
+						<div class="card-body login-card-body">
+							<p class="login-box-msg">شماره موبایل خود را وارد نمایید</p>
+							<div class="ui-inputgroup" style="direction: ltr; margin: 20px;">
+								<div class="ui-inputgroup-addon">
+									<i class="pi pi-hashtag"></i>
+								</div>
+								<p:inputText id="in1" value="#{adminLogin.mobile}" placeholder="09xxxxxxxxx" style="width: 100%;font-size: 18px;"
+									dir="rtl" />
+							</div>
+							<div class="ui-inputgroup" style="direction: ltr; margin: 20px;">
+								<div class="col-4">
+									<p:commandButton actionListener="#{adminLogin.loginFirst()}" 
+									     ajax="false" value="ثبت" style="width: 150px;"
+										class="btn btn-primary btn-block btn-flat" update="pnl1 msgs grl" process="pnl1"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</p:outputPanel>
+
+			<p:outputPanel id="pnl2" rendered="#{adminLogin.checkInMobile eq 'third'}">
+				<div class="login-box">
+					<div class="card">
+						<div class="card-body login-card-body">
+							<p class="login-box-msg">کد تایید به همراه تعیین رمز</p>
+							<div class="ui-inputgroup" style="direction: ltr; margin: 20px;">
+								<div class="ui-inputgroup-addon">
+									<i class="pi pi-mobile"></i>
+								</div>
+								<p:inputText id="in2" placeholder="xxxxxx" value="#{adminLogin.authCode}" style="width: 100%;font-size: 18px;"
+									dir="rtl" />
+								</div>	
+							<div class="ui-inputgroup" style="direction: ltr; margin: 20px;">
+								<div class="ui-inputgroup-addon">
+									<i class="pi pi-key"></i>
+								</div>
+								<p:password id="pwd1" placeholder="رمز عبور"
+									 match="pwd2"
+									label="Password 1" dir="rtl" required="true"
+									style="width: 100%;font-size: 18px;"/>
+							</div>
+							<div class="ui-inputgroup" style="direction: ltr; margin: 20px;">
+								<div class="ui-inputgroup-addon">
+									<i class="pi pi-key"></i>
+								</div>
+								<p:password id="pwd2" placeholder="تکرار رمز عبور"
+									value="#{adminLogin.password}" label="Password 2" dir="rtl"
+									required="true" style="width: 100%;font-size: 18px;" />
+							</div>
+								
+									<p:commandButton actionListener="#{adminLogin.loginThird()}" ajax="true" value="ورود" style="width: 150px;"
+										class="btn btn-primary btn-block btn-flat" update="pnl2 msgs grl" process="pnl2"/>
+							
+						</div>
+						<!-- /.login-card-body -->
+					</div>
+				</div>
+			</p:outputPanel>
+			
+			<p:outputPanel  id="pnl3"  rendered="#{adminLogin.checkInMobile eq 'secound'}">
+				<div class="login-box">
+					<div class="card">
+						<div class="card-body login-card-body">
+							<p class="login-box-msg">بخش ورود به پنل مدیریت</p>
+
+							<div class="ui-inputgroup" style="direction: ltr; margin: 20px;">
+								<div class="ui-inputgroup-addon">
+									<i class="pi pi-key"></i>
+								</div>
+								<p:password id="pwd3" placeholder="رمز عبور"
+									value="#{adminLogin.password}" 
+									label="Password 1" dir="rtl" required="true"
+									style="width: 100%;font-size: 18px;" />
+							</div>
+							<div class="ui-inputgroup" style="direction: ltr; margin: 20px;">
+								<div class="col-4">
+									<p:commandButton action="#{adminLogin.loginSecound()}" value="ورود" style="width: 150px;"
+										class="btn btn-primary btn-block btn-flat" update="pnl3 msgs grl" process="pnl3"/>
+								</div>
+							</div>
+
+							<p class="mb-1">
+								
+								<h:commandLink action="#{adminLogin.forgetPass()}" value="رمز عبورم را فراموش کرده ام" 
+								immediate="true" />
+							</p>
+						</div>
+						<!-- /.login-card-body -->
+					</div>
+				</div>
+			</p:outputPanel>
+		</h:form>
+
+		<h:outputScript library="plugins"
+			name="bootstrap/js/bootstrap.bundle.min.js" />
+		<h:outputScript library="dist" name="js/adminlte.min.js" />
+        <script src="../resources/persianTOeng/loginper.js"></script> 
+
+	</f:view>
+</body>
+</html>

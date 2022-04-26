@@ -1,6 +1,7 @@
 package sevice;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -52,5 +53,10 @@ public class Productservice implements ProductserviceLocal {
 	@Override
     public List<ProductEntity> findAllProductEntityBySeller(MoblEntity moblEntity) {
     	return  productDaoLocal.findAllProductEntityBySeller(moblEntity);
+    }
+	
+    @Override
+    public Map<ProductEntity, Object> findAllProductBySeller2(MoblEntity moblEntity){
+    	return productDaoLocal.findAllProductBySeller2(moblEntity);
     }
 }

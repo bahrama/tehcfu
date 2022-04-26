@@ -22,7 +22,7 @@
 							<p:dataGrid var="rent" layout="grid"
 								value="#{viewRent.findAllVerifiedRent()}" paginator="true"
 								rows="12" columns="1">
-								<p:outputPanel>
+								<p:outputPanel rendered="#{rent.show}">
 									<p:panel style="text-align:right">
 										<h3>#{rent.rentType}</h3>
 										<p class="myP">

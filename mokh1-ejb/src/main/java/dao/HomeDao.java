@@ -58,6 +58,15 @@ public class HomeDao implements HomeDaoLocal {
     }
     }
     
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<HomeEntity> findHomeEntityByNameList(String name) throws Exception{
+    	try {
+    	return entityManager.createNamedQuery("HomeTbl.findByName").setParameter("v_name", name).getResultList();
+    }catch(Exception exception) {
+    	throw new Exception();
+    }
+    }
     
     @Override
     public void updateHomeEntity(HomeEntity homeEntity) throws Exception{

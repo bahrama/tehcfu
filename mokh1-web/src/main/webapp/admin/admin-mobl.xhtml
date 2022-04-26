@@ -1,0 +1,932 @@
+
+<ui:composition template="../WEB-INF/pages/admin-temp.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pp="http://xmlns.jcp.org/jsf/passthrough"
+	
+>
+
+	<ui:define name="headPage">
+		<style>
+body .ui-dialog {
+	padding: 0;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+	border: 1px solid #c8c8c8;
+	border-radius: 3px;
+	height: 600px !important;
+	overflow: scroll;
+}
+
+body .ui-growl {
+	top: 85px;
+	z-index: 9999 !important;
+}
+
+.bd-table-days button {
+	background-color: #f8f8f8;
+	border: 0;
+	width:;
+	margin: 0px !important;
+	font-size: 12px !important;
+}
+td{
+max-width: 300px!important;
+}
+</style>
+
+ 		<h:outputStylesheet library="calendar" name="kamadatepicker.min.css" />
+		<h:outputScript library="calendar" name="kamadatepicker.min.js" />
+		<h:outputScript library="calendar" name="kamadatepicker.holidays.js" /> 
+
+		<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdlY6WfwXkSemxbd5xE4j3ZetynH5wMzk" type="text/javascript"></script>
+</ui:define>
+	<ui:define name="mainPage">
+	<h:panelGroup rendered="#{adminProfile.moblEntity.role eq 'ADMIN'}">
+		<div class="wrapper">
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<div class="container-fluid">
+						<div class="row mb-2">
+							<div class="col-sm-6">
+								<h1>ویجت‌ها</h1>
+							</div>
+							<div class="col-sm-6">
+								<ol class="breadcrumb float-sm-left">
+									<li class="breadcrumb-item"><a href="#">خانه</a></li>
+									<li class="breadcrumb-item active">ویجت‌ها</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+					<!-- /.container-fluid -->
+				</section>
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="container-fluid">
+
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card card-widget">
+									<h:form id="form" enctype="multipart/form-data"
+										acceptcharset="UTF-8" prependId="false">
+									<p:growl id="grl" life="2000"/>
+										<p:toolbar>
+											<p:toolbarGroup>
+												<p:commandButton value="جدید" icon="pi pi-plus"
+													update=":form:ali-add-content"
+													oncomplete="PF('testDialog').show()"
+													styleClass="ui-button-success" style="margin-right: .5rem">
+													<p:resetInput target=":form:ali-add-content" />
+												</p:commandButton>
+											</p:toolbarGroup>
+										</p:toolbar>
+											<p:dataTable id="basicDT" var="mbl"
+												value="#{moblBean.findAllMobl()}" widgetVar="carsTable"
+												multiViewState="true" rows="10" paginator="true"
+												paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+												rowsPerPageTemplate="5,10,15" rowKey="#{mbl.id}" 
+												emptyMessage="No cars found with given criteria" >
+												
+												
+												<p:column style="width:3rem;text-align: center" sortBy="#{mbl.id}">
+													<p:commandButton update=":form:aliDetail" process="@form" immediate="true"
+														oncomplete="PF('aliDialog').show()" icon="pi pi-search"
+														title="View">
+														<f:setPropertyActionListener value="#{mbl}"
+															target="#{moblBean.moblEntity}"/>
+															<p:resetInput target=":form:aliDetail"/>
+													</p:commandButton>
+												</p:column>
+												
+												<p:column  style="width:3rem;text-align: center" sortBy="#{mbl.id}">
+													<p:commandButton class="ui-button-warning rounded-button" immediate="true"
+														icon="pi pi-trash" process="@form"
+														oncomplete="PF('deleteProductDialog').show()">
+														 <f:setPropertyActionListener value="#{mbl}" target="#{moblBean.moblEntity}"/>
+													</p:commandButton>
+		
+												</p:column>
+												<p:column headerText="شناسه" sortBy="#{mbl.id}">
+													<h:outputText value="#{mbl.id}" />
+												</p:column>
+
+												<p:column headerText="نام فروشگاه" sortBy="#{mbl.id}" filterMatchMode="contains" filterBy="#{mbl.sellerStorePer}">
+													<h:outputText value="#{mbl.sellerStorePer}" />
+												</p:column>
+												
+															<p:column headerText="نوع کاربری" sortBy="#{mbl.id}">
+															<h:outputText value="ادمین" rendered="#{mbl.role eq 'ADMIN'}" />
+															<h:outputText value="کاربر" rendered="#{mbl.role eq 'USER'}" />
+															<h:outputText value="فروشنده" rendered="#{mbl.role eq 'MERCHANT'}" />
+															</p:column>
+															
+														<p:column headerText="موبایل" filterMatchMode="contains"
+															filterBy="#{mbl.mobile}" sortBy="#{mbl.mobile}">
+															<h:outputText value="#{mbl.mobile}" />
+														</p:column>
+														
+																	<p:column headerText="پنل">
+																	<h:outputText value="فیروزه ای" rendered="#{mbl.panel eq 'A'}" />
+																	<h:outputText value="طلایی" rendered="#{mbl.panel eq 'B'}" />
+																	<h:outputText value="نقره ای" rendered="#{mbl.panel eq 'C'}" />
+																	<h:outputText value="برنزی" rendered="#{mbl.panel eq 'D'}" />
+																	<h:outputText value="فروشنده عادی" rendered="#{mbl.panel eq 'E'}" />
+																	<h:outputText value="کاربر عادی" rendered="#{mbl.panel eq null}" />
+																</p:column>
+												
+											</p:dataTable>
+
+										<p:dialog id="dlg1" header="ali Info" widgetVar="aliDialog" modal="true"
+											showEffect="fade" hideEffect="fade" resizable="false">
+											<p:outputPanel id="aliDetail" style="text-align:center;">
+																								<script>
+														kamaDatepicker('ine21', { buttonsColor: "red" });
+														kamaDatepicker('ine23', { buttonsColor: "red" });
+														kamaDatepicker('ine27', { buttonsColor: "red" });
+														kamaDatepicker('ine34', { buttonsColor: "red" });
+														var customOptions = {
+															placeholder: "روز / ماه / سال"
+															, twodigit: false
+															, closeAfterSelect: false
+															, nextButtonIcon: "fa fa-arrow-circle-right"
+															, previousButtonIcon: "fa fa-arrow-circle-left"
+															, buttonsColor: "blue"
+															, forceFarsiDigits: true
+															, markToday: true
+															, markHolidays: true
+															, highlightSelectedDay: true
+															, sync: true
+															, gotoToday: true
+														}
+
+													</script>
+											<h:panelGrid columns="4">
+											
+											        <h:outputText value="شناسه" />
+											        <h:outputText value="#{moblBean.moblEntity.id}" />
+											        <h:outputText value="" />
+											        <h:outputText value="" />
+											        
+											        <h:outputText value="نام فروشنده" />
+													<h:outputText id="oue1" value="#{moblBean.moblEntity.sellerName}" />
+													<p:inputTextarea id="ine1" value="#{moblBean.sellerNameEdit}" />
+													<p:message for="ine1" id="msge1" />
+													
+													<h:outputText value="نام فارسی فروشگاه" />
+													<h:outputText id="oue2" value="#{moblBean.moblEntity.sellerStorePer}" />
+													<p:inputTextarea id="ine2" value="#{moblBean.sellerStoreNamePerEdit}" />
+													<p:message for="ine2" id="msge2"/>
+													
+													<h:outputText value="نام انگلیسی فروشگاه" />
+													<h:outputText id="oue3" value="#{moblBean.moblEntity.sellerStoreEng}" />
+													<p:inputTextarea id="ine3" value="#{moblBean.sellerStoreNameEngEdit}" binding="#{moblBean.sellerNameEngComponent}"/>
+													<p:message for="ine3" id="msge3"/>
+													
+													<h:outputText value="درباره ما" />
+													<h:outputText id="oue4" value="#{moblBean.moblEntity.aboutUs}" />
+													<p:inputTextarea id="ine4" value="#{moblBean.aboutUsEdit}" />
+													<p:message for="ine4" id="msge4"/>
+													
+													<h:outputText value="اینستاگرام" />
+													<h:outputText id="oue5" value="#{moblBean.moblEntity.instagram}" />
+													<p:inputTextarea id="ine5" value="#{moblBean.instagramEdit}" />
+													<p:message for="ine5" id="msge5"/>
+																						
+													<h:outputText value="تلگرام" />				
+													<h:outputText id="oue6" value="#{moblBean.moblEntity.telegram}" />
+													<p:inputTextarea id="ine6" value="#{moblBean.telegramEdit}" />
+													<p:message for="ine6" id="msge6"/>
+													
+													<h:outputText value="تلفن ثابت" />
+													<h:outputText id="oue7" value="#{moblBean.moblEntity.phone}" />
+													<p:inputTextarea id="ine7" value="#{moblBean.phoneEdit}" />
+													<p:message for="ine7" id="msge7"/>
+													
+													<h:outputText value="وبسایت" />
+												    <h:outputText id="oue8" value="#{moblBean.moblEntity.website}" />
+													<p:inputTextarea id="ine8" value="#{moblBean.websiteEdit}" />
+													<p:message for="ine8" id="msge8"/>
+													
+													<h:outputText value="ایمیل" />
+													<h:outputText id="oue9" value="#{moblBean.moblEntity.email}" />
+													<p:inputTextarea id="ine9" value="#{moblBean.emailEdit}" />
+													<p:message for="ine9" id="msge9"/>
+													
+													<h:outputText value="فکس" />
+													<h:outputText id="oue10" value="#{moblBean.moblEntity.fax}" />
+													<p:inputTextarea id="ine10" value="#{moblBean.faxEdit}" />
+													<p:message for="ine10" id="msge10"/>
+													
+													<h:outputText value="نام مدیر فروش" />
+													<h:outputText id="oue11" value="#{moblBean.moblEntity.modirforoshName}" />
+													<p:inputTextarea id="ine11" value="#{moblBean.modirForoshNameEdit}" />
+													<p:message for="ine11" id="msge11"/>
+													
+													<h:outputText value="تلفن مدیر فروش" />
+													<h:outputText id="oue12" value="#{moblBean.moblEntity.modirforoshPhone}" />
+													<p:inputTextarea id="ine12" value="#{moblBean.modirForoshPhoneEdit}" />
+													<p:message for="ine12" id="msge12"/>
+													
+													<h:outputText value="کد پستی" />
+												    <h:outputText id="oue13" value="#{moblBean.moblEntity.postcode}" />
+													<p:inputTextarea id="ine13" value="#{moblBean.postCodeEdit}" />
+													<p:message for="ine13" id="msge13"/>
+													
+													 <h:outputText value="آدرس فروشگاه" />
+													<h:outputText id="oue14" value="#{moblBean.moblEntity.sellerAddres}" />
+													<p:inputTextarea id="ine14" value="#{moblBean.addresEdit}" />
+													<p:message for="ine14" id="msge14"/>
+													
+													 <h:outputText value="واقع در" />
+													<h:outputText id="oue15" value="#{moblBean.moblEntity.vage}" />
+													<p:inputTextarea id="ine15" value="#{moblBean.vageEdit}" />
+													<p:message for="ine15" id="msge15"/>
+												
+													 <h:outputText value="کد ملی" />
+													<h:outputText id="oue16" value="#{moblBean.moblEntity.ssn}" />
+													<p:inputTextarea id="ine16" value="#{moblBean.ssnEdit}" />
+													<p:message for="ine16" id="msge16"/>
+													
+											        <h:outputText value="موبایل فروشنده" />
+													<h:outputText id="oue41" value="#{moblBean.moblEntity.mobile}" />
+													<p:inputTextarea id="ine46" value="#{moblBean.mobileEdit}" binding="#{moblBean.mobileComponent}"/>
+													<p:message for="ine46" id="msge41"/>
+													
+													 <h:outputText value="تقدیر نامه ها" />
+													<h:outputText id="oue17" value="#{moblBean.convertTextFromFile(moblBean.moblEntity.tagdirName)}" />
+													<p:inputTextarea id="ine17" value="#{moblBean.tagdirEdit}" />
+													<p:message for="ine17" id="msge17"/>
+													
+													 <h:outputText value="مالکیت" />
+													<h:outputText id="oue18" value="#{moblBean.moblEntity.malekiat}" />
+														<p:selectOneListbox value="#{moblBean.malekiatEdit}" id="ine18">
+															<f:selectItem itemValue="مالکیت" itemLabel="مالکیت" />
+															<f:selectItem itemValue="سرقفلی" itemLabel="سرقفلی" />
+															<f:selectItem itemValue="اوقافی" itemLabel="اوقافی" />
+															<f:selectItem itemValue="استیجاری" itemLabel="استیجاری" />
+														</p:selectOneListbox>
+													<p:message for="ine18" id="msge18"/>
+													
+													
+														    <h:outputText value="ثبت سفارش از سوی" />
+															<h:outputText id="oue19" value="#{moblBean.moblEntity.sabteSefaresh}" />
+															<p:selectOneListbox id="ine19" value="#{moblBean.sabteSefareshEdit}">
+																<f:selectItem itemValue="صاحب پروانه" itemLabel="صاحب پروانه" />
+																<f:selectItem itemValue="مستاجر" itemLabel="مستاجر" />
+															</p:selectOneListbox>
+															<h:outputText value="" />
+													
+														   <h:outputText value="مستاجر" />
+															<h:outputText id="oue20" value="#{moblBean.convertBoolean(moblBean.moblEntity.mostajer)}" />
+															<p:selectOneListbox id="ine20" value="#{moblBean.mostajerEdit}">
+																<f:selectItem itemValue="true" itemLabel="دارد" />
+																<f:selectItem itemValue="false" itemLabel="ندارد" />
+															</p:selectOneListbox>		
+													        <h:outputText value="" />
+													
+													 <h:outputText value="مهلت اجاره" />
+													<h:outputText id="oue21" value="#{moblBean.convertToPersianDate(moblBean.moblEntity.mohlateEjare)}" />
+													<p:inputText id="ine21" value="#{moblBean.mohlateEjareEdit}" pp:readOnly="readOnly"/>
+													<p:message for="ine21" id="msge21"/>
+													
+													 <h:outputText value="نام مستجر" />
+													<h:outputText id="oue22" value="#{moblBean.moblEntity.mostajerName}" />
+													<p:inputTextarea id="ine22" value="#{moblBean.mostajerNameEdit}" />
+													<p:message for="ine22" id="msge22"/>
+													
+													 <h:outputText value="تاریخ تولد مستجر" />
+													<h:outputText id="oue23" value="#{moblBean.convertToPersianDate(moblBean.moblEntity.mostajerBirthday)}" />
+													<p:inputText id="ine23" value="#{moblBean.mostajerBirthdayEdit}" pp:readOnly="readOnly"/>
+													<p:message for="ine23" id="msge23"/>
+													
+													 <h:outputText value="کد ملی مستجر" />
+												    <h:outputText id="oue24" value="#{moblBean.moblEntity.mostajerSsn}" />
+													<p:inputTextarea id="ine24" value="#{moblBean.mostajerSsnEdit}" />
+													<p:message for="ine24" id="msge24"/>
+																					
+													<h:outputText value="موبایل مستجر" />					
+												    <h:outputText id="oue25" value="#{moblBean.moblEntity.mostajerMobile}" />
+													<p:inputTextarea id="ine25" value="#{moblBean.mostajerMobileEdit}" />
+													<p:message for="ine25" id="msge25"/>
+													
+													<h:outputText value="شماره جواز" />
+													<h:outputText id="oue26" value="#{moblBean.moblEntity.shomareJavaz}" />
+													<p:inputTextarea id="ine26" value="#{moblBean.shomareJavazEdit}" />
+													<p:message for="ine26" id="msge26"/>
+													
+													<h:outputText value="تاریخ اعتبار" />
+													<h:outputText id="oue27" value="#{moblBean.convertToPersianDate(moblBean.moblEntity.tarikhEtebar)}" />
+													<p:inputText id="ine27" value="#{moblBean.tarikhEtebarEdit}" pp:readOnly="readOnly"/>
+													<p:message for="ine27" id="msge27"/>
+																					
+																<h:outputText value="مباشر" />
+																<h:outputText id="oue28" value="#{moblBean.convertBoolean(moblBean.moblEntity.hasMobasher)}" />
+																<p:selectOneListbox id="ine28" value="#{moblBean.hasMobasherEdit}">
+																	<f:selectItem itemValue="true" itemLabel="دارد" />
+																	<f:selectItem itemValue="false" itemLabel="ندارد" />
+																</p:selectOneListbox>
+																<h:outputText value="" />
+																		
+													 <h:outputText value="نام مباشر" />																										
+													<h:outputText id="oue29" value="#{moblBean.moblEntity.mobasherName}" />
+													<p:inputTextarea id="ine29" value="#{moblBean.mobasherNameEdit}" />
+													<p:message for="ine29" id="msge29"/>
+													
+													 <h:outputText value="نام رابط" />
+													<h:outputText id="oue30" value="#{moblBean.moblEntity.rabetName}" />
+													<p:inputTextarea id="ine30" value="#{moblBean.rabetNameEdit}" />
+													<p:message for="ine30" id="msge30"/>
+													
+													 <h:outputText value="سمت رابط" />
+													<h:outputText id="oue31" value="#{moblBean.moblEntity.sematRabet}" />
+													<p:inputTextarea id="ine31" value="#{moblBean.sematRabetEdit}" />
+													<p:message for="ine31" id="msge31"/>
+													
+													 <h:outputText value="موبایل رابط" />
+													<h:outputText id="oue32" value="#{moblBean.moblEntity.rabetMobile}" />
+													<p:inputTextarea id="ine32" value="#{moblBean.rabetMobileEdit}" />
+													<p:message for="ine32" id="msge32"/>
+													
+													 <h:outputText value="شبکه مجازی موبایل" />
+													<h:outputText id="oue33" value="#{moblBean.moblEntity.shabakeMazajiMobile}" />
+													<p:inputTextarea id="ine33" value="#{moblBean.shabakeMazajiMobileEdit}" />
+													<p:message for="ine33" id="msge33"/>
+													
+													<h:outputText value="meta description" />
+													<h:outputText id="oue331" value="#{moblBean.moblEntity.metaDescription}" />
+													<p:inputTextarea id="ine331" value="#{moblBean.metaDescriptionEdit}" />
+													<p:message for="ine331" id="msge331"/>
+																										
+													<h:outputText value="meta keywords" />
+													<h:outputText id="oue332" value="#{moblBean.moblEntity.metaKeywords}" />
+													<p:inputTextarea id="ine332" value="#{moblBean.metaKeywordsEdit}" />
+													<p:message for="ine332" id="msge332"/>
+													
+													<h:outputText value="تاریخ تولد" />
+												    <h:outputText id="oue34" value="#{moblBean.convertToPersianDate(moblBean.moblEntity.birthDate)}" />
+													<p:inputText id="ine34" value="#{moblBean.birthDayEdit}" pp:readOnly="readOnly"/>
+													<p:message for="ine34" id="msge34"/>
+													
+
+																<h:outputText value="مجتمع" />
+																<h:outputText id="oue35" value="#{moblBean.moblEntity.mojtame}" />
+																<p:selectOneListbox id="ine38" value="#{moblBean.mojtameEdit}">
+																	<f:selectItems value="#{moblBean.findAllPassage()}" var="psg"
+																		itemValue="#{psg.blogName}" itemLabel="#{psg.blogName}" />
+																</p:selectOneListbox>
+																<h:outputText value="" />		
+
+													   		   <h:outputText value="نوع پنل" />
+																	<h:outputText id="oue36" value="#{moblBean.convertPanel(moblBean.moblEntity.panel)}" />
+																	<p:selectOneListbox id="ine39" value="#{moblBean.panelEdit}">
+																		<f:selectItem itemValue="A" itemLabel="فیروزه ای" />
+																		<f:selectItem itemValue="B" itemLabel="طلایی" />
+																		<f:selectItem itemValue="C" itemLabel="نقره ای" />
+																		<f:selectItem itemValue="D" itemLabel="برنزی" />
+																		<f:selectItem itemValue="E" itemLabel="عادی" />
+																	</p:selectOneListbox>
+																<h:outputText value="" />     
+
+														   <h:outputText value="نوع فعالیت" />
+															<h:outputText id="oue37" value="#{moblBean.moblEntity.faaliat}" />
+															<h:selectManyCheckbox id="ine40" value="#{moblBean.faaliatsEdit}"
+																layout="pageDirection">
+																<f:selectItem itemValue="مبلمان راحتی" itemLabel="مبلمان راحتی" />
+																<f:selectItem itemValue="مبلمان کلاسیک" itemLabel="مبلمان کلاسیک" />
+																<f:selectItem itemValue="مبلمان استیل" itemLabel="مبلمان استیل" />
+																<f:selectItem itemValue="مبلمان فضای باز"
+																	itemLabel="مبلمان فضای باز" />
+																<f:selectItem itemValue="مبلمان مدرن" itemLabel="مبلمان مدرن" />
+																<f:selectItem itemValue="مبل تختخواب شو"
+																	itemLabel="مبل تختخواب شو" />
+																<f:selectItem itemValue="نهار خوری" itemLabel="نهار خوری" />
+																<f:selectItem itemValue="سرویس خواب" itemLabel="سرویس خواب" />
+																<f:selectItem itemValue="میز تلویزیون" itemLabel="میز تلویزیون" />
+																<f:selectItem itemValue="آینه و کنسول" itemLabel="آینه و کنسول" />
+																<f:selectItem itemValue="قاب عکس" itemLabel="قاب عکس" />
+																<f:selectItem itemValue="میز جلو مبلی یا میز عسلی"
+																	itemLabel="میز جلو مبلی یا میز عسلی" />
+																<f:selectItem itemValue="میز اداریی" itemLabel="میز اداریی" />
+																<f:selectItem itemValue="صندلی اداری" itemLabel="صندلی اداری" />
+																<f:selectItem itemValue="پارتیشن" itemLabel="پارتیشن" />
+																<f:selectItem itemValue="سیسمونی" itemLabel="سیسمونی" />
+																<f:selectItem itemValue="کابینت" itemLabel="کابینت" />
+																<f:selectItem itemValue="دکوراسیون تخصصی"
+																	itemLabel="دکوراسیون تخصصی" />
+																<f:selectItem itemValue="دکوراسیون معمولی"
+																	itemLabel="دکوراسیون معمولی" />
+																<f:selectItem itemValue="درب های ضد سرقت"
+																	itemLabel="درب های ضد سرقت" />
+																<f:selectItem itemValue="درب های چوبی" itemLabel="درب های چوبی" />
+																<f:selectItem itemValue="درب و پنجره" itemLabel="درب و پنجره" />
+																<f:selectItem itemValue="رنگکاری چوب و مصنوعات"
+																	itemLabel="رنگکاری چوب و مصنوعات" />
+																<f:selectItem itemValue="منبت کاری" itemLabel="منبت کاری" />
+																<f:selectItem itemValue="کلاف سازی" itemLabel="کلاف سازی" />
+																<f:selectItem itemValue="معرق کاری" itemLabel="معرق کاری" />
+																<f:selectItem itemValue="خاتم کاری" itemLabel="خاتم کاری" />
+																<f:selectItem itemValue="خراطی" itemLabel="خراطی" />
+																<f:selectItem itemValue="رویکوبی" itemLabel="رویکوبی" />
+																<f:selectItem itemValue="نجاری" itemLabel="نجاری" />
+																<f:selectItem itemValue="چوب بری" itemLabel="چوب بری" />
+																<f:selectItem itemValue="اتاق سازی چوبی کامیون"
+																	itemLabel="اتاق سازی چوبی کامیون" />
+																<f:selectItem itemValue="پرس کاری چوبی" itemLabel="پرس کاری چوبی" />
+																<f:selectItem itemValue="قالب سازی کفش و غیره"
+																	itemLabel="قالب سازی کفش و غیره" />
+																<f:selectItem itemValue="جعبه سازی" itemLabel="جعبه سازی" />
+																<f:selectItem itemValue="تعمیرات" itemLabel="تعمیرات" />
+																<f:selectItem itemValue="جعبه سازی" itemLabel="جعبه سازی" />
+																<f:selectItem itemValue="بوفه" itemLabel="بوفه" />
+																<f:selectItem itemValue="ویترین" itemLabel="ویترین" />
+																<f:selectItem itemValue="صندلی چوبی" itemLabel="صندلی چوبی" />
+																<f:selectItem itemValue="کمد" itemLabel="کمد" />
+																<f:selectItem itemValue="کتابخانه" itemLabel="کتابخانه" />
+																<f:selectItem itemValue="مبلمان اداری" itemLabel="مبلمان اداری" />
+																<f:selectItem itemValue="مجسمه سازی" itemLabel="مجسمه سازی" />
+																<f:selectItem itemValue="دراور" itemLabel="دراور" />
+																<f:selectItem itemValue="جاکفشی" itemLabel="جاکفشی" />
+																<f:selectItem itemValue="مبلمان سنتی" itemLabel="مبلمان سنتی" />
+															</h:selectManyCheckbox>
+																<h:outputText value="" />
+
+
+																<h:outputText value="تصویر ۱" />
+																<h:graphicImage id="oue43" style="max-width:100%; height:300px!important"
+																rendered="#{moblBean.moblEntity.pic1 ne null}"
+																value="/Images/#{moblBean.moblEntity.pic1}.jpg"/>
+															    <p:fileUpload id="ine41" value="#{moblBean.sellerPic1Edit}" mode="simple"
+																	skinSimple="true" 
+																	validateContentType="true" accept=".jpg,.jpeg" binding="#{moblBean.pic1EditComponent}"
+																	 />
+															    <p:message for="ine41" id="msge35"/>
+															    
+															    <h:outputText value="تصویر ۲" />
+																<h:graphicImage id="oue44" style="max-width:100%; height:300px!important"
+																rendered="#{moblBean.moblEntity.pic2 ne null}"
+																value="/Images/#{moblBean.moblEntity.pic2}.jpg"/>
+															    <p:fileUpload id="ine42" value="#{moblBean.sellerPic2Edit}" mode="simple"
+																	skinSimple="true" 
+																	 validateContentType="true" accept=".jpg,.jpeg" binding="#{moblBean.pic2EditComponent}"
+																	 />
+															    <p:message for="ine42" id="msge36"/>
+															    
+															    <h:outputText value="تصویر ۳" />
+																<h:graphicImage id="oue45" style="max-width:100%; height:300px!important"
+																rendered="#{moblBean.moblEntity.pic3 ne null}"
+																value="/Images/#{moblBean.moblEntity.pic3}.jpg"/>
+															    <p:fileUpload id="ine43" value="#{moblBean.sellerPic3Edit}" mode="simple"
+																	skinSimple="true" 
+																	 validateContentType="true" accept=".jpg,.jpeg" binding="#{moblBean.pic3EditComponent}"
+																	  />
+															    <p:message for="ine43" id="msge37"/>
+															    
+															    <h:outputText value="تصویر ۴" />
+																<h:graphicImage id="oue46" style="max-width:100%; height:300px!important"
+																rendered="#{moblBean.moblEntity.pic4 ne null}"
+																value="/Images/#{moblBean.moblEntity.pic4}.jpg"/>
+															    <p:fileUpload id="ine44" value="#{moblBean.sellerPic4Edit}" mode="simple"
+																	skinSimple="true" 
+																	 validateContentType="true" accept=".jpg,.jpeg" binding="#{moblBean.pic4EditComponent}"
+																	/>
+																<p:message for="ine44" id="msge38"/>
+															    
+															   <h:outputText value="تصویر ۵" />
+																<h:graphicImage id="oue47" style="max-width:100%; height:300px!important"
+																rendered="#{moblBean.moblEntity.pic5 ne null}"
+																value="/Images/#{moblBean.moblEntity.pic5}.jpg"/>
+															    <p:fileUpload id="ine45" value="#{moblBean.sellerPic5Edit}" mode="simple"
+																	skinSimple="true" 
+																	 validateContentType="true" accept=".jpg,.jpeg" binding="#{moblBean.pic5EditComponent}"
+																	/>
+															    <p:message for="ine45" id="msge39"/>
+																
+													<h:outputText value="موقعیت مکانی" />
+													<p:inputText value="#{moblBean.latEdit}" id="latxt"  />
+													<p:inputText value="#{moblBean.lngEdit}" id="lngtxt" />
+													<h:outputText value="" /> 
+
+													</h:panelGrid>
+													<div class="card">
+													    <p:gmap id="oue42" center="#{moblBean.moblEntity.lat}, #{moblBean.moblEntity.lng}" zoom="15" type="HYBRID" style="width:100%;height:400px" model="#{moblBean.findLocation(moblBean.moblEntity.lat,moblBean.moblEntity.lng)}">
+            											<p:ajax event="pointSelect" listener="#{moblBean.onPointSelect}" update="latxt lngtxt"/>
+													    </p:gmap>
+													    
+													</div>
+													
+													
+													
+												<p:commandButton value="Submit" ajax="true" 
+														actionListener="#{moblBean.updateSeller()}"
+														styleClass="p-mt-3 ui-button-outlined p-d-block"
+														update="basicDT grl oue1 oue2 oue3 oue4 oue5 oue6 oue7 oue8 oue9 oue10
+														oue11 oue12 oue13 oue14 oue15 oue16 oue17 oue18 oue19 oue20 oue21 oue22
+														oue23 oue24 oue25 oue26 oue27 oue28 oue29 oue30 oue31 oue32 oue33 oue34
+														oue35 oue36 oue37 oue41 oue42 oue43 oue44 oue45 oue46 oue47 oue331 oue332
+														ine1 ine2 ine3 ine4 ine5 ine6 ine7 ine8 ine9 ine10 ine11 ine12 ine13
+														ine14 ine15 ine16 ine17 ine18 ine19 ine20 ine21 ine22 ine23 ine24 ine25
+														ine26 ine27 ine28 ine29 ine30 ine31 ine32 ine33 ine34 ine38 ine39 ine40 ine41 ine46 ine331 ine332 latxt lngtxt
+														msge1 msge2 msge3 msge4 msge5
+														msge6 msge7 msge8 msge9 msge10 msge11 msge12 msge13 msge14
+														msge15 msge16 msge17 msge18 msge21 msge22 msge23
+														msge24 msge25 msge26 msge27 msge29 msge30 msge31 msge32 msge33 msge34 msge35 msge36
+														 msge37 msge38 msge39 msge41 msge331 msge332" process="dlg1" 
+														/>
+												
+											
+
+											</p:outputPanel>
+
+										</p:dialog>
+										<p:dialog id="dlg2" header="test" showEffect="fade"
+											modal="true" widgetVar="testDialog" responsive="true">
+											<p:outputPanel id="ali-add-content" class="ui-fluid">
+													<script>
+														kamaDatepicker('in10', { buttonsColor: "red" });
+														kamaDatepicker('in25', { buttonsColor: "red" });
+														kamaDatepicker('in27', { buttonsColor: "red" });
+														kamaDatepicker('in31', { buttonsColor: "red" });
+														var customOptions = {
+															placeholder: "روز / ماه / سال"
+															, twodigit: false
+															, closeAfterSelect: false
+															, nextButtonIcon: "fa fa-arrow-circle-right"
+															, previousButtonIcon: "fa fa-arrow-circle-left"
+															, buttonsColor: "blue"
+															, forceFarsiDigits: true
+															, markToday: true
+															, markHolidays: true
+															, highlightSelectedDay: true
+															, sync: true
+															, gotoToday: true
+														}
+
+													</script>
+													<h:panelGrid columns="3">
+											
+														<h:outputText value="نام ونام خانوادگی صاحب واحد صنفی" />
+														<p:inputTextarea id="in1" value="#{moblBean.sellerName}"
+															  />
+														<p:message for="in1" id="msg1" />
+														
+														<h:outputText value="نام فروشگاه فارسی" />
+														<p:inputTextarea id="in2" value="#{moblBean.sellerStoreNamePer}"
+														  />
+														<p:message for="in2"  id="msg2"/>
+														
+														<h:outputText value="نام فروشگاه انگلیسی" />
+														<p:inputTextarea id="in3" value="#{moblBean.sellerStoreNameEng}" binding="#{moblBean.sellerNameEngAddComponent}"
+														 />
+														<p:message for="in3" id="msg3" />
+											
+														<h:outputText value="کد ملی" />
+														<p:inputTextarea id="in4" value="#{moblBean.ssn}"
+															/>
+														<p:message for="in4" id="msg4" />
+											
+														<h:outputText value="موبایل" />
+														<h:inputText id="in5" value="#{moblBean.mobile}" binding="#{moblBean.mobileComponentAdd}"
+														 />
+														<p:message for="in5" id="msg5" />
+											
+														<h:outputText value="نوع پنل" />
+														<p:selectOneListbox id="in6" value="#{moblBean.panel}">
+															<f:selectItem itemValue="A" itemLabel="فیروزه ای" />
+															<f:selectItem itemValue="B" itemLabel="طلایی" />
+															<f:selectItem itemValue="C" itemLabel="نقره ای" />
+															<f:selectItem itemValue="D" itemLabel="برنزی" />
+															<f:selectItem itemValue="E" itemLabel="عادی" />
+														</p:selectOneListbox>
+														<p:message for="in6" id="msg6" />
+											
+														<h:outputText value="نوع فعالیت" />
+														<h:selectManyCheckbox value="#{moblBean.faaliats}" id="in7"
+															 layout="pageDirection">
+															<f:selectItem itemValue="مبلمان راحتی" itemLabel="مبلمان راحتی" />
+															<f:selectItem itemValue="مبلمان کلاسیک" itemLabel="مبلمان کلاسیک" />
+															<f:selectItem itemValue="مبلمان استیل" itemLabel="مبلمان استیل" />
+															<f:selectItem itemValue="مبلمان فضای باز"
+																itemLabel="مبلمان فضای باز" />
+															<f:selectItem itemValue="مبلمان مدرن" itemLabel="مبلمان مدرن" />
+															<f:selectItem itemValue="مبل تختخواب شو" itemLabel="مبل تختخواب شو" />
+															<f:selectItem itemValue="نهار خوری" itemLabel="نهار خوری" />
+															<f:selectItem itemValue="سرویس خواب" itemLabel="سرویس خواب" />
+															<f:selectItem itemValue="میز تلویزیون" itemLabel="میز تلویزیون" />
+															<f:selectItem itemValue="آینه و کنسول" itemLabel="آینه و کنسول" />
+															<f:selectItem itemValue="قاب عکس" itemLabel="قاب عکس" />
+															<f:selectItem itemValue="میز جلو مبلی یا میز عسلی"
+																itemLabel="میز جلو مبلی یا میز عسلی" />
+															<f:selectItem itemValue="میز اداری" itemLabel="میز اداری" />
+															<f:selectItem itemValue="صندلی اداری" itemLabel="صندلی اداری" />
+															<f:selectItem itemValue="پارتیشن" itemLabel="پارتیشن" />
+															<f:selectItem itemValue="سیسمونی" itemLabel="سیسمونی" />
+															<f:selectItem itemValue="کابینت" itemLabel="کابینت" />
+															<f:selectItem itemValue="دکوراسیون تخصصی"
+																itemLabel="دکوراسیون تخصصی" />
+															<f:selectItem itemValue="دکوراسیون معمولی"
+																itemLabel="دکوراسیون معمولی" />
+															<f:selectItem itemValue="درب های ضد سرقت"
+																itemLabel="درب های ضد سرقت" />
+															<f:selectItem itemValue="درب های چوبی" itemLabel="درب های چوبی" />
+															<f:selectItem itemValue="درب و پنجره" itemLabel="درب و پنجره" />
+															<f:selectItem itemValue="رنگکاری چوب و مصنوعات"
+																itemLabel="رنگکاری چوب و مصنوعات" />
+															<f:selectItem itemValue="منبت کاری" itemLabel="منبت کاری" />
+															<f:selectItem itemValue="کلاف سازی" itemLabel="کلاف سازی" />
+															<f:selectItem itemValue="معرق کاری" itemLabel="معرق کاری" />
+															<f:selectItem itemValue="خاتم کاری" itemLabel="خاتم کاری" />
+															<f:selectItem itemValue="خراطی" itemLabel="خراطی" />
+															<f:selectItem itemValue="رویکوبی" itemLabel="رویکوبی" />
+															<f:selectItem itemValue="نجاری" itemLabel="نجاری" />
+															<f:selectItem itemValue="چوب بری" itemLabel="چوب بری" />
+															<f:selectItem itemValue="اتاق سازی چوبی کامیون"
+																itemLabel="اتاق سازی چوبی کامیون" />
+															<f:selectItem itemValue="پرس کاری چوبی" itemLabel="پرس کاری چوبی" />
+															<f:selectItem itemValue="قالب سازی کفش و غیره"
+																itemLabel="قالب سازی کفش و غیره" />
+															<f:selectItem itemValue="جعبه سازی" itemLabel="جعبه سازی" />
+															<f:selectItem itemValue="تعمیرات" itemLabel="تعمیرات" />
+															<f:selectItem itemValue="mdf" itemLabel="mdf" />
+															<f:selectItem itemValue="بوفه" itemLabel="بوفه" />
+															<f:selectItem itemValue="ویترین" itemLabel="ویترین" />
+															<f:selectItem itemValue="صندلی چوبی" itemLabel="صندلی چوبی" />
+															<f:selectItem itemValue="کمد" itemLabel="کمد" />
+															<f:selectItem itemValue="کتابخانه" itemLabel="کتابخانه" />
+															<f:selectItem itemValue="مبلمان اداری" itemLabel="مبلمان اداری" />
+															<f:selectItem itemValue="مجسمه سازی" itemLabel="مجسمه سازی" />
+															<f:selectItem itemValue="دراور" itemLabel="دراور" />
+															<f:selectItem itemValue="جاکفشی" itemLabel="جاکفشی" />
+															<f:selectItem itemValue="مبلمان سنتی" itemLabel="مبلمان سنتی" />
+															<f:selectItem itemValue="پیراهن مبل" itemLabel="پیراهن مبل" />
+															<f:selectItem itemValue="متفرقه" itemLabel="متفرقه" />
+														</h:selectManyCheckbox>
+														<p:message for="in7" id="msg7" />
+											
+														<h:outputText value="درباره ما" />
+														<p:inputTextarea id="in8" value="#{moblBean.aboutUs}" />
+														<p:message for="in8" id="msg8" />
+											
+														<h:outputText value="تقدیر نامه ها" />
+														<p:inputTextarea id="in9" value="#{moblBean.tagdir}"/>
+														<p:message for="in9" id="msg9" />
+														
+														<h:outputText value="تاریخ تولد فروشنده" />
+														<h:inputText id="in10" value="#{moblBean.birthDay}" pp:readOnly="readOnly"/>
+														<p:message for="in10" id="msg10" />
+											
+														<h:outputText value="اینستاگرام" />
+														<p:inputTextarea id="in11" value="#{moblBean.instagram}"/>
+														<p:message for="in11" id="msg11" />
+														
+														<h:outputText value="تلگرام" />
+														<p:inputTextarea id="in12" value="#{moblBean.telegram}"/>
+														<p:message for="in12" id="msg12" />
+														
+														<h:outputText value="شماره تلفن" />
+														<p:inputTextarea id="in13" value="#{moblBean.phone}" />
+														<p:message for="in13" id="msg13" />
+														
+														<h:outputText value="وبسایت" />
+														<p:inputTextarea id="in14" value="#{moblBean.website}"/>
+														<p:message for="in14" id="msg14"/>
+														
+														<h:outputText value="ایمیل" />
+														<p:inputTextarea id="in15" value="#{moblBean.email}" />
+														<p:message for="in15" id="msg15" />
+														
+														<h:outputText value="فکس" />
+														<p:inputTextarea id="in16" value="#{moblBean.fax}" />
+														<p:message for="in16" id="msg16" />
+														
+														<h:outputText value="نام مدیر فروش" />
+														<p:inputTextarea id="in17" value="#{moblBean.modirForoshName}" />
+														<p:message for="in17" id="msg17" />
+														
+														<h:outputText value="شماره مدیر فروش" />
+														<p:inputTextarea id="in18" value="#{moblBean.modirForoshPhone}"/>
+														<p:message for="in18" id="msg18" />
+														
+														<h:outputText value="آدرس" />
+														<p:inputTextarea id="in19" value="#{moblBean.addres}"/>
+														<p:message for="in19" id="msg19" />
+														
+														<h:outputText value="واقع در" />
+														<p:inputTextarea id="in20" value="#{moblBean.vage}"/>
+														<p:message for="in20" id="msg20"/>
+														
+														<h:outputText value="کد پستی" />
+														<p:inputTextarea id="in21" value="#{moblBean.postCode}" />
+														<p:message for="in21" id="msg21"/>
+														
+														<h:outputText value="meta description" />
+														<p:inputTextarea id="in2133" value="#{moblBean.metaDescription}" />
+														<p:message for="in2133" id="msg2133"/>
+																												
+														<h:outputText value="meta keywords" />
+														<p:inputTextarea id="in2134" value="#{moblBean.metaKeywords}" />
+														<p:message for="in2134" id="msg2134"/>
+											
+														<h:outputText value="مالکیت مغازه" />
+														<p:selectOneListbox value="#{moblBean.malekiat}" id="in22">
+															<f:selectItem itemValue="مالکیت" itemLabel="مالکیت" />
+															<f:selectItem itemValue="سرقفلی" itemLabel="سرقفلی" />
+															<f:selectItem itemValue="اوقافی" itemLabel="اوقافی" />
+															<f:selectItem itemValue="استیجاری" itemLabel="استیجاری" />
+														</p:selectOneListbox>
+														<p:message for="in22" id="msg22" />
+											
+														<h:outputText value="ثبت سفارش از سوی" />
+														<p:selectOneListbox value="#{moblBean.sabteSefaresh}" id="in23">
+															<f:selectItem itemValue="صاحب پروانه" itemLabel="صاحب پروانه" />
+															<f:selectItem itemValue="مستاجر" itemLabel="مستاجر" />
+														</p:selectOneListbox>
+														<p:message for="in23" id="msg23" />
+											
+														<h:outputText value="مستاجر" />
+														<p:selectOneListbox value="#{moblBean.sabteSefaresh}" id="in24">
+															<f:selectItem itemValue="true" itemLabel="دارد" />
+															<f:selectItem itemValue="false" itemLabel="ندارد" />
+														</p:selectOneListbox>
+														<p:message for="in24" id="msg24" />
+											
+														<h:outputText value="مهلت اجاره" />
+														<h:inputText id="in25" value="#{moblBean.mohlateEjare}" pp:readOnly="readOnly"/>
+														<p:message for="in25" id="msg25"/>
+											
+														<h:outputText value="نام و نام خانوادگی مستاجر" />
+														<p:inputTextarea id="in26" value="#{moblBean.mostajerName}" />
+														<p:message for="in26" id="msg26" />
+											
+														<h:outputText value="تاریخ تولد مستاجر" />
+														<h:inputText id="in27" value="#{moblBean.mostajerBirthday}" pp:readOnly="readOnly"/>
+														<p:message for="in27" id="msg27"/>
+											
+														<h:outputText value="کد ملی مستاجر" />
+														<p:inputTextarea id="in28" value="#{moblBean.mostajerSsn}" />
+														<p:message for="in28" id="msg28" />
+											
+														<h:outputText value="موبایل مستاجر" />
+														<p:inputTextarea id="in29" value="#{moblBean.mostajerMobile}" />
+														<p:message for="in29" id="msg29"/>
+											
+														<h:outputText value="شماره جواز" />
+														<p:inputTextarea id="in30" value="#{moblBean.shomareJavaz}" />
+														<p:message for="in30" id="msg30"/>
+											
+														<h:outputText value="تاریخ اعتبار" />
+														<h:inputText id="in31" value="#{moblBean.tarikhEtebar}" pp:readOnly="readOnly"/>
+														<p:message for="in31" id="msg31" />
+											
+														<h:outputText value="مباشر" />
+														<p:selectOneListbox value="#{moblBean.hasMobasher}" id="in32">
+															<f:selectItem itemValue="true" itemLabel="دارد" />
+															<f:selectItem itemValue="false" itemLabel="ندارد" />
+														</p:selectOneListbox>
+														<p:message for="in32" id="msg32" />
+											
+														<h:outputText value="نام مباشر" />
+														<p:inputTextarea id="in33" value="#{moblBean.mobasherName}" />
+														<p:message for="in33" id="msg33" />
+											
+														<h:outputText value="نام رابط" />
+														<p:inputTextarea id="in34" value="#{moblBean.rabetName}" />
+														<p:message for="in34" id="msg34" />
+											
+														<h:outputText value="سمت رابط" />
+														<p:inputTextarea id="in35" value="#{moblBean.sematRabet}"/>
+														<p:message for="in35" id="msg35"/>
+											
+														<h:outputText value="موبایل رابط" />
+														<p:inputTextarea id="in36" value="#{moblBean.rabetMobile}"/>
+														<p:message for="in36" id="msg36" />
+											
+														<h:outputText value="موبایل شبکه مجازی" />
+														<p:inputTextarea id="in37" value="#{moblBean.shabakeMazajiMobile}"/>
+														<p:message for="in37" id="msg37" />
+											
+														<h:outputText value="مجتمع تجاری" />
+														<p:selectOneListbox value="#{moblBean.mojtame}" id="in38">
+															<f:selectItems value="#{moblBean.findAllPassage()}" var="psg"
+																itemValue="#{psg.blogName}" itemLabel="#{psg.blogName}" />
+														</p:selectOneListbox>
+														<p:message for="in38" id="msg38"/>
+														
+														<h:outputText value="عکس بالای صفحه" />
+														<p:fileUpload id="in39" value="#{moblBean.sellerPic1}" mode="simple"
+														skinSimple="true" binding="#{moblBean.pic1Component}"
+														validateContentType="true" accept=".jpg,.jpeg"
+														/>
+										            	<p:message for="in39" id="msg39"/> 
+										            	
+										            	<h:outputText value="عکس دوم بالای صفحه" />
+														<p:fileUpload id="in40" value="#{moblBean.sellerPic5}" mode="simple"
+														skinSimple="true" binding="#{moblBean.pic5Component}"
+														validateContentType="true" accept=".jpg,.jpeg"
+														/>
+										            	<p:message for="in40" id="msg40"/> 
+										            	
+										            	<h:outputText value="عکس لوگو" />
+														<p:fileUpload id="in41" value="#{moblBean.sellerPic2}" mode="simple"
+														skinSimple="true" binding="#{moblBean.pic2Component}"
+														validateContentType="true" accept=".jpg,.jpeg"
+														/>
+										            	<p:message for="in41" id="msg41"/> 
+										            	
+										            	<h:outputText value="عکس درباره ما و سه بعدی برای پنل فیروزه ای" />
+														<p:fileUpload id="in42" value="#{moblBean.sellerPic3}" mode="simple"
+														skinSimple="true" binding="#{moblBean.pic3Component}"
+														validateContentType="true" accept=".jpg,.jpeg"
+														/>
+										            	<p:message for="in42" id="msg42"/> 
+										            	
+										            	<h:outputText value="عکس گواهینامه" />
+														<p:fileUpload id="in43" value="#{moblBean.sellerPic4}" mode="simple"
+														skinSimple="true" binding="#{moblBean.pic4Component}"
+														validateContentType="true" accept=".jpg,.jpeg"
+														/>
+										            	<p:message for="in43" id="msg43"/> 
+										            	
+										            	<h:outputText value="موقعیت مکانی" />
+														<p:inputText value="#{moblBean.lat}" id="latAdd" binding="#{moblBean.latComponent}"/>
+														<p:inputText value="#{moblBean.lng}" id="lngAdd" />
+														<p:message for="lngAdd" id="msg44"/> 
+														<p:message for="latAdd" id="msg45"/> 
+														</h:panelGrid>
+														<div class="card">
+														    <p:gmap id="in44" center="35.7072896, 51.314688" zoom="15" type="HYBRID" style="width:100%;height:400px" >
+	            											<p:ajax event="pointSelect" listener="#{moblBean.onPointSelect2}" update="latAdd lngAdd"/>
+														    </p:gmap>
+														    
+														</div>
+										            	
+										            	<br/>
+										            	
+														<p:commandButton value="ذخیره" ajax="true" 
+														actionListener="#{moblBean.insertSeller()}"
+														styleClass="p-mt-3 ui-button-outlined p-d-block"
+														update="basicDT grl in1 in2 in3 in4 in5 in6 in7 in8 in9 in10 in11
+														in12 in13 in14 in15 in16 in17 in18 in19 in20 in21 in22 in23 in24 in25 in26 in27
+														in28 in29 in30 in31 in32 in33 in34 in35 in36 in37 in38 in39 in40 in41 in42 in43 in2133 in2134 latAdd lngAdd msg1 msg2 msg3 msg4 msg5
+														msg6 msg7 msg8 msg9 msg10 msg11 msg12 msg13 msg14 msg15 msg16 msg17 msg18 msg19 msg20 msg21
+														msg22 msg23 msg24 msg25 msg26 msg27 msg28 msg29 msg30 msg31 msg32 msg33 msg34 msg35 msg36
+													    msg37 msg38 msg39 msg40 msg41 msg42 msg43 msg44 msg45 msg2133 msg2134"  
+														process="dlg2" />
+
+											</p:outputPanel>
+										</p:dialog>
+										<p:confirmDialog widgetVar="deleteProductDialog"
+														showEffect="fade" width="300"
+														message="Delete the product?" header="Confirm"
+														severity="warn">
+
+															
+														<p:commandButton value="Yes" icon="pi pi-check" actionListener="#{moblBean.deleteMobl()}"
+														                             process="@this" oncomplete="PF('deleteProductDialog').hide()" update="basicDT grl"/>
+														<p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
+														                             onclick="PF('deleteProductDialog').hide()"/>
+										</p:confirmDialog>
+									</h:form>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</section>
+			</div>
+
+			<footer class="main-footer">
+				<div class="float-right d-none d-sm-block">
+					<b>Version</b> 3.0.0-alpha
+				</div>
+
+				<strong>CopyLeft 2018 <a
+					href="http://github.com/hesammousavi/">حسام موسوی</a>.
+				</strong>
+			</footer>
+
+			<!-- Control Sidebar -->
+			<aside class="control-sidebar control-sidebar-dark">
+				<!-- Control sidebar content goes here -->
+			</aside>
+			<!-- /.control-sidebar -->
+		</div>
+		<!-- ./wrapper -->
+		</h:panelGroup>
+	</ui:define>
+
+	<ui:define name="footPage">
+	
+   <!--  <h:outputScript library="leaflet" name="map2.js" />  -->
+	</ui:define>
+
+
+</ui:composition>

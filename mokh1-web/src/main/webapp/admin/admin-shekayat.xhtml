@@ -1,0 +1,401 @@
+
+<ui:composition template="../WEB-INF/pages/admin-temp.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pp="http://xmlns.jcp.org/jsf/passthrough"
+	
+>
+
+	<ui:define name="headPage">
+		<style>
+body .ui-dialog {
+	padding: 0;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+	border: 1px solid #c8c8c8;
+	border-radius: 3px;
+	height: 600px !important;
+	overflow: scroll;
+}
+
+body .ui-growl {
+	top: 85px;
+	z-index: 9999 !important;
+}
+
+.bd-table-days button {
+	background-color: #f8f8f8;
+	border: 0;
+	width:;
+	margin: 0px !important;
+	font-size: 12px !important;
+}
+td{
+max-width: 300px!important;
+}
+</style>
+
+</ui:define>
+	<ui:define name="mainPage">
+		<div class="wrapper">
+			<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<div class="container-fluid">
+						<div class="row mb-2">
+							<div class="col-sm-6">
+								<h1>ویجت‌ها</h1>
+							</div>
+							<div class="col-sm-6">
+								<ol class="breadcrumb float-sm-left">
+									<li class="breadcrumb-item"><a href="#">خانه</a></li>
+									<li class="breadcrumb-item active">ویجت‌ها</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="content">
+					<div class="container-fluid">
+
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card card-widget">
+									<h:form id="form" enctype="multipart/form-data"
+										acceptcharset="UTF-8" prependId="false">
+									<p:growl id="grl" life="2000"/>
+										
+			<div class="page-wrapper" style="min-height: 0px !important;">
+				<div class="container-fluid">
+
+					<!-- Title -->
+					<div class="row heading-bg">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<h5 class="txt-dark" style="font-family: IRANSansBold;">بخش
+								شکایات اتحادیه</h5>
+							<p class="text1"
+								style="font-family: IRANSansNor; text-align: justify; font-size: 17px; line-height: 35px;">
+								<strong style="font-family: IRANSansBold; line-height: 50px;">*
+									ضوابط و شرایط شکایت اتحادیه :</strong> <br /> ـ کالای فاکتور شده در
+								اختیار خریدار باشد . <br /> ـ ثبت شکایت به نام صاحب فاکتور باشد
+								. <br /> ـ کالای تحویلی دارای اشکال ، ایراد و همچنین مغایر با
+								موارد اعلامی در فاکتور بوده باشد . <br /> ـ ذکر این نکته ضروری
+								است که موضوعات اعم از گرانفروشی کالا در صورت اثبات و نظریه
+								کارشناسی قابل بررسی و اعلام خواهد شد . <br /> <strong
+									style="font-family: IRANSansBold; line-height: 50px;">توضیحات
+									:</strong> <br /> شایان ذکر است عدم تحویل کالا ، استرداد مبلغ بیعانه ،
+								تاخیر / دیرکرد و خسارت و فاکتورهایی که تاریخ آن بالای یکسال می
+								باشد از عهده رسیدگی این اتحادیه خارج بوده ، لذا می توانید از
+								مراجع رسیدگی ذیربط اعم از شورای حل اختلاف ، تعزیرات و مراکز
+								قانونی و ... رسیدگی فرمائید . <br /> 
+								<a href="/pages/panel_seller/manateg.xhtml">مناطق
+						فعالیت اتحادیه درودگران و مبلسازان تهران</a>
+								<br/>
+								<strong
+									style="font-family: IRANSansBold; line-height: 50px;">توجه
+									:</strong> کلیک بر روی دکمه ی زیر به منزله ی تایید تمامی موارد فوق می
+								باشد !
+							</p>
+							<h:message for="senfinamexxx" id="ms1xxx" errorStyle="color:red;"
+								errorClass="help-block" />
+							<h:selectOneRadio required="true" id="senfinamexxx"
+								requiredMessage="شما باید دکمه پذیرش را انتخاب نمایید.">
+								<f:selectItem itemValue="پذیرش" itemLabel="پذیرش" />
+							</h:selectOneRadio>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
+			<div class="page-wrapper" style="padding-top: 0px !important">
+				<div class="container-fluid">
+
+										<div class="row">
+											<div class="col-sm-12 col-xs-12">
+												<div class="form-wrap">
+
+
+													<div class="form-body">
+														<h6 class="txt-dark capitalize-font"
+															style="font-family: IRANSansBold;">
+															<i class="zmdi zmdi-account mr-10"></i>اطلاعات واحد صنفی
+															مورد شکایت
+														</h6>
+														<hr class="light-grey-hr" />
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">نام واحد
+																		صنفی</label>
+																	<p:inputText id="senfiname" styleClass="form-control"
+																		value="#{adminShekayat.vahedeSenfiName}" />
+																	<!-- <span class="help-block"> This is inline help </span> -->
+																	<p:message for="senfiname" id="ms1"
+																		errorStyle="color:red;" errorClass="help-block" />
+																</div>
+															</div>
+															<!--/span-->
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">نام متصدی</label>
+																	<p:inputText id="motName" styleClass="form-control"
+																		value="#{adminShekayat.motesadiName}" />
+																	<!-- <span class="help-block"> This field has error. </span>  -->
+																	<p:message for="motName" errorStyle="color:red;"
+																		errorClass="help-block" id="ms2" />
+																</div>
+															</div>
+															<!--/span-->
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">تلفن واحد
+																		صنفی</label>
+																	<p:inputText id="senfiPhone" styleClass="form-control"
+																		value="#{adminShekayat.vahedeSenfiPhone}" />
+																	<!-- <span class="help-block"> This is inline help </span> -->
+																	<p:message for="senfiPhone" errorStyle="color:red;"
+																		errorClass="help-block" id="ms3" />
+																</div>
+															</div>
+															<!--/span-->
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">موبایل متصدی</label>
+																	<p:inputText id="motMobile" styleClass="form-control"
+																		value="#{adminShekayat.motesadiName}" />
+																	<!-- <span class="help-block"> This field has error. </span>  -->
+																	<p:message for="motMobile" errorStyle="color:red;"
+																		errorClass="help-block" id="ms4" />
+																</div>
+															</div>
+															<!--/span-->
+														</div>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">شناسه واحد
+																		صنفی</label>
+																	<p:inputText id="senfiShenase"
+																		styleClass="form-control"
+																		value="#{adminShekayat.vahedeShenaseSenfi}" />
+																	<!-- <span class="help-block"> This is inline help </span> -->
+																	<p:message for="senfiShenase" errorStyle="color:red;"
+																		errorClass="help-block" id="ms5" />
+																</div>
+															</div>
+															<!--/span-->
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">کد پستی واحد
+																		صنفی</label>
+																	<p:inputText id="postcode" styleClass="form-control"
+																		value="#{adminShekayat.vahedeSenfiPostCode}" />
+																	<!-- <span class="help-block"> This field has error. </span>  -->
+																	<p:message for="postcode" errorStyle="color:red;"
+																		errorClass="help-block" id="ms6" />
+																</div>
+															</div>
+															<!--/span-->
+														</div>
+
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">آدرس واحد
+																		صنفی</label>
+																	<p:inputTextarea id="senfiAddres"
+																		styleClass="form-control"
+																		value="#{adminShekayat.vahedeShenaseAddres}" />
+																	<!-- <span class="help-block"> This is inline help </span> -->
+																	<p:message for="senfiAddres" errorStyle="color:red;"
+																		errorClass="help-block" id="ms7" />
+																</div>
+															</div>
+															<!--/span-->
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">عنوان شکایت</label>
+																	<h:selectOneMenu id="onvan"
+																		value="#{adminShekayat.shekayatTitle}"
+																		styleClass="form-control">
+																		<f:selectItem itemValue="گرانفروشی"
+																			itemLabel="گرانفروشی" />
+																		<f:selectItem itemValue="تقلب" itemLabel="تقلب" />
+																		<f:selectItem itemValue="عدم درج قیمت و نصب نرخنامه"
+																			itemLabel="عدم درج قیمت و نصب نرخنامه" />
+																		<f:selectItem itemValue="عدم صدور صورت حساب"
+																			itemLabel="عدم صدور صورت حساب" />
+																		<f:selectItem itemValue="نداشتن پروانه کسب"
+																			itemLabel="نداشتن پروانه کسب" />
+																		<f:selectItem
+																			itemValue="عدم انجام خدمات پس از فروش در دوره ضمانت"
+																			itemLabel="عدم انجام خدمات پس از فروش در دوره ضمانت" />
+																	</h:selectOneMenu>
+																	<!-- <span class="help-block"> This field has error. </span>  -->
+																	<p:message for="onvan" errorStyle="color:red;"
+																		errorClass="help-block" id="ms8" />
+																</div>
+															</div>
+															<!--/span-->
+														</div>
+
+														<div class="row">
+															<div class="col-md-12">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">شرح شکایت</label>
+																	<p:inputTextarea id="sharh" styleClass="form-control"
+																		value="#{adminShekayat.sharh}" />
+																	<!-- <span class="help-block"> This is inline help </span> -->
+																	<h:message for="sharh" errorStyle="color:red;"
+																		errorClass="help-block" id="ms9" />
+																</div>
+															</div>
+
+
+														</div>
+
+														<div class="row">
+															<div class="col-md-12">
+																<div class="form-group">
+																	<label class="control-label mb-10"
+																		style="font-family: IRANSansNor;">آیا این شکایت از طریق مراجع ذیصلاح دیگری ثبت شده است ؟</label>
+																<h:selectManyCheckbox value="#{adminShekayat.marajes}" id="onvan55"
+				required="true" layout="pageDirection">
+				<f:selectItem itemValue=" تعزیرات حکومتی" itemLabel=" تعزیرات حکومتی" />
+				<f:selectItem itemValue="شورای حل اختلاف" itemLabel="شورای حل اختلاف" />
+				<f:selectItem itemValue="سازمان صنعت ، معدن و تجارت" itemLabel="سازمان صنعت ، معدن و تجارت" />
+				<f:selectItem itemValue=" اتاق اصاف تهران" itemLabel=" اتاق اصاف تهران" />
+				<f:selectItem itemValue="اتاق اصاف ایران" itemLabel="اتاق اصاف ایران" />
+				<f:selectItem itemValue="دیگر اتحادیه ها" itemLabel="دیگر اتحادیه ها" />
+                <f:selectItem itemValue="هیچ کدام" itemLabel="هیچ کدام" />
+			</h:selectManyCheckbox>
+																	<!-- <span class="help-block"> This field has error. </span>  -->
+																	<h:message for="onvan55" errorStyle="color:red;"
+																		errorClass="help-block" id="eeeeee" />
+																</div>
+															</div>
+
+
+														</div>
+
+														<div class="row">
+															<div class="col-md-12">
+																<div class="panel panel-default card-view">
+																	<div class="panel-heading">
+																		<div class="pull-left">
+																			<h6 class="panel-title txt-dark"
+																				style="font-family: IRANSansNor;">آپلود تصویر
+																				فاکتور</h6>
+																		</div>
+																		<div class="clearfix"></div>
+																	</div>
+														<p:fileUpload  value="#{adminShekayat.shakiFactor}" mode="simple"
+														skinSimple="true" binding="#{adminShekayat.pic1EditComponent}"
+														validateContentType="true" accept=".jpg,.jpeg"
+														/>
+										            	
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-12">
+																<div class="panel panel-default card-view">
+																	<div class="panel-heading">
+																		<div class="pull-left">
+																			<h6 class="panel-title txt-dark"
+																				style="font-family: IRANSansNor;">آپلود تصویر
+																				کارت ملی</h6>
+																		</div>
+																		<div class="clearfix"></div>
+																	</div>
+														<p:fileUpload value="#{adminShekayat.shakiSsnPic}" mode="simple"
+														skinSimple="true" binding="#{adminShekayat.pic2EditComponent}"
+														validateContentType="true" accept=".jpg,.jpeg"
+														/>
+										            	
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-12">
+																<div class="panel panel-default card-view">
+																	<div class="panel-heading">
+																		<div class="pull-left">
+																			<h6 class="panel-title txt-dark"
+																				style="font-family: IRANSansNor;">آپلود تصویر
+																				از کالا</h6>
+																		</div>
+																		<div class="clearfix"></div>
+																	</div>
+																			
+														<p:fileUpload  value="#{adminShekayat.shakiKalaPic}" mode="simple"
+														skinSimple="true" binding="#{adminShekayat.pic3EditComponent}"
+														validateContentType="true" accept=".jpg,.jpeg"
+														/>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													
+													<p:commandButton ajax="false" process="@form"
+													action="#{adminShekayat.inserToShekayat()}" value="ثبت"/>
+
+												</div>
+											</div>
+										</div>
+
+				</div>
+			</div>
+
+		
+
+
+									</h:form>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</section>
+			</div>
+
+			<footer class="main-footer">
+				<div class="float-right d-none d-sm-block">
+					<b>Version</b> 3.0.0-alpha
+				</div>
+
+				<strong>CopyLeft 2018 <a
+					href="http://github.com/hesammousavi/">حسام موسوی</a>.
+				</strong>
+			</footer>
+
+			<aside class="control-sidebar control-sidebar-dark">
+			</aside>
+		</div>
+	</ui:define>
+
+	<ui:define name="footPage">
+	
+	</ui:define>
+
+
+</ui:composition>

@@ -26,7 +26,7 @@ import sevice.CreativeServiceLocal;
 public class AddCreative implements Serializable {
 
 	/**
-	 * 
+	 *  
 	 */
 	private static final long serialVersionUID = 1L;
 

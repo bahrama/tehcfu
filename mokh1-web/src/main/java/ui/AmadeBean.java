@@ -23,7 +23,7 @@ import sevice.AmadeServiceLocal;
 public class AmadeBean implements Serializable{
 
 	/**
-	 * 
+	 *  
 	 */
 	private static final long serialVersionUID = 1L;
 

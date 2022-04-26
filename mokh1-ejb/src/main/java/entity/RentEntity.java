@@ -4,12 +4,16 @@ package entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -25,29 +29,28 @@ import org.eclipse.persistence.annotations.CacheType;
 
 @Entity
 @Table(name = "rent_tbl")
-@Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({ 
-@NamedQuery(name = "findAllRent", query = "SELECT a FROM RentEntity a ORDER BY a.rentId DESC"),
-@NamedQuery(name = "findRentById", query = "SELECT i FROM RentEntity i WHERE i.rentId=:v_rentId"),
+@NamedQuery(name = "findAllRent", query = "SELECT a FROM RentEntity a ORDER BY a.adveriseId DESC"),
+@NamedQuery(name = "findRentById", query = "SELECT i FROM RentEntity i WHERE i.adveriseId=:v_adveriseId"),
 })
-public class RentEntity implements Serializable {
+@Cacheable(value = false)
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorValue(value = "rent")
+public class RentEntity extends AdvertiseEntity{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "rent_id")
-	private long rentId;
+	
+	@Column(name = "adveriseId")
+	private long adveriseId;
+	
 	@Column(name = "rentType", nullable = true, length = 20)
 	private String rentType;
 
 	@Column(name = "homeType", nullable = true, length = 20)
 	private String homeType;
-
-	@Column(name = "address", nullable = true, length = 100)
-	private String address;
 
 	@Column(name = "vage", nullable = true, length = 20)
 	private String vage;
@@ -55,20 +58,20 @@ public class RentEntity implements Serializable {
 	@Column(name = "mogeiat", nullable = true, length = 20)
 	private String mogeiat;
 
-	@Column(name = "tedadTabage", nullable = true , length = 10)
-	private String tedadTabage;
+	@Column(name = "tedadTabage", nullable = true )
+	private int tedadTabage;
 
-	@Column(name = "tedadVahed", nullable = true, length = 10)
-	private String tedadVahed;
+	@Column(name = "tedadVahed", nullable = true)
+	private int tedadVahed;
 
-	@Column(name = "vadieeMoney", nullable = true, length = 30)
-	private String vadieeMoney;
+	@Column(name = "vadieeMoney", nullable = true)
+	private long vadieeMoney;
 
-	@Column(name = "ejareMony", nullable = true , length = 30)
-	private String ejareMony;
+	@Column(name = "ejareMony", nullable = true)
+	private long ejareMony;
 	
-	@Column(name = "mablage_forosh", nullable = true , length = 30)
-	private String mablageForosh;
+	@Column(name = "mablage_forosh", nullable = true)
+	private long mablageForosh;
 
 	@Column(name = "emkanat", nullable = true, length = 200)
 	private String emkanat;
@@ -76,17 +79,14 @@ public class RentEntity implements Serializable {
 	@Column(name = "vaziatSanad", nullable = true, length = 20)
 	private String vaziatSanad;
 
-	@Column(name = "senBana", nullable = true ,length = 30)
-	private String senBana;
+	@Column(name = "senBana", nullable = true)
+	private int senBana;
 
-	@Column(name = "masahat", nullable = true,length = 30)
-	private String masahat;
+	@Column(name = "masahat", nullable = true)
+	private int masahat;
 
-	@Column(name = "vaziatMelk", nullable = true)
+	@Column(name = "vaziatMelk", nullable = true,length = 100)
 	private String vaziatMelk;
-
-	@Column(name = "description", nullable = true , length=500)
-	private String description;
 
 	@Column(name = "parvane", nullable = true,length=5)
 	private String parvane;
@@ -94,31 +94,7 @@ public class RentEntity implements Serializable {
 	@Column(name = "etehadieName", nullable = true, length = 200)
 	private String etehadieName;
 
-	@Column(name = "phone", nullable = true , length=30)
-	private String phone;
 
-	
-	@Column(name = "pic1", nullable = true , length=100)
-	private String pic1;
-
-	@Column(name = "show")
-	private boolean show;
-
-	@Temporal(TemporalType.DATE)
-	private Date date;
-	
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_rent")
-	private MoblEntity renter;
-
-	public long getRentId() {
-		return rentId;
-	}
-
-	public void setRentId(long rentId) {
-		this.rentId = rentId;
-	}
 
 	public String getRentType() {
 		return rentType;
@@ -136,13 +112,7 @@ public class RentEntity implements Serializable {
 		this.homeType = homeType;
 	}
 
-	public String getAddress() {
-		return address;
-	}
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
 
 	public String getVage() {
 		return vage;
@@ -162,45 +132,7 @@ public class RentEntity implements Serializable {
 
 	
 	
-	public String getTedadTabage() {
-		return tedadTabage;
-	}
-
-	public void setTedadTabage(String tedadTabage) {
-		this.tedadTabage = tedadTabage;
-	}
-
-	public String getTedadVahed() {
-		return tedadVahed;
-	}
-
-	public void setTedadVahed(String tedadVahed) {
-		this.tedadVahed = tedadVahed;
-	}
-
-	public String getVadieeMoney() {
-		return vadieeMoney;
-	}
-
-	public void setVadieeMoney(String vadieeMoney) {
-		this.vadieeMoney = vadieeMoney;
-	}
-
-	public String getEjareMony() {
-		return ejareMony;
-	}
-
-	public void setEjareMony(String ejareMony) {
-		this.ejareMony = ejareMony;
-	}
-
-	public String getMablageForosh() {
-		return mablageForosh;
-	}
-
-	public void setMablageForosh(String mablageForosh) {
-		this.mablageForosh = mablageForosh;
-	}
+	
 
 	public String getEmkanat() {
 		return emkanat;
@@ -218,22 +150,7 @@ public class RentEntity implements Serializable {
 		this.vaziatSanad = vaziatSanad;
 	}
 
-	public String getSenBana() {
-		return senBana;
-	}
-
-	public void setSenBana(String senBana) {
-		this.senBana = senBana;
-	}
-
-	public String getMasahat() {
-		return masahat;
-	}
-
-	public void setMasahat(String masahat) {
-		this.masahat = masahat;
-	}
-
+	
 	public String getVaziatMelk() {
 		return vaziatMelk;
 	}
@@ -242,13 +159,7 @@ public class RentEntity implements Serializable {
 		this.vaziatMelk = vaziatMelk;
 	}
 
-	public String getDescription() {
-		return description;
-	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
 	public String getParvane() {
 		return parvane;
@@ -266,52 +177,70 @@ public class RentEntity implements Serializable {
 		this.etehadieName = etehadieName;
 	}
 
-	public String getPhone() {
-		return phone;
+public long getAdveriseId() {
+		return adveriseId;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setAdveriseId(long adveriseId) {
+		this.adveriseId = adveriseId;
 	}
 
-	public String getPic1() {
-		return pic1;
+	public int getTedadTabage() {
+		return tedadTabage;
 	}
 
-	public void setPic1(String pic1) {
-		this.pic1 = pic1;
+	public void setTedadTabage(int tedadTabage) {
+		this.tedadTabage = tedadTabage;
 	}
 
-	public boolean isShow() {
-		return show;
+	public int getTedadVahed() {
+		return tedadVahed;
 	}
 
-	public void setShow(boolean show) {
-		this.show = show;
+	public void setTedadVahed(int tedadVahed) {
+		this.tedadVahed = tedadVahed;
 	}
 
-	public MoblEntity getRenter() {
-		return renter;
+	public long getVadieeMoney() {
+		return vadieeMoney;
 	}
 
-	public void setRenter(MoblEntity renter) {
-		this.renter = renter;
+	public void setVadieeMoney(long vadieeMoney) {
+		this.vadieeMoney = vadieeMoney;
 	}
 
-	public Date getDate() {
-		return date;
+	public long getEjareMony() {
+		return ejareMony;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setEjareMony(long ejareMony) {
+		this.ejareMony = ejareMony;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (!(obj instanceof RentEntity))
-			return false;
-		RentEntity rentEntity = (RentEntity) obj;
-		return (rentEntity.rentId == this.rentId);
+	public long getMablageForosh() {
+		return mablageForosh;
 	}
+
+	public void setMablageForosh(long mablageForosh) {
+		this.mablageForosh = mablageForosh;
+	}
+
+	public int getSenBana() {
+		return senBana;
+	}
+
+	public void setSenBana(int senBana) {
+		this.senBana = senBana;
+	}
+
+	public int getMasahat() {
+		return masahat;
+	}
+
+	public void setMasahat(int masahat) {
+		this.masahat = masahat;
+	}
+
+	
 
 }

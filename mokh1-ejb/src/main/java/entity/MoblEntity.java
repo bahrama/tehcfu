@@ -23,7 +23,6 @@ import enums.UserRole;
  */
 @Entity
 @Table(name="mobl_tbl")
-@Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
 @NamedQueries({
 @NamedQuery(name="MoblEntity.findAll", query="SELECT m FROM MoblEntity m ORDER BY m.id ASC"),
 @NamedQuery(name="MoblEntity.findAllMap", query="SELECT m FROM MoblEntity m WHERE (m.panel='A' OR m.panel='B' OR m.panel='C' OR m.panel='D')"),
@@ -42,6 +41,7 @@ import enums.UserRole;
 @NamedQuery(name = "MoblEntity.findsellerAddresLikeE", query = "SELECT i FROM MoblEntity i WHERE (i.panel=:v_panel) AND (i.sellerAddres like :v_sellerAddres)"),
 @NamedQuery(name = "MoblEntity.findsellermodirforoshNameLikeE", query = "SELECT i FROM MoblEntity i WHERE (i.panel=:v_panel) AND (i.sellerName like :v_modirforoshName)")
 })
+@Cacheable(value = false)
 public class MoblEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -199,23 +199,21 @@ public class MoblEntity implements Serializable {
 	@Column(name="mojtame" , length=100,nullable=true)
 	private String mojtame;
 	
+	@Column(name="metaDescription" , length=200,nullable=true)
+	private String metaDescription;
+	@Column(name="metaKeywords" , length=100,nullable=true)
+	private String metaKeywords;
+	
+	
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "shaki")
 	@JsonbTransient
 	private Set<Shekayat1> moblShekayat = new HashSet<>();
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "karfarma")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "userAdv")
 	@JsonbTransient
-	private Set<JobKarfarmaEntity> moblKarfarma = new HashSet<>();
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "karjo")
-	@JsonbTransient
-	private Set<JobKarjoEntity> moblKarjo = new HashSet<>();
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "renter")
-	@JsonbTransient
-	private Set<RentEntity> moblRent = new HashSet<>();
+	private Set<AdvertiseEntity> advertiseEntities = new HashSet<>();
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "mobasherat")
 	@JsonbTransient
@@ -224,22 +222,59 @@ public class MoblEntity implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "tamdid")
 	@JsonbTransient
 	private Set<TamdidEntity> moblTamdid = new HashSet<>();
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "machine")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "offerMerchantPage")
 	@JsonbTransient
-	private Set<MachineEntity> moblMachine = new HashSet<>();
+	private Set<OfferEntity> offerMerchant = new HashSet<>();
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "offerUser")
 	@JsonbTransient
-	private Set<ProductEntity> moblProduct = new HashSet<>();
+	private Set<OfferEntity> offerUserLogin = new HashSet<>();
+	
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "messageFrom")
 	@JsonbTransient
 	private Set<MessageEntity> moblmessageFrom = new HashSet<>();
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
+	@JsonbTransient
+	private Set<ProductEntity> moblProduct = new HashSet<>();
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "messageTo")
 	@JsonbTransient
 	private Set<MessageEntity> moblmessageTo = new HashSet<>();
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sefareshUser")
+	@JsonbTransient
+	private Set<SefareshEntity> moblSefaresh = new HashSet<>();
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sefareshMerchant")
+	@JsonbTransient
+	private Set<SefareshEntity> moblSefareshMerchant = new HashSet<>();
+	
+	
+	
+	public Set<OfferEntity> getOfferUserLogin() {
+		return offerUserLogin;
+	}
+
+	public void setOfferUserLogin(Set<OfferEntity> offerUserLogin) {
+		this.offerUserLogin = offerUserLogin;
+	}
+
+	@Column(name="password" , length=500,nullable=true)
+	private String password;
+	
+	
+
+	public Set<OfferEntity> getOfferMerchant() {
+		return offerMerchant;
+	}
+
+	public void setOfferMerchant(Set<OfferEntity> offerMerchant) {
+		this.offerMerchant = offerMerchant;
+	}
+
 
 	public Integer getId() {
 		return this.id;
@@ -689,30 +724,7 @@ public class MoblEntity implements Serializable {
 		this.moblShekayat = moblShekayat;
 	}
 
-	public Set<JobKarfarmaEntity> getMoblKarfarma() {
-		return moblKarfarma;
-	}
-
-	public void setMoblKarfarma(Set<JobKarfarmaEntity> moblKarfarma) {
-		this.moblKarfarma = moblKarfarma;
-	}
-
-	public Set<JobKarjoEntity> getMoblKarjo() {
-		return moblKarjo;
-	}
-
-	public void setMoblKarjo(Set<JobKarjoEntity> moblKarjo) {
-		this.moblKarjo = moblKarjo;
-	}
-
-	public Set<RentEntity> getMoblRent() {
-		return moblRent;
-	}
-
-	public void setMoblRent(Set<RentEntity> moblRent) {
-		this.moblRent = moblRent;
-	}
-
+	
 	public Set<MobasheratEntity> getMoblMobasherat() {
 		return moblMobasherat;
 	}
@@ -729,21 +741,6 @@ public class MoblEntity implements Serializable {
 		this.moblTamdid = moblTamdid;
 	}
 
-	public Set<MachineEntity> getMoblMachine() {
-		return moblMachine;
-	}
-
-	public void setMoblMachine(Set<MachineEntity> moblMachine) {
-		this.moblMachine = moblMachine;
-	}
-
-	public Set<ProductEntity> getMoblProduct() {
-		return moblProduct;
-	}
-
-	public void setMoblProduct(Set<ProductEntity> moblProduct) {
-		this.moblProduct = moblProduct;
-	}
 
 	public String getTagdirName() {
 		return tagdirName;
@@ -767,6 +764,62 @@ public class MoblEntity implements Serializable {
 
 	public void setPic5(String pic5) {
 		this.pic5 = pic5;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Set<AdvertiseEntity> getAdvertiseEntities() {
+		return advertiseEntities;
+	}
+
+	public void setAdvertiseEntities(Set<AdvertiseEntity> advertiseEntities) {
+		this.advertiseEntities = advertiseEntities;
+	}
+
+	public Set<ProductEntity> getMoblProduct() {
+		return moblProduct;
+	}
+
+	public void setMoblProduct(Set<ProductEntity> moblProduct) {
+		this.moblProduct = moblProduct;
+	}
+
+	public Set<SefareshEntity> getMoblSefaresh() {
+		return moblSefaresh;
+	}
+
+	public void setMoblSefaresh(Set<SefareshEntity> moblSefaresh) {
+		this.moblSefaresh = moblSefaresh;
+	}
+
+	public Set<SefareshEntity> getMoblSefareshMerchant() {
+		return moblSefareshMerchant;
+	}
+
+	public void setMoblSefareshMerchant(Set<SefareshEntity> moblSefareshMerchant) {
+		this.moblSefareshMerchant = moblSefareshMerchant;
+	}
+
+	public String getMetaDescription() {
+		return metaDescription;
+	}
+
+	public void setMetaDescription(String metaDescription) {
+		this.metaDescription = metaDescription;
+	}
+
+	public String getMetaKeywords() {
+		return metaKeywords;
+	}
+
+	public void setMetaKeywords(String metaKeywords) {
+		this.metaKeywords = metaKeywords;
 	}
 
 	@Override

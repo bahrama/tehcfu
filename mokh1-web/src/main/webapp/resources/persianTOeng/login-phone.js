@@ -19,8 +19,8 @@ function persianToEnglish(value) {
     	return newValue;
     }
 
-document.forms["login"]["login:input1"].oninput = function() {
+    document.forms["login"]["login:input1"].oninput = function() {
 	document.forms["login"]["login:input1"].value=persianToEnglish(document.forms["login"]["login:input1"].value);
-};
+                                                                 };
 
 

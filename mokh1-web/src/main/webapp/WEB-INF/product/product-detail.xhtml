@@ -4,7 +4,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:o="http://omnifaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+ >
 
 	<style>
 textarea {
@@ -889,18 +889,48 @@ scale
 		width: unset;
 	}
 }
+.phed{
+margin: 5px;
+font-size: 15px;
+font-family: IRANSansBold;
+}
+.phed2{
+margin: 2px;
+font-size: 14px;
+font-family: IRANSansBold;
+}
+td{
+text-align: justify;
+line-height: 50px !important;
+width: 50%;
+font-size: 19px;
+}
 </style>
-
+    <link href="../../resources/PANEL/vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css"/>
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" type="text/css" href="../../resources/zoom/css/style.css"/>
-
+<h:panelGroup rendered="#{sellerPage.product.checkO}">
 	<article class="margin-top-100">
 	<div class="container">
 		<div class="path margin-top-20 col">
 			<ul>
-				<li><a href="#"><span>نام فروشگاه</span></a></li>
-				<li><a href="#"><span>محصولات</span></a></li>
-				<li><a href="#"><span>محصول شماره یک</span></a></li>
+				<li>
+				<h:link outcome="/pages/merchant/merchant.xhtml">
+				<span>فروشگاه #{sellerPage.product.product.sellerStorePer}</span>
+				<f:param name="sellerNameEng" value="#{sellerPage.product.product.sellerStoreEng}"/>
+				</h:link>
+				</li>
+				<li>
+	                <h:link outcome="/pages/product/products.xhtml">
+			     	<span>محصولات</span>
+					<f:param name="sellerNameEng" value="#{sellerPage.product.product.sellerStoreEng}" />
+					</h:link>
+				</li>
+				<li>
+				<h:link outcome="/pages/product/product-detail.xhtml">
+				<span>#{sellerPage.product.nameCode}</span>
+				<f:param name="productId" value="#{sellerPage.product.productId}" />
+				</h:link>
+				</li>
 			</ul>
 		</div>
 		<div class="card1">
@@ -912,12 +942,12 @@ scale
     <div class="row">
       <div class="large-5 column">
         <div class="xzoom-container">
-          <img class="xzoom" id="xzoom-default" src="/Images/#{productDetailBean.productEntity.pic1}.jpg" xoriginal="/Images/#{productDetailBean.productEntity.pic1}.jpg" />
-          <div class="xzoom-thumbs">
-            <a href="/Images/#{productDetailBean.productEntity.pic2}.jpg"><img class="xzoom-gallery" width="80" src="/Images/#{productDetailBean.productEntity.pic2}.jpg"  xpreview="/Images/#{productDetailBean.productEntity.pic2}.jpg" title="The description goes here"/></a>
-            <a href="/Images/#{productDetailBean.productEntity.pic3}.jpg"><img class="xzoom-gallery" width="80" src="/Images/#{productDetailBean.productEntity.pic3}.jpg" title="The description goes here"/></a>
-            <a href="/Images/#{productDetailBean.productEntity.pic4}.jpg"><img class="xzoom-gallery" width="80" src="/Images/#{productDetailBean.productEntity.pic4}.jpg" title="The description goes here"/></a>
-            <a href="/Images/#{productDetailBean.productEntity.pic5}.jpg"><img class="xzoom-gallery" width="80" src="/Images/#{productDetailBean.productEntity.pic5}.jpg" title="The description goes here"/></a>
+          <img class="xzoom" id="xzoom-default" data-src="/Images/#{sellerPage.product.pic1}.jpg" src="../../resources/image-loader/loading.svg" xoriginal="/Images/#{sellerPage.product.pic1}.jpg"/>
+         <div class="xzoom-thumbs">
+            <a href="/Images/#{sellerPage.product.pic2}.jpg"><img class="xzoom-gallery" width="80" src="/Images/#{sellerPage.product.pic2}.jpg"  xpreview="/Images/#{sellerPage.product.pic2}.jpg" title="The description goes here"/></a>
+            <a href="/Images/#{sellerPage.product.pic3}.jpg"><img class="xzoom-gallery" width="80" src="/Images/#{sellerPage.product.pic3}.jpg" title="The description goes here"/></a>
+            <a href="/Images/#{sellerPage.product.pic4}.jpg"><img class="xzoom-gallery" width="80" src="/Images/#{sellerPage.product.pic4}.jpg" title="The description goes here"/></a>
+            <a href="/Images/#{sellerPage.product.pic5}.jpg"><img class="xzoom-gallery" width="80" src="/Images/#{sellerPage.product.pic5}.jpg" title="The description goes here"/></a>
           </div>
         </div>        
       </div>
@@ -927,66 +957,38 @@ scale
 					</div>
 					<div class="details col-lg-5 col-md-6">
 						<h3 style="font-size: 16px; font-weight: bold"
-							class="product-title">مشخصات
-							#{productDetailBean.productEntity.name}</h3>
+							class="phed">
+							#{sellerPage.product.nameCode}</h3>
 						<hr />
-						<ul class="list margin-top-10">
-							<li class="margin-right-25"><span>برند</span> : <a href="#">
-									#{productDetailBean.productEntity.name}</a></li>
-							<li class="margin-right-25"><span>دسته بندی</span> : <a
-								href="#">#{productDetailBean.productEntity.raste} </a></li>
-						</ul>
-						<div>
+						<p class="phed">برند :<b> #{sellerPage.product.brand} </b></p>
+						<p class="phed"> نوع کالا : <b>#{sellerPage.convertType(sellerPage.product.productType)}</b></p>
+						<p class="phed"> دسته بندی: <b>#{sellerPage.product.raste}</b></p>
+						<p class="phed"> رنگ بندی : <b>#{sellerPage.product.rangBandi}</b></p>
+						<p class="phed"> کشور سازنده : <b>#{sellerPage.product.contry}</b></p>
+						<p class="phed"> ابعاد : <b>#{sellerPage.product.abad}</b></p>
+						<p class="phed"> مدت زمان تحویل به روز : <b>#{sellerPage.product.tahvilDay}</b></p><br/>
+						<h:outputText value="نو" rendered="#{sellerPage.product.oldNew eq true}" style="background-color: antiquewhite;width:100%;text-align: center;font-size: 16px;
+color: blue;
+padding: 10px;
+border-radius: 15px;font-family: IRANSansBold !important;"/>
+						<h:outputText value="کار کرده" rendered="#{sellerPage.product.oldNew eq false}" style="background-color: antiquewhite;width:100%;text-align: center;font-size: 16px;
+color: blue;
+padding: 10px;
+border-radius: 15px;font-family: IRANSansBold !important;"/>
 
-							<div class="col-lg-12 margin-top-35">
-								<div class="d-flex">
-									<div class="select-name">
-										<span> رنگ </span>
-									</div>
-									<select class="select-color w-100" required="">
-
-										<option>---</option>
-										<option value="رنگ: خاکستری">
-											#{productDetailBean.productEntity.rangBandi}</option>
-
-										<!--                                             <option value="رنگ: طلایی">
-                                                طلایی
-                                            </option>
-
-                                            <option value="رنگ: نقره‌ای">
-                                                نقره‌ای
-                                            </option> -->
-
-									</select>
-								</div>
-								<div></div>
-							</div>
-						</div>
-						<div class="margin-top-30 product-para">
-							<ul>
-								<li style="font-family: IRANSansBold; font-weight: bold">
-									ویژگی های محصول :</li>
-								<li class="padding-top-10"><span>تعداد نفر</span> : <span>#{productDetailBean.productEntity.tedadNafar}</span>
-								</li>
-								<li><span> جنس کلاف</span> : <span>#{productDetailBean.productEntity.jenseKalaf}</span>
-								</li>
-								<li><span> جنس پارچه </span> : <span>#{productDetailBean.productEntity.jenseParche}</span>
-								</li>
-								<li class="padding-top-10"><a
-									style="border-bottom: 1px dashed"
-									href="product-details.html#info">موارد بیشتر</a></li>
-							</ul>
-						</div>
-
-						<div class="action margin-top-30 hidden-xs hidden-sm">
-							<button class="add-to-cart btn btn-default" type="button">
-								<i class="fa fa-shopping-basket margin-left-10"></i>اضافه کردن
-								به سبد خرید
-							</button>
-							<button class="like btn btn-default" type="button">
-								<span class="fa fa-heart"></span>
-							</button>
-						</div>
+							<h:form id="form" enctype="multipart/form-data"
+								acceptcharset="UTF-8" style="direction: rtl;">
+							<h:commandButton value="ثبت سفارش" actionListener="#{userSefaresh.submitSefaresh(sellerPage.product.productId)}" 
+							style="width: 100%;
+						    background: lightgreen;
+						    height: 50px;
+						    border-radius: 15px;
+						    margin-top: 20px;
+						    font-size: 18px;
+						    font-family: IRANSansBold !important;">
+							<f:ajax execute="@form" render="sefresh hpbdpg"/>
+							</h:commandButton>
+							</h:form>
 
 					</div>
 
@@ -1001,47 +1003,27 @@ scale
 						</div>
 
 						<div class="product-seller col-xs-12">
-							<!--                                <div class="sellers">-->
-							<!--                                    <h6>فروشگاه های عرضه کننده محصول &nbsp; : </h6>-->
-							<!--                                    <select style="-webkit-appearance: menulist">-->
-							<!--                                        <option class="fa fa-chevron-down"></option>-->
-							<!--                                        <option value="satrap">ساتراپ</option>-->
-							<!--                                        <option value="satrap">ساتراپ</option>-->
-							<!--                                        <option value="satrap">ساتراپ</option>-->
-							<!--                                        <option value="satrap">ساتراپ</option>-->
-							<!--                                    </select>-->
-							<!--                                </div>-->
 							<div class="guarantee padding-top-10">
-								<h6>گارانتی های این محصول &nbsp; :</h6>
-								<select style="-webkit-appearance: menulist">
-									<option></option>
-									<option value="satrap">#{productDetailBean.productEntity.zemanat}</option>
-									<!--                                         <option value="satrap">گارانتی 2</option>
-                                        <option value="satrap">گارانتی 3</option>
-                                        <option value="satrap">گارانتی 4</option> -->
-								</select>
+								<h6>گارانتی</h6>
+						<p class="phed2"> ضمانت: <b>#{sellerPage.product.zemanat}</b></p>
+						<p class="phed2"> مدت ضمانت به ماه : <b>#{sellerPage.product.guaranyTimeMounth}</b></p>
+						<p class="phed2"> وضعیت ضمانت : <b>#{sellerPage.product.guarantiStatus}</b></p>
 							</div>
-							<div class="text-center">
-								<a
-									style="border-bottom: 1px solid #0097a7; color: #0097a7; font-weight: 600"
-									href="#">معرفی گارانتی ها</a>
-							</div>
+							
 							<div class="margin-top-20 feature">
 								<ul>
-									<li><img style="width: 35px"
-										src="data:image/png;base64,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"
-										alt="پرداخت امن" /> <span class="padding-right-5">پرداخت
-											امن با کارت بانکی</span></li>
-																<li><img style="width: 30px"
-										src="../../resources/pic/test.jpg"
-										alt="نحوه پرداخت : نقدی" /> <span class="padding-right-10">نحوه پرداخت : نقدی</span></li>
-									<li><img style="width: 35px"
-										src="data:image/png;base64,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"
-										alt="ارسال" /> <span class="padding-right-5">انتخاب
-											روش ارسال</span></li>
-									<li class="text-center padding-top-50"><span
-										style="font-family: IRANSansBold; color: red; border: 1px solid red; border-radius: 5px; padding: 9px 45px; background-color: #fafafa">#{productDetailBean.productEntity.price2}
-											ریال</span></li>
+									<li style="padding-top: 15px!important"><img style="width: 35px" src="../../resources/pic/1.png" alt="پرداخت امن" />
+									 <span class="padding-right-5">پرداخت امن با کارت بانکی</span></li>
+								     <li style="padding-top: 15px!important"><img style="width: 30px" src="../../resources/pic/test.jpg" alt="نحوه پرداخت : نقدی" /> 
+								     <span class="padding-right-10">نحوه پرداخت : نقدی</span></li>
+									<li style="padding-top: 15px!important"><img style="width: 35px" src="../../resources/pic/3.png" alt="ارسال" /> 
+									<span class="padding-right-5">انتخاب روش ارسال</span></li>
+									<li class="text-center" style="padding-top: 20px">
+									<span style="font-family: IRANSansBold; color: red; border: 1px solid red; border-radius: 5px; padding: 9px 45px; background-color: #fafafa"><del>#{sellerPage.product.price} تومان</del> </span>
+									</li>
+									<li class="text-center" style="padding-top: 15px">
+									<span style="font-family: IRANSansBold; color: red; border: 1px solid red; border-radius: 5px; padding: 9px 45px; background-color: lightcyan">#{sellerPage.product.price2} تومان</span>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -1053,6 +1035,7 @@ scale
 							<button class="like btn btn-default" type="button">
 								<span class="fa fa-heart"></span>
 							</button>
+							
 						</div>
 					</div>
 				</div>
@@ -1064,338 +1047,1691 @@ scale
 		<!--Tabs-->
 		<div id="info" dir="rtl"
 			class="col-lg-12 col-md-12 col-xs-12 margin-top-20">
-			<ul class="menu-items">
-				<li class="tablink active" onclick="openTab(event,'information')"><i
-					class="fa fa-list"></i>مشخصات</li>
-				<li class="tablink" onclick="openTab(event,'comments')"><i
-					class="fa fa-comments"></i>نظرات کاربران</li>
-				<li class="tablink" onclick="openTab(event,'question')"><i
-					class="fa fa-question-circle"></i>پرسش و پاسخ کاربران</li>
+			<ul class="menu-items" style="padding: 20px;">
+			<h2 style="text-align: center; margin: auto;">جزییات محصول</h2> 
 			</ul>
 
 			<div dir="rtl" style="width: 100%; background: white"
 				id="information" class="tabcontent">
-				<h5 style="padding: 15px; color: #4d4d4d; font-size: 20px">
-					مشخصات محصول <span class="margin-top-5"
-						style="display: block; font-size: 13px; color: #a7a7a7">#{productDetailBean.productEntity.name}</span>
-				</h5>
+				<h:panelGroup rendered="#{sellerPage.product.productType eq 'AyeneVConsole'}">
 				<section>
-				<h3 class="title" style="font-size: 16px">
-					<i class="fa fa-caret-left custom-color"></i> مشخصات کلی
-				</h3>
 				<table style="width: 95%; margin-left: auto; margin-right: auto"
 					class="table table-striped">
 					<tr>
-						<td>کشور سازنده</td>
-						<td>#{productDetailBean.productEntity.contry}</td>
+						<td>جنس اسکلت کسول‬</td>
+						<td>#{sellerPage.productDetail.jenseEskeletConsole}</td>
 					</tr>
 					<tr>
-						<td>دسته بندی محصول</td>
-						<td>#{productDetailBean.productEntity.raste}</td>
+						<td>جنس ‬پایه کنسول</td>
+						<td>#{sellerPage.productDetail.jensePayeConsole}</td>
 					</tr>
 					<tr>
-						<td>آیا محصول مورد نظر دست دوم میباشد ؟</td>
-						<td>#{productDetailBean.productEntity.oldNew}</td>
+						<td>قیمت کنسول (تومان)</td>
+						<td>#{sellerPage.productDetail.priceConsole}</td>
 					</tr>
 					<tr>
-						<td>تعداد</td>
-						<td>#{productDetailBean.productEntity.tedadNafar}</td>
+						<td>کشو</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.keshoConsole)}</td>
 					</tr>
 					<tr>
-						<td>در صورتی که مبل راحتی باشد</td>
-						<td>#{productDetailBean.productEntity.noeMoblRahati}</td>
+						<td>تعداد کشو</td>
+						<td>#{sellerPage.productDetail.tedadKesho}</td>
 					</tr>
 
 					<tr>
-						<td>جنس کلاف</td>
-						<td>#{productDetailBean.productEntity.jenseKalaf}</td>
+						<td>کمد</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.komodConsole)}</td>
 					</tr>
 
 					<tr>
-						<td>نوع پایه</td>
-						<td>#{productDetailBean.productEntity.noePaye}</td>
+						<td>تعدا کمد</td>
+						<td>#{sellerPage.productDetail.tedadKomod}</td>
 					</tr>
 
 					<tr>
-						<td>جنس لایه میانی</td>
-						<td>#{productDetailBean.productEntity.jenseLayeMiani}</td>
+						<td>آینه</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.ayeneConsole)}</td>
 					</tr>
 
 					<tr>
-						<td>جنس پارچه</td>
-						<td>#{productDetailBean.productEntity.jenseParche}</td>
+						<td>تعدا آینه</td>
+						<td>#{sellerPage.productDetail.tedadAyene}</td>
 					</tr>
 
 					<tr>
-						<td>کوسن</td>
-						<td>#{productDetailBean.productEntity.kosan}</td>
+						<td>شکل هندسی آینه</td>
+						<td>#{sellerPage.productDetail.shekleHendesi}</td>
 					</tr>
 
 					<tr>
-						<td>میز</td>
-						<td>#{productDetailBean.productEntity.miz}</td>
+						<td>ضخامت آینه</td>
+						<td>#{sellerPage.productDetail.zekhamatAyene}</td>
 					</tr>
 
 					<tr>
-						<td>ابعاد</td>
-						<td>#{productDetailBean.productEntity.abad}</td>
+						<td>قاب آینه</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.ayeneGhab)}</td>
 					</tr>
 
 					<tr>
-						<td>توضیحات</td>
-						<td>#{productDetailBean.productEntity.description}</td>
+						<td>جنس قاب آینه</td>
+						<td>#{sellerPage.productDetail.jenseGhab}</td>
 					</tr>
-
+					<tr>
+						<td>ابعاد قاب و آینه</td>
+						<td>#{sellerPage.productDetail.abadGhabAyene}</td>
+					</tr>
+					<tr>
+						<td>رنگ قاب آینه</td>
+						<td>#{sellerPage.productDetail.rangGhabAyene}</td>
+					</tr>
+					<tr>
+						<td>قیمت قاب و آینه (تومان)</td>
+						<td>#{sellerPage.productDetail.priceGhabAyene}</td>
+					</tr>
 
 				</table>
 				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'ServiceKhab1'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>مدل سرویس خواب‬</td>
+						<td>#{sellerPage.productDetail.modelServiceKhab}</td>
+					</tr>
+					<tr>
+						<td>عرض تخت خواب</td>
+						<td>#{sellerPage.productDetail.arzeTakhteKhab}</td>
+					</tr>
+					<tr>
+						<td>جنس تختخواب</td>
+						<td>#{sellerPage.productDetail.jenseTakhtKhab}</td>
+					</tr>
+					<tr>
+						<td>رنگ تختخواب</td>
+						<td>#{sellerPage.productDetail.rangTakhtKhab}</td>
+					</tr>
+					<tr>
+						<td>قیمت تختخواب (تومان)</td>
+						<td>#{sellerPage.productDetail.priceTakhtKhab}</td>
+					</tr>
 
+					<tr>
+						<td>کلاف تخت چک دار</td>
+						<td>#{sellerPage.productDetail.kalafTakhtJakDar}</td>
+					</tr>
+
+					<tr>
+						<td>کشو و باکس</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.keshovbox)}</td>
+					</tr>
+
+					<tr>
+						<td>پاتختی</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.patakhti)}</td>
+					</tr>
+
+					<tr>
+						<td>تعداد پاتختی</td>
+						<td>#{sellerPage.productDetail.tedadPaTakhti}</td>
+					</tr>
+
+					<tr>
+						<td>جنس پاتختی</td>
+						<td>#{sellerPage.productDetail.jensePaTakhti}</td>
+					</tr>
+
+					<tr>
+						<td>ابعاد پاتختی</td>
+						<td>#{sellerPage.productDetail.abadPaTakhti}</td>
+					</tr>
+
+					<tr>
+						<td>رنگ پاتختی</td>
+						<td>#{sellerPage.productDetail.rangPaTakhti}</td>
+					</tr>
+
+					<tr>
+						<td>قیمت پاتختی (تومان)</td>
+						<td>#{sellerPage.productDetail.pricePaTakhti}</td>
+					</tr>
+					<tr>
+						<td>کمد</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.komodServiceKhab)}</td>
+					</tr>
+					<tr>
+						<td>جنس کمد</td>
+						<td>#{sellerPage.productDetail.jenseKomodServiceKhab}</td>
+					</tr>
+					<tr>
+						<td>ابعاد کمد</td>
+						<td>#{sellerPage.productDetail.abadKomodServiceKhab}</td>
+					</tr>
+					<tr>
+						<td>رنگ کمد</td>
+						<td>#{sellerPage.productDetail.rangKomodServiceKhab}</td>
+					</tr>
+					<tr>
+						<td>(تومان) قیمت کمد</td>
+						<td>#{sellerPage.productDetail.priceKomodServiceKhab}</td>
+					</tr>
+					<tr>
+						<td>میز آرایش</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.mizArayesh)}</td>
+					</tr>
+					<tr>
+						<td>صندلی</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.sandaliServiceKhab)}</td>
+					</tr>
+					<tr>
+						<td>جنس میز آرایش</td>
+						<td>#{sellerPage.productDetail.jenseMizArayesh}</td>
+					</tr>
+					<tr>
+						<td>ابعاد میز آرایش</td>
+						<td>#{sellerPage.productDetail.abadMizArayesh}</td>
+					</tr>
+					<tr>
+						<td>رنگ میز آرایش</td>
+						<td>#{sellerPage.productDetail.rangMizArayesh}</td>
+					</tr>
+					<tr>
+						<td>(تومان) قیمت میز آرایش</td>
+						<td>#{sellerPage.productDetail.priceMizArayesh}</td>
+					</tr>
+					<tr>
+						<td>میز تحریر</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.mizTahrir)}</td>
+					</tr>
+					<tr>
+						<td>جنس میز تحریر</td>
+						<td>#{sellerPage.productDetail.jenseMizTahrir}</td>
+					</tr>
+					<tr>
+						<td>ابعاد میز تحریر</td>
+						<td>#{sellerPage.productDetail.abadMizTahrir}</td>
+					</tr>
+					<tr>
+						<td>رنگ میز تحریر</td>
+						<td>#{sellerPage.productDetail.rangMizTahrir}</td>
+					</tr>
+					<tr>
+						<td>قیمت میز تحریر (تومان)</td>
+						<td>#{sellerPage.productDetail.priceMizTahrir}</td>
+					</tr>
+					<tr>
+						<td>قاب و آینه قدی</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.gabVayeneGadi)}</td>
+					</tr>
+					<tr>
+						<td>جنس قاب و آینه قدی</td>
+						<td>#{sellerPage.productDetail.jenseGabVayeneGadi}</td>
+					</tr>
+					<tr>
+						<td>ابعاد قاب و آینه قدی</td>
+						<td>#{sellerPage.productDetail.abadGabVayeneGadi}</td>
+					</tr>
+					<tr>
+						<td>رنگ قاب و آینه قدی</td>
+						<td>#{sellerPage.productDetail.rangGabVayeneGadi}</td>
+					</tr>
+										<tr>
+						<td>قیمت قاب و آینه قدی (تومان)</td>
+						<td>#{sellerPage.productDetail.priceGabVayeneGadi}</td>
+					</tr>
+										<tr>
+						<td>تشک</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.toshak)}</td>
+					</tr>
+				    <tr>
+						<td>برند تشک</td>
+						<td>#{sellerPage.productDetail.brandToshak}</td>
+					</tr>
+					<tr>
+						<td>مدل تشک</td>
+						<td>#{sellerPage.productDetail.modelToshak}</td>
+					</tr>
+					<tr>
+						<td>مدت گارانتی تشک (ماه)</td>
+						<td>#{sellerPage.productDetail.modatGharantiToshak}</td>
+					</tr>
+															<tr>
+						<td>ابعاد تشک</td>
+						<td>#{sellerPage.productDetail.abadToshak}</td>
+					</tr>
+															<tr>
+						<td>قیمت تشک (تومان)</td>
+						<td>#{sellerPage.productDetail.priceToshak}</td>
+					</tr>
+															<tr>
+						<td>توضیحات تشک</td>
+						<td>#{sellerPage.productDetail.tozihatToshak}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'ServiceKhab2'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>مدل سرویس خواب‬</td>
+						<td>#{sellerPage.productDetail.modelServiceKhab2}</td>
+					</tr>
+					<tr>
+						<td>عرض تخت خواب</td>
+						<td>#{sellerPage.productDetail.arzeTakhteKhab2}</td>
+					</tr>
+					<tr>
+						<td>جنس تختخواب</td>
+						<td>#{sellerPage.productDetail.jenseTakhteKhab2}</td>
+					</tr>
+					<tr>
+						<td>رنگ تختخواب</td>
+						<td>#{sellerPage.productDetail.rangeTakhteKhab2}</td>
+					</tr>
+					<tr>
+						<td>قیمت تختخواب (تومان)</td>
+						<td>#{sellerPage.productDetail.priceTakhteKhab2}</td>
+					</tr>
+
+					<tr>
+						<td>کلاف تخت چک دار</td>
+						<td>#{sellerPage.productDetail.kalafTakhtJackDar}</td>
+					</tr>
+
+					<tr>
+						<td>کشو و باکس</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.keshoVbox)}</td>
+					</tr>
+
+					<tr>
+						<td>پاتختی</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.paTahti2)}</td>
+					</tr>
+
+					<tr>
+						<td>تعداد پاتختی</td>
+						<td>#{sellerPage.productDetail.tedadPaTakhti2}</td>
+					</tr>
+
+					<tr>
+						<td>جنس پاتختی</td>
+						<td>#{sellerPage.productDetail.jensePaTakhti2}</td>
+					</tr>
+
+					<tr>
+						<td>ابعاد پاتختی</td>
+						<td>#{sellerPage.productDetail.abadPaTakhti2}</td>
+					</tr>
+
+					<tr>
+						<td>رنگ پاتختی</td>
+						<td>#{sellerPage.productDetail.rangPaTakhti2}</td>
+					</tr>
+
+					<tr>
+						<td>قیمت پاتختی (تومان)</td>
+						<td>#{sellerPage.productDetail.pricePaTakhti2}</td>
+					</tr>
+					<tr>
+						<td>کمد</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.komodServiceKhab2)}</td>
+					</tr>
+					<tr>
+						<td>جنس کمد</td>
+						<td>#{sellerPage.productDetail.jensekomodServiceKhab2}</td>
+					</tr>
+					<tr>
+						<td>ابعاد کمد</td>
+						<td>#{sellerPage.productDetail.abadkomodServiceKhab2}</td>
+					</tr>
+					<tr>
+						<td>رنگ کمد</td>
+						<td>#{sellerPage.productDetail.rangkomodServiceKhab2}</td>
+					</tr>
+					<tr>
+						<td>(تومان) قیمت کمد</td>
+						<td>#{sellerPage.productDetail.priceKomodServiceKhab2}</td>
+					</tr>
+					<tr>
+						<td>میز آرایش</td>
+						<td>#{sellerPage.productDetail.mizArayesh2}</td>
+					</tr>
+					<tr>
+						<td>صندلی</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.sandaliMizArayesh2)}</td>
+					</tr>
+					<tr>
+						<td>جنس میز آرایش</td>
+						<td>#{sellerPage.productDetail.jenseMizArayesh2}</td>
+					</tr>
+					<tr>
+						<td>ابعاد میز آرایش</td>
+						<td>#{sellerPage.productDetail.abadMizArayesh2}</td>
+					</tr>
+					<tr>
+						<td>رنگ میز آرایش</td>
+						<td>#{sellerPage.productDetail.rangMizArayesh2}</td>
+					</tr>
+					<tr>
+						<td>(تومان) قیمت میز آرایش</td>
+						<td>#{sellerPage.productDetail.priceMizArayesh2}</td>
+					</tr>
+					<tr>
+						<td>میز تحریر</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.mizTahrir2)}</td>
+					</tr>
+					<tr>
+						<td>جنس میز تحریر</td>
+						<td>#{sellerPage.productDetail.jensemizTahrir2}</td>
+					</tr>
+					<tr>
+						<td>ابعاد میز تحریر</td>
+						<td>#{sellerPage.productDetail.abadmizTahrir2}</td>
+					</tr>
+					<tr>
+						<td>رنگ میز تحریر</td>
+						<td>#{sellerPage.productDetail.rangmizTahrir2}</td>
+					</tr>
+					<tr>
+						<td>قیمت میز تحریر (تومان)</td>
+						<td>#{sellerPage.productDetail.priceMizTahrir2}</td>
+					</tr>
+					<tr>
+						<td>قاب و آینه قدی</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.gabVAyeneGadi2)}</td>
+					</tr>
+					<tr>
+						<td>جنس قاب و آینه قدی</td>
+						<td>#{sellerPage.productDetail.jenseGabVAyeneGadi2}</td>
+					</tr>
+					<tr>
+						<td>ابعاد قاب و آینه قدی</td>
+						<td>#{sellerPage.productDetail.abadGabVAyeneGadi2}</td>
+					</tr>
+					<tr>
+						<td>رنگ قاب و آینه قدی</td>
+						<td>#{sellerPage.productDetail.rangGabVAyeneGadi2}</td>
+					</tr>
+										<tr>
+						<td>قیمت قاب و آینه قدی (تومان)</td>
+						<td>#{sellerPage.productDetail.priceGabVAyeneGadi2}</td>
+					</tr>
+										<tr>
+						<td>تشک</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.toshak2)}</td>
+					</tr>
+										<tr>
+						<td>برند تشک</td>
+						<td>#{sellerPage.productDetail.brandToshak2}</td>
+					</tr>
+					<tr>
+						<td>مدل تشک</td>
+						<td>#{sellerPage.productDetail.modelToshak2}</td>
+					</tr>
+					<tr>
+						<td>مدت گارانتی قاب و آینه (ماه)</td>
+						<td>#{sellerPage.productDetail.modatGarantiGabVAyeneGadi2}</td>
+					</tr>
+															<tr>
+						<td>ابعاد تشک</td>
+						<td>#{sellerPage.productDetail.abadToshak2}</td>
+					</tr>
+															<tr>
+						<td>قیمت تشک (تومان)</td>
+						<td>#{sellerPage.productDetail.priceToshak2}</td>
+					</tr>
+															<tr>
+						<td>توضیحات تشک</td>
+						<td>#{sellerPage.productDetail.descriptionToshak2}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'ServiceKhabKodak'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>مدل سرویس خواب‬</td>
+						<td>#{sellerPage.productDetail.modelServiceKhabNozad}</td>
+					</tr>
+					<tr>
+						<td>جنس سرویس خواب نوزاد</td>
+						<td>#{sellerPage.productDetail.jenseServiceKhabNozad}</td>
+					</tr>
+					<tr>
+						<td>رنگ سرویس خواب نوزاد</td>
+						<td>#{sellerPage.productDetail.rangServiceKhabNozad}</td>
+					</tr>
+					<tr>
+						<td>قیمت سرویس خواب نوزاد (تومان)</td>
+						<td>#{sellerPage.productDetail.priceServiceKhabNozad}</td>
+					</tr>
+					<tr>
+						<td>کشو و باکس</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.keshoVBox)}</td>
+					</tr>
+
+					<tr>
+						<td>کنار مادری</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.kenarMadari)}</td>
+					</tr>
+
+					<tr>
+						<td>جنس کمد کنار مادری </td>
+						<td>#{sellerPage.productDetail.jenseKomodkenarMadari}</td>
+					</tr>
+
+					<tr>
+						<td>ابعاد کمد کنار مادری</td>
+						<td>#{sellerPage.productDetail.abadKomodkenarMadari}</td>
+					</tr>
+
+					<tr>
+						<td>رنگ کمد کنار مادری</td>
+						<td>#{sellerPage.productDetail.rangKomodkenarMadari}</td>
+					</tr>
+
+					<tr>
+						<td>قیمت کنار مادری (تومان)</td>
+						<td>#{sellerPage.productDetail.priceKomodkenarMadari}</td>
+					</tr>
+
+					<tr>
+						<td>میز و صندلی کودک</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.mizSandaliKodak)}</td>
+					</tr>
+
+					<tr>
+						<td>تعداد میز و صندلی کودک</td>
+						<td>#{sellerPage.productDetail.tedadMizSandaliKodak}</td>
+					</tr>
+
+					<tr>
+						<td>جنس میز و صندلی کودک</td>
+						<td>#{sellerPage.productDetail.jenseMizSandaliKodak}</td>
+					</tr>
+					<tr>
+						<td>ابعاد میز کودک</td>
+						<td>#{sellerPage.productDetail.abadMizKodak}</td>
+					</tr>
+										<tr>
+						<td>ابعاد صندلی کودک</td>
+						<td>#{sellerPage.productDetail.abadSandaliKodak}</td>
+					</tr>
+					<tr>
+						<td>قیمت میز و صندلی کودک (تومان)</td>
+						<td>#{sellerPage.productDetail.priceMizSandaliKodak}</td>
+					</tr>
+					<tr>
+						<td>کمد</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.komodMizSandaliKodak)}</td>
+					</tr>
+					<tr>
+						<td>جنس کمد</td>
+						<td>#{sellerPage.productDetail.jenseKomodMizSandaliKodak}</td>
+					</tr>
+					<tr>
+						<td>ابعاد کمد</td>
+						<td>#{sellerPage.productDetail.abadKomodMizSandaliKodak}</td>
+					</tr>
+					<tr>
+						<td>رنگ کمد</td>
+						<td>#{sellerPage.productDetail.rangKomodMizSandaliKodak}</td>
+					</tr>
+					<tr>
+						<td>قیمت کمد (تومان)</td>
+						<td>#{sellerPage.productDetail.priceKomodMizSandaliKodak}</td>
+					</tr>
+					<tr>
+						<td>میز آرایش</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.mizArayeshMizSandaliKodak)}</td>
+					</tr>
+					<tr>
+						<td>صندلی</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.sandaliMizArayeshMizSandaliKodak)}</td>
+					</tr>
+					<tr>
+						<td>جنس میز آرایش</td>
+						<td>#{sellerPage.productDetail.jenseMizArayeshMizSandaliKodak}</td>
+					</tr>
+					<tr>
+						<td> ابعاد میز آرایش</td>
+						<td>#{sellerPage.productDetail.abadMizArayeshMizSandaliKodak}</td>
+					</tr>
+					<tr>
+						<td>رنگ میز آرایش</td>
+						<td>#{sellerPage.productDetail.rangMizArayeshMizSandaliKodak}</td>
+					</tr>
+					<tr>
+						<td>قیمت میز آرایش (تومان)</td>
+						<td>#{sellerPage.productDetail.priceMizArayeshMizSandaliKodak}</td>
+					</tr>
+					<tr>
+						<td>ویترین / کتابخانه</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.vitrinKetabkhane)}</td>
+					</tr>
+					<tr>
+						<td>جنس ویترین یا کتابخانه</td>
+						<td>#{sellerPage.productDetail.jenseVitrinKetabkhane}</td>
+					</tr>
+					<tr>
+						<td>ابعاد ویترین یا کتابخانه</td>
+						<td>#{sellerPage.productDetail.abadVitrinKetabkhane}</td>
+					</tr>
+					<tr>
+						<td>رنگ ویترین یا کتابخانه</td>
+						<td>#{sellerPage.productDetail.rangVitrinKetabkhane}</td>
+					</tr>
+					<tr>
+						<td>قیمت ویترین یا کتابخانه</td>
+						<td>#{sellerPage.productDetail.priceVitrinKetabkhane}</td>
+					</tr>
+					<tr>
+						<td>شلف دیواری</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.shelfDivari)}</td>
+					</tr>
+					<tr>
+						<td>جنس شلف دیواری</td>
+						<td>#{sellerPage.productDetail.jenseShelfDivari}</td>
+					</tr>
+										<tr>
+						<td>ابعاد شلف دیواری</td>
+						<td>#{sellerPage.productDetail.abadShelfDivari}</td>
+					</tr>
+										<tr>
+						<td>رنگ شلف دیواری</td>
+						<td>#{sellerPage.productDetail.rangShelfDivari}</td>
+					</tr>
+										<tr>
+						<td>قیمت شلف دیواری (تومان)</td>
+						<td>#{sellerPage.productDetail.priceShelfDivari}</td>
+					</tr>
+						<tr>
+						<td> تشک</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.toshak3)}</td>
+					</tr>
+										<tr>
+						<td>برند تشک</td>
+						<td>#{sellerPage.productDetail.brandToshak3}</td>
+					</tr>
+					<tr>
+						<td>مدل تشک</td>
+						<td>#{sellerPage.productDetail.modelToshak3}</td>
+					</tr>
+					<tr>
+						<td>مدت گارانتی تشک (ماه)</td>
+						<td>#{sellerPage.productDetail.modatGarantiToshak3}</td>
+					</tr>
+															<tr>
+						<td>ابعاد تشک</td>
+						<td>#{sellerPage.productDetail.abadToshak3}</td>
+					</tr>
+															<tr>
+						<td>قیمت تشک (تومان)</td>
+						<td>#{sellerPage.productDetail.priceToshak3}</td>
+					</tr>
+															<tr>
+						<td>توضیحات تشک</td>
+						<td>#{sellerPage.productDetail.descriptionToshak3}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'KomodBoofeKetabkhaneJakafshi'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>شکل هندسی کمد ‬</td>
+						<td>#{sellerPage.productDetail.shekleHendesikomod}</td>
+					</tr>
+					<tr>
+						<td>شکل هندسی بوفه </td>
+						<td>#{sellerPage.productDetail.shekleHendesiBoofe}</td>
+					</tr>
+					<tr>
+						<td>شکل هندسی کمد کتابخانه</td>
+						<td>#{sellerPage.productDetail.shekleHendesiKetabkhane}</td>
+					</tr>
+					<tr>
+						<td>شکل هندسی کمد جاکفشی</td>
+						<td>#{sellerPage.productDetail.shekleHendesiJakafshi}</td>
+					</tr>
+					<tr>
+						<td>جنس کمد</td>
+						<td>#{sellerPage.productDetail.jensekomod}</td>
+					</tr>
+
+					<tr>
+						<td>جنس بوفه</td>
+						<td>#{sellerPage.productDetail.jenseBoofe}</td>
+					</tr>
+
+					<tr>
+						<td>جنس کتابخانه </td>
+						<td>#{sellerPage.productDetail.jenseKetabkhane}</td>
+					</tr>
+
+					<tr>
+						<td>جنس جاکفشی</td>
+						<td>#{sellerPage.productDetail.jenseJakafshi}</td>
+					</tr>
+
+					<tr>
+						<td>ابعاد کمد</td>
+						<td>#{sellerPage.productDetail.abadkomod}</td>
+					</tr>
+
+					<tr>
+						<td>ابعاد بوفه</td>
+						<td>#{sellerPage.productDetail.abadBoofe}</td>
+					</tr>
+					
+						<tr>
+						<td>ابعاد کتابخانه</td>
+						<td>#{sellerPage.productDetail.abadKetabkhane}</td>
+					</tr>
+
+					<tr>
+						<td>ابعاد جاکفشی</td>
+						<td>#{sellerPage.productDetail.abadJakafshi}</td>
+					</tr>
+
+					<tr>
+						<td>قیمت کمد (تومان)</td>
+						<td>#{sellerPage.productDetail.pricekomod}</td>
+					</tr>
+
+					<tr>
+						<td>قیمت بوفه (تومان)</td>
+						<td>#{sellerPage.productDetail.priceBoofe}</td>
+					</tr>
+					<tr>
+						<td>قیمت کتابخانه</td>
+						<td>#{sellerPage.productDetail.priceKetabkhane}</td>
+					</tr>
+					<tr>
+						<td>قیمت جاکفشی</td>
+						<td>#{sellerPage.productDetail.priceJakafshi}</td>
+					</tr>
+					<tr>
+						<td>تعداد کمد</td>
+						<td>#{sellerPage.productDetail.tedadkomod}</td>
+					</tr>
+					<tr>
+						<td>تعداد بوفه</td>
+						<td>#{sellerPage.productDetail.tedadBoofe}</td>
+					</tr>
+					<tr>
+						<td>تعداد کتابخانه</td>
+						<td>#{sellerPage.productDetail.tedadKetabkhane}</td>
+					</tr>
+					<tr>
+						<td>تعداد جاکفشی</td>
+						<td>#{sellerPage.productDetail.tedadJakafshi}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'MizTv'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>جنس اسکلت میز تلویزیون‬</td>
+						<td>#{sellerPage.productDetail.jenseEskeletMizTv}</td>
+					</tr>
+					<tr>
+						<td>ابعاد میز تلویزیون</td>
+						<td>#{sellerPage.productDetail.abadMizTv}</td>
+					</tr>
+					<tr>
+						<td>میز تلویزیون مربوط به تلویزیون (اینچ)</td>
+						<td>#{sellerPage.productDetail.mizMarbotTvInch}</td>
+					</tr>
+					<tr>
+						<td>رنگ میز تلویزیون</td>
+						<td>#{sellerPage.productDetail.rangMizTv}</td>
+					</tr>
+					<tr>
+						<td>قابلیت تغییر رنگ میز تلویزیون</td>
+						<td>#{sellerPage.productDetail.gabeliatRangMizTv}</td>
+					</tr>
+
+					<tr>
+						<td>رنگ اول میز تلویزیون</td>
+						<td>#{sellerPage.productDetail.rangAvalMizTv}</td>
+					</tr>
+
+					<tr>
+						<td>رنگ دوم میز تلویزیون </td>
+						<td>#{sellerPage.productDetail.rangDovomMizTv}</td>
+					</tr>
+
+					<tr>
+						<td>کشو</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.kesho)}</td>
+					</tr>
+
+					<tr>
+						<td>تعداد کشو</td>
+						<td>#{sellerPage.productDetail.tedadkesho}</td>
+					</tr>
+
+					<tr>
+						<td>جنس پایه</td>
+						<td>#{sellerPage.productDetail.jensePayeMizTv}</td>
+					</tr>
+
+					<tr>
+						<td>رنگ پایه</td>
+						<td>#{sellerPage.productDetail.rangPayeMizTv}</td>
+					</tr>
+
+					<tr>
+						<td>فضای لوازم جانبی</td>
+						<td>#{sellerPage.productDetail.fazayeLavazemJanebi}</td>
+					</tr>
+					<tr>
+						<td>توضیحات لوازم جانبی</td>
+						<td>#{sellerPage.productDetail.descriptionLavazemJanebi}</td>
+					</tr>
+					
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'MizJeloMobli'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>شکل هندسی میز جلو مبلی‬</td>
+						<td>#{sellerPage.productDetail.sheklehendesiMizJeloMobli}</td>
+					</tr>
+					<tr>
+						<td>تعداد (چند تکه)</td>
+						<td>#{sellerPage.productDetail.tedadMizJeloMobli}</td>
+					</tr>
+					<tr>
+						<td>جنس اسکلت میز جلو مبلی</td>
+						<td>#{sellerPage.productDetail.jenseEskeletMizJeloMobli}</td>
+					</tr>
+					<tr>
+						<td>جنس پایه میز جلو مبلی</td>
+						<td>#{sellerPage.productDetail.jensePayeMizJeloMobli}</td>
+					</tr>
+					<tr>
+						<td>ابعاد میز جلو مبلی</td>
+						<td>#{sellerPage.productDetail.abadMizJeloMobli}</td>
+					</tr>
+
+					<tr>
+						<td>رنگ میز جلو مبلی</td>
+						<td>#{sellerPage.productDetail.rangMizJeloMobli}</td>
+					</tr>
+
+					<tr>
+						<td>قیمت میز جلو مبلی (تومان) </td>
+						<td>#{sellerPage.productDetail.priceMizJeloMobli}</td>
+					</tr>
+
+					<tr>
+						<td>شیشه</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.shisheMizJeloMobli)}</td>
+					</tr>
+
+					<tr>
+						<td>نوع شیشه</td>
+						<td>#{sellerPage.productDetail.noeShisheMizJeloMobli}</td>
+					</tr>
+
+					<tr>
+						<td>قیمت شیشه (تومان)</td>
+						<td>#{sellerPage.productDetail.priceShisheMizJeloMobli}</td>
+					</tr>
+
+					<tr>
+						<td>شیشه ابزار خورده است ؟</td>
+						<td>#{sellerPage.hastNist(sellerPage.productDetail.shisheAbzarMizJeloMobli)}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'MizAsali'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>شکل هندسی میز جلو عسلی</td>
+						<td>#{sellerPage.productDetail.sheklehendesiMizJeJeloAsali}</td>
+					</tr>
+					<tr>
+						<td>تعداد (چند تکه)</td>
+						<td>#{sellerPage.productDetail.tedadMizJeJeloAsali}</td>
+					</tr>
+					<tr>
+						<td>جنس اسکلت میز عسلی</td>
+						<td>#{sellerPage.productDetail.jenseEskeletMizJeJeloAsali}</td>
+					</tr>
+					<tr>
+						<td>جنس پایه میز عسلی</td>
+						<td>#{sellerPage.productDetail.jensePayeMizJeJeloAsali}</td>
+					</tr>
+
+					<tr>
+						<td>شیشه</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.shisheMizJeJeloAsali)}</td>
+					</tr>
+
+					<tr>
+						<td>نوع شیشه</td>
+						<td>#{sellerPage.productDetail.noeShisheMizJeJeloAsali}</td>
+					</tr>
+
+					<tr>
+						<td>قیمت شیشه (تومان)</td>
+						<td>#{sellerPage.productDetail.priceShisheMizJeJeloAsali}</td>
+					</tr>
+
+					<tr>
+						<td>توضیحات میز عسلی</td>
+						<td>#{sellerPage.productDetail.descriptionMizJeJeloAsali}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'MizNaharKhori'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>ظرفیت نهار خوری (تعداد)</td>
+						<td>#{sellerPage.productDetail.tedadMizNaharKhori}</td>
+					</tr>
+					<tr>
+						<td>ساختار نهار خوری</td>
+						<td>#{sellerPage.productDetail.sakhtarMizNaharKhori}</td>
+					</tr>
+					<tr>
+						<td>توضیحات ساختار نهار خوری</td>
+						<td>#{sellerPage.productDetail.descriptionMizNaharKhori}</td>
+					</tr>
+					<tr>
+						<td>شکل هندسی میز نهار خوری</td>
+						<td>#{sellerPage.productDetail.sheklehendesiMizNaharKhori}</td>
+					</tr>
+
+					<tr>
+						<td>جنس صفحه میز نهار خوری </td>
+						<td>#{sellerPage.productDetail.jenseSafeMizNaharKhori}</td>
+					</tr>
+
+					<tr>
+						<td>جنس اسکلت میز نهار خوری</td>
+						<td>#{sellerPage.productDetail.jenseEskeletMizNaharKhori}</td>
+					</tr>
+
+					<tr>
+						<td>جنس پایِه نهار خوری</td>
+						<td>#{sellerPage.productDetail.jensePayeMizNaharKhori}</td>
+					</tr>
+					<tr>
+						<td> شیشه </td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.shisheMizNaharKhori)}</td>
+					</tr>
+										<tr>
+						<td> رنگ شیشه</td>
+						<td>#{sellerPage.productDetail.rangeShisheMizNaharKhori}</td>
+					</tr>
+															<tr>
+						<td>(میلی متر) ضخامت شیشه</td>
+						<td>#{sellerPage.productDetail.zekhamatShisheMizNaharKhori}</td>
+					</tr>
+					<tr>
+						<td>قیمت شیشه (تومان)</td>
+						<td>#{sellerPage.productDetail.priceShisheMizNaharKhori}</td>
+					</tr>
+
+					<tr>
+						<td>شیشه ابزار خور است ؟</td>
+						<td>#{sellerPage.hastNist(sellerPage.productDetail.shisheAbzarMizNaharKhori)}</td>
+					</tr>
+					
+				    <tr>
+						<td>تعداد صندلی میز نهارخوری</td>
+						<td>#{sellerPage.productDetail.tedadSandaliMizNaharKhori}</td>
+					</tr>
+					
+					<tr>
+						<td>جنس فوم صندلی </td>
+						<td>#{sellerPage.productDetail.jenseFomSandaliMizNaharKhori}</td>
+					</tr>
+										
+					<tr>
+						<td>جنس اسفنج صندلی </td>
+						<td>#{sellerPage.productDetail.jenseEsfangSandaliMizNaharKhori}</td>
+					</tr>
+										
+					<tr>
+						<td>جنس اسکلت صندلی </td>
+						<td>#{sellerPage.productDetail.jenseEskeletSandaliMizNaharKhori}</td>
+					</tr>
+										
+					<tr>
+						<td>جنس  پایِه صندلی </td>
+						<td>#{sellerPage.productDetail.jensePayeSandaliMizNaharKhori}</td>
+					</tr>
+										
+					<tr>
+						<td>آیاپایِه صندلی قابلیت انتخاب رنگ دارد ؟ </td>
+						<td>#{sellerPage.hastNist(sellerPage.productDetail.payeSandaliRangMizNaharKhori)}</td>
+					</tr>
+										
+					<tr>
+						<td>رنگ  پایِه صندلی </td>
+						<td>#{sellerPage.productDetail.rangPayeSandaliMizNaharKhori}</td>
+					</tr>
+										
+					<tr>
+						<td>جنس  پارچه صندلی </td>
+						<td>#{sellerPage.productDetail.jenseParcheSandaliMizNaharKhori}</td>
+					</tr>
+										
+					<tr>
+						<td>نام  پارچه صندلی </td>
+						<td>#{sellerPage.productDetail.nameParcheSandaliMizNaharKhori}</td>
+					</tr>
+															
+					<tr>
+						<td>آیا پارچه صندلی قابلیت انتخاب رنگ دارد ؟ </td>
+						<td>#{sellerPage.hastNist(sellerPage.productDetail.rangSelParcheSandaliMizNaharKhori)}</td>
+					</tr>
+															
+					<tr>
+						<td>رنگ پارچه</td>
+						<td>#{sellerPage.productDetail.rangParcheSandaliMizNaharKhori}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'SandaliEdari'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>نوع جنس صندلی اداری</td>
+						<td>#{sellerPage.productDetail.noeJenseSandaliEdari}</td>
+					</tr>
+					<tr>
+						<td>ابعاد صندلی اداری</td>
+						<td>#{sellerPage.productDetail.abadSandaliEdari}</td>
+					</tr>
+					<tr>
+						<td>رنگ صندلی اداری</td>
+						<td>#{sellerPage.productDetail.rangSandaliEdari}</td>
+					</tr>
+					<tr>
+						<td>جنس پایه صندلی اداری</td>
+						<td>#{sellerPage.productDetail.jensePayeSandaliEdari}</td>
+					</tr>
+
+					<tr>
+						<td>دسته </td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.dasteSandaliEdari)}</td>
+					</tr>
+
+					<tr>
+						<td>نوع صندلی </td>
+						<td>#{sellerPage.productDetail.noeSandaliEdari}</td>
+					</tr>
+
+					<tr>
+						<td>طبی</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.tebiSandaliEdari)}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'MizEdari'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>شکل هندسی میز اداری</td>
+						<td>#{sellerPage.productDetail.sheklehendesiMizٍEdari}</td>
+					</tr>
+					<tr>
+						<td>تعداد چند تکه میز اداری</td>
+						<td>#{sellerPage.productDetail.tedadChantekeMizٍEdari}</td>
+					</tr>
+					<tr>
+						<td>جنس اسکلت میز اداری</td>
+						<td>#{sellerPage.productDetail.jenseEskeletMizٍEdari}</td>
+					</tr>
+					<tr>
+						<td>جنس پایه میز اداری</td>
+						<td>#{sellerPage.productDetail.jensePayeMizٍEdari}</td>
+					</tr>
+
+					<tr>
+						<td>شیشه </td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.shisheMizٍEdari)}</td>
+					</tr>
+
+					<tr>
+						<td>نوع شیشه میز اداری </td>
+						<td>#{sellerPage.productDetail.noeShisheMizٍEdari}</td>
+					</tr>
+
+					<tr>
+						<td>قیمت شیشه میز اداری (تومان)</td>
+						<td>#{sellerPage.productDetail.priceShisheMizٍEdari}</td>
+					</tr>
+					
+					<tr>
+						<td>شیشه ابزار خورده است ؟</td>
+						<td>#{sellerPage.productDetail.shisheAbzarMizٍEdari}</td>
+					</tr>
+					
+					<tr>
+						<td>کشو</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.keshoMizٍEdari)}</td>
+					</tr>
+					
+					<tr>
+						<td>تعداد کشو</td>
+						<td>#{sellerPage.productDetail.tedadkeshoMizٍEdari}</td>
+					</tr>
+					
+					<tr>
+						<td>کمد</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.komodMizٍEdari)}</td>
+					</tr>
+										
+					<tr>
+						<td>تعداد کمد</td>
+						<td>#{sellerPage.productDetail.tedadkomodMizٍEdari}</td>
+					</tr>
+										
+					<tr>
+						<td>فضای لوازم جانبی</td>
+						<td>#{sellerPage.productDetail.fazayeLavazemJanebiMizٍEdari}</td>
+					</tr>
+															
+					<tr>
+						<td>توضیحات لوازم جانبی</td>
+						<td>#{sellerPage.productDetail.descriptionfazayeLavazemJanebiMizٍEdari}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'Mdf'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>ضخامت Mdf</td>
+						<td>#{sellerPage.productDetail.zekhametMdf}</td>
+					</tr>
+					<tr>
+						<td>ابعاد Mdf</td>
+						<td>#{sellerPage.productDetail.abadMdf}</td>
+					</tr>
+					<tr>
+						<td>قیمت هر متر Mdf</td>
+						<td>#{sellerPage.productDetail.priceMetrMdf}</td>
+					</tr>
+					<tr>
+						<td>قیمت هر متر Mdf با تخفیف</td>
+						<td>#{sellerPage.productDetail.priceTakhfifMetrMdf}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'Partition'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>جنس ستون پارتیشن</td>
+						<td>#{sellerPage.productDetail.jenseSotonPartishen}</td>
+					</tr>
+					<tr>
+						<td>جنس پنل های پارتیشن</td>
+						<td>#{sellerPage.productDetail.jensePanelPartishen}</td>
+					</tr>
+					<tr>
+						<td>جنس نوار لبه های کار پارتیشن</td>
+						<td>#{sellerPage.productDetail.jenseLabePartishen}</td>
+					</tr>
+					
+					<tr>
+						<td>رنگ پارتیشن</td>
+						<td>#{sellerPage.productDetail.rangPartishen}</td>
+					</tr>
+										
+					<tr>
+						<td>آیا این پارتیشن به صورت ترکیبی است ؟</td>
+						<td>#{sellerPage.hastNist(sellerPage.productDetail.tarkibiPartishen)}</td>
+					</tr>
+										
+					<tr>
+						<td>نوع ترکیب پارتیشن</td>
+						<td>#{sellerPage.productDetail.noeTarkibPartishen}</td>
+					</tr>
+										
+					<tr>
+						<td>آیا در این پارتیشن قابلیت اجرای پرده است ؟</td>
+						<td>#{sellerPage.hastNist(sellerPage.productDetail.ejrayePardePartishen)}</td>
+					</tr>
+										
+					<tr>
+						<td>رنگ پرده</td>
+						<td>#{sellerPage.productDetail.rangPardePartishen}</td>
+					</tr>
+										
+					<tr>
+						<td>(تومان) قیمت پارتیشن هر متری</td>
+						<td>#{sellerPage.productDetail.priceMetrPartishen}</td>
+					</tr>
+															
+					<tr>
+						<td>(تومان) با تخفیف قیمت پارتیشن هر متری</td>
+						<td>#{sellerPage.productDetail.priceTakhfifMetrPartishen}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'Panjare'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>متریال پنجره</td>
+						<td>#{sellerPage.productDetail.metrialPanjare}</td>
+					</tr>
+					<tr>
+						<td>نوع رنگ پنجره</td>
+						<td>#{sellerPage.productDetail.noeRangPanjare}</td>
+					</tr>
+					<tr>
+						<td>جنس کلاف پنجره</td>
+						<td>#{sellerPage.productDetail.jenseKalafPanjare}</td>
+					</tr>
+					
+					<tr>
+						<td>پنجره مورد استفاده در مکان هایی مثل</td>
+						<td>#{sellerPage.productDetail.makanPanjare}</td>
+					</tr>
+										
+					<tr>
+						<td>CNC</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.cncPanjare)}</td>
+					</tr>
+										
+					<tr>
+						<td>قابلیت ضد آب</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.zedeAbPanjare)}</td>
+					</tr>
+										
+					<tr>
+						<td>قابلیت شستشو</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.shostoshoPanjare)}</td>
+					</tr>
+					
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'DarbChobi'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>روکش درب چوبی</td>
+						<td>#{sellerPage.productDetail.rokeshDarbChobi}</td>
+					</tr>
+					<tr>
+						<td>نوع رنگ درب چوبی</td>
+						<td>#{sellerPage.productDetail.noeRangDarbChobi}</td>
+					</tr>
+					<tr>
+						<td>ضخامت درب چوبی</td>
+						<td>#{sellerPage.productDetail.zekhamatDarbChobi}</td>
+					</tr>
+					<tr>
+						<td>جنس کلاف درب چوبی</td>
+						<td>#{sellerPage.productDetail.jenseKalafDarbChobi}</td>
+					</tr>
+					
+					<tr>
+						<td>درب چوبی مورد استفاده در مکان هایی مثل</td>
+						<td>#{sellerPage.productDetail.makanDarbChobi}</td>
+					</tr>
+										
+					<tr>
+						<td>CNC</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.cncDarbChobi)}</td>
+					</tr>
+										
+					<tr>
+						<td>قابلیت ضد آب</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.zedeAbDarbChobi)}</td>
+					</tr>
+										
+					<tr>
+						<td>قابلیت شستشو</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.shostoshoDarbChobi)}</td>
+					</tr>
+					
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'DarbZedSergat'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>نام mdf درب ضد سرقت</td>
+						<td>#{sellerPage.productDetail.nameMdfDarbZedSergat}</td>
+					</tr>
+					<tr>
+						<td>ضخامت (میلیمتر) mdf درب ضد سرقت</td>
+						<td>#{sellerPage.productDetail.zekhamatMdfDarbZedSergat}</td>
+					</tr>
+					<tr>
+						<td>mdf از کشور</td>
+						<td>#{sellerPage.productDetail.keshvarMdfDarbZedSergat}</td>
+					</tr>
+					<tr>
+						<td>ورق فلزی داخل درب ضد سرقت (میلیمتر)</td>
+						<td>#{sellerPage.productDetail.varagFeleziDarbZedSergat}</td>
+					</tr>
+					
+					<tr>
+						<td>قوطی بندی فلزی</td>
+						<td>#{sellerPage.productDetail.gotiBandiFeleziDarbZedSergat}</td>
+					</tr>
+											
+					<tr>
+						<td>ضخامت ورق فلزی چهارچوب</td>
+						<td>#{sellerPage.productDetail.zekhamatVaragFeleziDarbZedSergat}</td>
+					</tr>	
+								
+					<tr>
+						<td>CNC</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.cncDarbZedSergat)}</td>
+					</tr>
+										
+					<tr>
+						<td>متریال جلوگیری از صدا</td>
+						<td>#{sellerPage.productDetail.metrilJelogiriDarbZedSergat}</td>
+					</tr>
+										
+					<tr>
+						<td>صداگیری</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.sedagiriDarbZedSergat)}</td>
+					</tr>
+															
+					<tr>
+						<td>قفل پستچی </td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.goflPostchiDarbZedSergat)}</td>
+					</tr>
+															
+					<tr>
+						<td>قابلیت نصب پستچی</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.nasbPostchiDarbZedSergat)}</td>
+					</tr>
+															
+					<tr>
+						<td>قابلیت ضد آب</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.zedeAbDarbZedSergat)}</td>
+					</tr>
+															
+					<tr>
+						<td>ضد دیلم</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.zedeDeylamDarbZedSergat)}</td>
+					</tr>
+																				
+					<tr>
+						<td>روکش درب ضد سرقت</td>
+						<td>#{sellerPage.productDetail.rokeshDarbZedSergat}</td>
+					</tr>
+																				
+					<tr>
+						<td>رنگ درب ضد سرقت</td>
+						<td>#{sellerPage.productDetail.rangDarbZedSergat}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'GhabAx'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>جنس قاب</td>
+						<td>#{sellerPage.productDetail.jenseGabeAx}</td>
+					</tr>
+					<tr>
+						<td>ابعاد قاب عکس (سانتی متر)</td>
+						<td>#{sellerPage.productDetail.abadGabeAx}</td>
+					</tr>
+					<tr>
+						<td>ابعاد مفید قاب عکس (سانتی متر)</td>
+						<td>#{sellerPage.productDetail.abadMofidGabeAx}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'Kabinet'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>جنس کابینت</td>
+						<td>#{sellerPage.productDetail.jenseKabinet}</td>
+					</tr>
+					<tr>
+						<td>جنس صفحه کابینت</td>
+						<td>#{sellerPage.productDetail.jenseSafeKabinet}</td>
+					</tr>
+					<tr>
+						<td>کابینت mdf نوع</td>
+						<td>#{sellerPage.productDetail.noeMdfKabinet}</td>
+					</tr>
+					<tr>
+						<td>کابینت mdf ضخامت</td>
+						<td>#{sellerPage.productDetail.zekhamateMdfKabinet}</td>
+					</tr>
+					
+					<tr>
+						<td>کابینت mdf ابعاد</td>
+						<td>#{sellerPage.productDetail.abadMdfKabinet}</td>
+					</tr>
+											
+					<tr>
+						<td>دستگیره درب کابینت</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.dastgireDarbKabinet)}</td>
+					</tr>	
+					
+					<tr>
+						<td>ریل</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.reylKabinet)}</td>
+					</tr>
+										
+					<tr>
+						<td>جک</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.jakKabinet)}</td>
+					</tr>
+															
+					<tr>
+						<td>پایه کابینت </td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.payeKabinet)}</td>
+					</tr>
+															
+					<tr>
+						<td>مگنت کابینت</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.magnetKabinet)}</td>
+					</tr>
+															
+					<tr>
+						<td>چرخ</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.charkhKabinet)}</td>
+					</tr>
+															
+					<tr>
+						<td>قیمت کابینت هر متری (تومان)</td>
+						<td>#{sellerPage.productDetail.priceMetrKabinet}</td>
+					</tr>
+																				
+					<tr>
+						<td>قیمت کابینت هر متری با تخفیف (تومان)</td>
+						<td>#{sellerPage.productDetail.priceMetrTakhfifKabinet}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'Mojasame'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>جنس مجسمه</td>
+						<td>#{sellerPage.productDetail.jenseMojasame}</td>
+					</tr>
+					<tr>
+						<td>ابعاد مجسمه (سانتی متر)</td>
+						<td>#{sellerPage.productDetail.abadMojasame}</td>
+					</tr>
+					<tr>
+						<td>مجسمه قابلیت شستشو دارد ؟</td>
+						<td>#{sellerPage.hastNist(sellerPage.productDetail.shostoshoMojasame)}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'Monabat'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>منبت mdf نام</td>
+						<td>#{sellerPage.productDetail.nameMdfMonabat}</td>
+					</tr>
+					<tr>
+						<td>منبت mdf ضخامت</td>
+						<td>#{sellerPage.productDetail.zekhamatMdfMonabat}</td>
+					</tr>
+					
+					<tr>
+						<td>از کشور mdf</td>
+						<td>#{sellerPage.productDetail.keshvarMdfMonabat}</td>
+					</tr>
+											
+					<tr>
+						<td>نوع منبت</td>
+						<td>#{sellerPage.productDetail.noeMonabat}</td>
+					</tr>	
+								
+					<tr>
+						<td>ابعاد منبت</td>
+						<td>#{sellerPage.productDetail.abadMonabat}</td>
+					</tr>
+										
+					<tr>
+						<td>جنس منبت</td>
+						<td>#{sellerPage.productDetail.jenseMonabat}</td>
+					</tr>
+					
+				</table>
+				</section>
+</h:panelGroup>
+<h:panelGroup rendered="#{sellerPage.product.productType eq 'Moblman'}">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto"
+					class="table table-striped">
+					<tr>
+						<td>نوع مبلمان</td>
+						<td>#{sellerPage.productDetail.noeMobl}</td>
+					</tr>
+					<tr>
+						<td>تعداد مبل</td>
+						<td>#{sellerPage.productDetail.tedadMobl}</td>
+					</tr>
+					
+					<tr>
+						<td>ساختار مبل</td>
+						<td>#{sellerPage.productDetail.sakhtarMobl}</td>
+					</tr>
+											
+					<tr>
+						<td>جنس فوم</td>
+						<td>#{sellerPage.productDetail.jenseFome}</td>
+					</tr>	
+								
+					<tr>
+						<td>جنس اسفنج</td>
+						<td>#{sellerPage.productDetail.jenseEsfanj}</td>
+					</tr>
+										
+					<tr>
+						<td>جنس اسکلت</td>
+						<td>#{sellerPage.productDetail.jenseEskelet}</td>
+					</tr>
+															
+					<tr>
+						<td>جنس پایه</td>
+						<td>#{sellerPage.productDetail.jensePaye}</td>
+					</tr>
+															
+					<tr>
+						<td>قابلیت انتخاب رنگ</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.enetekhabRangPaye)}</td>
+					</tr>
+															
+					<tr>
+						<td>رنگ پایه</td>
+						<td>#{sellerPage.productDetail.rangPaye}</td>
+					</tr>
+															
+					<tr>
+						<td>جنس پارچه</td>
+						<td>#{sellerPage.productDetail.jenseParche}</td>
+					</tr>
+															
+					<tr>
+						<td>نام پارچه</td>
+						<td>#{sellerPage.productDetail.nameParche}</td>
+					</tr>
+																				
+					<tr>
+						<td>انتخاب رنگ پارچه</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.enetekhabRangParche)}</td>
+					</tr>
+																				
+					<tr>
+						<td>رنگ پارچه</td>
+						<td>#{sellerPage.productDetail.rangParche}</td>
+					</tr>
+																				
+					<tr>
+						<td>مکانیزم تخت شو</td>
+						<td>#{sellerPage.productDetail.mekanizmTakhtsho}</td>
+					</tr>
+																				
+					<tr>
+						<td>توضیح مکانیزم تخت شو</td>
+						<td>#{sellerPage.productDetail.descriptionMekanizmTakhtsho}</td>
+					</tr>
+																				
+					<tr>
+						<td>کوسن</td>
+						<td>#{sellerPage.daradNadarad(sellerPage.productDetail.kosan)}</td>
+					</tr>
+																									
+					<tr>
+						<td>تعداد کوسن</td>
+						<td>#{sellerPage.productDetail.tedadKosan}</td>
+					</tr>
+																									
+					<tr>
+						<td>ابعاد کوسن بزرگ</td>
+						<td>#{sellerPage.productDetail.abadKosanBozorg}</td>
+					</tr>
+																									
+					<tr>
+						<td>ابعاد کوسن کوچک</td>
+						<td>#{sellerPage.productDetail.abadKosanKochak}</td>
+					</tr>
+																									
+					<tr>
+						<td>مدل کوسن</td>
+						<td>#{sellerPage.productDetail.modelKosan}</td>
+					</tr>
+																									
+					<tr>
+						<td>جنس پارچه کوسن</td>
+						<td>#{sellerPage.productDetail.jenseParcheKosan}</td>
+					</tr>
+																									
+					<tr>
+						<td>رنگ پارچه کوسن</td>
+						<td>#{sellerPage.productDetail.rangeParcheKosan}</td>
+					</tr>
+																									
+					<tr>
+						<td>دارای میز</td>
+						<td>#{sellerPage.productDetail.miz}</td>
+					</tr>
+																									
+					<tr>
+						<td>تعداد میز</td>
+						<td>#{sellerPage.productDetail.tedadMiz}</td>
+					</tr>
+																									
+					<tr>
+						<td>ابعاد میز</td>
+						<td>#{sellerPage.productDetail.abadMiz}</td>
+					</tr>
+				</table>
+				</section>
+</h:panelGroup>
 			</div>
-			<div dir="rtl" style="width: 100%; background: white; display: none"
-				id="comments" class="tabcontent">
-				<!--                     <ul>
-                        <li class="cmm">
-                            <section>
-                                <div class="right1">
-                                    <div class="recommend"><i class="fa fa-shopping-basket padding-left-5"></i>خریدار این محصول</div>
-                                    <ul class="list2">
-                                        <li>
-                                            <div>رنگ خریداری شده :</div>
-                                            <div style="font-weight: 600; color: #4a5b64">خاکستری</div>
-                                        </li>
-                                        <li>
-                                            <div>خریداری شده از :</div>
-                                            <div style="font-weight: 600" class="mainColor"><a href="#">ساتراپ</a></div>
-                                        </li>
-                                    </ul>
-                                    <div class="recommend green">خرید این محصول را توصیه می کنم</div>
-                                </div>
-                                <div class="left1">
-                                    <div class="cmm-title">
-                                        <div>عنوان نظر</div>
-                                        <span>نوشته شده توسط مریم میرزاخانی در تاریخ ۲۸ آذر ۱۳۹۷</span>
-                                    </div>
-                                    <div class="rate">
-                                        <span class="padding-left-10">امتیاز من به این محصول</span>
-                                        <div style="float: left" class="rating rtn">
-                                            <div class="stars">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p style="font-family: IRANSansNor">در این قسمت متن نظر نوشته می شود .در این قسمت متن نظر نوشته می شود .در این قسمت متن نظر نوشته می شود .</p>
-                                </div>
-                            </section>
-                            <div>
-                                <div class="like-dislike">
-                                    <button><i class="fa fa-thumbs-up padding-left-5"></i>۷</button>
-                                    <button><i class="fa fa-thumbs-down padding-left-5"></i>۲</button>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="cmm">
-                            <section>
-                                <div class="right1">
-                                    <div class="recommend"><i class="fa fa-shopping-basket padding-left-5"></i>خریدار این محصول</div>
-                                    <ul class="list2">
-                                        <li>
-                                            <div>رنگ خریداری شده :</div>
-                                            <div style="font-weight: 600; color: #4a5b64">خاکستری</div>
-                                        </li>
-                                        <li>
-                                            <div>خریداری شده از :</div>
-                                            <div style="font-weight: 600" class="mainColor"><a href="#">ساتراپ</a></div>
-                                        </li>
-                                    </ul>
-                                    <div class="recommend cream">در مورد خرید این محصول مطمئن نیستم</div>
-                                </div>
-                                <div class="left1">
-                                    <div class="cmm-title">
-                                        <div>عنوان نظر</div>
-                                        <span>نوشته شده توسط مریم میرزاخانی در تاریخ ۲۸ آذر ۱۳۹۷</span>
-                                    </div>
-                                    <div class="rate">
-                                        <span class="padding-left-10">امتیاز من به این محصول</span>
-                                        <div style="float: left" class="rating rtn">
-                                            <div class="stars">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p style="font-family: IRANSansNor">در این قسمت متن نظر نوشته می شود .در این قسمت متن نظر نوشته می شود .در این قسمت متن نظر نوشته می شود .</p>
-                                </div>
-                            </section>
-                            <div>
-                                <div class="like-dislike">
-                                    <button><i class="fa fa-thumbs-up padding-left-5"></i>۷</button>
-                                    <button><i class="fa fa-thumbs-down padding-left-5"></i>۲</button>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="cmm">
-                            <section>
-                                <div class="right1">
-                                    <div class="recommend"><i class="fa fa-shopping-basket padding-left-5"></i>خریدار این محصول</div>
-                                    <ul class="list2">
-                                        <li>
-                                            <div>رنگ خریداری شده :</div>
-                                            <div style="font-weight: 600; color: #4a5b64">خاکستری</div>
-                                        </li>
-                                        <li>
-                                            <div>خریداری شده از :</div>
-                                            <div style="font-weight: 600" class="mainColor"><a href="#">ساتراپ</a></div>
-                                        </li>
-                                    </ul>
-                                    <div class="recommend red">خرید این محصول را توصیه نمی کنم</div>
-                                </div>
-                                <div class="left1">
-                                    <div class="cmm-title">
-                                        <div>عنوان نظر</div>
-                                        <span>نوشته شده توسط مریم میرزاخانی در تاریخ ۲۸ آذر ۱۳۹۷</span>
-                                    </div>
-                                    <div class="rate">
-                                        <span class="padding-left-10">امتیاز من به این محصول</span>
-                                        <div style="float: left" class="rating rtn">
-                                            <div class="stars">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p style="font-family: IRANSansNor">در این قسمت متن نظر نوشته می شود .در این قسمت متن نظر نوشته می شود .در این قسمت متن نظر نوشته می شود .</p>
-                                </div>
-                            </section>
-                            <div>
-                                <div class="like-dislike">
-                                    <button><i class="fa fa-thumbs-up padding-left-5"></i>۷</button>
-                                    <button><i class="fa fa-thumbs-down padding-left-5"></i>۲</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul> -->
-				<div>
-					<form class="cmm-body">
-						<div class="">
-							<label class="margin-bottom-20 font-weight">عنوان نظر
-								(اجباری) :</label>
-							<div>
-								<input class="w-100" type="text" id="title" />
-							</div>
-						</div>
-						<br />
-						<div class="">
-							<label class="margin-bottom-20 font-weight">متن نظر
-								(اجباری) :</label>
-							<div>
-								<textarea rows="10" class="w-100" name="message"
-									placeholder="متن نظر خود را وارد کنید"></textarea>
-							</div>
-						</div>
-						<br />
-						<div>
-							<label class="margin-bottom-20 font-weight">لطفا به این
-								محصول امتیاز دهید :</label>
-							<div style="display: inline-block; margin-right: 10px"
-								class="rating">
-								<div class="stars">
-									<span class="fa fa-star checked"></span> <span
-										class="fa fa-star checked"></span> <span
-										class="fa fa-star checked"></span> <span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-								</div>
-							</div>
-						</div>
-						<div>
-							<input type="radio" name="recommendation" value="yes" /> خرید
-							این محصول را توصیه می کنم<br /> <input type="radio"
-								name="recommendation" value="notSure" />در مورد خرید این محصول
-							مطمئن نیستم<br /> <input type="radio" name="recommendation"
-								value="no" /> خرید این محصول را توصیه نمی کنم<br />
-						</div>
-						<button type="submit" class="btn float-left cmm-btn margin-top-10">ثبت
-							نظر</button>
-					</form>
-				</div>
-			</div>
-			<div dir="rtl" style="width: 100%; background: white; display: none"
-				id="question" class="tabcontent">
-				<!--                     <h5 style="padding:15px; color: #4d4d4d ; font-size: 20px;margin-right: 20px">
-                        پرسش و پاسخ
-                    </h5>
-                    <hr/>
-                    <div class="row question">
-                        <div class="media comment-box">
-                            <div class="media-left">
+						<ul class="menu-items" style="padding: 20px;">
+			<h2 style="text-align: center; margin: auto;">توضیخات کلی محصول</h2> 
+			</ul>
 
-                                <img src="images/user.png"/>
+			<div dir="rtl" style="width: 100%; background: white"
+				id="information" class="tabcontent">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto ; font-size: 18px;
+text-align: justify;"
+					class="table table-striped">
+					<tr>
+						<td>#{sellerPage.product.description}</td>
+					</tr>
+					
+					</table>
+					</section>
+					</div>
 
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">مریم میرزاخانی</h4>
-                                <p class="margin-bottom-10">در این قسمت سوال پرسیده شده توسط کاربران قرار می گیرد.</p>
-
-                                Toggle
-                                <button class="btnhvr" onclick="myFunction()">به این پرسش پاسخ دهید</button>
-                                <div class="answer" id="myDIV">
-                                    <label class="margin-bottom-20 font-weight">به این سوال پاسخ دهید :</label><br/>
-                                    <div>
-                                        <textarea rows="10" class="w-100" name="message" ></textarea>
-                                    </div>
-
-                                    <input class="margin-top-20" type="checkbox" name="agree" />
-                                    <label class="margin-bottom-20 font-weight">با انتخاب دکمه “ثبت پاسخ”، موافقت خود را با <a href="#">قوانین انتشار محتوا</a> در سایت "اتحادیه درودگران و مبلسازان تهران" اعلام می کنم. </label>
-                                    <br/>
-                                    <button type="submit" class="btn float-left cmm-btn margin-top-10">ثبت پاسخ</button>
-                                </div>
-
-                                <div class="media">
-                                    <div class="media-left">
-                                        <img src="images/user.png"/>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">مریم میرزاخانی</h4>
-                                        <p>در این قسمت جواب داده شده توسط کاربران قرار داه می شود.</p>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <img src="images/user.png"/>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">مریم میرزاخانی</h4>
-                                        <p>در این قسمت جواب داده شده توسط کاربران قرار داه می شود.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr class="margin-top-40"/>
-                        </div>
-                    </div>
-                    <div>
-                        <form class="cmm-body">
-                            <div class="">
-                                <label class="margin-bottom-20 font-weight">پرسش خود را در مورد محصول مطرح نمایید :</label>
-                                <div>
-                                    <textarea rows="10" class="w-100" name="message" placeholder=" پرسش خود را وارد کنید" ></textarea>
-                                </div>
-                                <input class="margin-top-20" type="checkbox" name="agree" />
-                                <label class="margin-bottom-20 font-weight">اولین پاسخی که به پرسش من داده شد، از طریق ایمیل به من اطلاع دهید. </label><br/>
-                                <label class="margin-bottom-20 font-weight">با انتخاب دکمه “ثبت پرسش”، موافقت خود را با <a href="#">قوانین انتشار محتوا</a> در سایت "اتحادیه درودگران و مبلسازان تهران" اعلام می کنم. </label>
-                            </div><br/>
-                            <button type="submit" class="btn float-left cmm-btn margin-top-10">ثبت پرسش</button>
-                        </form>
-                    </div> -->
-			</div>
+			<div dir="rtl" style="width: 100%; background: white"
+				id="information" class="tabcontent">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto ; font-size: 18px;
+text-align: justify;"
+					class="table table-striped">
+					<tr>
+						<td>
+						     <h:outputText value="#{sellerPage.product.aparat}"
+							escape="false" />
+						</td>
+					</tr>
+					
+					</table>
+					</section>
+					</div>
+								<div dir="rtl" style="width: 100%; background: white"
+				id="information" class="tabcontent">
+				<section>
+				<table style="width: 95%; margin-left: auto; margin-right: auto ; font-size: 18px;
+text-align: justify;"
+					class="table table-striped">
+					<tr>
+						<td>
+		<h:outputText value="#{sellerPage.product.instagram}"
+							escape="false" />
+						</td>
+					</tr>
+					
+					</table>
+					</section>
+					</div>
 		</div>
 
 		<hr />
@@ -1403,6 +2739,7 @@ scale
 
 	</div>
 	</article>
+	</h:panelGroup>
 	<br/><br/><br/>
 	
   <script type="text/javascript" src="../../resources/zoom/dist/xzoom.min.js"></script>
@@ -1416,7 +2753,8 @@ scale
 	
     <script src="../../resources/zoom/js/foundation.min.js"></script>
     <script src="../../resources/zoom/js/setup.js"></script>
-	
+	<script src="../../resources/PANEL/vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="../../resources/PANEL/dist/js/sweetalert-data.js"></script>
 	
 
 </ui:composition>

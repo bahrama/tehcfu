@@ -87,10 +87,9 @@ button:hover {
 									media="(min-width: 768px) and (max-width: 991)"
 									srcset="resources/pictures/tablet-piano.jpg" /> 
 									<h:link outcome="/pages/news/news-detail.xhtml">
-									<o:graphicImage
-									class="imgstyle"
-									rendered="#{newsPage.findBlogPicById(nws.id) ne null}"
-									value="#{newsPage.findBlogPicById(nws.id)}" dataURI="true" />
+									<h:graphicImage id="oue43" class="imgstyle"
+									rendered="#{nws.pic1 ne null}"
+									value="/Images/#{nws.pic1}.jpg"/>
 									<f:param name="blogId" value="#{nws.id}" />
 								</h:link>
 								</picture>
@@ -469,23 +468,12 @@ button:hover {
 						<div class="design-img overflow">
 							<h:link outcome="/pages/news/news-detail.xhtml"
 								disabled="#{newsPage.findMonasebatMiladi().blogName eq null}">
-								<!-- 										<img class="img-hover min" src="resources/images22/milad.jpg"
-											alt="مناسبت های میلادی" /> -->
-								<!-- 								<h:graphicImage value="../../resources/pic/mld0.jpg"
-									class="img-hover min" alt="مناسبت های میلادی"
-									rendered="#{newsPage.findMonasebatMiladi().blogName ne null}" />
-								<h:graphicImage value="../../resources/pic/mld1.jpg"
-									class="img-hover min" alt="مناسبت های میلادی"
-									rendered="#{newsPage.findMonasebatMiladi().blogName eq null}" /> -->
-								<o:graphicImage styleClass="img-hover min"
-									rendered="#{(homeBean.findHomeCatByName('میلادی') ne null) and (newsPage.findMonasebatMiladi().blogName ne null)}"
-									value="#{homeBean.findHomeCatByName('میلادی')}" dataURI="true"
-									alt="" />
-								<o:graphicImage styleClass="img-hover min"
-									style="filter: grayscale(100%)"
-									rendered="#{(homeBean.findHomeCatByName('میلادی') ne null) and (newsPage.findMonasebatMiladi().blogName eq null)}"
-									value="#{homeBean.findHomeCatByName('میلادی')}" dataURI="true"
-									alt="" />
+								<h:graphicImage class="img-hover min"
+									rendered="#{(homeBean.findHomeCatImageByName('X') ne null) and (newsPage.findMonasebatMiladi().blogName ne null)}"
+									value="/Images/#{homeBean.findHomeCatImageByName('X').picId}.jpg"/>
+								<h:graphicImage class="img-hover min" style="filter: grayscale(100%)"
+									rendered="#{(homeBean.findHomeCatImageByName('X') ne null) and (newsPage.findMonasebatMiladi().blogName eq null)}"
+									value="/Images/#{homeBean.findHomeCatImageByName('X').picId}.jpg"/>
 
 								<f:param value="#{newsPage.findMonasebatMiladi().id}"
 									name="blogId" />
@@ -513,23 +501,12 @@ button:hover {
 						<div class="design-img overflow">
 							<h:link outcome="/pages/news/news-detail.xhtml"
 								disabled="#{newsPage.findMonasebatGamari().blogName eq null}">
-								<!-- 										<img class="img-hover min" src="resources/images22/mohrama.jpg"
-											alt="مناسبت های قمری" /> -->
-								<!-- 								<h:graphicImage value="../../resources/pic/gmr0.jpg"
-									class="img-hover min" alt="مناسبت های قمری"
-									rendered="#{newsPage.findMonasebatGamari().blogName ne null}" />
-								<h:graphicImage value="../../resources/pic/gmr1.jpg"
-									class="img-hover min" alt="مناسبت های قمری"
-									rendered="#{newsPage.findMonasebatGamari().blogName eq null}" /> -->
-								<o:graphicImage styleClass="img-hover min"
-									rendered="#{homeBean.findHomeCatByName('قمری') ne null and newsPage.findMonasebatGamari().blogName ne null}"
-									value="#{homeBean.findHomeCatByName('قمری')}" dataURI="true"
-									alt="" />
-								<o:graphicImage styleClass="img-hover min"
-									style="filter: grayscale(100%)"
-									rendered="#{homeBean.findHomeCatByName('قمری') ne null and newsPage.findMonasebatGamari().blogName eq null}"
-									value="#{homeBean.findHomeCatByName('قمری')}" dataURI="true"
-									alt="" />
+								<h:graphicImage class="img-hover min"
+									rendered="#{(homeBean.findHomeCatImageByName('Z') ne null) and (newsPage.findMonasebatGamari().blogName ne null)}"
+									value="/Images/#{homeBean.findHomeCatImageByName('Z').picId}.jpg"/>
+								<h:graphicImage class="img-hover min" style="filter: grayscale(100%)"
+									rendered="#{(homeBean.findHomeCatImageByName('Z') ne null) and (newsPage.findMonasebatGamari().blogName eq null)}"
+									value="/Images/#{homeBean.findHomeCatImageByName('Z').picId}.jpg"/>
 								<f:param value="#{newsPage.findMonasebatGamari().id}"
 									name="blogId" />
 							</h:link>
@@ -552,23 +529,14 @@ button:hover {
 						<div class="design-img overflow">
 							<h:link outcome="/pages/news/news-detail.xhtml"
 								disabled="#{newsPage.findMonasebatShamsi().blogName eq null}">
-								<!-- 										<img class="img-hover min" src="resources/images22/shams.jpg"
-											alt="مناسبت های شمسی" /> -->
-								<!-- 								<h:graphicImage value="../../resources/pic/shm0.jpg"
-									alt="مناسبت های شمسی" class="img-hover min"
-									rendered="#{newsPage.findMonasebatShamsi().blogName ne null}" />
-								<h:graphicImage value="../../resources/pic/shm1.jpg"
-									alt="مناسبت های شمسی" class="img-hover min"
-									rendered="#{newsPage.findMonasebatShamsi().blogName eq null}" /> -->
-								<o:graphicImage styleClass="img-hover min"
-									rendered="#{homeBean.findHomeCatByName('شمسی') ne null and newsPage.findMonasebatShamsi().blogName ne null}"
-									value="#{homeBean.findHomeCatByName('شمسی')}" dataURI="true"
-									alt="" />
-								<o:graphicImage styleClass="img-hover min"
-									style="filter: grayscale(100%)"
-									rendered="#{homeBean.findHomeCatByName('شمسی') ne null and newsPage.findMonasebatShamsi().blogName eq null}"
-									value="#{homeBean.findHomeCatByName('شمسی')}" dataURI="true"
-									alt="" />
+								<h:graphicImage class="img-hover min"
+									rendered="#{(homeBean.findHomeCatImageByName('R') ne null) and (newsPage.findMonasebatShamsi().blogName ne null)}"
+									value="/Images/#{homeBean.findHomeCatImageByName('R').picId}.jpg"/>
+								<h:graphicImage class="img-hover min" style="filter: grayscale(100%)"
+									rendered="#{(homeBean.findHomeCatImageByName('R') ne null) and (newsPage.findMonasebatShamsi().blogName eq null)}"
+									value="/Images/#{homeBean.findHomeCatImageByName('R').picId}.jpg"/>
+								<f:param value="#{newsPage.findMonasebatGamari().id}"
+									name="blogId" />
 								<f:param value="#{newsPage.findMonasebatShamsi().id}"
 									name="blogId" />
 							</h:link>

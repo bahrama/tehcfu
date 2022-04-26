@@ -6,82 +6,94 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-
-	<div class="text-center">
-		<!-- <img style="width: 60px" alt="logo" src="pic/saderkonandegan.png" /> -->
-		<o:graphicImage style="width: 110px;
-margin-top: 80px;
-margin-bottom: 15px;" styleClass="shadow-shorter"
-			rendered="#{sellerPage.findPic2() ne null}"
-			value="#{sellerPage.findPic2()}" dataURI="true" alt="" />
-		<h1 class="small padding-top-10" style="margin-bottom: 15px;font-family: IRANSansNor;">#{sellerPage.sellerx.sellerStorePer}</h1>
+	
+	
+	<br />
+	<br />
+	<br />
+	<br />
+	<div style="height: 30px;">
+		<h:link value="خانه  /" title="صفحه اصلی سایت اتحادیه مبلمان تهران"
+			outcome="/pages/main/home.xhtml"
+			style="direction: rtl;
+text-align: right;
+float: right;
+margin-top: 15px;
+margin-right: 15px;
+font-size: 17px;" />
+		<h:link value="فروشگاه ها  /"
+			title="فروشگاه ها"
+			outcome="/pages/danestaniha/panels.xhtml"
+			style="direction: rtl;
+text-align: right;
+float: right;
+margin-right: ;
+margin-top: 15px;
+font-size: 17px;
+margin-right: 5px;" />
+		<h:link value="#{sellerPage.sellerx.sellerStorePer}"
+			title="صفحه اصلی سایت اتحادیه مبلمان تهران"
+			outcome="/pages/merchant/merchant.xhtml"
+			style="direction: rtl;
+text-align: right;
+float: right;
+margin-top: 15px;
+font-size: 17px;
+margin-right: 5px;">
+			<f:param name="sellerNameEng"
+				value="#{sellerPage.sellerx.sellerStoreEng}" />
+		</h:link>
 	</div>
-<!--             <div class="gradient" style="background-image:linear-gradient(to bottom,
-                 rgba(55, 47, 47, 0.5), rgba(239, 226, 226, 0.2));z-index: 20;width: 100%;height: 373px;
-                 position: absolute"></div> -->
-            <!-- <div class="slider"> -->
-            <h:panelGroup rendered="#{sellerPage.sellerx.panel eq 'D'}">
- 	<o:graphicImage style="width: 100%;" styleClass="shadow-shorter"
-		rendered="#{sellerPage.findPic1() ne null}"
-		value="#{sellerPage.findPic1()}" dataURI="true" alt="" />
-		</h:panelGroup> 
-<!-- </div> -->
+	<br />
+	<br />
+	<div class="text-center">
+		<h:graphicImage style="width: 110px;
+margin-bottom: 15px;"
+			styleClass="shadow-shorter"
+			rendered="#{sellerPage.sellerx.pic2 ne null}"
+			value="/Images/#{sellerPage.sellerx.pic2}.jpg" />
+
+		<h1 class="small padding-top-10"
+			style="margin-bottom: 15px; font-family: IRANSansNor;">#{sellerPage.sellerx.sellerStorePer}</h1>
+	</div>
+	<h:panelGroup rendered="#{sellerPage.sellerx.panel eq 'D'}">
+		<h:graphicImage style="width: 100%;" styleClass="shadow-shorter"
+			rendered="#{sellerPage.sellerx.pic1 ne null}"
+			value="/Images/#{sellerPage.sellerx.pic1}.jpg" />
+	</h:panelGroup>
+	<!-- </div> -->
 	<!-- Blog Post Begin -->
-<h:panelGroup rendered="#{sellerPage.sellerx.panel ne 'D'}">
-			<div id="slide"
-				class="col-md-12 col-sm-12 col-xs-12 margin-top-35 animated fadeInLeft"
-				data-wow-delay="0.2s"
-				style="height: 410px; padding-left: 0; padding-right: 0;margin-bottom: 30px;">
-				<div style="width: 100%" class="property-detail-carousel">
-					
-						<div class="item">
-							<picture> <source
-								media="(min-width: 768px) and (max-width: 991)" srcset="" /> <o:graphicImage
-								styleClass="imgstyle" style="width: 100%"
-								rendered="#{sellerPage.findPic1() ne null}"
-								value="#{sellerPage.findPic1()}" dataURI="true"
-								alt="" /> </picture>
+	<h:panelGroup id="slidepg" rendered="#{sellerPage.sellerx.panel ne 'D'}">
+		<div id="slide"
+			class="col-md-12 col-sm-12 col-xs-12 margin-top-35 animated fadeInLeft"
+			data-wow-delay="0.2s"
+			style="height: 410px; padding-left: 0; padding-right: 0; margin-bottom: 30px;">
+			<div style="width: 100%" class="property-detail-carousel">
 
-						</div>
-						<div class="item">
-							<picture> <source
-								media="(min-width: 768px) and (max-width: 991)" srcset="" /> <o:graphicImage
-								styleClass="imgstyle" style="width: 100%"
-								rendered="#{sellerPage.findPic5() ne null}"
-								value="#{sellerPage.findPic5()}" dataURI="true"
-								alt="" /> </picture>
+				<div class="item">
+					<picture> <source
+						media="(min-width: 768px) and (max-width: 991)" srcset="" /> <h:graphicImage
+						styleClass="imgstyle" style="width: 100%"
+						rendered="#{sellerPage.sellerx.pic1 ne null}"
+						value="/Images/#{sellerPage.sellerx.pic1}.jpg" /> </picture>
 
-						</div>
-					
 				</div>
-				<!-- /property-detail-carousel -->
+				<div class="item">
+					<picture> <source
+						media="(min-width: 768px) and (max-width: 991)" srcset="" /> <h:graphicImage
+						styleClass="imgstyle" style="width: 100%"
+						rendered="#{sellerPage.sellerx.pic5 ne null}"
+						value="/Images/#{sellerPage.sellerx.pic5}.jpg" /> </picture>
+
+				</div>
+
 			</div>
-</h:panelGroup>
+			<!-- /property-detail-carousel -->
+		</div>
+	</h:panelGroup>
 	<div class="blog-post padding-vertical-100">
 
 		<div class="container">
-<!-- 			<div class="post-image margin-top-35">
-				<img src="pic/sellers-about%20.jpg" alt="" />
-				<h:panelGroup rendered="#{sellerPage.sellerx.panel ne 'A'}">
-					<o:graphicImage rendered="#{sellerPage.findPic3() ne null}"
-						value="#{sellerPage.findPic3()}" dataURI="true" alt="" />
-				</h:panelGroup>
-				<h:panelGroup rendered="#{sellerPage.sellerx.panel eq 'A'}">
-					<div class="containerbox" style="height: 420px !important;">
-												<img src="../../resources/panorama/1.jpg"
-							alt="Background without Image Map" class="panoramixImg" />
-						<o:graphicImage rendered="#{sellerPage.findPic3() ne null}"
-							value="#{sellerPage.findPic3()}" dataURI="true" alt=""
-							styleClass="panoramixImg" />
-
-						<div id="myPanoramix" class="pano">
-							<div class="controls"></div>
-						</div>
-					</div>
-				</h:panelGroup>
-			</div> -->
-			<!-- /post-image -->
-
 			<div dir="rtl"
 				class="blog-short-detail padding-vertical-10 bd-bottom padding-horizontal-20">
 				<h4 class="blog-h4">درباره ما :</h4>
@@ -92,7 +104,7 @@ margin-bottom: 15px;" styleClass="shadow-shorter"
 		</div>
 
 		<h:panelGroup
-			rendered="#{((sellerPage.sellerx.panel eq 'A') or (sellerPage.sellerx.panel eq 'B') or(sellerPage.sellerx.panel eq 'C'))and(sellerPage.products.size() gt 0)}">
+			rendered="#{((sellerPage.sellerx.panel eq 'A') or (sellerPage.sellerx.panel eq 'B') or(sellerPage.sellerx.panel eq 'C'))and(sellerPage.listSize() gt 0)}">
 			<!-- محصولات -->
 			<div id="suggestion"
 				class="related-posts padding-bottom-40 text-center bd-bottom">
@@ -104,36 +116,66 @@ margin-bottom: 15px;" styleClass="shadow-shorter"
 				<div class="container text-center">
 					<div class="related-posts-carousel padding-top-40">
 
-						<ui:repeat var="prdc" value="#{sellerPage.products}"
-							size="#{sellerPage.listSize()}">
+						<ui:repeat var="prdc"
+							value="#{sellerPage.sellerxProducts.entrySet().toArray()}"
+							size="#{sellerPage.listSize()}" >
 
-			              <h:panelGroup rendered="#{prdc.status}">
-							<div class="item"
-								style="width: 284px; padding: 10px 10px 20px 10px; border: 1px solid #BFBFBF; background-color: white; box-shadow: 10px 10px 5px #aaaaaa;">
-									<h:graphicImage style="width: 250px; height: 300px; margin:5px;"
-										value="/Images/#{prdc.pic1}.jpg"/>
-								<div class="blog-short-detail">
-									<h4>
-										<a style="font-family: IRANSansBold; color: #0B59AA" href="#">#{sellerPage.productEntityX.name}</a>
-									</h4>
-									<span style="font-family: IRANSansNor; line-height: 20px;"
-										class="author-desc"><del class="d-block">#{prdc.price}</del></span>
-									<span
-										style="font-family: IRANSansNor; font-size: 18px; color: green !important;"
-										class="author-desc">#{prdc.price2}</span>
-									<p></p>
-      										<h:link outcome="/pages/product/product-detail.xhtml" value="بیشتر" class="btn-blue" style="font-family: IRANSansNor; color: #0B59AA; border-color: #0B59AA">
-										<f:param name="ProductId" value="#{prdc.productId}"/>
-										</h:link>
+							<h:panelGroup rendered="#{prdc.key.checkO}">
+					<h:link outcome="/pages/product/product-detail.xhtml">
+								<div class="item"
+									style="width: 284px; padding: 10px 10px 20px 10px; border: 1px solid #BFBFBF; background-color: gainsboro; box-shadow: 10px 10px 5px #aaaaaa;">
+
+	<img data-src="/Images/#{prdc.key.pic1}.jpg" src="../../resources/image-loader/loading.svg" style="width: 250px; height: 300px; margin:5px;"/>
+									
+									<div class="blog-short-detail">
+										<p title="#{prdc.key.brand}" style="font-family: IRANSansNor;
+									    color: #0B59AA;
+									    white-space: nowrap;
+									    width: 100%;
+									    overflow: hidden;
+									    direction: rtl;
+									    text-overflow: ellipsis;
+									    font-size: 18px;
+									    margin: 0px;">
+											#{prdc.key.brand}
+										</p>
+										<h4 title="#{prdc.key.nameCode}" style="font-family: IRANSansBold;
+									    color: #0B59AA;
+									    white-space: nowrap;
+									    width: 200px;
+									    overflow: hidden;
+									    direction: rtl;
+									    text-overflow: ellipsis;">
+											#{prdc.key.nameCode}
+										</h4>
+										<p style="font-family: IRANSansBold;
+										    font-size: 19px;
+										    background-color: blanchedalmond;
+										    border-radius: 10px;" >
+										<del class="d-block">#{prdc.key.price}</del>
+										</p>
+										<p style="font-family: IRANSansBold;
+										    font-size: 24px;
+										    color: green !important;
+										    background-color: darkturquoise;
+										    color: white!important;
+										    border-radius: 10px;direction: rtl;"
+											>#{prdc.key.price2}
+											<span> تومان</span>
+											</p>
+									</div>
 								</div>
-
-							</div>
-						</h:panelGroup>
+								<f:param name="productId" value="#{prdc.key.productId}" />
+								</h:link>
+							</h:panelGroup>
 						</ui:repeat>
 					</div>
-      										<h:link outcome="/pages/product/products.xhtml" value="مشاهده تمامی محضولات" class="btn-blue" style="width: 212px;">
-										<f:param name="sellerNameEng" value="#{sellerPage.sellerx.sellerStoreEng}"/>
-										</h:link>
+					<h:link outcome="/pages/product/products.xhtml"
+						value="مشاهده تمامی محضولات" class="btn-blue"
+						style="width: 212px;">
+						<f:param name="sellerNameEng"
+							value="#{sellerPage.sellerx.sellerStoreEng}" />
+					</h:link>
 				</div>
 
 			</div>
@@ -147,16 +189,14 @@ margin-bottom: 15px;" styleClass="shadow-shorter"
 			style="margin-left: 0px; margin-right: 0px; background-color: #e9ecef !important; width: 100%;"
 			class="row container padding-top-30 padding-bottom-30 bd-bottom">
 
-			<div class="col-md-5 img-column wow fadeInRight" style="float: right;">
+			<div class="col-md-5 img-column wow fadeInRight"
+				style="float: right;">
 				<div class="img-column margin-left-10">
-					<!-- 							<img id="license" src="pic/license.jpg"
-								alt="گواهینامه فعالیت آنلاین فروشگاه ساتراپ" /> -->
-					<o:graphicImage rendered="#{sellerPage.findPic4() ne null}"
-						value="#{sellerPage.findPic4()}" dataURI="true" alt="" />
+				<img data-src="/Images/#{sellerPage.sellerx.pic4}.jpg" src="../../resources/image-loader/loading.svg" />
 				</div>
 				<!-- /img-column -->
 			</div>
-			<div style="float: left;margin-top: 77px;"
+			<div style="float: left; margin-top: 77px;"
 				class="col-md-7 content-column padding-top-10 text-right">
 				<h4
 					style="font-family: IRANSansBold; font-size: 18px; color: goldenrod">گواهینامه
@@ -171,8 +211,7 @@ margin-bottom: 15px;" styleClass="shadow-shorter"
 						آگاهی از نظرات مشتریان قبلی در مورد فروشگاه ، امتیاز نظر و امتیاز
 						خود را ثبت نمائید</span>
 				</p>
-				<!-- 				<a class="survey" href="portfolio02.html#" data-toggle="modal"
-					data-target="#signup-modal">شرکت در نظرسنجی</a> -->
+
 			</div>
 
 
@@ -185,7 +224,8 @@ margin-bottom: 15px;" styleClass="shadow-shorter"
 			rendered="#{sellerPage.sellerx.tagdirName ne null}" />
 
 
-<hr class="one" data-symbol="تماس با ما" style="font-family: IRANSansNor; font-size: 20px;"/>
+		<hr class="one" data-symbol="تماس با ما"
+			style="font-family: IRANSansNor; font-size: 20px;" />
 
 		<!-- تماس با ما -->
 		<div class="contact contact-1">
@@ -194,66 +234,86 @@ margin-bottom: 15px;" styleClass="shadow-shorter"
 					<div style="float: right" class="col-lg-6 col-md-12" dir="rtl">
 						<p class="margin-top-10"></p>
 						<div class="contact-info margin-top-20">
-							<li style="margin-top: 0;list-style: none;"><i class="fa fa-map-marker color"></i>
-								<h6 style="color: black;font-size: 16px;">موقعیت مکانی ما :</h6>
-								<p style="color: black; color: #666666 !important;font-size: 18px;">#{sellerPage.sellerx.sellerAddres}</p></li>
+							<li style="margin-top: 0; list-style: none;"><i
+								class="fa fa-map-marker color"></i>
+								<h6 style="color: black; font-size: 16px;">موقعیت مکانی ما
+									:</h6>
+								<p
+									style="color: black; color: #666666 !important; font-size: 18px;">#{sellerPage.sellerx.sellerAddres}</p></li>
 							<br />
-							<h:panelGroup rendered="#{(sellerPage.sellerx.modirforoshName ne null)and(sellerPage.sellerx.modirforoshName ne '-')and(sellerPage.sellerx.modirforoshName ne '')}">	
-							<li style="list-style: none;"><i class="fa fa-user color"></i>
-								<h6 style="color: black;font-size: 16px;">نام مدیر فروش :</h6>
-							<span style="font-size: 18px!important;">#{sellerPage.sellerx.modirforoshName}</span></li> <br />
-								</h:panelGroup>
-						<h:panelGroup rendered="#{(sellerPage.sellerx.modirforoshPhone ne null)and(sellerPage.sellerx.modirforoshPhone ne '-')and(sellerPage.sellerx.modirforoshPhone ne '')}">			
-							<li style="list-style: none;" class="num"><i class="fa fa-mobile-phone color"></i>
-								<h6 style="color: black;font-size: 16px;">شماره مدیر فروش :</h6>
-
-
-								<span style="font-size: 18px!important;">#{sellerPage.sellerx.modirforoshPhone}</span></li> <br />
-						</h:panelGroup>
-							
-							
-							<li style="padding-right: 0;list-style: none;" class="phone-number"><i
-								class="fa fa-phone color"></i>
-								<h6 style="color: black;font-size: 16px;">شماره تلفن :</h6>
-								<span style="font-size: 18px!important;">#{sellerPage.sellerx.phone}</span></li> <br />
-								
-															<h:panelGroup rendered="#{(sellerPage.sellerx.fax ne null)and(sellerPage.sellerx.fax ne '-')and(sellerPage.sellerx.fax ne '')}">		
-							<li style="list-style: none;" class=" fax"><i class="fa fa-fax color"></i>
-								<h6 style="color: black;font-size: 16px;">فکس :</h6> <span style="font-size: 18px!important;">#{sellerPage.sellerx.fax}</span></li> <br />
+							<h:panelGroup
+								rendered="#{(sellerPage.sellerx.modirforoshName ne null)and(sellerPage.sellerx.modirforoshName ne '-')and(sellerPage.sellerx.modirforoshName ne '')}">
+								<li style="list-style: none;"><i class="fa fa-user color"></i>
+									<h6 style="color: black; font-size: 16px;">نام مدیر فروش :</h6>
+									<span style="font-size: 18px !important;">#{sellerPage.sellerx.modirforoshName}</span></li>
+								<br />
 							</h:panelGroup>
-								
-									<h:panelGroup rendered="#{(sellerPage.sellerx.website ne null)and(sellerPage.sellerx.website ne '-')and(sellerPage.sellerx.website ne '')}">
-							<li style="list-style: none;"><i class="fa fa-globe color"></i>
-								<h6 style="color: black;font-size: 16px;">وبسایت :</h6> <a
-								href="http://#{sellerPage.sellerx.website}" target="_blank">
-									<span style="font-size: 18px!important;">#{sellerPage.sellerx.website}</span> </a></li> 
-									<br />
-									</h:panelGroup>
-							<h:panelGroup rendered="#{(sellerPage.sellerx.email ne null)and(sellerPage.sellerx.email ne '-')and(sellerPage.sellerx.email ne '')}">		
-							<li style="list-style: none;"><i class="fa fa-envelope color"></i>
-								<h6 style="color: black;font-size: 16px;">ایمیل :</h6>
+							<h:panelGroup
+								rendered="#{(sellerPage.sellerx.modirforoshPhone ne null)and(sellerPage.sellerx.modirforoshPhone ne '-')and(sellerPage.sellerx.modirforoshPhone ne '')}">
+								<li style="list-style: none;" class="num"><i
+									class="fa fa-mobile-phone color"></i>
+									<h6 style="color: black; font-size: 16px;">شماره مدیر فروش
+										:</h6> <span style="font-size: 18px !important;">#{sellerPage.sellerx.modirforoshPhone}</span></li>
+								<br />
+							</h:panelGroup>
 
-								<span style="font-size: 18px!important;">#{sellerPage.sellerx.email}</span></li> <br />
-								</h:panelGroup>
-								
-															<h:panelGroup rendered="#{(sellerPage.sellerx.telegram ne null)and(sellerPage.sellerx.telegram ne '-')and(sellerPage.sellerx.telegram ne '')}">	 
-							<li class="paper" style="list-style: none;"><i class="fa fa-paper-plane-o color"></i>
-								<h6 style="color: black;font-size: 16px;">تلگرام :</h6> <!--							<h:link
+
+							<li style="padding-right: 0; list-style: none;"
+								class="phone-number"><i class="fa fa-phone color"></i>
+								<h6 style="color: black; font-size: 16px;">شماره تلفن :</h6> <span
+								style="font-size: 18px !important;">#{sellerPage.sellerx.phone}</span></li>
+							<br />
+
+							<h:panelGroup
+								rendered="#{(sellerPage.sellerx.fax ne null)and(sellerPage.sellerx.fax ne '-')and(sellerPage.sellerx.fax ne '')}">
+								<li style="list-style: none;" class=" fax"><i
+									class="fa fa-fax color"></i>
+									<h6 style="color: black; font-size: 16px;">فکس :</h6> <span
+									style="font-size: 18px !important;">#{sellerPage.sellerx.fax}</span></li>
+								<br />
+							</h:panelGroup>
+
+							<h:panelGroup
+								rendered="#{(sellerPage.sellerx.website ne null)and(sellerPage.sellerx.website ne '-')and(sellerPage.sellerx.website ne '')}">
+								<li style="list-style: none;"><i class="fa fa-globe color"></i>
+									<h6 style="color: black; font-size: 16px;">وبسایت :</h6> <a
+									href="http://#{sellerPage.sellerx.website}" target="_blank">
+										<span style="font-size: 18px !important;">#{sellerPage.sellerx.website}</span>
+								</a></li>
+								<br />
+							</h:panelGroup>
+							<h:panelGroup
+								rendered="#{(sellerPage.sellerx.email ne null)and(sellerPage.sellerx.email ne '-')and(sellerPage.sellerx.email ne '')}">
+								<li style="list-style: none;"><i
+									class="fa fa-envelope color"></i>
+									<h6 style="color: black; font-size: 16px;">ایمیل :</h6> <span
+									style="font-size: 18px !important;">#{sellerPage.sellerx.email}</span></li>
+								<br />
+							</h:panelGroup>
+
+							<h:panelGroup
+								rendered="#{(sellerPage.sellerx.telegram ne null)and(sellerPage.sellerx.telegram ne '-')and(sellerPage.sellerx.telegram ne '')}">
+								<li class="paper" style="list-style: none;"><i
+									class="fa fa-paper-plane-o color"></i>
+									<h6 style="color: black; font-size: 16px;">تلگرام :</h6> <!--							<h:link
  								outcome="https://t.me/#{sellerPage.sellerx.telegram}"
 								target="_blank"> #{sellerPage.sellerx.telegram} </h:link> --> <a
-								href="https://t.me/#{sellerPage.sellerx.telegram}"
-								target="_blank"><span style="font-size: 18px!important;">#{sellerPage.sellerx.telegram}</span></a></li> <br />
+									href="https://t.me/#{sellerPage.sellerx.telegram}"
+									target="_blank"><span style="font-size: 18px !important;">#{sellerPage.sellerx.telegram}</span></a></li>
+								<br />
 							</h:panelGroup>
-								
-								<h:panelGroup rendered="#{(sellerPage.sellerx.instagram ne null)and(sellerPage.sellerx.instagram ne '-')}">
-							<li class="instagram" style="list-style: none;"><i class="fa fa-instagram color"></i>
-								<h6 style="color: black;font-size: 16px;">اینستاگرام :</h6> <!-- 								 <h:link target="_blank"
+
+							<h:panelGroup
+								rendered="#{(sellerPage.sellerx.instagram ne null)and(sellerPage.sellerx.instagram ne '-')}">
+								<li class="instagram" style="list-style: none;"><i
+									class="fa fa-instagram color"></i>
+									<h6 style="color: black; font-size: 16px;">اینستاگرام :</h6> <!-- 								 <h:link target="_blank"
 								outcome="https://www.instagram.com/#{sellerPage.sellerx.instagram}/">
 									#{sellerPage.sellerx.instagram} </h:link> --> <a
-								href="https://www.instagram.com/#{sellerPage.sellerx.instagram}/"
-								target="_blank"><span style="font-size: 18px!important;">#{sellerPage.sellerx.instagram}</span></a></li>
+									href="https://www.instagram.com/#{sellerPage.sellerx.instagram}/"
+									target="_blank"><span style="font-size: 18px !important;">#{sellerPage.sellerx.instagram}</span></a></li>
 								<br />
-								</h:panelGroup>
+							</h:panelGroup>
 
 
 
@@ -269,24 +329,23 @@ margin-bottom: 15px;" styleClass="shadow-shorter"
 					<div class="col-lg-6 col-md-12 img-column">
 						<div class="contact-map">
 							<div id="map2"
-								style="display: inline-block; float: left; width: 550px; height: 385px; max-width: 100%;
-margin-bottom: 40px;" class="shadow-shorter">
-							</div>
+								style="display: inline-block; float: left; width: 550px; height: 385px; max-width: 100%; margin-bottom: 40px;"
+								class="shadow-shorter"></div>
 							<!-- /contact-map -->
 						</div>
 						<!-- /img-column -->
-						<a href="http://maps.google.com/maps?daddr=#{sellerPage.sellerx.lat},#{sellerPage.sellerx.lng}">
-                        <img src="../../../resources/pic/Dtafalonso-Android-Lollipop-Maps.ico" alt="" style="width: 100px;
-height: 100px;
-float: left;
-margin-top: -25px;"/>
-</a>
-<a href="https://waze.com/ul?ll=#{sellerPage.sellerx.lat},#{sellerPage.sellerx.lng}">
-                        <img src="../../../resources/pic/Waze-GPS-Maps-Traffic.png" alt="" style="width: 100px;
-height: 100px;
-float: left;
-margin-top: -25px;"/>
-</a>
+						<a
+							href="http://maps.google.com/maps?daddr=#{sellerPage.sellerx.lat},#{sellerPage.sellerx.lng}">
+							<img
+							src="../../../resources/pic/Dtafalonso-Android-Lollipop-Maps.ico"
+							alt=""
+							style="width: 100px; height: 100px; float: left; margin-top: -25px;" />
+						</a> <a
+							href="https://waze.com/ul?ll=#{sellerPage.sellerx.lat},#{sellerPage.sellerx.lng}">
+							<img src="../../../resources/pic/Waze-GPS-Maps-Traffic.png"
+							alt=""
+							style="width: 100px; height: 100px; float: left; margin-top: -25px;" />
+						</a>
 					</div>
 					<!-- /row -->
 				</div>
@@ -305,60 +364,68 @@ margin-top: -25px;"/>
 				<!-- /column -->
 			</div>
 			<!-- /contact-form -->
-			
-			            <div class="container-fluid" style="padding-left: 0 !important;
-        padding-right: 0 !important;position: relative;">
-                <div class="bg-contact2">
-                    <div class="container-contact2">
-                        <div class="wrap-contact2">
-                        					<h:form id="form" enctype="multipart/form-data"
-						acceptcharset="UTF-8" styleClass="contact2-form validate-form" style="direction: rtl;">
-                          
-					<span class="contact2-form-title" style="font-family: IRANSansNor;
-font-weight: 600;">
-					ارتباط با واحد صنفی
-					</span>
 
-						<div class="row">
-							<div class=" col-xs-11" style="padding-right: 0">
-								<div class="form-group text-right">
-								
-								<div class="wrap-input2 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                    <h:inputText value="#{sellerPage.messageSender}" class="input2" style="background-image: none !important;
-border: none;font-family: IRANSansNor;"/>
-                                    <span class="focus-input2" style="font-family: IRANSansNor;" data-placeholder="نام خود را وارد کنید"></span>
-                                </div>
+			<div class="container-fluid"
+				style="padding-left: 0 !important; padding-right: 0 !important; position: relative;">
+				<div class="bg-contact2">
+					<div class="container-contact2">
+						<div class="wrap-contact2">
+							<h:form id="form" enctype="multipart/form-data"
+								acceptcharset="UTF-8" styleClass="contact2-form validate-form"
+								style="direction: rtl;">
 
-                                <div class="wrap-input2 validate-input" style="font-family: IRANSansNor;" data-validate = "لطفا پیام خود را وارد کنید">
-                                    									<h:inputTextarea value="#{sellerPage.messagePage}"
-										name="message" id="contact-message" class="input2" style="background-image: none !important;
+								<span class="contact2-form-title"
+									style="font-family: IRANSansNor; font-weight: 600;">
+									ارتباط با واحد صنفی </span>
+
+								<div class="row">
+									<div class=" col-xs-11" style="padding-right: 0">
+										<div class="form-group text-right">
+
+											<div class="wrap-input2 validate-input"
+												data-validate="Valid email is required: ex@abc.xyz">
+												<h:inputText value="#{sellerPage.messageSender}"
+													class="input2"
+													style="background-image: none !important;
+border: none;font-family: IRANSansNor;" />
+												<span class="focus-input2" style="font-family: IRANSansNor;"
+													data-placeholder="نام خود را وارد کنید"></span>
+											</div>
+
+											<div class="wrap-input2 validate-input"
+												style="font-family: IRANSansNor;"
+												data-validate="لطفا پیام خود را وارد کنید">
+												<h:inputTextarea value="#{sellerPage.messagePage}"
+													name="message" id="contact-message" class="input2"
+													style="background-image: none !important;
 border: none;font-family: IRANSansNor;"></h:inputTextarea>
-                                    <span class="focus-input2" style="font-family: IRANSansNor;" data-placeholder="متن پیام"></span>
-                                </div>
-								 <div class="container-contact2-form-btn">
-                                    <div class="contact2-form-bgbtn"></div>
-								<h:commandLink action="#{sellerPage.act()}" value="ارسال"
-									style="background-image: none;width: 100%;text-align: center;border: 2px solid #008CBA;font-size: 20px;padding: 15px;font-family: IRANSansNor;"
-									styleClass="btn-blue button2">
-									<f:ajax execute="@form" />
-								</h:commandLink>
-								</div>
-								</div>
-								<!-- /form-group -->
+												<span class="focus-input2" style="font-family: IRANSansNor;"
+													data-placeholder="متن پیام"></span>
+											</div>
+											<div class="container-contact2-form-btn">
+												<div class="contact2-form-bgbtn"></div>
+												<h:commandLink action="#{sellerPage.act()}" value="ارسال"
+													style="background-image: none;width: 100%;text-align: center;border: 2px solid #008CBA;font-size: 20px;padding: 15px;font-family: IRANSansNor;"
+													styleClass="btn-blue button2">
+													<f:ajax execute="@form" />
+												</h:commandLink>
+											</div>
+										</div>
+										<!-- /form-group -->
 
 
-							</div>
-							<!-- /column -->
+									</div>
+									<!-- /column -->
+								</div>
+								<!-- /row -->
+								<div id="ajax-message" class="margin-top-30"></div>
+								<!-- /ajax-message -->
+							</h:form>
 						</div>
-						<!-- /row -->
-						<div id="ajax-message" class="margin-top-30"></div>
-						<!-- /ajax-message -->
-					</h:form>
-                       </div>
-                       
-                    </div>
-                </div>
-            </div>
+
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- Blog Post End -->

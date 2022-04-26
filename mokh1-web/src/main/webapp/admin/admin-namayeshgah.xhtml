@@ -1,0 +1,358 @@
+
+<ui:composition template="../WEB-INF/pages/admin-temp.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pp="http://xmlns.jcp.org/jsf/passthrough"
+	
+>
+
+	<ui:define name="headPage">
+		<style>
+body .ui-dialog {
+	padding: 0;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+	border: 1px solid #c8c8c8;
+	border-radius: 3px;
+	height: 600px !important;
+	overflow: scroll;
+}
+
+body .ui-growl {
+	top: 85px;
+	z-index: 9999 !important;
+}
+
+.bd-table-days button {
+	background-color: #f8f8f8;
+	border: 0;
+	width:;
+	margin: 0px !important;
+	font-size: 12px !important;
+}
+td{
+max-width: 300px!important;
+}
+</style>
+
+ 		<h:outputStylesheet library="calendar" name="kamadatepicker.min.css" />
+		<h:outputScript library="calendar" name="kamadatepicker.min.js" />
+		<h:outputScript library="calendar" name="kamadatepicker.holidays.js" /> 
+
+		<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdlY6WfwXkSemxbd5xE4j3ZetynH5wMzk" type="text/javascript"></script>
+</ui:define>
+	<ui:define name="mainPage">
+	<h:panelGroup rendered="#{adminProfile.moblEntity.role eq 'ADMIN'}">
+		<div class="wrapper">
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<div class="container-fluid">
+						<div class="row mb-2">
+							<div class="col-sm-6">
+								<h1>ویجت‌ها</h1>
+							</div>
+							<div class="col-sm-6">
+								<ol class="breadcrumb float-sm-left">
+									<li class="breadcrumb-item"><a href="#">خانه</a></li>
+									<li class="breadcrumb-item active">ویجت‌ها</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+					<!-- /.container-fluid -->
+				</section>
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="container-fluid">
+
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card card-widget">
+									<h:form id="form" enctype="multipart/form-data"
+										acceptcharset="UTF-8" prependId="false">
+									<p:growl id="grl" life="2000"/>
+										<p:toolbar>
+											<p:toolbarGroup>
+												<p:commandButton value="جدید" icon="pi pi-plus"
+													update=":form:ali-add-content"
+													oncomplete="PF('testDialog').show()"
+													styleClass="ui-button-success" style="margin-right: .5rem">
+													<p:resetInput target=":form:ali-add-content" />
+												</p:commandButton>
+											</p:toolbarGroup>
+										</p:toolbar>
+											<p:dataTable id="basicDT" var="mbl"
+												value="#{adminNamayeshgahBean.findAllNamayeshgah()}" widgetVar="carsTable"
+												multiViewState="true" rows="10" paginator="true"
+												paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+												rowsPerPageTemplate="5,10,15" rowKey="#{mbl.id}" 
+												emptyMessage="No cars found with given criteria" >
+												
+												
+												<p:column style="width:3rem;text-align: center" sortBy="#{mbl.id}">
+													<p:commandButton update=":form:aliDetail" process="@form" immediate="true"
+														oncomplete="PF('aliDialog').show()" icon="pi pi-search"
+														title="View">
+														<f:setPropertyActionListener value="#{mbl}"
+															target="#{adminNamayeshgahBean.namayeshgahEntity}"/>
+															<p:resetInput target=":form:aliDetail"/>
+													</p:commandButton>
+												</p:column>
+												
+												<p:column  style="width:3rem;text-align: center" sortBy="#{mbl.id}">
+													<p:commandButton class="ui-button-warning rounded-button" immediate="true"
+														icon="pi pi-trash" process="@form"
+														oncomplete="PF('deleteProductDialog').show()">
+														 <f:setPropertyActionListener value="#{mbl}" target="#{adminNamayeshgahBean.namayeshgahEntity}"/>
+													</p:commandButton>
+		
+												</p:column>
+												<p:column headerText="شناسه" sortBy="#{mbl.id}">
+													<h:outputText value="#{mbl.id}" />
+												</p:column>
+
+												<p:column headerText="نام بلاگ" sortBy="#{mbl.id}" filterMatchMode="contains" filterBy="#{mbl.name}">
+													<h:outputText value="#{mbl.name}" />
+												</p:column>
+													
+												<p:column headerText="نوع " filterMatchMode="contains"
+													filterBy="#{mbl.type}" sortBy="#{mbl.id}">
+													<h:outputText value="#{mbl.type}" />
+												</p:column>
+												
+											</p:dataTable>
+
+										<p:dialog id="dlg1" header="ali Info" widgetVar="aliDialog" modal="true"
+											showEffect="fade" hideEffect="fade" resizable="false">
+											<p:outputPanel id="aliDetail" style="text-align:center;">
+											<h:panelGrid columns="4">
+											
+											        <h:outputText value="شناسه" />
+											        <h:outputText value="#{adminNamayeshgahBean.namayeshgahEntity.id}" />
+											        <h:outputText value="" />
+											        <h:outputText value="" />
+													
+													 <h:outputText value="نوع نمایشگاه" />
+													 <h:outputText value="#{adminNamayeshgahBean.namayeshgahEntity.type}" />
+													<h:outputText id="oue18" value="#{adminNamayeshgahBean.typeEdit}" />
+														<p:selectOneListbox value="#{blogBean.blogTypeEdit}" id="ine18">
+															<f:selectItem itemValue="A" itemLabel="ایران" />
+															<f:selectItem itemValue="B" itemLabel="جهان" />
+														</p:selectOneListbox>
+													<p:message for="ine18" id="msge18"/>
+													
+													<h:outputText value="نام نمایشگاه" />
+												    <h:outputText id="oue1" value="#{adminNamayeshgahBean.namayeshgahEntity.name}" />
+													<p:inputText id="ine1" value="#{adminNamayeshgahBean.nameEdit}" />
+													<p:message for="ine1" id="msge1"/>
+																										
+													<h:outputText value="شهر" />
+												    <h:outputText id="oue2" value="#{adminNamayeshgahBean.namayeshgahEntity.city}" />
+													<p:inputText id="ine2" value="#{adminNamayeshgahBean.cityEdit}" />
+													<p:message for="ine2" id="msge2"/>
+																																							
+													<h:outputText value="کشور" />
+												    <h:outputText id="oue3" value="#{adminNamayeshgahBean.namayeshgahEntity.country}" />
+													<p:inputText id="ine3" value="#{adminNamayeshgahBean.countryEdit}" />
+													<p:message for="ine3" id="msge3"/>
+																																																				
+													<h:outputText value="تاریخ" />
+												    <h:outputText id="oue4" value="#{adminNamayeshgahBean.namayeshgahEntity.tarikh}" />
+													<p:inputText id="ine4" value="#{adminNamayeshgahBean.tarikhEdit}" />
+													<p:message for="ine4" id="msge4"/>
+																																																																	
+													<h:outputText value="مکان" />
+												    <h:outputText id="oue5" value="#{adminNamayeshgahBean.namayeshgahEntity.makan}" />
+													<p:inputText id="ine5" value="#{adminNamayeshgahBean.makanEdit}" />
+													<p:message for="ine5" id="msge5"/>
+																																																																	
+													<h:outputText value="نام برگذار کننده" />
+												    <h:outputText id="oue6" value="#{adminNamayeshgahBean.namayeshgahEntity.nameBargozarK}" />
+													<p:inputText id="ine6" value="#{adminNamayeshgahBean.nameBargozarKEdit}" />
+													<p:message for="ine6" id="msge6"/>
+																																																																	
+													<h:outputText value="تلفن مدیر ناظر" />
+												    <h:outputText id="oue7" value="#{adminNamayeshgahBean.namayeshgahEntity.phoneModirNazer}" />
+													<p:inputText id="ine7" value="#{adminNamayeshgahBean.phoneModirNazerEdit}" />
+													<p:message for="ine7" id="msge7"/>
+																																																																	
+													<h:outputText value="نام مدیر ناظر" />
+												    <h:outputText id="oue8" value="#{adminNamayeshgahBean.namayeshgahEntity.nameModirNazer}" />
+													<p:inputText id="ine8" value="#{adminNamayeshgahBean.nameModirNazerEdit}" />
+													<p:message for="ine8" id="msge8"/>
+													
+													<h:outputText value="fax" />
+												    <h:outputText id="oue9" value="#{adminNamayeshgahBean.namayeshgahEntity.fax}" />
+													<p:inputText id="ine9" value="#{adminNamayeshgahBean.faxEdit}" />
+													<p:message for="ine9" id="msge9"/>
+													
+													<h:outputText value="phone" />
+												    <h:outputText id="oue10" value="#{adminNamayeshgahBean.namayeshgahEntity.phone}" />
+													<p:inputText id="ine10" value="#{adminNamayeshgahBean.phoneEdit}" />
+													<p:message for="ine10" id="msge10"/>
+													
+													<h:outputText value="email" />
+												    <h:outputText id="oue11" value="#{adminNamayeshgahBean.namayeshgahEntity.email}" />
+													<p:inputText id="ine11" value="#{adminNamayeshgahBean.emailEdit}" />
+													<p:message for="ine11" id="msge11"/>
+																										
+													<h:outputText value="site" />
+												    <h:outputText id="oue12" value="#{adminNamayeshgahBean.namayeshgahEntity.site}" />
+													<p:inputText id="ine12" value="#{adminNamayeshgahBean.emailEdit}" />
+													<p:message for="ine12" id="msge12"/>
+													
+														<h:outputText value="تصویر ۱" />
+																<h:graphicImage id="oue43" style="max-width:100%; height:300px!important"
+																value="/Images/#{adminNamayeshgahBean.namayeshgahEntity.pic}.jpg"/>
+									
+
+															    
+															  </h:panelGrid>
+													
+												<p:commandButton value="update" ajax="true" 
+														actionListener="#{blogBean.updateBlog()}"
+														styleClass="p-mt-3 ui-button-outlined p-d-block"
+														update="basicDT grl oue1 oue2 oue3 oue4 oue5 oue6 oue7 oue8 oue9 oue10 oue11 oue12
+														ine1 ine2 ine3 ine4 ine5 ine6 ine7 ine8 ine9 ine10 ine11 ine12 msge1 msge2 msge3 msge4 msge5 msge6 msge7 msge8 msge9 msge10 msge11 msge12" process="dlg1" 
+														/>
+												
+											
+
+											</p:outputPanel>
+
+										</p:dialog>
+										<p:dialog id="dlg2" header="test" showEffect="fade"
+											modal="true" widgetVar="testDialog" responsive="true">
+											<p:outputPanel id="ali-add-content" class="ui-fluid">
+	
+													<h:panelGrid columns="3">
+
+														<h:outputText value="نوع نمایشگاه" />
+														<p:selectOneListbox value="#{adminNamayeshgahBean.type}" id="in1">
+															<f:selectItem itemValue="A" itemLabel="ایران" />
+															<f:selectItem itemValue="B" itemLabel="جهان" />
+														</p:selectOneListbox>
+														<p:message for="in1" id="msg1" />
+																												
+														<h:outputText value="نام" />
+														<p:inputTextarea id="in2" value="#{adminNamayeshgahBean.city}"/>
+														<p:message for="in2"  id="msg2"/>
+																												
+														<h:outputText value="نام" />
+														<p:inputTextarea id="in3" value="#{adminNamayeshgahBean.country}"/>
+														<p:message for="in3"  id="msg3"/>
+																												
+														<h:outputText value="نام" />
+														<p:inputTextarea id="in4" value="#{adminNamayeshgahBean.email}"/>
+														<p:message for="in4"  id="msg4"/>
+																												
+														<h:outputText value="نام" />
+														<p:inputTextarea id="in5" value="#{adminNamayeshgahBean.fax}"/>
+														<p:message for="in5"  id="msg5"/>
+																												
+														<h:outputText value="نام" />
+														<p:inputTextarea id="in6" value="#{adminNamayeshgahBean.makan}"/>
+														<p:message for="in6"  id="msg6"/>
+																												
+														<h:outputText value="نام" />
+														<p:inputTextarea id="in7" value="#{adminNamayeshgahBean.name}"/>
+														<p:message for="in7"  id="msg7"/>
+																												
+														<h:outputText value="نام" />
+														<p:inputTextarea id="in8" value="#{adminNamayeshgahBean.nameBargozarK}"/>
+														<p:message for="in8"  id="msg8"/>
+																												
+														<h:outputText value="نام" />
+														<p:inputTextarea id="in9" value="#{adminNamayeshgahBean.nameModirNazer}"/>
+														<p:message for="in9"  id="msg9"/>
+																												
+														<h:outputText value="نام" />
+														<p:inputTextarea id="in10" value="#{adminNamayeshgahBean.phone}"/>
+														<p:message for="in10"  id="msg10"/>
+																												
+														<h:outputText value="نام" />
+														<p:inputTextarea id="in11" value="#{adminNamayeshgahBean.phoneModirNazer}"/>
+														<p:message for="in11"  id="msg11"/>
+																																										
+														<h:outputText value="نام" />
+														<p:inputTextarea id="in12" value="#{adminNamayeshgahBean.site}"/>
+														<p:message for="in12"  id="msg12"/>
+																																										
+														<h:outputText value="نام" />
+														<p:inputTextarea id="in13" value="#{adminNamayeshgahBean.tarikh}"/>
+														<p:message for="in13"  id="msg13"/>
+
+															<h:outputText value="تصویر ۱" />
+															    <p:fileUpload id="in14" value="#{adminNamayeshgahBean.pic}" mode="simple"
+																	skinSimple="true" 
+																	validateContentType="true" accept=".jpg,.jpeg" binding="#{adminNamayeshgahBean.picEditComponent}"
+																	 />
+															    <p:message for="in14" id="msg14"/>
+														</h:panelGrid>
+										            	
+										            	<br/>
+										            	
+														<p:commandButton value="ذخیره" ajax="true" 
+														actionListener="#{adminNamayeshgahBean.insertToNamayeshgah()}"
+														styleClass="p-mt-3 ui-button-outlined p-d-block"
+														update="basicDT grl in1 in2 in3 in4 in5 in6 in7 in8 in9 in10 in11 in12 in13 in14 msg1 msg2 msg3 msg4 msg5 msg6
+														msg7 msg8 msg9 msg10 msg11 msg12 msg13 msg14" 
+														process="dlg2" />
+
+											</p:outputPanel>
+										</p:dialog>
+										<p:confirmDialog widgetVar="deleteProductDialog"
+														showEffect="fade" width="300"
+														message="Delete the product?" header="Confirm"
+														severity="warn">
+
+															
+														<p:commandButton value="Yes" icon="pi pi-check" actionListener="#{adminNamayeshgahBean.deleteNamayeshgah()}"
+														                             process="@this" oncomplete="PF('deleteProductDialog').hide()" update="basicDT grl"/>
+														<p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
+														                             onclick="PF('deleteProductDialog').hide()"/>
+										</p:confirmDialog>
+									</h:form>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</section>
+			</div>
+
+			<footer class="main-footer">
+				<div class="float-right d-none d-sm-block">
+					<b>Version</b> 3.0.0-alpha
+				</div>
+
+				<strong>CopyLeft 2018 <a
+					href="http://github.com/hesammousavi/">حسام موسوی</a>.
+				</strong>
+			</footer>
+
+			<!-- Control Sidebar -->
+			<aside class="control-sidebar control-sidebar-dark">
+				<!-- Control sidebar content goes here -->
+			</aside>
+			<!-- /.control-sidebar -->
+		</div>
+		<!-- ./wrapper -->
+		</h:panelGroup>
+	</ui:define>
+
+	<ui:define name="footPage">
+	
+   <!--  <h:outputScript library="leaflet" name="map2.js" />  -->
+	</ui:define>
+
+
+</ui:composition>

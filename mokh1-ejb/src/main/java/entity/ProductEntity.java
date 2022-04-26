@@ -2,18 +2,29 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.json.bind.annotation.JsonbTransient;
+import javax.persistence.Cacheable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,24 +34,32 @@ import org.eclipse.persistence.annotations.Cache;
 import org.eclipse.persistence.annotations.CacheCoordinationType;
 import org.eclipse.persistence.annotations.CacheType;
 @Entity
-@Table(name="product_tbl", uniqueConstraints= {
-		@UniqueConstraint(columnNames= {"user_product" , "name" , "old_new"}),
-})
-@Cache(type = CacheType.SOFT, coordinationType = CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS, size = 1000000)
+/*
+ * @Table(name="product_tbl", uniqueConstraints= {
+ * 
+ * @UniqueConstraint(columnNames= {"user_product" , "name" , "old_new"}), })
+ */
+@Table(name="product_tbl")
 @NamedQueries({
 	@NamedQuery(name="findAllProductEntity" , query="SELECT a FROM ProductEntity a ORDER BY a.productId DESC"),
 	@NamedQuery(name="findByProductEntityId" , query="SELECT u FROM ProductEntity u WHERE u.productId=:v_productId"),
 	@NamedQuery(name="findAllProductEntityById2" , query="SELECT pp FROM ProductEntity pp ORDER BY pp.productId DESC"),
-	@NamedQuery(name="findAllProductEntityBySeller" , query="SELECT pp FROM ProductEntity pp WHERE pp.product=:v_product ORDER BY pp.productId DESC"),
+	@NamedQuery(name="findAllProductEntityBySeller" , query="SELECT pp FROM ProductEntity pp WHERE pp.product=:v_product"),
 })
+@Cacheable(value = false)
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "productType")
 public class ProductEntity implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Column(name = "productType")
+	private String productType;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "product_seq" , sequenceName = "product_seq" ,allocationSize = 10)
 	@Column(name = "product_id")
 	private long productId;
 	@Column(name = "nameCode", length = 100, nullable = true)
@@ -76,14 +95,14 @@ public class ProductEntity implements Serializable {
 	private long price;
 	private long price2;
 	
-	@Column(name = "old_new", length = 10)
-	private String oldNew;
+	@Column(name = "old_new", nullable = true)
+	private boolean oldNew;
 	
 	@Column(name = "zemanat", nullable = true , length=200)
 	private String zemanat;
 	@Column(name = "guarantiStatus", nullable = true,length=50)
 	private String guarantiStatus;
-	@Column(name = "guaranyTimeMounth", nullable = true , length=200)
+	@Column(name = "guaranyTimeMounth", nullable = true)
 	private int guaranyTimeMounth;
 	@Column(name = "rangBandi", nullable = true , length=200)
 	private String rangBandi;
@@ -91,38 +110,37 @@ public class ProductEntity implements Serializable {
 	@Column(name = "checkO", nullable = true)
 	private boolean checkO;
 	
-	@Column(name = "noeMobl", nullable = true , length=50)
-	private String noeMobl;
-	@Column(name = "tedadNafar", nullable =true)
-	private int tedadNafar;
-	@Column(name = "noeMoblRahati", nullable = true , length=50)
-	private String noeMoblRahati;
-	@Column(name = "jenseKalaf", nullable = true , length=50)
-	private String jenseKalaf;
-	@Column(name = "noePaye", nullable = true , length=50)
-	private String noePaye;
-	@Column(name = "jenseLayeMiani", nullable = true , length=50)
-	private String jenseLayeMiani;
-	@Column(name = "jenseParche", nullable = true , length=50)
-	private String jenseParche;
-
-
-	@Column(name = "kosan", nullable = true)
-	private boolean kosan;
-	@Column(name = "miz", nullable = true)
-	private boolean miz;
-
-
 	@Temporal(TemporalType.DATE)
 	@Column(name="pDate",nullable=true)
 	private Date pDate;
-
-	
-	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_product")
 	private MoblEntity product;
+	
+	@Column(name = "aparat", nullable = true , length=2000)
+	private String aparat;
+	
+	@Column(name = "insta", nullable = true  , length=7000)
+	private String instagram;
+	
+	
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sefareshProduct")
+	@JsonbTransient
+	private Set<SefareshEntity> productSefaresh = new HashSet<>();
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "offerProduct")
+	@JsonbTransient
+	private Set<OfferEntity> productOffer = new HashSet<>();
+	
+	public ProductEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 
 	public long getProductId() {
 		return productId;
@@ -247,79 +265,53 @@ public class ProductEntity implements Serializable {
 
 
 
-	public String getOldNew() {
+	public boolean isOldNew() {
 		return oldNew;
 	}
 
-	public void setOldNew(String oldNew) {
+	public void setOldNew(boolean oldNew) {
 		this.oldNew = oldNew;
 	}
 
-	public MoblEntity getProduct() {
-		return product;
-	}
-
-	public void setProduct(MoblEntity product) {
-		this.product = product;
-	}
 	
 	
-	
-	public String getNoeMobl() {
-		return noeMobl;
-	}
+	/*
+	 * public String getNoeMobl() { return noeMobl; }
+	 * 
+	 * public void setNoeMobl(String noeMobl) { this.noeMobl = noeMobl; }
+	 */
 
-	public void setNoeMobl(String noeMobl) {
-		this.noeMobl = noeMobl;
-	}
+	/*
+	 * public int getTedadNafar() { return tedadNafar; }
+	 * 
+	 * public void setTedadNafar(int tedadNafar) { this.tedadNafar = tedadNafar; }
+	 * 
+	 * public String getNoeMoblRahati() { return noeMoblRahati; }
+	 * 
+	 * public void setNoeMoblRahati(String noeMoblRahati) { this.noeMoblRahati =
+	 * noeMoblRahati; }
+	 * 
+	 * public String getJenseKalaf() { return jenseKalaf; }
+	 * 
+	 * public void setJenseKalaf(String jenseKalaf) { this.jenseKalaf = jenseKalaf;
+	 * }
+	 * 
+	 * public String getNoePaye() { return noePaye; }
+	 * 
+	 * public void setNoePaye(String noePaye) { this.noePaye = noePaye; }
+	 * 
+	 * public String getJenseLayeMiani() { return jenseLayeMiani; }
+	 * 
+	 * public void setJenseLayeMiani(String jenseLayeMiani) { this.jenseLayeMiani =
+	 * jenseLayeMiani; }
+	 */
 
-	public int getTedadNafar() {
-		return tedadNafar;
-	}
-
-	public void setTedadNafar(int tedadNafar) {
-		this.tedadNafar = tedadNafar;
-	}
-
-	public String getNoeMoblRahati() {
-		return noeMoblRahati;
-	}
-
-	public void setNoeMoblRahati(String noeMoblRahati) {
-		this.noeMoblRahati = noeMoblRahati;
-	}
-
-	public String getJenseKalaf() {
-		return jenseKalaf;
-	}
-
-	public void setJenseKalaf(String jenseKalaf) {
-		this.jenseKalaf = jenseKalaf;
-	}
-
-	public String getNoePaye() {
-		return noePaye;
-	}
-
-	public void setNoePaye(String noePaye) {
-		this.noePaye = noePaye;
-	}
-
-	public String getJenseLayeMiani() {
-		return jenseLayeMiani;
-	}
-
-	public void setJenseLayeMiani(String jenseLayeMiani) {
-		this.jenseLayeMiani = jenseLayeMiani;
-	}
-
-	public String getJenseParche() {
-		return jenseParche;
-	}
-
-	public void setJenseParche(String jenseParche) {
-		this.jenseParche = jenseParche;
-	}
+	/*
+	 * public String getJenseParche() { return jenseParche; }
+	 * 
+	 * public void setJenseParche(String jenseParche) { this.jenseParche =
+	 * jenseParche; }
+	 */
 
 	public String getZemanat() {
 		return zemanat;
@@ -337,21 +329,15 @@ public class ProductEntity implements Serializable {
 		this.rangBandi = rangBandi;
 	}
 
-	public boolean isKosan() {
-		return kosan;
-	}
-
-	public void setKosan(boolean kosan) {
-		this.kosan = kosan;
-	}
-
-	public boolean isMiz() {
-		return miz;
-	}
-
-	public void setMiz(boolean miz) {
-		this.miz = miz;
-	}
+	/*
+	 * public boolean isKosan() { return kosan; }
+	 * 
+	 * public void setKosan(boolean kosan) { this.kosan = kosan; }
+	 * 
+	 * public boolean isMiz() { return miz; }
+	 * 
+	 * public void setMiz(boolean miz) { this.miz = miz; }
+	 */
 
 	public String getAbad() {
 		return abad;
@@ -409,13 +395,97 @@ public class ProductEntity implements Serializable {
 		this.guaranyTimeMounth = guaranyTimeMounth;
 	}
 
+	public MoblEntity getProduct() {
+		return product;
+	}
+
+
+
+
+	public void setProduct(MoblEntity product) {
+		this.product = product;
+	}
+
+
+
+
+	public String getProductType() {
+		return productType;
+	}
+
+
+
+
+	public void setProductType(String productType) {
+		this.productType = productType;
+	}
+
+
+
+
+	public String getAparat() {
+		return aparat;
+	}
+
+
+
+
+	public void setAparat(String aparat) {
+		this.aparat = aparat;
+	}
+
+
+
+
+	public String getInstagram() {
+		return instagram;
+	}
+
+
+
+
+	public void setInstagram(String instagram) {
+		this.instagram = instagram;
+	}
+
+
+
+
+	public Set<SefareshEntity> getProductSefaresh() {
+		return productSefaresh;
+	}
+
+
+
+
+	public void setProductSefaresh(Set<SefareshEntity> productSefaresh) {
+		this.productSefaresh = productSefaresh;
+	}
+
+
+
+
+	public Set<OfferEntity> getProductOffer() {
+		return productOffer;
+	}
+
+
+
+
+	public void setProductOffer(Set<OfferEntity> productOffer) {
+		this.productOffer = productOffer;
+	}
+
+
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof ProductEntity))
 			return false;
 		ProductEntity productEntity = (ProductEntity) obj;
 		return ((productEntity.productId == this.productId) 
-				|| (productEntity.product.equals(this.product)));
+				);
 	}
 
 
