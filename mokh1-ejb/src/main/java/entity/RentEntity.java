@@ -45,56 +45,97 @@ public class RentEntity extends AdvertiseEntity{
 	
 	@Column(name = "adveriseId")
 	private long adveriseId;
-	
-	@Column(name = "rentType", nullable = true, length = 20)
+	@Column(name = "rentType", nullable = true, length = 100)
 	private String rentType;
-
-	@Column(name = "homeType", nullable = true, length = 20)
+	@Column(name = "homeType", nullable = true, length = 100)
 	private String homeType;
-
-	@Column(name = "vage", nullable = true, length = 20)
-	private String vage;
-
-	@Column(name = "mogeiat", nullable = true, length = 20)
-	private String mogeiat;
-
-	@Column(name = "tedadTabage", nullable = true )
-	private int tedadTabage;
-
-	@Column(name = "tedadVahed", nullable = true)
-	private int tedadVahed;
-
-	@Column(name = "vadieeMoney", nullable = true)
-	private long vadieeMoney;
-
-	@Column(name = "ejareMony", nullable = true)
-	private long ejareMony;
+	@Column(name = "karbariSanad", nullable = true, length = 100)
+	private String karbariSanad;
+	@Column(name = "noeSanad", nullable = true, length = 100)
+	private String noeSanad;
+	@Column(name = "metraj", nullable = true)
+	private long metraj;
+	@Column(name = "priceMetr", nullable = true)
+	private long priceMetr;
+	@Column(name = "phoneLine", nullable = true)
+	private long phoneLine;
+	@Column(name = "saleSakht", nullable = true, length = 200)
+	private String saleSakht;
 	
-	@Column(name = "mablage_forosh", nullable = true)
-	private long mablageForosh;
+	@Column(name = "jahateMelk", nullable = true, length = 20)
+	private String jahateMelk;
+	
+	@Column(name = "mahaleSakhteman", nullable = true, length = 20)
+	private String mahaleSakhteman;
 
-	@Column(name = "emkanat", nullable = true, length = 200)
-	private String emkanat;
+	@Column(name = "namayeMelk", nullable = true, length = 200)
+	private String namayeMelk;
+	
+	@Column(name = "kaf", nullable = true, length = 200)
+	private String kaf;
+	
+	@Column(name = "posheshDivar", nullable = true, length = 200)
+	private String posheshDivar;
+	
+	@Column(name = "vaziatRoshanayi", nullable = true, length = 200)
+	private String vaziatRoshanayi;
+	
+	@Column(name = "vaziatsystemGarmayesh", nullable = true, length = 50)
+	private String vaziatsystemGarmayesh;
+	
+	@Column(name = "abGarm", nullable = true, length = 50)
+	private String abGarm;
+	
+	
+	@Column(name = "moshaat", nullable = true, length = 50)
+	private String moshaat;
+	
+	@Column(name = "moshaatAbi", nullable = true, length = 50)
+	private String moshaatAbi;
+	
+	@Column(name = "chahAbi", nullable = true, length = 50)
+	private String chahAbi;
+	
+	
+	@Column(name = "fazayeSabz", nullable = true, length = 50)
+	private String fazayeSabz;
+	
+	
+	@Column(name = "view", nullable = true, length = 50)
+	private String view;
+	
+	@Column(name = "anbari", nullable = true, length = 50)
+	private String anbari;
+	
+	@Column(name = "parking", nullable = true, length = 50)
+	private String parking;
+	
+	@Column(name = "telephone", nullable = true, length = 50)
+	private String telephone;
+	
+	
+	@Column(name = "tabloKhor", nullable = true, length = 50)
+	private String tabloKhor;
+	
+	
+	@Column(name = "serviceBehdashti", nullable = true, length = 50)
+	private String serviceBehdashti;
+	
+	@Column(name = "digarEmkanat", nullable = true, length = 500)
+	private String digarEmkanat;
+	
+	@Column(name = "saateBazdid", nullable = true, length = 100)
+	private String saateBazdid;
+	
+	
 
-	@Column(name = "vaziatSanad", nullable = true, length = 20)
-	private String vaziatSanad;
+	public long getPhoneLine() {
+		return phoneLine;
+	}
 
-	@Column(name = "senBana", nullable = true)
-	private int senBana;
-
-	@Column(name = "masahat", nullable = true)
-	private int masahat;
-
-	@Column(name = "vaziatMelk", nullable = true,length = 100)
-	private String vaziatMelk;
-
-	@Column(name = "parvane", nullable = true,length=5)
-	private String parvane;
-
-	@Column(name = "etehadieName", nullable = true, length = 200)
-	private String etehadieName;
-
-
+	public void setPhoneLine(long phoneLine) {
+		this.phoneLine = phoneLine;
+	}
 
 	public String getRentType() {
 		return rentType;
@@ -102,6 +143,22 @@ public class RentEntity extends AdvertiseEntity{
 
 	public void setRentType(String rentType) {
 		this.rentType = rentType;
+	}
+
+	public String getSaateBazdid() {
+		return saateBazdid;
+	}
+
+	public void setSaateBazdid(String saateBazdid) {
+		this.saateBazdid = saateBazdid;
+	}
+
+	public long getAdveriseId() {
+		return adveriseId;
+	}
+
+	public void setAdveriseId(long adveriseId) {
+		this.adveriseId = adveriseId;
 	}
 
 	public String getHomeType() {
@@ -112,135 +169,198 @@ public class RentEntity extends AdvertiseEntity{
 		this.homeType = homeType;
 	}
 
-
-
-	public String getVage() {
-		return vage;
+	public String getKarbariSanad() {
+		return karbariSanad;
 	}
 
-	public void setVage(String vage) {
-		this.vage = vage;
+	public void setKarbariSanad(String karbariSanad) {
+		this.karbariSanad = karbariSanad;
 	}
 
-	public String getMogeiat() {
-		return mogeiat;
+	public String getNoeSanad() {
+		return noeSanad;
 	}
 
-	public void setMogeiat(String mogeiat) {
-		this.mogeiat = mogeiat;
+	public void setNoeSanad(String noeSanad) {
+		this.noeSanad = noeSanad;
 	}
 
+	public long getMetraj() {
+		return metraj;
+	}
+
+	public void setMetraj(long metraj) {
+		this.metraj = metraj;
+	}
+
+	public long getPriceMetr() {
+		return priceMetr;
+	}
+
+	public void setPriceMetr(long priceMetr) {
+		this.priceMetr = priceMetr;
+	}
+
+	public String getSaleSakht() {
+		return saleSakht;
+	}
+
+	public void setSaleSakht(String saleSakht) {
+		this.saleSakht = saleSakht;
+	}
+
+	public String getJahateMelk() {
+		return jahateMelk;
+	}
+
+	public void setJahateMelk(String jahateMelk) {
+		this.jahateMelk = jahateMelk;
+	}
+
+	public String getMahaleSakhteman() {
+		return mahaleSakhteman;
+	}
+
+	public void setMahaleSakhteman(String mahaleSakhteman) {
+		this.mahaleSakhteman = mahaleSakhteman;
+	}
+
+	public String getNamayeMelk() {
+		return namayeMelk;
+	}
+
+	public void setNamayeMelk(String namayeMelk) {
+		this.namayeMelk = namayeMelk;
+	}
+
+	public String getKaf() {
+		return kaf;
+	}
+
+	public void setKaf(String kaf) {
+		this.kaf = kaf;
+	}
+
+	public String getPosheshDivar() {
+		return posheshDivar;
+	}
+
+	public void setPosheshDivar(String posheshDivar) {
+		this.posheshDivar = posheshDivar;
+	}
+
+	public String getVaziatRoshanayi() {
+		return vaziatRoshanayi;
+	}
+
+	public void setVaziatRoshanayi(String vaziatRoshanayi) {
+		this.vaziatRoshanayi = vaziatRoshanayi;
+	}
+
+	public String getVaziatsystemGarmayesh() {
+		return vaziatsystemGarmayesh;
+	}
+
+	public void setVaziatsystemGarmayesh(String vaziatsystemGarmayesh) {
+		this.vaziatsystemGarmayesh = vaziatsystemGarmayesh;
+	}
+
+	public String getAbGarm() {
+		return abGarm;
+	}
+
+	public void setAbGarm(String abGarm) {
+		this.abGarm = abGarm;
+	}
+
+	public String getMoshaat() {
+		return moshaat;
+	}
+
+	public void setMoshaat(String moshaat) {
+		this.moshaat = moshaat;
+	}
+
+	public String getMoshaatAbi() {
+		return moshaatAbi;
+	}
+
+	public void setMoshaatAbi(String moshaatAbi) {
+		this.moshaatAbi = moshaatAbi;
+	}
+
+	public String getChahAbi() {
+		return chahAbi;
+	}
+
+	public void setChahAbi(String chahAbi) {
+		this.chahAbi = chahAbi;
+	}
+
+	public String getFazayeSabz() {
+		return fazayeSabz;
+	}
+
+	public void setFazayeSabz(String fazayeSabz) {
+		this.fazayeSabz = fazayeSabz;
+	}
+
+	public String getView() {
+		return view;
+	}
+
+	public void setView(String view) {
+		this.view = view;
+	}
+
+	public String getAnbari() {
+		return anbari;
+	}
+
+	public void setAnbari(String anbari) {
+		this.anbari = anbari;
+	}
+
+	public String getParking() {
+		return parking;
+	}
+
+	public void setParking(String parking) {
+		this.parking = parking;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String getTabloKhor() {
+		return tabloKhor;
+	}
+
+	public void setTabloKhor(String tabloKhor) {
+		this.tabloKhor = tabloKhor;
+	}
+
+	public String getServiceBehdashti() {
+		return serviceBehdashti;
+	}
+
+	public void setServiceBehdashti(String serviceBehdashti) {
+		this.serviceBehdashti = serviceBehdashti;
+	}
+
+	public String getDigarEmkanat() {
+		return digarEmkanat;
+	}
+
+	public void setDigarEmkanat(String digarEmkanat) {
+		this.digarEmkanat = digarEmkanat;
+	}
 	
 	
 	
-
-	public String getEmkanat() {
-		return emkanat;
-	}
-
-	public void setEmkanat(String emkanat) {
-		this.emkanat = emkanat;
-	}
-
-	public String getVaziatSanad() {
-		return vaziatSanad;
-	}
-
-	public void setVaziatSanad(String vaziatSanad) {
-		this.vaziatSanad = vaziatSanad;
-	}
-
-	
-	public String getVaziatMelk() {
-		return vaziatMelk;
-	}
-
-	public void setVaziatMelk(String vaziatMelk) {
-		this.vaziatMelk = vaziatMelk;
-	}
-
-
-
-	public String getParvane() {
-		return parvane;
-	}
-
-	public void setParvane(String parvane) {
-		this.parvane = parvane;
-	}
-
-	public String getEtehadieName() {
-		return etehadieName;
-	}
-
-	public void setEtehadieName(String etehadieName) {
-		this.etehadieName = etehadieName;
-	}
-
-public long getAdveriseId() {
-		return adveriseId;
-	}
-
-	public void setAdveriseId(long adveriseId) {
-		this.adveriseId = adveriseId;
-	}
-
-	public int getTedadTabage() {
-		return tedadTabage;
-	}
-
-	public void setTedadTabage(int tedadTabage) {
-		this.tedadTabage = tedadTabage;
-	}
-
-	public int getTedadVahed() {
-		return tedadVahed;
-	}
-
-	public void setTedadVahed(int tedadVahed) {
-		this.tedadVahed = tedadVahed;
-	}
-
-	public long getVadieeMoney() {
-		return vadieeMoney;
-	}
-
-	public void setVadieeMoney(long vadieeMoney) {
-		this.vadieeMoney = vadieeMoney;
-	}
-
-	public long getEjareMony() {
-		return ejareMony;
-	}
-
-	public void setEjareMony(long ejareMony) {
-		this.ejareMony = ejareMony;
-	}
-
-	public long getMablageForosh() {
-		return mablageForosh;
-	}
-
-	public void setMablageForosh(long mablageForosh) {
-		this.mablageForosh = mablageForosh;
-	}
-
-	public int getSenBana() {
-		return senBana;
-	}
-
-	public void setSenBana(int senBana) {
-		this.senBana = senBana;
-	}
-
-	public int getMasahat() {
-		return masahat;
-	}
-
-	public void setMasahat(int masahat) {
-		this.masahat = masahat;
-	}
-
-	
-
 }

@@ -1,30 +1,39 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "service_khab_kodak")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "ServiceKhabKodak")
 @NamedQueries({
-	@NamedQuery(name="findServiceKhabKodakById" , query="SELECT u FROM ServiceKhabKodak u WHERE u.productId=:v_productId")
+	@NamedQuery(name="findServiceKhabKodakById" , query="SELECT u FROM ServiceKhabKodak u WHERE u.id=:v_id")
 })
 @Cacheable(value = false)
-public class ServiceKhabKodak extends ProductEntity {
+public class ServiceKhabKodak implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private long id;
 	 @Column(name = "modelServiceKhabNozad", nullable = true , length=100) private
 	  String modelServiceKhabNozad;
 	  
@@ -152,7 +161,8 @@ public class ServiceKhabKodak extends ProductEntity {
 	  @Column(name = "descriptionToshak3", nullable = true , length=100) private
 	  String descriptionToshak3;
 	  
-	  
+		@OneToOne(mappedBy = "serviceKhabKodak")
+		private ProductEntity product;
 
 	public ServiceKhabKodak() {
 		super();
@@ -513,34 +523,27 @@ public class ServiceKhabKodak extends ProductEntity {
 	}
 
 
-	@Override
-	public String toString() {
-		return "ServiceKhabKodak [modelServiceKhabNozad=" + modelServiceKhabNozad + ", jenseServiceKhabNozad="
-				+ jenseServiceKhabNozad + ", rangServiceKhabNozad=" + rangServiceKhabNozad + ", priceServiceKhabNozad="
-				+ priceServiceKhabNozad + ", keshoVBox=" + keshoVBox + ", kenarMadari=" + kenarMadari
-				+ ", jenseKomodkenarMadari=" + jenseKomodkenarMadari + ", abadKomodkenarMadari=" + abadKomodkenarMadari
-				+ ", rangKomodkenarMadari=" + rangKomodkenarMadari + ", priceKomodkenarMadari=" + priceKomodkenarMadari
-				+ ", mizSandaliKodak=" + mizSandaliKodak + ", tedadMizSandaliKodak=" + tedadMizSandaliKodak
-				+ ", jenseMizSandaliKodak=" + jenseMizSandaliKodak + ", abadMizKodak=" + abadMizKodak
-				+ ", abadSandaliKodak=" + abadSandaliKodak + ", priceMizSandaliKodak=" + priceMizSandaliKodak
-				+ ", komodMizSandaliKodak=" + komodMizSandaliKodak + ", jenseKomodMizSandaliKodak="
-				+ jenseKomodMizSandaliKodak + ", abadKomodMizSandaliKodak=" + abadKomodMizSandaliKodak
-				+ ", rangKomodMizSandaliKodak=" + rangKomodMizSandaliKodak + ", priceKomodMizSandaliKodak="
-				+ priceKomodMizSandaliKodak + ", mizArayeshMizSandaliKodak=" + mizArayeshMizSandaliKodak
-				+ ", sandaliMizArayeshMizSandaliKodak=" + sandaliMizArayeshMizSandaliKodak
-				+ ", jenseMizArayeshMizSandaliKodak=" + jenseMizArayeshMizSandaliKodak
-				+ ", abadMizArayeshMizSandaliKodak=" + abadMizArayeshMizSandaliKodak
-				+ ", rangMizArayeshMizSandaliKodak=" + rangMizArayeshMizSandaliKodak
-				+ ", priceMizArayeshMizSandaliKodak=" + priceMizArayeshMizSandaliKodak + ", vitrinKetabkhane="
-				+ vitrinKetabkhane + ", jenseVitrinKetabkhane=" + jenseVitrinKetabkhane + ", abadVitrinKetabkhane="
-				+ abadVitrinKetabkhane + ", rangVitrinKetabkhane=" + rangVitrinKetabkhane + ", priceVitrinKetabkhane="
-				+ priceVitrinKetabkhane + ", shelfDivari=" + shelfDivari + ", jenseShelfDivari=" + jenseShelfDivari
-				+ ", abadShelfDivari=" + abadShelfDivari + ", rangShelfDivari=" + rangShelfDivari
-				+ ", priceShelfDivari=" + priceShelfDivari + ", toshak3=" + toshak3 + ", brandToshak3=" + brandToshak3
-				+ ", modelToshak3=" + modelToshak3 + ", modatGarantiToshak3=" + modatGarantiToshak3 + ", abadToshak3="
-				+ abadToshak3 + ", priceToshak3=" + priceToshak3 + ", descriptionToshak3=" + descriptionToshak3 + "]";
+	public long getId() {
+		return id;
 	}
-	  
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public ProductEntity getProduct() {
+		return product;
+	}
+
+
+	public void setProduct(ProductEntity product) {
+		this.product = product;
+	}
+
+
+
 	  
 
 }

@@ -53,7 +53,9 @@ public class BlogEntity implements Serializable {
 	private String pic1;
 	@Column(name="news_mode" , length=100)
 	private String newsMode;
-
+	
+	@Column(name="check_ali" , length=100)
+	private boolean checkAli;
 	
 	public String getNewsMode() {
 		return newsMode;
@@ -152,6 +154,14 @@ public class BlogEntity implements Serializable {
 
 	public void setPic1(String pic1) {
 		this.pic1 = pic1;
+	}
+
+	public boolean isCheckAli() {
+		return checkAli;
+	}
+
+	public void setCheckAli(boolean checkAli) {
+		this.checkAli = checkAli;
 	}
 
 //	@Override

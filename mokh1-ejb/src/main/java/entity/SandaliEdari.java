@@ -1,29 +1,38 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name = "Sandali_Edari")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "SandaliEdari")
 @NamedQueries({
-	@NamedQuery(name="findSandaliEdariById" , query="SELECT u FROM SandaliEdari u WHERE u.productId=:v_productId")
+	@NamedQuery(name="findSandaliEdariById" , query="SELECT u FROM SandaliEdari u WHERE u.id=:v_id")
 })
 @Cacheable(value = false)
-public class SandaliEdari extends ProductEntity {
+public class SandaliEdari implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private long id;
 	  @Column(name = "noeJenseSandaliEdari", nullable = true , length=100) private
 	  String noeJenseSandaliEdari;
 	  
@@ -45,7 +54,8 @@ public class SandaliEdari extends ProductEntity {
 	  @Column(name = "tebiSandaliEdari", nullable = true) private boolean
 	  tebiSandaliEdari;
 	  
-	  
+		@OneToOne(mappedBy = "sandaliEdari")
+		private ProductEntity product;
 
 	public SandaliEdari() {
 		super();
@@ -112,13 +122,32 @@ public class SandaliEdari extends ProductEntity {
 
 
 
-	@Override
-	public String toString() {
-		return "SandaliEdari [noeJenseSandaliEdari=" + noeJenseSandaliEdari + ", abadSandaliEdari=" + abadSandaliEdari
-				+ ", rangSandaliEdari=" + rangSandaliEdari + ", jensePayeSandaliEdari=" + jensePayeSandaliEdari
-				+ ", dasteSandaliEdari=" + dasteSandaliEdari + ", noeSandaliEdari=" + noeSandaliEdari
-				+ ", tebiSandaliEdari=" + tebiSandaliEdari + "]";
+	public long getId() {
+		return id;
 	}
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+	public ProductEntity getProduct() {
+		return product;
+	}
+
+
+
+	public void setProduct(ProductEntity product) {
+		this.product = product;
+	}
+
+
+
+
+
 	
 	  
 }

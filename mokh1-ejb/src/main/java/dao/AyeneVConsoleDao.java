@@ -32,4 +32,5 @@ public class AyeneVConsoleDao implements AyeneVConsoleDaoLocal {
 			throw new Exception("roleback for repetetly data");
 		}
     	}
+    
 }

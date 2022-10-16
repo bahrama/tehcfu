@@ -187,7 +187,8 @@ max-width: 300px!important;
 														actionListener="#{homeBeanAdmin.insertToHome()}"
 														styleClass="p-mt-3 ui-button-outlined p-d-block"
 														update="basicDT grl in2 in39 msg2 msg39"  
-														process="dlg2" />
+														process="dlg2" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
 
 											</p:outputPanel>
 										</p:dialog>

@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import adminNew.AdminLogin;
 import dao.ProductDaoLocal;
 import dao.SefareshDaoLocal;
 import entity.MoblEntity;
@@ -36,6 +37,8 @@ public class UserSefaresh implements Serializable {
 	private SefareshDaoLocal sefareshDaoLocal;
 	@Inject
 	private FacesContext facesContext;
+	@Inject
+	private AdminLogin adminLogin;
 	
 	public ProductEntity findProductById(long productId) {
 		return productDaLocal.findProductOnlyById(productId);
@@ -60,8 +63,8 @@ public class UserSefaresh implements Serializable {
 		}
 	   
 		}else {
-		facesContext.getPartialViewContext().getEvalScripts().add("swal({title: 'ناموفق!',type: 'error', text: 'برای ثبت سفارش ابتدا وارد شوید', confirmButtonColor: '#469408',})");
-		}
+			adminLogin.login();
+			}
 	}
 	
 	

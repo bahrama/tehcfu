@@ -78,8 +78,7 @@ width: 100%;
 		<div dir="rtl" class="wrapper1">
 			<h:link outcome="/pages/danestaniha/panels-list">
 				<div class="panel animated slideInDown bg-f">
-					<img src="../../resources/panels/11.png" alt="" />
-					<h3>پنل فیروزه ای</h3>
+					<img src="../../resources/panels/3.jpg" alt="" />
 					<div class="slide">
 						<h4>سرویس ها</h4>
 						<ul>
@@ -96,8 +95,7 @@ width: 100%;
 			</h:link>
 			<h:link outcome="/pages/danestaniha/panels-list">
 				<div class="panel animated slideInDown bg-t">
-					<img src="../../resources/panels/22.png" alt="" />
-					<h3>پنل طلایی</h3>
+					<img src="../../resources/panels/2.jpg" alt="" />
 					<div class="slide">
 						<h4>سرویس ها</h4>
 						<ul>
@@ -113,8 +111,7 @@ width: 100%;
 			</h:link>
 			<h:link outcome="/pages/danestaniha/panels-list">
 				<div class="panel animated slideInDown bg-n">
-					<img src="../../resources/panels/33.png" alt="" />
-					<h3>پنل نقره ای</h3>
+					<img src="../../resources/panels/1.jpg" alt="" />
 					<div class="slide">
 						<h4>سرویس ها</h4>
 						<ul>
@@ -130,8 +127,7 @@ width: 100%;
 			</h:link>
 			<h:link outcome="/pages/danestaniha/panels-list">
 			<div class="panel animated slideInDown bg-b">
-				<img src="../../resources/panels/44.png" alt="" />
-				<h3>پنل برنزی</h3>
+				<img src="../../resources/panels/4.jpg" alt="" />
 				<div class="slide">
 					<h4>سرویس ها</h4>
 					<ul>
@@ -146,8 +142,7 @@ width: 100%;
 			</h:link>
 			<h:link outcome="/pages/vitrin/ordinary.xhtml">
 			<div class="panel animated slideInDown bg-a">
-				<img src="../../resources/panels/1.png" alt="" />
-				<h3>پنل عادی</h3>
+				<img src="../../resources/panels/6.jpg" alt="" />
 				<div class="slide">
 					<h4>سرویس ها</h4>
 					<ul>
@@ -219,9 +214,9 @@ Margin-left:10 px;">
 
 						<div class="padding-bottom-40 wow zoomIn card"
 							style="float: right !important; width: 100% !important;">
-							<o:graphicImage style="max-width:100%; height:300px!important" 
-							rendered="#{panelBean.findPic4(pnl) ne null}"
-								value="#{panelBean.findPic4(pnl)}" dataURI="true" alt="" />
+                    <h:graphicImage style="max-width:100%; height:300px!important" 
+					rendered="#{pnl.pic4 ne null}"
+					value="/Images/#{pnl.pic4}.jpg"/>
 
 							<div class="blog-short-detail">
 								<h4 style="font-family: IranSANSBold; color: darkred;">
@@ -230,7 +225,7 @@ Margin-left:10 px;">
 										<f:param name="sellerNameEng" value="#{pnl.sellerStoreEng}"/>
 										</h:link>
 							</div>
-	 <div class="icons" style="text-align: center; margin-top: 15px;">
+	  <div class="icons" style="text-align: center; margin-top: 15px;">
 							         <h:panelGroup rendered="#{pnl.faaliat.contains('نجاری')}">
 							            <img title="نجاری" class="icon-mobl-edari icon" src="../../../resources/raste-icon2/index.jpg" style=" width:40px;height: 40px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
 							        </h:panelGroup>  
@@ -286,9 +281,7 @@ Margin-left:10 px;">
 										<img title="صندلی چوبی" class="icon-miz-nahar icon" src="../../../resources/raste-icon2/index14.jpg" style=" width:40px;height: 40px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
 										</h:panelGroup>
 										
-																				<h:panelGroup rendered="#{pnl.faaliat.contains('کتابخانه')}">
-										<img title="کتابخانه" class="icon-miz-nahar icon" src="../../../resources/raste-icon2/index15.jpg" style=" width:40px;height: 40px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
-										</h:panelGroup>
+					
 										
 																				<h:panelGroup rendered="#{pnl.faaliat.contains('مجسمه سازی')}">
 										<img title="مجسمه سازی" class="icon-miz-nahar icon" src="../../../resources/raste-icon2/index16.jpg" style=" width:40px;height: 40px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
@@ -330,8 +323,15 @@ Margin-left:10 px;">
 										<img title="نهارخوری" class="icon-miz-nahar icon" src="../../../resources/raste-icon2/index27.jpg" style=" width:40px;height: 40px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
 										</h:panelGroup>
 										
-																																						<h:panelGroup rendered="#{pnl.faaliat.contains('مبلمان')}">
-										<img title="مبلمان" class="icon-miz-nahar icon" src="../../../resources/raste-icon2/index23.jpg" style=" width:40px;height: 40px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+																																																<h:panelGroup rendered="#{pnl.faaliat.contains('مبل تختخواب شو')}">
+										<img title="مبل تختخواب شو" class="icon-miz-nahar icon" src="../../../resources/raste-icon2/index31.jpg" style=" width:40px;height: 40px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+																																																										<h:panelGroup rendered="#{pnl.faaliat.contains('میز جلو مبلی یا میز عسلی')}">
+										<img title="میز جلو مبلی یا میز عسلی" class="icon-miz-nahar icon" src="../../../resources/raste-icon2/index32.jpg" style=" width:40px;height: 40px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
+										</h:panelGroup>
+										
+									   <h:panelGroup rendered="#{pnl.faaliat.contains('مبلمان راحتی') or pnl.faaliat.contains('مبلمان کلاسیک') or pnl.faaliat.contains('مبلمان استیل')}">
+										<img title="مبلمان استیل مبلمان راحتی مبلمان کلاسیک " class="icon-miz-nahar icon" src="../../../resources/raste-icon2/index28.jpg" style=" width:40px;height: 40px;color:white;border: 2px solid #26a8e4;padding: 5px;" alt=""/>
 										</h:panelGroup>
 									</div>
 						</div>

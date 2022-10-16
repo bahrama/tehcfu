@@ -9,7 +9,7 @@ import entity.MoblEntity;
 @Local
 public interface SellerTblDaoLocal {
 
-	void insertSeller(MoblEntity moblEntity);
+	void insertSeller(MoblEntity moblEntity) throws Exception;
 
 	List<MoblEntity> findAllSeller();
 

@@ -1,33 +1,41 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name = "ayene_consol")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "AyeneVConsole")
 @NamedQueries({
-	@NamedQuery(name="findAyeneVConsoleById" , query="SELECT u FROM AyeneVConsole u WHERE u.productId=:v_productId")
+	@NamedQuery(name="findAyeneVConsoleById" , query="SELECT u FROM AyeneVConsole u WHERE u.id=:v_id")
 })
 @Cacheable(value = false)
-public class AyeneVConsole extends ProductEntity{
+public class AyeneVConsole implements Serializable{
 	  /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "product_id")
-	private long productId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private long id;
 	
 	  @Column(name = "jenseEskeletConsole", nullable = true , length=100) private
 	  String jenseEskeletConsole;
@@ -69,15 +77,9 @@ public class AyeneVConsole extends ProductEntity{
 	  @Column(name = "priceGhabAyene", nullable = true) private long
 	  priceGhabAyene;
 	  
-
-
-	public long getProductId() {
-		return productId;
-	}
-
-	public void setProductId(long productId) {
-		this.productId = productId;
-	}
+	  
+		@OneToOne(mappedBy = "ayeneVConsole")
+		private ProductEntity product;
 
 	public String getJenseEskeletConsole() {
 		return jenseEskeletConsole;
@@ -207,16 +209,24 @@ public class AyeneVConsole extends ProductEntity{
 		this.priceGhabAyene = priceGhabAyene;
 	}
 
-	@Override
-	public String toString() {
-		return "AyeneVConsole [productId=" + productId + ", jenseEskeletConsole=" + jenseEskeletConsole
-				+ ", jensePayeConsole=" + jensePayeConsole + ", priceConsole=" + priceConsole + ", keshoConsole="
-				+ keshoConsole + ", tedadKesho=" + tedadKesho + ", komodConsole=" + komodConsole + ", tedadKomod="
-				+ tedadKomod + ", ayeneConsole=" + ayeneConsole + ", tedadAyene=" + tedadAyene + ", shekleHendesi="
-				+ shekleHendesi + ", zekhamatAyene=" + zekhamatAyene + ", ayeneGhab=" + ayeneGhab + ", jenseGhab="
-				+ jenseGhab + ", abadGhabAyene=" + abadGhabAyene + ", rangGhabAyene=" + rangGhabAyene
-				+ ", priceGhabAyene=" + priceGhabAyene + "]";
+	public long getId() {
+		return id;
 	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public ProductEntity getProduct() {
+		return product;
+	}
+
+	public void setProduct(ProductEntity product) {
+		this.product = product;
+	}
+
+
+
 	  
 	  
 }

@@ -494,7 +494,7 @@ public class NewsPage implements Serializable{
         	month="ذیقعده";
         else if (todayHijri.getMonthOfYear()==12)
         	month="ذی الحجه";
-        text=" روز " + (todayHijri.getDayOfMonth()+1) + " ماه " + month + " سال " + todayHijri.getYear() + "قمری";
+        text=" روز " + (todayHijri.getDayOfMonth()+2) + " ماه " + month + " سال " + todayHijri.getYear() + "قمری";
         
         return text;
 	}
@@ -779,7 +779,7 @@ public class NewsPage implements Serializable{
         else if (todayHijri.getMonthOfYear()==12)
         	month="ذیحجه";
        // text=todayHijri.getDayOfMonth()  + "" + month;
-        int s = todayHijri.getDayOfMonth()-1;
+        int s = todayHijri.getDayOfMonth();
         if(s==31)
         	s=1;
         else 

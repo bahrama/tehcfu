@@ -54,14 +54,9 @@ max-width: 300px!important;
 					<div class="container-fluid">
 						<div class="row mb-2">
 							<div class="col-sm-6">
-								<h1>ویجت‌ها</h1>
+								<h1>افزودن فروشنده ها</h1>
 							</div>
-							<div class="col-sm-6">
-								<ol class="breadcrumb float-sm-left">
-									<li class="breadcrumb-item"><a href="#">خانه</a></li>
-									<li class="breadcrumb-item active">ویجت‌ها</li>
-								</ol>
-							</div>
+
 						</div>
 					</div>
 					<!-- /.container-fluid -->
@@ -141,6 +136,13 @@ max-width: 300px!important;
 																	<h:outputText value="فروشنده عادی" rendered="#{mbl.panel eq 'E'}" />
 																	<h:outputText value="کاربر عادی" rendered="#{mbl.panel eq null}" />
 																</p:column>
+																
+												<p:column  style="width:3rem;text-align: center">
+													<p:commandButton value="پنل کاربر" actionListener="#{adminLogin.adminGoMerchantProfile(mbl.id)}" immediate="true"
+														process="@form"
+														>
+													</p:commandButton>
+												</p:column>				
 												
 											</p:dataTable>
 
@@ -539,7 +541,8 @@ max-width: 300px!important;
 														msge15 msge16 msge17 msge18 msge21 msge22 msge23
 														msge24 msge25 msge26 msge27 msge29 msge30 msge31 msge32 msge33 msge34 msge35 msge36
 														 msge37 msge38 msge39 msge41 msge331 msge332" process="dlg1" 
-														/>
+														onstart="return startLoader()"
+														oncomplete="return endLoader()"/>
 												
 											
 
@@ -878,7 +881,9 @@ max-width: 300px!important;
 														msg6 msg7 msg8 msg9 msg10 msg11 msg12 msg13 msg14 msg15 msg16 msg17 msg18 msg19 msg20 msg21
 														msg22 msg23 msg24 msg25 msg26 msg27 msg28 msg29 msg30 msg31 msg32 msg33 msg34 msg35 msg36
 													    msg37 msg38 msg39 msg40 msg41 msg42 msg43 msg44 msg45 msg2133 msg2134"  
-														process="dlg2" />
+														process="dlg2" 
+														onstart="return startLoader()"
+														oncomplete="return endLoader()"/>
 
 											</p:outputPanel>
 										</p:dialog>

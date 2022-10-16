@@ -308,144 +308,74 @@
 				</div>
 
 	<!-- پیشنهاد های ویژه -->
+			<h:panelGroup
+			rendered="#{homeBean.countProduct() gt 0}">
 	<div id="suggestion"
 		class="related-posts padding-bottom-40 text-center">
 		<h1 style="font-family: IRANSansBold; margin-top: 40px" class="small">
 			محصولات</h1>
 		<div class="container text-center">
 			<div class="related-posts-carousel padding-top-40">
-				<div class="item">
-					<img src="../../resources/pic/f16.jpg" alt="" />
-					<!--                        <span style="font-family: IRANSansBold; background-color: red; color: #0d0d0d;height: 50px;width: 50px; top: 15px" class="post-date">10%</span>-->
-					<div class="blog-short-detail">
-						<h4>
-							<a style="font-family: IRANSansBold; color: #0B59AA" href="#">محصول
-								شماره یک</a>
-						</h4>
-						<span style="font-family: IRANSansNor" class="author-desc"><del
-								class="d-block">قیمت</del></span> <span
-							style="font-family: IRANSansNor" class="author-desc">قیمت
-							حراج</span>
-						<p></p>
-						<a
-							style="font-family: IRANSansBold; color: #0B59AA; border-color: #0B59AA"
-							class="btn-blue" href="#">بیشتر</a>
-					</div>
-					<!-- /blog-short-detail -->
-				</div>
-				<!-- /item -->
+										<ui:repeat var="prdc"
+							value="#{homeBean.findRandomProduct()}"
+							size="#{homeBean.sizeList()}" >
 
-				<div class="item">
-					<img src="../../resources/pic/f14.jpg" alt="" />
-					<!--<span style="font-family: IRANSansBold; background-color: red; color: #0d0d0d;height: 50px;width: 50px; top: 15px" class="post-date">20%</span>-->
-					<div class="blog-short-detail">
-						<h4>
-							<a style="font-family: IRANSansBold; color: #0B59AA" href="#">محصول
-								شماره دو</a>
-						</h4>
-						<span style="font-family: IRANSansNor" class="author-desc"><del
-								class="d-block">قیمت</del></span> <span
-							style="font-family: IRANSansNor" class="author-desc">قیمت
-							حراج</span>
-						<p></p>
-						<a
-							style="font-family: IRANSansBold; color: #0B59AA; border-color: #0B59AA"
-							href="#" class="btn-blue">بیشتر</a>
-					</div>
-					<!-- /blog-short-detail -->
-				</div>
-				<!-- /item -->
+							<h:panelGroup rendered="#{prdc.checkO}">
+					<h:link outcome="/pages/product/product-detail.xhtml">
+								<div class="item"
+									style="width: 100%; padding: 10px 10px 20px 10px; border: 1px solid #BFBFBF; background-color: rgba; box-shadow: 10px 10px 5px #aaaaaa;border-radius: 5px !important;">
 
-				<div class="item">
-					<img src="../../resources/pic/f17.jpg" alt="" />
-					<!--<span style="font-family: IRANSansBold; background-color: red; color: #0d0d0d;height: 50px;width: 50px; top: 15px" class="post-date">30%</span>-->
-					<div class="blog-short-detail">
-						<h4>
-							<a style="font-family: IRANSansBold; color: #0B59AA" href="#">محصول
-								شماره سه</a>
-						</h4>
-						<span style="font-family: IRANSansNor" class="author-desc"><del
-								class="d-block">قیمت</del></span> <span
-							style="font-family: IRANSansNor" class="author-desc">قیمت
-							حراج</span>
-						<p></p>
-						<a
-							style="font-family: IRANSansBold; color: #0B59AA; border-color: #0B59AA"
-							href="#" class="btn-blue">بیشتر</a>
-					</div>
-					<!-- /blog-short-detail -->
-				</div>
-				<!-- /item -->
-
-				<div class="item">
-					<img src="../../resources/pic/f15.jpg" alt="" />
-					<!--<span style="font-family: IRANSansBold; background-color: red; color: #0d0d0d;height: 50px;width: 50px; top: 15px" class="post-date">40%</span>-->
-					<div class="blog-short-detail">
-						<h4>
-							<a style="font-family: IRANSansBold; color: #0B59AA" href="#">محصول
-								شماره چهار</a>
-						</h4>
-						<span style="font-family: IRANSansNor" class="author-desc"><del
-								class="d-block">قیمت</del></span> <span
-							style="font-family: IRANSansNor" class="author-desc">قیمت
-							حراج</span>
-						<p></p>
-						<a
-							style="font-family: IRANSansBold; color: #0B59AA; border-color: #0B59AA"
-							href="#" class="btn-blue">بیشتر</a>
-					</div>
-					<!-- /blog-short-detail -->
-				</div>
-				<!-- /item -->
-
-				<div class="item">
-					<img src="../../resources/pic/21.jpg" alt="" />
-					<!--<span style="font-family: IRANSansBold; background-color: red; color: #0d0d0d;height: 50px;width: 50px; top: 15px" class="post-date">50%</span>-->
-					<div class="blog-short-detail">
-						<h4>
-							<a style="font-family: IRANSansBold; color: #0B59AA" href="#">محصول
-								شماره پنج</a>
-						</h4>
-						<span style="font-family: IRANSansNor" class="author-desc"><del
-								class="d-block">قیمت</del></span> <span
-							style="font-family: IRANSansNor" class="author-desc">قیمت
-							حراج</span>
-						<p></p>
-						<a
-							style="font-family: IRANSansBold; color: #0B59AA; border-color: #0B59AA"
-							href="#" class="btn-blue">بیشتر</a>
-					</div>
-					<!-- /blog-short-detail -->
-				</div>
-				<!-- /item -->
-
-				<div class="item">
-					<img src="../../resources/pic/f13.jpg" alt="" />
-					<!--<span style="font-family: IRANSansBold; background-color: red; color: #0d0d0d;height: 50px; width: 50px ; top: 15px" class="post-date">60%</span>-->
-					<div class="blog-short-detail">
-						<h4>
-							<a style="font-family: IRANSansBold; color: #0B59AA" href="#">محصول
-								شماره شش</a>
-						</h4>
-						<span style="font-family: IRANSansNor" class="author-desc"><del
-								class="d-block">قیمت</del></span> <span
-							style="font-family: IRANSansNor" class="author-desc">قیمت
-							حراج</span>
-						<p></p>
-						<a
-							style="font-family: IRANSansBold; color: #0B59AA; border-color: #0B59AA"
-							href="#" class="btn-blue">بیشتر</a>
-					</div>
-					<!-- /blog-short-detail -->
-				</div>
-				<!-- /item -->
+	<img data-src="/Images/#{prdc.pic1}.jpg" src="../../resources/image-loader/loading.svg" style="width: 250px; height: 300px; margin:5px;"/>
+									
+									<div class="blog-short-detail">
+										<p title="#{prdc.brand}" style="font-family: IRANSansNor;
+									    color: #0B59AA;
+									    white-space: nowrap;
+									    width: 100%;
+									    overflow: hidden;
+									    direction: rtl;
+									    text-overflow: ellipsis;
+									    font-size: 18px;
+									    margin: 0px;">
+											#{prdc.brand}
+										</p>
+										<h4 title="#{prdc.nameCode}" style="font-family: IRANSansBold;
+									    color: #0B59AA;
+									    white-space: nowrap;
+									    width: 100%;
+									    overflow: hidden;
+									    direction: rtl;
+									    text-overflow: ellipsis;">
+											#{prdc.nameCode}
+										</h4>
+										<p style="font-family: IRANSansBold;
+										    font-size: 19px;
+										    background-color: #eeea0b;
+										    border-radius: 10px;" >
+										<del class="d-block">#{prdc.price}</del>
+										</p>
+										<p style="font-family: IRANSansBold;
+										    font-size: 24px;
+										    color: green !important;
+										    background-color: rgb(2, 138, 21);
+										    color: white!important;
+										    border-radius: 10px;direction: rtl;"
+											>#{prdc.price2}
+											<span> تومان</span>
+											</p>
+									</div>
+								</div>
+								<f:param name="productId" value="#{prdc.productId}" />
+								</h:link>
+							</h:panelGroup>
+						</ui:repeat>
 			</div>
 			<!-- /related-posts-carousel -->
 		</div>
 		<!-- /container -->
 	</div>
 	<!-- پیشنهاد های ویژه -->
-
+</h:panelGroup>
 
 
 	<!-- دانستنی ها،اخبار،خبرنامه-->

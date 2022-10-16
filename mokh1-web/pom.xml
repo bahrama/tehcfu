@@ -192,8 +192,6 @@
 			<artifactId>javax.mail-api</artifactId>
 			<version>1.6.2</version>
 		</dependency>
-
-
 <!-- https://mvnrepository.com/artifact/org.imgscalr/imgscalr-lib -->
 <dependency>
     <groupId>org.imgscalr</groupId>
@@ -205,7 +203,12 @@
 			<artifactId>jbcrypt</artifactId>
 			<version>0.4</version>
 		</dependency>
-
+<!-- https://mvnrepository.com/artifact/com.squareup.okhttp/okhttp -->
+<dependency>
+    <groupId>com.squareup.okhttp</groupId>
+    <artifactId>okhttp</artifactId>
+    <version>2.7.5</version>
+</dependency>
 	</dependencies>
 
 	<build>

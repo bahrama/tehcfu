@@ -23,7 +23,7 @@ import enums.AmadeType;
 @Entity
 @Table(name="amade_tbl")
 @NamedQueries({
-	@NamedQuery(name="findAllAmade" , query="SELECT a FROM Amade a"),
+	@NamedQuery(name="findAllAmade" , query="SELECT a FROM Amade a ORDER BY a.amadeId DESC"),
 	@NamedQuery(name="findByAmadeId" , query="SELECT u FROM Amade u WHERE u.amadeId=:v_amadeId"),
 	@NamedQuery(name="findByAmadeType" , query="SELECT u FROM Amade u WHERE u.type=:v_type")
 })

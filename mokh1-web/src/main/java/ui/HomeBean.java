@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.PostConstruct;
@@ -24,16 +25,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
+
 import adminNew.AdminLogin;
 import catch_db.CatchBlogLocal;
 import catch_db.CatchHomeLocal;
 import catch_db.CatchSellerLocal;
 import dao.OfferDaoLocal;
+import dao.ProductDaoLocal;
 import entity.BazdidEntity;
 import entity.BlogEntity;
 import entity.HomeEntity;
 import entity.MoblEntity;
 import entity.OfferEntity;
+import entity.ProductEntity;
 import sevice.BazdidServiceLocal;
 import sevice.BlogServiceLocal;
 import sevice.HomeServiceLocal;
@@ -73,6 +82,8 @@ public class HomeBean implements Serializable {
 	private MoblEntity moblEntity;
 	@Inject
 	private SellerServiceLocal sellerServiceLocal;
+	@Inject
+	private ProductDaoLocal productDaoLocal;
 	
 
 	private List<BlogEntity> blogEntities = new ArrayList<>();
@@ -3813,7 +3824,25 @@ public class HomeBean implements Serializable {
 		}
 	}
 	
-	
+	public void sendEmail(String mobile , String storePer , String sellerName) {
+		try {
+			OkHttpClient client = new OkHttpClient();
+					MediaType mediaType = MediaType.parse("application/json");
+					RequestBody body = RequestBody.create(mediaType, "{\n   \"receiver\":\"okksDPXOEkksrm9A9hVyWg==\",\n   \"min_api_version\":1,\n   \"sender\":{\n      \"name\":\"tehcfu\",\n      \"avatar\":\"http://tehcfu.com\"\n   },\n "
+							+ "  \"tracking_data\":\"tracking data\",\n   \"type\":\"text\",\n   "
+							+ "\"info\":\"" + mobile + "-" + sellerName + "-" + storePer  +"\"\n}");
+					Request request = new Request.Builder()
+					  .url("https://chatapi.viber.com/pa/send_message")
+					  .method("POST", body)
+					  .addHeader("X-Viber-Auth-Token", "4f9a10848ca7e1fe-ee0f26e17934ede3-16a455b2383d908e")
+					  .addHeader("Content-Type", "application/json")
+					  .build();
+					Response response = client.newCall(request).execute();
+	    System.err.println("SSSSSSSSSSSSSSEEEEEEEEEEEEEEENNNNNNNNDDDDDDDDEEEEEEEEEDDDDDDDDd");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public String findUserByToken() {
 		try {
@@ -3825,6 +3854,7 @@ public class HomeBean implements Serializable {
 			 System.err.println("*******************************************");
 			 System.err.println("*******************************************");
 			System.err.println(mobile);
+			//sendEmail(this.mobile,"","");
 			return mobile;
 		} catch (Exception e) {
 			return "مهمان";
@@ -3883,5 +3913,25 @@ public class HomeBean implements Serializable {
 		response.addCookie(cookie2);
 		}
 	}
+	
+	public int countProduct() {
+		return Integer.parseInt(productDaoLocal.countAllProduct().toString());
+	}
+	
+	public int sizeList() {
+		int count = countProduct();
+		if(count > 6)
+			return 6;
+			else
+				return count;
+	}
+	
+	
+	 public List<ProductEntity> findRandomProduct() { 
+		 return productDaoLocal.findRandomProduct(); 
+	 }
+	 
+	
+	
 
 }

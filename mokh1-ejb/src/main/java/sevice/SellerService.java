@@ -25,7 +25,7 @@ public class SellerService implements SellerServiceLocal {
     private SellerTblDaoLocal sellerTblDaoLocal;
     
     @Override
-    public void insertSeller(MoblEntity moblEntity){
+    public void insertSeller(MoblEntity moblEntity) throws Exception{
     	sellerTblDaoLocal.insertSeller(moblEntity);
     }
     

@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import entity.MoblEntity;
+import enums.UserRole;
 
 /**
  * Session Bean implementation class SellerTblDao
@@ -25,8 +26,8 @@ public class SellerTblDao implements SellerTblDaoLocal {
 	private EntityManager entityManager;
 
 	@Override
-	public void insertSeller(MoblEntity moblEntity) {
-		entityManager.persist(moblEntity);
+	public void insertSeller(MoblEntity moblEntity) throws Exception{
+				entityManager.persist(moblEntity);		
 	}
 
 	@Override

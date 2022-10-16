@@ -822,32 +822,6 @@ public class MoblEntity implements Serializable {
 		this.metaKeywords = metaKeywords;
 	}
 
-	@Override
-	public String toString() {
-		return "MoblEntity [id=" + id + ", aboutUs=" + aboutUs + ", email=" + email + ", fax=" + fax + ", instagram="
-				+ instagram + ", modirforoshName=" + modirforoshName + ", modirforoshPhone=" + modirforoshPhone
-				+ ", phone=" + phone + ", pic1=" + pic1 + ", pic2=" + pic2 + ", pic3=" + pic3 + ", pic4=" + pic4
-				+ ", postcode=" + postcode + ", sellerAddres=" + sellerAddres + ", sellerName=" + sellerName
-				+ ", sellerStoreEng=" + sellerStoreEng + ", sellerStorePer=" + sellerStorePer + ", telegram=" + telegram
-				+ ", website=" + website + ", lat=" + lat + ", lng=" + lng + ", panel=" + panel + ", noeFaaliat="
-				+ noeFaaliat + ", mobile=" + mobile + ", ssn=" + ssn + ", role=" + role + ", token=" + token
-				+ ", birthDate=" + birthDate + ", authCode=" + authCode + ", faaliat=" + faaliat + "]";
-	}
-
-	
-	
-
-/*	@Override
-	public boolean equals(Object obj) {
-		if (!(obj instanceof MoblEntity))
-			return false;
-		MoblEntity moblEntity = (MoblEntity) obj;
-		return ((moblEntity.id == this.id)
-				|| (moblEntity.mobile.equals(this.mobile))
-				|| (moblEntity.authCode==this.authCode)
-				|| (moblEntity.token.equals(this.token)));
-	}*/
-	
 	
 	
 }

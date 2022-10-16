@@ -43,7 +43,8 @@ public class Productservice implements ProductserviceLocal {
     }
     @Override
     public ProductEntity findProductEntityById(long productId) {
-    	return productDaoLocal.findProductEntityById(productId);
+    	//return productDaoLocal.findProductEntityById(productId);
+    	return null;
     }
     @Override
     public void updateProductEntity(ProductEntity productEntity) {
@@ -57,6 +58,7 @@ public class Productservice implements ProductserviceLocal {
 	
     @Override
     public Map<ProductEntity, Object> findAllProductBySeller2(MoblEntity moblEntity){
-    	return productDaoLocal.findAllProductBySeller2(moblEntity);
+    	//return productDaoLocal.findAllProductBySeller2(moblEntity);
+    	return null;
     }
 }

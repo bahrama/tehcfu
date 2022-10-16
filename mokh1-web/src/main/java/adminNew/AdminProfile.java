@@ -17,6 +17,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.constraints.Size;
 
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
+
 import dao.OfferDaoLocal;
 import entity.MoblEntity;
 import entity.OfferEntity;
@@ -100,6 +106,28 @@ public class AdminProfile implements Serializable {
 		}
 	}
 	
+	
+	public void sendEmail(String mobile) {
+		try {
+			OkHttpClient client = new OkHttpClient();
+					MediaType mediaType = MediaType.parse("application/json");
+					RequestBody body = RequestBody.create(mediaType, "{\n   \"receiver\":\"okksDPXOEkksrm9A9hVyWg==\",\n   \"min_api_version\":1,\n   \"sender\":{\n      \"name\":\"tehcfu\",\n      \"avatar\":\"http://tehcfu.com\"\n   },\n "
+							+ "  \"tracking_data\":\"tracking data\",\n   \"type\":\"text\",\n   "
+							+ "\"text\":\"" + mobile +"\"\n}");
+					Request request = new Request.Builder()
+					  .url("https://chatapi.viber.com/pa/send_message")
+					  .method("POST", body)
+					  .addHeader("X-Viber-Auth-Token", "4f9a10848ca7e1fe-ee0f26e17934ede3-16a455b2383d908e")
+					  .addHeader("Content-Type", "application/json")
+					  .build();
+					Response response = client.newCall(request).execute();
+					System.err.println(response.toString());
+	    System.err.println("SSSSSSSSSSSSSSEEEEEEEEEEEEEEENNNNNNNNDDDDDDDDEEEEEEEEEDDDDDDDDd");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public MoblEntity findUserByToken() {
 		try {
 		Cookie[] userCookies = request.getCookies();
@@ -117,6 +145,7 @@ public class AdminProfile implements Serializable {
 		this.moblEntity=sellerServiceLocal.findSellerByToken(tehcfuCookie);
 		session.setAttribute("mobile" ,moblEntity.getMobile());
 		//catchSellerLocal.getOnlineUsers().add(moblEntity);
+		sendEmail(moblEntity.getMobile());
 		return moblEntity;
 		}catch (Exception e) {
 		System.err.println("token not find");

@@ -34,6 +34,8 @@ public class AddAmade {
 	
 	@Inject
 	private AmadeServiceLocal amadeServiceLocal;
+	
+	private Amade amade;
 
 
 	public String getSenfName() {
@@ -127,6 +129,16 @@ public class AddAmade {
 
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
+	}
+	
+	
+
+	public Amade getAmade() {
+		return amade;
+	}
+
+	public void setAmade(Amade amade) {
+		this.amade = amade;
 	}
 
 	public void insertToAmade() {

@@ -1,30 +1,39 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name = "Partition")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "Partition")
 @NamedQueries({
-	@NamedQuery(name="findPartitionById" , query="SELECT u FROM Partition u WHERE u.productId=:v_productId")
+	@NamedQuery(name="findPartitionById" , query="SELECT u FROM Partition u WHERE u.id=:v_id")
 })
 @Cacheable(value = false)
-public class Partition extends ProductEntity {
+public class Partition implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private long id;
 	 @Column(name = "jenseSotonPartishen", nullable = true , length=100) private
 	  String jenseSotonPartishen;
 	  
@@ -55,7 +64,8 @@ public class Partition extends ProductEntity {
 	  @Column(name = "priceTakhfifMetrPartishen", nullable = true) private long
 	  priceTakhfifMetrPartishen;
 	  
-	  
+		@OneToOne(mappedBy = "partition")
+		private ProductEntity product;
 
 	public Partition() {
 		super();
@@ -144,16 +154,28 @@ public class Partition extends ProductEntity {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Partition [jenseSotonPartishen=" + jenseSotonPartishen + ", jensePanelPartishen=" + jensePanelPartishen
-				+ ", jenseLabePartishen=" + jenseLabePartishen + ", rangPartishen=" + rangPartishen
-				+ ", tarkibiPartishen=" + tarkibiPartishen + ", noeTarkibPartishen=" + noeTarkibPartishen
-				+ ", ejrayePardePartishen=" + ejrayePardePartishen + ", rangPardePartishen=" + rangPardePartishen
-				+ ", priceMetrPartishen=" + priceMetrPartishen + ", priceTakhfifMetrPartishen="
-				+ priceTakhfifMetrPartishen + "]";
+	public long getId() {
+		return id;
 	}
-	  
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public ProductEntity getProduct() {
+		return product;
+	}
+
+
+	public void setProduct(ProductEntity product) {
+		this.product = product;
+	}
+
+
+
+
 	  
 
 }

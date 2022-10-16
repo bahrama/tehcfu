@@ -1,29 +1,38 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name = "Mdf")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "Mdf")
 @NamedQueries({
-	@NamedQuery(name="findMdfById" , query="SELECT u FROM Mdf u WHERE u.productId=:v_productId")
+	@NamedQuery(name="findMdfById" , query="SELECT u FROM Mdf u WHERE u.id=:v_id")
 })
 @Cacheable(value = false)
-public class Mdf extends ProductEntity {
+public class Mdf implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private long id;
 	  @Column(name = "zekhametMdf", nullable = true , length=100) private String
 	  zekhametMdf;
 	  
@@ -35,7 +44,8 @@ public class Mdf extends ProductEntity {
 	  @Column(name = "priceTakhfifMetrMdf", nullable = true) private long
 	  priceTakhfifMetrMdf;
 	  
-	  
+		@OneToOne(mappedBy = "mdf")
+		private ProductEntity product;
 
 	public Mdf() {
 		super();
@@ -78,11 +88,32 @@ public class Mdf extends ProductEntity {
 
 
 
-	@Override
-	public String toString() {
-		return "Mdf [zekhametMdf=" + zekhametMdf + ", abadMdf=" + abadMdf + ", priceMetrMdf=" + priceMetrMdf
-				+ ", priceTakhfifMetrMdf=" + priceTakhfifMetrMdf + "]";
+	public long getId() {
+		return id;
 	}
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+	public ProductEntity getProduct() {
+		return product;
+	}
+
+
+
+	public void setProduct(ProductEntity product) {
+		this.product = product;
+	}
+
+
+
+
+
 
 	  
 	  

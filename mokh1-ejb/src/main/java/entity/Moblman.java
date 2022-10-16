@@ -1,30 +1,39 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name = "Moblman")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "Moblman")
 @NamedQueries({
-	@NamedQuery(name="findMoblmanById" , query="SELECT u FROM Moblman u WHERE u.productId=:v_productId")
+	@NamedQuery(name="findMoblmanById" , query="SELECT u FROM Moblman u WHERE u.id=:v_id")
 })
 @Cacheable(value = false)
-public class Moblman extends ProductEntity {
+public class Moblman implements Serializable{
 
 
 	private static final long serialVersionUID = 1L;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private long id;
 	 @Column(name = "noeMobl", nullable = true , length=100) private String
 	  noeMobl;
 	  
@@ -95,7 +104,8 @@ public class Moblman extends ProductEntity {
 	  @Column(name = "abadMiz", nullable = true , length=100) private String
 	  abadMiz;
 	  
-	  
+		@OneToOne(mappedBy = "moblman")
+		private ProductEntity product;
 
 	public Moblman() {
 		super();
@@ -312,17 +322,27 @@ public class Moblman extends ProductEntity {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Moblman [noeMobl=" + noeMobl + ", tedadMobl=" + tedadMobl + ", sakhtarMobl=" + sakhtarMobl
-				+ ", jenseFome=" + jenseFome + ", jenseEsfanj=" + jenseEsfanj + ", jenseEskelet=" + jenseEskelet
-				+ ", jensePaye=" + jensePaye + ", EnetekhabRangPaye=" + enetekhabRangPaye + ", rangPaye=" + rangPaye
-				+ ", jenseParche=" + jenseParche + ", nameParche=" + nameParche + ", EnetekhabRangParche="
-				+ enetekhabRangParche + ", rangParche=" + rangParche + ", mekanizmTakhtsho=" + mekanizmTakhtsho
-				+ ", descriptionMekanizmTakhtsho=" + descriptionMekanizmTakhtsho + ", kosan=" + kosan + ", tedadKosan="
-				+ tedadKosan + ", abadKosanBozorg=" + abadKosanBozorg + ", abadKosanKochak=" + abadKosanKochak
-				+ ", modelKosan=" + modelKosan + ", jenseParcheKosan=" + jenseParcheKosan + ", rangeParcheKosan="
-				+ rangeParcheKosan + ", miz=" + miz + ", tedadMiz=" + tedadMiz + ", abadMiz=" + abadMiz + "]";
+	public long getId() {
+		return id;
 	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public ProductEntity getProduct() {
+		return product;
+	}
+
+
+	public void setProduct(ProductEntity product) {
+		this.product = product;
+	}
+
+
+
+
 
 }

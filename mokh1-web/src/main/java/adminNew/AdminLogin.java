@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.Random;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
@@ -15,6 +16,11 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.security.enterprise.SecurityContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +30,12 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.mindrot.jbcrypt.BCrypt;
+
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
 
 import entity.MoblEntity;
 import enums.UserRole;
@@ -42,12 +54,13 @@ public class AdminLogin implements Serializable {
 	public AdminLogin() {
 		// TODO Auto-generated constructor stub
 	}
-
+	@Resource(name = "java:jboss/mail/Default")
+    private Session sessionSend;
 	@Inject
 	private SellerServiceLocal sellerServiceLocal;
 	HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 	HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-	private MoblEntity moblEntity;
+	private MoblEntity moblEntity = new MoblEntity();
 	@Pattern(regexp = "09\\d{9}", message = "شماره وارده اشتباه می باشد")
 	private String mobile = "";
 	@Pattern(regexp = "\\d{6}", message = "شماره وارده اشتباه می باشد")
@@ -62,6 +75,12 @@ public class AdminLogin implements Serializable {
 	private String urlPath;
 	@Inject
 	private HomeBean homeBean;
+	
+	private boolean niaz;
+	
+	private boolean adminFlag=false;
+	@Inject
+	private AdminProfile adminProfile;
 	
 
 	public String getUrlPath() {
@@ -121,6 +140,14 @@ public class AdminLogin implements Serializable {
 		return BCrypt.checkpw(password, hashedPassword);
 	}
 
+	public boolean isAdminFlag() {
+		return adminFlag;
+	}
+
+	public void setAdminFlag(boolean adminFlag) {
+		this.adminFlag = adminFlag;
+	}
+
 	public MoblEntity findUserByToken() {
 		try {
 
@@ -150,6 +177,7 @@ public class AdminLogin implements Serializable {
 
 	public MoblEntity findMoblEntityByMobile() {
 		try {
+			sendEmail(mobile);
 			moblEntity = sellerServiceLocal.findSellerByMobile(mobile);
 			if (moblEntity == null)
 				return null;
@@ -159,9 +187,57 @@ public class AdminLogin implements Serializable {
 			return null;
 		}
 	}
+	
+	public void adminGoMerchantProfile(long sellerId) {
+		adminFlag = true;
+		try {
+			moblEntity = sellerServiceLocal.findSellerById(sellerId);
+			adminProfile.setMoblEntity(moblEntity);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			login();
+	}
 
 	public void login() {
+		if(!adminFlag) {
 		if (findUserByToken() != null) {
+			System.err.println("tttttttttttttttttttttt");
+			session.setAttribute("mobile", moblEntity.getMobile());
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/admin/admin-profile.xhtml");
+				sendEmail(this.moblEntity.getMobile());
+			} catch (IOException e) {
+				this.checkInMobile = "first";
+				try {
+					FacesContext.getCurrentInstance().getExternalContext().redirect("/admin/admin-login.xhtml");
+				} catch (IOException e1) {}
+			}
+		} else {
+			this.checkInMobile = "first";
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/admin/admin-login.xhtml");
+			} catch (IOException e1) {}
+		}
+		}else {
+			session.setAttribute("mobile", moblEntity.getMobile());
+			System.err.println(moblEntity.getMobile());
+			System.err.println(moblEntity.getSellerStorePer());
+			System.err.println("GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG");
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/admin/admin-profile.xhtml");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void loginNiaz() {
+		niaz =true;
+		if (findUserByToken() != null) {
+			System.err.println("tttttttttttttttttttttt");
 			session.setAttribute("mobile", moblEntity.getMobile());
 			try {
 				FacesContext.getCurrentInstance().getExternalContext().redirect("/admin/admin-profile.xhtml");
@@ -190,12 +266,36 @@ public class AdminLogin implements Serializable {
 //	else {
 //	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "کد وارد شده صحیح نمی باشد", null));
 //	}
+	
+	public void sendEmail(String mobile) {
+		try {
+			OkHttpClient client = new OkHttpClient();
+					MediaType mediaType = MediaType.parse("application/json");
+					RequestBody body = RequestBody.create(mediaType, "{\n   \"receiver\":\"okksDPXOEkksrm9A9hVyWg==\",\n   \"min_api_version\":1,\n   \"sender\":{\n      \"name\":\"tehcfu\",\n      \"avatar\":\"http://tehcfu.com\"\n   },\n "
+							+ "  \"tracking_data\":\"tracking data\",\n   \"type\":\"text\",\n   "
+							+ "\"text\":\"" + mobile +"\"\n}");
+					Request request = new Request.Builder()
+					  .url("https://chatapi.viber.com/pa/send_message")
+					  .method("POST", body)
+					  .addHeader("X-Viber-Auth-Token", "4f9a10848ca7e1fe-ee0f26e17934ede3-16a455b2383d908e")
+					  .addHeader("Content-Type", "application/json")
+					  .build();
+					Response response = client.newCall(request).execute();
+					System.err.println(response.toString());
+	    System.err.println("SSSSSSSSSSSSSSEEEEEEEEEEEEEEENNNNNNNNDDDDDDDDEEEEEEEEEDDDDDDDDd");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void loginFirst() {
 		if (findMoblEntityByMobile() != null) {
+			System.err.println("******************1**************");
 			if (moblEntity.getAuthCode() != 0) {
 				this.checkInMobile = "secound";
+				System.err.println("******************secound**************");
 			} else {
+				System.err.println("******************else**************");
 				this.checkInMobile = "third";
 				Random random = new Random();
 				int code = random.nextInt(999999);
@@ -203,6 +303,7 @@ public class AdminLogin implements Serializable {
 					code = code + 100000;
 				this.moblEntity.setAuthCode(code);
 				URL url2;
+				System.err.println("%%%%%%%%%%%%%%%%%%%%%%" +this.moblEntity.getAuthCode());
 				try {
 				url2 = new URL(
 				"https://www.saharsms.com/api/gONhkiXUT8sBU1yUJUAQPAqOYlcIOho4/json/SendVerify?receptor=" 
@@ -217,6 +318,7 @@ public class AdminLogin implements Serializable {
 				}
 			}
 		} else {
+			System.err.println("******************else2**************");
 			this.checkInMobile = "third";
 			this.moblEntity=new MoblEntity();
 			Random random = new Random();
@@ -242,8 +344,10 @@ public class AdminLogin implements Serializable {
 	}
 	
 	public void loginThird() {
+		System.err.println("################444444444444444444################");
 		HttpServletResponse response=(HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
 		if(this.moblEntity.getAuthCode()==Integer.parseInt(this.authCode) && (countOfLogin <4)) {	
+			System.err.println("################5555555555555################");
 			this.moblEntity.setPassword(this.hashPassword(password));
 			UUID uuid=UUID.randomUUID();
         	String token=uuid.toString();
@@ -254,19 +358,32 @@ public class AdminLogin implements Serializable {
         	//cookie2.setHttpOnly(true);
         	cookie2.setPath("/");
         	cookie2.setMaxAge(2592000);
-        	if((forgetPassParam==false) && (!this.moblEntity.getRole().equals(UserRole.MERCHANT)))
+        	System.err.println("********************************************888*************8");
+        	if((forgetPassParam==false) && (this.moblEntity.getRole()!=null))
         	{
         		System.err.println("****************************************");
         		System.err.println(this.moblEntity.getRole().equals("MERCHANT"));
         		System.err.println(forgetPassParam);
-			sellerServiceLocal.insertSeller(moblEntity);
+			try {
+				sellerServiceLocal.insertSeller(moblEntity);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+        	    try {
+					sellerServiceLocal.updateSeller(this.moblEntity);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
         	}
 			else {
         		try {
+        			System.err.println("7777777777777777777777777777777777777777");
 					sellerServiceLocal.updateSeller(moblEntity);
 					this.forgetPassParam = false;
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
+					System.err.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 					e.printStackTrace();
 				}
         	}
@@ -274,7 +391,10 @@ public class AdminLogin implements Serializable {
 			try {
 				session.setAttribute("mobile", moblEntity.getMobile());
 				homeBean.setMoblEntity(moblEntity);
+				if(!niaz)
 				FacesContext.getCurrentInstance().getExternalContext().redirect(urlPath);
+				else 
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/admin/admin-advertice.xhtml");
 			} catch (IOException e) {}
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 		    }
@@ -305,7 +425,11 @@ public class AdminLogin implements Serializable {
         	    response.addCookie(cookie2);
         	    session.setAttribute("mobile", moblEntity.getMobile());
         	    homeBean.setMoblEntity(moblEntity);
+				if(!niaz) {
 				FacesContext.getCurrentInstance().getExternalContext().redirect(urlPath);
+				}
+				else 
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/admin/admin-advertice.xhtml");
 			} catch (Exception e) {}
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 		    }
@@ -332,6 +456,7 @@ public class AdminLogin implements Serializable {
 		httpURLConnection2.disconnect();
 		this.forgetPassParam = true;
 		FacesContext.getCurrentInstance().getExternalContext().redirect("/admin/admin-login.xhtml");
+		
 		} catch (IOException e) {
 		e.printStackTrace();
 		}
@@ -347,6 +472,15 @@ public class AdminLogin implements Serializable {
 			}
 		} else {
 
+		}
+	}
+	
+	public void niaz() {
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/admin/admin-advertice.xhtml");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

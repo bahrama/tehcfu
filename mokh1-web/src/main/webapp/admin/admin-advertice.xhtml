@@ -5,9 +5,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:pp="http://xmlns.jcp.org/jsf/passthrough"
-	
->
+	xmlns:pp="http://xmlns.jcp.org/jsf/passthrough">
 
 	<ui:define name="headPage">
 		<style>
@@ -32,447 +30,833 @@ body .ui-growl {
 	margin: 0px !important;
 	font-size: 12px !important;
 }
-td{
-max-width: 300px!important;
+
+td {
+	max-width: 300px !important;
 }
+
 .ui-fluid .ui-inputtext {
-    width: 100%;
+	width: 100%;
 }
 </style>
-  <style>
-  .elemansJsf{
-    margin-bottom: 30px;
+		<style>
+.elemansJsf {
+	margin-bottom: 30px;
 	margin-top: 10px;
 	font-size: 20px;
 	font-family: IRANSansNor;
-	border-radius: 25px!important;
-  }
-  .headerJsf{
-  font-family: IRANSansBold;
-  }
-  .selItem{
-  text-align: right!important;
-  font-size: 18px!important;
-  font-family: IRANSansNor!important;
-  }
-  .ui-fluid .ui-inputtextarea {
-    width: 100%;
-    font-size: 18px!important;
-    font-family: IRANSansNor !important;
+	border-radius: 25px !important;
 }
+
+.headerJsf {
+	font-family: IRANSansBold;
+}
+
+.selItem {
+	text-align: right !important;
+	font-size: 18px !important;
+	font-family: IRANSansNor !important;
+}
+
+.ui-fluid .ui-inputtextarea {
+	width: 100%;
+	font-size: 18px !important;
+	font-family: IRANSansNor !important;
+}
+
 .ui-fluid .ui-inputfield {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    font-size: 18px !important;
-    font-family: IRANSansNor !important;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	font-size: 18px !important;
+	font-family: IRANSansNor !important;
 }
+
 .ui-fluid .ui-selectonemenu {
-    width: 100%;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    margin-top: 10px!important;
-    margin-bottom: 30px!important;
+	width: 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	margin-top: 10px !important;
+	margin-bottom: 30px !important;
 }
-  body .ui-selectonemenu-panel .ui-selectonemenu-items .ui-selectonemenu-item {
-    margin: 0;
-    padding: 0.429rem 0.857rem;
-    background: transparent;
-    color: #333333;
-    outline: 0 none;
-    border-radius: 0;
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
-    text-align: right !important;
-    font-size: 18px !important;
-    font-family: IRANSansNor !important;
+
+body .ui-selectonemenu-panel .ui-selectonemenu-items .ui-selectonemenu-item
+	{
+	margin: 0;
+	padding: 0.429rem 0.857rem;
+	background: transparent;
+	color: #333333;
+	outline: 0 none;
+	border-radius: 0;
+	transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+		box-shadow 0.2s;
+	text-align: right !important;
+	font-size: 18px !important;
+	font-family: IRANSansNor !important;
 }
+
 .ui-selectonemenu label.ui-selectonemenu-label {
-    cursor: pointer;
-    text-align: center;
-    font-family: IRANSansBold !important;
+	cursor: pointer;
+	text-align: center;
+	font-family: IRANSansBold !important;
 }
+
 body .ui-tabs .ui-tabs-nav li.ui-tabs-header a {
-    color: #ffffff;
-    padding: 0;
-    font-weight: 700;
-    display: block;
-    line-height: 1;
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
-    font-size: 18px;
-    font-family: IRANSansBold;
+	color: #ffffff;
+	padding: 0;
+	font-weight: 700;
+	display: block;
+	line-height: 1;
+	transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+		box-shadow 0.2s;
+	font-size: 18px;
+	font-family: IRANSansBold;
 }
+
 body .ui-tabs .ui-tabs-nav li.ui-tabs-header {
-    list-style: none;
-    white-space: nowrap;
-    display: inline-block;
-    vertical-align: top;
-    float: none;
-    padding: 0.857rem 1rem;
-    background: #007ad9;
-    color: #ffffff;
-    margin: 0;
-    cursor: pointer;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
-    border-radius: 15px;
+	list-style: none;
+	white-space: nowrap;
+	display: inline-block;
+	vertical-align: top;
+	float: none;
+	padding: 0.857rem 1rem;
+	background: #007ad9;
+	color: #ffffff;
+	margin: 0;
+	cursor: pointer;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+		box-shadow 0.2s;
+	border-radius: 15px;
 }
+
 body .ui-tabs .ui-tabs-nav li.ui-tabs-header.ui-state-active {
-    background: crimson;
+	background: crimson;
 }
-  </style>
- 		<h:outputStylesheet library="calendar" name="kamadatepicker.min.css" />
+</style>
+		<h:outputStylesheet library="calendar" name="kamadatepicker.min.css" />
 		<h:outputScript library="calendar" name="kamadatepicker.min.js" />
-		<h:outputScript library="calendar" name="kamadatepicker.holidays.js" /> 
-</ui:define>
+		<h:outputScript library="calendar" name="kamadatepicker.holidays.js" />
+	</ui:define>
 	<ui:define name="mainPage">
-	<h:panelGroup rendered="#{(homeBean.moblEntity.role ne 'ADMIN')}">
-<h:form id="form" enctype="multipart/form-data"
-	acceptcharset="UTF-8" prependId="false">
-<p:growl id="grl" life="2000"/>
- <div class="content-wrapper">
-    <section class="content">
-      <div class="container-fluid">
-                <p:tabView>
-            <p:tab title="نیازمندی کارفرمایان">
-          <p:outputPanel id="pnl1" class="ui-fluid">
+		<h:panelGroup rendered="#{(homeBean.moblEntity.role ne 'ADMIN')}">
+			<h:form id="form" enctype="multipart/form-data" acceptcharset="UTF-8"
+				prependId="false">
+				<p:growl id="grl" life="2000" />
+				<div class="content-wrapper">
+					<section class="content">
+						<div class="container-fluid">
+							<p:tabView>
+								<p:tab title="نیازمندی کارفرمایان">
+									<p:outputPanel id="pnl1" class="ui-fluid">
 
-                <h:panelGrid columns="6" width="100%">
-                    <h:outputText class="headerJsf" value="عنوان شغل" />
-                    <p:inputText class="elemansJsf" id="in1" value="#{advertiseBean.title}"/>
-                    <p:message for="in1" id="msg1"/>
+										<h:panelGrid columns="6" width="100%">
+											<h:outputText class="headerJsf" value="عنوان شغلی" />
+											<p:inputText class="elemansJsf" id="in1"
+												value="#{advertiseBean.title}" />
+											<p:message for="in1" id="msg1" />
 
-                    <h:outputText class="headerJsf" value="نام شرکت" />
-                    <p:inputText class="elemansJsf" id="in111" value="#{advertiseBean.karfarmaCompanyName}"/>
-                    <p:message for="in111" id="msg111"/>
+											<h:outputText class="headerJsf" value="نام فروشگاه/تولیدی/شرکت" />
+											<p:inputText class="elemansJsf" id="in111"
+												value="#{advertiseBean.karfarmaCompanyName}" />
+											<p:message for="in111" id="msg111" />
 
-                    <h:outputText class="headerJsf" value="نام پاسخگو" />
-                    <p:inputText class="elemansJsf" id="in112" value="#{advertiseBean.karfarmaPasokhName}"/>
-                    <p:message for="in112" id="msg112"/>
+											<h:outputText class="headerJsf" value="ایمیل" />
+											<p:inputText class="elemansJsf" id="in111x"
+												value="#{advertiseBean.email}" />
+											<p:message for="in111x" id="msg111x" />
 
-                    <h:outputText class="headerJsf" value="سمت پاسخگو" />
-                    <p:inputText class="elemansJsf" id="in114" value="#{advertiseBean.karfarmaPasokhSemat}"/>
-                    <p:message for="in114" id="msg114"/>
+											<h:outputText class="headerJsf" value="سایت" />
+											<p:inputText class="elemansJsf" id="in111xxx"
+												value="#{advertiseBean.site}" />
+											<p:message for="in111xxx" id="msg111xxx" />
 
-                    <h:outputText class="headerJsf" value="صنف شرکت" />
-                    <p:inputText class="elemansJsf" id="in113" value="#{advertiseBean.karfarmaSenf}"/>
-                    <p:message for="in113" id="msg113"/>
+											<h:outputText class="headerJsf" value="حذاقل سابقه کار مفید" />
+											<p:inputText class="elemansJsf" id="in112"
+												value="#{advertiseBean.minSabege}" />
+											<p:message for="in112" id="msg112" />
 
-                     <h:outputText class="headerJsf" value="شرح وظیفه" />
-                    <p:inputTextarea class="elemansJsf" id="in2" value="#{advertiseBean.description}"/>
-                    <p:message for="in2" id="msg2"/>
-                  
-                    <h:outputText class="headerJsf" value="شرح نیروی مورد نظر" />
-                    <p:inputTextarea class="elemansJsf" id="in3" value="#{advertiseBean.karfarmaNiroMorede}"/>
-                    <p:message for="in3" id="msg3"/>
-                  
-                    <h:outputText class="headerJsf" value="تخصص مورد نیاز" />
-                    <p:inputTextarea class="elemansJsf" id="in311" value="#{advertiseBean.karfarmaTakhasosMorede}"/>
-                    <p:message for="in311" id="msg311"/>
-                  
-                    <h:outputText class="headerJsf" value="تلفن" />
-                    <p:inputTextarea class="elemansJsf" id="in311x" value="#{advertiseBean.phone}"/>
-                    <p:message for="in311x" id="msg311x"/>
-                                    
-                    <h:outputText class="headerJsf" value="آدرس" />
-                    <p:inputTextarea class="elemansJsf" id="in311xx" value="#{advertiseBean.address}"/>
-                    <p:message for="in311xx" id="msg311xx"/>
-                  
-                    <h:outputText class="headerJsf" value="نوع استخدام" />
-         		    <h:selectOneRadio value="#{advertiseBean.karfarmaNoeDarkhast}" id="in4" layout="lineDirection">
-						<f:selectItem itemValue="تمام وقت" itemLabel="تمام وقت" />
-						<f:selectItem itemValue="پاره وقت" itemLabel="پاره وقت" />
-					</h:selectOneRadio>
-                    <p:message for="in4" id="msg4"/>
+											<h:outputText class="headerJsf" value="مقطع تحصیلی" />
+											<p:inputText class="elemansJsf" id="in114"
+												value="#{advertiseBean.magtaTahsisli}" />
+											<p:message for="in114" id="msg114" />
 
-                 
-          			<h:outputText class="headerJsf" value="میزان حقوق" />
-						<p:inputNumber class="elemansJsf" id="in5"
-							value="#{advertiseBean.mizanHogog}"
-							thousandSeparator="," />
-						<p:message for="in5" id="msg5" />
-						
-						
-						
-												<h:outputText class="headerJsf" value="عکس 1" />
-												<p:fileUpload id="in39p" value="#{advertiseBean.pic1}"
-													mode="simple" skinSimple="true" required="true"
-													binding="#{advertiseBean.pic1Component}"
-													validateContentType="true" accept=".jpg,.jpeg" />
-												<p:message for="in39p" id="msg39p" />
-												<br/>
-					</h:panelGrid>
+											<h:outputText class="headerJsf" value="رشته تحصیلی " />
+											<p:inputText class="elemansJsf" id="in113"
+												value="#{advertiseBean.reshte}" />
+											<p:message for="in113" id="msg113" />
 
-        			<p:commandButton value="ذخیره" ajax="true" 
-					actionListener="#{advertiseBean.insertToKarfarma()}"
-					styleClass="p-mt-3 ui-button-outlined p-d-block"
-					update="pnl1 grl in1 in311xx in311x msg311x msg311xx in2 in3 in4 in5 in111 in112 in113 in114 in311 in39p msg1 msg2 msg3 msg4 msg5 msg111 msg112 msg113 msg114 msg311 msg39p"  
-					process="pnl1" />
-            </p:outputPanel>
-          </p:tab>
-          <!--  -->
-          <!--  -->
-          <!--  -->
-          <!--  -->
-          <!--  -->
-          <p:tab title="تقاضای همکاری">
-           <p:outputPanel id="pnl2" class="ui-fluid">
-<h:panelGrid columns="6" width="100%">
+											<h:outputText class="headerJsf" value="سن مورد نظر" />
+											<p:inputText class="elemansJsf" id="in113x"
+												value="#{advertiseBean.sen}" />
+											<p:message for="in113x" id="msg113x" />
 
-                    <h:outputText class="headerJsf" value="عنوان کار" />
-                    <p:inputText id="in6" value="#{advertiseBean.title}"/>
-                    <p:message for="in6" id="msg6"/>
+											<h:outputText class="headerJsf" value="توضیحات اضافی" />
+											<p:inputTextarea class="elemansJsf" id="in2"
+												value="#{advertiseBean.description}" />
+											<p:message for="in2" id="msg2" />
 
-                    <h:outputText class="headerJsf" value="توضیحات" />
-                    <p:inputTextarea class="elemansJsf" id="in7" value="#{advertiseBean.description}"/>
-                    <p:message for="in7" id="msg7"/>
-                                    
-                    <h:outputText class="headerJsf" value="تلفن" />
-                    <p:inputTextarea class="elemansJsf" id="in311y" value="#{advertiseBean.phone}"/>
-                    <p:message for="in311y" id="msg311y"/>
-                                    
-                    <h:outputText class="headerJsf" value="آدرس" />
-                    <p:inputTextarea class="elemansJsf" id="in311yy" value="#{advertiseBean.address}"/>
-                    <p:message for="in311yy" id="msg311yy"/>
-                    
-                    <h:outputText class="headerJsf" value="رشته تحصیلی" />
-                    <p:inputTextarea class="elemansJsf" id="in9" value="#{advertiseBean.karjoField}"/>
-                    <p:message for="in9" id="msg9"/>
-                    
-                    <h:outputText class="headerJsf" value="مدرک تحصیلی" />
-                    <p:inputText class="elemansJsf" id="in10" value="#{advertiseBean.karjoMadrak}"/>
-                    <p:message for="in10" id="msg10"/>
-                    
-                    <h:outputText class="headerJsf" value="رشته تحصیلی" />
-                    <p:inputTextarea class="elemansJsf" id="in11" value="#{advertiseBean.karjoMaharat}"/>
-                    <p:message for="in11" id="msg11"/>
-                    
-                    <h:outputText class="headerJsf" value="نوع همکاری" />
-         		    <h:selectOneRadio value="#{advertiseBean.karjoNoeHamkari}" id="in4z" layout="lineDirection">
-						<f:selectItem itemValue="تمام وقت" itemLabel="تمام وقت" />
-						<f:selectItem itemValue="پاره وقت" itemLabel="پاره وقت" />
-					</h:selectOneRadio>
-                    <p:message for="in4z" id="msg4z"/>
-                    						
-					<h:outputText class="headerJsf" value="عکس 1" />
-					<p:fileUpload id="in39p2" value="#{advertiseBean.pic2}"
-						mode="simple" skinSimple="true" required="true"
-						binding="#{advertiseBean.pic2Component}"
-						validateContentType="true" accept=".jpg,.jpeg" />
-					<p:message for="in39p2" id="msg39p2" />
-					
-                  </h:panelGrid>
-                  <br/>
-        			<p:commandButton value="ذخیره" ajax="true" 
-					actionListener="#{advertiseBean.insertToKarjo()}"
-					styleClass="p-mt-3 ui-button-outlined p-d-block"
-					update="pnl2 grl in4z msg4z in39p2 in311y in311yy in6 in7 in9 in10 in11 msg6 msg7 msg9 msg10 msg11 msg39p2 msg311y msg311yy"  
-					process="pnl2" />
-					
-            </p:outputPanel>
-        </p:tab>
-          <!--  -->
-          <!--  -->
-          <!--  -->
-          <!--  -->
-          <!--  -->
-          <p:tab title="تجهیزات و ماشین آلات">
-         <p:outputPanel id="pnl3" class="ui-fluid">
-<h:panelGrid columns="6" width="100%">
-                    <h:outputText class="headerJsf" value="نام دستگاه" />
-                    <p:inputText class="elemansJsf" id="in12" value="#{advertiseBean.machineName}"/>
-                    <p:message for="in12" id="msg12"/>
-                 
-                    <h:outputText class="headerJsf" value="ساخت کشور" />
-                    <p:inputText class="elemansJsf" id="in13" value="#{advertiseBean.contry}"/>
-                    <p:message for="in13" id="msg13"/>
-                    
-                    <h:outputText class="headerJsf" value="نام برند" />
-                    <p:inputText class="elemansJsf" id="in14" value="#{advertiseBean.brand}"/>
-                    <p:message for="in14" id="msg14"/>
-                    
-                    <h:outputText class="headerJsf" value="تلفن" />
-                    <p:inputTextarea class="elemansJsf" id="in311y1" value="#{advertiseBean.phone}"/>
-                    <p:message for="in311y1" id="msg311y1"/>
-                                    
-                    <h:outputText class="headerJsf" value="آدرس" />
-                    <p:inputTextarea class="elemansJsf" id="in311yy1" value="#{advertiseBean.address}"/>
-                    <p:message for="in311yy1" id="msg311yy1"/>
-                    
-                    <h:outputText class="headerJsf" value="مشخصات" />
-                    <p:inputTextarea class="elemansJsf" id="in311z1" value="#{advertiseBean.moshakhasat}"/>
-                    <p:message for="in311z1" id="msg311z1"/>
-                    
-                    <h:outputText class="headerJsf" value="سال تولید (شمسی)" />
-                    <p:inputText class="elemansJsf" id="in15" value="#{advertiseBean.saleTolid}"/>
-				    <p:message for="in15" id="msg15"/>
+											<h:outputText class="headerJsf" value="شرح نیروی مورد نظر" />
+											<p:inputTextarea class="elemansJsf" id="in3"
+												value="#{advertiseBean.karfarmaNiroMorede}" />
+											<p:message for="in3" id="msg3" />
 
-                    <h:outputText class="headerJsf" value="مبلغ فروش به ریال" />
-                    <p:inputNumber  class="elemansJsf" id="in16" value="#{advertiseBean.mablag}" thousandSeparator="," />
-                    <p:message for="in16" id="msg16"/>
+											<h:outputText class="headerJsf" value="تخصص مورد نیاز" />
+											<p:inputTextarea class="elemansJsf" id="in311"
+												value="#{advertiseBean.karfarmaTakhasosMorede}" />
+											<p:message for="in311" id="msg311" />
 
-                    <h:outputText class="headerJsf" value="محل فروش" />
-                    <p:inputText class="elemansJsf" id="in17" value="#{advertiseBean.mahaleForosh}"/>
-                    <p:message for="in17" id="msg17"/>
-                    
-                                        						
-					<h:outputText class="headerJsf" value="عکس 1" />
-					<p:fileUpload id="in39p3" value="#{advertiseBean.pic3}"
-						mode="simple" skinSimple="true" required="true"
-						binding="#{advertiseBean.pic3Component}"
-						validateContentType="true" accept=".jpg,.jpeg" />
-					<p:message for="in39p3" id="msg39p3" />
-                    </h:panelGrid>
-                    <br/>
-                          			<p:commandButton value="ارسال" ajax="true" 
-					actionListener="#{advertiseBean.insertToMachin()}"
-					styleClass="p-mt-3 ui-button-outlined p-d-block"
-					update="pnl3 grl msg311z1 in311z1 in311y1 in39p3 msg39p3 msg311y1 in311yy1 msg311yy1 in12 in13 in14 in15 in16 in17 msg12 msg13 msg14 msg15 msg16 msg17"  
-					process="pnl3" />
- 
-          </p:outputPanel>
-          </p:tab>
-          <!--  -->
-          <!--  -->
-          <!--  -->
-          <!--  -->
-          <!--  -->
-          <p:tab title="فرم نیازمندی املاک">
-           <div class="row">
-          <div class="col-md-12">
-            <p:outputPanel id="pnl4" class="ui-fluid">
-<h:panelGrid columns="6" width="100%">
-                  <h:outputText class="headerJsf" value="نوع آگهی" />
-         			<h:selectOneMenu value="#{advertiseBean.rentType}" id="in18"
-						styleClass="form-control">
-						<f:selectItem itemValue="فروش" itemLabel="فروش" />
-						<f:selectItem itemValue="رهن کامل" itemLabel="رهن کامل" />
-						<f:selectItem itemValue="اجاره"
-							itemLabel="اجاره" />
-					</h:selectOneMenu>
-                    <p:message for="in18" id="msg18"/>
-                
-                    <h:outputText class="headerJsf" value="نوع ملک" />
-   				    <h:selectOneMenu value="#{advertiseBean.homeType}" id="in19"
-						styleClass="form-control">
-						<f:selectItem itemValue="مسکونی" itemLabel="مسکونی" />
-						<f:selectItem itemValue="اداری" itemLabel="اداری" />
-						<f:selectItem itemValue="تجاری" itemLabel="تجاری" />
-					</h:selectOneMenu>
-                    <p:message for="in19" id="msg19"/>
-                    
-                    <h:outputText class="headerJsf" value="آدرس ملک" />
-                    <p:inputTextarea class="elemansJsf" id="in20" value="#{advertiseBean.address}"/>
-                    <p:message for="in20" id="msg20"/>
+											<h:outputText class="headerJsf" value="تلفن" />
+											<p:inputTextarea class="elemansJsf" id="in311x"
+												value="#{advertiseBean.phone}" />
+											<p:message for="in311x" id="msg311x" />
 
-                     <h:outputText class="headerJsf" value="واقع در" />
-         			<h:selectOneMenu value="#{advertiseBean.vage}" id="in21"
-						styleClass="form-control">
-						<f:selectItem itemValue="مجتمع تجاری" itemLabel="مجتمع تجاری" />
-						<f:selectItem itemValue="خیابان اصلی" itemLabel="خیابان اصلی" />
-						<f:selectItem itemValue="خیابان فرعی"
-							itemLabel="خیابان فرعی" />
-					</h:selectOneMenu>
-					 <p:message for="in21" id="msg21"/>
-					 
-                    <h:outputText class="headerJsf" value="موقعیت" />
-         				<h:selectOneMenu value="#{advertiseBean.mogeiat}" id="in22"
-							styleClass="form-control">
-							<f:selectItem itemValue="شمالی" itemLabel="شمالی" />
-							<f:selectItem itemValue="جنوبی" itemLabel="جنوبی" />
-							<f:selectItem itemValue="شرقی" itemLabel="شرقی" />
-						    <f:selectItem itemValue="غربی" itemLabel="غربی" />
-						</h:selectOneMenu>
-                    <p:message for="in22" id="msg22"/>
+											<h:outputText class="headerJsf" value="آدرس" />
+											<p:inputTextarea class="elemansJsf" id="in311xx"
+												value="#{advertiseBean.address}" />
+											<p:message for="in311xx" id="msg311xx" />
 
-                     <h:outputText class="headerJsf" value="تعداد طبقات" />
-                    <p:spinner id="in23" value="#{advertiseBean.tedadTabage}" min="1" max="1000" />
-                    <p:message for="in23" id="msg23"/>
-
-                     <h:outputText class="headerJsf" value="تعداد واحد در هر طبقه" />
-                    <p:spinner id="in24" value="#{advertiseBean.tedadVahed}" min="1" max="1000" />
-                    <p:message for="in24" id="msg24"/>
+											<h:outputText class="headerJsf" value="جىسیت را انتخاب کنید" />
+											<p:selectOneMenu value="#{advertiseBean.jensiat}" id="in4"
+												layout="lineDirection">
+												<f:selectItem itemValue="مرد" itemLabel="مرد" />
+												<f:selectItem itemValue="زن" itemLabel="زن" />
+												<f:selectItem itemValue="فرقی ندارد" itemLabel="فرقی ندارد" />
+											</p:selectOneMenu>
+											<p:message for="in4" id="msg4" />
 
 
-                    <h:outputText class="headerJsf" value="مبلغ ودیعه به ریال" />
-                    <p:inputNumber  class="elemansJsf" id="in25" value="#{advertiseBean.vadieeMoney}" thousandSeparator="," />
-                    <p:message for="in25" id="msg25"/>
+											<h:outputText class="headerJsf" value="میزان حقوق" />
+											<p:inputNumber class="elemansJsf" id="in5"
+												value="#{advertiseBean.mizanHogog}" thousandSeparator="," />
+											<p:message for="in5" id="msg5" />
 
-                    <h:outputText class="headerJsf" value="مبلغ اجاره ماهیانه به ریال" />
-                    <p:inputNumber  class="elemansJsf" id="in26" value="#{advertiseBean.ejareMony}" thousandSeparator="," />
-                    <p:message for="in26" id="msg26"/>
-                  
-                    <h:outputText class="headerJsf" value="مبلغ فروش به ریال" />
-                    <p:inputNumber  class="elemansJsf" id="in27" value="#{advertiseBean.mablageForosh}" thousandSeparator="," />
-                    <p:message for="in27" id="msg27"/>
+											<h:outputText class="headerJsf"
+												value="نوع همکاری را انتخاب کىید" />
+											<p:selectOneMenu value="#{advertiseBean.noeHamkari}"
+												id="in4x" layout="lineDirection">
+												<f:selectItem itemValue="تمام وقت" itemLabel="تمام وقت" />
+												<f:selectItem itemValue="پاره وقت" itemLabel="پاره وقت" />
+												<f:selectItem itemValue="پروژه ای" itemLabel="پروژه ای" />
+												<f:selectItem itemValue="دورکاری" itemLabel="دورکاری" />
+											</p:selectOneMenu>
+											<p:message for="in4x" id="msg4x" />
 
-                    <h:outputText class="headerJsf" value="سن بنا" />
-                    <p:inputNumber  class="elemansJsf" id="in28" value="#{advertiseBean.senBana}" thousandSeparator="," />
-                    <p:message for="in28" id="msg28"/>
+											<h:outputText class="headerJsf" value="نحوه حقوق" />
+											<p:selectOneMenu value="#{advertiseBean.noeHamkari}"
+												id="in4xx" layout="lineDirection">
+												<f:selectItem itemValue="ثابت" itemLabel="ثابت" />
+												<f:selectItem itemValue="پورسانت" itemLabel="پورسانت" />
+												<f:selectItem itemValue="هردو" itemLabel="هردو" />
+											</p:selectOneMenu>
+											<p:message for="in4xx" id="msg4xx" />
 
-                    <h:outputText class="headerJsf" value="مساحت زمین بر حسب متر مربع" />
-                    <p:inputNumber  class="elemansJsf" id="in29" value="#{advertiseBean.masahat}" thousandSeparator="," />
-                    <p:message for="in29" id="msg29"/>
 
-                    <h:outputText class="headerJsf" value="توضیحات" />
-                   <p:inputTextarea class="elemansJsf" id="in30" value="#{advertiseBean.description}"/>
-                    <p:message for="in30" id="msg30"/>
+											<h:outputText class="headerJsf" value="ساعت کاری" />
+											<p:inputTextarea class="elemansJsf" id="in311xxx"
+												value="#{advertiseBean.saatKari}" />
+											<p:message for="in311xxx" id="msg311xxx" />
 
-                    <h:outputText class="headerJsf" value="این ملک دارای پروانه کسب می باشد ؟" />
-        			<h:selectOneRadio value="#{advertiseBean.parvane}" id="in31"
-						styleClass="form-control" layout="lineDirection">
-						<f:selectItem itemValue="بلی" itemLabel="بلی" />
-						<f:selectItem itemValue="خیر" itemLabel="خیر" />
-					</h:selectOneRadio>
-                    <p:message for="in31" id="msg31"/>
+											<h:outputText class="headerJsf" value="بیمه تامین اجتماعی" />
+											<p:selectOneMenu value="#{advertiseBean.bime}" id="in4xxxx"
+												layout="lineDirection">
+												<f:selectItem itemValue="دارد" itemLabel="دارد" />
+												<f:selectItem itemValue="ندارد" itemLabel="ندارد" />
+											</p:selectOneMenu>
+											<p:message for="in4xxxx" id="msg4xxxx" />
 
-                    <h:outputText class="headerJsf" value="تلفن تماس بابت هماهنگی" />
-                    <p:inputText class="elemansJsf" id="in32" value="#{advertiseBean.phone}"/>
-                    <p:message for="in32" id="msg32"/>
 
-                    <h:outputText class="headerJsf" value="وضعیت سند" />
-					<h:selectOneRadio value="#{advertiseBean.vaziatSanad}" id="in33"
-						styleClass="form-control" layout="lineDirection">
-						<f:selectItem itemValue="سرقفلی" itemLabel="سرقفلی" />
-						<f:selectItem itemValue="ملکی" itemLabel="ملکی" />
-					</h:selectOneRadio>
-					<p:message for="in33" id="msg33"/>
+											<h:outputText class="headerJsf" value="بیمه تکمیلی" />
+											<p:selectOneMenu value="#{advertiseBean.bimeTakmili}"
+												id="in4xxxxx" layout="lineDirection">
+												<f:selectItem itemValue="دارد" itemLabel="دارد" />
+												<f:selectItem itemValue="ندارد" itemLabel="ندارد" />
+											</p:selectOneMenu>
+											<p:message for="in4xxxxx" id="msg4xxxxx" />
 
-                                                            						
-					<h:outputText class="headerJsf" value="عکس 1" />
-					<p:fileUpload id="in39p4" value="#{advertiseBean.pic4}"
-						mode="simple" skinSimple="true" required="true"
-						binding="#{advertiseBean.pic4Component}"
-						validateContentType="true" accept=".jpg,.jpeg" />
-					<p:message for="in39p4" id="msg39p4" />
-					</h:panelGrid>
-<br/>
-        			<p:commandButton value="ارسال" ajax="true" 
-					actionListener="#{advertiseBean.insertToRent()}"
-					styleClass="p-mt-3 ui-button-outlined p-d-block"
-					update="pnl4 grl in39p4  msg39p4  in18 in19 in20 in21 in22 in23 in24 in25 
-					in26 in27 in28 in29 in30 in31 in32 in33 msg18 msg19 msg20 msg21 msg22
-					msg23 msg24 msg25 msg26 msg27 msg28 msg29 msg30 msg31 msg32 msg33"  
-					process="pnl4" />
 
-            </p:outputPanel>  
-          </div>
-        </div>
-        </p:tab>
-        </p:tabView>
-      </div>
-      
-    </section>
-  </div>
-</h:form>
-</h:panelGroup>
+											<h:outputText class="headerJsf" value="اضافه کاری" />
+											<p:selectOneMenu value="#{advertiseBean.ezafekar}"
+												id="in4xxxxxx" layout="lineDirection">
+												<f:selectItem itemValue="دارد" itemLabel="دارد" />
+												<f:selectItem itemValue="ندارد" itemLabel="ندارد" />
+											</p:selectOneMenu>
+											<p:message for="in4xxxxxx" id="msg4xxxxxx" />
+
+											<h:outputText class="headerJsf" value="مرخصی" />
+											<p:selectOneMenu value="#{advertiseBean.morekhasi}"
+												id="in4xxxxxxx" layout="lineDirection">
+												<f:selectItem itemValue="دارد" itemLabel="دارد" />
+												<f:selectItem itemValue="ندارد" itemLabel="ندارد" />
+											</p:selectOneMenu>
+											<p:message for="in4xxxxxxx" id="msg4xxxxxxx" />
+
+
+
+											<h:outputText class="headerJsf" value="عکس 1" />
+											<p:fileUpload id="in39p" value="#{advertiseBean.pic1}"
+												mode="simple" skinSimple="true" required="true"
+												binding="#{advertiseBean.pic1Component}"
+												validateContentType="true" accept=".jpg,.jpeg" />
+											<p:message for="in39p" id="msg39p" />
+											<br />
+										</h:panelGrid>
+
+										<p:commandButton value="ذخیره" ajax="true"
+											actionListener="#{advertiseBean.insertToKarfarma()}"
+											styleClass="p-mt-3 ui-button-outlined p-d-block"
+											update="pnl1 grl" process="pnl1"
+											onstart="return startLoader()"
+											oncomplete="return endLoader()" />
+									</p:outputPanel>
+								</p:tab>
+								<!--  -->
+								<!--  -->
+								<!--  -->
+								<!--  -->
+								<!--  -->
+								<p:tab title="تقاضای همکاری">
+									<p:outputPanel id="pnl2" class="ui-fluid">
+										<h:panelGrid columns="6" width="100%">
+
+											<h:outputText class="headerJsf" value="عنوان کار" />
+											<p:inputText id="in6" value="#{advertiseBean.title}" />
+											<p:message for="in6" id="msg6" />
+
+											<h:outputText class="headerJsf" value="توضیحات" />
+											<p:inputTextarea class="elemansJsf" id="in7"
+												value="#{advertiseBean.description}" />
+											<p:message for="in7" id="msg7" />
+
+											<h:outputText class="headerJsf" value="تلفن" />
+											<p:inputTextarea class="elemansJsf" id="in311y"
+												value="#{advertiseBean.phone}" />
+											<p:message for="in311y" id="msg311y" />
+
+											<h:outputText class="headerJsf" value="آدرس" />
+											<p:inputTextarea class="elemansJsf" id="in311yy"
+												value="#{advertiseBean.address}" />
+											<p:message for="in311yy" id="msg311yy" />
+
+											<h:outputText class="headerJsf" value="رشته تحصیلی" />
+											<p:inputTextarea class="elemansJsf" id="in9"
+												value="#{advertiseBean.karjoField}" />
+											<p:message for="in9" id="msg9" />
+
+											<h:outputText class="headerJsf" value="مدرک تحصیلی" />
+											<p:inputText class="elemansJsf" id="in10"
+												value="#{advertiseBean.karjoMadrak}" />
+											<p:message for="in10" id="msg10" />
+
+											<h:outputText class="headerJsf" value="رشته تحصیلی" />
+											<p:inputTextarea class="elemansJsf" id="in11"
+												value="#{advertiseBean.reshte}" />
+											<p:message for="in11" id="msg11" />
+
+											<h:outputText class="headerJsf" value="سال تولد" />
+											<p:inputTextarea class="elemansJsf" id="in11y"
+												value="#{advertiseBean.birthDay}" />
+											<p:message for="in11y" id="msg11y" />
+
+											<h:outputText class="headerJsf" value="محل تولد" />
+											<p:inputTextarea class="elemansJsf" id="in11yy"
+												value="#{advertiseBean.mahaleTavalod}" />
+											<p:message for="in11yy" id="msg11yy" />
+
+											<h:outputText class="headerJsf" value="محل تولد" />
+											<p:inputTextarea class="elemansJsf" id="in11yyy"
+												value="#{advertiseBean.mahaleTavalod}" />
+											<p:message for="in11yyy" id="msg11yyy" />
+
+											<h:outputText class="headerJsf" value="تخصص کارجو" />
+											<p:inputTextarea class="elemansJsf" id="in11yyyc"
+												value="#{advertiseBean.takhasosKarjo}" />
+											<p:message for="in11yyyc" id="msg11yyyc" />
+
+
+											<h:outputText class="headerJsf" value="شغل مورد درخواست" />
+											<p:inputTextarea class="elemansJsf" id="in11yyycc"
+												value="#{advertiseBean.shogleDarkhast}" />
+											<p:message for="in11yyycc" id="msg11yyycc" />
+
+
+											<h:outputText class="headerJsf" value="دوره ها و مدارک" />
+											<p:inputTextarea class="elemansJsf" id="in11yyyccc"
+												value="#{advertiseBean.dorehaVmadarek}" />
+											<p:message for="in11yyyccc" id="msg11yyyccc" />
+
+
+
+
+											<h:outputText class="headerJsf" value="سابقه کار" />
+											<p:inputNumber class="elemansJsf" id="in5yyyy"
+												value="#{advertiseBean.sabege}" thousandSeparator="," />
+											<p:message for="in5yyyy" id="msg5yyyy" />
+
+											<h:outputText class="headerJsf" value="سابقه بیمه" />
+											<p:inputNumber class="elemansJsf" id="in5yyyyy"
+												value="#{advertiseBean.bimeSabege}" thousandSeparator="," />
+											<p:message for="in5yyyyy" id="msg5yyyyy" />
+
+
+											<h:outputText class="headerJsf" value="میزان حقوق" />
+											<p:inputNumber class="elemansJsf" id="in5yyyyyy"
+												value="#{advertiseBean.hogogKarjo}" thousandSeparator="," />
+											<p:message for="in5yyyyyy" id="msg5yyyyyy" />
+
+											<h:outputText class="headerJsf" value="وضعیت اشتغال" />
+											<p:selectOneMenu value="#{advertiseBean.vaziatEshtegal}"
+												id="in4zyyyyy" layout="lineDirection">
+												<f:selectItem itemValue="بیکار" itemLabel="بیکار" />
+												<f:selectItem itemValue="مشغول به کار"
+													itemLabel="مشغول به کار" />
+											</p:selectOneMenu>
+											<p:message for="in4zyyyyy" id="msg4zyyyyy" />
+
+											<h:outputText class="headerJsf" value="علت ترک کار" />
+											<p:inputTextarea class="elemansJsf" id="in11yyyyyy"
+												value="#{advertiseBean.elateTarkeKar}" />
+											<p:message for="in11yyyyyy" id="msg11yyyyyy" />
+
+											<h:outputText class="headerJsf" value="خدمت وظیفه" />
+											<p:selectOneMenu value="#{advertiseBean.khedmat}"
+												id="in4zrrr" layout="lineDirection">
+												<f:selectItem itemValue="اتمام دوره" itemLabel="اتمام دوره" />
+												<f:selectItem itemValue="مشمول" itemLabel="مشمول" />
+												<f:selectItem itemValue="معاف دایم" itemLabel="معاف دایم" />
+											</p:selectOneMenu>
+											<p:message for="in4zrrr" id="msg4zrrr" />
+
+
+											<h:outputText class="headerJsf" value="نوع همکاری" />
+											<p:selectOneMenu value="#{advertiseBean.karjoNoeHamkari}"
+												id="in4z" layout="lineDirection">
+												<f:selectItem itemValue="تمام وقت" itemLabel="تمام وقت" />
+												<f:selectItem itemValue="پاره وقت" itemLabel="پاره وقت" />
+												<f:selectItem itemValue="پروژه ای" itemLabel="پروژه ای" />
+												<f:selectItem itemValue="دورکاری" itemLabel="دورکاری" />
+											</p:selectOneMenu>
+											<p:message for="in4z" id="msg4z" />
+
+
+
+											<h:outputText class="headerJsf" value="عکس 1" />
+											<p:fileUpload id="in39p2" value="#{advertiseBean.pic2}"
+												mode="simple" skinSimple="true" required="true"
+												binding="#{advertiseBean.pic2Component}"
+												validateContentType="true" accept=".jpg,.jpeg" />
+											<p:message for="in39p2" id="msg39p2" />
+
+										</h:panelGrid>
+										<br />
+										<p:commandButton value="ذخیره" ajax="true"
+											actionListener="#{advertiseBean.insertToKarjo()}"
+											styleClass="p-mt-3 ui-button-outlined p-d-block"
+											update="pnl2 grl" process="pnl2"
+											onstart="return startLoader()"
+											oncomplete="return endLoader()" />
+
+									</p:outputPanel>
+								</p:tab>
+								<!--  -->
+								<!--  -->
+								<!--  -->
+								<!--  -->
+								<!--  -->
+								<p:tab title="تجهیزات و ماشین آلات">
+									<p:outputPanel id="pnl3" class="ui-fluid">
+										<h:panelGrid columns="6" width="100%">
+
+											<h:outputText class="headerJsf" value="عنوان " />
+											<p:inputText id="in6b" value="#{advertiseBean.title}" />
+											<p:message for="in6b" id="msg6b" />
+
+											<h:outputText class="headerJsf" value="نام دستگاه" />
+											<p:inputText class="elemansJsf" id="in12"
+												value="#{advertiseBean.machineName}" />
+											<p:message for="in12" id="msg12" />
+
+											<h:outputText class="headerJsf" value="ساخت کشور" />
+											<p:inputText class="elemansJsf" id="in13"
+												value="#{advertiseBean.contry}" />
+											<p:message for="in13" id="msg13" />
+
+											<h:outputText class="headerJsf" value="نام برند" />
+											<p:inputText class="elemansJsf" id="in14"
+												value="#{advertiseBean.brand}" />
+											<p:message for="in14" id="msg14" />
+
+											<h:outputText class="headerJsf" value="تلفن" />
+											<p:inputTextarea class="elemansJsf" id="in311y1"
+												value="#{advertiseBean.phone}" />
+											<p:message for="in311y1" id="msg311y1" />
+
+											<h:outputText class="headerJsf" value="آدرس" />
+											<p:inputTextarea class="elemansJsf" id="in311yy1"
+												value="#{advertiseBean.address}" />
+											<p:message for="in311yy1" id="msg311yy1" />
+
+											<h:outputText class="headerJsf" value="مشخصات" />
+											<p:inputTextarea class="elemansJsf" id="in311z1"
+												value="#{advertiseBean.moshakhasat}" />
+											<p:message for="in311z1" id="msg311z1" />
+
+											<h:outputText class="headerJsf" value="سال تولید (شمسی)" />
+											<p:inputText class="elemansJsf" id="in15"
+												value="#{advertiseBean.saleTolid}" />
+											<p:message for="in15" id="msg15" />
+
+											<h:outputText class="headerJsf" value="مبلغ فروش به ریال" />
+											<p:inputNumber class="elemansJsf" id="in16"
+												value="#{advertiseBean.mablag}" thousandSeparator="," />
+											<p:message for="in16" id="msg16" />
+
+											<h:outputText class="headerJsf" value="محل فروش" />
+											<p:inputText class="elemansJsf" id="in17"
+												value="#{advertiseBean.mahaleForosh}" />
+											<p:message for="in17" id="msg17" />
+
+											<h:outputText class="headerJsf" value="وضعیت کارکرد دستگاه" />
+											<p:selectOneMenu value="#{advertiseBean.vaziat}"
+												id="in4xxxxxxb" layout="lineDirection">
+												<f:selectItem itemValue="نو" itemLabel="نو" />
+												<f:selectItem itemValue="کارکرده" itemLabel="کارکرده" />
+											</p:selectOneMenu>
+											<p:message for="in4xxxxxxb" id="msg4xxxxxxb" />
+
+
+											<h:outputText class="headerJsf" value="لوازم جانبی" />
+											<p:inputTextarea class="elemansJsf" id="in311z1p"
+												value="#{advertiseBean.lavazemJanebi}" />
+											<p:message for="in311z1p" id="msg311z1p" />
+
+											<h:outputText class="headerJsf" value="سری یا کد محصول" />
+											<p:inputTextarea class="elemansJsf" id="in311z1py"
+												value="#{advertiseBean.seriOrCode}" />
+											<p:message for="in311z1py" id="msg311z1py" />
+
+											<h:outputText class="headerJsf" value="کاربرد محصول" />
+											<p:inputTextarea class="elemansJsf" id="in311z1pyy"
+												value="#{advertiseBean.karbord}" />
+											<p:message for="in311z1pyy" id="msg311z1pyy" />
+
+											<h:outputText class="headerJsf" value="ضمانت" />
+											<p:inputTextarea class="elemansJsf" id="in311z1pyyy"
+												value="#{advertiseBean.zemanat}" />
+											<p:message for="in311z1pyyy" id="msg311z1pyyy" />
+
+
+											<h:outputText class="headerJsf" value="ساعت بازدید" />
+											<p:inputTextarea class="elemansJsf" id="in311z1pyyyw"
+												value="#{advertiseBean.saateBazdidMachine}" />
+											<p:message for="in311z1pyyyw" id="msg311z1pyyyw" />
+
+											<h:outputText class="headerJsf" value="مدت ضمانت" />
+											<p:inputNumber class="elemansJsf" id="in16u"
+												value="#{advertiseBean.modateZemanat}" thousandSeparator="," />
+											<p:message for="in16u" id="msg16u" />
+
+
+											<h:outputText class="headerJsf" value="عکس 1" />
+											<p:fileUpload id="in39p3" value="#{advertiseBean.pic3}"
+												mode="simple" skinSimple="true" required="true"
+												binding="#{advertiseBean.pic3Component}"
+												validateContentType="true" accept=".jpg,.jpeg" />
+											<p:message for="in39p3" id="msg39p3" />
+										</h:panelGrid>
+										<br />
+										<p:commandButton value="ارسال" ajax="true"
+											actionListener="#{advertiseBean.insertToMachin()}"
+											styleClass="p-mt-3 ui-button-outlined p-d-block"
+											update="pnl3 grl" process="pnl3"
+											onstart="return startLoader()"
+											oncomplete="return endLoader()" />
+
+									</p:outputPanel>
+								</p:tab>
+								<!--  -->
+								<!--  -->
+								<!--  -->
+								<!--  -->
+								<!--  -->
+								<p:tab title="فرم نیازمندی املاک">
+									<div class="row">
+										<div class="col-md-12">
+											<p:outputPanel id="pnl4" class="ui-fluid">
+												<h:panelGrid columns="6" width="100%">
+													<h:outputText class="headerJsf" value="نوع آگهی" />
+													<h:selectOneMenu value="#{advertiseBean.rentType}"
+														id="in18" styleClass="form-control">
+														<f:selectItem itemValue="فروش" itemLabel="فروش" />
+														<f:selectItem itemValue="رهن کامل" itemLabel="رهن کامل" />
+														<f:selectItem itemValue="اجاره" itemLabel="اجاره" />
+														<f:selectItem itemValue="سرقفلی" itemLabel="سرقفلی" />
+													</h:selectOneMenu>
+													<p:message for="in18" id="msg18" />
+
+													<h:outputText class="headerJsf" value="نوع ملک" />
+													<h:selectOneMenu value="#{advertiseBean.homeType}"
+														id="in19" styleClass="form-control">
+														<f:selectItem itemValue="آپارتمان" itemLabel="آپارتمان" />
+														<f:selectItem itemValue="اداری" itemLabel="اداری" />
+														<f:selectItem itemValue="تجاری" itemLabel="تجاری" />
+														<f:selectItem itemValue="ویلا و باغ"
+															itemLabel="ویلا و باغ" />
+														<f:selectItem itemValue="مستغلات" itemLabel="مستغلات" />
+														<f:selectItem itemValue="انبار" itemLabel="زمین" />
+													</h:selectOneMenu>
+													<p:message for="in19" id="msg19" />
+
+													<h:outputText class="headerJsf" value="آدرس ملک" />
+													<p:inputTextarea class="elemansJsf" id="in20"
+														value="#{advertiseBean.address}" />
+													<p:message for="in20" id="msg20" />
+
+													<h:outputText class="headerJsf" value="محل ساختمان" />
+													<h:selectOneMenu value="#{advertiseBean.mahaleSakhteman}"
+														id="in21" styleClass="form-control">
+														<f:selectItem itemValue="کوچه" itemLabel="کوچه" />
+														<f:selectItem itemValue="خیابان اصلی"
+															itemLabel="خیابان اصلی" />
+														<f:selectItem itemValue="خیابان فرعی"
+															itemLabel="خیابان فرعی" />
+													</h:selectOneMenu>
+													<p:message for="in21" id="msg21" />
+
+													<h:outputText class="headerJsf" value="جهت ملک" />
+													<h:selectOneMenu value="#{advertiseBean.jahateMelk}"
+														id="in22" styleClass="form-control">
+														<f:selectItem itemValue="شمالی" itemLabel="شمالی" />
+														<f:selectItem itemValue="جنوبی" itemLabel="جنوبی" />
+													</h:selectOneMenu>
+													<p:message for="in22" id="msg22" />
+
+													<h:outputText class="headerJsf" value="نوع سند" />
+													<h:selectOneMenu value="#{advertiseBean.noeSanad}"
+														id="in22t" styleClass="form-control">
+														<f:selectItem itemValue="تگ برگ" itemLabel="تگ برگ" />
+														<f:selectItem itemValue="سیم و سرب" itemLabel="سیم و سرب" />
+														<f:selectItem itemValue="بنیادی" itemLabel="بنیادی" />
+														<f:selectItem itemValue="مبایعه نامه"
+															itemLabel="مبایعه نامه" />
+														<f:selectItem itemValue="بنجاق" itemLabel="بنجاق" />
+														<f:selectItem itemValue="مشاع" itemLabel="مشاع" />
+													</h:selectOneMenu>
+													<p:message for="in22t" id="msg22t" />
+
+
+													<h:outputText class="headerJsf" value="قیمت هر متر مربع" />
+													<p:inputNumber class="elemansJsf" id="in27"
+														value="#{advertiseBean.priceMetr}" thousandSeparator="," />
+													<p:message for="in27" id="msg27" />
+
+													<h:outputText class="headerJsf" value="متراژ" />
+													<p:inputNumber class="elemansJsf" id="in29"
+														value="#{advertiseBean.metraj}" thousandSeparator="," />
+													<p:message for="in29" id="msg29" />
+
+													<h:outputText class="headerJsf" value="سال ساخت" />
+													<p:inputTextarea class="elemansJsf" id="in30e"
+														value="#{advertiseBean.saleSakht}" />
+													<p:message for="in30e" id="msg30e" />
+
+													<h:outputText class="headerJsf" value="نمای ملک" />
+													<p:inputTextarea class="elemansJsf" id="in30ee"
+														value="#{advertiseBean.namayeMelk}" />
+													<p:message for="in30ee" id="msg30ee" />
+
+													<h:outputText class="headerJsf" value="کف" />
+													<p:inputTextarea class="elemansJsf" id="in30eee"
+														value="#{advertiseBean.kaf}" />
+													<p:message for="in30eee" id="msg30eee" />
+
+													<h:outputText class="headerJsf" value="پوشش دیوارها" />
+													<p:inputTextarea class="elemansJsf" id="in30eeee"
+														value="#{advertiseBean.posheshDivar}" />
+													<p:message for="in30eeee" id="msg30eeee" />
+
+													<h:outputText class="headerJsf" value="وضعیت روشنایی" />
+													<p:inputTextarea class="elemansJsf" id="in30eeeee"
+														value="#{advertiseBean.vaziatRoshanayi}" />
+													<p:message for="in30eeeee" id="msg30eeeee" />
+
+													<h:outputText class="headerJsf" value="آب گرم" />
+													<h:selectOneMenu value="#{advertiseBean.abGarm}"
+														id="in22tqq" styleClass="form-control">
+														<f:selectItem itemValue="پکیج" itemLabel="پکیج" />
+														<f:selectItem itemValue="موتورخانه" itemLabel="موتورخانه" />
+														<f:selectItem itemValue="آبگرمکن" itemLabel="آبگرمکن" />
+													</h:selectOneMenu>
+													<p:message for="in22tqq" id="msg22tqq" />
+
+
+													<h:outputText class="headerJsf" value="مشاعات" />
+													<p:selectOneMenu value="#{advertiseBean.moshaat}"
+														id="in31w" styleClass="form-control"
+														layout="lineDirection">
+														<f:selectItem itemValue="دارد" itemLabel="دارد" />
+														<f:selectItem itemValue="ندارد" itemLabel="ندارد" />
+													</p:selectOneMenu>
+													<p:message for="in31w" id="msg31w" />
+
+													<h:outputText class="headerJsf" value="مشاعات آبی" />
+													<p:selectOneMenu value="#{advertiseBean.moshaatAbi}"
+														id="in31ww" styleClass="form-control"
+														layout="lineDirection">
+														<f:selectItem itemValue="دارد" itemLabel="دارد" />
+														<f:selectItem itemValue="ندارد" itemLabel="ندارد" />
+													</p:selectOneMenu>
+													<p:message for="in31ww" id="msg31ww" />
+
+													<h:outputText class="headerJsf" value="چاه آبی مستقل" />
+													<p:selectOneMenu value="#{advertiseBean.chahAbi}"
+														id="in31www" styleClass="form-control"
+														layout="lineDirection">
+														<f:selectItem itemValue="دارد" itemLabel="دارد" />
+														<f:selectItem itemValue="ندارد" itemLabel="ندارد" />
+													</p:selectOneMenu>
+													<p:message for="in31www" id="msg31www" />
+
+													<h:outputText class="headerJsf" value="فضای سبز" />
+													<p:selectOneMenu value="#{advertiseBean.fazayeSabz}"
+														id="in31wwww" styleClass="form-control"
+														layout="lineDirection">
+														<f:selectItem itemValue="دارد" itemLabel="دارد" />
+														<f:selectItem itemValue="ندارد" itemLabel="ندارد" />
+													</p:selectOneMenu>
+													<p:message for="in31wwww" id="msg31wwww" />
+
+
+													<h:outputText class="headerJsf" value="ویو" />
+													<p:selectOneMenu value="#{advertiseBean.view}"
+														id="in31wwwww" styleClass="form-control"
+														layout="lineDirection">
+														<f:selectItem itemValue="دارد" itemLabel="دارد" />
+														<f:selectItem itemValue="ندارد" itemLabel="ندارد" />
+													</p:selectOneMenu>
+													<p:message for="in31wwwww" id="msg31wwwww" />
+
+													<h:outputText class="headerJsf" value="انباری" />
+													<p:selectOneMenu value="#{advertiseBean.anbari}"
+														id="in31wwwwww" styleClass="form-control"
+														layout="lineDirection">
+														<f:selectItem itemValue="دارد" itemLabel="دارد" />
+														<f:selectItem itemValue="ندارد" itemLabel="ندارد" />
+													</p:selectOneMenu>
+													<p:message for="in31wwwwww" id="msg31wwwwww" />
+
+													<h:outputText class="headerJsf" value="پارکینگ" />
+													<p:selectOneMenu value="#{advertiseBean.parking}"
+														id="in31wwwwwww" styleClass="form-control"
+														layout="lineDirection">
+														<f:selectItem itemValue="دارد" itemLabel="دارد" />
+														<f:selectItem itemValue="ندارد" itemLabel="ندارد" />
+													</p:selectOneMenu>
+													<p:message for="in31wwwwwww" id="msg31wwwwwww" />
+
+													<h:outputText class="headerJsf" value="تلفن" />
+													<p:selectOneMenu value="#{advertiseBean.telephone}"
+														id="in31wwwwwwww" styleClass="form-control"
+														layout="lineDirection">
+														<f:selectItem itemValue="دارد" itemLabel="دارد" />
+														<f:selectItem itemValue="ندارد" itemLabel="ندارد" />
+													</p:selectOneMenu>
+													<p:message for="in31wwwwwwww" id="msg31wwwwwwww" />
+
+													<h:outputText class="headerJsf" value="تعداد خط" />
+													<p:inputNumber class="elemansJsf" id="in29j"
+														value="#{advertiseBean.phoneLine}" thousandSeparator="," />
+													<p:message for="in29j" id="msg29j" />
+
+													<h:outputText class="headerJsf" value="تابلو خور" />
+													<p:selectOneMenu value="#{advertiseBean.tabloKhor}"
+														id="in31wwwwwwwww" styleClass="form-control"
+														layout="lineDirection">
+														<f:selectItem itemValue="دارد" itemLabel="دارد" />
+														<f:selectItem itemValue="ندارد" itemLabel="ندارد" />
+													</p:selectOneMenu>
+													<p:message for="in31wwwwwwwww" id="msg31wwwwwwwww" />
+
+
+													<h:outputText class="headerJsf" value="سرویش بهداشتی" />
+													<p:selectOneMenu value="#{advertiseBean.serviceBehdashti}"
+														id="in33ff" styleClass="form-control"
+														layout="lineDirection">
+														<f:selectItem itemValue="دارد" itemLabel="دارد" />
+														<f:selectItem itemValue="ندارد" itemLabel="ندارد" />
+														<f:selectItem itemValue="ایرانی" itemLabel="ایرانی" />
+														<f:selectItem itemValue="فرنگی" itemLabel="فرنگی" />
+														<f:selectItem itemValue="هردو" itemLabel="هردو" />
+													</p:selectOneMenu>
+													<p:message for="in33ff" id="msg33ff" />
+
+													<h:outputText class="headerJsf" value="دیگر امکانات" />
+													<p:inputTextarea class="elemansJsf" id="in30eeeg"
+														value="#{advertiseBean.digarEmkanat}" />
+													<p:message for="in30eeeg" id="msg30eeeg" />
+
+													<h:outputText class="headerJsf" value="ساعت بازدید" />
+													<p:inputTextarea class="elemansJsf" id="in30eeegh"
+														value="#{advertiseBean.saateBazdid}" />
+													<p:message for="in30eeegh" id="msg30eeegh" />
+
+													<h:outputText class="headerJsf" value="توضیحات" />
+													<p:inputTextarea class="elemansJsf" id="in30"
+														value="#{advertiseBean.description}" />
+													<p:message for="in30" id="msg30" />
+
+													<h:outputText class="headerJsf"
+														value="تلفن تماس بابت هماهنگی" />
+													<p:inputText class="elemansJsf" id="in32"
+														value="#{advertiseBean.phone}" />
+													<p:message for="in32" id="msg32" />
+
+													<h:outputText class="headerJsf" value="کاربری سند" />
+													<p:selectOneMenu value="#{advertiseBean.karbariSanad}"
+														id="in33" styleClass="form-control" layout="lineDirection">
+														<f:selectItem itemValue="مسکونی" itemLabel="مسکونی" />
+														<f:selectItem itemValue="اداری" itemLabel="اداری" />
+														<f:selectItem itemValue="تجاری" itemLabel="تجاری" />
+														<f:selectItem itemValue="کشاورزی" itemLabel="کشاورزی" />
+														<f:selectItem itemValue="باغ" itemLabel="باغ" />
+													</p:selectOneMenu>
+													<p:message for="in33" id="msg33" />
+
+
+													<h:outputText class="headerJsf" value="عکس 1" />
+													<p:fileUpload id="in39p4" value="#{advertiseBean.pic4}"
+														mode="simple" skinSimple="true" required="true"
+														binding="#{advertiseBean.pic4Component}"
+														validateContentType="true" accept=".jpg,.jpeg" />
+													<p:message for="in39p4" id="msg39p4" />
+												</h:panelGrid>
+												<br />
+												<p:commandButton value="ارسال" ajax="true"
+													actionListener="#{advertiseBean.insertToRent()}"
+													styleClass="p-mt-3 ui-button-outlined p-d-block"
+													update="pnl4 grl" process="pnl4"
+													onstart="return startLoader()"
+													oncomplete="return endLoader()" />
+
+											</p:outputPanel>
+										</div>
+									</div>
+								</p:tab>
+							</p:tabView>
+						</div>
+
+					</section>
+				</div>
+			</h:form>
+		</h:panelGroup>
 	</ui:define>
 
 	<ui:define name="footPage">
-		</ui:define>
+	</ui:define>
 
 
 </ui:composition>

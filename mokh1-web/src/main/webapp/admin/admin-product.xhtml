@@ -95,25 +95,6 @@ td {
 		<div class="wrapper">
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
-				<!-- Content Header (Page header) -->
-				<section class="content-header">
-					<div class="container-fluid">
-						<div class="row mb-2">
-							<div class="col-sm-6">
-								<h1>ویجت‌ها</h1>
-							</div>
-							<div class="col-sm-6">
-								<ol class="breadcrumb float-sm-left">
-									<li class="breadcrumb-item"><a href="#">خانه</a></li>
-									<li class="breadcrumb-item active">ویجت‌ها</li>
-								</ol>
-							</div>
-						</div>
-					</div>
-					<!-- /.container-fluid -->
-				</section>
-
-				<!-- Main content -->
 				<section class="content">
 					<div class="container-fluid">
 
@@ -314,12 +295,12 @@ td {
 												
 												
 
-												<h:outputText class="headerJsf" value="قیمت اصلی" />
+												<h:outputText class="headerJsf" value="قیمت اصلی (تومان)" />
 												<p:inputNumber class="elemansJsf" id="in10"
 													value="#{adminProductBean.price}" thousandSeparator="," />
 												<p:message for="in10" id="msg10" />
 
-												<h:outputText class="headerJsf" value="قیمت با تخفیف" />
+												<h:outputText class="headerJsf" value="قیمت با تخفیف (تومان)" />
 												<p:inputNumber class="elemansJsf" id="in11"
 													value="#{adminProductBean.price2}" thousandSeparator="," />
 												<p:message for="in11" id="msg11" />

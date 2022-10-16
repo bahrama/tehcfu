@@ -21,160 +21,104 @@
 						<h:form>
 							<p:dataGrid var="advt" layout="grid"
 								value="#{advertiseUiBean.findAllAdvertiseByTypeMap(advertiseType).entrySet().toArray()}" paginator="true"
-								rows="12" columns="1">
+								rows="15" columns="4"
+							    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						        rowsPerPageTemplate="6,12,16">
 								<h:panelGroup rendered="#{(advertiseType eq 'karjo') and (advt.key.show)}">
-								<p:outputPanel>
-									<p:panel style="text-align:right">
-										<h3>#{advt.key.title}</h3>
-										<p class="myP">
-											<b>رشته تحصیلی :</b>#{advt.value.karjoField}
-										</p>
-										<p class="myP">
-											<b>مدرک تحصیلی :</b>#{advt.value.karjoMadrak}
-										</p>
-										<p class="myP">
-											<b>مهارت ها :</b>#{advt.value.karjoMaharat}
-										</p>
-										<p class="myP">
-											<b>نوع همکاری :</b>#{advt.value.karjoMaharat}
-										</p>
-										<p class="myP">
-											<b>تلفن تماس :</b>#{rent.karjo.phone}
-										</p>
-										
-										<p class="myP">
-											<b>شماره تماس :</b>#{advt.key.phone}
-										</p>
-										<p class="myP">
-											<b>آدرس :</b>#{advt.key.addres}
-										</p>
-										<p class="myP">
-											<b>توضیحات :</b>#{advt.key.description}
-										</p>
-									</p:panel>
-								</p:outputPanel>
+								<h:link outcome="/pages/advertise/advertise-detail.xhtml">
+								<div class="padding-bottom-40 wow zoomIn card"
+							style="float: right !important; width: 100% !important;border-radius: 15px;
+							border: 1px solid;border-color: rgba(1, 92, 1, 0.562);">
+                    <img style="max-width:100%; height:300px!important" 
+					src="../../resources/pic/adv.jpg"/>
+							<div class="blog-short-detail">
+								<h4 style="font-family: IranSANSBold; color: rgb(5, 77, 32);text-align: right; margin-right: 5px;">
+									#{advt.key.title}}</h4>
+							</div>     							        							    
+						</div>
+										<f:param name="advertiseId" value="#{advt.key.adveriseId}" />
+															<f:param name="advertiseType" value="#{advertiseType}" />
+								</h:link>
 								</h:panelGroup>
 								<h:panelGroup rendered="#{(advertiseType eq 'karfarma') and (advt.key.show)}">
-								<p:outputPanel>
-									<p:panel style="text-align:right">
-										<h3>#{advt.key.title}</h3>
-										<p class="myP">
-											<b>شرح نیروی مورد نظر :</b>#{advt.value.karfarmaNiroMorede}
-										</p>
-										<p class="myP">
-											<b>نوع استخدام :</b>#{advt.value.karfarmaNoeDarkhast}
-										</p>
-										<p class="myP">
-											<b>میزان حقوق (ریال) :</b>#{advt.value.mizanHogog}
-										</p>
-										<p class="myP">
-											<b>شماره تماس :</b>#{advt.key.phone}
-										</p>
-										<p class="myP">
-											<b>آدرس :</b>#{advt.key.addres}
-										</p>
-										<p class="myP">
-											<b>توضیحات :</b>#{advt.key.description}
-										</p>
-									</p:panel>
-								</p:outputPanel>
-							
+								<h:link outcome="/pages/advertise/advertise-detail.xhtml">
+																<div class="padding-bottom-40 wow zoomIn card"
+							style="float: right !important; width: 100% !important;border-radius: 15px;
+							border: 1px solid;border-color: rgba(1, 92, 1, 0.562);">
+                    <img style="max-width:100%; height:300px!important" 
+					src="../../resources/pic/adv.jpg"/>
+							<div class="blog-short-detail">
+								<h4 style="font-family: IranSANSBold; color: rgb(5, 77, 32);text-align: right; margin-right: 5px;">
+									#{advt.key.title}</h4>
+							</div>     							        							    
+						</div>
+															<f:param name="advertiseId" value="#{advt.key.adveriseId}" />
+															<f:param name="advertiseType" value="#{advertiseType}" />
+								</h:link>
 							
 								</h:panelGroup>
 								<h:panelGroup rendered="#{(advertiseType eq 'machin') and (advt.key.show)}">
-									<p:outputPanel>
-									<p:panel style="text-align:right">
-										<h3>#{advt.key.title}</h3>
-										<p class="myP">
-											<b>برند :</b>#{advt.value.brand}
-										</p>
-										<p class="myP">
-											<b>کشور ساخت :</b>#{advt.value.contry}
-										</p>
-										<p class="myP">
-											<b>مبلغ فروش :</b>#{advt.value.mablag}
-										</p>
-										<p class="myP">
-											<b>محل فروش :</b>#{advt.value.mahaleForosh}
-										</p>
-										<p class="myP">
-											<b>مشخصات :</b>#{advt.value.moshakhasat}
-										</p>
-										<p class="myP">
-											<b>سال تولید :</b>#{advt.value.saleTolid}
-										</p>
-										<p class="myP">
-											<b>نو/کارکرده :</b>#{advt.value.vaziat}
-										</p>
-										<p class="myP">
-											<b>شماره تماس :</b>#{advt.key.phone}
-										</p>
-										<p class="myP">
-											<b>آدرس :</b>#{advt.key.addres}
-										</p>
-										<p class="myP">
-											<b>توضیحات :</b>#{advt.key.description}
-										</p>
-
-									</p:panel>
-								</p:outputPanel>
+								<h:link outcome="/pages/advertise/advertise-detail.xhtml">
+																	<div class="padding-bottom-40 wow zoomIn card"
+							style="float: right !important; width: 100% !important;border-radius: 15px;
+							border: 1px solid;border-color: rgba(1, 92, 1, 0.562);">
+                    <img style="max-width:100%; height:300px!important" 
+					src="../../resources/pic/adv.jpg"/>
+							<div class="blog-short-detail">
+								<h4 style="font-family: IranSANSBold; color: rgb(5, 77, 32);text-align: right; margin-right: 5px;">
+									#{advt.key.title}}</h4>
+							</div>     							        							    
+						</div>
+										<f:param name="advertiseId" value="#{advt.key.adveriseId}" />
+															<f:param name="advertiseType" value="#{advertiseType}" />
+								</h:link>
 								</h:panelGroup>
 								<h:panelGroup rendered="#{(advertiseType eq 'rent') and (advt.key.show)}">
-									<p:outputPanel>
-									<p:panel style="text-align:right">
-										<h3>#{advt.key.title}</h3>
-										<p class="myP">
-											<b>مساحت زمین بر حسب متر مربع :</b>#{advt.value.masahat}
-										</p>
-										<p class="myP">
-											<b>نوع ملک :</b>#{advt.value.homeType}
-										</p>
-										<p class="myP">
-											<b>واقع در :</b>#{advt.value.vage}
-										</p>
-										<p class="myP">
-											<b>موقعیت :</b>#{advt.value.mogeiat}
-										</p>
-										<p class="myP">
-											<b>تعداد طبقات :</b>#{advt.value.tedadTabage}
-										</p>
-										<p class="myP">
-											<b>تعداد واحد در هر طبقه :</b>#{advt.value.tedadVahed}
-										</p>
-										<p class="myP">
-											<b>سن بنا :</b>#{advt.value.senBana}
-										</p>
-										<p class="myP">
-											<b>پروانه کسب :</b>#{advt.value.parvane}
-										</p>
-										<p class="myP">
-											<b>وضعیت سند :</b>#{advt.value.vaziatSanad}
-										</p>
-
-										<p class="myP">
-											<b>مبلغ ودیعه (ریال) :</b>#{advt.value.vadieeMoney}
-										</p>
-										<p class="myP">
-											<b>مبلغ اجاره (ریال) :</b>#{advt.value.ejareMony}
-										</p>
-										<p class="myP">
-											<b>مبلغ فروش (ریال) :</b>#{advt.value.mablageForosh}
-										</p>
-										<p class="myP">
-											<b>شماره تماس :</b>#{advt.key.phone}
-										</p>
-										<p class="myP">
-											<b>آدرس :</b>#{advt.key.addres}
-										</p>
-										<p class="myP">
-											<b>توضیحات :</b>#{advt.key.description}
-										</p>
-									</p:panel>
-								</p:outputPanel>
+								<h:link outcome="/pages/advertise/advertise-detail.xhtml">
+																	<div class="padding-bottom-40 wow zoomIn card"
+							style="float: right !important; width: 100% !important;border-radius: 15px;
+							border: 1px solid;border-color: rgba(1, 92, 1, 0.562);">
+                    <img style="max-width:100%; height:300px!important" 
+					src="../../resources/pic/adv.jpg"/>
+							<div class="blog-short-detail">
+								<h4 style="font-family: IranSANSBold; color: rgb(5, 77, 32);text-align: right; margin-right: 5px;">
+									#{advt.key.title}}</h4>
+							</div>     							        							    
+						</div>
+										<f:param name="advertiseId" value="#{advt.key.adveriseId}" />
+															<f:param name="advertiseType" value="#{advertiseType}" />
+								</h:link>
 								</h:panelGroup>
 							
 							</p:dataGrid>
-						</h:form>
+							<br/>
+<h:commandLink  rendered="#{homeBean.findUserByToken() ne 'مهمان'}" action="#{adminLogin.niaz()}" value="ثبت آگهی" style="font-family: IRANSansBold; text-align: center;
+display: block;
+padding: ;
+background-color: lightcoral;
+width: 200px;
+border-radius: 30px;
+padding: 20px;
+margin: auto !important;
+margin-bottom: 5px !important;
+color: white;
+font-size: 20px;"/>		
+
+<h:commandLink action="#{sellerPage.niaz()}" value="ثبت آگهی" rendered="#{homeBean.findUserByToken() eq 'مهمان'}"
+style="font-family: IRANSansBold; text-align: center;
+display: block;
+padding: ;
+background-color: lightcoral;
+width: 200px;
+border-radius: 30px;
+padding: 20px;
+margin: auto !important;
+margin-bottom: 5px !important;
+color: white;
+font-size: 20px;">
+													<f:ajax execute="@form" />
+												</h:commandLink>	
+			</h:form>
 					</div>
 				</div>
 			</div>
@@ -183,7 +127,6 @@
 		</div>
 
 	</article>
-
 
 </ui:composition>
 

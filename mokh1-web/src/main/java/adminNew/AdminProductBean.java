@@ -4849,42 +4849,44 @@ public class AdminProductBean implements Serializable {
 		   this.instagram="";
 	}
 	
+	
 	public void insertToAyeneVConsol() {
-		AyeneVConsole productEntity= new AyeneVConsole();
+		AyeneVConsole ayeneVConsole= new AyeneVConsole();
+		ProductEntity productEntity = new ProductEntity();
 		try {
-		productEntity.setProduct(adminProfile.getMoblEntity());
-		productEntity.setAparat(aparat);
-		productEntity.setInstagram(instagram);
-		productEntity.setNameCode(nameCode);
-		productEntity.setBrand(brand);
-		productEntity.setContry(contry);
-		productEntity.setAbad(abad);
-		productEntity.setTahvilDay(TahvilDay);
-		productEntity.setEasyNezafat(convertBool(easyNezafat));
-		productEntity.setDescription(description);
-		productEntity.setStatus(convertBool(status));
-		productEntity.setPrice(price);
-		productEntity.setPrice2(price2);
-		productEntity.setOldNew(convertBool(oldNew));
-		productEntity.setZemanat(zemanat);
-		productEntity.setGuarantiStatus(guarantiStatus);
-		productEntity.setGuaranyTimeMounth(guaranyTimeMounth);
-		productEntity.setRangBandi(rangBandi);
-		productEntity.setJenseEskeletConsole(jenseEskeletConsole);
-		productEntity.setJensePayeConsole(jensePayeConsole);
-		productEntity.setPriceConsole(priceConsole);
-		productEntity.setKeshoConsole(convertBool(keshoConsole));
-		productEntity.setAyeneConsole(convertBool(ayeneConsole));
-		productEntity.setTedadAyene(tedadAyene);
-		productEntity.setpDate(new Date());
-		productEntity.setShekleHendesi(shekleHendesi);
-		productEntity.setZekhamatAyene(zekhamatAyene);
-		productEntity.setAyeneGhab(convertBool(ayeneGhab));
-		productEntity.setJenseGhab(jenseGhab);
-		productEntity.setAbadGhabAyene(abadGhabAyene);
-		productEntity.setRangGhabAyene(rangGhabAyene);
-    	productEntity.setPriceGhabAyene(priceGhabAyene);
-    	productEntity.setKomodConsole(convertBool(komodConsole));
+			productEntity.setProduct(adminProfile.getMoblEntity());
+			productEntity.setAparat(aparat);
+			productEntity.setInstagram(instagram);
+			productEntity.setNameCode(nameCode);
+			productEntity.setBrand(brand);
+			productEntity.setContry(contry);
+			productEntity.setAbad(abad);
+			productEntity.setTahvilDay(TahvilDay);
+			productEntity.setEasyNezafat(convertBool(easyNezafat));
+			productEntity.setDescription(description);
+			productEntity.setStatus(convertBool(status));
+			productEntity.setPrice(price);
+			productEntity.setPrice2(price2);
+			productEntity.setOldNew(convertBool(oldNew));
+			productEntity.setZemanat(zemanat);
+			productEntity.setGuarantiStatus(guarantiStatus);
+			productEntity.setGuaranyTimeMounth(guaranyTimeMounth);
+			productEntity.setRangBandi(rangBandi);
+			productEntity.setpDate(new Date());
+		ayeneVConsole.setJenseEskeletConsole(jenseEskeletConsole);
+		ayeneVConsole.setJensePayeConsole(jensePayeConsole);
+		ayeneVConsole.setPriceConsole(priceConsole);
+		ayeneVConsole.setKeshoConsole(convertBool(keshoConsole));
+		ayeneVConsole.setAyeneConsole(convertBool(ayeneConsole));
+		ayeneVConsole.setTedadAyene(tedadAyene);
+		ayeneVConsole.setShekleHendesi(shekleHendesi);
+		ayeneVConsole.setZekhamatAyene(zekhamatAyene);
+		ayeneVConsole.setAyeneGhab(convertBool(ayeneGhab));
+		ayeneVConsole.setJenseGhab(jenseGhab);
+		ayeneVConsole.setAbadGhabAyene(abadGhabAyene);
+		ayeneVConsole.setRangGhabAyene(rangGhabAyene);
+    	ayeneVConsole.setPriceGhabAyene(priceGhabAyene);
+    	ayeneVConsole.setKomodConsole(convertBool(komodConsole));
 		if (pic1 != null) {
              if (!pic1.getContentType().equals("image/jpeg")) {
 				throw new Exception("pic1Type");
@@ -4921,12 +4923,10 @@ public class AdminProductBean implements Serializable {
 			}
 		}
 		productEntity.setRaste(faaliatHa());
-    	productEntity.setTedadKesho(tedadKesho);
-    	System.err.println(priceGhabAyene);
-		productEntity.setTedadKomod(tedadKomod);
-		System.err.println(tedadKomod);
-		
-			ayeneVConsoleDaoLocal.insertToAyeneVConsole(productEntity);
+    	ayeneVConsole.setTedadKesho(tedadKesho);
+		ayeneVConsole.setTedadKomod(tedadKomod);
+		productEntity.setAyeneVConsole(ayeneVConsole);
+		    productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -4969,24 +4969,25 @@ public class AdminProductBean implements Serializable {
 	
 	
 	public void insertToDarbChobi() {
-		DarbChobi productEntity= new DarbChobi();
+		DarbChobi darbChobi = new DarbChobi();
+		ProductEntity productEntity = new ProductEntity();
 		try {
-		productEntity.setProduct(adminProfile.getMoblEntity());
-		productEntity.setAparat(aparat);
-		productEntity.setInstagram(instagram);
-		productEntity.setNameCode(nameCode);
-		productEntity.setBrand(brand);
-		productEntity.setContry(contry);
-		productEntity.setAbad(abad);
-		productEntity.setTahvilDay(TahvilDay);
-		productEntity.setEasyNezafat(convertBool(easyNezafat));
-		productEntity.setDescription(description);
-		productEntity.setStatus(convertBool(status));
-		productEntity.setPrice(price);
-		productEntity.setPrice2(price2);
-		productEntity.setOldNew(convertBool(oldNew));
-		productEntity.setZemanat(zemanat);
-		productEntity.setGuarantiStatus(guarantiStatus);
+			productEntity.setProduct(adminProfile.getMoblEntity());
+			productEntity.setAparat(aparat);
+			productEntity.setInstagram(instagram);
+			productEntity.setNameCode(nameCode);
+			productEntity.setBrand(brand);
+			productEntity.setContry(contry);
+			productEntity.setAbad(abad);
+			productEntity.setTahvilDay(TahvilDay);
+			productEntity.setEasyNezafat(convertBool(easyNezafat));
+			productEntity.setDescription(description);
+			productEntity.setStatus(convertBool(status));
+			productEntity.setPrice(price);
+			productEntity.setPrice2(price2);
+			productEntity.setOldNew(convertBool(oldNew));
+			productEntity.setZemanat(zemanat);
+			productEntity.setGuarantiStatus(guarantiStatus);
 		if (pic1 != null) {
 if (!pic1.getContentType().equals("image/jpeg")) {
 				throw new Exception("pic1Type");
@@ -5027,22 +5028,17 @@ if (!pic2.getContentType().equals("image/jpeg")) {
 		productEntity.setGuaranyTimeMounth(guaranyTimeMounth);
 		productEntity.setRangBandi(rangBandi);
 		//////////////////////////////////////////////
-		productEntity.setRokeshDarbChobi(rokeshDarbChobi);
-		productEntity.setShostoshoDarbChobi(this.convertBool(shostoshoDarbChobi));
-		productEntity.setZedeAbDarbChobi(this.convertBool(zedeAbDarbChobi));
-		productEntity.setCncDarbChobi(this.convertBool(cncDarbChobi));
-		productEntity.setJenseKalafDarbChobi(jenseKalafDarbChobi);
-		productEntity.setMakanDarbChobi(makanDarbChobi);
-		productEntity.setNoeRangDarbChobi(noeRangDarbChobi);
-		productEntity.setZekhamatDarbChobi(zekhamatDarbChobi);
-		System.err.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-		System.err.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-		System.err.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-		System.err.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-		System.err.println(faaliatHa());
+		darbChobi.setRokeshDarbChobi(rokeshDarbChobi);
+		darbChobi.setShostoshoDarbChobi(this.convertBool(shostoshoDarbChobi));
+		darbChobi.setZedeAbDarbChobi(this.convertBool(zedeAbDarbChobi));
+		darbChobi.setCncDarbChobi(this.convertBool(cncDarbChobi));
+		darbChobi.setJenseKalafDarbChobi(jenseKalafDarbChobi);
+		darbChobi.setMakanDarbChobi(makanDarbChobi);
+		darbChobi.setNoeRangDarbChobi(noeRangDarbChobi);
+		darbChobi.setZekhamatDarbChobi(zekhamatDarbChobi);
 		productEntity.setRaste(faaliatHa());
-		
-			darbChobiDaoLocal.insertToDarbChobi(productEntity);
+		productEntity.setDarbChobi(darbChobi);
+			productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -5084,7 +5080,8 @@ if (!pic2.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertToDarbZedSergat() {
-		DarbZedSergat productEntity= new DarbZedSergat();
+		ProductEntity productEntity= new ProductEntity();
+		DarbZedSergat darbZedSergat = new DarbZedSergat();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setAparat(aparat);
@@ -5142,24 +5139,24 @@ if (!pic5.getContentType().equals("image/jpeg")) {
 		productEntity.setGuaranyTimeMounth(guaranyTimeMounth);
 		productEntity.setRangBandi(rangBandi);
 		//////////////////////////////////////////////
-        productEntity.setCncDarbZedSergat(convertBool(cncDarbZedSergat));
-        productEntity.setGoflPostchiDarbZedSergat(convertBool(goflPostchiDarbZedSergat));
-        productEntity.setGotiBandiFeleziDarbZedSergat(convertBool(gotiBandiFeleziDarbZedSergat));
-        productEntity.setKeshvarMdfDarbZedSergat(keshvarMdfDarbZedSergat);
-        productEntity.setMetrilJelogiriDarbZedSergat(convertBool(metrilJelogiriDarbZedSergat));
-        productEntity.setNameMdfDarbZedSergat(nameMdfDarbZedSergat);
-        productEntity.setNasbPostchiDarbZedSergat(convertBool(nasbPostchiDarbZedSergat));
-        productEntity.setRangDarbZedSergat(rangDarbZedSergat);
-        productEntity.setRokeshDarbZedSergat(rokeshDarbZedSergat);
-        productEntity.setSedagiriDarbZedSergat(convertBool(sedagiriDarbZedSergat));
-        productEntity.setVaragFeleziDarbZedSergat(varagFeleziDarbZedSergat);
-        productEntity.setZedeAbDarbZedSergat(convertBool(zekhamatVaragFeleziDarbZedSergat));
-        productEntity.setZedeDeylamDarbZedSergat(convertBool(zedeAbDarbZedSergat));
-        productEntity.setZekhamatMdfDarbZedSergat(zekhamatMdfDarbZedSergat);
-        productEntity.setZekhamatVaragFeleziDarbZedSergat(zekhamatVaragFeleziDarbZedSergat);
+		darbZedSergat.setCncDarbZedSergat(convertBool(cncDarbZedSergat));
+		darbZedSergat.setGoflPostchiDarbZedSergat(convertBool(goflPostchiDarbZedSergat));
+		darbZedSergat.setGotiBandiFeleziDarbZedSergat(convertBool(gotiBandiFeleziDarbZedSergat));
+		darbZedSergat.setKeshvarMdfDarbZedSergat(keshvarMdfDarbZedSergat);
+		darbZedSergat.setMetrilJelogiriDarbZedSergat(convertBool(metrilJelogiriDarbZedSergat));
+		darbZedSergat.setNameMdfDarbZedSergat(nameMdfDarbZedSergat);
+		darbZedSergat.setNasbPostchiDarbZedSergat(convertBool(nasbPostchiDarbZedSergat));
+		darbZedSergat.setRangDarbZedSergat(rangDarbZedSergat);
+		darbZedSergat.setRokeshDarbZedSergat(rokeshDarbZedSergat);
+		darbZedSergat.setSedagiriDarbZedSergat(convertBool(sedagiriDarbZedSergat));
+		darbZedSergat.setVaragFeleziDarbZedSergat(varagFeleziDarbZedSergat);
+		darbZedSergat.setZedeAbDarbZedSergat(convertBool(zekhamatVaragFeleziDarbZedSergat));
+		darbZedSergat.setZedeDeylamDarbZedSergat(convertBool(zedeAbDarbZedSergat));
+		darbZedSergat.setZekhamatMdfDarbZedSergat(zekhamatMdfDarbZedSergat);
+		darbZedSergat.setZekhamatVaragFeleziDarbZedSergat(zekhamatVaragFeleziDarbZedSergat);
 		productEntity.setRaste(faaliatHa());
-		
-			darbZedSergatDaoLocal.insertToDarbZedSergat(productEntity);
+		productEntity.setDarbZedSergat(darbZedSergat);
+		    productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -5200,7 +5197,8 @@ if (!pic5.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertToGhabAx() {
-		GhabAx productEntity= new GhabAx();
+		ProductEntity productEntity= new ProductEntity();
+		GhabAx ghabAx =new GhabAx();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setAparat(aparat);
@@ -5259,11 +5257,11 @@ if (!pic5.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-        productEntity.setAbadGabeAx(abadGabeAx);
-        productEntity.setAbadMofidGabeAx(abadMofidGabeAx);
-        productEntity.setJenseGabeAx(jenseGabeAx);
-
-			ghabAxDaoLocal.insertToGhabAx(productEntity);
+		ghabAx.setAbadGabeAx(abadGabeAx);
+		ghabAx.setAbadMofidGabeAx(abadMofidGabeAx);
+		ghabAx.setJenseGabeAx(jenseGabeAx);
+		productEntity.setGhabAx(ghabAx);
+		    productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -5304,7 +5302,8 @@ if (!pic5.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertToKabinet() {
-		Kabinet productEntity= new Kabinet();
+		ProductEntity productEntity= new ProductEntity();
+		Kabinet kabinet =new Kabinet();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -5363,19 +5362,20 @@ if (!pic5.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-		productEntity.setAbadMdfKabinet(abadMdfKabinet);
-		productEntity.setCharkhKabinet(convertBool(charkhKabinet));
-		productEntity.setDastgireDarbKabinet(convertBool(dastgireDarbKabinet));
-		productEntity.setJakKabinet(convertBool(jakKabinet));
-		productEntity.setJenseKabinet(jenseKabinet);
-		productEntity.setJenseSafeKabinet(jenseSafeKabinet);
-		productEntity.setMagnetKabinet(convertBool(magnetKabinet));
-		productEntity.setNoeMdfKabinet(noeMdfKabinet);
-		productEntity.setPriceMetrKabinet(priceMetrKabinet);
-		productEntity.setPriceMetrTakhfifKabinet(priceMetrTakhfifKabinet);
-		productEntity.setReylKabinet(convertBool(reylKabinet));
-		productEntity.setZekhamateMdfKabinet(zekhamateMdfKabinet);
-			kabinetDaoLocal.insertToKabinet(productEntity);
+		kabinet.setAbadMdfKabinet(abadMdfKabinet);
+		kabinet.setCharkhKabinet(convertBool(charkhKabinet));
+		kabinet.setDastgireDarbKabinet(convertBool(dastgireDarbKabinet));
+		kabinet.setJakKabinet(convertBool(jakKabinet));
+		kabinet.setJenseKabinet(jenseKabinet);
+		kabinet.setJenseSafeKabinet(jenseSafeKabinet);
+		kabinet.setMagnetKabinet(convertBool(magnetKabinet));
+		kabinet.setNoeMdfKabinet(noeMdfKabinet);
+		kabinet.setPriceMetrKabinet(priceMetrKabinet);
+		kabinet.setPriceMetrTakhfifKabinet(priceMetrTakhfifKabinet);
+		kabinet.setReylKabinet(convertBool(reylKabinet));
+		kabinet.setZekhamateMdfKabinet(zekhamateMdfKabinet);
+		productEntity.setKabinet(kabinet);
+		    productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -5416,7 +5416,8 @@ if (!pic5.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertKomodBoofeKetabkhaneJakafshi() {
-		KomodBoofeKetabkhaneJakafshi productEntity= new KomodBoofeKetabkhaneJakafshi();
+		ProductEntity productEntity= new ProductEntity();
+		KomodBoofeKetabkhaneJakafshi komodBoofeKetabkhaneJakafshi = new KomodBoofeKetabkhaneJakafshi();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -5475,28 +5476,28 @@ if (!pic5.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-		productEntity.setAbadBoofe(abadBoofe);
-		productEntity.setAbadJakafshi(abadJakafshi);
-		productEntity.setAbadKetabkhane(abadKetabkhane);
-		productEntity.setAbadkomod(abadkomod);
-		productEntity.setJenseBoofe(jenseBoofe);
-		productEntity.setJenseJakafshi(jenseJakafshi);
-		productEntity.setJenseKetabkhane(jenseKetabkhane);
-		productEntity.setJensekomod(jensekomod);
-		productEntity.setPriceBoofe(priceBoofe);
-		productEntity.setPriceJakafshi(priceJakafshi);
-		productEntity.setPriceKetabkhane(priceKetabkhane);
-		productEntity.setPricekomod(pricekomod);
-		productEntity.setShekleHendesiBoofe(shekleHendesiBoofe);
-		productEntity.setShekleHendesiJakafshi(shekleHendesiJakafshi);
-		productEntity.setShekleHendesiKetabkhane(shekleHendesiKetabkhane);
-		productEntity.setShekleHendesikomod(shekleHendesikomod);
-		productEntity.setTedadBoofe(tedadBoofe);
-		productEntity.setTedadJakafshi(tedadJakafshi);
-		productEntity.setTedadKetabkhane(tedadKetabkhane);
-		productEntity.setTedadkomod(tedadkomod);
-		
-			komodBoofeKetabkhaneJakafshiDaoLocal.insertToKomodBoofeKetabkhaneJakafshi(productEntity);
+		komodBoofeKetabkhaneJakafshi.setAbadBoofe(abadBoofe);
+		komodBoofeKetabkhaneJakafshi.setAbadJakafshi(abadJakafshi);
+		komodBoofeKetabkhaneJakafshi.setAbadKetabkhane(abadKetabkhane);
+		komodBoofeKetabkhaneJakafshi.setAbadkomod(abadkomod);
+		komodBoofeKetabkhaneJakafshi.setJenseBoofe(jenseBoofe);
+		komodBoofeKetabkhaneJakafshi.setJenseJakafshi(jenseJakafshi);
+		komodBoofeKetabkhaneJakafshi.setJenseKetabkhane(jenseKetabkhane);
+		komodBoofeKetabkhaneJakafshi.setJensekomod(jensekomod);
+		komodBoofeKetabkhaneJakafshi.setPriceBoofe(priceBoofe);
+		komodBoofeKetabkhaneJakafshi.setPriceJakafshi(priceJakafshi);
+		komodBoofeKetabkhaneJakafshi.setPriceKetabkhane(priceKetabkhane);
+		komodBoofeKetabkhaneJakafshi.setPricekomod(pricekomod);
+		komodBoofeKetabkhaneJakafshi.setShekleHendesiBoofe(shekleHendesiBoofe);
+		komodBoofeKetabkhaneJakafshi.setShekleHendesiJakafshi(shekleHendesiJakafshi);
+		komodBoofeKetabkhaneJakafshi.setShekleHendesiKetabkhane(shekleHendesiKetabkhane);
+		komodBoofeKetabkhaneJakafshi.setShekleHendesikomod(shekleHendesikomod);
+		komodBoofeKetabkhaneJakafshi.setTedadBoofe(tedadBoofe);
+		komodBoofeKetabkhaneJakafshi.setTedadJakafshi(tedadJakafshi);
+		komodBoofeKetabkhaneJakafshi.setTedadKetabkhane(tedadKetabkhane);
+		komodBoofeKetabkhaneJakafshi.setTedadkomod(tedadkomod);
+		productEntity.setKomodBoofeKetabkhaneJakafshi(komodBoofeKetabkhaneJakafshi);
+		    productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -5538,7 +5539,8 @@ if (!pic5.getContentType().equals("image/jpeg")) {
 	
 	
 	public void insertMdf() {
-		Mdf productEntity= new Mdf();
+		ProductEntity productEntity= new ProductEntity();
+		Mdf mdf = new Mdf();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -5597,12 +5599,12 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-		productEntity.setAbadMdf(abadMdf);
-		productEntity.setPriceMetrMdf(priceMetrMdf);
-		productEntity.setPriceTakhfifMetrMdf(priceTakhfifMetrMdf);
-		productEntity.setZekhametMdf(zekhametMdf);
-
-			mdfDaoLocal.insertToMdf(productEntity);
+		mdf.setAbadMdf(abadMdf);
+		mdf.setPriceMetrMdf(priceMetrMdf);
+		mdf.setPriceTakhfifMetrMdf(priceTakhfifMetrMdf);
+		mdf.setZekhametMdf(zekhametMdf);
+		productEntity.setMdf(mdf);
+            productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -5643,7 +5645,8 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertToMizAsali() {
-		MizAsali productEntity= new MizAsali();
+		ProductEntity productEntity= new ProductEntity();
+		MizAsali mizAsali = new MizAsali();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -5702,14 +5705,15 @@ if (!pic1.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-		productEntity.setDescriptionMizJeJeloAsali(descriptionMizJeJeloAsali);
-		productEntity.setJenseEskeletMizJeJeloAsali(jenseEskeletMizJeJeloAsali);
-		productEntity.setJensePayeMizJeJeloAsali(jensePayeMizJeJeloAsali);
-		productEntity.setNoeShisheMizJeJeloAsali(noeShisheMizJeJeloAsali);
-		productEntity.setPriceShisheMizJeJeloAsali(priceShisheMizJeJeloAsali);
-		productEntity.setSheklehendesiMizJeJeloAsali(sheklehendesiMizJeJeloAsali);
-		productEntity.setTedadMizJeJeloAsali(tedadMizJeJeloAsali);
-			mizAsaliDaoLocal.insertToMizAsali(productEntity);
+		mizAsali.setDescriptionMizJeJeloAsali(descriptionMizJeJeloAsali);
+		mizAsali.setJenseEskeletMizJeJeloAsali(jenseEskeletMizJeJeloAsali);
+		mizAsali.setJensePayeMizJeJeloAsali(jensePayeMizJeJeloAsali);
+		mizAsali.setNoeShisheMizJeJeloAsali(noeShisheMizJeJeloAsali);
+		mizAsali.setPriceShisheMizJeJeloAsali(priceShisheMizJeJeloAsali);
+		mizAsali.setSheklehendesiMizJeJeloAsali(sheklehendesiMizJeJeloAsali);
+		mizAsali.setTedadMizJeJeloAsali(tedadMizJeJeloAsali);
+		productEntity.setMizAsali(mizAsali);
+		productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -5750,7 +5754,8 @@ if (!pic1.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertToMizEdari() {
-		MizEdari productEntity= new MizEdari();
+		ProductEntity productEntity= new ProductEntity();
+		MizEdari mizEdari = new MizEdari();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -5809,19 +5814,20 @@ if (!pic1.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-		productEntity.setDescriptionfazayeLavazemJanebiMizٍEdari(descriptionfazayeLavazemJanebiMizٍEdari);
-		productEntity.setFazayeLavazemJanebiMizٍEdari(convertBool(fazayeLavazemJanebiMizٍEdari));
-		productEntity.setJenseEskeletMizٍEdari(jenseEskeletMizٍEdari);
-		productEntity.setJensePayeMizٍEdari(jensePayeMizٍEdari);
-		productEntity.setKeshoMizٍEdari(convertBool(keshoMizٍEdari));
-		productEntity.setKomodMizٍEdari(convertBool(komodMizٍEdari));
-		productEntity.setNoeShisheMizٍEdari(noeShisheMizٍEdari);
-		productEntity.setPriceShisheMizٍEdari(priceShisheMizٍEdari);
-		productEntity.setSheklehendesiMizٍEdari(sheklehendesiMizٍEdari);
-		productEntity.setTedadChantekeMizٍEdari(tedadChantekeMizٍEdari);
-		productEntity.setTedadkeshoMizٍEdari(tedadkeshoMizٍEdari);
-		productEntity.setTedadkomodMizٍEdari(tedadkomodMizٍEdari);
-			mizEdariDaoLocal.insertToMizEdari(productEntity);
+		mizEdari.setDescriptionfazayeLavazemJanebiMizٍEdari(descriptionfazayeLavazemJanebiMizٍEdari);
+		mizEdari.setFazayeLavazemJanebiMizٍEdari(convertBool(fazayeLavazemJanebiMizٍEdari));
+		mizEdari.setJenseEskeletMizٍEdari(jenseEskeletMizٍEdari);
+		mizEdari.setJensePayeMizٍEdari(jensePayeMizٍEdari);
+		mizEdari.setKeshoMizٍEdari(convertBool(keshoMizٍEdari));
+		mizEdari.setKomodMizٍEdari(convertBool(komodMizٍEdari));
+		mizEdari.setNoeShisheMizٍEdari(noeShisheMizٍEdari);
+		mizEdari.setPriceShisheMizٍEdari(priceShisheMizٍEdari);
+		mizEdari.setSheklehendesiMizٍEdari(sheklehendesiMizٍEdari);
+		mizEdari.setTedadChantekeMizٍEdari(tedadChantekeMizٍEdari);
+		mizEdari.setTedadkeshoMizٍEdari(tedadkeshoMizٍEdari);
+		mizEdari.setTedadkomodMizٍEdari(tedadkomodMizٍEdari);
+		productEntity.setMizEdari(mizEdari);
+		productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -5862,7 +5868,8 @@ if (!pic1.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertToMizJeloMobli() {
-		MizJeloMobli productEntity= new MizJeloMobli();
+		ProductEntity productEntity= new ProductEntity();
+		MizJeloMobli mizJeloMobli = new MizJeloMobli();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -5921,18 +5928,19 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-		productEntity.setAbadMizJeloMobli(abadMizJeloMobli);
-		productEntity.setJenseEskeletMizJeloMobli(jenseEskeletMizJeloMobli);
-		productEntity.setJensePayeMizJeloMobli(jensePayeMizJeloMobli);
-		productEntity.setNoeShisheMizJeloMobli(noeShisheMizJeloMobli);
-		productEntity.setPriceMizJeloMobli(priceMizJeloMobli);
-		productEntity.setPriceShisheMizJeloMobli(priceShisheMizJeloMobli);
-		productEntity.setRangMizJeloMobli(rangMizJeloMobli);
-		productEntity.setSheklehendesiMizJeloMobli(sheklehendesiMizJeloMobli);
-		productEntity.setShisheAbzarMizJeloMobli(convertBool(shisheAbzarMizJeloMobli));
-		productEntity.setShisheMizJeloMobli(convertBool(shisheAbzarMizJeloMobli));
-		productEntity.setTedadMizJeloMobli(tedadMizJeloMobli);
-			mizJeloMobliDaoLocal.insertToMizJeloMobli(productEntity);
+		mizJeloMobli.setAbadMizJeloMobli(abadMizJeloMobli);
+		mizJeloMobli.setJenseEskeletMizJeloMobli(jenseEskeletMizJeloMobli);
+		mizJeloMobli.setJensePayeMizJeloMobli(jensePayeMizJeloMobli);
+		mizJeloMobli.setNoeShisheMizJeloMobli(noeShisheMizJeloMobli);
+		mizJeloMobli.setPriceMizJeloMobli(priceMizJeloMobli);
+		mizJeloMobli.setPriceShisheMizJeloMobli(priceShisheMizJeloMobli);
+		mizJeloMobli.setRangMizJeloMobli(rangMizJeloMobli);
+		mizJeloMobli.setSheklehendesiMizJeloMobli(sheklehendesiMizJeloMobli);
+		mizJeloMobli.setShisheAbzarMizJeloMobli(convertBool(shisheAbzarMizJeloMobli));
+		mizJeloMobli.setShisheMizJeloMobli(convertBool(shisheAbzarMizJeloMobli));
+		mizJeloMobli.setTedadMizJeloMobli(tedadMizJeloMobli);
+		productEntity.setMizJeloMobli(mizJeloMobli);
+		productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -5973,7 +5981,8 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertToMizNaharKhori() {
-		MizNaharKhori productEntity= new MizNaharKhori();
+		ProductEntity productEntity= new ProductEntity();
+		MizNaharKhori mizNaharKhori = new MizNaharKhori();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -6032,29 +6041,30 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-		productEntity.setDescriptionMizNaharKhori(descriptionMizNaharKhori);
-		productEntity.setJenseEsfangSandaliMizNaharKhori(jenseEsfangSandaliMizNaharKhori);
-		productEntity.setJenseEskeletMizNaharKhori(jenseEskeletMizNaharKhori);
-		productEntity.setJenseEskeletSandaliMizNaharKhori(jenseEskeletSandaliMizNaharKhori);
-		productEntity.setJenseFomSandaliMizNaharKhori(jenseFomSandaliMizNaharKhori);
-		productEntity.setJenseParcheSandaliMizNaharKhori(jenseParcheSandaliMizNaharKhori);
-		productEntity.setJensePayeMizNaharKhori(jensePayeMizNaharKhori);
-		productEntity.setJensePayeSandaliMizNaharKhori(jensePayeSandaliMizNaharKhori);
-		productEntity.setJensePayeMizNaharKhori(jensePayeMizNaharKhori);
-		productEntity.setJensePayeSandaliMizNaharKhori(jensePayeSandaliMizNaharKhori);
-		productEntity.setJenseSafeMizNaharKhori(jenseSafeMizNaharKhori);
-		productEntity.setNameParcheSandaliMizNaharKhori(nameParcheSandaliMizNaharKhori);
-		productEntity.setPayeSandaliRangMizNaharKhori(convertBool(payeSandaliRangMizNaharKhori));
-		productEntity.setPriceShisheMizNaharKhori(priceShisheMizNaharKhori);
-		productEntity.setRangeShisheMizNaharKhori(rangeShisheMizNaharKhori);
-		productEntity.setRangParcheSandaliMizNaharKhori(rangParcheSandaliMizNaharKhori);
-		productEntity.setRangPayeSandaliMizNaharKhori(rangPayeSandaliMizNaharKhori);
-		productEntity.setSakhtarMizNaharKhori(sakhtarMizNaharKhori);
-		productEntity.setSheklehendesiMizNaharKhori(sheklehendesiMizNaharKhori);
-		productEntity.setShisheAbzarMizNaharKhori(convertBool(shisheAbzarMizNaharKhori));
-		productEntity.setTedadMizNaharKhori(tedadMizNaharKhori);
-		productEntity.setZekhamatShisheMizNaharKhori(zekhamatShisheMizNaharKhori);
-			mizNaharKhoriDaoLocal.insertToMizNaharKhori(productEntity);
+		mizNaharKhori.setDescriptionMizNaharKhori(descriptionMizNaharKhori);
+		mizNaharKhori.setJenseEsfangSandaliMizNaharKhori(jenseEsfangSandaliMizNaharKhori);
+		mizNaharKhori.setJenseEskeletMizNaharKhori(jenseEskeletMizNaharKhori);
+		mizNaharKhori.setJenseEskeletSandaliMizNaharKhori(jenseEskeletSandaliMizNaharKhori);
+		mizNaharKhori.setJenseFomSandaliMizNaharKhori(jenseFomSandaliMizNaharKhori);
+		mizNaharKhori.setJenseParcheSandaliMizNaharKhori(jenseParcheSandaliMizNaharKhori);
+		mizNaharKhori.setJensePayeMizNaharKhori(jensePayeMizNaharKhori);
+		mizNaharKhori.setJensePayeSandaliMizNaharKhori(jensePayeSandaliMizNaharKhori);
+		mizNaharKhori.setJensePayeMizNaharKhori(jensePayeMizNaharKhori);
+		mizNaharKhori.setJensePayeSandaliMizNaharKhori(jensePayeSandaliMizNaharKhori);
+		mizNaharKhori.setJenseSafeMizNaharKhori(jenseSafeMizNaharKhori);
+		mizNaharKhori.setNameParcheSandaliMizNaharKhori(nameParcheSandaliMizNaharKhori);
+		mizNaharKhori.setPayeSandaliRangMizNaharKhori(convertBool(payeSandaliRangMizNaharKhori));
+		mizNaharKhori.setPriceShisheMizNaharKhori(priceShisheMizNaharKhori);
+		mizNaharKhori.setRangeShisheMizNaharKhori(rangeShisheMizNaharKhori);
+		mizNaharKhori.setRangParcheSandaliMizNaharKhori(rangParcheSandaliMizNaharKhori);
+		mizNaharKhori.setRangPayeSandaliMizNaharKhori(rangPayeSandaliMizNaharKhori);
+		mizNaharKhori.setSakhtarMizNaharKhori(sakhtarMizNaharKhori);
+		mizNaharKhori.setSheklehendesiMizNaharKhori(sheklehendesiMizNaharKhori);
+		mizNaharKhori.setShisheAbzarMizNaharKhori(convertBool(shisheAbzarMizNaharKhori));
+		mizNaharKhori.setTedadMizNaharKhori(tedadMizNaharKhori);
+		mizNaharKhori.setZekhamatShisheMizNaharKhori(zekhamatShisheMizNaharKhori);
+		productEntity.setMizNaharKhori(mizNaharKhori);
+		productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -6095,7 +6105,8 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertToMizTv() {
-		MizTv productEntity= new MizTv();
+		ProductEntity productEntity= new ProductEntity();
+		MizTv mizTv = new MizTv();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -6154,20 +6165,21 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-		productEntity.setAbadMizTv(abadMizTv);
-		productEntity.setDescriptionLavazemJanebi(descriptionLavazemJanebi);
-		productEntity.setGabeliatRangMizTv(ejrayePardePartishen);
-		productEntity.setFazayeLavazemJanebi(convertBool(fazayeLavazemJanebi));
-		productEntity.setJenseEskeletMizTv(jenseEskeletMizTv);
-		productEntity.setJensePayeMizTv(jensePayeMizTv);
-		productEntity.setKesho(convertBool(kesho));
-		productEntity.setMizMarbotTvInch(mizMarbotTvInch);
-		productEntity.setRangAvalMizTv(rangAvalMizTv);
-		productEntity.setRangDovomMizTv(rangDovomMizTv);
-		productEntity.setRangMizTv(rangMizTv);
-		productEntity.setRangPayeMizTv(rangPayeMizTv);
-		productEntity.setTedadkesho(tedadkesho);
-			mizTvDaoLocal.insertToMizTv(productEntity);
+		mizTv.setAbadMizTv(abadMizTv);
+		mizTv.setDescriptionLavazemJanebi(descriptionLavazemJanebi);
+		mizTv.setGabeliatRangMizTv(ejrayePardePartishen);
+		mizTv.setFazayeLavazemJanebi(convertBool(fazayeLavazemJanebi));
+		mizTv.setJenseEskeletMizTv(jenseEskeletMizTv);
+		mizTv.setJensePayeMizTv(jensePayeMizTv);
+		mizTv.setKesho(convertBool(kesho));
+		mizTv.setMizMarbotTvInch(mizMarbotTvInch);
+		mizTv.setRangAvalMizTv(rangAvalMizTv);
+		mizTv.setRangDovomMizTv(rangDovomMizTv);
+		mizTv.setRangMizTv(rangMizTv);
+		mizTv.setRangPayeMizTv(rangPayeMizTv);
+		mizTv.setTedadkesho(tedadkesho);
+		productEntity.setMizTv(mizTv);
+		productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -6208,7 +6220,8 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertToMoblman() {
-		Moblman productEntity= new Moblman();
+		ProductEntity productEntity= new ProductEntity();
+		Moblman moblman = new Moblman();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -6267,31 +6280,32 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-        productEntity.setAbadKosanBozorg(abadKosanBozorg);
-        productEntity.setAbadKosanKochak(abadKosanKochak);
-        productEntity.setAbadMiz(abadMiz);
-        productEntity.setDescriptionMekanizmTakhtsho(descriptionMekanizmTakhtsho);
-        productEntity.setEnetekhabRangParche(convertBool(enetekhabRangParche));
-        productEntity.setEnetekhabRangPaye(convertBool(enetekhabRangPaye));
-        productEntity.setJenseEsfanj(jenseEsfanj);
-        productEntity.setJenseEskelet(jenseEskelet);
-        productEntity.setJenseFome(jenseFome);
-        productEntity.setJenseParche(jenseParche);
-        productEntity.setJenseParcheKosan(jenseParcheKosan);
-        productEntity.setJensePaye(jensePaye);
-        productEntity.setKosan(convertBool(kosan));
-        productEntity.setMekanizmTakhtsho(convertBool(mekanizmTakhtsho));
-        productEntity.setMiz(convertBool(miz));
-        productEntity.setModelKosan(modelKosan);
-        productEntity.setNameParche(nameParche);
-        productEntity.setNoeMobl(noeMobl);
-        productEntity.setRangeParcheKosan(rangeParcheKosan);
-        productEntity.setRangParche(rangParche);
-        productEntity.setSakhtarMobl(sakhtarMobl);
-        productEntity.setTedadKosan(tedadKosan);
-        productEntity.setTedadMiz(tedadMiz);
-        productEntity.setTedadMobl(tedadMobl);
-			moblmanDaoLocal.insertToMoblman(productEntity);
+		moblman.setAbadKosanBozorg(abadKosanBozorg);
+		moblman.setAbadKosanKochak(abadKosanKochak);
+		moblman.setAbadMiz(abadMiz);
+		moblman.setDescriptionMekanizmTakhtsho(descriptionMekanizmTakhtsho);
+		moblman.setEnetekhabRangParche(convertBool(enetekhabRangParche));
+		moblman.setEnetekhabRangPaye(convertBool(enetekhabRangPaye));
+		moblman.setJenseEsfanj(jenseEsfanj);
+		moblman.setJenseEskelet(jenseEskelet);
+		moblman.setJenseFome(jenseFome);
+		moblman.setJenseParche(jenseParche);
+		moblman.setJenseParcheKosan(jenseParcheKosan);
+		moblman.setJensePaye(jensePaye);
+		moblman.setKosan(convertBool(kosan));
+		moblman.setMekanizmTakhtsho(convertBool(mekanizmTakhtsho));
+		moblman.setMiz(convertBool(miz));
+		moblman.setModelKosan(modelKosan);
+		moblman.setNameParche(nameParche);
+		moblman.setNoeMobl(noeMobl);
+		moblman.setRangeParcheKosan(rangeParcheKosan);
+		moblman.setRangParche(rangParche);
+		moblman.setSakhtarMobl(sakhtarMobl);
+		moblman.setTedadKosan(tedadKosan);
+		moblman.setTedadMiz(tedadMiz);
+		moblman.setTedadMobl(tedadMobl);
+		productEntity.setMoblman(moblman);
+		productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -6332,7 +6346,8 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertToMojasame() {
-		Mojasame productEntity= new Mojasame();
+		ProductEntity productEntity= new ProductEntity();
+		Mojasame mojasame = new Mojasame();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -6391,11 +6406,11 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-		productEntity.setAbadMojasame(abadMojasame);
-		productEntity.setJenseMojasame(jenseMojasame);
-		productEntity.setShostoshoMojasame(convertBool(shostoshoMojasame));
-
-			mojasameDaoLocal.insertToMojasame(productEntity);
+		mojasame.setAbadMojasame(abadMojasame);
+		mojasame.setJenseMojasame(jenseMojasame);
+		mojasame.setShostoshoMojasame(convertBool(shostoshoMojasame));
+		productEntity.setMojasame(mojasame);
+		productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -6437,7 +6452,8 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 	
 	
 	public void insertToMonabat() {
-		Monabat productEntity= new Monabat();
+		ProductEntity productEntity= new ProductEntity();
+		Monabat monabat = new Monabat();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -6496,14 +6512,14 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-        productEntity.setAbadMonabat(abadMonabat);
-        productEntity.setJenseMonabat(jenseMonabat);
-        productEntity.setKeshvarMdfMonabat(keshvarMdfMonabat);
-        productEntity.setNameMdfMonabat(nameMdfMonabat);
-        productEntity.setNoeMonabat(noeMonabat);
-        productEntity.setZekhamatMdfMonabat(zekhamatMdfMonabat);
-	
-			monabatDaoLocal.insertToMonabat(productEntity);
+		monabat.setAbadMonabat(abadMonabat);
+		monabat.setJenseMonabat(jenseMonabat);
+		monabat.setKeshvarMdfMonabat(keshvarMdfMonabat);
+		monabat.setNameMdfMonabat(nameMdfMonabat);
+		monabat.setNoeMonabat(noeMonabat);
+		monabat.setZekhamatMdfMonabat(zekhamatMdfMonabat);
+		productEntity.setMonabat(monabat);
+		    productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -6544,7 +6560,8 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertToPanjare() {
-		Panjare productEntity= new Panjare();
+		ProductEntity productEntity= new ProductEntity();
+		Panjare panjare =new Panjare();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -6603,15 +6620,15 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-		productEntity.setCncPanjare(convertBool(cncPanjare));
-		productEntity.setJenseKalafPanjare(jenseKalafPanjare);
-		productEntity.setMakanPanjare(makanPanjare);
-		productEntity.setMetrialPanjare(metrialPanjare);
-		productEntity.setNoeRangPanjare(noeRangPanjare);
-		productEntity.setShostoshoPanjare(convertBool(shostoshoPanjare));
-		productEntity.setZedeAbPanjare(convertBool(zedeAbPanjare));
-
-			panjareDaoLocal.insertToPanjare(productEntity);
+		panjare.setCncPanjare(convertBool(cncPanjare));
+		panjare.setJenseKalafPanjare(jenseKalafPanjare);
+		panjare.setMakanPanjare(makanPanjare);
+		panjare.setMetrialPanjare(metrialPanjare);
+		panjare.setNoeRangPanjare(noeRangPanjare);
+		panjare.setShostoshoPanjare(convertBool(shostoshoPanjare));
+		panjare.setZedeAbPanjare(convertBool(zedeAbPanjare));
+		productEntity.setPanjare(panjare);
+		productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -6652,7 +6669,8 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertToPartition() {
-		Partition productEntity= new Partition();
+		ProductEntity productEntity= new ProductEntity();
+		Partition partition = new Partition();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -6711,17 +6729,18 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-		productEntity.setEjrayePardePartishen(ejrayePardePartishen);
-		productEntity.setJenseLabePartishen(jenseLabePartishen);
-		productEntity.setJensePanelPartishen(jensePanelPartishen);
-		productEntity.setJenseSotonPartishen(jenseSotonPartishen);
-		productEntity.setNoeTarkibPartishen(noeTarkibPartishen);
-		productEntity.setPriceMetrPartishen(priceMetrPartishen);
-		productEntity.setPriceTakhfifMetrPartishen(priceTakhfifMetrPartishen);
-		productEntity.setRangPardePartishen(rangPardePartishen);
-		productEntity.setRangPartishen(rangPartishen);
-		productEntity.setTarkibiPartishen(convertBool(tarkibiPartishen));
-			partitionDaoLocal.insertToPartition(productEntity);
+		partition.setEjrayePardePartishen(ejrayePardePartishen);
+		partition.setJenseLabePartishen(jenseLabePartishen);
+		partition.setJensePanelPartishen(jensePanelPartishen);
+		partition.setJenseSotonPartishen(jenseSotonPartishen);
+		partition.setNoeTarkibPartishen(noeTarkibPartishen);
+		partition.setPriceMetrPartishen(priceMetrPartishen);
+		partition.setPriceTakhfifMetrPartishen(priceTakhfifMetrPartishen);
+		partition.setRangPardePartishen(rangPardePartishen);
+		partition.setRangPartishen(rangPartishen);
+		partition.setTarkibiPartishen(convertBool(tarkibiPartishen));
+		productEntity.setPartition(partition);
+		productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -6762,7 +6781,8 @@ if (!pic4.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertToSandaliEdari() {
-		SandaliEdari productEntity= new SandaliEdari();
+		ProductEntity productEntity= new ProductEntity();
+		SandaliEdari sandaliEdari = new SandaliEdari();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -6821,14 +6841,15 @@ if (!pic3.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-		productEntity.setAbadSandaliEdari(abadSandaliEdari);
-		productEntity.setDasteSandaliEdari(convertBool(dasteSandaliEdari));
-		productEntity.setJensePayeSandaliEdari(jensePayeSandaliEdari);
-		productEntity.setNoeJenseSandaliEdari(noeJenseSandaliEdari);
-		productEntity.setNoeSandaliEdari(noeSandaliEdari);
-		productEntity.setRangSandaliEdari(rangSandaliEdari);
-		productEntity.setTebiSandaliEdari(convertBool(tebiSandaliEdari));
-			sandaliEdariDaoLocal.insertToSandaliEdari(productEntity);
+		sandaliEdari.setAbadSandaliEdari(abadSandaliEdari);
+		sandaliEdari.setDasteSandaliEdari(convertBool(dasteSandaliEdari));
+		sandaliEdari.setJensePayeSandaliEdari(jensePayeSandaliEdari);
+		sandaliEdari.setNoeJenseSandaliEdari(noeJenseSandaliEdari);
+		sandaliEdari.setNoeSandaliEdari(noeSandaliEdari);
+		sandaliEdari.setRangSandaliEdari(rangSandaliEdari);
+		sandaliEdari.setTebiSandaliEdari(convertBool(tebiSandaliEdari));
+		productEntity.setSandaliEdari(sandaliEdari);
+		productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -6869,7 +6890,8 @@ if (!pic3.getContentType().equals("image/jpeg")) {
 	}
 	
 	public void insertToServiceKhab1() {
-		ServiceKhab1 productEntity= new ServiceKhab1();
+		ProductEntity productEntity= new ProductEntity();
+		ServiceKhab1 serviceKhab1 = new ServiceKhab1();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -6928,91 +6950,92 @@ if (!pic3.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-        productEntity.setAbadGabVayeneGadi(abadGabVayeneGadi);
+		serviceKhab1.setAbadGabVayeneGadi(abadGabVayeneGadi);
         System.err.println(1);
-        productEntity.setAbadKomodServiceKhab(abadKomodServiceKhab);
+        serviceKhab1.setAbadKomodServiceKhab(abadKomodServiceKhab);
         System.err.println(1);
-        productEntity.setAbadKomodServiceKhab(abadKomodServiceKhab);
+        serviceKhab1.setAbadKomodServiceKhab(abadKomodServiceKhab);
         System.err.println(1);
-        productEntity.setAbadMizArayesh(abadMizArayesh);
+        serviceKhab1.setAbadMizArayesh(abadMizArayesh);
         System.err.println(1);
-        productEntity.setAbadMizTahrir(abadMizTahrir);
+        serviceKhab1.setAbadMizTahrir(abadMizTahrir);
         System.err.println(1);
-        productEntity.setAbadPaTakhti(abadPaTakhti);
+        serviceKhab1.setAbadPaTakhti(abadPaTakhti);
         System.err.println(1);
-        productEntity.setAbadToshak(abadToshak);
+        serviceKhab1.setAbadToshak(abadToshak);
         System.err.println(1);
-        productEntity.setArzeTakhteKhab(arzeTakhteKhab);
+        serviceKhab1.setArzeTakhteKhab(arzeTakhteKhab);
         System.err.println(1);
-        productEntity.setBrandToshak(brandToshak);
+        serviceKhab1.setBrandToshak(brandToshak);
         System.err.println(1);
-        productEntity.setGabVayeneGadi(convertBool(gabVayeneGadi));
+        serviceKhab1.setGabVayeneGadi(convertBool(gabVayeneGadi));
         System.err.println(1);
-        productEntity.setJenseGabVayeneGadi(jenseGabVayeneGadi);
+        serviceKhab1.setJenseGabVayeneGadi(jenseGabVayeneGadi);
         System.err.println(1);
-        productEntity.setJenseKomodServiceKhab(jenseKomodServiceKhab);
+        serviceKhab1.setJenseKomodServiceKhab(jenseKomodServiceKhab);
         System.err.println(1);
-        productEntity.setJenseMizArayesh(jenseMizArayesh);
+        serviceKhab1.setJenseMizArayesh(jenseMizArayesh);
         System.err.println(1);
-        productEntity.setJenseMizTahrir(jenseMizTahrir);
+        serviceKhab1.setJenseMizTahrir(jenseMizTahrir);
         System.err.println(1);
-        productEntity.setJensePaTakhti(jensePaTakhti);
+        serviceKhab1.setJensePaTakhti(jensePaTakhti);
         System.err.println(1);
-        productEntity.setJenseTakhtKhab(jenseTakhtKhab);
+        serviceKhab1.setJenseTakhtKhab(jenseTakhtKhab);
         System.err.println(1);
-        productEntity.setKalafTakhtJakDar(convertBool(kalafTakhtJakDar));
+        serviceKhab1.setKalafTakhtJakDar(convertBool(kalafTakhtJakDar));
         System.err.println(1);
-        productEntity.setKeshovbox(convertBool(keshovbox));
+        serviceKhab1.setKeshovbox(convertBool(keshovbox));
         System.err.println(1);
-        productEntity.setKomodServiceKhab(convertBool(komodServiceKhab));
+        serviceKhab1.setKomodServiceKhab(convertBool(komodServiceKhab));
         System.err.println(1);
-        productEntity.setMizArayesh(convertBool(mizArayesh));
+        serviceKhab1.setMizArayesh(convertBool(mizArayesh));
         System.err.println(1);
-        productEntity.setMizTahrir(convertBool(mizTahrir));
+        serviceKhab1.setMizTahrir(convertBool(mizTahrir));
         System.err.println(1);
-        productEntity.setModatGharantiToshak(modatGharantiToshak);
+        serviceKhab1.setModatGharantiToshak(modatGharantiToshak);
         System.err.println(1);
-        productEntity.setModelServiceKhab(modelServiceKhab);
+        serviceKhab1.setModelServiceKhab(modelServiceKhab);
         System.err.println(1);
-        productEntity.setModelToshak(modelToshak);
+        serviceKhab1.setModelToshak(modelToshak);
         System.err.println(1);
-        productEntity.setPatakhti(convertBool(patakhti));
+        serviceKhab1.setPatakhti(convertBool(patakhti));
         System.err.println(1);
-        productEntity.setPriceGabVayeneGadi(priceGabVayeneGadi);
+        serviceKhab1.setPriceGabVayeneGadi(priceGabVayeneGadi);
         System.err.println(1);
-        productEntity.setPriceKomodServiceKhab(priceKomodServiceKhab);
+        serviceKhab1.setPriceKomodServiceKhab(priceKomodServiceKhab);
         System.err.println(1);
-        productEntity.setPriceMizArayesh(priceMizArayesh);
+        serviceKhab1.setPriceMizArayesh(priceMizArayesh);
         System.err.println(1);
-        productEntity.setPriceMizTahrir(priceMizTahrir);
+        serviceKhab1.setPriceMizTahrir(priceMizTahrir);
         System.err.println(1);
-        productEntity.setPricePaTakhti(pricePaTakhti);
+        serviceKhab1.setPricePaTakhti(pricePaTakhti);
         System.err.println(1);
-        productEntity.setPriceTakhtKhab(priceTakhtKhab);
+        serviceKhab1.setPriceTakhtKhab(priceTakhtKhab);
         System.err.println(1);
-        productEntity.setPriceToshak(priceToshak);
+        serviceKhab1.setPriceToshak(priceToshak);
         System.err.println(1);
-        productEntity.setRangGabVayeneGadi(rangGabVayeneGadi);
+        serviceKhab1.setRangGabVayeneGadi(rangGabVayeneGadi);
         System.err.println(1);
-        productEntity.setRangKomodServiceKhab(rangKomodServiceKhab);
+        serviceKhab1.setRangKomodServiceKhab(rangKomodServiceKhab);
         System.err.println(1);
-        productEntity.setRangMizArayesh(rangMizArayesh);
+        serviceKhab1.setRangMizArayesh(rangMizArayesh);
         System.err.println(1);
-        productEntity.setRangMizTahrir(rangMizTahrir);
+        serviceKhab1.setRangMizTahrir(rangMizTahrir);
         System.err.println(1);
-        productEntity.setRangPaTakhti(rangPaTakhti);
+        serviceKhab1.setRangPaTakhti(rangPaTakhti);
         System.err.println(1);
-        productEntity.setRangTakhtKhab(rangTakhtKhab);
+        serviceKhab1.setRangTakhtKhab(rangTakhtKhab);
         System.err.println(1);
-        productEntity.setSandaliServiceKhab(convertBool(sandaliServiceKhab));
+        serviceKhab1.setSandaliServiceKhab(convertBool(sandaliServiceKhab));
         System.err.println(1);
-        productEntity.setTedadPaTakhti(tedadPaTakhti);
+        serviceKhab1.setTedadPaTakhti(tedadPaTakhti);
         System.err.println(1);
-        productEntity.setToshak(convertBool(toshak));
+        serviceKhab1.setToshak(convertBool(toshak));
         System.err.println(1);
-        productEntity.setTozihatToshak(tozihatToshak);
+        serviceKhab1.setTozihatToshak(tozihatToshak);
         System.err.println(1);
-			serviceKhab1DaoLocal.insertToServiceKhab1(productEntity);
+        productEntity.setServiceKhab1(serviceKhab1);
+        	productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -7054,7 +7077,8 @@ if (!pic3.getContentType().equals("image/jpeg")) {
 	
 	
 	public void insertToServiceKhab2() {
-		ServiceKhab2 productEntity= new ServiceKhab2();
+		ProductEntity productEntity= new ProductEntity();
+		ServiceKhab2 serviceKhab2 = new ServiceKhab2();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -7113,91 +7137,92 @@ if (!pic3.getContentType().equals("image/jpeg")) {
 		productEntity.setRangBandi(rangBandi);
 		productEntity.setRaste(faaliatHa());
 		//////////////////////////////////////////////
-        productEntity.setAbadGabVAyeneGadi2(abadGabVAyeneGadi2);
+		serviceKhab2.setAbadGabVAyeneGadi2(abadGabVAyeneGadi2);
         System.err.println(1);
-        productEntity.setAbadkomodServiceKhab2(abadkomodServiceKhab2);
+        serviceKhab2.setAbadkomodServiceKhab2(abadkomodServiceKhab2);
         System.err.println(1);
-        productEntity.setAbadkomodServiceKhab2(abadkomodServiceKhab2);
+        serviceKhab2.setAbadkomodServiceKhab2(abadkomodServiceKhab2);
         System.err.println(1);
-        productEntity.setAbadMizArayesh2(abadMizArayesh2);
+        serviceKhab2.setAbadMizArayesh2(abadMizArayesh2);
         System.err.println(1);
-        productEntity.setAbadmizTahrir2(abadmizTahrir2);
+        serviceKhab2.setAbadmizTahrir2(abadmizTahrir2);
         System.err.println(1);
-        productEntity.setAbadPaTakhti2(abadPaTakhti2);
+        serviceKhab2.setAbadPaTakhti2(abadPaTakhti2);
         System.err.println(1);
-        productEntity.setAbadToshak2(abadToshak2);
+        serviceKhab2.setAbadToshak2(abadToshak2);
         System.err.println(1);
-        productEntity.setArzeTakhteKhab2(arzeTakhteKhab2);
+        serviceKhab2.setArzeTakhteKhab2(arzeTakhteKhab2);
         System.err.println(1);
-        productEntity.setBrandToshak2(brandToshak2);
+        serviceKhab2.setBrandToshak2(brandToshak2);
         System.err.println(1);
-        productEntity.setGabVAyeneGadi2(convertBool(gabVAyeneGadi2));
+        serviceKhab2.setGabVAyeneGadi2(convertBool(gabVAyeneGadi2));
         System.err.println(1);
-        productEntity.setJenseGabVAyeneGadi2(jenseGabVAyeneGadi2);
+        serviceKhab2.setJenseGabVAyeneGadi2(jenseGabVAyeneGadi2);
         System.err.println(1);
-        productEntity.setJensekomodServiceKhab2(jensekomodServiceKhab2);
+        serviceKhab2.setJensekomodServiceKhab2(jensekomodServiceKhab2);
         System.err.println(1);
-        productEntity.setJenseMizArayesh2(jenseMizArayesh2);
+        serviceKhab2.setJenseMizArayesh2(jenseMizArayesh2);
         System.err.println(1);
-        productEntity.setJensemizTahrir2(jensemizTahrir2);
+        serviceKhab2.setJensemizTahrir2(jensemizTahrir2);
         System.err.println(1);
-        productEntity.setJensePaTakhti2(jensePaTakhti2);
+        serviceKhab2.setJensePaTakhti2(jensePaTakhti2);
         System.err.println(1);
-        productEntity.setJenseTakhteKhab2(jenseTakhteKhab2);
+        serviceKhab2.setJenseTakhteKhab2(jenseTakhteKhab2);
         System.err.println(1);
-        productEntity.setKalafTakhtJackDar(convertBool(kalafTakhtJackDar));
+        serviceKhab2.setKalafTakhtJackDar(convertBool(kalafTakhtJackDar));
         System.err.println(1);
-        productEntity.setKeshoVbox(convertBool(keshoVbox));
+        serviceKhab2.setKeshoVbox(convertBool(keshoVbox));
         System.err.println(1);
-        productEntity.setKomodServiceKhab2(convertBool(komodServiceKhab2));
+        serviceKhab2.setKomodServiceKhab2(convertBool(komodServiceKhab2));
         System.err.println(1);
-        productEntity.setMizArayesh2(convertBool(mizArayesh2));
+        serviceKhab2.setMizArayesh2(convertBool(mizArayesh2));
         System.err.println(1);
-        productEntity.setMizTahrir2(convertBool(mizTahrir2));
+        serviceKhab2.setMizTahrir2(convertBool(mizTahrir2));
         System.err.println(1);
-        productEntity.setModatGarantiGabVAyeneGadi2(modatGarantiGabVAyeneGadi2);
+        serviceKhab2.setModatGarantiGabVAyeneGadi2(modatGarantiGabVAyeneGadi2);
         System.err.println(1);
-        productEntity.setModelServiceKhab2(modelServiceKhab2);
+        serviceKhab2.setModelServiceKhab2(modelServiceKhab2);
         System.err.println(1);
-        productEntity.setModelToshak2(modelToshak2);
+        serviceKhab2.setModelToshak2(modelToshak2);
         System.err.println(1);
-        productEntity.setPaTahti2(convertBool(paTahti2));
+        serviceKhab2.setPaTahti2(convertBool(paTahti2));
         System.err.println(1);
-        productEntity.setPriceGabVAyeneGadi2(priceGabVAyeneGadi2);
+        serviceKhab2.setPriceGabVAyeneGadi2(priceGabVAyeneGadi2);
         System.err.println(1);
-        productEntity.setPriceKomodServiceKhab2(priceKomodServiceKhab2);
+        serviceKhab2.setPriceKomodServiceKhab2(priceKomodServiceKhab2);
         System.err.println(1);
-        productEntity.setPriceMizArayesh2(priceMizArayesh2);
+        serviceKhab2.setPriceMizArayesh2(priceMizArayesh2);
         System.err.println(1);
-        productEntity.setPriceMizTahrir2(priceMizTahrir2);
+        serviceKhab2.setPriceMizTahrir2(priceMizTahrir2);
         System.err.println(1);
-        productEntity.setPricePaTakhti2(pricePaTakhti2);
+        serviceKhab2.setPricePaTakhti2(pricePaTakhti2);
         System.err.println(1);
-        productEntity.setPriceTakhteKhab2(priceTakhteKhab2);
+        serviceKhab2.setPriceTakhteKhab2(priceTakhteKhab2);
         System.err.println(1);
-        productEntity.setPriceToshak2(priceToshak2);
+        serviceKhab2.setPriceToshak2(priceToshak2);
         System.err.println(1);
-        productEntity.setRangGabVAyeneGadi2(rangGabVAyeneGadi2);
+        serviceKhab2.setRangGabVAyeneGadi2(rangGabVAyeneGadi2);
         System.err.println(1);
-        productEntity.setRangkomodServiceKhab2(rangkomodServiceKhab2);
+        serviceKhab2.setRangkomodServiceKhab2(rangkomodServiceKhab2);
         System.err.println(1);
-        productEntity.setRangMizArayesh2(rangMizArayesh2);
+        serviceKhab2.setRangMizArayesh2(rangMizArayesh2);
         System.err.println(1);
-        productEntity.setRangmizTahrir2(rangmizTahrir2);
+        serviceKhab2.setRangmizTahrir2(rangmizTahrir2);
         System.err.println(1);
-        productEntity.setRangPaTakhti2(rangPaTakhti2);
+        serviceKhab2.setRangPaTakhti2(rangPaTakhti2);
         System.err.println(1);
-        productEntity.setRangeTakhteKhab2(rangeTakhteKhab2);
+        serviceKhab2.setRangeTakhteKhab2(rangeTakhteKhab2);
         System.err.println(1);
-        productEntity.setSandaliMizArayesh2(convertBool(sandaliMizArayesh2));
+        serviceKhab2.setSandaliMizArayesh2(convertBool(sandaliMizArayesh2));
         System.err.println(1);
-        productEntity.setTedadPaTakhti2(tedadPaTakhti2);
+        serviceKhab2.setTedadPaTakhti2(tedadPaTakhti2);
         System.err.println(1);
-        productEntity.setToshak2(convertBool(toshak2));
+        serviceKhab2.setToshak2(convertBool(toshak2));
         System.err.println(1);
-        productEntity.setDescriptionToshak2(descriptionToshak2);
+        serviceKhab2.setDescriptionToshak2(descriptionToshak2);
         System.err.println(1);
-			serviceKhab2DaoLocal.insertToServiceKhab2(productEntity);
+        productEntity.setServiceKhab2(serviceKhab2);
+        productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -7240,7 +7265,8 @@ if (!pic3.getContentType().equals("image/jpeg")) {
 	
 	
 	public void insertToServiceKhabKodak() {
-		ServiceKhabKodak productEntity= new ServiceKhabKodak();
+		ProductEntity productEntity= new ProductEntity();
+		ServiceKhabKodak serviceKhabKodak = new ServiceKhabKodak();
 		try {
 		productEntity.setProduct(adminProfile.getMoblEntity());
 		productEntity.setNameCode(nameCode);
@@ -7300,95 +7326,96 @@ if (!pic3.getContentType().equals("image/jpeg")) {
 		productEntity.setRaste(faaliatHa());
 		System.err.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
 		//////////////////////////////////////////////
-		productEntity.setAbadKomodkenarMadari(abadKomodkenarMadari);
+		serviceKhabKodak.setAbadKomodkenarMadari(abadKomodkenarMadari);
 		System.err.println(1);
-		productEntity.setAbadKomodMizSandaliKodak(abadKomodMizSandaliKodak);
+		serviceKhabKodak.setAbadKomodMizSandaliKodak(abadKomodMizSandaliKodak);
 		System.err.println(1);
-		productEntity.setAbadMizArayeshMizSandaliKodak(abadMizArayeshMizSandaliKodak);
+		serviceKhabKodak.setAbadMizArayeshMizSandaliKodak(abadMizArayeshMizSandaliKodak);
 		System.err.println(1);
-		productEntity.setAbadMizKodak(abadMizKodak);
+		serviceKhabKodak.setAbadMizKodak(abadMizKodak);
 		System.err.println(1);
-		productEntity.setAbadSandaliKodak(abadSandaliKodak);
+		serviceKhabKodak.setAbadSandaliKodak(abadSandaliKodak);
 		System.err.println(1);
-		productEntity.setAbadShelfDivari(abadShelfDivari);
+		serviceKhabKodak.setAbadShelfDivari(abadShelfDivari);
 		System.err.println(1);
-		productEntity.setAbadToshak3(abadToshak3);
+		serviceKhabKodak.setAbadToshak3(abadToshak3);
 		System.err.println(1);
-		productEntity.setAbadVitrinKetabkhane(abadVitrinKetabkhane);
+		serviceKhabKodak.setAbadVitrinKetabkhane(abadVitrinKetabkhane);
 		System.err.println(1);
-		productEntity.setBrandToshak3(brandToshak3);
+		serviceKhabKodak.setBrandToshak3(brandToshak3);
 		System.err.println(1);
-		productEntity.setDescriptionToshak3(descriptionToshak3);
+		serviceKhabKodak.setDescriptionToshak3(descriptionToshak3);
 		System.err.println(1);
-		productEntity.setJenseKomodkenarMadari(jenseKomodkenarMadari);
+		serviceKhabKodak.setJenseKomodkenarMadari(jenseKomodkenarMadari);
 		System.err.println(1);
-		productEntity.setJenseKomodMizSandaliKodak(jenseKomodMizSandaliKodak);
+		serviceKhabKodak.setJenseKomodMizSandaliKodak(jenseKomodMizSandaliKodak);
 		System.err.println(1);
-		productEntity.setJenseMizArayeshMizSandaliKodak(jenseMizArayeshMizSandaliKodak);
+		serviceKhabKodak.setJenseMizArayeshMizSandaliKodak(jenseMizArayeshMizSandaliKodak);
 		System.err.println(1);
-		productEntity.setJenseMizSandaliKodak(jenseMizSandaliKodak);
+		serviceKhabKodak.setJenseMizSandaliKodak(jenseMizSandaliKodak);
 		System.err.println(1);
-		productEntity.setJenseServiceKhabNozad(jenseServiceKhabNozad);
+		serviceKhabKodak.setJenseServiceKhabNozad(jenseServiceKhabNozad);
 		System.err.println(1);
-		productEntity.setJenseShelfDivari(jenseShelfDivari);
+		serviceKhabKodak.setJenseShelfDivari(jenseShelfDivari);
 		System.err.println(1);
-		productEntity.setJenseVitrinKetabkhane(jenseVitrinKetabkhane);
+		serviceKhabKodak.setJenseVitrinKetabkhane(jenseVitrinKetabkhane);
 		System.err.println(1);
-		productEntity.setKenarMadari(convertBool(kenarMadari));
+		serviceKhabKodak.setKenarMadari(convertBool(kenarMadari));
 		System.err.println(1);
-		productEntity.setKeshoVBox(convertBool(keshoVBox));
+		serviceKhabKodak.setKeshoVBox(convertBool(keshoVBox));
 		System.err.println(1);
-		productEntity.setKomodMizSandaliKodak(convertBool(komodMizSandaliKodak));
+		serviceKhabKodak.setKomodMizSandaliKodak(convertBool(komodMizSandaliKodak));
 		System.err.println(1);
-		productEntity.setMizArayeshMizSandaliKodak(convertBool(mizArayeshMizSandaliKodak));
+		serviceKhabKodak.setMizArayeshMizSandaliKodak(convertBool(mizArayeshMizSandaliKodak));
 		System.err.println(1);
-		productEntity.setMizSandaliKodak(convertBool(mizSandaliKodak));
+		serviceKhabKodak.setMizSandaliKodak(convertBool(mizSandaliKodak));
 		System.err.println(1);
-		productEntity.setModatGarantiToshak3(modatGarantiToshak3);
+		serviceKhabKodak.setModatGarantiToshak3(modatGarantiToshak3);
 		System.err.println(1);
-		productEntity.setModelServiceKhabNozad(modelServiceKhabNozad);
+		serviceKhabKodak.setModelServiceKhabNozad(modelServiceKhabNozad);
 		System.err.println(1);
-		productEntity.setModelToshak3(modelToshak3);
+		serviceKhabKodak.setModelToshak3(modelToshak3);
 		System.err.println(1);
-		productEntity.setPriceKomodkenarMadari(priceKomodkenarMadari);
+		serviceKhabKodak.setPriceKomodkenarMadari(priceKomodkenarMadari);
 		System.err.println(1);
-		productEntity.setPriceKomodMizSandaliKodak(priceKomodMizSandaliKodak);
+		serviceKhabKodak.setPriceKomodMizSandaliKodak(priceKomodMizSandaliKodak);
 		System.err.println(1);
-		productEntity.setPriceMizArayeshMizSandaliKodak(priceMizArayeshMizSandaliKodak);
+		serviceKhabKodak.setPriceMizArayeshMizSandaliKodak(priceMizArayeshMizSandaliKodak);
 		System.err.println(1);
-		productEntity.setPriceMizSandaliKodak(priceMizSandaliKodak);
+		serviceKhabKodak.setPriceMizSandaliKodak(priceMizSandaliKodak);
 		System.err.println(1);
-		productEntity.setPriceServiceKhabNozad(priceServiceKhabNozad);
+		serviceKhabKodak.setPriceServiceKhabNozad(priceServiceKhabNozad);
 		System.err.println(1);
-		productEntity.setPriceShelfDivari(priceShelfDivari);
+		serviceKhabKodak.setPriceShelfDivari(priceShelfDivari);
 		System.err.println(1);
-		productEntity.setPriceToshak3(priceToshak3);
+		serviceKhabKodak.setPriceToshak3(priceToshak3);
 		System.err.println(1);
-		productEntity.setPriceVitrinKetabkhane(priceVitrinKetabkhane);
+		serviceKhabKodak.setPriceVitrinKetabkhane(priceVitrinKetabkhane);
 		System.err.println(1);
-		productEntity.setRangKomodkenarMadari(rangKomodkenarMadari);
+		serviceKhabKodak.setRangKomodkenarMadari(rangKomodkenarMadari);
 		System.err.println(1);
-		productEntity.setRangKomodMizSandaliKodak(rangKomodMizSandaliKodak);
+		serviceKhabKodak.setRangKomodMizSandaliKodak(rangKomodMizSandaliKodak);
 		System.err.println(1);
-		productEntity.setRangMizArayeshMizSandaliKodak(rangMizArayeshMizSandaliKodak);
+		serviceKhabKodak.setRangMizArayeshMizSandaliKodak(rangMizArayeshMizSandaliKodak);
 		System.err.println(1);
-		productEntity.setRangServiceKhabNozad(rangServiceKhabNozad);
+		serviceKhabKodak.setRangServiceKhabNozad(rangServiceKhabNozad);
 		System.err.println(1);
-		productEntity.setRangShelfDivari(rangShelfDivari);
+		serviceKhabKodak.setRangShelfDivari(rangShelfDivari);
 		System.err.println(1);
-		productEntity.setRangVitrinKetabkhane(rangVitrinKetabkhane);
+		serviceKhabKodak.setRangVitrinKetabkhane(rangVitrinKetabkhane);
 		System.err.println(1);
-		productEntity.setSandaliMizArayeshMizSandaliKodak(convertBool(sandaliMizArayeshMizSandaliKodak));
+		serviceKhabKodak.setSandaliMizArayeshMizSandaliKodak(convertBool(sandaliMizArayeshMizSandaliKodak));
 		System.err.println(1);
-		productEntity.setShelfDivari(convertBool(shelfDivari));
+		serviceKhabKodak.setShelfDivari(convertBool(shelfDivari));
 		System.err.println(1);
-		productEntity.setTedadMizSandaliKodak(tedadMizSandaliKodak);
+		serviceKhabKodak.setTedadMizSandaliKodak(tedadMizSandaliKodak);
 		System.err.println(1);
-		productEntity.setToshak3(convertBool(toshak3));
+		serviceKhabKodak.setToshak3(convertBool(toshak3));
 		System.err.println(1);
-		productEntity.setVitrinKetabkhane(convertBool(vitrinKetabkhane));
+		serviceKhabKodak.setVitrinKetabkhane(convertBool(vitrinKetabkhane));
 		System.err.println(1);
-			serviceKhabKodakDaoLocal.insertToServiceKhabKodak(productEntity);
+		productEntity.setServiceKhabKodak(serviceKhabKodak);
+		productDaoLocal.insertToProduct(productEntity);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("*****************************با موفقیت وارد گردید************************"));
 			emptyInp();
 		} catch (Exception e) {
@@ -7444,56 +7471,57 @@ if (!pic3.getContentType().equals("image/jpeg")) {
     	return "وارد نشده است";
     }
     
-    public ProductEntity findProductEntityById(long productId) {
-    	return productDaoLocal.findProductEntityById(productId);
-    }
+	/*
+	 * public ProductEntity findProductEntityById(long productId) { return
+	 * productDaoLocal.findProductEntityById(productId); }
+	 */
     
-	public Object findProductEntityDetail(long productId) {
-		productDaoLocal.findProductEntityById(this.productEntity.getProductId());
-    	if(this.productEntity.getProductType().equals("AyeneVConsole"))
-    		this.productDetail = (AyeneVConsole)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("DarbChobi"))
-    		this.productDetail = (DarbChobi)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("DarbZedSergat"))
-    		this.productDetail =  (DarbZedSergat)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("GhabAx"))
-    		this.productDetail =  (GhabAx)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("Kabinet"))
-    		this.productDetail =  (Kabinet)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("KomodBoofeKetabkhaneJakafshi"))
-    		this.productDetail =  (KomodBoofeKetabkhaneJakafshi)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("Mdf"))
-    		this.productDetail =  (Mdf)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("MizAsali"))
-    		this.productDetail =  (MizAsali)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("MizEdari"))
-    		this.productDetail =  (MizEdari)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("MizJeloMobli"))
-    		this.productDetail =  (MizJeloMobli)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("MizNaharKhori"))
-    		this.productDetail =  (MizNaharKhori)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("MizTv"))
-    		this.productDetail =  (MizTv)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("Moblman"))
-    		this.productDetail =  (Moblman)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("Mojasame"))
-    		this.productDetail =  (Mojasame)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("Monabat"))
-    		this.productDetail =  (Monabat)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("Panjare"))
-    		this.productDetail =  (Panjare)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("Partition"))
-    		this.productDetail =  (Partition)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("SandaliEdari"))
-    		this.productDetail =  (SandaliEdari)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("ServiceKhab1"))
-    		this.productDetail =  (ServiceKhab1)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("ServiceKhab2"))
-    		this.productDetail =  (ServiceKhab2)productDaoLocal.getProductDetail();
-    	if(this.productEntity.getProductType().equals("ServiceKhabKodak"))
-    		this.productDetail =  (ServiceKhabKodak)productDaoLocal.getProductDetail();
-        return this.productDetail;
-}
+//	public Object findProductEntityDetail(long productId) {
+//		productDaoLocal.findProductEntityById(this.productEntity.getProductId());
+//    	if(this.productEntity.getProductType().equals("AyeneVConsole"))
+//    		this.productDetail = (AyeneVConsole)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("DarbChobi"))
+//    		this.productDetail = (DarbChobi)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("DarbZedSergat"))
+//    		this.productDetail =  (DarbZedSergat)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("GhabAx"))
+//    		this.productDetail =  (GhabAx)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("Kabinet"))
+//    		this.productDetail =  (Kabinet)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("KomodBoofeKetabkhaneJakafshi"))
+//    		this.productDetail =  (KomodBoofeKetabkhaneJakafshi)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("Mdf"))
+//    		this.productDetail =  (Mdf)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("MizAsali"))
+//    		this.productDetail =  (MizAsali)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("MizEdari"))
+//    		this.productDetail =  (MizEdari)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("MizJeloMobli"))
+//    		this.productDetail =  (MizJeloMobli)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("MizNaharKhori"))
+//    		this.productDetail =  (MizNaharKhori)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("MizTv"))
+//    		this.productDetail =  (MizTv)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("Moblman"))
+//    		this.productDetail =  (Moblman)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("Mojasame"))
+//    		this.productDetail =  (Mojasame)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("Monabat"))
+//    		this.productDetail =  (Monabat)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("Panjare"))
+//    		this.productDetail =  (Panjare)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("Partition"))
+//    		this.productDetail =  (Partition)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("SandaliEdari"))
+//    		this.productDetail =  (SandaliEdari)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("ServiceKhab1"))
+//    		this.productDetail =  (ServiceKhab1)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("ServiceKhab2"))
+//    		this.productDetail =  (ServiceKhab2)productDaoLocal.getProductDetail();
+//    	if(this.productEntity.getProductType().equals("ServiceKhabKodak"))
+//    		this.productDetail =  (ServiceKhabKodak)productDaoLocal.getProductDetail();
+//        return this.productDetail;
+//}
 	
 	public void deleteProduct() {
 		productDaoLocal.deleteProductEntity(productEntity);

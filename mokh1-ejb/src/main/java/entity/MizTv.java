@@ -1,29 +1,36 @@
 package entity;
 
-import java.util.Date;
+import java.io.Serializable;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "miz_tv")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "MizTv")
 @NamedQueries({
-	@NamedQuery(name="findMizTvById" , query="SELECT u FROM MizTv u WHERE u.productId=:v_productId")
+	@NamedQuery(name="findMizTvById" , query="SELECT u FROM MizTv u WHERE u.id=:v_id")
 })
 @Cacheable(value = false)
-public class MizTv extends ProductEntity {
+public class MizTv implements Serializable{
 
 
 	private static final long serialVersionUID = 1L;
+	
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		@Column(name = "id")
+		private long id;
 	
 	  @Column(name = "jenseEskeletMizTv", nullable = true , length=100) private
 	  String jenseEskeletMizTv;
@@ -62,7 +69,8 @@ public class MizTv extends ProductEntity {
 	  @Column(name = "descriptionLavazemJanebi", nullable = true , length=1000)
 	  private String descriptionLavazemJanebi;
 	  
-	  
+		@OneToOne(mappedBy = "mizTv")
+		private ProductEntity product;
 
 	public MizTv() {
 		super();
@@ -177,15 +185,33 @@ public class MizTv extends ProductEntity {
 
 
 
-	@Override
-	public String toString() {
-		return "MizTv [jenseEskeletMizTv=" + jenseEskeletMizTv + ", abadMizTv=" + abadMizTv + ", mizMarbotTvInch="
-				+ mizMarbotTvInch + ", rangMizTv=" + rangMizTv + ", gabeliatRangMizTv=" + gabeliatRangMizTv
-				+ ", rangAvalMizTv=" + rangAvalMizTv + ", rangDovomMizTv=" + rangDovomMizTv + ", kesho=" + kesho
-				+ ", tedadkesho=" + tedadkesho + ", jensePayeMizTv=" + jensePayeMizTv + ", rangPayeMizTv="
-				+ rangPayeMizTv + ", fazayeLavazemJanebi=" + fazayeLavazemJanebi + ", descriptionLavazemJanebi="
-				+ descriptionLavazemJanebi + "]";
+	public long getId() {
+		return id;
 	}
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+	public ProductEntity getProduct() {
+		return product;
+	}
+
+
+
+	public void setProduct(ProductEntity product) {
+		this.product = product;
+	}
+
+
+
+
+
+
 
 	  
 }

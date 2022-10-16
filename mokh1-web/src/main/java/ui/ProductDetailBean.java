@@ -46,10 +46,9 @@ public class ProductDetailBean implements Serializable {
 //
 //
 //
-//	public ProductEntity findProductById(long productId) {
-//		this.productEntity=productserviceLocal.findProductEntityById(productId);
-//		return this.productEntity;
-//	}
+	public ProductEntity findProductById(long productId) {
+		return productserviceLocal.findProductEntityById(productId);
+	}
 //
 //	public byte[] findPic1Product() throws IOException {
 //		

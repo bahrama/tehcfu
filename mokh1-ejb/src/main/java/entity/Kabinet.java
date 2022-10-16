@@ -1,29 +1,38 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name = "Kabinet")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "Kabinet")
 @NamedQueries({
-	@NamedQuery(name="findKabinetById" , query="SELECT u FROM Kabinet u WHERE u.productId=:v_productId")
+	@NamedQuery(name="findKabinetById" , query="SELECT u FROM Kabinet u WHERE u.id=:v_id")
 })
 @Cacheable(value = false)
-public class Kabinet extends ProductEntity {
+public class Kabinet implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private long id;
 	
 	 @Column(name = "jenseKabinet", nullable = true , length=100) private String
 	  jenseKabinet;
@@ -61,7 +70,8 @@ public class Kabinet extends ProductEntity {
 	  @Column(name = "priceMetrTakhfifKabinet", nullable = true) private long
 	  priceMetrTakhfifKabinet;
 	  
-	  
+		@OneToOne(mappedBy = "kabinet")
+		private ProductEntity product;
 
 	public Kabinet() {
 		super();
@@ -176,15 +186,30 @@ public class Kabinet extends ProductEntity {
 
 
 
-	@Override
-	public String toString() {
-		return "Kabinet [jenseKabinet=" + jenseKabinet + ", jenseSafeKabinet=" + jenseSafeKabinet + ", noeMdfKabinet="
-				+ noeMdfKabinet + ", zekhamateMdfKabinet=" + zekhamateMdfKabinet + ", abadMdfKabinet=" + abadMdfKabinet
-				+ ", dastgireDarbKabinet=" + dastgireDarbKabinet + ", reylKabinet=" + reylKabinet + ", jakKabinet="
-				+ jakKabinet + ", payeKabinet=" + payeKabinet + ", magnetKabinet=" + magnetKabinet + ", charkhKabinet="
-				+ charkhKabinet + ", priceMetrKabinet=" + priceMetrKabinet + ", priceMetrTakhfifKabinet="
-				+ priceMetrTakhfifKabinet + "]";
+	public long getId() {
+		return id;
 	}
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+	public ProductEntity getProduct() {
+		return product;
+	}
+
+
+
+	public void setProduct(ProductEntity product) {
+		this.product = product;
+	}
+
+
+
 	  
 	  
 }

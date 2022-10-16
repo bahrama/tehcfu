@@ -12,7 +12,7 @@
 		<div class="container text-center">
 			<div class="row margin-top-35" style="direction: rtl;">
 				<h:form id="form">
-					<p:dataGrid var="pnl" lazy="true"
+					<p:dataGrid var="pnl"
 						value="#{vitrinBean.findAllSeller(vitrinType)}" columns="3"
 						layout="grid" rows="9" paginator="true" id="cars"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">

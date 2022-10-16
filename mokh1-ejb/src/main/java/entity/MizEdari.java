@@ -1,29 +1,38 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name = "Miz_Edari")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "MizEdari")
 @NamedQueries({
-	@NamedQuery(name="findMizEdariById" , query="SELECT u FROM MizEdari u WHERE u.productId=:v_productId")
+	@NamedQuery(name="findMizEdariById" , query="SELECT u FROM MizEdari u WHERE u.id=:v_id")
 })
 @Cacheable(value = false)
-public class MizEdari extends ProductEntity {
+public class MizEdari implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private long id;
 	 @Column(name = "sheklehendesiMizٍEdari", nullable = true , length=100)
 	  private String sheklehendesiMizٍEdari;
 	  
@@ -66,7 +75,8 @@ public class MizEdari extends ProductEntity {
 	  @Column(name = "descriptionfazayeLavazemJanebiMizٍEdari", nullable = true ,
 	  length=1000) private String descriptionfazayeLavazemJanebiMizٍEdari;
 	  
-	  
+		@OneToOne(mappedBy = "mizEdari")
+		private ProductEntity product;
 
 	public MizEdari() {
 		super();
@@ -189,17 +199,29 @@ public class MizEdari extends ProductEntity {
 
 
 
-	@Override
-	public String toString() {
-		return "MizEdari [sheklehendesiMizٍEdari=" + sheklehendesiMizٍEdari + ", tedadChantekeMizٍEdari="
-				+ tedadChantekeMizٍEdari + ", jenseEskeletMizٍEdari=" + jenseEskeletMizٍEdari + ", jensePayeMizٍEdari="
-				+ jensePayeMizٍEdari + ", shisheMizٍEdari=" + shisheMizٍEdari + ", noeShisheMizٍEdari="
-				+ noeShisheMizٍEdari + ", priceShisheMizٍEdari=" + priceShisheMizٍEdari + ", shisheAbzarMizٍEdari="
-				+ shisheAbzarMizٍEdari + ", keshoMizٍEdari=" + keshoMizٍEdari + ", tedadkeshoMizٍEdari="
-				+ tedadkeshoMizٍEdari + ", komodMizٍEdari=" + komodMizٍEdari + ", tedadkomodMizٍEdari="
-				+ tedadkomodMizٍEdari + ", fazayeLavazemJanebiMizٍEdari=" + fazayeLavazemJanebiMizٍEdari
-				+ ", descriptionfazayeLavazemJanebiMizٍEdari=" + descriptionfazayeLavazemJanebiMizٍEdari + "]";
+	public long getId() {
+		return id;
 	}
-	  
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+	public ProductEntity getProduct() {
+		return product;
+	}
+
+
+
+	public void setProduct(ProductEntity product) {
+		this.product = product;
+	}
+
+
+
 	  
 }

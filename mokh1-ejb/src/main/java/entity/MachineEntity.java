@@ -57,8 +57,18 @@ public class MachineEntity extends AdvertiseEntity{
 	private long mablag;
 	@Column(name = "mahale_forosh", nullable = true, length = 100)
 	private String mahaleForosh;
-
-	
+	@Column(name = "lavazemJanebi", nullable = true, length = 200)
+	private String lavazemJanebi;
+	@Column(name = "seriOrCode", nullable = true, length = 200)
+	private String seriOrCode;
+	@Column(name = "karbord", nullable = true, length = 200)
+	private String karbord;
+	@Column(name = "zemanat", nullable = true, length = 200)
+	private String zemanat;
+	@Column(name = "modateZemanat", nullable = true)
+	private long modateZemanat;
+	@Column(name = "saateBazdidMachine", nullable = true, length = 200)
+	private String saateBazdidMachine;
 	public String getMachineName() {
 		return machineName;
 	}
@@ -130,6 +140,55 @@ public class MachineEntity extends AdvertiseEntity{
 	public void setAdveriseId(long adveriseId) {
 		this.adveriseId = adveriseId;
 	}
+
+	public String getLavazemJanebi() {
+		return lavazemJanebi;
+	}
+
+	public void setLavazemJanebi(String lavazemJanebi) {
+		this.lavazemJanebi = lavazemJanebi;
+	}
+
+	public String getSeriOrCode() {
+		return seriOrCode;
+	}
+
+	public void setSeriOrCode(String seriOrCode) {
+		this.seriOrCode = seriOrCode;
+	}
+
+	public String getKarbord() {
+		return karbord;
+	}
+
+	public void setKarbord(String karbord) {
+		this.karbord = karbord;
+	}
+
+	public String getZemanat() {
+		return zemanat;
+	}
+
+	public void setZemanat(String zemanat) {
+		this.zemanat = zemanat;
+	}
+
+	public long getModateZemanat() {
+		return modateZemanat;
+	}
+
+	public void setModateZemanat(long modateZemanat) {
+		this.modateZemanat = modateZemanat;
+	}
+
+	public String getSaateBazdidMachine() {
+		return saateBazdidMachine;
+	}
+
+	public void setSaateBazdidMachine(String saateBazdidMachine) {
+		this.saateBazdidMachine = saateBazdidMachine;
+	}
+
 
 	
 	

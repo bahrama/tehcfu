@@ -82,7 +82,7 @@ max-width: 300px!important;
 											</p:toolbarGroup>
 										</p:toolbar>
 											<p:dataTable id="basicDT" var="mbl"
-												value="#{amadeBean.findAllAmade()}" widgetVar="carsTable"
+												value="#{addAmade.findAllAmade()}" widgetVar="carsTable"
 												multiViewState="true" rows="10" paginator="true"
 												paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 												rowsPerPageTemplate="5,10,15" rowKey="#{mbl.amadeId}" 
@@ -92,7 +92,7 @@ max-width: 300px!important;
 													<p:commandButton class="ui-button-warning rounded-button" immediate="true"
 														icon="pi pi-trash" process="@form"
 														oncomplete="PF('deleteProductDialog').show()">
-														 <f:setPropertyActionListener value="#{mbl}" target="#{amadeBean.amadeEntity}"/>
+														 <f:setPropertyActionListener value="#{mbl}" target="#{addAmade.amade}"/>
 													</p:commandButton>
 		
 												</p:column>
@@ -122,7 +122,7 @@ max-width: 300px!important;
 													<h:panelGrid columns="3">
 											
 			<h:outputText value="نوع گواهینامه" />
-			<p:selectOneListbox value="#{amadeBean.type}" id="in1">
+			<p:selectOneListbox value="#{addAmade.type}" id="in1">
 				<f:selectItem itemValue="PANO" itemLabel="گواهینامه پانو" />
 				<f:selectItem itemValue="UNION" itemLabel="گواهینامه اتحادیه" />
 				<f:selectItem itemValue="MOBASHERAT" itemLabel="مباشرت" />
@@ -131,37 +131,37 @@ max-width: 300px!important;
 			<p:message for="in1" id="msg1" />
 
 			<h:outputText value="نام مباشر" />
-			<p:inputTextarea value="#{amadeBean.mobasher}" 
+			<p:inputTextarea value="#{addAmade.mobasher}" 
 				id="in2"  />
 			<p:message for="in2" id="msg2" />
 
 			<h:outputText value="نام صاحب پروانه" />
-			<p:inputTextarea value="#{amadeBean.modir}" 
+			<p:inputTextarea value="#{addAmade.modir}" 
 				id="in3" />
 			<p:message for="in3" id="msg3" />
 
 			<h:outputText value="رسته شغلی" />
-			<p:inputTextarea value="#{amadeBean.raste}" 
+			<p:inputTextarea value="#{addAmade.raste}" 
 				id="in4"  />
 			<p:message for="in4" id="msg4" />
 			
 			<h:outputText value="اسم فروشگاه" />
-			<p:inputTextarea value="#{amadeBean.senfName}" 
+			<p:inputTextarea value="#{addAmade.senfName}" 
 				id="in5" />
 			<p:message for="in5" id="msg5" />
 
 			<h:outputText value="نوع پنل" />
-			<p:inputTextarea value="#{amadeBean.packag}" 
+			<p:inputTextarea value="#{addAmade.packag}" 
 				id="in6"  />
 			<p:message for="in6" id="msg6" />
 			
 			<h:outputText value="موبایل" />
-			<p:inputTextarea value="#{amadeBean.mobile}" 
+			<p:inputTextarea value="#{addAmade.mobile}" 
 				id="in7" />
 			<p:message for="in7" id="msg7" />
 			
 						<h:outputText value="نام پدر" />
-			<p:inputTextarea value="#{amadeBean.father}" 
+			<p:inputTextarea value="#{addAmade.father}" 
 				id="in8"  />
 			<p:message for="in8" id="msg8" />
 														</h:panelGrid>
@@ -169,7 +169,7 @@ max-width: 300px!important;
 										            	<br/>
 										            	
 			<p:commandButton value="ذخیره" ajax="true" 
-			actionListener="#{amadeBean.insertToAmade()}"
+			actionListener="#{addAmade.insertToAmade()}"
 			styleClass="p-mt-3 ui-button-outlined p-d-block"
 			update="basicDT grl in1 in2 in3 in4 in5 in6 in7 in8 msg1 msg2 msg3 msg4 msg5 msg6 msg7 msg8" 
 			process="dlg2" />
@@ -182,7 +182,7 @@ max-width: 300px!important;
 														severity="warn">
 
 															
-														<p:commandButton value="Yes" icon="pi pi-check" actionListener="#{amadeBean.deleteAmade()}"
+														<p:commandButton value="Yes" icon="pi pi-check" actionListener="#{addAmade.deleteAmade()}"
 														                             process="@this" oncomplete="PF('deleteProductDialog').hide()" update="basicDT grl"/>
 														<p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
 														                             onclick="PF('deleteProductDialog').hide()"/>

@@ -17,17 +17,27 @@ public interface ProductDaoLocal {
 
 	void deleteProductEntity(ProductEntity productEntity2);
 
-	ProductEntity findProductEntityById(long productId);
+	//ProductEntity findProductEntityById(long productId);
 
 	void updateProductEntity(ProductEntity productEntity);
 
 	List<ProductEntity> findAllProductEntityBySeller(MoblEntity moblEntity);
 
-	Map<ProductEntity, Object> findAllProductBySeller2(MoblEntity moblEntity);
+	//Map<ProductEntity, Object> findAllProductBySeller2(MoblEntity moblEntity);
 
 	Object getProductDetail();
 
 	ProductEntity findProductOnlyById(long productId);
+
+	List<ProductEntity> findProductByUser(MoblEntity moblEntity);
+
+	Object countAllProduct();
+
+	List<ProductEntity> findAllActiveProductEntity();
+
+	List<ProductEntity> findRandomProduct();
+
+	//Map<ProductEntity, Object> findRandomProduct();
 
 
 }

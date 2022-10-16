@@ -67,25 +67,44 @@ public class AdvertiseBean implements Serializable {
 	private String phone;
 	@Size(max=500 , message="ماکزیمم 500 کاراکتر")
 	private String address;
-
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String email;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String site;
 	//////////////////////////////////karfarma/////////////////////
 
-	@Size(max=150 , message="ماکزیمم 150 کاراکتر")
-	private String karfarmaSenf;
+
 	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
 	private String karfarmaCompanyName;
-	@Size(max=150 , message="ماکزیمم 150 کاراکتر")
-	private String karfarmaPasokhName;
-	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
-	private String karfarmaPasokhSemat;
 	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
 	private String karfarmaNiroMorede;
-	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
-	private String karfarmaNoeDarkhast;
 	@Size(max=500 , message="ماکزیمم 500 کاراکتر")
 	private String karfarmaTakhasosMorede;
 	private Long mizanHogog=(long) 1000;
-
+	private Long minSabege=(long) 1;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String magtaTahsisli;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String reshte;
+	private Long sen=(long) 1;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String takhasos;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String jensiat;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String noeHamkari;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String noeHogog;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String saatKari;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String bime;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String bimeTakmili;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String ezafekar;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String morekhasi;
 	
 	////////////////////////////////karjo
 
@@ -93,51 +112,111 @@ public class AdvertiseBean implements Serializable {
 	private String karjoField;
 	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
 	private String karjoMadrak;
-	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
-	private String karjoMaharat;
-	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
-	private String karjoNoeFaal;
-	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
+
+	@Size(max=20 , message="ماکزیمم 100 کاراکتر")
 	private String karjoNoeHamkari;
+	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
+	private String birthDay;
+	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
+	private String mahaleTavalod;
+	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
+	private String vaziatTahol;
+	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
+	private String khedmat;
+	private Long sabege=(long) 1;
+	private Long bimeSabege=(long) 1;
+	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
+	private String vaziatEshtegal;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String elateTarkeKar;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String shogleDarkhast;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String takhasosKarjo;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String dorehaVmadarek;
+	@Column(name = "hogogKarjo", nullable = true)
+	private Long hogogKarjo=(long) 1000;
 	
 	////////////////////////////rent////////////////////
+	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
+	private String rentType;
+	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
+	private String homeType;
+	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
+	private String karbariSanad;
+	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
+	private String noeSanad;
+	private Long metraj=(long) 1;
+	private Long priceMetr=(long) 1;
+	private Long phoneLine=(long) 1;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String saleSakht;
 	
 	@Size(max=20 , message="ماکزیمم 20 کاراکتر")
-	private String rentType;
-
+	private String jahateMelk;
+	
 	@Size(max=20 , message="ماکزیمم 20 کاراکتر")
-	private String homeType;
-
-
-
-	@Size(max=20 , message="ماکزیمم 20 کاراکتر")
-	private String vage;
-
-	@Size(max=20 , message="ماکزیمم 20 کاراکتر")
-	private String mogeiat;
-	private Integer tedadTabage = 1;
-	private Integer tedadVahed = 1;
-	private Long vadieeMoney=(long) 1000;
-	private Long ejareMony=(long) 1000;
-	private Long mablageForosh=(long) 1000;
-
+	private String mahaleSakhteman;
 
 	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
-	private String emkanat;
-
-	@Size(max=20 , message="ماکزیمم 20 کاراکتر")
-	private String vaziatSanad;
-	private Integer senBana = 1;
-	private Integer masahat = 1;
-
+	private String namayeMelk;
+	
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String kaf;
+	
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String posheshDivar;
+	
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String vaziatRoshanayi;
+	
+	@Size(max=50 , message="ماکزیمم 50 کاراکتر")
+	private String vaziatsystemGarmayesh;
+	
+	@Size(max=50 , message="ماکزیمم 50 کاراکتر")
+	private String abGarm;
+	
+	
+	@Size(max=50 , message="ماکزیمم 50 کاراکتر")
+	private String moshaat;
+	
+	@Size(max=50 , message="ماکزیمم 50 کاراکتر")
+	private String moshaatAbi;
+	
+	@Size(max=50 , message="ماکزیمم 50 کاراکتر")
+	private String chahAbi;
+	
+	
+	@Size(max=50 , message="ماکزیمم 50 کاراکتر")
+	private String fazayeSabz;
+	
+	
+	@Size(max=50 , message="ماکزیمم 50 کاراکتر")
+	private String view;
+	
+	@Size(max=50 , message="ماکزیمم 50 کاراکتر")
+	private String anbari;
+	
+	@Size(max=50 , message="ماکزیمم 50 کاراکتر")
+	private String parking;
+	
+	@Size(max=50 , message="ماکزیمم 50 کاراکتر")
+	private String telephone;
+	
+	
+	@Size(max=50 , message="ماکزیمم 50 کاراکتر")
+	private String tabloKhor;
+	
+	
+	@Size(max=50 , message="ماکزیمم 50 کاراکتر")
+	private String serviceBehdashti;
+	
+	@Size(max=500 , message="ماکزیمم 500 کاراکتر")
+	private String digarEmkanat;
+	
 	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
-	private String vaziatMelk;
-
-	@Size(max=5 , message="ماکزیمم 5 کاراکتر")
-	private String parvane;
-
-	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
-	private String etehadieName;
+	private String saateBazdid;
 
 
 	////////////////////////machin/////////////
@@ -150,353 +229,961 @@ public class AdvertiseBean implements Serializable {
 	private String brand;
 	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
 	private String saleTolid;
-	@Size(max=20 , message="ماکزیمم 20 کاراکتر")
+	@Size(max=100 , message="ماکزیمم 20 کاراکتر")
 	private String vaziat;
 	@Size(max=1000 , message="ماکزیمم 1000 کاراکتر")
 	private String moshakhasat;
-	private Long mablag=(long) 1000;
+	private Long mablag=(long) 1;
 	@Size(max=100 , message="ماکزیمم 100 کاراکتر")
 	private String mahaleForosh;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String lavazemJanebi;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String seriOrCode;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String karbord;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String zemanat;
+	private Long modateZemanat=(long) 1;
+	@Size(max=200 , message="ماکزیمم 200 کاراکتر")
+	private String saateBazdidMachine;
 /////////////////////////////////////////
 	private AdvertiseEntity advertiseEntity;
 	private boolean enableAdvertise;
 	private Object advertiseDetail;
 	
 	
-	public AdvertiseEntity getAdvertiseEntity() {
-		return advertiseEntity;
+
+	public Long getPhoneLine() {
+		return phoneLine;
 	}
-	public void setAdvertiseEntity(AdvertiseEntity advertiseEntity) {
-		this.advertiseEntity = advertiseEntity;
+
+
+	public void setPhoneLine(Long phoneLine) {
+		this.phoneLine = phoneLine;
 	}
-	public boolean isEnableAdvertise() {
-		return enableAdvertise;
-	}
-	public void setEnableAdvertise(boolean enableAdvertise) {
-		this.enableAdvertise = enableAdvertise;
-	}
-	public Object getAdvertiseDetail() {
-		return advertiseDetail;
-	}
-	public void setAdvertiseDetail(Object advertiseDetail) {
-		this.advertiseDetail = advertiseDetail;
-	}
-	public String getKarfarmaNiroMorede() {
-		return karfarmaNiroMorede;
-	}
-	public void setKarfarmaNiroMorede(String karfarmaNiroMorede) {
-		this.karfarmaNiroMorede = karfarmaNiroMorede;
-	}
-	public String getKarfarmaNoeDarkhast() {
-		return karfarmaNoeDarkhast;
-	}
-	public void setKarfarmaNoeDarkhast(String karfarmaNoeDarkhast) {
-		this.karfarmaNoeDarkhast = karfarmaNoeDarkhast;
-	}
-	public String getKarfarmaTakhasosMorede() {
-		return karfarmaTakhasosMorede;
-	}
-	public void setKarfarmaTakhasosMorede(String karfarmaTakhasosMorede) {
-		this.karfarmaTakhasosMorede = karfarmaTakhasosMorede;
-	}
-	
-	public String getKarjoField() {
-		return karjoField;
-	}
-	public void setKarjoField(String karjoField) {
-		this.karjoField = karjoField;
-	}
-	public String getKarjoMadrak() {
-		return karjoMadrak;
-	}
-	public void setKarjoMadrak(String karjoMadrak) {
-		this.karjoMadrak = karjoMadrak;
-	}
-	public String getKarjoMaharat() {
-		return karjoMaharat;
-	}
-	public void setKarjoMaharat(String karjoMaharat) {
-		this.karjoMaharat = karjoMaharat;
-	}
-	public String getKarjoNoeFaal() {
-		return karjoNoeFaal;
-	}
-	public void setKarjoNoeFaal(String karjoNoeFaal) {
-		this.karjoNoeFaal = karjoNoeFaal;
-	}
-	
-	public String getKarjoNoeHamkari() {
-		return karjoNoeHamkari;
-	}
-	public void setKarjoNoeHamkari(String karjoNoeHamkari) {
-		this.karjoNoeHamkari = karjoNoeHamkari;
-	}
-	
+
+
 	public String getRentType() {
 		return rentType;
 	}
+
+
 	public void setRentType(String rentType) {
 		this.rentType = rentType;
 	}
-	public String getHomeType() {
-		return homeType;
+
+
+	public AdminProfile getAdminProfile() {
+		return adminProfile;
 	}
-	public void setHomeType(String homeType) {
-		this.homeType = homeType;
+
+
+	public void setAdminProfile(AdminProfile adminProfile) {
+		this.adminProfile = adminProfile;
 	}
-	public String getAddress() {
-		return address;
+
+
+	public AdvertiseDaoLocal getAdvertiseDaoLocal() {
+		return advertiseDaoLocal;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+
+
+	public void setAdvertiseDaoLocal(AdvertiseDaoLocal advertiseDaoLocal) {
+		this.advertiseDaoLocal = advertiseDaoLocal;
 	}
-	public String getVage() {
-		return vage;
+
+
+	public UploadedFile getPic1() {
+		return pic1;
 	}
-	public void setVage(String vage) {
-		this.vage = vage;
+
+
+	public void setPic1(UploadedFile pic1) {
+		this.pic1 = pic1;
 	}
-	public String getMogeiat() {
-		return mogeiat;
+
+
+	public UIComponent getPic1Component() {
+		return pic1Component;
 	}
-	public void setMogeiat(String mogeiat) {
-		this.mogeiat = mogeiat;
+
+
+	public void setPic1Component(UIComponent pic1Component) {
+		this.pic1Component = pic1Component;
 	}
-	
-	public String getEmkanat() {
-		return emkanat;
+
+
+	public UploadedFile getPic2() {
+		return pic2;
 	}
-	public void setEmkanat(String emkanat) {
-		this.emkanat = emkanat;
+
+
+	public void setPic2(UploadedFile pic2) {
+		this.pic2 = pic2;
 	}
-	public String getVaziatSanad() {
-		return vaziatSanad;
+
+
+	public UIComponent getPic2Component() {
+		return pic2Component;
 	}
-	public void setVaziatSanad(String vaziatSanad) {
-		this.vaziatSanad = vaziatSanad;
+
+
+	public void setPic2Component(UIComponent pic2Component) {
+		this.pic2Component = pic2Component;
 	}
-	
-	public String getVaziatMelk() {
-		return vaziatMelk;
+
+
+	public UploadedFile getPic3() {
+		return pic3;
 	}
-	public void setVaziatMelk(String vaziatMelk) {
-		this.vaziatMelk = vaziatMelk;
+
+
+	public void setPic3(UploadedFile pic3) {
+		this.pic3 = pic3;
 	}
+
+
+	public UIComponent getPic3Component() {
+		return pic3Component;
+	}
+
+
+	public void setPic3Component(UIComponent pic3Component) {
+		this.pic3Component = pic3Component;
+	}
+
+
+	public UploadedFile getPic4() {
+		return pic4;
+	}
+
+
+	public void setPic4(UploadedFile pic4) {
+		this.pic4 = pic4;
+	}
+
+
+	public UIComponent getPic4Component() {
+		return pic4Component;
+	}
+
+
+	public void setPic4Component(UIComponent pic4Component) {
+		this.pic4Component = pic4Component;
+	}
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
 	public String getDescription() {
 		return description;
 	}
+
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getParvane() {
-		return parvane;
-	}
-	public void setParvane(String parvane) {
-		this.parvane = parvane;
-	}
-	public String getEtehadieName() {
-		return etehadieName;
-	}
-	public void setEtehadieName(String etehadieName) {
-		this.etehadieName = etehadieName;
-	}
+
+
 	public String getPhone() {
 		return phone;
 	}
+
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getSite() {
+		return site;
+	}
+
+
+	public void setSite(String site) {
+		this.site = site;
+	}
+
+
+	public String getKarfarmaCompanyName() {
+		return karfarmaCompanyName;
+	}
+
+
+	public void setKarfarmaCompanyName(String karfarmaCompanyName) {
+		this.karfarmaCompanyName = karfarmaCompanyName;
+	}
+
+
+	public String getKarfarmaNiroMorede() {
+		return karfarmaNiroMorede;
+	}
+
+
+	public void setKarfarmaNiroMorede(String karfarmaNiroMorede) {
+		this.karfarmaNiroMorede = karfarmaNiroMorede;
+	}
+
+
+	public String getKarfarmaTakhasosMorede() {
+		return karfarmaTakhasosMorede;
+	}
+
+
+	public void setKarfarmaTakhasosMorede(String karfarmaTakhasosMorede) {
+		this.karfarmaTakhasosMorede = karfarmaTakhasosMorede;
+	}
+
+
+	public Long getMizanHogog() {
+		return mizanHogog;
+	}
+
+
+	public void setMizanHogog(Long mizanHogog) {
+		this.mizanHogog = mizanHogog;
+	}
+
+
+	public Long getMinSabege() {
+		return minSabege;
+	}
+
+
+	public void setMinSabege(Long minSabege) {
+		this.minSabege = minSabege;
+	}
+
+
+	public String getMagtaTahsisli() {
+		return magtaTahsisli;
+	}
+
+
+	public void setMagtaTahsisli(String magtaTahsisli) {
+		this.magtaTahsisli = magtaTahsisli;
+	}
+
+
+	public String getReshte() {
+		return reshte;
+	}
+
+
+	public void setReshte(String reshte) {
+		this.reshte = reshte;
+	}
+
+
+	public Long getSen() {
+		return sen;
+	}
+
+
+	public void setSen(Long sen) {
+		this.sen = sen;
+	}
+
+
+	public String getTakhasos() {
+		return takhasos;
+	}
+
+
+	public void setTakhasos(String takhasos) {
+		this.takhasos = takhasos;
+	}
+
+
+	public String getJensiat() {
+		return jensiat;
+	}
+
+
+	public void setJensiat(String jensiat) {
+		this.jensiat = jensiat;
+	}
+
+
+	public String getNoeHamkari() {
+		return noeHamkari;
+	}
+
+
+	public void setNoeHamkari(String noeHamkari) {
+		this.noeHamkari = noeHamkari;
+	}
+
+
+	public String getNoeHogog() {
+		return noeHogog;
+	}
+
+
+	public void setNoeHogog(String noeHogog) {
+		this.noeHogog = noeHogog;
+	}
+
+
+	public String getSaatKari() {
+		return saatKari;
+	}
+
+
+	public void setSaatKari(String saatKari) {
+		this.saatKari = saatKari;
+	}
+
+
+	public String getBime() {
+		return bime;
+	}
+
+
+	public void setBime(String bime) {
+		this.bime = bime;
+	}
+
+
+	public String getBimeTakmili() {
+		return bimeTakmili;
+	}
+
+
+	public void setBimeTakmili(String bimeTakmili) {
+		this.bimeTakmili = bimeTakmili;
+	}
+
+
+	public String getEzafekar() {
+		return ezafekar;
+	}
+
+
+	public void setEzafekar(String ezafekar) {
+		this.ezafekar = ezafekar;
+	}
+
+
+	public String getMorekhasi() {
+		return morekhasi;
+	}
+
+
+	public void setMorekhasi(String morekhasi) {
+		this.morekhasi = morekhasi;
+	}
+
+
+	public String getKarjoField() {
+		return karjoField;
+	}
+
+
+	public void setKarjoField(String karjoField) {
+		this.karjoField = karjoField;
+	}
+
+
+	public String getKarjoMadrak() {
+		return karjoMadrak;
+	}
+
+
+	public void setKarjoMadrak(String karjoMadrak) {
+		this.karjoMadrak = karjoMadrak;
+	}
+
+
+	public String getKarjoNoeHamkari() {
+		return karjoNoeHamkari;
+	}
+
+
+	public void setKarjoNoeHamkari(String karjoNoeHamkari) {
+		this.karjoNoeHamkari = karjoNoeHamkari;
+	}
+
+
+	public String getBirthDay() {
+		return birthDay;
+	}
+
+
+	public void setBirthDay(String birthDay) {
+		this.birthDay = birthDay;
+	}
+
+
+	public String getMahaleTavalod() {
+		return mahaleTavalod;
+	}
+
+
+	public void setMahaleTavalod(String mahaleTavalod) {
+		this.mahaleTavalod = mahaleTavalod;
+	}
+
+
+	public String getVaziatTahol() {
+		return vaziatTahol;
+	}
+
+
+	public void setVaziatTahol(String vaziatTahol) {
+		this.vaziatTahol = vaziatTahol;
+	}
+
+
+	public String getKhedmat() {
+		return khedmat;
+	}
+
+
+	public void setKhedmat(String khedmat) {
+		this.khedmat = khedmat;
+	}
+
+
+	public Long getSabege() {
+		return sabege;
+	}
+
+
+	public void setSabege(Long sabege) {
+		this.sabege = sabege;
+	}
+
+
+	public Long getBimeSabege() {
+		return bimeSabege;
+	}
+
+
+	public void setBimeSabege(Long bimeSabege) {
+		this.bimeSabege = bimeSabege;
+	}
+
+
+	public String getVaziatEshtegal() {
+		return vaziatEshtegal;
+	}
+
+
+	public void setVaziatEshtegal(String vaziatEshtegal) {
+		this.vaziatEshtegal = vaziatEshtegal;
+	}
+
+
+	public String getElateTarkeKar() {
+		return elateTarkeKar;
+	}
+
+
+	public void setElateTarkeKar(String elateTarkeKar) {
+		this.elateTarkeKar = elateTarkeKar;
+	}
+
+
+	public String getShogleDarkhast() {
+		return shogleDarkhast;
+	}
+
+
+	public void setShogleDarkhast(String shogleDarkhast) {
+		this.shogleDarkhast = shogleDarkhast;
+	}
+
+
+	public String getTakhasosKarjo() {
+		return takhasosKarjo;
+	}
+
+
+	public void setTakhasosKarjo(String takhasosKarjo) {
+		this.takhasosKarjo = takhasosKarjo;
+	}
+
+
+	public String getDorehaVmadarek() {
+		return dorehaVmadarek;
+	}
+
+
+	public void setDorehaVmadarek(String dorehaVmadarek) {
+		this.dorehaVmadarek = dorehaVmadarek;
+	}
+
+
+	public Long getHogogKarjo() {
+		return hogogKarjo;
+	}
+
+
+	public void setHogogKarjo(Long hogogKarjo) {
+		this.hogogKarjo = hogogKarjo;
+	}
+
+
+	public String getHomeType() {
+		return homeType;
+	}
+
+
+	public void setHomeType(String homeType) {
+		this.homeType = homeType;
+	}
+
+
+	public String getKarbariSanad() {
+		return karbariSanad;
+	}
+
+
+	public void setKarbariSanad(String karbariSanad) {
+		this.karbariSanad = karbariSanad;
+	}
+
+
+	public String getNoeSanad() {
+		return noeSanad;
+	}
+
+
+	public void setNoeSanad(String noeSanad) {
+		this.noeSanad = noeSanad;
+	}
+
+
+	public Long getMetraj() {
+		return metraj;
+	}
+
+
+	public void setMetraj(Long metraj) {
+		this.metraj = metraj;
+	}
+
+
+	public Long getPriceMetr() {
+		return priceMetr;
+	}
+
+
+	public void setPriceMetr(Long priceMetr) {
+		this.priceMetr = priceMetr;
+	}
+
+
+	public String getSaleSakht() {
+		return saleSakht;
+	}
+
+
+	public void setSaleSakht(String saleSakht) {
+		this.saleSakht = saleSakht;
+	}
+
+
+	public String getJahateMelk() {
+		return jahateMelk;
+	}
+
+
+	public void setJahateMelk(String jahateMelk) {
+		this.jahateMelk = jahateMelk;
+	}
+
+
+	public String getMahaleSakhteman() {
+		return mahaleSakhteman;
+	}
+
+
+	public void setMahaleSakhteman(String mahaleSakhteman) {
+		this.mahaleSakhteman = mahaleSakhteman;
+	}
+
+
+	public String getNamayeMelk() {
+		return namayeMelk;
+	}
+
+
+	public void setNamayeMelk(String namayeMelk) {
+		this.namayeMelk = namayeMelk;
+	}
+
+
+	public String getKaf() {
+		return kaf;
+	}
+
+
+	public void setKaf(String kaf) {
+		this.kaf = kaf;
+	}
+
+
+	public String getPosheshDivar() {
+		return posheshDivar;
+	}
+
+
+	public void setPosheshDivar(String posheshDivar) {
+		this.posheshDivar = posheshDivar;
+	}
+
+
+	public String getVaziatRoshanayi() {
+		return vaziatRoshanayi;
+	}
+
+
+	public void setVaziatRoshanayi(String vaziatRoshanayi) {
+		this.vaziatRoshanayi = vaziatRoshanayi;
+	}
+
+
+	public String getVaziatsystemGarmayesh() {
+		return vaziatsystemGarmayesh;
+	}
+
+
+	public void setVaziatsystemGarmayesh(String vaziatsystemGarmayesh) {
+		this.vaziatsystemGarmayesh = vaziatsystemGarmayesh;
+	}
+
+
+	public String getAbGarm() {
+		return abGarm;
+	}
+
+
+	public void setAbGarm(String abGarm) {
+		this.abGarm = abGarm;
+	}
+
+
+	public String getMoshaat() {
+		return moshaat;
+	}
+
+
+	public void setMoshaat(String moshaat) {
+		this.moshaat = moshaat;
+	}
+
+
+	public String getMoshaatAbi() {
+		return moshaatAbi;
+	}
+
+
+	public void setMoshaatAbi(String moshaatAbi) {
+		this.moshaatAbi = moshaatAbi;
+	}
+
+
+	public String getChahAbi() {
+		return chahAbi;
+	}
+
+
+	public void setChahAbi(String chahAbi) {
+		this.chahAbi = chahAbi;
+	}
+
+
+	public String getFazayeSabz() {
+		return fazayeSabz;
+	}
+
+
+	public void setFazayeSabz(String fazayeSabz) {
+		this.fazayeSabz = fazayeSabz;
+	}
+
+
+	public String getView() {
+		return view;
+	}
+
+
+	public void setView(String view) {
+		this.view = view;
+	}
+
+
+	public String getAnbari() {
+		return anbari;
+	}
+
+
+	public void setAnbari(String anbari) {
+		this.anbari = anbari;
+	}
+
+
+	public String getParking() {
+		return parking;
+	}
+
+
+	public void setParking(String parking) {
+		this.parking = parking;
+	}
+
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+
+	public String getTabloKhor() {
+		return tabloKhor;
+	}
+
+
+	public void setTabloKhor(String tabloKhor) {
+		this.tabloKhor = tabloKhor;
+	}
+
+
+	public String getServiceBehdashti() {
+		return serviceBehdashti;
+	}
+
+
+	public void setServiceBehdashti(String serviceBehdashti) {
+		this.serviceBehdashti = serviceBehdashti;
+	}
+
+
+	public String getDigarEmkanat() {
+		return digarEmkanat;
+	}
+
+
+	public void setDigarEmkanat(String digarEmkanat) {
+		this.digarEmkanat = digarEmkanat;
+	}
+
+
+	public String getSaateBazdid() {
+		return saateBazdid;
+	}
+
+
+	public void setSaateBazdid(String saateBazdid) {
+		this.saateBazdid = saateBazdid;
+	}
+
+
 	public String getMachineName() {
 		return machineName;
 	}
+
+
 	public void setMachineName(String machineName) {
 		this.machineName = machineName;
 	}
+
+
 	public String getContry() {
 		return contry;
 	}
+
+
 	public void setContry(String contry) {
 		this.contry = contry;
 	}
+
+
 	public String getBrand() {
 		return brand;
 	}
+
+
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
+
+
 	public String getSaleTolid() {
 		return saleTolid;
 	}
+
+
 	public void setSaleTolid(String saleTolid) {
 		this.saleTolid = saleTolid;
 	}
+
+
 	public String getVaziat() {
 		return vaziat;
 	}
+
+
 	public void setVaziat(String vaziat) {
 		this.vaziat = vaziat;
 	}
+
+
 	public String getMoshakhasat() {
 		return moshakhasat;
 	}
+
+
 	public void setMoshakhasat(String moshakhasat) {
 		this.moshakhasat = moshakhasat;
 	}
 
-	public String getMahaleForosh() {
-		return mahaleForosh;
-	}
-	public void setMahaleForosh(String mahaleForosh) {
-		this.mahaleForosh = mahaleForosh;
-	}
-	public AdminProfile getAdminProfile() {
-		return adminProfile;
-	}
-	public void setAdminProfile(AdminProfile adminProfile) {
-		this.adminProfile = adminProfile;
-	}
-	public AdvertiseDaoLocal getAdvertiseDaoLocal() {
-		return advertiseDaoLocal;
-	}
-	public void setAdvertiseDaoLocal(AdvertiseDaoLocal advertiseDaoLocal) {
-		this.advertiseDaoLocal = advertiseDaoLocal;
-	}
-	public UploadedFile getPic1() {
-		return pic1;
-	}
-	public void setPic1(UploadedFile pic1) {
-		this.pic1 = pic1;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getKarfarmaSenf() {
-		return karfarmaSenf;
-	}
-	public void setKarfarmaSenf(String karfarmaSenf) {
-		this.karfarmaSenf = karfarmaSenf;
-	}
-	public String getKarfarmaCompanyName() {
-		return karfarmaCompanyName;
-	}
-	public void setKarfarmaCompanyName(String karfarmaCompanyName) {
-		this.karfarmaCompanyName = karfarmaCompanyName;
-	}
-	public String getKarfarmaPasokhName() {
-		return karfarmaPasokhName;
-	}
-	public void setKarfarmaPasokhName(String karfarmaPasokhName) {
-		this.karfarmaPasokhName = karfarmaPasokhName;
-	}
-	public String getKarfarmaPasokhSemat() {
-		return karfarmaPasokhSemat;
-	}
-	public void setKarfarmaPasokhSemat(String karfarmaPasokhSemat) {
-		this.karfarmaPasokhSemat = karfarmaPasokhSemat;
-	}
-	public Long getMizanHogog() {
-		return mizanHogog;
-	}
-	public void setMizanHogog(Long mizanHogog) {
-		this.mizanHogog = mizanHogog;
-	}
-	public Integer getTedadTabage() {
-		return tedadTabage;
-	}
-	public void setTedadTabage(Integer tedadTabage) {
-		this.tedadTabage = tedadTabage;
-	}
-	public Integer getTedadVahed() {
-		return tedadVahed;
-	}
-	public void setTedadVahed(Integer tedadVahed) {
-		this.tedadVahed = tedadVahed;
-	}
-	public Long getVadieeMoney() {
-		return vadieeMoney;
-	}
-	public void setVadieeMoney(Long vadieeMoney) {
-		this.vadieeMoney = vadieeMoney;
-	}
-	public Long getEjareMony() {
-		return ejareMony;
-	}
-	public void setEjareMony(Long ejareMony) {
-		this.ejareMony = ejareMony;
-	}
-	public Long getMablageForosh() {
-		return mablageForosh;
-	}
-	public void setMablageForosh(Long mablageForosh) {
-		this.mablageForosh = mablageForosh;
-	}
-	public Integer getSenBana() {
-		return senBana;
-	}
-	public void setSenBana(Integer senBana) {
-		this.senBana = senBana;
-	}
-	public Integer getMasahat() {
-		return masahat;
-	}
-	public void setMasahat(Integer masahat) {
-		this.masahat = masahat;
-	}
+
 	public Long getMablag() {
 		return mablag;
 	}
+
+
 	public void setMablag(Long mablag) {
 		this.mablag = mablag;
 	}
-	
-	/////////////////////////////////////////////////
-	
-	public UIComponent getPic1Component() {
-		return pic1Component;
+
+
+	public String getMahaleForosh() {
+		return mahaleForosh;
 	}
-	public void setPic1Component(UIComponent pic1Component) {
-		this.pic1Component = pic1Component;
+
+
+	public void setMahaleForosh(String mahaleForosh) {
+		this.mahaleForosh = mahaleForosh;
 	}
-	public UploadedFile getPic2() {
-		return pic2;
+
+
+	public String getLavazemJanebi() {
+		return lavazemJanebi;
 	}
-	public void setPic2(UploadedFile pic2) {
-		this.pic2 = pic2;
+
+
+	public void setLavazemJanebi(String lavazemJanebi) {
+		this.lavazemJanebi = lavazemJanebi;
 	}
-	public UIComponent getPic2Component() {
-		return pic2Component;
+
+
+	public String getSeriOrCode() {
+		return seriOrCode;
 	}
-	public void setPic2Component(UIComponent pic2Component) {
-		this.pic2Component = pic2Component;
+
+
+	public void setSeriOrCode(String seriOrCode) {
+		this.seriOrCode = seriOrCode;
 	}
-	public UploadedFile getPic3() {
-		return pic3;
+
+
+	public String getKarbord() {
+		return karbord;
 	}
-	public void setPic3(UploadedFile pic3) {
-		this.pic3 = pic3;
+
+
+	public void setKarbord(String karbord) {
+		this.karbord = karbord;
 	}
-	public UIComponent getPic3Component() {
-		return pic3Component;
+
+
+	public String getZemanat() {
+		return zemanat;
 	}
-	public void setPic3Component(UIComponent pic3Component) {
-		this.pic3Component = pic3Component;
+
+
+	public void setZemanat(String zemanat) {
+		this.zemanat = zemanat;
 	}
-	public UploadedFile getPic4() {
-		return pic4;
+
+
+	public Long getModateZemanat() {
+		return modateZemanat;
 	}
-	public void setPic4(UploadedFile pic4) {
-		this.pic4 = pic4;
+
+
+	public void setModateZemanat(Long modateZemanat) {
+		this.modateZemanat = modateZemanat;
 	}
-	public UIComponent getPic4Component() {
-		return pic4Component;
+
+
+	public String getSaateBazdidMachine() {
+		return saateBazdidMachine;
 	}
-	public void setPic4Component(UIComponent pic4Component) {
-		this.pic4Component = pic4Component;
+
+
+	public void setSaateBazdidMachine(String saateBazdidMachine) {
+		this.saateBazdidMachine = saateBazdidMachine;
 	}
+
+
+	public AdvertiseEntity getAdvertiseEntity() {
+		return advertiseEntity;
+	}
+
+
+	public void setAdvertiseEntity(AdvertiseEntity advertiseEntity) {
+		this.advertiseEntity = advertiseEntity;
+	}
+
+
+	public boolean isEnableAdvertise() {
+		return enableAdvertise;
+	}
+
+
+	public void setEnableAdvertise(boolean enableAdvertise) {
+		this.enableAdvertise = enableAdvertise;
+	}
+
+
+	public Object getAdvertiseDetail() {
+		return advertiseDetail;
+	}
+
+
+	public void setAdvertiseDetail(Object advertiseDetail) {
+		this.advertiseDetail = advertiseDetail;
+	}
+
+
 	public String convertPicture(UploadedFile uploadedFile) {
     	try {
 			return FileConvertor.convertPicture(uploadedFile);
@@ -509,17 +1196,31 @@ public class AdvertiseBean implements Serializable {
 	public void insertToKarjo() {
 		JobKarjoEntity advertise =new JobKarjoEntity();
 		try {
-		advertise.setDate(new Date());
-		advertise.setDescription(description);
-		advertise.setKarjoField(karjoField);
-		advertise.setKarjoMadrak(karjoMadrak);
-		advertise.setKarjoNoeFaal(karjoNoeFaal);
-		advertise.setKarjoNoeHamkari(karjoNoeHamkari);
-		advertise.setKarjoMaharat(karjoMaharat);
-		advertise.setTitle(title);
-		advertise.setAddres(address);
-		advertise.setPhone(phone);
-		advertise.setUserAdv(adminProfile.getMoblEntity());
+			advertise.setAddres(address);
+			advertise.setBimeSabege(bimeSabege);
+			advertise.setBirthDay(birthDay);
+			advertise.setDate(new Date());
+			advertise.setDescription(description);
+			advertise.setDorehaVmadarek(dorehaVmadarek);
+			advertise.setElateTarkeKar(elateTarkeKar);
+			advertise.setHogogKarjo(hogogKarjo);
+			advertise.setKarjoField(karjoField);
+			advertise.setKarjoMadrak(karjoMadrak);
+			advertise.setKarjoNoeHamkari(karjoNoeHamkari);
+			advertise.setKhedmat(khedmat);
+			advertise.setMahaleTavalod(mahaleTavalod);
+			advertise.setPhone(phone);
+			advertise.setPhone(phone);
+			advertise.setSabege(sabege);
+			advertise.setShogleDarkhast(shogleDarkhast);
+			advertise.setShow(false);
+			advertise.setTakhasosKarjo(takhasosKarjo);
+			advertise.setTitle(title);
+			advertise.setUserAdv(adminProfile.getMoblEntity());
+			advertise.setVaziatEshtegal(vaziatEshtegal);
+			advertise.setVaziatTahol(vaziatTahol);
+			advertise.setEmail(email);
+			advertise.setSite(site);
 		if (pic1 != null) {
 			if (pic1.getSize() > 50000) {
 				throw new Exception("pic1Size");
@@ -549,20 +1250,31 @@ public class AdvertiseBean implements Serializable {
 	public void insertToKarfarma() {
 		JobKarfarmaEntity advertise =new JobKarfarmaEntity();
 		try {
+		advertise.setAddres(address);
+		advertise.setBime(bime);
+		advertise.setBimeTakmili(bimeTakmili);
 		advertise.setDate(new Date());
 		advertise.setDescription(description);
+		advertise.setEmail(email);
+		advertise.setEzafekar(ezafekar);
+		advertise.setJensiat(jensiat);
 		advertise.setKarfarmaCompanyName(karfarmaCompanyName);
 		advertise.setKarfarmaNiroMorede(karfarmaNiroMorede);
-		advertise.setKarfarmaNoeDarkhast(karfarmaNoeDarkhast);
-		advertise.setKarfarmaPasokhName(karfarmaPasokhName);
-		advertise.setKarfarmaPasokhName(karfarmaPasokhName);
-		advertise.setKarfarmaPasokhSemat(karfarmaPasokhSemat);
-		advertise.setKarfarmaSenf(karfarmaSenf);
 		advertise.setKarfarmaTakhasosMorede(karfarmaTakhasosMorede);
+		advertise.setMagtaTahsisli(magtaTahsisli);
+		advertise.setMinSabege(minSabege);
 		advertise.setMizanHogog(mizanHogog);
-		advertise.setTitle(title);
-		advertise.setAddres(address);
+		advertise.setMorekhasi(morekhasi);
+		advertise.setNoeHamkari(karjoNoeHamkari);
+		advertise.setNoeHogog(noeHogog);
 		advertise.setPhone(phone);
+		advertise.setReshte(reshte);
+		advertise.setSaatKari(saatKari);
+		advertise.setSen(sen);
+		advertise.setShow(false);
+		advertise.setSite(site);
+		advertise.setTakhasos(takhasos);
+		advertise.setTitle(title);
 		advertise.setUserAdv(adminProfile.getMoblEntity());
 		if (pic2 != null) {
 			if (pic2.getSize() > 50000) {
@@ -592,26 +1304,38 @@ public class AdvertiseBean implements Serializable {
 	public void insertToRent() {
 		RentEntity advertise =new RentEntity();
 		try {
+			advertise.setRentType(rentType);
+			advertise.setPhoneLine(phoneLine);
+		advertise.setAbGarm(abGarm);
+		advertise.setAddres(address);
+		advertise.setAnbari(anbari);
+		advertise.setChahAbi(chahAbi);
 		advertise.setDate(new Date());
 		advertise.setDescription(description);
-		advertise.setEjareMony(ejareMony);
-		advertise.setEmkanat(emkanat);
-		advertise.setEtehadieName(etehadieName);
+		advertise.setDigarEmkanat(digarEmkanat);
+		advertise.setEmail(email);
+		advertise.setFazayeSabz(fazayeSabz);
 		advertise.setHomeType(homeType);
-		advertise.setMablageForosh(mablageForosh);
-		advertise.setMasahat(masahat);
-		advertise.setMogeiat(mogeiat);
-		advertise.setParvane(parvane);
-		advertise.setRentType(rentType);
-		advertise.setSenBana(senBana);
-		advertise.setTedadTabage(tedadTabage);
-		advertise.setTedadVahed(tedadVahed);
-		advertise.setVadieeMoney(vadieeMoney);
-		advertise.setVage(vage);
-		advertise.setVaziatMelk(vaziatMelk);
-		advertise.setVaziatSanad(vaziatSanad);
-		advertise.setAddres(address);
+		advertise.setJahateMelk(jahateMelk);
+		advertise.setKaf(kaf);
+		advertise.setKarbariSanad(karbariSanad);
+		advertise.setMahaleSakhteman(mahaleSakhteman);
+		advertise.setMetraj(metraj);
+		advertise.setMoshaat(moshaat);
+		advertise.setMoshaatAbi(moshaatAbi);
+		advertise.setNamayeMelk(namayeMelk);
+		advertise.setNoeSanad(noeSanad);
+		advertise.setParking(parking);
 		advertise.setPhone(phone);
+		advertise.setPosheshDivar(posheshDivar);
+		advertise.setPriceMetr(priceMetr);
+		advertise.setSaateBazdid(saateBazdid);
+		advertise.setSaleSakht(saleSakht);
+		advertise.setServiceBehdashti(serviceBehdashti);
+		advertise.setShow(false);
+		advertise.setSite(site);
+		advertise.setTabloKhor(tabloKhor);
+		advertise.setTelephone(telephone);
 		advertise.setTitle(title);
 		advertise.setUserAdv(adminProfile.getMoblEntity());
 		if (pic3 != null) {
@@ -642,20 +1366,29 @@ public class AdvertiseBean implements Serializable {
 	public void insertToMachin() {
 		MachineEntity advertise =new MachineEntity();
 		try {
-		advertise.setDate(new Date());
-		advertise.setDescription(description);
-		advertise.setBrand(brand);
-		advertise.setContry(contry);
-		advertise.setMablag(mablag);
-		advertise.setMachineName(machineName);
-		advertise.setMahaleForosh(mahaleForosh);
-		advertise.setMoshakhasat(moshakhasat);
-		advertise.setSaleTolid(saleTolid);
-		advertise.setVaziat(vaziat);
-		advertise.setAddres(address);
-		advertise.setPhone(phone);
-		advertise.setTitle(title);
-		advertise.setUserAdv(adminProfile.getMoblEntity());
+			advertise.setAddres(address);
+			advertise.setBrand(brand);
+			advertise.setContry(contry);
+			advertise.setDate(new Date());
+			advertise.setDescription(description);
+			advertise.setEmail(email);
+			advertise.setKarbord(karbord);
+			advertise.setLavazemJanebi(lavazemJanebi);
+			advertise.setMablag(serialVersionUID);
+			advertise.setMachineName(machineName);
+			advertise.setMahaleForosh(mahaleForosh);
+			advertise.setModateZemanat(modateZemanat);
+			advertise.setMoshakhasat(moshakhasat);
+			advertise.setPhone(phone);
+			advertise.setSaateBazdidMachine(saateBazdidMachine);
+			advertise.setSaleTolid(saleTolid);
+			advertise.setSeriOrCode(seriOrCode);
+			advertise.setShow(false);
+			advertise.setSite(site);
+			advertise.setTitle(title);
+			advertise.setVaziat(vaziat);
+			advertise.setZemanat(zemanat);
+			advertise.setUserAdv(adminProfile.getMoblEntity());
 		if (pic4 != null) {
 			if (pic4.getSize() > 50000) {
 				throw new Exception("pic4Size");

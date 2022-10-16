@@ -1,30 +1,39 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name = "Komod_Boofe_Ketabkhane_Jakafshi")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "KomodBoofeKetabkhaneJakafshi")
 @NamedQueries({
-	@NamedQuery(name="findKomodBoofeKetabkhaneJakafshiById" , query="SELECT u FROM KomodBoofeKetabkhaneJakafshi u WHERE u.productId=:v_productId")
+	@NamedQuery(name="findKomodBoofeKetabkhaneJakafshiById" , query="SELECT u FROM KomodBoofeKetabkhaneJakafshi u WHERE u.id=:v_id")
 })
 @Cacheable(value = false)
-public class KomodBoofeKetabkhaneJakafshi extends ProductEntity {
+public class KomodBoofeKetabkhaneJakafshi implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private long id;
 	 @Column(name = "shekleHendesikomod", nullable = true , length=100) private
 	  String shekleHendesikomod;
 	  
@@ -79,7 +88,8 @@ public class KomodBoofeKetabkhaneJakafshi extends ProductEntity {
 	  
 	  @Column(name = "tedadJakafshi", nullable = true) private int tedadJakafshi;
 
-	  
+		@OneToOne(mappedBy = "komodBoofeKetabkhaneJakafshi")
+		private ProductEntity product;
 	  
 	public KomodBoofeKetabkhaneJakafshi() {
 		super();
@@ -250,18 +260,30 @@ public class KomodBoofeKetabkhaneJakafshi extends ProductEntity {
 
 
 
-	@Override
-	public String toString() {
-		return "KomodBoofeKetabkhaneJakafshi [shekleHendesikomod=" + shekleHendesikomod + ", shekleHendesiBoofe="
-				+ shekleHendesiBoofe + ", shekleHendesiKetabkhane=" + shekleHendesiKetabkhane
-				+ ", shekleHendesiJakafshi=" + shekleHendesiJakafshi + ", jensekomod=" + jensekomod + ", jenseBoofe="
-				+ jenseBoofe + ", jenseKetabkhane=" + jenseKetabkhane + ", jenseJakafshi=" + jenseJakafshi
-				+ ", abadkomod=" + abadkomod + ", abadBoofe=" + abadBoofe + ", abadKetabkhane=" + abadKetabkhane
-				+ ", abadJakafshi=" + abadJakafshi + ", pricekomod=" + pricekomod + ", priceBoofe=" + priceBoofe
-				+ ", priceKetabkhane=" + priceKetabkhane + ", priceJakafshi=" + priceJakafshi + ", tedadkomod="
-				+ tedadkomod + ", tedadBoofe=" + tedadBoofe + ", tedadKetabkhane=" + tedadKetabkhane
-				+ ", tedadJakafshi=" + tedadJakafshi + "]";
+	public long getId() {
+		return id;
 	}
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+	public ProductEntity getProduct() {
+		return product;
+	}
+
+
+
+	public void setProduct(ProductEntity product) {
+		this.product = product;
+	}
+
+
+
 
 	  
 	  

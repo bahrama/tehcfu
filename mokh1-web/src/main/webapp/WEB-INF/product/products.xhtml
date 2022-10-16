@@ -7,6 +7,7 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	 xmlns:p="http://primefaces.org/ui">
+
 <style>
 .path ul {
 	display: flex;
@@ -139,23 +140,14 @@ font-family: IRANSansNor;">
 				acceptcharset="UTF-8" prependId="false">
 		<div class="row">
 			<div class="col cards">
-			<p:dataGrid columns="3" var="prdc" value="#{sellerPage.sellerxProducts.entrySet().toArray()}"
-						layout="grid" rows="9" paginator="true" id="cars" style="width: 100%;"
+			<p:dataGrid columns="6" var="prdc" value="#{sellerPage.findUserProduct()}"
+						layout="grid" rows="12" paginator="true" id="cars" style="width: 100%; direction:rtl;"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
-					<h:panelGroup rendered="#{prdc.key.checkO}">
 					<h:link outcome="/pages/product/product-detail.xhtml">
-								<div class="item"
-									style="padding: 60px;
-								    border: 1px solid #BFBFBF;
-								    background-color: white;
-								    box-shadow: 10px 10px 5px #aaaaaa;
-								    margin: auto;
-								    width: 90%;
-								    background-color: gainsboro;
-								    border-radius: 10px;">
-		<img data-src="/Images/#{prdc.key.pic1}.jpg" src="../../resources/image-loader/loading.svg" style="width: 100%; height: 300px; margin:5px;"/>
-									<div class="blog-short-detail">
-										<p title="#{prdc.key.brand}" style="font-family: IRANSansNor;
+<div class="item" style="width: 100%; padding: 10px 10px 20px 10px; border: 1px solid #BFBFBF; background-color: rgba; box-shadow: 10px 10px 5px #aaaaaa;border-radius: 5px !important;">
+		<img data-src="/Images/#{prdc.pic1}.jpg" src="../../resources/image-loader/loading.svg" style="width: 100%; height: 300px; margin:5px;"/>
+																		<div class="blog-short-detail">
+										<p title="#{prdc.brand}" style="font-family: IRANSansNor;
 									    color: #0B59AA;
 									    white-space: nowrap;
 									    width: 100%;
@@ -164,40 +156,36 @@ font-family: IRANSansNor;">
 									    text-overflow: ellipsis;
 									    font-size: 18px;
 									    margin: 0px;">
-											#{prdc.key.brand}
+											#{prdc.brand}
 										</p>
-										<h4 title="#{prdc.key.nameCode}" style="font-family: IRANSansBold;
+										<h4 title="#{prdc.nameCode}" style="font-family: IRANSansBold;
 									    color: #0B59AA;
 									    white-space: nowrap;
-									    width: 200px;
+									    width: 100%;
 									    overflow: hidden;
 									    direction: rtl;
-									    text-overflow: ellipsis;
-									    text-align: center;
-										margin: auto;
-										margin-top: 20px;">
-											#{prdc.key.nameCode}
+									    text-overflow: ellipsis;">
+											#{prdc.nameCode}
 										</h4>
 										<p style="font-family: IRANSansBold;
 										    font-size: 19px;
-										    background-color: blanchedalmond;
+										    background-color: #eeea0b;
 										    border-radius: 10px;" >
-										<del class="d-block">#{prdc.key.price}</del>
+										<del class="d-block">#{prdc.price}</del>
 										</p>
 										<p style="font-family: IRANSansBold;
 										    font-size: 24px;
 										    color: green !important;
-										    background-color: darkturquoise;
+										    background-color: rgb(2, 138, 21);
 										    color: white!important;
 										    border-radius: 10px;direction: rtl;"
-											>#{prdc.key.price2}
+											>#{prdc.price2}
 											<span> تومان</span>
 											</p>
 									</div>
 								</div>
-								<f:param name="productId" value="#{prdc.key.productId}" />
+								<f:param name="productId" value="#{prdc.productId}" />
 								</h:link>
-							</h:panelGroup>
 				</p:dataGrid>
 	</div>
 	</div>

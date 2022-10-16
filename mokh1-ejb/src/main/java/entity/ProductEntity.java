@@ -23,6 +23,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -42,21 +43,20 @@ import org.eclipse.persistence.annotations.CacheType;
 @Table(name="product_tbl")
 @NamedQueries({
 	@NamedQuery(name="findAllProductEntity" , query="SELECT a FROM ProductEntity a ORDER BY a.productId DESC"),
-	@NamedQuery(name="findByProductEntityId" , query="SELECT u FROM ProductEntity u WHERE u.productId=:v_productId"),
+	@NamedQuery(name="findAllActiveProductEntity" , query="SELECT a FROM ProductEntity a where a.checkO=:v_checkO ORDER BY a.productId DESC"),
+	@NamedQuery(name="findByProductEntityId" , query="SELECT u FROM ProductEntity u WHERE (u.productId=:v_productId AND u.checkO=:v_checkO)"),
 	@NamedQuery(name="findAllProductEntityById2" , query="SELECT pp FROM ProductEntity pp ORDER BY pp.productId DESC"),
-	@NamedQuery(name="findAllProductEntityBySeller" , query="SELECT pp FROM ProductEntity pp WHERE pp.product=:v_product"),
+	@NamedQuery(name="countAllProduct" , query="SELECT count(pp) FROM ProductEntity pp where pp.checkO=:v_checkO"),
+	@NamedQuery(name="findAllProductEntityBySeller" , query="SELECT pp FROM ProductEntity pp WHERE (pp.product=:v_product AND pp.checkO=:v_checkO)"),
 })
 @Cacheable(value = false)
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "productType")
 public class ProductEntity implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Column(name = "productType")
-	private String productType;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "product_seq" , sequenceName = "product_seq" ,allocationSize = 10)
@@ -124,6 +124,9 @@ public class ProductEntity implements Serializable {
 	@Column(name = "insta", nullable = true  , length=7000)
 	private String instagram;
 	
+	@Column(name = "proType", nullable = true , length=50)
+	private String proType;
+	
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sefareshProduct")
@@ -133,6 +136,112 @@ public class ProductEntity implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "offerProduct")
 	@JsonbTransient
 	private Set<OfferEntity> productOffer = new HashSet<>();
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "mizTv_id" , referencedColumnName = "id")
+	private MizTv mizTv ;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "mojasame_id" , referencedColumnName = "id")
+	private Mojasame mojasame ;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "monabat_id" , referencedColumnName = "id")
+	private Monabat monabat;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "moblman_id" , referencedColumnName = "id")
+	private Moblman moblman;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "mizNaharKhori_id" , referencedColumnName = "id")
+	private MizNaharKhori mizNaharKhori;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "mizJeloMobli_id" , referencedColumnName = "id")
+	private MizJeloMobli mizJeloMobli;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "panjare_id" , referencedColumnName = "id")
+	private Panjare panjare;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "partition_id" , referencedColumnName = "id")
+	private Partition partition ;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "sandaliEdari_id" , referencedColumnName = "id")
+	private SandaliEdari sandaliEdari;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "serviceKhab1_id" , referencedColumnName = "id")
+	private ServiceKhab1 serviceKhab1;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "serviceKhab2_id" , referencedColumnName = "id")
+	private ServiceKhab2 serviceKhab2;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "serviceKhabKodak_id" , referencedColumnName = "id")
+	private ServiceKhabKodak serviceKhabKodak;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "mizEdari_id" , referencedColumnName = "id")
+	private MizEdari mizEdari;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "mizAsali_id" , referencedColumnName = "id")
+	private MizAsali mizAsali;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "ayeneVConsole_id" , referencedColumnName = "id")
+	private AyeneVConsole ayeneVConsole;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "darbChobi_id" , referencedColumnName = "id")
+	private DarbChobi darbChobi;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "darbZedSergat_id" , referencedColumnName = "id")
+	private DarbZedSergat darbZedSergat;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "ghabAx_id" , referencedColumnName = "id")
+	private GhabAx ghabAx;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "kabinet_id" , referencedColumnName = "id")
+	private Kabinet kabinet;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "komodBoofeKetabkhaneJakafshi_id" , referencedColumnName = "id")
+	private KomodBoofeKetabkhaneJakafshi komodBoofeKetabkhaneJakafshi;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonbTransient
+	@JoinColumn(name = "mdf_id" , referencedColumnName = "id")
+	private Mdf mdf;
+	
 	
 	public ProductEntity() {
 		super();
@@ -407,22 +516,6 @@ public class ProductEntity implements Serializable {
 	}
 
 
-
-
-	public String getProductType() {
-		return productType;
-	}
-
-
-
-
-	public void setProductType(String productType) {
-		this.productType = productType;
-	}
-
-
-
-
 	public String getAparat() {
 		return aparat;
 	}
@@ -474,6 +567,314 @@ public class ProductEntity implements Serializable {
 
 	public void setProductOffer(Set<OfferEntity> productOffer) {
 		this.productOffer = productOffer;
+	}
+
+
+
+
+	public String getProType() {
+		return proType;
+	}
+
+
+
+
+	public void setProType(String proType) {
+		this.proType = proType;
+	}
+
+
+
+
+	public MizTv getMizTv() {
+		return mizTv;
+	}
+
+
+
+
+	public void setMizTv(MizTv mizTv) {
+		this.mizTv = mizTv;
+	}
+
+
+
+
+	public Mojasame getMojasame() {
+		return mojasame;
+	}
+
+
+
+
+	public void setMojasame(Mojasame mojasame) {
+		this.mojasame = mojasame;
+	}
+
+
+
+
+	public Monabat getMonabat() {
+		return monabat;
+	}
+
+
+
+
+	public void setMonabat(Monabat monabat) {
+		this.monabat = monabat;
+	}
+
+
+
+
+	public Moblman getMoblman() {
+		return moblman;
+	}
+
+
+
+
+	public void setMoblman(Moblman moblman) {
+		this.moblman = moblman;
+	}
+
+
+
+
+	public MizNaharKhori getMizNaharKhori() {
+		return mizNaharKhori;
+	}
+
+
+
+
+	public void setMizNaharKhori(MizNaharKhori mizNaharKhori) {
+		this.mizNaharKhori = mizNaharKhori;
+	}
+
+
+
+
+	public MizJeloMobli getMizJeloMobli() {
+		return mizJeloMobli;
+	}
+
+
+
+
+	public void setMizJeloMobli(MizJeloMobli mizJeloMobli) {
+		this.mizJeloMobli = mizJeloMobli;
+	}
+
+
+
+
+	public Panjare getPanjare() {
+		return panjare;
+	}
+
+
+
+
+	public void setPanjare(Panjare panjare) {
+		this.panjare = panjare;
+	}
+
+
+
+
+	public Partition getPartition() {
+		return partition;
+	}
+
+
+
+
+	public void setPartition(Partition partition) {
+		this.partition = partition;
+	}
+
+
+
+
+	public SandaliEdari getSandaliEdari() {
+		return sandaliEdari;
+	}
+
+
+
+
+	public void setSandaliEdari(SandaliEdari sandaliEdari) {
+		this.sandaliEdari = sandaliEdari;
+	}
+
+
+
+
+	public ServiceKhab1 getServiceKhab1() {
+		return serviceKhab1;
+	}
+
+
+
+
+	public void setServiceKhab1(ServiceKhab1 serviceKhab1) {
+		this.serviceKhab1 = serviceKhab1;
+	}
+
+
+
+
+	public ServiceKhab2 getServiceKhab2() {
+		return serviceKhab2;
+	}
+
+
+
+
+	public void setServiceKhab2(ServiceKhab2 serviceKhab2) {
+		this.serviceKhab2 = serviceKhab2;
+	}
+
+
+
+
+	public ServiceKhabKodak getServiceKhabKodak() {
+		return serviceKhabKodak;
+	}
+
+
+
+
+	public void setServiceKhabKodak(ServiceKhabKodak serviceKhabKodak) {
+		this.serviceKhabKodak = serviceKhabKodak;
+	}
+
+
+
+
+	public MizEdari getMizEdari() {
+		return mizEdari;
+	}
+
+
+
+
+	public void setMizEdari(MizEdari mizEdari) {
+		this.mizEdari = mizEdari;
+	}
+
+
+
+
+	public MizAsali getMizAsali() {
+		return mizAsali;
+	}
+
+
+
+
+	public void setMizAsali(MizAsali mizAsali) {
+		this.mizAsali = mizAsali;
+	}
+
+
+
+
+	public AyeneVConsole getAyeneVConsole() {
+		return ayeneVConsole;
+	}
+
+
+
+
+	public void setAyeneVConsole(AyeneVConsole ayeneVConsole) {
+		this.ayeneVConsole = ayeneVConsole;
+	}
+
+
+
+
+	public DarbChobi getDarbChobi() {
+		return darbChobi;
+	}
+
+
+
+
+	public void setDarbChobi(DarbChobi darbChobi) {
+		this.darbChobi = darbChobi;
+	}
+
+
+
+
+	public DarbZedSergat getDarbZedSergat() {
+		return darbZedSergat;
+	}
+
+
+
+
+	public void setDarbZedSergat(DarbZedSergat darbZedSergat) {
+		this.darbZedSergat = darbZedSergat;
+	}
+
+
+
+
+	public GhabAx getGhabAx() {
+		return ghabAx;
+	}
+
+
+
+
+	public void setGhabAx(GhabAx ghabAx) {
+		this.ghabAx = ghabAx;
+	}
+
+
+
+
+	public Kabinet getKabinet() {
+		return kabinet;
+	}
+
+
+
+
+	public void setKabinet(Kabinet kabinet) {
+		this.kabinet = kabinet;
+	}
+
+
+
+
+	public KomodBoofeKetabkhaneJakafshi getKomodBoofeKetabkhaneJakafshi() {
+		return komodBoofeKetabkhaneJakafshi;
+	}
+
+
+
+
+	public void setKomodBoofeKetabkhaneJakafshi(KomodBoofeKetabkhaneJakafshi komodBoofeKetabkhaneJakafshi) {
+		this.komodBoofeKetabkhaneJakafshi = komodBoofeKetabkhaneJakafshi;
+	}
+
+
+
+
+	public Mdf getMdf() {
+		return mdf;
+	}
+
+
+
+
+	public void setMdf(Mdf mdf) {
+		this.mdf = mdf;
 	}
 
 

@@ -227,6 +227,8 @@ max-width: 300px!important;
 														update="basicDT grl oue1 oue2 oue3 oue18 oue19 oue43
 														ine1 ine2 ine3 ine18 ine19 ine41
 														msge1 msge2 msge3 msge18 msge19 msge35" process="dlg1" 
+														onstart="return startLoader()"
+															oncomplete="return endLoader()"
 														/>
 												
 											
@@ -320,7 +322,8 @@ max-width: 300px!important;
 														styleClass="p-mt-3 ui-button-outlined p-d-block"
 														update="basicDT grl in1 in2 in3 in4 in5 in6 in10 msg1 msg2 msg3 msg4 msg5 msg6
 													    msg10" 
-														process="dlg2" />
+														process="dlg2" onstart="return startLoader()"
+															oncomplete="return endLoader()"/>
 
 											</p:outputPanel>
 										</p:dialog>

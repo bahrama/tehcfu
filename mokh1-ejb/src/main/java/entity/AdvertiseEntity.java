@@ -63,6 +63,10 @@ public class AdvertiseEntity implements Serializable{
 	private String addres;
 	@Column(name = "phone", length = 200, nullable = true)
 	private String phone;
+	@Column(name = "email", length = 200, nullable = true)
+	private String email;
+	@Column(name = "site", length = 200, nullable = true)
+	private String site;
 	
 	
 	
@@ -73,6 +77,18 @@ public class AdvertiseEntity implements Serializable{
 	
 	
 	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getSite() {
+		return site;
+	}
+	public void setSite(String site) {
+		this.site = site;
+	}
 	public String getAdvertiseType() {
 		return advertiseType;
 	}

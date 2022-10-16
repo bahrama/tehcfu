@@ -1079,8 +1079,8 @@ public class MoblBean implements Serializable {
 		try {
 			if(!metaDescriptionEdit.equals(""))
 			this.moblEntity.setMetaDescription(metaDescriptionEdit);
-			if(!metaKeywords.equals(""))
-			this.moblEntity.setMetaKeywords(metaKeywords);
+			if(!metaKeywordsEdit.equals(""))
+			this.moblEntity.setMetaKeywords(metaKeywordsEdit);
 			if(!faaliatHaEdit().equals(""))
 			this.moblEntity.setFaaliat(this.faaliatHaEdit());
 			if(!aboutUsEdit.equals(""))

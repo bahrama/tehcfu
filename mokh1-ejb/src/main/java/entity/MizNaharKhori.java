@@ -1,29 +1,39 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name = "Miz_Nahar_Khori")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "MizNaharKhori")
 @NamedQueries({
-	@NamedQuery(name="findMizNaharKhoriById" , query="SELECT u FROM MizNaharKhori u WHERE u.productId=:v_productId")
+	@NamedQuery(name="findMizNaharKhoriById" , query="SELECT u FROM MizNaharKhori u WHERE u.id=:v_id")
 })
 @Cacheable(value = false)
-public class MizNaharKhori extends ProductEntity{
+public class MizNaharKhori implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private long id;
 	  @Column(name = "tedadMizNaharKhori", nullable = true) private int
 	  tedadMizNaharKhori;
 	  
@@ -93,7 +103,8 @@ public class MizNaharKhori extends ProductEntity{
 	  @Column(name = "rangParcheSandaliMizNaharKhori", nullable = true ,
 	  length=100) private String rangParcheSandaliMizNaharKhori;
 	  
-	  
+		@OneToOne(mappedBy = "mizNaharKhori")
+		private ProductEntity product;
 
 	public MizNaharKhori() {
 		super();
@@ -288,26 +299,31 @@ public class MizNaharKhori extends ProductEntity{
 
 
 
-	@Override
-	public String toString() {
-		return "MizNaharKhori [tedadMizNaharKhori=" + tedadMizNaharKhori + ", sakhtarMizNaharKhori="
-				+ sakhtarMizNaharKhori + ", descriptionMizNaharKhori=" + descriptionMizNaharKhori
-				+ ", sheklehendesiMizNaharKhori=" + sheklehendesiMizNaharKhori + ", jenseSafeMizNaharKhori="
-				+ jenseSafeMizNaharKhori + ", jenseEskeletMizNaharKhori=" + jenseEskeletMizNaharKhori
-				+ ", jensePayeMizNaharKhori=" + jensePayeMizNaharKhori + ", shisheMizNaharKhori=" + shisheMizNaharKhori
-				+ ", rangeShisheMizNaharKhori=" + rangeShisheMizNaharKhori + ", zekhamatShisheMizNaharKhori="
-				+ zekhamatShisheMizNaharKhori + ", priceShisheMizNaharKhori=" + priceShisheMizNaharKhori
-				+ ", shisheAbzarMizNaharKhori=" + shisheAbzarMizNaharKhori + ", tedadSandaliMizNaharKhori="
-				+ tedadSandaliMizNaharKhori + ", jenseFomSandaliMizNaharKhori=" + jenseFomSandaliMizNaharKhori
-				+ ", jenseEsfangSandaliMizNaharKhori=" + jenseEsfangSandaliMizNaharKhori
-				+ ", jenseEskeletSandaliMizNaharKhori=" + jenseEskeletSandaliMizNaharKhori
-				+ ", jensePayeSandaliMizNaharKhori=" + jensePayeSandaliMizNaharKhori + ", payeSandaliRangMizNaharKhori="
-				+ payeSandaliRangMizNaharKhori + ", rangPayeSandaliMizNaharKhori=" + rangPayeSandaliMizNaharKhori
-				+ ", jenseParcheSandaliMizNaharKhori=" + jenseParcheSandaliMizNaharKhori
-				+ ", nameParcheSandaliMizNaharKhori=" + nameParcheSandaliMizNaharKhori
-				+ ", rangSelParcheSandaliMizNaharKhori=" + rangSelParcheSandaliMizNaharKhori
-				+ ", rangParcheSandaliMizNaharKhori=" + rangParcheSandaliMizNaharKhori + "]";
+	public long getId() {
+		return id;
 	}
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+	public ProductEntity getProduct() {
+		return product;
+	}
+
+
+
+	public void setProduct(ProductEntity product) {
+		this.product = product;
+	}
+
+
+
+
 	  
 	  
 

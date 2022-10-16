@@ -148,7 +148,12 @@ public class LoginBean implements Serializable {
 			code = code + 100000;
 		moblEntity.setAuthCode(code);
 		moblEntity.setRole(UserRole.USER);
-		sellerServiceLocal.insertSeller(moblEntity);
+		try {
+			sellerServiceLocal.insertSeller(moblEntity);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//catchSellerLocal.getOnlineUsers().add(moblEntity);
 		try {
 			URL url2 = new URL(

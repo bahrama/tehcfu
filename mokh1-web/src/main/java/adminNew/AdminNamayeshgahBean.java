@@ -320,7 +320,7 @@ public class AdminNamayeshgahBean implements Serializable {
 		namayeshgahEntity.setTarikh(tarikh);
 		namayeshgahEntity.setType(type);
 		if (pic != null) {
-			if (pic.getSize() > 50000) {
+			if (pic.getSize() > 150000) {
 				throw new Exception("pic1Size");
 			} else if (!pic.getContentType().equals("image/jpeg")) {
 				throw new Exception("pic1Type");
@@ -376,7 +376,7 @@ public class AdminNamayeshgahBean implements Serializable {
 			if (!tarikhEdit.equals(""))
 				this.namayeshgahEntity.setTarikh(tarikhEdit);
 			if (pic1Edit != null) {
-				if (pic1Edit.getSize() > 50000) {
+				if (pic1Edit.getSize() > 150000) {
 					throw new Exception("pic1Size");
 				} else if (!pic1Edit.getContentType().equals("image/jpeg")) {
 					throw new Exception("pic1Type");

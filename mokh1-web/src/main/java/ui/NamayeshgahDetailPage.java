@@ -92,7 +92,7 @@ public class NamayeshgahDetailPage implements Serializable {
 
 	public byte[] findPic1(NamayeshgahEntity namayeshgahEntity) {
 		try {
-			File imageFile1 = new File("/home/wildfly/AX/" + namayeshgahEntity.getPic().toString() + ".jpg");
+			File imageFile1 = new File("/home/wildfly/wildfly-18.0.1.Final/fimg/" + namayeshgahEntity.getPic().toString() + ".jpg");
 			BufferedImage image1 = ImageIO.read(imageFile1);
 			ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
 			ImageIO.write(image1, "jpg", baos1);

@@ -45,31 +45,44 @@ public class JobKarfarmaEntity extends AdvertiseEntity{
 	
 	@Column(name = "adveriseId")
 	private long adveriseId;
-	@Column(name = "karafarma_senf", length = 150, nullable = true)
-	private String karfarmaSenf;
 	@Column(name = "karafarma_company", length = 200, nullable = true)
 	private String karfarmaCompanyName;
-	@Column(name = "karafarma_pasokhname", length = 150, nullable = true)
-	private String karfarmaPasokhName;
-	@Column(name = "karafarma_pasokhsemat", length = 100, nullable = true)
-	private String karfarmaPasokhSemat;
 	@Column(name = "karafarma_niromorede", length = 100, nullable = true)
 	private String karfarmaNiroMorede;
-	@Column(name = "karafarma_noedrakhast", length = 100, nullable = true)
-	private String karfarmaNoeDarkhast;
 	@Column(name = "karafarma_takhasos", length = 500, nullable = true)
 	private String karfarmaTakhasosMorede;
 	@Column(name = "hogog", nullable = true)
 	private long mizanHogog;
-
+	@Column(name = "minSabege", nullable = true)
+	private long minSabege;
+	@Column(name = "magtaTahsisli", length = 200, nullable = true)
+	private String magtaTahsisli;
+	@Column(name = "reshte", length = 200, nullable = true)
+	private String reshte;
+	@Column(name = "sen", nullable = true)
+	private long sen;
+	@Column(name = "takhasos", length = 200, nullable = true)
+	private String takhasos;
+	@Column(name = "jensiat", length = 200, nullable = true)
+	private String jensiat;
+	@Column(name = "noeHamkari", length = 200, nullable = true)
+	private String noeHamkari;
+	@Column(name = "noeHogog", length = 200, nullable = true)
+	private String noeHogog;
+	@Column(name = "saatKari", length = 200, nullable = true)
+	private String saatKari;
+	@Column(name = "bime", length = 200, nullable = true)
+	private String bime;
+	@Column(name = "bimeTakmili", length = 200, nullable = true)
+	private String bimeTakmili;
+	@Column(name = "ezafekar", length = 200, nullable = true)
+	private String ezafekar;
+	@Column(name = "morekhasi", length = 200, nullable = true)
+	private String morekhasi;
+	
+	
 	
 
-	public String getKarfarmaSenf() {
-		return karfarmaSenf;
-	}
-	public void setKarfarmaSenf(String karfarmaSenf) {
-		this.karfarmaSenf = karfarmaSenf;
-	}
 	public String getKarfarmaCompanyName() {
 		return karfarmaCompanyName;
 	}
@@ -77,30 +90,14 @@ public class JobKarfarmaEntity extends AdvertiseEntity{
 		this.karfarmaCompanyName = karfarmaCompanyName;
 	}
 
-	public String getKarfarmaPasokhName() {
-		return karfarmaPasokhName;
-	}
-	public void setKarfarmaPasokhName(String karfarmaPasokhName) {
-		this.karfarmaPasokhName = karfarmaPasokhName;
-	}
-	public String getKarfarmaPasokhSemat() {
-		return karfarmaPasokhSemat;
-	}
-	public void setKarfarmaPasokhSemat(String karfarmaPasokhSemat) {
-		this.karfarmaPasokhSemat = karfarmaPasokhSemat;
-	}
+
 	public String getKarfarmaNiroMorede() {
 		return karfarmaNiroMorede;
 	}
 	public void setKarfarmaNiroMorede(String karfarmaNiroMorede) {
 		this.karfarmaNiroMorede = karfarmaNiroMorede;
 	}
-	public String getKarfarmaNoeDarkhast() {
-		return karfarmaNoeDarkhast;
-	}
-	public void setKarfarmaNoeDarkhast(String karfarmaNoeDarkhast) {
-		this.karfarmaNoeDarkhast = karfarmaNoeDarkhast;
-	}
+
 	public String getKarfarmaTakhasosMorede() {
 		return karfarmaTakhasosMorede;
 	}
@@ -120,6 +117,84 @@ public class JobKarfarmaEntity extends AdvertiseEntity{
 	}
 	public void setAdveriseId(long adveriseId) {
 		this.adveriseId = adveriseId;
+	}
+	public long getMinSabege() {
+		return minSabege;
+	}
+	public void setMinSabege(long minSabege) {
+		this.minSabege = minSabege;
+	}
+	public String getMagtaTahsisli() {
+		return magtaTahsisli;
+	}
+	public void setMagtaTahsisli(String magtaTahsisli) {
+		this.magtaTahsisli = magtaTahsisli;
+	}
+	public String getReshte() {
+		return reshte;
+	}
+	public void setReshte(String reshte) {
+		this.reshte = reshte;
+	}
+	public long getSen() {
+		return sen;
+	}
+	public void setSen(long sen) {
+		this.sen = sen;
+	}
+	public String getTakhasos() {
+		return takhasos;
+	}
+	public void setTakhasos(String takhasos) {
+		this.takhasos = takhasos;
+	}
+	public String getJensiat() {
+		return jensiat;
+	}
+	public void setJensiat(String jensiat) {
+		this.jensiat = jensiat;
+	}
+	public String getNoeHamkari() {
+		return noeHamkari;
+	}
+	public void setNoeHamkari(String noeHamkari) {
+		this.noeHamkari = noeHamkari;
+	}
+	public String getNoeHogog() {
+		return noeHogog;
+	}
+	public void setNoeHogog(String noeHogog) {
+		this.noeHogog = noeHogog;
+	}
+	public String getSaatKari() {
+		return saatKari;
+	}
+	public void setSaatKari(String saatKari) {
+		this.saatKari = saatKari;
+	}
+	public String getBime() {
+		return bime;
+	}
+	public void setBime(String bime) {
+		this.bime = bime;
+	}
+	public String getBimeTakmili() {
+		return bimeTakmili;
+	}
+	public void setBimeTakmili(String bimeTakmili) {
+		this.bimeTakmili = bimeTakmili;
+	}
+	public String getEzafekar() {
+		return ezafekar;
+	}
+	public void setEzafekar(String ezafekar) {
+		this.ezafekar = ezafekar;
+	}
+	public String getMorekhasi() {
+		return morekhasi;
+	}
+	public void setMorekhasi(String morekhasi) {
+		this.morekhasi = morekhasi;
 	}
 	
 

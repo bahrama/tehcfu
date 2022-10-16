@@ -57,9 +57,9 @@ public class FileConvertor {
 			File out3 = new File("/home/wildfly/wildfly-18.0.1.Final/fimg/" + uuid + ".jpg");
 			InputStream in = new ByteArrayInputStream(image1Byte);
 			BufferedImage img3 = ImageIO.read(in);
-			BufferedImage scaledImg = Scalr.resize(img3, 800, 1000);
-			ImageIO.write(scaledImg, "jpg", out3);
-			//ImageIO.write(img3, "jpg", out3);
+			//BufferedImage scaledImg = Scalr.resize(img3, 800, 1000);
+			//ImageIO.write(scaledImg, "jpg", out3);
+			ImageIO.write(img3, "jpg", out3);
 			return uuid.toString();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

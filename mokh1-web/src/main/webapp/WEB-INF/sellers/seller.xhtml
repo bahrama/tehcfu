@@ -104,7 +104,7 @@ margin-bottom: 15px;"
 		</div>
 
 		<h:panelGroup
-			rendered="#{((sellerPage.sellerx.panel eq 'A') or (sellerPage.sellerx.panel eq 'B') or(sellerPage.sellerx.panel eq 'C'))and(sellerPage.listSize() gt 0)}">
+			rendered="#{((sellerPage.sellerx.panel eq 'A') or (sellerPage.sellerx.panel eq 'B') or(sellerPage.sellerx.panel eq 'C'))and(sellerPage.findUserProduct().size() gt 0)}">
 			<!-- محصولات -->
 			<div id="suggestion"
 				class="related-posts padding-bottom-40 text-center bd-bottom">
@@ -117,18 +117,17 @@ margin-bottom: 15px;"
 					<div class="related-posts-carousel padding-top-40">
 
 						<ui:repeat var="prdc"
-							value="#{sellerPage.sellerxProducts.entrySet().toArray()}"
+							value="#{sellerPage.products}"
 							size="#{sellerPage.listSize()}" >
 
-							<h:panelGroup rendered="#{prdc.key.checkO}">
 					<h:link outcome="/pages/product/product-detail.xhtml">
 								<div class="item"
-									style="width: 284px; padding: 10px 10px 20px 10px; border: 1px solid #BFBFBF; background-color: gainsboro; box-shadow: 10px 10px 5px #aaaaaa;">
+									style="width: 100%; padding: 10px 10px 20px 10px; border: 1px solid #BFBFBF; background-color: rgba; box-shadow: 10px 10px 5px #aaaaaa;border-radius: 5px !important;">
 
-	<img data-src="/Images/#{prdc.key.pic1}.jpg" src="../../resources/image-loader/loading.svg" style="width: 250px; height: 300px; margin:5px;"/>
+	<img data-src="/Images/#{prdc.pic1}.jpg" src="../../resources/image-loader/loading.svg" style="width: 250px; height: 300px; margin:5px;"/>
 									
 									<div class="blog-short-detail">
-										<p title="#{prdc.key.brand}" style="font-family: IRANSansNor;
+										<p title="#{prdc.brand}" style="font-family: IRANSansNor;
 									    color: #0B59AA;
 									    white-space: nowrap;
 									    width: 100%;
@@ -137,37 +136,36 @@ margin-bottom: 15px;"
 									    text-overflow: ellipsis;
 									    font-size: 18px;
 									    margin: 0px;">
-											#{prdc.key.brand}
+											#{prdc.brand}
 										</p>
-										<h4 title="#{prdc.key.nameCode}" style="font-family: IRANSansBold;
+										<h4 title="#{prdc.nameCode}" style="font-family: IRANSansBold;
 									    color: #0B59AA;
 									    white-space: nowrap;
 									    width: 200px;
 									    overflow: hidden;
 									    direction: rtl;
 									    text-overflow: ellipsis;">
-											#{prdc.key.nameCode}
+											#{prdc.nameCode}
 										</h4>
 										<p style="font-family: IRANSansBold;
 										    font-size: 19px;
-										    background-color: blanchedalmond;
+										    background-color: #eeea0b;
 										    border-radius: 10px;" >
-										<del class="d-block">#{prdc.key.price}</del>
+										<del class="d-block">#{prdc.price}</del>
 										</p>
 										<p style="font-family: IRANSansBold;
 										    font-size: 24px;
 										    color: green !important;
-										    background-color: darkturquoise;
+										    background-color: rgb(2, 138, 21);
 										    color: white!important;
 										    border-radius: 10px;direction: rtl;"
-											>#{prdc.key.price2}
+											>#{prdc.price2}
 											<span> تومان</span>
 											</p>
 									</div>
 								</div>
-								<f:param name="productId" value="#{prdc.key.productId}" />
+								<f:param name="productId" value="#{prdc.productId}" />
 								</h:link>
-							</h:panelGroup>
 						</ui:repeat>
 					</div>
 					<h:link outcome="/pages/product/products.xhtml"

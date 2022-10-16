@@ -46,13 +46,7 @@ max-width: 300px!important;
 					<div class="container-fluid">
 						<div class="row mb-2">
 							<div class="col-sm-6">
-								<h1>ویجت‌ها</h1>
-							</div>
-							<div class="col-sm-6">
-								<ol class="breadcrumb float-sm-left">
-									<li class="breadcrumb-item"><a href="#">خانه</a></li>
-									<li class="breadcrumb-item active">ویجت‌ها</li>
-								</ol>
+								<h1>شکایات اتحادیه</h1>
 							</div>
 						</div>
 					</div>
@@ -75,8 +69,6 @@ max-width: 300px!important;
 					<!-- Title -->
 					<div class="row heading-bg">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<h5 class="txt-dark" style="font-family: IRANSansBold;">بخش
-								شکایات اتحادیه</h5>
 							<p class="text1"
 								style="font-family: IRANSansNor; text-align: justify; font-size: 17px; line-height: 35px;">
 								<strong style="font-family: IRANSansBold; line-height: 50px;">*
@@ -272,12 +264,15 @@ max-width: 300px!important;
 														</div>
 
 														<div class="row">
-															<div class="col-md-12">
-																<div class="form-group">
-																	<label class="control-label mb-10"
+														<div class="col-md-6">
+														<label class="control-label mb-10"
 																		style="font-family: IRANSansNor;">آیا این شکایت از طریق مراجع ذیصلاح دیگری ثبت شده است ؟</label>
-																<h:selectManyCheckbox value="#{adminShekayat.marajes}" id="onvan55"
-				required="true" layout="pageDirection">
+														</div>
+															<div class="col-md-6">
+																<div class="form-group">
+																
+			<p:selectCheckboxMenu value="#{adminShekayat.marajes}" id="onvan55" multiple="true"
+				required="true" layout="pageDirection" style="width:100%">
 				<f:selectItem itemValue=" تعزیرات حکومتی" itemLabel=" تعزیرات حکومتی" />
 				<f:selectItem itemValue="شورای حل اختلاف" itemLabel="شورای حل اختلاف" />
 				<f:selectItem itemValue="سازمان صنعت ، معدن و تجارت" itemLabel="سازمان صنعت ، معدن و تجارت" />
@@ -285,8 +280,7 @@ max-width: 300px!important;
 				<f:selectItem itemValue="اتاق اصاف ایران" itemLabel="اتاق اصاف ایران" />
 				<f:selectItem itemValue="دیگر اتحادیه ها" itemLabel="دیگر اتحادیه ها" />
                 <f:selectItem itemValue="هیچ کدام" itemLabel="هیچ کدام" />
-			</h:selectManyCheckbox>
-																	<!-- <span class="help-block"> This field has error. </span>  -->
+			</p:selectCheckboxMenu>
 																	<h:message for="onvan55" errorStyle="color:red;"
 																		errorClass="help-block" id="eeeeee" />
 																</div>
@@ -296,14 +290,12 @@ max-width: 300px!important;
 														</div>
 
 														<div class="row">
-															<div class="col-md-12">
+															<div class="col-md-4">
 																<div class="panel panel-default card-view">
 																	<div class="panel-heading">
-																		<div class="pull-left">
 																			<h6 class="panel-title txt-dark"
 																				style="font-family: IRANSansNor;">آپلود تصویر
 																				فاکتور</h6>
-																		</div>
 																		<div class="clearfix"></div>
 																	</div>
 														<p:fileUpload  value="#{adminShekayat.shakiFactor}" mode="simple"
@@ -313,16 +305,12 @@ max-width: 300px!important;
 										            	
 																</div>
 															</div>
-														</div>
-														<div class="row">
-															<div class="col-md-12">
+															<div class="col-md-4">
 																<div class="panel panel-default card-view">
 																	<div class="panel-heading">
-																		<div class="pull-left">
 																			<h6 class="panel-title txt-dark"
 																				style="font-family: IRANSansNor;">آپلود تصویر
 																				کارت ملی</h6>
-																		</div>
 																		<div class="clearfix"></div>
 																	</div>
 														<p:fileUpload value="#{adminShekayat.shakiSsnPic}" mode="simple"
@@ -332,16 +320,12 @@ max-width: 300px!important;
 										            	
 																</div>
 															</div>
-														</div>
-														<div class="row">
-															<div class="col-md-12">
+															<div class="col-md-4">
 																<div class="panel panel-default card-view">
 																	<div class="panel-heading">
-																		<div class="pull-left">
 																			<h6 class="panel-title txt-dark"
 																				style="font-family: IRANSansNor;">آپلود تصویر
 																				از کالا</h6>
-																		</div>
 																		<div class="clearfix"></div>
 																	</div>
 																			
@@ -355,7 +339,7 @@ max-width: 300px!important;
 													</div>
 
 													
-													<p:commandButton ajax="false" process="@form"
+													<p:commandButton ajax="false" process="@form" style="float:left;width:150px;margin:40px;"
 													action="#{adminShekayat.inserToShekayat()}" value="ثبت"/>
 
 												</div>
@@ -377,17 +361,6 @@ max-width: 300px!important;
 					</div>
 				</section>
 			</div>
-
-			<footer class="main-footer">
-				<div class="float-right d-none d-sm-block">
-					<b>Version</b> 3.0.0-alpha
-				</div>
-
-				<strong>CopyLeft 2018 <a
-					href="http://github.com/hesammousavi/">حسام موسوی</a>.
-				</strong>
-			</footer>
-
 			<aside class="control-sidebar control-sidebar-dark">
 			</aside>
 		</div>

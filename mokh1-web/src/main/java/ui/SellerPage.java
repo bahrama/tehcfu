@@ -15,6 +15,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 import javax.faces.view.ViewScoped;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
@@ -25,6 +26,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
+import javax.sound.midi.SysexMessage;
 import javax.validation.constraints.Size;
 
 import adminNew.AdminProfile;
@@ -203,18 +205,13 @@ public class SellerPage implements Serializable{
 	public MoblEntity findSeller(String sellerStoreEng) throws Exception{
 		this.sellerx=sellerServiceLocal.findSellerByNameEng(sellerStoreEng);
 		insertToOffer(sellerx,null);
-		this.sellerxProducts.clear();
-		this.sellerxProducts = findProductDetail();
 		if(this.sellerx.getPanel().equals("A")||this.sellerx.getPanel().equals("B")||this.sellerx.getPanel().equals("C")||this.sellerx.getPanel().equals("D"))
 		return this.sellerx;
 		else
 			return null;
 	}
 	
-	public Map<ProductEntity, Object> findProductDetail(){
-		return productserviceLocal.findAllProductBySeller2(sellerx);
-	}
-	
+
 	public byte[] findPic1() throws IOException {
 		try {
 		File imageFile1=new File("/home/wildfly/AX/" + this.sellerx.getPic1().toString() + ".jpg");
@@ -272,27 +269,20 @@ public class SellerPage implements Serializable{
 		}
 	}
 	
-//	public byte[] findPic1Product(long productId) throws IOException {
-//		
-//		for (ProductEntity productEntity : products) {
-//			if(productEntity.getProductId()==productId)
-//				productEntityX=productEntity;
-//		}
-//		
-//		try {
-//		File imageFile1=new File("/home/wildfly/AX/" + productEntityX.getPic1().toString() + ".jpg");
-//		BufferedImage image1=ImageIO.read(imageFile1);
-//		ByteArrayOutputStream baos1=new ByteArrayOutputStream();
-//		ImageIO.write(image1, "jpg", baos1);
-//		return baos1.toByteArray();
-//		}catch (Exception e) {
-//			return null;
-//		}
-//	}
+	public List<ProductEntity> findUserProduct(){
+		products.clear();
+		try {
+		System.err.println(sellerx.getId());
+		this.products.addAll(productDaoLocal.findProductByUser(sellerx));
+		return this.products;
+		}catch (Exception e) {
+			return null;
+		}
+		}
 	
-	
+
 	public int listSize() {
-		int size = this.findProductDetail().size();
+		int size = this.products.size();
 		if(size<6)
 			return size;
 		else 
@@ -330,6 +320,16 @@ public class SellerPage implements Serializable{
 		}
 
 	}
+	
+	public void niaz() {
+        try {
+			 facesContext.getPartialViewContext().getEvalScripts().add("swal({title: 'ناموفق!',type: 'error', text: 'لطفا ابتدا وارد شوید', confirmButtonColor: '#469408',})");
+		}
+        catch (Exception e) {
+        }
+
+	}
+	
 	
 	public void actBoss() {
         try {
@@ -404,100 +404,86 @@ public class SellerPage implements Serializable{
 //		return this.product;
 //	}
 	
-	public ProductEntity findProductEntityDetail(long productId) {
-		    	this.product = productDaoLocal.findProductEntityById(productId);
-		    	insertToOffer(product.getProduct() , product);
-		    	if(this.product.getProductType().equals("AyeneVConsole"))
-		    		this.productDetail = (AyeneVConsole)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("DarbChobi"))
-		    		this.productDetail = (DarbChobi)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("DarbZedSergat"))
-		    		this.productDetail =  (DarbZedSergat)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("GhabAx"))
-		    		this.productDetail =  (GhabAx)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("Kabinet"))
-		    		this.productDetail =  (Kabinet)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("KomodBoofeKetabkhaneJakafshi"))
-		    		this.productDetail =  (KomodBoofeKetabkhaneJakafshi)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("Mdf"))
-		    		this.productDetail =  (Mdf)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("MizAsali"))
-		    		this.productDetail =  (MizAsali)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("MizEdari"))
-		    		this.productDetail =  (MizEdari)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("MizJeloMobli"))
-		    		this.productDetail =  (MizJeloMobli)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("MizNaharKhori"))
-		    		this.productDetail =  (MizNaharKhori)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("MizTv"))
-		    		this.productDetail =  (MizTv)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("Moblman"))
-		    		this.productDetail =  (Moblman)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("Mojasame"))
-		    		this.productDetail =  (Mojasame)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("Monabat"))
-		    		this.productDetail =  (Monabat)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("Panjare"))
-		    		this.productDetail =  (Panjare)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("Partition"))
-		    		this.productDetail =  (Partition)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("SandaliEdari"))
-		    		this.productDetail =  (SandaliEdari)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("ServiceKhab1"))
-		    		this.productDetail =  (ServiceKhab1)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("ServiceKhab2"))
-		    		this.productDetail =  (ServiceKhab2)productDaoLocal.getProductDetail();
-		    	if(this.product.getProductType().equals("ServiceKhabKodak"))
-		    		this.productDetail =  (ServiceKhabKodak)productDaoLocal.getProductDetail();
-		        return this.product;
-	}
-	
-	public String convertType(String type) {
-    	if(this.product.getProductType().equals("AyeneVConsole"))
-    		return "آینه و کنسول";
-    	else if(this.product.getProductType().equals("DarbChobi"))
-    		return "درب چوبی";
-    	else if(this.product.getProductType().equals("DarbZedSergat"))
-    		return "درب ضد سرقت";
-    	else if(this.product.getProductType().equals("GhabAx"))
-    		return "قاب عکس";
-    	else if(this.product.getProductType().equals("Kabinet"))
-    		return "کابینت";
-    	else if(this.product.getProductType().equals("KomodBoofeKetabkhaneJakafshi"))
-    		return "کمد , بوفه , جاکفشی و کتابخانه";
-    	else if(this.product.getProductType().equals("Mdf"))
-    		return "ام دی اف";
-    	else if(this.product.getProductType().equals("MizAsali"))
-    		return "میز عسلی";
-    	else if(this.product.getProductType().equals("MizEdari"))
-    		return "میز اداری";
-    	else if(this.product.getProductType().equals("MizJeloMobli"))
-    		return "میز جلو مبلی";
-    	else if(this.product.getProductType().equals("MizNaharKhori"))
-    		return "میز نهار خوری";
-    	else if(this.product.getProductType().equals("MizTv"))
-    		return "میز تلویزیون";
-    	else if(this.product.getProductType().equals("Moblman"))
-    		return "مبلمان";
-    	else if(this.product.getProductType().equals("Mojasame"))
-    		return "مجسمه";
-    	else if(this.product.getProductType().equals("Monabat"))
-    		return "منبت";
-    	else if(this.product.getProductType().equals("Panjare"))
-    		return "بنجره";
-    	else if(this.product.getProductType().equals("Partition"))
-    		return "بارتیشن";
-    	else if(this.product.getProductType().equals("SandaliEdari"))
-    		return "صندلی اداری";
-    	else if(this.product.getProductType().equals("ServiceKhab1"))
-    		return "سرویس خواب تک نفره";
-    	else if(this.product.getProductType().equals("ServiceKhab2"))
-    		return "سرویس خواب دو نفره";
-    	else if(this.product.getProductType().equals("ServiceKhabKodak"))
-    		return "سرویس خواب کودک";
-    	else
-    		return "";
-    	}
+	/*
+	 * public ProductEntity findProductEntityDetail(long productId) { this.product =
+	 * productDaoLocal.findProductEntityById(productId);
+	 * insertToOffer(product.getProduct() , product);
+	 * if(this.product.getProductType().equals("AyeneVConsole")) this.productDetail
+	 * = (AyeneVConsole)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("DarbChobi")) this.productDetail =
+	 * (DarbChobi)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("DarbZedSergat")) this.productDetail
+	 * = (DarbZedSergat)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("GhabAx")) this.productDetail =
+	 * (GhabAx)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("Kabinet")) this.productDetail =
+	 * (Kabinet)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("KomodBoofeKetabkhaneJakafshi"))
+	 * this.productDetail =
+	 * (KomodBoofeKetabkhaneJakafshi)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("Mdf")) this.productDetail =
+	 * (Mdf)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("MizAsali")) this.productDetail =
+	 * (MizAsali)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("MizEdari")) this.productDetail =
+	 * (MizEdari)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("MizJeloMobli")) this.productDetail =
+	 * (MizJeloMobli)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("MizNaharKhori")) this.productDetail
+	 * = (MizNaharKhori)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("MizTv")) this.productDetail =
+	 * (MizTv)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("Moblman")) this.productDetail =
+	 * (Moblman)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("Mojasame")) this.productDetail =
+	 * (Mojasame)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("Monabat")) this.productDetail =
+	 * (Monabat)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("Panjare")) this.productDetail =
+	 * (Panjare)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("Partition")) this.productDetail =
+	 * (Partition)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("SandaliEdari")) this.productDetail =
+	 * (SandaliEdari)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("ServiceKhab1")) this.productDetail =
+	 * (ServiceKhab1)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("ServiceKhab2")) this.productDetail =
+	 * (ServiceKhab2)productDaoLocal.getProductDetail();
+	 * if(this.product.getProductType().equals("ServiceKhabKodak"))
+	 * this.productDetail = (ServiceKhabKodak)productDaoLocal.getProductDetail();
+	 * return this.product; }
+	 * 
+	 * public String convertType(String type) {
+	 * if(this.product.getProductType().equals("AyeneVConsole")) return
+	 * "آینه و کنسول"; else if(this.product.getProductType().equals("DarbChobi"))
+	 * return "درب چوبی"; else
+	 * if(this.product.getProductType().equals("DarbZedSergat")) return
+	 * "درب ضد سرقت"; else if(this.product.getProductType().equals("GhabAx")) return
+	 * "قاب عکس"; else if(this.product.getProductType().equals("Kabinet")) return
+	 * "کابینت"; else
+	 * if(this.product.getProductType().equals("KomodBoofeKetabkhaneJakafshi"))
+	 * return "کمد , بوفه , جاکفشی و کتابخانه"; else
+	 * if(this.product.getProductType().equals("Mdf")) return "ام دی اف"; else
+	 * if(this.product.getProductType().equals("MizAsali")) return "میز عسلی"; else
+	 * if(this.product.getProductType().equals("MizEdari")) return "میز اداری"; else
+	 * if(this.product.getProductType().equals("MizJeloMobli")) return
+	 * "میز جلو مبلی"; else
+	 * if(this.product.getProductType().equals("MizNaharKhori")) return
+	 * "میز نهار خوری"; else if(this.product.getProductType().equals("MizTv"))
+	 * return "میز تلویزیون"; else
+	 * if(this.product.getProductType().equals("Moblman")) return "مبلمان"; else
+	 * if(this.product.getProductType().equals("Mojasame")) return "مجسمه"; else
+	 * if(this.product.getProductType().equals("Monabat")) return "منبت"; else
+	 * if(this.product.getProductType().equals("Panjare")) return "بنجره"; else
+	 * if(this.product.getProductType().equals("Partition")) return "بارتیشن"; else
+	 * if(this.product.getProductType().equals("SandaliEdari")) return
+	 * "صندلی اداری"; else if(this.product.getProductType().equals("ServiceKhab1"))
+	 * return "سرویس خواب تک نفره"; else
+	 * if(this.product.getProductType().equals("ServiceKhab2")) return
+	 * "سرویس خواب دو نفره"; else
+	 * if(this.product.getProductType().equals("ServiceKhabKodak")) return
+	 * "سرویس خواب کودک"; else return ""; }
+	 */
 	
 	public String daradNadarad(boolean item) {
 		if(item==true)
@@ -511,6 +497,31 @@ public class SellerPage implements Serializable{
 			return "هست";
 		else 
 			return "نیست";
+	}
+	
+	
+	public void haveProduct(ComponentSystemEvent event){
+		FacesContext contex=FacesContext.getCurrentInstance();
+		try{
+		if(findUserProduct().size()>0)
+			System.out.println("******************ok******************");
+		else
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/pages/main/home.xhtml");
+		}catch (Exception e) {
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/pages/main/home.xhtml");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
+	
+	public ProductEntity findProductEntityDetail(long productId) {
+		System.err.println("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+		System.err.println(productDaoLocal.countAllProduct());
+		this.product = productDaoLocal.findProductOnlyById(productId);
+		return this.product;
 	}
 	
 }

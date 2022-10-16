@@ -1,0 +1,655 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	<article class="margin-top-100">
+	<div class="container">
+
+		<div class="row">
+
+
+
+			<div class="col-md-4">
+				<img style="max-width: 100%; height: 300px !important"
+					src="../../resources/pic/adv.jpg" />
+			</div>
+			<h:panelGroup
+				rendered="#{(advertiseType eq 'karfarma') and (advertiseUiBean.findAdvertiseById(advertiseId).show)}">
+				<div class="col-md-8">
+					<p
+						style="text-align: justify; direction: rtl; font-size: 30px; font-family: IRANSansBold; color: rgb(5, 77, 32); display: flex;">
+						<img class="imgcls" style="float: right; width: 150px;"
+							src="../../resources/pic/adv2.png" alt="" />
+						#{advertiseUiBean.advertiseEntity.title}
+					</p>
+					<br />
+					<p
+						style="text-align: justify; direction: rtl; font-size: 24px; font-family: IRANSansBold; color: rgb(5, 77, 32); margin: 10px;">اطلاعات
+						استخدام</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">نام
+							شرکت: </span>#{advertiseUiBean.findAdvertiseDetailById(advertiseId,advertiseType).karfarmaCompanyName}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">شرح
+							نیروی مورد نظر: </span>#{advertiseUiBean.jobKarfarmaEntity.karfarmaNiroMorede}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">تخصص
+							مورد نیاز: </span>#{advertiseUiBean.jobKarfarmaEntity.karfarmaTakhasosMorede}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">میزان
+							حقوق (ریال): </span>
+							<h:outputText value="توافقی" rendered="#{advertiseUiBean.jobKarfarmaEntity.mizanHogog eq 1000}"/>
+							<h:outputText value="#{advertiseUiBean.jobKarfarmaEntity.mizanHogog}" rendered="#{advertiseUiBean.jobKarfarmaEntity.mizanHogog ne 1000}"/>
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">حداقل
+							سابقه: </span>#{advertiseUiBean.jobKarfarmaEntity.minSabege} سال
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">مقطع
+							تحصیلی: </span>#{advertiseUiBean.jobKarfarmaEntity.magtaTahsisli}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">سن:
+						</span>#{advertiseUiBean.jobKarfarmaEntity.sen}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">رشته:
+						</span>#{advertiseUiBean.jobKarfarmaEntity.reshte}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">تخصص:
+						</span>#{advertiseUiBean.jobKarfarmaEntity.takhasos}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">جنسیت:
+						</span>#{advertiseUiBean.jobKarfarmaEntity.jensiat}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">نوع
+							همکاری: </span>#{advertiseUiBean.jobKarfarmaEntity.noeHamkari}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">نوع
+							حقوق: </span>#{advertiseUiBean.jobKarfarmaEntity.noeHogog}
+					</p>
+
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">ساعت
+							کاری: </span>#{advertiseUiBean.jobKarfarmaEntity.saatKari}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">بیمه:
+						</span>#{advertiseUiBean.jobKarfarmaEntity.bime}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">بیمه
+							تکمیلی: </span>#{advertiseUiBean.jobKarfarmaEntity.bimeTakmili}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">اضافه
+							کار: </span>#{advertiseUiBean.jobKarfarmaEntity.ezafekar}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">مرخصی:
+						</span>#{advertiseUiBean.jobKarfarmaEntity.morekhasi}
+					</p>
+					<br />
+					<p
+						style="text-align: justify; direction: rtl; font-size: 24px; font-family: IRANSansBold; color: rgb(5, 77, 32); margin: 10px;">مشخصات
+						شرکت</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">شماره
+							تماس: </span>#{advertiseUiBean.advertiseEntity.phone}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">آدرس:
+						</span>#{advertiseUiBean.advertiseEntity.addres}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">ایمیل:
+						</span>#{advertiseUiBean.advertiseEntity.email}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">سایت:
+						</span><a href="#{advertiseUiBean.jobKarfarmaEntity.site}"
+							target="_blank">#{advertiseUiBean.advertiseEntity.site}</a>
+					</p>
+				</div>
+			</h:panelGroup>
+			
+			<!--  -->
+			
+			<h:panelGroup
+				rendered="#{(advertiseType eq 'karjo') and (advertiseUiBean.findAdvertiseById(advertiseId).show)}">
+				<div class="col-md-8">
+					<p
+						style="text-align: justify; direction: rtl; font-size: 30px; font-family: IRANSansBold; color: rgb(5, 77, 32); display: flex;">
+						<img class="imgcls" style="float: right; width: 150px;"
+							src="../../resources/pic/adv2.png" alt="" />
+						#{advertiseUiBean.advertiseEntity.title}
+					</p>
+					<br />
+					<p
+						style="text-align: justify; direction: rtl; font-size: 24px; font-family: IRANSansBold; color: rgb(5, 77, 32); margin: 10px;">اطلاعات
+						استخدام</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							رشته تحصیلی: </span>#{advertiseUiBean.findAdvertiseDetailById(advertiseId,advertiseType).karjoField}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							مدرک تحصیلی: </span>#{advertiseUiBean.jobKarjoEntity.karjoMadrak}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							خدمت: </span>#{advertiseUiBean.jobKarjoEntity.khedmat}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							سال تولد: </span>#{advertiseUiBean.jobKarjoEntity.birthDay}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">حداقل
+							محل تولد: </span>#{advertiseUiBean.jobKarjoEntity.mahaleTavalod}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							سابقه: </span>#{advertiseUiBean.jobKarjoEntity.bimeSabege}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">وضعیت اشتغال:
+						</span>#{advertiseUiBean.jobKarjoEntity.vaziatEshtegal}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">علت ترک کار:
+						</span>#{advertiseUiBean.jobKarjoEntity.elateTarkeKar}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">شغل درخواستی:
+						</span>#{advertiseUiBean.jobKarjoEntity.shogleDarkhast}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">تخصص:
+						</span>#{advertiseUiBean.jobKarjoEntity.takhasosKarjo}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							دوره ها و ومدارک تخصصی: </span>#{advertiseUiBean.jobKarjoEntity.dorehaVmadarek}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							حقوق: </span>#{advertiseUiBean.jobKarjoEntity.hogogKarjo}
+					</p>
+
+					<br />
+					<p	style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">شماره
+							تماس: </span>#{advertiseUiBean.advertiseEntity.phone}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">آدرس:
+						</span>#{advertiseUiBean.advertiseEntity.addres}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">ایمیل:
+						</span>#{advertiseUiBean.advertiseEntity.email}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">سایت:
+						</span><a href="#{advertiseUiBean.jobKarfarmaEntity.site}"
+							target="_blank">#{advertiseUiBean.advertiseEntity.site}</a>
+					</p>
+				</div>
+			</h:panelGroup>
+			
+			<!--  -->
+			
+			<h:panelGroup
+				rendered="#{(advertiseType eq 'machin') and (advertiseUiBean.findAdvertiseById(advertiseId).show)}">
+				<div class="col-md-8">
+					<p
+						style="text-align: justify; direction: rtl; font-size: 30px; font-family: IRANSansBold; color: rgb(5, 77, 32); display: flex;">
+						<img class="imgcls" style="float: right; width: 150px;"
+							src="../../resources/pic/adv2.png" alt="" />
+						#{advertiseUiBean.advertiseEntity.title}
+					</p>
+					<br />
+					<p
+						style="text-align: justify; direction: rtl; font-size: 24px; font-family: IRANSansBold; color: rgb(5, 77, 32); margin: 10px;">اطلاعات
+						ماشین آلات</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							نام: </span>#{advertiseUiBean.findAdvertiseDetailById(advertiseId,advertiseType).machineName}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							برند: </span>#{advertiseUiBean.machineEntity.brand}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							وضعیت: </span>#{advertiseUiBean.machineEntity.vaziat}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							کشور ساخت: </span>#{advertiseUiBean.machineEntity.contry}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							مبلغ فروش: </span>#{advertiseUiBean.machineEntity.mablag}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							محل فروش: </span>#{advertiseUiBean.machineEntity.mahaleForosh}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">لوازم جانبی:
+						</span>#{advertiseUiBean.machineEntity.lavazemJanebi}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">سری یا کد:
+						</span>#{advertiseUiBean.machineEntity.seriOrCode}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">کاربرد:
+						</span>#{advertiseUiBean.machineEntity.karbord}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">ضمانت:
+						</span>#{advertiseUiBean.machineEntity.zemanat}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							مدت ضمانت: </span>#{advertiseUiBean.machineEntity.modateZemanat}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							ساعت بازدید: </span>#{advertiseUiBean.machineEntity.saateBazdidMachine}
+					</p>
+
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							مشخصات: </span>#{advertiseUiBean.machineEntity.moshakhasat}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">سال تولید:
+						</span>#{advertiseUiBean.machineEntity.saleTolid}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							نو/کارکرده: </span>#{advertiseUiBean.machineEntity.vaziat}
+					</p>
+
+					<br />
+					<p
+						style="text-align: justify; direction: rtl; font-size: 24px; font-family: IRANSansBold; color: rgb(5, 77, 32); margin: 10px;">مشخصات
+						شرکت</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">شماره
+							تماس: </span>#{advertiseUiBean.advertiseEntity.phone}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">آدرس:
+						</span>#{advertiseUiBean.advertiseEntity.addres}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">ایمیل:
+						</span>#{advertiseUiBean.advertiseEntity.email}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">سایت:
+						</span><a href="#{advertiseUiBean.jobKarfarmaEntity.site}"
+							target="_blank">#{advertiseUiBean.advertiseEntity.site}</a>
+					</p>
+				</div>
+			</h:panelGroup>
+			
+			<!--  -->
+			
+			<h:panelGroup
+				rendered="#{(advertiseType eq 'rent') and (advertiseUiBean.findAdvertiseById(advertiseId).show)}">
+				<div class="col-md-8">
+					<p
+						style="text-align: justify; direction: rtl; font-size: 30px; font-family: IRANSansBold; color: rgb(5, 77, 32); display: flex;">
+						<img class="imgcls" style="float: right; width: 150px;"
+							src="../../resources/pic/adv2.png" alt="" />
+						#{advertiseUiBean.advertiseEntity.title}
+					</p>
+					<br />
+					<p
+						style="text-align: justify; direction: rtl; font-size: 24px; font-family: IRANSansBold; color: rgb(5, 77, 32); margin: 10px;">اطلاعات
+						ملک</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							نوع آگهی: </span>#{advertiseUiBean.findAdvertiseDetailById(advertiseId,advertiseType).rentType}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							نوع ملک: </span>#{advertiseUiBean.rentEntity.homeType}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							سند کاربری: </span>#{advertiseUiBean.rentEntity.karbariSanad}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							نوع سند: </span>#{advertiseUiBean.rentEntity.noeSanad}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							متراژ: </span>#{advertiseUiBean.rentEntity.metraj}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							قیمت هر متر: </span>#{advertiseUiBean.rentEntity.priceMetr}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">تعداد خط تلفن:
+						</span>#{advertiseUiBean.rentEntity.phoneLine}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">سال ساخت:
+						</span>#{advertiseUiBean.rentEntity.saleSakht}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">جهت ملک:
+						</span>#{advertiseUiBean.rentEntity.jahateMelk}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">محل ساختمان:
+						</span>#{advertiseUiBean.rentEntity.mahaleSakhteman}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							نمای ملک: </span>#{advertiseUiBean.rentEntity.namayeMelk}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							کف: </span>#{advertiseUiBean.rentEntity.kaf}
+					</p>
+
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							پوشش دیوار: </span>#{advertiseUiBean.rentEntity.posheshDivar}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">وضعیت روشنایی:
+						</span>#{advertiseUiBean.rentEntity.vaziatRoshanayi}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							وضعیت سرمایش و گرمایش: </span>#{advertiseUiBean.rentEntity.vaziatsystemGarmayesh}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">
+							آب گرم: </span>#{advertiseUiBean.rentEntity.abGarm}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">مشاعات:
+						</span>#{advertiseUiBean.rentEntity.moshaat}
+					</p>
+										<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">مشاعات آبی:
+						</span>#{advertiseUiBean.rentEntity.moshaatAbi}
+					</p>
+										<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">چاه آبی:
+						</span>#{advertiseUiBean.rentEntity.chahAbi}
+					</p>
+										<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">فضای سبز:
+						</span>#{advertiseUiBean.rentEntity.fazayeSabz}
+					</p>
+										<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">ویو:
+						</span>#{advertiseUiBean.rentEntity.view}
+					</p>
+															<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">انباری:
+						</span>#{advertiseUiBean.rentEntity.anbari}
+					</p>
+															<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">پارکینگ:
+						</span>#{advertiseUiBean.rentEntity.parking}
+					</p>
+															<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">تلفن:
+						</span>#{advertiseUiBean.rentEntity.telephone}
+					</p>
+																				<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">تابلو خور:
+						</span>#{advertiseUiBean.rentEntity.tabloKhor}
+					</p>
+																				<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">سرویس بهداشتی:
+						</span>#{advertiseUiBean.rentEntity.serviceBehdashti}
+					</p>
+																				<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">دیگر امکانات:
+						</span>#{advertiseUiBean.rentEntity.digarEmkanat}
+					</p>
+																				<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">ساعت بازدید:
+						</span>#{advertiseUiBean.rentEntity.saateBazdid}
+					</p>
+					<br />
+					<p
+						style="text-align: justify; direction: rtl; font-size: 24px; font-family: IRANSansBold; color: rgb(5, 77, 32); margin: 10px;">مشخصات
+						شرکت</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">شماره
+							تماس: </span>#{advertiseUiBean.advertiseEntity.phone}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">آدرس:
+						</span>#{advertiseUiBean.advertiseEntity.addres}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">ایمیل:
+						</span>#{advertiseUiBean.advertiseEntity.email}
+					</p>
+					<p
+						style="text-align: justify; direction: rtl; font-size: 15px; font-family: IRANSansBold; color: rgb(126, 123, 123); margin: 10px;">
+						<span
+							style="text-align: justify; direction: rtl; font-size: 18px; font-family: IRANSansBold; color: rgb(21, 122, 21);">سایت:
+						</span><a href="#{advertiseUiBean.jobKarfarmaEntity.site}"
+							target="_blank">#{advertiseUiBean.advertiseEntity.site}</a>
+					</p>
+				</div>
+			</h:panelGroup>
+		</div>
+		<div class="row">
+
+
+			<div class="col-md-12">
+
+				<h3></h3>
+			</div>
+
+
+		</div>
+
+
+	</div>
+	</article>
+
+</ui:composition>
+

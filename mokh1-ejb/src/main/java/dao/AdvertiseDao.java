@@ -143,7 +143,7 @@ public class AdvertiseDao implements AdvertiseDaoLocal {
     }
     @Override
     public AdvertiseEntity findAdvertiseById(long advertiseId) {
-    	return  (AdvertiseEntity) entityManager.createNamedQuery("findByAdvertiseEntityId").setParameter("v_adveriseId", advertiseId).getResultList();
+    	return  (AdvertiseEntity) entityManager.createNamedQuery("findByAdvertiseEntityId").setParameter("v_adveriseId", advertiseId).getSingleResult();
     }
      @Override
      public Object findAdvertiseDetailById(long advertiseId, String advertiseType)

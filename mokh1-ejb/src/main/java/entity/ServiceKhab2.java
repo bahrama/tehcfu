@@ -1,29 +1,38 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name = "service_khab2")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue(value = "ServiceKhab2")
 @NamedQueries({
-	@NamedQuery(name="findServiceKhab2ById" , query="SELECT u FROM ServiceKhab2 u WHERE u.productId=:v_productId")
+	@NamedQuery(name="findServiceKhab2ById" , query="SELECT u FROM ServiceKhab2 u WHERE u.id=:v_id")
 })
 @Cacheable(value = false)
-public class ServiceKhab2 extends ProductEntity{
+public class ServiceKhab2 implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private long id;
 	 @Column(name = "modelServiceKhab2", nullable = true , length=100) private
 	  String modelServiceKhab2;
 	  
@@ -140,7 +149,8 @@ public class ServiceKhab2 extends ProductEntity{
 	  @Column(name = "descriptionToshak2", nullable = true,length = 1000) private
 	  String descriptionToshak2;
 	  
-	  
+		@OneToOne(mappedBy = "serviceKhab2")
+		private ProductEntity product;
 
 	public ServiceKhab2() {
 		super();
@@ -490,29 +500,33 @@ public class ServiceKhab2 extends ProductEntity{
 
 
 
-	@Override
-	public String toString() {
-		return "ServiceKhab2 [modelServiceKhab2=" + modelServiceKhab2 + ", arzeTakhteKhab2=" + arzeTakhteKhab2
-				+ ", jenseTakhteKhab2=" + jenseTakhteKhab2 + ", rangeTakhteKhab2=" + rangeTakhteKhab2
-				+ ", priceTakhteKhab2=" + priceTakhteKhab2 + ", kalafTakhtJackDar=" + kalafTakhtJackDar + ", keshoVbox="
-				+ keshoVbox + ", paTahti2=" + paTahti2 + ", tedadPaTakhti2=" + tedadPaTakhti2 + ", jensePaTakhti2="
-				+ jensePaTakhti2 + ", abadPaTakhti2=" + abadPaTakhti2 + ", rangPaTakhti2=" + rangPaTakhti2
-				+ ", pricePaTakhti2=" + pricePaTakhti2 + ", komodServiceKhab2=" + komodServiceKhab2
-				+ ", jensekomodServiceKhab2=" + jensekomodServiceKhab2 + ", abadkomodServiceKhab2="
-				+ abadkomodServiceKhab2 + ", rangkomodServiceKhab2=" + rangkomodServiceKhab2
-				+ ", priceKomodServiceKhab2=" + priceKomodServiceKhab2 + ", mizArayesh2=" + mizArayesh2
-				+ ", sandaliMizArayesh2=" + sandaliMizArayesh2 + ", jenseMizArayesh2=" + jenseMizArayesh2
-				+ ", abadMizArayesh2=" + abadMizArayesh2 + ", rangMizArayesh2=" + rangMizArayesh2
-				+ ", priceMizArayesh2=" + priceMizArayesh2 + ", mizTahrir2=" + mizTahrir2 + ", jensemizTahrir2="
-				+ jensemizTahrir2 + ", abadmizTahrir2=" + abadmizTahrir2 + ", rangmizTahrir2=" + rangmizTahrir2
-				+ ", priceMizTahrir2=" + priceMizTahrir2 + ", gabVAyeneGadi2=" + gabVAyeneGadi2
-				+ ", jenseGabVAyeneGadi2=" + jenseGabVAyeneGadi2 + ", abadGabVAyeneGadi2=" + abadGabVAyeneGadi2
-				+ ", rangGabVAyeneGadi2=" + rangGabVAyeneGadi2 + ", priceGabVAyeneGadi2=" + priceGabVAyeneGadi2
-				+ ", toshak2=" + toshak2 + ", brandToshak2=" + brandToshak2 + ", modelToshak2=" + modelToshak2
-				+ ", modatGarantiGabVAyeneGadi2=" + modatGarantiGabVAyeneGadi2 + ", abadToshak2=" + abadToshak2
-				+ ", priceToshak2=" + priceToshak2 + ", descriptionToshak2=" + descriptionToshak2 + "]";
+	public long getId() {
+		return id;
 	}
-	  
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+	public ProductEntity getProduct() {
+		return product;
+	}
+
+
+
+	public void setProduct(ProductEntity product) {
+		this.product = product;
+	}
+
+
+
+
+
+
 	  
 
 }
