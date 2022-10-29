@@ -177,7 +177,7 @@ public class AdminLogin implements Serializable {
 
 	public MoblEntity findMoblEntityByMobile() {
 		try {
-			sendEmail(mobile);
+			//sendEmail(mobile);
 			moblEntity = sellerServiceLocal.findSellerByMobile(mobile);
 			if (moblEntity == null)
 				return null;
@@ -207,7 +207,7 @@ public class AdminLogin implements Serializable {
 			session.setAttribute("mobile", moblEntity.getMobile());
 			try {
 				FacesContext.getCurrentInstance().getExternalContext().redirect("/admin/admin-profile.xhtml");
-				sendEmail(this.moblEntity.getMobile());
+				//sendEmail(this.moblEntity.getMobile());
 			} catch (IOException e) {
 				this.checkInMobile = "first";
 				try {
@@ -267,7 +267,7 @@ public class AdminLogin implements Serializable {
 //	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "کد وارد شده صحیح نمی باشد", null));
 //	}
 	
-	public void sendEmail(String mobile) {
+/*	public void sendEmail(String mobile) {
 		try {
 			OkHttpClient client = new OkHttpClient();
 					MediaType mediaType = MediaType.parse("application/json");
@@ -286,7 +286,7 @@ public class AdminLogin implements Serializable {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	public void loginFirst() {
 		if (findMoblEntityByMobile() != null) {
