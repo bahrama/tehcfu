@@ -3824,7 +3824,7 @@ public class HomeBean implements Serializable {
 		}
 	}
 	
-	public void sendEmail(String mobile , String storePer , String sellerName) {
+	/*public void sendEmail(String mobile , String storePer , String sellerName) {
 		try {
 			OkHttpClient client = new OkHttpClient();
 					MediaType mediaType = MediaType.parse("application/json");
@@ -3842,7 +3842,7 @@ public class HomeBean implements Serializable {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	public String findUserByToken() {
 		try {

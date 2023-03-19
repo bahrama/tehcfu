@@ -1222,7 +1222,7 @@ public class AdvertiseBean implements Serializable {
 			advertise.setEmail(email);
 			advertise.setSite(site);
 		if (pic1 != null) {
-			if (pic1.getSize() > 50000) {
+			if (pic1.getSize() > 5000000) {
 				throw new Exception("pic1Size");
 			} else if (!pic1.getContentType().equals("image/jpeg")) {
 				throw new Exception("pic1Type");
@@ -1277,7 +1277,7 @@ public class AdvertiseBean implements Serializable {
 		advertise.setTitle(title);
 		advertise.setUserAdv(adminProfile.getMoblEntity());
 		if (pic2 != null) {
-			if (pic2.getSize() > 50000) {
+			if (pic2.getSize() > 5000000) {
 				throw new Exception("pic2Size");
 			} else if (!pic2.getContentType().equals("image/jpeg")) {
 				throw new Exception("pic2Type");
@@ -1339,7 +1339,7 @@ public class AdvertiseBean implements Serializable {
 		advertise.setTitle(title);
 		advertise.setUserAdv(adminProfile.getMoblEntity());
 		if (pic3 != null) {
-			if (pic3.getSize() > 50000) {
+			if (pic3.getSize() > 5000000) {
 				throw new Exception("pic3Size");
 			} else if (!pic3.getContentType().equals("image/jpeg")) {
 				throw new Exception("pic3Type");
@@ -1390,7 +1390,7 @@ public class AdvertiseBean implements Serializable {
 			advertise.setZemanat(zemanat);
 			advertise.setUserAdv(adminProfile.getMoblEntity());
 		if (pic4 != null) {
-			if (pic4.getSize() > 50000) {
+			if (pic4.getSize() > 5000000) {
 				throw new Exception("pic4Size");
 			} else if (!pic4.getContentType().equals("image/jpeg")) {
 				throw new Exception("pic4Type");
