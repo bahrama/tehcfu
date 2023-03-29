@@ -291,7 +291,10 @@
 		<view-id value="/pages/news/unions.xhtml" />
 	</url-mapping>
 
+	<url-mapping id="view45">
+		<pattern value="/mems/bahman-sabzi" />
+		<view-id value="/pages/members/bahman-sabzi.xhtml" />
+	</url-mapping>
 
 
-
-</pretty-config> 
+</pretty-config>

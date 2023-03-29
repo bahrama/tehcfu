@@ -92,7 +92,7 @@
 							
 							</p:dataGrid>
 							<br/>
-<h:commandLink  rendered="#{homeBean.findUserByToken() ne 'مهمان'}" action="#{adminLogin.niaz()}" value="ثبت آگهی" style="font-family: IRANSansBold; text-align: center;
+							<h:commandLink  rendered="#{homeBean.findUserByToken() ne 'مهمان'}" action="#{adminLogin.niaz()}" value="ثبت آگهی" style="font-family: IRANSansBold; text-align: center;
 display: block;
 padding: ;
 background-color: lightcoral;
@@ -102,10 +102,9 @@ padding: 20px;
 margin: auto !important;
 margin-bottom: 5px !important;
 color: white;
-font-size: 20px;"/>		
-
-<h:commandLink action="#{sellerPage.niaz()}" value="ثبت آگهی" rendered="#{homeBean.findUserByToken() eq 'مهمان'}"
-style="font-family: IRANSansBold; text-align: center;
+font-size: 20px;"/>
+							<h:commandLink action="#{adminLogin.loginNiaz()}" value="ثبت آگهی" rendered="#{homeBean.findUserByToken() eq 'مهمان'}"
+										   style="font-family: IRANSansBold; text-align: center;
 display: block;
 padding: ;
 background-color: lightcoral;
@@ -116,8 +115,8 @@ margin: auto !important;
 margin-bottom: 5px !important;
 color: white;
 font-size: 20px;">
-													<f:ajax execute="@form" />
-												</h:commandLink>	
+							</h:commandLink>
+							<h:inputHidden id="upth3" value="#{adminLogin.urlPath}" />
 			</h:form>
 					</div>
 				</div>

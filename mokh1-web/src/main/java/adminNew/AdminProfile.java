@@ -107,7 +107,7 @@ public class AdminProfile implements Serializable {
 	}
 	
 	
-	public void sendEmail(String mobile) {
+/*	public void sendEmail(String mobile) {
 		try {
 			OkHttpClient client = new OkHttpClient();
 					MediaType mediaType = MediaType.parse("application/json");
@@ -126,7 +126,7 @@ public class AdminProfile implements Serializable {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 	public MoblEntity findUserByToken() {
 		try {
@@ -145,7 +145,7 @@ public class AdminProfile implements Serializable {
 		this.moblEntity=sellerServiceLocal.findSellerByToken(tehcfuCookie);
 		session.setAttribute("mobile" ,moblEntity.getMobile());
 		//catchSellerLocal.getOnlineUsers().add(moblEntity);
-		sendEmail(moblEntity.getMobile());
+		//sendEmail(moblEntity.getMobile());
 		return moblEntity;
 		}catch (Exception e) {
 		System.err.println("token not find");

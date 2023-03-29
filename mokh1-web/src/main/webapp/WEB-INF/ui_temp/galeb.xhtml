@@ -29,8 +29,9 @@
 	<ui:insert name="headPage" />
 	<!-- header -->
 	
-<script src="../../resources/galeb2/js/jquery.hsmenu.min.js" ></script>
-<link rel="stylesheet" href="../../resources/galeb2/css/hs-menu.min.css" />
+	<h:outputScript library="galeb2" name="js/jquery.hsmenu.min.js"/>
+
+	<h:outputStylesheet library="galeb2" name="css/hs-menu.min.css"/>
 <style>
 @media screen and (min-width: 992px) {
 	.gg{
@@ -62,10 +63,9 @@
          }); 
       </script>
 
-	<link href="../../resources/menu/css/jquery.drawer.css"
-		rel="stylesheet" />
-	<script src="../../resources/menu/js/jquery.drawer.js"></script>
-	<script src="../../resources/menu/demo.js"></script>
+	<h:outputStylesheet library="menu" name="css/jquery.drawer.css"/>
+	<h:outputScript library="menu" name="js/jquery.drawer.js"/>
+	<h:outputScript library="menu" name="demo.js"/>
 	
 </h:head>
 <body>

@@ -1,10 +1,12 @@
 package admin;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -13,8 +15,8 @@ import enums.AmadeType;
 import sevice.AmadeServiceLocal;
 
 @Named
-@RequestScoped
-public class AddAmade {
+@ViewScoped
+public class AddAmade implements Serializable {
 
 	public AddAmade() {
 		// TODO Auto-generated constructor stub
@@ -163,9 +165,7 @@ public class AddAmade {
 		return amadeServiceLocal.findAllAmade();
 	}
 	
-	public void deleteAmade(long amadeId) {
-		Amade amade = new Amade();
-		amade = amadeServiceLocal.findAmadeById(amadeId);
+	public void deleteAmade() {
 		amadeServiceLocal.deleteAmade(amade);
 	}
 
