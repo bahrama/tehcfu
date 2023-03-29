@@ -392,7 +392,8 @@ public class AdminLogin implements Serializable {
 				session.setAttribute("mobile", moblEntity.getMobile());
 				homeBean.setMoblEntity(moblEntity);
 				if(!niaz)
-				FacesContext.getCurrentInstance().getExternalContext().redirect(urlPath);
+				//FacesContext.getCurrentInstance().getExternalContext().redirect(urlPath);
+		        FacesContext.getCurrentInstance().getExternalContext().redirect("/admin/admin-profile.xhtml");
 				else 
 				FacesContext.getCurrentInstance().getExternalContext().redirect("/admin/admin-advertice.xhtml");
 			} catch (IOException e) {}
@@ -426,7 +427,8 @@ public class AdminLogin implements Serializable {
         	    session.setAttribute("mobile", moblEntity.getMobile());
         	    homeBean.setMoblEntity(moblEntity);
 				if(!niaz) {
-				FacesContext.getCurrentInstance().getExternalContext().redirect(urlPath);
+				//FacesContext.getCurrentInstance().getExternalContext().redirect(urlPath);
+			    FacesContext.getCurrentInstance().getExternalContext().redirect("/admin/admin-profile.xhtml");
 				}
 				else 
 				FacesContext.getCurrentInstance().getExternalContext().redirect("/admin/admin-advertice.xhtml");

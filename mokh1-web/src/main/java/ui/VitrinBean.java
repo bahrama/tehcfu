@@ -40,7 +40,7 @@ public class VitrinBean implements Serializable {
 		else if(type.equals("مبلمان اداری"))
 			return catchSellerLocal.getVitrinMoblEdari();
 		else if(type.equals("سیسمونی"))
-			return catchSellerLocal.getVitrinMoblEdari();
+			return catchSellerLocal.getVitrinMoblSismoni();
 		else if(type.equals("کابینت آشپزخانه"))
 			return catchSellerLocal.getVitrinMoblKabinet();
 		else if(type.equals("مصنوعات چوبی"))
